@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Asset Listing"
+    sling:resourceType="cq/gui/components/authoring/dialog"
+    extraClientlibs="[extraClientlibs,acs-commons.widgets.showhidedialogfields,global.customCTAChildreneditor,global.customContentChildreneditor,global.responsiveTab,global.assetlisting-validation]">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <config_assetlisting
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Config"
+                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <enablefilter
+                                granite:class="asset-listing-enablefilter-options"
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/switch"
+                                fieldDescription="Enable Category filters"
+                                fieldLabel="Enable Filters"
+                                name="./enableFilter"/>
+                            <selectTags
+                                granite:class="asset-listing-select-filter"
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="cq/gui/components/coral/common/form/tagfield"
+                                emptyText="/placeholder/path of filter tags (checkbox)"
+                                fieldLabel="Choose Category filters (Checkbox)"
+                                multiple="{Boolean}true"
+                                name="./filters"/>
+                            <selectRadioTags
+                                granite:class="asset-listing-select-filter"
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="cq/gui/components/coral/common/form/tagfield"
+                                emptyText="/placeholder/path of filter tags (radio group)"
+                                fieldLabel="Choose Category filters (Radio Group)"
+                                multiple="{Boolean}true"
+                                name="./radiofilters"/>
+							<filterSectionLabel
+								granite:class="asset-listing-filtersection-label"
+								jcr:primaryType="nt:unstructured"
+								sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+								fieldLabel="Label for Filter Section"
+								name="./filterSectionLabel"
+								useFixedInlineToolbar="{Boolean}true">
+								<rtePlugins 
+									jcr:primaryType="nt:unstructured"
+									sling:resourceSuperType="/apps/mattel/global/master/components/core/text/v1/text/cq:dialog/content/items/tabs/items/text/items/viewer/items/column/items/title/rtePlugins">
+								</rtePlugins>
+								<uiSettings 
+									jcr:primaryType="nt:unstructured"
+									sling:resourceSuperType="/apps/mattel/global/master/components/core/text/v1/text/cq:dialog/content/items/tabs/items/text/items/viewer/items/column/items/title/uiSettings">
+								</uiSettings>
+							</filterSectionLabel>
+							<sortroupAlphabetically
+                                jcr:primaryType="nt:unstructured"
+                                granite:class="asset-listing-sortgroup-label"
+                                sling:resourceType="granite/ui/components/foundation/form/checkbox"
+                                fieldDescription="If you wants to Sort Groups Alphabetically select checkbox"
+                                name="./isAlphabeticallyGroupSort"
+                                text="Sort Groups Alphabetically"
+                                uncheckedValue="{Boolean}false"
+                                value="{Boolean}true"/>
+                            <sortFacetAlphabetically
+                                jcr:primaryType="nt:unstructured"
+                                granite:class="asset-listing-sortfacet-label"
+                                sling:resourceType="granite/ui/components/foundation/form/checkbox"
+                                fieldDescription="If you wants to Sort Facets Alphabetically, select checkbox"
+                                name="./isAlphabeticallyFacetSort"
+                                text="Sort Facets Alphabetically"
+                                uncheckedValue="{Boolean}false"
+                                value="{Boolean}true"/>
+                            <enableFiltersOnFirstLoad
+                                jcr:primaryType="nt:unstructured"
+                                granite:class="asset-listing-selectall-label"
+                                sling:resourceType="granite/ui/components/foundation/form/checkbox"
+                                fieldDescription="If you wants to enable all Filters On First Load, select checkbox"
+                                name="./enableFiltersOnFirstLoad"
+                                text="Enable all filters on first load"
+                                uncheckedValue="{Boolean}false"
+                                value="{Boolean}true"/>
+                            <clearAllLabel
+		                        jcr:primaryType="nt:unstructured"
+		                        granite:class="asset-listing-clearall-label"
+		                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+		                        fieldDescription="Please enter Clear All label"
+		                        fieldLabel="Clear All Label :"
+		                        name="./clearAllLabel"/>
+		                    <noResultsLabel
+		                        jcr:primaryType="nt:unstructured"
+		                        granite:class="asset-listing-noresults-label"
+		                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+		                        fieldDescription="Please enter - No Results scenario message"
+		                        fieldLabel="Message to be shown for no results :"
+		                        name="./noResultsLabel"/>
+                            <!--<clearButton
+                                granite:class="asset-listing-clearbutton-well"
+                                jcr:primaryType="nt:unstructured"
+                                jcr:title="Clear Button"
+                                sling:resourceType="granite/ui/components/coral/foundation/well"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <enableClearAll
+                                        granite:class="asset-listing-enable-clearall-switch"
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/switch"
+                                        fieldLabel="Enable Clear all"
+                                        name="./enableClearAll"/>
+                                    <clearAllLabel
+                                        granite:class="asset-listing-clearall-label"
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+                                        fieldLabel="Label for Clear All"
+                                        name="./clearAllLabel"
+                                        useFixedInlineToolbar="{Boolean}true">
+										<rtePlugins 
+											jcr:primaryType="nt:unstructured"
+											sling:resourceSuperType="/apps/mattel/global/master/components/core/text/v1/text/cq:dialog/content/items/tabs/items/text/items/viewer/items/column/items/title/rtePlugins">
+										</rtePlugins>
+										<uiSettings 
+											jcr:primaryType="nt:unstructured"
+											sling:resourceSuperType="/apps/mattel/global/master/components/core/text/v1/text/cq:dialog/content/items/tabs/items/text/items/viewer/items/column/items/title/uiSettings">
+										</uiSettings>
+                                    </clearAllLabel>
+                                </items>
+                            </clearButton>-->
+                        </items>
+                    </config_assetlisting>
+                    <responsive
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/foundation/include"
+                        path="mattel/global/master/components/core/responsiveTab/v1/responsiveTab/cq:dialog/content/items/tabs/items/responsiveInfo"/>
+                    <background
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/foundation/include"
+                        path="mattel/global/master/components/core/background/v1/background/cq:dialog/content/items/tabs/items/backgroundInfo"/>
+                    <text
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/foundation/include"
+                        path="mattel/global/master/components/core/text/v1/text/cq:dialog/content/items/tabs/items/text"/>
+                    <content
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/foundation/include"
+                        path="mattel/global/master/components/core/content/v1/content/cq:dialog/content/items/tabs/items/items"/>
+                    <cta
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/foundation/include"
+                        path="mattel/global/master/components/core/cta/v1/cta/cq:dialog/content/items/tabs/items/cta"/>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>

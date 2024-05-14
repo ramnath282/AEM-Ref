@@ -1,0 +1,167 @@
+<sly data-sly-test.author="${wcmmode.edit}">
+	${'Edit Doll Hospital - Summary Component'}
+	<sly data-sly-test.active="active"></sly>
+</sly>
+
+<sly data-sly-test.author="${!wcmmode.edit}" data-sly-use.dhContainerModel="com.mattel.ecomm.core.models.DHContainerModel">
+  <div class="landingPage hide" data-landingPagePath="${dhContainerModel.landingPageUrl @ extension='html'}"></div>
+</sly>
+
+  <div class="dh-review-block" data-emptyContentPlaceHolder="${properties.emptyContentPlaceHolder}">
+     <section class="${active}">
+      <div class="sub-brand-logo"> 
+	       <picture>
+	          <source srcset="${properties.mobileLogoImageForDollName @ context='unsafe'}" media="(max-width:768px)"/>
+	          <img  alt="Doll Hospital logo" src="${properties.desktopLogoImageForDollName @ context='unsafe'}"/>
+	       </picture>
+	   </div>
+       <h1 class="sr-only">${currentPage.title}</h1>
+       <h2 data-sly-test="${properties.reviewTitle}">${properties.reviewTitle}</h2>
+       <div class="review-img">
+            <picture>
+             <source srcset="${properties.bgMobImageRef @ context='uri'}" media="(max-width:768px)" />
+             <img alt="" src="${properties.bgImageRef @ context='uri'}" />
+           </picture>
+       </div>
+       <div class="review-right-column">
+         <div class="review-table">
+             <h3 class="table-title">
+             	<span class="dollName"></span>
+             </h3>
+             <div class="review-table-row review-doll-type">
+	             <div class="review-row">
+					  <div class="review-col">
+						  <div class="italic-txt">${properties.dollTypeCopy}</div>
+					  </div>
+					  <div class="review-col">
+						  <div class="italic-txt">${properties.eyeColorCopy}</div>
+					  </div>
+					  <div class="review-col">
+						  <div class="italic-txt">${properties.hairColorCopy}</div>
+					  </div>
+				 </div>
+				 <div class="review-row">
+					  <div class="review-col">
+						  <div class="bold-txt">
+                         	<span class="dollType"></span>
+                          </div>
+					  </div>
+					  <div class="review-col">
+						  <div class="bold-txt">
+                         	<span class="dollEyeColor"></span>
+                         </div>
+					  </div>
+					  <div class="review-col">
+						  <div class="bold-txt">
+                         	<span class="dollHairColor"></span>
+                         </div>
+					  </div>
+				 </div>
+             </div>
+             <div class="review-table-row review-doll-treatment">
+                    <div class="review-row">
+                        <div class="review-col">
+                            <div class="italic-txt">${properties.treatmentTypeCopy}</div>
+                        </div>
+                        <div class="review-col">
+                            <div class="italic-txt">${properties.subTreatmentTypeCopy}</div>
+                        </div>
+                        <div class="review-col">
+                            <div class="italic-txt">${properties.treatmentPriceCopy}</div>
+                        </div>
+                    </div>
+                    <div class="review-row">
+                        <div class="review-col">
+                            <div class="bold-txt"><span class="treatment-type"></span></div>
+                        </div>
+                        <div class="review-col">
+                            <div class="bold-txt"><span class="sub-treatment-type"></span></div>
+                        </div>
+                        <div class="review-col">
+                            <div class="bold-txt"><span class="">$</span><span class="treatment-price"></span></div>
+                        </div>
+                    </div>
+                 <div class="review-row">
+                     <div class="review-treatment-text">
+                      </div>
+                 </div>
+             </div>
+             <div class="review-table-row review-special-addons">
+                    <div class="review-row">
+                        <div class="review-col colspan-2">
+                            <div class="italic-txt">${properties.specialExtrasCopy}</div>
+                        </div>
+                        <div class="review-col">
+                            <div class="italic-txt">${properties.specialPriceCopy}</div>
+                        </div>
+                    </div>
+                    <div class="specialAddonsContainer">
+                    
+                    </div>
+             </div>
+             <div class="review-table-row review-aditional-desc">
+                 <div class="review-row">
+                     <div class="review-col">
+                         <div class="italic-txt">${properties.additionalInfoLabel}</div>
+                     </div>
+                 </div>
+                 <div class="review-row">
+                    <label class="sr-only" for="special-instructions" >Special instructions</label>
+                    <textarea type="textarea" id="special-instructions" maxlength="${properties.maxCharCount}" class="textarea-desc"></textarea>
+                 	<span class="err-msg format-message" aria-live="polite">${properties.allowedCharTypeErr}</span>
+                    <span class="err-msg maxlimit-message" aria-live="polite">${properties.maxAllowedCharsErr}</span>
+                    <span class="err-msg restrict-message" aria-live="polite">${properties.profanityErr}</span>
+                 </div>
+             </div>
+         </div>
+       </div>
+     </section>
+   </div>
+  <div class="review-add-to-bag">
+   <div class="column-1" style="background-color: ${properties.backgroundColor @ context='unsafe'}">
+       <div class="small-Parts-warning"><img src=""/></div>
+        <div class="age-grade">
+        	<span class="legal-age-label">${properties.ageGradeLabel}</span>
+        	<span class="legal-age"></span>
+        </div>
+   </div>
+   <div class="column-2">
+       <div class="doll-admission">${properties.footerTitle}</div>
+       <div class="total-price">
+       		<span>$</span>
+      	 	<span class="doll-price"></span>
+       </div>
+   </div>
+   <div class="column-3" style="background-color: ${properties.backgroundColor @ context='unsafe'}">
+     <div class="dh-btn-span">
+        <a href="${properties.backButtonLink @ extension='html'}" role="${properties.backButtonLink @ extension='html'}" class="dh-back-btn">${properties.backButtonText}</a>
+        <button href="${properties.addToBagUrl @context='unsafe'}" role="${properties.addToBagUrl @context='unsafe'}" id="dh-addToBagbutton"  type="submit" class="dh-next-btn dh-addToBag">${properties.addToBagButton}</button>
+     </div>
+   </div>
+ </div>
+ 
+<script id="specialAddonsTemplate" type="text/x-handlebars-template">
+ {{#each this}}
+	<div class="review-row special-addons-row">
+		<div class="review-col">
+		    <div class="bold-txt special-addons-name">{{parentSkuName}}</div>
+		</div>
+		<div class="review-col v-align-bottom">
+		    <div class="special-addons-child">{{childSkuDetails.skuName}}</div>
+		</div>
+		<div class="review-col">
+		    <div class="bold-txt special-addons-price">
+				{{#if childSkuDetails.price}}
+						<span>$</span>{{childSkuDetails.price}}
+				{{else}}
+						<span>$</span>{{price}}
+				{{/if}}
+			</div>
+		</div>
+	</div>
+ {{/each}}
+</script>
+
+ <sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
+   <sly data-sly-call="${clientlib.js @ categories=['dollHospital.summaryPage']}"/>
+</sly>

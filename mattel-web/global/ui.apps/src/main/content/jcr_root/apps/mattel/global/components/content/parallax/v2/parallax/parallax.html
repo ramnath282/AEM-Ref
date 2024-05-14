@@ -1,0 +1,26 @@
+<sly data-sly-use.parallaxModel="com.mattel.global.core.model.v2.ParallaxModel" />
+<sly data-sly-test="${wcmmode.edit}">${'Configure Parallax' @i18n}</sly>
+<div class="parallax-container">
+    <div class="parallax hidden-xs" style="background-image: url('${properties.bgImagePath @context='html'}')"></div>
+	<div class="parallax visible-xs" style="background-image: url('${properties.bgMobileImagePath @context='html'}')"></div>
+        <sly data-sly-test="${!parallaxModel.description}">
+            <h2 class="parallax-banner-title" data-aos="fade-down">${parallaxModel.title @context='html',i18n}</h2>
+        </sly>
+        <div class="parallax-content" data-aos="fade-up" data-sly-test="${parallaxModel.description}">
+            <div class="parallax-content-inner">
+                <span aria-label="Five Star Rating" class="fa fa-star checked"></span>
+
+                <span class="fa fa-star checked"></span>
+
+                <span class="fa fa-star checked"></span>
+
+                <span class="fa fa-star checked"></span>
+
+                <span class="fa fa-star checked"></span>
+                ${parallaxModel.description @context='html',i18n}
+            </div>
+        </div>
+</div>
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
+    <sly data-sly-call="${clientlib.js @ categories='global.parallax.v2'}"/>
+</sly>

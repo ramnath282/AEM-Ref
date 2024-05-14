@@ -1,0 +1,328 @@
+<sly data-sly-test.author="${wcmmode.edit}">
+	${'Edit Quiz Component'  @i18n}
+	<sly data-sly-test.active="active"></sly>
+</sly>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">  
+<sly data-sly-test.quizScreen="${properties.type}"/>
+	 <sly data-sly-use.quizResponse = "com.mattel.ecomm.core.models.QuizModel"> 
+	<!-- gift trunk starts -->
+	 		<!--- Quiz Landing Configuration Starts -->
+	 		
+		   		<sly data-sly-test.quizScreeType="${quizScreen == 'quizLanding' }">	
+					 <section class="active animated ${properties.containerAnimation} delay-1s">
+				              <sly data-sly-test="${properties.landingHeading}">
+				              		<h2 aria-level="1">${properties.landingHeading}</h2>
+				              </sly>
+				              <sly data-sly-test="${properties.landingSubHeading}">
+				              	<h3>${properties.landingSubHeading}</h3>
+				              </sly>
+				              <sly data-sly-test="${properties.landingCtaLink && properties.landingCtaText}">
+				             		 <button role="link" href="${properties.landingCtaLink @ extension='html'}" class="gt-btn online-purchase">${properties.landingCtaText}</a>
+				             	</sly>
+                                
+				      </section>
+				 </sly>
+		   		
+			 <!--- Quiz Landing Configuration Ends -->
+			 
+		     <!--  Quiz Gift recipient Configuration Starts  -->
+		     
+		     	<sly data-sly-test.quizScreeType="${quizScreen == 'giftReceipientConfig' }"> 
+	      				 
+	      			  <sly data-sly-test.active="active"></sly>
+					  
+				      <sly data-sly-test="${properties.recipientInputReq}">
+				      		<sly data-sly-test.disabled="disabled"></sly>
+				      		<sly data-sly-test.dataMandate="true"></sly>
+				      </sly>
+				       <sly data-sly-test="${!properties.recipientInputReq}">
+				      		<sly data-sly-test.dataMandate="false"></sly>			      		
+				      </sly>	
+				      			      
+				      <section class="${active} animated ${properties.containerAnimation} delay-1s">
+					  <h1 class="sr-only">Quiz Page</h1>
+				       <sly data-sly-test="${properties.recipientToLabel}">
+				        	<h2 aria-hidden="true">${properties.recipientToLabel}</h2>
+				       </sly>
+				        <form>
+					        <div class="gt-quiz-input-holder" data-control-type="input" data-binder-name="gt-quiz-display-recipient">	
+							  <label for="toField"  class="sr-only">To</label>
+					          <input type="text" id="toField"  placeholder="${properties.recipientInputPlaceHolder}"  maxlength="${properties.recipientMaxAllowedChars}" data-mandate="${dataMandate}">
+					       	  <small>${properties.recipientAllowedCharTypeErr}</small>
+					       	  <small>${properties.recipientProfanityErr}</small>
+					       	  <small>${properties.recipientMaxAllowedCharsErr}</small>
+					       	  <input type="hidden" value="" class="return_profinity_success">
+					       	  <input type="hidden" value="" class="return_profinity_error">
+					        </div>
+					        <button type="submit" class="gt-btn ${disabled}">${properties.recipientInputCtaText}</button>
+				        </form>
+				      </section>
+				</sly>
+			     
+		     <!--  Quiz Gift recipient Ends  -->
+		     
+		     <!--  Quiz Gift givers Configuration Starts  -->
+		     
+		     	<sly data-sly-test.quizScreeType="${quizScreen == 'giftGiversConfig' }"> 
+					 
+				      <sly data-sly-test="${properties.giversInputReq}">
+				      	<sly data-sly-test.disabled="disabled"></sly>
+				      	<sly data-sly-test.dataMandate="true"></sly>
+				      </sly>	
+				      <sly data-sly-test="${!properties.giversInputReq}">
+				      	<sly data-sly-test.dataMandate="false"></sly>
+				      </sly>		      
+				      <section class="${active} animated ${properties.containerAnimation} delay-1s">			        
+					        <sly data-sly-test="${properties.giversFromLabel}">
+					      	  <h2 aria-hidden="true">${properties.giversFromLabel}</h2>
+					      	</sly>
+					        <form>
+						        <div class="gt-quiz-input-holder" data-control-type="input" data-binder-name="gt-quiz-display-giver">
+								  <label for="fromField" class="sr-only">From</label>
+						          <input type="text"  id="fromField" placeholder="${properties.giversInputPlaceHolder}" maxlength="${properties.giversMaxAllowedChars}"  data-mandate="${dataMandate}">
+						          <small>${properties.giversAllowedCharTypeErr}</small>	
+						          <small>${properties.giversProfanityErr}</small>
+						          <small>${properties.giversMaxAllowedCharsErr}</small>
+						          <input type="hidden" value="" class="return_profinity_success">
+						          <input type="hidden" value="" class="return_profinity_error">
+						        </div>
+						        <button type="submit" class="gt-btn ${disabled}">${properties.giversInputCtaText}</button>
+						     </form>
+				      </section>
+				</sly>
+			     
+		     <!--  Quiz Gift givers Ends  -->
+		     
+		     <!--  Quiz Occassion Section Starts -->
+		     
+		   		  <sly data-sly-test.quizScreeType="${quizScreen == 'occasionSectionConfig' }">
+	      		      <section class="${active} animated ${properties.containerAnimation} delay-1s">	                    
+	                     <sly data-sly-test="${author}">
+	                     	<h2> ${properties.occasionQuestion @ context='html'} </h2>	
+	                     </sly>
+	                     <sly data-sly-test="${!author}">
+		                     <sly data-sly-use.ecommUtil="${'com.mattel.ecomm.core.utils.EcomUtil' @ template=properties.occasionQuestion}">
+						       	 	<h2> ${ecommUtil.getDynamicTemplate @ context='html'} </h2>			      	
+						     </sly>
+						 </sly>
+	                    <sly data-sly-test="${properties.occasionSubHeading}">	
+	                    	<h3>${properties.occasionSubHeading}</h3>
+	                    </sly>
+	                    	<sly data-sly-test="${properties.occasionAnswerSelectionType == 'single'}">
+	                    		<sly data-sly-test.inputType="radio"></sly>
+	                    		<sly data-sly-test.dataMandate="${properties.occasionInputReq}">
+	                    			<sly data-sly-test.disabledClass="disabled"></sly>
+	                    		</sly>                   	
+	                    	</sly>
+	                    	<sly data-sly-test="${properties.occasionAnswerSelectionType == 'multiple'}">
+	                    		<sly data-sly-test.inputType="checkbox"></sly> 
+	                    		<sly data-sly-test.dataMin="${properties.occasionMinSelection}"></sly>  
+	                    		<sly data-sly-test.dataMax="${properties.occasionMaxSelection}"></sly>
+	                    		<sly data-sly-test.dataMandate="true"></sly>
+                    			<sly data-sly-test.disabledClass="disabled"></sly>
+	                    		
+	                    	</sly>
+		                    <form>
+		                        <div class="gt-quiz-option-group" data-min="${dataMin}" data-max="${dataMax}" data-control-type="${inputType}" data-binder-name="gt-quiz-display-occassion" data-mandate="${dataMandate}">
+			                         <sly data-sly-test.tagObjList="${quizResponse.getOccasionTagList}">
+			                         	<sly data-sly-list.tagObj="${tagObjList}">
+			                         		 <input type="${inputType}" name="quizRdoOccassion" id="${tagObj.tagID}" value="${tagObj.name}">
+			                         	 	  <label for="${tagObj.tagID}"><span>${tagObj.title}</span></label>
+			                         	</sly>
+			                         </sly>		                         	
+		                        </div>
+		
+		                        <button type="submit" class="gt-btn ${disabledClass}">${properties.occasionCtaText}</button>
+		                      </form>
+	                  </section>			   
+				</sly>
+				 
+			  <!--  Quiz Occassion Section Ends -->
+			  
+			  <!--  Quiz Attribute Section Starts -->
+		     
+		   		  <sly data-sly-test.quizScreeType="${quizScreen == 'attributesSectionConfig' }">
+				      <section class="${active} animated ${properties.containerAnimation} delay-1s">
+	                    <sly data-sly-test="${author}">
+	                     	<h2> ${properties.attributesQuestion @ context='html'} </h2>	
+	                     </sly>
+	                     <sly data-sly-test="${!author}">
+		                     <sly data-sly-use.ecommUtil="${'com.mattel.ecomm.core.utils.EcomUtil' @ template=properties.attributesQuestion}">
+						       	 	<h2> ${ecommUtil.getDynamicTemplate @ context='html'} </h2>			      	
+						     </sly>	
+						 </sly>			      		                    
+	                     <sly data-sly-test="${properties.attributesSubHeading}">	
+	                    	<h3>${properties.attributesSubHeading}</h3>
+	                    </sly>	                    
+	                    <sly data-sly-test="${properties.attributesAnswerSelectionType == 'single'}">
+	                    		<sly data-sly-test.attributesInputType="radio"></sly>   
+	                    		<sly data-sly-test.attributesDataMandate="${properties.attributesInputReq}">
+	                    			<sly data-sly-test.attributesDisabledClass="disabled"></sly>
+	                    		</sly>                  	
+                    	</sly>
+                    	<sly data-sly-test="${properties.attributesAnswerSelectionType == 'multiple'}">
+                    		<sly data-sly-test.attributesInputType="checkbox"></sly> 
+                    		<sly data-sly-test.attributesDataMin="${properties.attributesMinSelection}"></sly>  
+                    		<sly data-sly-test.attributesDataMax="${properties.attributesMaxSelection}"></sly>
+                    		<sly data-sly-test.attributesDataMandate="true"></sly>
+                    		<sly data-sly-test.attributesDisabledClass="disabled"></sly>
+                    		
+                    	</sly>
+                    	
+	                    <form>
+	                      <div class="gt-quiz-option-group" data-min="${attributesDataMin}" data-max="${attributesDataMax}"  data-control-type="${attributesInputType}" data-binder-name="gt-quiz-display-attr" data-binder-val="gt-quiz-display-attr-value" data-mandate="${attributesDataMandate}">
+	                       
+	                       <sly data-sly-test.tagObjList="${quizResponse.getAttributesTagList}">
+	                         	<sly data-sly-list.tagObj="${tagObjList}">
+	                         		 <input type="${attributesInputType}" name="quizChkAttributes" id="${tagObj.tagID}" value="${tagObj.name}">
+	                         	 	  <label for="${tagObj.tagID}"><span>${tagObj.title}</span></label>
+	                         	</sly>
+	                         </sly>	
+	                      </div>
+	
+	                      <button type="submit" class="gt-btn ${attributesDisabledClass}">${properties.attributesCtaText}</button>
+	                    </form>
+	                  </section>			   
+				</sly>
+				 
+			  <!--  Quiz Attribute Section Ends -->
+			  
+			  <!--  Quiz Aspiration Section Starts -->
+		     
+		   		  <sly data-sly-test.quizScreeType="${quizScreen == 'aspirationsSectionConfig' }">
+					    <section class="${active} animated ${properties.containerAnimation} delay-1s">
+	                    
+	                    <sly data-sly-test="${properties.aspirationsQuestion}">	
+	                    	<sly data-sly-test="${author}">
+		                     	<h2> ${properties.aspirationsQuestion @ context='html'} </h2>	
+		                     </sly>
+		                     <sly data-sly-test="${!author}">
+			                     <sly data-sly-use.ecommUtil="${'com.mattel.ecomm.core.utils.EcomUtil' @ template=properties.aspirationsQuestion}">
+						       	 	<h2> ${ecommUtil.getDynamicTemplate @ context='html'} </h2>			      	
+						      	</sly>
+						     </sly>
+					      	
+	                    </sly>
+	                    <sly data-sly-test="${properties.aspirationsSubHeading}">	
+	                    	<h3>${properties.aspirationsSubHeading}</h3>
+	                    </sly>
+	                    
+	                    <sly data-sly-test="${properties.aspirationsAnswerSelectionType == 'single'}">
+	                    		<sly data-sly-test.aspirationsInputType="radio"></sly> 
+	                    		<sly data-sly-test.aspirationsDataMandate="${properties.aspirationsInputReq}">
+	                    			<sly data-sly-test.aspirationsDisabledClass="disabled"></sly>
+	                    		</sly>                    	
+                    	</sly>
+                    	<sly data-sly-test="${properties.aspirationsAnswerSelectionType == 'multiple'}">
+                    		<sly data-sly-test.aspirationsInputType="checkbox"></sly> 
+                    		<sly data-sly-test.aspirationsDataMin="${properties.aspirationsMinSelection}"></sly>  
+                    		<sly data-sly-test.aspirationsDataMax="${properties.aspirationsMaxSelection}"></sly>
+                    		<sly data-sly-test.aspirationsDataMandate="true"></sly>
+                    		<sly data-sly-test.aspirationsDisabledClass="disabled"></sly>
+                    	</sly>
+                    	
+	                    <form>
+	                      <div class="gt-quiz-option-group" data-min="${aspirationsDataMin}" data-max="${aspirationsDataMax}" data-control-type="${aspirationsInputType}" data-binder-name="gt-quiz-display-aspire" data-binder-val="gt-quiz-display-aspire-value" data-mandate="${aspirationsDataMandate}">
+	                       
+	                       <sly data-sly-test.tagObjList="${quizResponse.getAspirationTagList}">
+	                         	<sly data-sly-list.tagObj="${tagObjList}">
+	                         		 <input type="${aspirationsInputType}" name="quizChkAspiration" id="${tagObj.tagID}" value="${tagObj.name}">
+	                         	 	  <label for="${tagObj.tagID}"><span>${tagObj.title}</span></label>
+	                         	</sly>
+	                         </sly>	
+	
+	                      </div>
+	
+	                      <button type="submit" class="gt-btn ${aspirationsDisabledClass}">${properties.aspirationsCtaText}</button>
+	                    </form>
+	                  </section>		   
+					</sly>
+				 
+			  <!--  Quiz Aspiration Section Ends -->
+			  
+			  <!--  Quiz Occassion/Attribute/Aspiration Summary Starts -->
+			  
+			  	<sly data-sly-test.quizScreeType="${quizScreen == 'quizSummary' }">
+				     <section id="quizSummary" class="${active} animated ${properties.containerAnimation} delay-1s">
+				       	<h2>${properties.summaryHeadline} </h2>
+				      	<sly data-sly-test="${author}">
+		                     	${properties.summaryTemplate @ context='html'} 
+		                 </sly>
+		                <sly data-sly-test="${!author}">
+					        <sly data-sly-use.ecommUtil="${'com.mattel.ecomm.core.utils.EcomUtil' @ template=properties.summaryTemplate}">
+					       	 	${ecommUtil.getDynamicTemplate @ context='html'} 				      	
+					      	</sly>
+				      	</sly>
+				       <h2>${properties.summaryCopyText} </h2>				       
+				       <a class="gt-btn summary-page" tabindex="0" role="link">${properties.summaryContCtaText}</a>
+					   <span class="gt-btn-cta-span hidden">${properties.summaryContCtaLink @ extension='html'}</span>
+					   <span class="gt-btn-pdp-span hidden">${properties.summaryContPdpLink @ extension='html'}</span>
+					   <div class="clearfix"></div>
+				       <a href="${properties.summaryBackCtaLink @ extension='html'}" class="gt-link">${properties.summaryBackCtaText}</a>
+				     </section>
+				</sly>	
+			  		 
+			 <!--  Quiz Occassion/Attribute/Aspiration Summary Ends -->	
+             <!--  In Store Purchase Page Starts  -->
+		     
+		     	<sly data-sly-test.quizScreeType="${quizScreen == 'instorePurchase' }"> 
+	      				 
+	      			  <sly data-sly-test.active="active"></sly>
+					  <div class="gt-quiz-block retail" id="purchaseScreen" data-successLandingPage=${properties.successLandingPage}>
+				     <section class="show animated ${properties.containerAnimation} delay-1s">
+					    <h1 class="sr-only">Retail Purchase Page</h1>
+						<sly data-sly-test="${properties.purchaseTitle}">	
+	                    	<h2>${properties.purchaseTitle}</h2>
+	                    </sly>
+
+                      <form>
+                        <div class="gt-quiz-input-holder" data-control-type="input" data-binder-name="gt-quiz-customer">
+						  <label for="custName"  class="sr-only">Customer Name</label>
+                          <input class="name-input" id="custName" type="text" placeholder="${properties.customerNamePlaceHolder}"  maxlength="15" id="retailCustName">
+                          <input type="hidden" value="" id="return_error_status"> 
+                          <input type="hidden" value="" id="return_error_status_text">
+
+                        </div>
+                        <div class="gt-quiz-input-holder associate-code" data-control-type="input" data-binder-name="gt-quiz-associate_code">
+						  <label for="associateID"  class="sr-only">Customer Name</label>
+                          <input class="code-input" id="associateID" type="text" placeholder="${properties.associateCodePlaceHolder}"  data-max-length="4" maxlength="4" >
+                          <small>${properties.purchaseErrMsg}</small>
+
+                        </div> 
+                        <sly data-sly-test="${properties.purchaseCtaText}">
+                        <button type="submit" id="retailPurchaseButton" class="gt-btn disabled">${properties.purchaseCtaText}</button>
+                         </sly>
+                      </form>
+                    </section>
+                    </div>
+					<div class="emailDetails hide" id="tnsDetails">${quizResponse.getTNSConfigDetails}</div>
+				</sly>
+			     
+		     <!--  In Store Purchase Page Ends  -->
+		     
+		     <!--  Retail Landing Page Starts  -->
+				<sly data-sly-test.quizScreeType="${quizScreen == 'retailLanding' }">
+				<div class="gt-quiz-block">	
+					 <section class="active animated ${properties.containerAnimation} delay-1s">
+						<h1 class="sr-only">Retail Landing Page</h1>
+				              <sly data-sly-test="${properties.retailHeading}">
+				              		<h2>${properties.retailHeading}</h2>
+				              </sly>
+				              <h3>${properties.retailSubHeading}</h3>
+				              <sly data-sly-test="${properties.retailOnlineLink && properties.retailOnlineText}">
+				             		 <button href="${properties.retailOnlineLink @ extension='html'}" role="link" class="gt-btn retail-online" id="retailCustName">${properties.retailOnlineText}</a>
+				             	</sly>
+                                <sly data-sly-test="${properties.retailInStoreLink && properties.retailInStoreText}">
+				             		 <button href="${properties.retailInStoreLink @ extension='html'}" role="link" class="gt-btn retail-btns retail-instore">${properties.retailInStoreText}</a>
+				             	</sly>
+				      </section>
+				 </div>
+				 </sly>
+				 <!--  Retail Landing Page Ends  -->
+
+	<!-- gift trunk ends -->
+</sly>
+
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
+	<sly data-sly-call="${clientlib.js @ categories=['ecomm.quiz']}"/>
+</sly> 

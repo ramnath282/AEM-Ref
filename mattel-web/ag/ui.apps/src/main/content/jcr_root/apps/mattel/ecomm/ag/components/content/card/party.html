@@ -1,0 +1,15 @@
+<div class="tile-content">
+    <div class="tile-rating">${properties.partyCardHeading @i18n}</div>
+    <h3 class="tile-name">${properties.partyCardSubHeading @i18n}</h3>
+    <sly data-sly-test="${properties.partyCardButtonHeading != null }">
+        <button class="btn theme-btn reservation-btn" title="${properties.partyCardButtonHeading @i18n}" data-tracking-id="Click Event|click|${properties.partyCardHeading}" onclick="NEXTWIDGET.widget.show('${properties.partyCardButtonLink @context='html'}',false);">${properties.partyCardButtonHeading @i18n} <span class="sr-only">${properties.partyCardSubHeading @i18n}</span></button>
+    </sly>
+</div>
+<div class="tile-action">
+    <a class="action-text accordion" href="javascript:void(0);" aria-expanded="false" data-text-collapse="${properties.partyCardShowMoreHeading @i18n}" data-text-expand="${properties.partyCardShowLessHeading @i18n}" data-tracking-id="Click Event|click|${properties.partyCardHeading}">
+        ${properties.partyCardShowMoreHeading @i18n}
+    </a>
+    <div class="accordion-content">
+        ${properties.partyCardAdditionalInformation @context='html'}
+    </div>
+</div>

@@ -1,0 +1,57 @@
+<sly data-sly-test="${wcmmode.edit}">${'Edit Address Verification Component' @i18n}</sly>
+<div class="modal ecomm-modal" id="addressStdModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><em class="fa fa-times fa-lg"></em></button>
+                <h2 class="header-label">${properties.adrsVerificationSectionTitle}</h2>
+                ${properties.informativeDisclamier @context='html'}
+            </div>
+            <div class="modal-body">
+                <script id="addStdTmpl" type="text/x-handlebars-template">
+                    {{#if showAdd}}
+                    <p class="error-tip">${properties.informativeDisclamierForEnteredAddSection @context='scriptString'}</p>
+                    <span class="value-label"><strong>First name: </strong><span data-key="firstName">{{firstName}}</span></span>
+                    <span class="value-label"><strong>Last name: </strong><span data-key="lastName">{{lastName}}</span></span>
+                    <span class="value-label in-care-of">In care of</span>
+                    <span class="value-label"><strong>Address 1: </strong><span data-key="addressLine1">{{addressLine1}}</span></span>
+                    <span class="value-label"><strong>Address 2: </strong><span data-key="addressLine2">{{addressLine2}}</span></span>
+                    <span class="value-label"><strong>City: </strong><span data-key="city">{{city}}</span></span>
+                    <span class="value-label"><strong>State/Province: </strong><span data-key="state">{{state}}</span></span>
+                    <span class="value-label"><strong>Zip/Postal Code: </strong><span data-key="zipCode">{{zipCode}}</span></span>
+                    <span class="value-label"><strong>Country: </strong><span data-key="country">{{country}}</span></span>
+                    <a href="#" class="address-link use-usps-address">${properties.ctaForUSPSRecommendedAddrSectionTitle @context='scriptString'}</a>
+                    {{else}}
+                    ${properties.uspsNotFoundErrorMessage @context='html'}
+                    {{/if}}
+                    <a href="#" class="address-link correct-address">${properties.ctaForEnteredAddrSectionTitle @context='scriptString'}</a>
+                    <a href="#" class="address-link use-this-address">${properties.useThisAddressLinkLabel @context='scriptString'}</a>
+
+                </script>
+                <div class="user-info-wrapper">
+                    <div class="details-list">
+                        <div class="details-list-item">
+                            <div class="address-details">
+                                <p><strong>${properties.adrsEnteredSectionTitle}</strong></p>
+                                <address id="user-input"></address>
+
+                            </div>
+                        </div>
+                        <div class="details-list-item">
+                            <div class="address-details">
+                                <p><strong>${properties.uSPSRecommendedAddrSectionTitle}</strong></p>
+                                <address id="usps-input"></address>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
+    <sly data-sly-call="${clientlib.js @ categories='ecomm.addressBook'}"/>
+</sly>

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="S&amp;P Grid Component"
+    sling:resourceType="cq/gui/components/authoring/dialog"
+    helpPath="https://www.adobe.com/go/aem_cmp_text_v2"
+	extraClientlibs="[global.customContentChildreneditor,acs-commons.widgets.showhidedialogfields]">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <generalConfig
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Config"
+                        sling:resourceType="granite/ui/components/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <siteName
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Enter Site Name Ex:fisher-price or corp_en to fetch respective Osgi configuration"
+                                required="{Boolean}true"
+                                fieldLabel="Site Name"
+                                name="./siteName"/>
+                            <searchType
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Enter Search Query Parameters Ex: newsroom or article. Based on the parameters respective news or articles will be loaded"
+                                fieldLabel="Search Query Parameters"
+                                name="./searchType"/>
+                            <defImage
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                fieldDescription="Select default image incase of no image from Snp"
+                                fieldLabel="Default Image"
+                                name="./defaultImage"/>
+                            <initialLoadCount
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+                                fieldDescription="Please enter initial load count."
+                                fieldLabel="Initial Load Count"
+                                min="{Long}1"
+                                name="./initialLoadCount"/>
+                            <productLimit
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+                                fieldDescription="Please enter product load count"
+                                fieldLabel="Product load count"
+                                min="{Long}1"
+                                name="./productLimit"/>
+							<enableFilters
+								granite:class="cq-dialog-switch-showhide"
+								jcr:primaryType="nt:unstructured"
+								sling:resourceType="granite/ui/components/coral/foundation/form/switch"
+								fieldLabel="Enable Filters"
+								name="./enableFilters">
+								<granite:data
+									jcr:primaryType="nt:unstructured"
+									cq-dialog-switch-showhide-target=".switchfield"/>
+							</enableFilters>
+							<labelCollection
+								granite:class="switchfield"
+								jcr:primaryType="nt:unstructured"
+								sling:resourceType="granite/ui/components/coral/foundation/well">
+								<granite:data
+									jcr:primaryType="nt:unstructured"
+									whitebg="{Boolean}true"/>
+								<items jcr:primaryType="nt:unstructured">
+									<column
+										jcr:primaryType="nt:unstructured"
+										sling:resourceType="granite/ui/components/coral/foundation/container">
+										<items jcr:primaryType="nt:unstructured">
+											<filterSectionLabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+                                                fieldLabel="Label for Filter Section"
+                                                name="./filterSectionLabel"
+                                                useFixedInlineToolbar="{Boolean}true">
+												<rtePlugins 
+													jcr:primaryType="nt:unstructured"
+													sling:resourceSuperType="/apps/mattel/global/master/components/core/text/v1/text/cq:dialog/content/items/tabs/items/text/items/viewer/items/column/items/title/rtePlugins">
+												</rtePlugins>
+												<uiSettings 
+													jcr:primaryType="nt:unstructured"
+													sling:resourceSuperType="/apps/mattel/global/master/components/core/text/v1/text/cq:dialog/content/items/tabs/items/text/items/viewer/items/column/items/title/uiSettings">
+												</uiSettings>
+											</filterSectionLabel>
+											<defaultFilterlabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Label for Default Filter"
+												fieldDescription="Enter Label For default Filter Text"
+												name="./defaultFilterlabel">
+											</defaultFilterlabel>
+										</items>
+									</column>
+								</items>
+							</labelCollection>
+                        </items>
+                    </generalConfig>
+                    <cta
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="CTA"
+                        sling:resourceType="granite/ui/components/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <seeMoreLabel
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Please Enter See More Label"
+                                fieldLabel="See More Label"
+                                name="./seeMoreLabel"/>
+                            <viewAllLabel
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Please Enter View All Label"
+                                fieldLabel="View All Label"
+                                name="./viewAllLabel"/>
+                        </items>
+                    </cta>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>

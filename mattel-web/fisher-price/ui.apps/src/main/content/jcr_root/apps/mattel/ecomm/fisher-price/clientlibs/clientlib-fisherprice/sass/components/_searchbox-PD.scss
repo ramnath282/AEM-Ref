@@ -1,0 +1,438 @@
+.search-dropdown {
+    position: mapping($serachDropDownProp, searchContainer, searchConPos);
+    top: mapping($serachDropDownProp, searchContainer, searchConTop);
+    left: mapping($serachDropDownProp, searchContainer, searchConLeft);
+
+    background-color: mapping($serachDropDownProp, searchContainer, searchConBG);
+    border: mapping($serachDropDownProp, searchContainer, searchConBor);
+    right: mapping($serachDropDownProp, searchContainer, searchConRight);
+    z-index: mapping($serachDropDownProp, searchContainer, searchConZindex);
+
+    display: none;
+
+    &.open-dropdown {
+        display: block;
+        background-color: #f7f7f7;
+    }
+
+    @media #{$medium-down} {
+        top: mapping($serachDropDownProp, searchContainer, mobSearchTop);
+        left: mapping($serachDropDownProp, searchContainer, mobSearchLeft);
+        right: mapping($serachDropDownProp, searchContainer, mobSearchRight);
+        border: mapping($serachDropDownProp, searchContainer, mbborder);
+    }
+
+    @media #{$small-down} {
+        top: mapping($serachDropDownProp, searchContainer, mbTop);
+        left: mapping($serachDropDownProp, searchContainer, mbLeft);
+        right: mapping($serachDropDownProp, searchContainer, mbRight);
+        border: mapping($serachDropDownProp, searchContainer, mbborder);
+        background-color: mapping($serachDropDownProp, searchContainer, searchConMobBG);
+    }
+
+    .search-header {
+        color: mapping($serachDropDownProp, searchHeader, headerColor);
+        @include font-properties($maaxMedium,$localFontVerdana);
+        font-size: 20px;
+        font-weight: 500;
+        line-height: 28px;
+        margin: mapping($serachDropDownProp, searchHeader, headerMar);
+
+        @media #{$medium-down} {
+            line-height: mapping($serachDropDownProp, searchHeader, mobLinehgt);
+            font-size: mapping($serachDropDownProp, searchHeader, mobFontSize);
+        }
+    }
+
+    .search-list {
+        padding: mapping($serachDropDownProp, searchContainer, searchConPad);
+        float: mapping($serachDropDownProp, searchList, conFloat);
+        position: mapping($serachDropDownProp, searchList, conPos);
+        width: mapping($serachDropDownProp, searchList, conWidth);
+        background-color: mapping($serachDropDownProp, searchList, conBG);
+        min-height: mapping($serachDropDownProp, searchList, conMinHeight);
+
+        @media #{$small-only} {
+            background-color: mapping($serachDropDownProp, searchList, mobConBG);
+        }
+
+        @media #{$medium-down} {
+            padding: mapping($serachDropDownProp, searchContainer, mobSearchPad);
+            //background-color: mapping($serachDropDownProp, searchList, mobConBG );
+        }
+
+        ul {
+            margin: mapping($serachDropDownProp, searchList, ulMar);
+
+            li {
+                display: mapping($serachDropDownProp, searchList, liDis);
+                position: mapping($serachDropDownProp, searchList, liPos);
+                cursor: pointer;
+
+                &.tt-popular {
+                    display: mapping($serachDropDownProp, searchList, hrefDis);
+                    @include font-properties($maaxItalic,$localFontVerdana);
+                    color: mapping($serachDropDownProp, searchList, hrefColor);
+                    font-style: mapping($serachDropDownProp, searchList, hrefStyle);
+                    font-size: 18px;
+                    line-height: normal;
+                    font-weight: 400;
+                    margin: mapping($serachDropDownProp, searchList, hrefMar);
+                    @media #{$medium-down} {
+                        @include font-properties($maaxItalic,$localFontVerdana);
+                        font-size: 16px;
+                        font-weight: 400;
+                        font-style: normal;
+                    }
+                    > span {
+                        display: mapping($serachDropDownProp, hoverBorder, display);
+                        border-bottom: mapping($serachDropDownProp, hoverBorder, border);
+                    }
+                    &:hover{
+                        > span{
+                            color:mapping($serachDropDownProp, hoverBorder, color);
+                            border-color:mapping($serachDropDownProp, hoverBorder, borderHover);
+                        }
+                    }
+                  
+                }
+
+                a {
+                    display: mapping($serachDropDownProp, searchList, hrefDis);
+                    @include font-properties($maaxItalic,$localFontVerdana);
+                    font-size: 18px;
+                    font-weight: 400;
+                    line-height: normal;
+                    color: mapping($serachDropDownProp, searchList, hrefColor);
+                    font-style: mapping($serachDropDownProp, searchList, hrefStyle);
+                    margin: mapping($serachDropDownProp, searchList, hrefMar);
+                    @media #{$medium-down} {
+                        @include font-properties($maaxItalic,$localFontVerdana);
+                        font-size: 16px;
+                        font-weight: 400;
+                    }
+
+                }
+                &:last-child,
+                &:last-child a {
+                    margin-bottom: 0;
+                }
+            }
+        }
+     .data-article {
+         li {
+             margin-bottom: 9px;
+             a {
+                display: mapping($serachDropDownProp, hoverBorder, display);
+                border-bottom: mapping($serachDropDownProp, hoverBorder, border);
+             }
+             &:hover{
+                a{
+                   color:mapping($serachDropDownProp, hoverBorder, color);
+                   border-color:mapping($serachDropDownProp, hoverBorder, borderHover);
+                }
+            }
+         }
+     }
+    }
+
+    .left-tiles {
+        float: mapping($serachDropDownProp, leftTiles, tileFloat);
+        width: mapping($serachDropDownProp, leftTiles, tileWidth);
+        padding: mapping($serachDropDownProp, leftTiles, tilePad);
+        background-color: mapping($serachDropDownProp, leftTiles, tileBG);
+        border: mapping($serachDropDownProp, leftTiles, tileBor);
+        margin: mapping($serachDropDownProp, leftTiles, tileMar);
+        border-right: 0px;
+        min-height: mapping($serachDropDownProp, leftTiles, tileMinHeight);
+        position: relative;
+
+        @media #{$medium-down} {
+            display: mapping($serachDropDownProp, leftTiles, TabDis);
+        }
+
+        .search-col-1 {
+            width: mapping($serachDropDownProp, leftTiles, ulWidth);
+            display: mapping($serachDropDownProp, leftTiles, ulDis);
+            float: mapping($serachDropDownProp, leftTiles, ulFloat);
+            margin: mapping($serachDropDownProp, leftTiles, ulMar);
+
+            li {
+                width: mapping($serachDropDownProp, leftTiles, liWidth);
+                display: mapping($serachDropDownProp, leftTiles, liDis);
+                float: mapping($serachDropDownProp, leftTiles, liFloat);
+                margin: mapping($serachDropDownProp, leftTiles, liMar);
+
+                >a {
+                    display: mapping($serachDropDownProp, leftTiles, tileHrfDis);
+                    width: mapping($serachDropDownProp, leftTiles, tileHrfWidth);
+                    height: mapping($serachDropDownProp, leftTiles, tileHrfHeight);
+                    float: mapping($serachDropDownProp, leftTiles, tileHrfFloat);
+                    overflow: mapping($serachDropDownProp, leftTiles, overflowImg);
+
+                }
+
+                .product-info {
+                    margin: mapping($serachDropDownProp, leftTiles, infoMar);
+                    min-height: mapping($serachDropDownProp, leftTiles, infoMH);
+                    padding: mapping($serachDropDownProp, leftTiles, infoPad);
+
+                    .grid-title-wrapper {
+                        margin: mapping($serachDropDownProp, leftTiles, wrapperMargin);
+                        >a {
+                            color: mapping($serachDropDownProp, leftTiles, infoColor);
+                            @include font-properties($maax,$localFontVerdana);
+                            font-size: 18px;
+                            line-height: mapping($serachDropDownProp, leftTiles, infoLH);
+                            display: mapping($serachDropDownProp, hoverBorder, display);
+                            font-weight: 400;
+                            border-bottom: mapping($serachDropDownProp, hoverBorder, border);
+                            @media #{$medium-down} {
+                                @include font-properties($maaxItalic,$localFontVerdana);
+                                font-size: 16px;
+                                font-style: italic;
+                            }
+                            &:hover {
+                                color:mapping($serachDropDownProp, hoverBorder, color);
+                                border-color:mapping($serachDropDownProp, hoverBorder, borderHover);
+                              
+                            }
+                        }
+
+                    }
+
+                    .product-price {
+                        span {
+                            color: mapping($serachDropDownProp, productPrice, ppColor);
+                            @include font-properties($maaxMedium,$localFontVerdana);
+                            font-size: 16px;
+                            font-weight: 500;
+                            line-height: mapping($serachDropDownProp, productPrice, ppLH);
+                        }
+
+                    }
+                }
+
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
+
+        }
+    }
+
+    .viewall-list {
+        display: mapping($serachDropDownProp, viewAll, viewDis);
+        color: mapping($serachDropDownProp, viewAll, viewColor);
+        @include font-properties($maax,$localFontVerdana);
+        font-weight: 300;
+        font-size: 18px;
+        letter-spacing: mapping($serachDropDownProp, viewAll, viewLS);
+        position: mapping($serachDropDownProp, viewAll, viewPos);
+        text-transform: mapping($serachDropDownProp, viewAll, viewTT);
+        margin: mapping($serachDropDownProp, viewAll, viewMar);
+        cursor: mapping($serachDropDownProp, viewAll, viewCur);
+        border-bottom: mapping($serachDropDownProp, viewAll, viewBor);
+
+        &:hover {
+            color:mapping($serachDropDownProp, hoverBorder, color);
+            border-width: mapping($serachDropDownProp, viewAll, hoverViewBor);
+        }
+
+        &::before {
+            position: mapping($serachDropDownProp, viewAll, arrowPos);
+            content: mapping($serachDropDownProp, viewAll, arrowContent);
+            @include font-awesome;
+            top: mapping($serachDropDownProp, viewAll, arrowTop);
+            right: mapping($serachDropDownProp, viewAll, arrowRight);
+            color: mapping($serachDropDownProp, viewAll, arrowColor);
+        }
+    }
+    
+
+ 
+
+}
+
+    .article-header,
+      .popular-header {
+            position: relative;
+            @include font-properties($maaxMedium,$localFontVerdana);
+            font-size:20px;
+            font-weight:500;
+            line-height:28px;
+            margin: mapping($serachDropDownProp, searchHeader, headerMargin);
+         @media #{$medium-down} {
+            margin: mapping($serachDropDownProp, searchHeader, mobHeaderMargin);
+            @include font-properties($maaxMedium,$localFontVerdana);
+            font-size:18px;
+            font-weight:500;
+            line-height:22px;
+        }
+    }
+ .article-header {
+     .loader{
+     &:after {
+    background: #f8f6f5;
+    }
+   }
+ }
+.loader {
+    position: absolute;
+    left: 45%;
+    top: 28%;
+    font-size: 10px;
+    margin: 50px auto;
+    text-indent: -9999em;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #0078c8;
+    background: -moz-linear-gradient(left, #0078c8 10%, rgba(0, 120, 200, 0) 42%);
+    background: -webkit-linear-gradient(left, #0078c8 10%, rgba(0, 120, 200, 0) 42%);
+    background: -o-linear-gradient(left, #0078c8 10%, rgba(0, 120, 200, 0) 42%);
+    background: -ms-linear-gradient(left, #0078c8 10%, rgba(0, 120, 200, 0) 42%);
+    background: linear-gradient(to right, #0078c8 10%, rgba(0, 120, 200, 0) 42%);
+    -webkit-animation: load3 1.4s infinite linear;
+    animation: load3 1.4s infinite linear;
+    -webkit-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    transform: translateZ(0);
+}
+
+.loader:before {
+    width: 50%;
+    height: 50%;
+    background: #0078c8;
+    border-radius: 100% 0 0 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: '';
+}
+
+.loader:after {
+    background: #fff;
+    width: 75%;
+    height: 75%;
+    border-radius: 50%;
+    content: '';
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+@-webkit-keyframes load3 {
+    1% {
+        -webkit-transform: rotate(1deg);
+        transform: rotate(1deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes load3 {
+    1% {
+        -webkit-transform: rotate(1deg);
+        transform: rotate(1deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+.airtical-list {
+    margin: mapping($serachDropDownProp, searchList, hrefMar);
+    a {
+    @include font-properties($maaxItalic,$localFontVerdana);
+    font-size: 18px;
+    font-weight: 400;
+    line-height: normal;
+     font-style:mapping($serachDropDownProp, searchList, hrefStyle);
+     display: mapping($serachDropDownProp, hoverBorder, display);
+     border-bottom: mapping($serachDropDownProp, hoverBorder, border);
+     @media #{$medium-down} {
+        @include font-properties($maaxItalic,$localFontVerdana);
+        font-size: 16px;
+    }
+     &:hover {
+         color:mapping($serachDropDownProp, hoverBorder, color);
+         border-color:mapping($serachDropDownProp, hoverBorder, borderHover);
+       
+     } 
+    }
+}
+.tt-suggestion {
+    .suggestion-text {
+        display: mapping($serachDropDownProp, hoverBorder, display);
+        border-bottom: mapping($serachDropDownProp, hoverBorder, border);
+   
+        &:hover {
+            color:mapping($serachDropDownProp, hoverBorder, color);
+            border-color:mapping($serachDropDownProp, hoverBorder, borderHover);
+          
+        }
+    }
+}
+#primary-nav-bar .nav-search .input-group.focusInput .form-control,
+#primary-nav-bar .nav-search .input-group.focusInput .input-group-addon {
+    border-color: #0078c8 !important;
+}
+
+
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+    .search-dropdown.open-dropdown {
+        top: 62px;
+        left: 0px;
+        right: 0px;
+        border: inherit;
+    }
+
+    .search-dropdown .search-list {
+        padding: 1.42857em 1.42857em 2.14286em 20px;
+    }
+
+    .nav-search .input-group .tt-menu {
+        top: 108px !important;
+        left: -24px !important;
+        width: inherit;
+        background: inherit;
+    }
+
+    .nav-search .input-group .tt-menu .tt-dataset {
+        padding: 0;
+    }
+
+}
+
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+    .nav-search .input-group .tt-menu {
+        left: -10px !important;
+        top: 107px !important;
+        width: inherit;
+        background: inherit;
+    }
+
+    .nav-search .input-group .tt-menu .tt-dataset {
+        padding: 0;
+        height: 423px;
+        min-height: 423px;
+    }
+}
+
+.searchResultTitle {
+    visibility: hidden;
+}
+
+.searchResultTitle.visibleDiv {
+    visibility: visible;
+}

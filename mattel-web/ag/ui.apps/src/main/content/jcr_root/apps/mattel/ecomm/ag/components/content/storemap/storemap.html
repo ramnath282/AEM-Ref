@@ -1,0 +1,15 @@
+<sly data-sly-test="${wcmmode.edit}">
+    ${'Edit Store Map Component' @i18n}
+</sly>
+<sly data-sly-use.storeMap="com.mattel.ag.retail.core.model.StoreMapModel">
+    <div class="map-module" data-coordinate="${storeMap.coordinateArrayString}"
+         data-apikey="${storeMap.googleApiKeyValue}" data-get-directions-label="${properties.getDirections}"
+         data-brand-name=${properties.brandName}>
+        <div class="container">
+            <section>
+                <div id="map"></div>
+            </section>
+        </div>
+    </div>
+
+</sly>

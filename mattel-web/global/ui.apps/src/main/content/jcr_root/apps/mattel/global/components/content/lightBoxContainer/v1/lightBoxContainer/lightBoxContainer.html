@@ -1,0 +1,40 @@
+<sly data-sly-test="${wcmmode.edit}">${'Light Box Container Component' @i18n}</sly>
+<sly data-sly-use.lib="mattel/global/components/content/dynamicMedia/v1/dynamicMedia/imageblock.html" />
+<div data-sly-use.lightBoxContainer="com.mattel.global.core.model.LightBoxContainerModel" class = "${properties.image || properties.mobileImage ? 'bg_wrapperImg dynamic-media-wrapper' : 'bg_color'}">
+    <sly data-sly-test="${properties.containerType == 'modal'}">
+        <div class="${wcmmode.edit ? '' : 'modal modal-component'} ${properties.tileOption} ${properties.enablePageLoadFeature == 'true' ? 'enable-modal-onpageload ': ''}"  style="background-color:${properties.backgroundOption=='color' ? properties.backgroundColor : ''  @context='html'}; background-image:url(${properties.backgroundOption!='color' && properties.tileImage ? lightBoxContainer.backgroundImagePath : '' @ context='html' }); " data-cookiecheck="${lightBoxContainer.enableCookies}" data-cookiename="${lightBoxContainer.cookieName}" data-cookieexpirydate="${lightBoxContainer.cookieExpiry ? lightBoxContainer.cookieExpiry : '24'}">
+    </sly>
+    <sly data-sly-test="${properties.containerType != 'modal'}">
+        <div class="${wcmmode.edit ? '' : 'slidein'} ${properties.tileOption}" style="background-color:${properties.backgroundOption=='color' ? properties.backgroundColor : ''  @context='html'}; background-image:url(${properties.backgroundOption!='color' && properties.tileImage ? lightBoxContainer.backgroundImagePath : '' @ context='html' }); " data-cookiecheck="${lightBoxContainer.enableCookies}" data-cookiename="${lightBoxContainer.cookieName}" data-cookieexpirydate="${lightBoxContainer.cookieExpiry ? lightBoxContainer.cookieExpiry : '24'}">
+    </sly>
+    <div class="close">
+        <button type="button" class="close" data-dismiss= "${properties.containerType == 'modal' ? 'modal' : ''}">
+            <span class="sr-only">close</span>
+        </button>
+    </div>
+
+    <sly data-sly-test="${properties.backgroundOption!='color' && !properties.tileImage}">
+        <div class="dynamicMedia" data-sly-test="${properties.image || properties.mobileImage}">
+            <div class="desktop-bg ${!properties.customMobile || !properties.mobileImage ? 'customMobileoff' : ' '}" data-sly-test="${properties.image}" data-sly-call="${lib.imageVideoSection @ imageDetail='image'}"></div>
+            <div class="mobile-bg" data-sly-test="${properties.mobileImage && properties.customMobile}" data-sly-call="${lib.imageVideoSection @ imageDetail='mobileImage'}"></div>
+        </div>
+    </sly>
+    <div class="${properties.image || properties.mobileImage ? 'dynamic-media-container' : ''}">
+        <div class="${properties.backgroundOption =='image' && !properties.tileImage ? 'media-content' : ''} ">
+            <div class="main-title" data-sly-test="${properties.title}">${properties.title @context='html',i18n}</div>
+            <div class="sub-title" data-sly-test="${properties.subTitle}">${properties.subTitle @context='html',i18n}</div>
+            <div class="text-para" data-sly-test="${properties.description}">${properties.description @context='html',i18n}</div>
+            <sly data-sly-use.content="com.mattel.global.master.core.model.ContentTab">
+                <sly data-sly-test="${content.items && content.items.size > 0}">
+                    <sly data-sly-repeat.item="${content.items}" data-sly-resource="${item.name @ decorationTagName='div'}"></sly>
+                </sly>
+                <sly data-sly-resource="${resource.path @ resourceType='wcm/foundation/components/parsys/newpar', appendPath='/*', decorationTagName='div', cssClassName=''}" data-sly-test="${(wcmmode.edit || wcmmode.preview) && content.items.size < 1}">
+                </sly>
+            </sly>
+        </div>
+    </div>
+</div>
+</div>
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
+    <sly data-sly-call="${clientlib.js @ categories='lightbox.container'}"/>
+</sly>

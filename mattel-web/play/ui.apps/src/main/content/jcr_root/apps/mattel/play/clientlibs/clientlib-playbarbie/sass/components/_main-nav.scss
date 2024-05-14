@@ -1,0 +1,334 @@
+// Hamburger Styles
+.hamburger {
+    color: mapping($mainNav, hamburger, txtColor);
+    margin: mapping($mainNav, hamburger, margin);
+    float: mapping($mainNav, hamburger, floating);
+    padding: mapping($mainNav, hamburger, padding);
+
+    @media #{$medium-up} {
+        display: mapping($mainNav, hamburger, tabLandscapeDisplay);
+    }
+
+    @media #{$large-up} {
+        display: mapping($mainNav, hamburger, desktopDisplay);
+    }
+
+    &.open {
+        &:after {
+            content: mapping($mainNav, hamburger, openStateIcon);
+        }
+    }
+
+    &:after {
+        // font-size: mapping($mainNav,hamburger,iconFontSize);
+        font-size: 40px;
+        color: $white;
+    }
+
+    &:focus {
+        color: $white; // mapping($mainNav,hamburger,focusColor);
+    }
+
+    &:hover {
+        color: $white; //mapping($mainNav,hamburger,hoverColor);
+    }
+}
+
+// Primary Navigation Styles
+.primary-nav {
+    @media #{$large-down} {
+        display: none;
+        position: absolute;
+        left: mapping($mainNav, primaryNav, mobPosLeft);
+        top: mapping($mainNav, primaryNav, mobPosTop);
+        width: mapping($mainNav, primaryNav, mobWidth);
+        height: mapping($mainNav, primaryNav, mobHeight);
+        background-color: mapping($mainNav, primaryNav, mobBgndColor);
+        box-shadow: 0 0.125em 0.125em rgba(0, 0, 0, 0.25);
+        max-height: mapping($mainNav, primaryNav, mobMaxHeight);
+        background-image: mapping($mainNav, primaryNav, deskDownBgImage);
+        background-size: if(mapping($mainNav, primaryNav, bgSize), mapping($mainNav, primaryNav, bgSize), 7em);
+        background-repeat: mapping($mainNav, primaryNav, bgRepeat);
+        background-position: mapping($mainNav, primaryNav, bgPosition);
+        overflow-y: auto;
+
+        @media (max-width: 1024px) {
+            background-color: #fdedf6;
+            background-image: url("/content/dam/play-barbie/kids-site/navigation/mobile-images/Barbie_mob_nav-open_bg.jpg");
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: center;
+            height: 100vh;
+            max-height: 100vh;
+            background-position-y: 90%;
+        }
+
+        ul {
+            background-color: mapping($mainNav, primaryNavUL, mobBgndColor);
+            background-image: mapping($mainNav, primaryNavUL, deskDownBgImage);
+            background-position: 95% 90%;
+            background-size: if(mapping($mainNav, primaryNavUL, bgSize), mapping($mainNav, primaryNavUL, bgSize), 7em);
+            background-repeat: no-repeat;
+
+            @media #{$small-down} {
+                text-align: mapping($mainNav, primaryNavUL, textAlign);
+                background-image: mapping($mainNav, primaryNavUL, mobBgImage);
+
+            }
+
+            @media (max-width: 1024px) {
+                background-color: #fdedf6;
+            }
+        }
+    }
+
+    @media #{$large-up} {
+        float: mapping($mainNav, primaryNav, floating);
+        display: mapping($mainNav, primaryNav, desktopDisplay);
+        min-height: mapping($mainNav, primaryNav, minHeight);
+        background: mapping($mainNav, primaryNav, bgnd);
+        height: mapping($mainNav, primaryNav, height);
+    }
+    @media (max-width: 1024px) {
+        height: 100vh;
+    }
+    ul {
+        font-family: mapping($mainNav, primaryNavUL, fontFamily);
+        margin: mapping($mainNav, primaryNavUL, mobMargin);
+
+        @media #{$medium-up} {
+            margin: mapping($mainNav, primaryNavUL, tabLandMargin);
+        }
+
+        @media #{$large-up} {
+            margin: mapping($mainNav, primaryNavUL, desktopMargin);
+        }
+
+        @media #{$large-up} {
+            height: mapping($mainNav, primaryNavUL, desktopHeight);
+        }
+
+        @media #{$small-down} {
+            margin: 1.07143em 0 0;
+        }
+
+        @media #{$medium-down} {
+            margin: 1.07143em 0 0;
+        }
+
+        li {
+            display: block;
+            position: relative;
+            vertical-align: middle;
+            padding-right: 0 !important;
+
+            @media #{$small-down} {
+                padding: 0;
+            }
+
+            @media #{$medium-down} {
+                padding: 0;
+            }
+
+            @media (max-width: 1024px) {
+                padding: 0;
+            }
+
+            @media #{$small-up} {
+                padding: mapping($mainNav, primaryNavUlLi, mobTabPad);
+            }
+
+            @media #{$large-up} {
+                display: inline-table;
+                padding: mapping($mainNav, primaryNavUlLi, mobPad);
+                height: mapping($mainNav, primaryNavUL, desktopHeight);
+
+                &:hover,
+                &:focus,
+                &:focus-within {
+                    ul {
+                        display: block;
+                        visibility: visible;
+                    }
+                }
+            }
+
+            &:nth-child(1) {
+                margin-right: -4px;
+            }
+
+            a {
+                color: mapping($mainNav, primaryNavUlLiA, mobAnchorColor);
+
+                @media (max-width: 1024px) {
+                    color: #DE1C85 !important;
+                }
+
+                letter-spacing: 1px;
+
+                @media #{$large-up} {
+                    color: mapping($mainNav, primaryNavUlLiA, desktopAnchorColor);
+                    display: table-cell;
+                    vertical-align: middle;
+                    border-bottom: mapping($mainNav, primaryNavUlLiA, borderBottom);
+                    padding: mapping($mainNav, primaryNavUlLiA, desktopPad);
+
+                    &.active {
+                        border-bottom: mapping($mainNav, primaryNavUlLiA, anchActiveBrdrBot);
+                        //color: mapping($mainNav,primaryNavUlLiA,anchorActiveColor);
+                        color: #DE1C85;
+                        // background-color: #ffffff;
+                        background-color: #FDEDF6 !important;
+                    }
+                }
+                &.hover {
+                    color: #DE1C85 !important;
+                    background-color: #FDEDF6 !important;
+                }
+                &.active {
+                    border-bottom: mapping($mainNav, primaryNavUlLiA, anchActiveBrdrBot);
+                    //color: mapping($mainNav,primaryNavUlLiA,anchorActiveColor);
+                    color: #DE1C85;
+                    background-color: #ffffff;
+
+                    @media #{$small-down} {
+                        padding: 20px 0 20px 10px;
+                    }
+
+                    @media (max-width: 1024px) {
+                        padding: 20px 0 20px 10px;
+                        background-color: transparent;
+                        border-bottom: 2px solid #6F2E91;
+                    }
+                }
+
+                display: block;
+                text-decoration: mapping($mainNav, primaryNavUlLiA, textDecoration);
+                font-size: mapping($mainNav, primaryNavUlLiA, fontSize);
+                text-transform: mapping($mainNav, primaryNavUlLiA, textTransform);
+                //padding:mapping($mainNav,primaryNavUlLiA,mobPad);
+                padding: 20px 0 20px 10px;
+
+                @media (max-width: 1024px) {
+                    margin: 20px;
+                    border-bottom: 2px solid #6F2E91;
+                }
+
+                @media #{$large-down} {
+                    -webkit-text-stroke-width: mapping($mainNav, primaryNavUlLiA, strokeWidth);
+                    -webkit-text-stroke-color: mapping($mainNav, primaryNavUlLiA, strokeColor);
+                }
+                span {
+                    font-family: inherit;
+                    font-weight: inherit;
+                }
+            }
+
+            .header-img {
+                width: mapping($mainNav, headerImage, width);
+                height: mapping($mainNav, headerImage, height);
+                margin-right: mapping($mainNav, headerImage, marRight);
+
+                @media (max-width: 1024px) {
+                    height: 45px;
+                }
+            }
+
+            ul {
+                display: none;
+                background-color: mapping($mainNav, primaryNavUlLiUL, bgndColor);
+                position: absolute;
+                top: mapping($mainNav, primaryNavUlLiUL, posTop);
+                left: mapping($mainNav, primaryNavUlLiUL, posLeft);
+                width: mapping($mainNav, primaryNavUlLiUL, width);
+                -webkit-transition: 250ms cubic-bezier(.25, .75, .75, 1.25);
+                -o-transition: 250ms cubic-bezier(.25, .75, .75, 1.25);
+                transition: 250ms cubic-bezier(.25, .75, .75, 1.25);
+                height: auto;
+
+                li {
+                    display: block;
+                    font-size: mapping($mainNav, primaryNavUlLiUlLi, fontSize);
+                    padding: mapping($mainNav, primaryNavUlLiUlLi, pad);
+
+                    a {
+                        color: mapping($mainNav, primaryNavUlLiUlLiA, txtColor);
+                        border-bottom: mapping($mainNav, primaryNavUlLiUlLiA, borderBottom);
+                        padding: mapping($mainNav, primaryNavUlLiUlLiA, pad);
+                    }
+                }
+            }
+        }
+
+        // li:nth-child(1){
+        //     a{
+        //         &.active{
+        //             img{
+        //                 content: url(../../../../content/dam/play-barbie/kids-site/navigation/nav_games_hover.png);
+        //             }
+        //         }
+        //     }
+        // }
+        // li:nth-child(2){
+        //     a{
+        //         &.active{
+        //             img{
+        //                 content: url(../../../../content/dam/play-barbie/kids-site/navigation/nav_toys_hover.png);
+        //             }
+        //         }
+        //     }
+        // }
+        &:first-child {
+            margin-right: -4px;
+        }
+    }
+
+    @media #{$large-down} {
+        ul {
+            li {
+                a {
+                    &.show-sub-nav {
+                        font-size: mapping($mainNav, primaryNavUlLiA, showSubNavFontSize);
+                        color: mapping($mainNav, primaryNavUlLiA, showSubNavColor);
+                        width: mapping($mainNav, primaryNavUlLiA, showSubNavWidth);
+                        height: mapping($mainNav, primaryNavUlLiA, showSubNavHeight);
+                        float: mapping($mainNav, primaryNavUlLiA, showSubNavFloat);
+                        padding: mapping($mainNav, primaryNavUlLiA, showSubNavPad);
+                        line-height: mapping($mainNav, primaryNavUlLiA, showSubNavLineHeight);
+                        text-align: mapping($mainNav, primaryNavUlLiA, showSubNavTextAlign);
+                        margin-top: mapping($mainNav, primaryNavUlLiA, showSubNavMarginTop);
+                    }
+                }
+
+                ul {
+                    display: none;
+                    background-color: mapping($mainNav, primaryNavUlLiUL, deskDownBgndColor);
+                    position: mapping($mainNav, primaryNavUlLiUL, deskDownPos);
+                    top: mapping($mainNav, primaryNavUlLiUL, deskDownPosTop);
+                    left: mapping($mainNav, primaryNavUlLiUL, deskDownPosLeft);
+                    width: mapping($mainNav, primaryNavUlLiUL, deskDownWidth);
+
+                    li {
+                        font-size: mapping($mainNav, primaryNavUlLiUlLi, deskDownFontSize);
+                        padding: mapping($mainNav, primaryNavUlLiUlLi, deskDownPad);
+                        border: mapping($mainNav, primaryNavUlLiUlLi, deskDownBrdr);
+                        text-indent: mapping($mainNav, primaryNavUlLiUlLi, deskDownTxtIndent);
+                    }
+                }
+            }
+        }
+    }
+}
+
+// .primary-nav {
+//     @media #{$small-down} {
+//         background-color: #fdedf6;
+//         padding: 10px 20px;
+//         ul {
+//             background-color: #fdedf6;
+//             li {
+//                 border-bottom: 2px solid #6f2e91;
+//             }
+//         }
+//     }
+// }

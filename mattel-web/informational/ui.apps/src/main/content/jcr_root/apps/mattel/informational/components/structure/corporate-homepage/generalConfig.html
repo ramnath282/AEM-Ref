@@ -1,0 +1,15 @@
+<input type="hidden" id="templateType" value="${pageProperties['sling:resourceType']}"/>
+<input type="hidden" id="pageNamesForAnalytics" value="${pageProperties.adobeTrackingNameForPage}" />
+<sly data-sly-use.informationalPageModel="com.mattel.informational.core.models.InformationalPageModel">
+	<input type="hidden" id="businessSiteName" value="${informationalPageModel.brandName}" />
+	<input type="hidden" id="siteCountry" value="${informationalPageModel.siteCountry}" />
+	<input type="hidden" id="siteSection" value="${informationalPageModel.siteSection}" />
+	<input type="hidden" id="siteSubSection" value="${informationalPageModel.siteSubSection}" />
+    <input type="hidden" id="pageName" value="${currentPage.name}" />
+	<sly data-sly-test.isValAuthored="${pageProperties.adobeTrackingNameForPage}">
+		<input type="hidden" id="pageNamesForAnalytics" value="${pageProperties.adobeTrackingNameForPage}" />
+	</sly>
+	<sly data-sly-test="${!isValAuthored}">
+		<input type="hidden" id="pageNamesForAnalytics" value="${informationalPageModel.pageName}" />
+	</sly>
+</sly>

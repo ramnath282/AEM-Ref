@@ -1,0 +1,327 @@
+$theme-color: $light-pink;
+*,
+body {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 400;
+} 
+html{
+    font-size:calc(14px - -2 * ((100vw - 320px) / (1600 - 320)));
+}  //un-commented-ag-css-order-priority
+hr {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+a {
+    &:link,
+    &:hover,
+    &:active,
+    &:visited,
+    &:hover {
+        text-decoration: none;
+        color: inherit;
+    }
+}
+a {
+    &:link,
+    &:hover,    
+    &:active,
+    &:visited,
+    &:hover {
+        color: $theme-color;
+    }
+}
+body {
+    font-size: 87.5%; //14px  //un-commented-ag-css-order-priority   
+    .outer-wrapper {
+        &.retail {
+            background: $white-smoke;
+        }
+    } 
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-weight: $fontSemiBold;
+        color: $night-rider;
+        &.header-center {
+            text-align: center;
+        }
+        &.header-right {
+            text-align: right;
+        }
+        &.header-grey {
+            color: $color-extra-dark-grey;
+        }
+        &.header-berry {
+            color: $light-pink;
+        }
+        &.header-white {
+            color: $white;
+        }
+        &.header-light-font {
+            font-weight: $fontLight;
+        }
+        &.header-regular-font {
+            font-weight: $fontRegular;
+        }
+        &.header-italic-font {
+            font-style: italic;
+        }
+        &.header-semibold {
+            font-style: $fontSemiBold;
+        }
+    }
+    h1 {
+        @include font-style(map-get($globalfont, h1headerstyles));
+    }
+    h2 {
+        @include font-style(map-get($globalfont, h2headerstyles));
+    }
+    h3 {
+        @include font-style(map-get($globalfont, h3headerstyles));
+    }
+    h4 {
+        @include font-style(map-get($globalfont, h4headerstyles));
+    }
+    h5 {
+        @include font-style(map-get($globalfont, h5headerstyles));
+    }
+    h6 {
+        @include font-style(map-get($globalfont, h6headerstyles));
+    }
+    .light-theme{
+        *{
+            color: $black;
+        }
+    }
+    .dark-theme{
+        *{
+            color: $white;
+        }
+    }
+}
+.card {
+    box-shadow: 0 2px 5px 0 rgba($black, .16), 0 2px 10px 0 rgba($black, .12);
+}
+.explore, .article-page, .article-landing-page {
+    .outer-wrapper {
+        .inner-wrapper {
+            .page-view {
+                .root {
+                    margin-left: auto;
+                    margin-right: auto;
+                    &.container {
+                        width: 100%;
+                        max-width: 1300px;
+                    }
+                    .container {
+                        width: 100%;
+                        max-width: 1300px;
+                        @media #{$small-down}{
+                            padding-left: 0;
+                            padding-right: 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    background-color: $white;
+}
+
+.theme-btn-red {
+    background: $theme-color;
+    border-color: $theme-color;
+    color: $white;
+    &:hover,
+    &:active,
+    &:visited,
+    &:focus {
+        color: $white;
+    }
+    i {
+        margin-left: 10px;
+        font-size: 125%;
+        vertical-align: text-bottom
+    }
+}
+
+.btn-right-arrow {
+    background: $white;
+    font-size: 1.142em;
+    border: 1px solid $light-grey;
+}
+
+body:not(.basepage-ecomm) .theme-btn {
+    cursor: pointer;
+    color: #fff !important;
+    background: #c70a4c;
+    padding: 0.6em 1.9em;
+    font-weight: 600;
+    font-size: 1.13em;
+    max-width:em(200);
+    margin: auto;
+    line-height: normal;
+}
+
+.theme-btn-primary {
+    width: 100%;
+    max-width: 400px;
+    text-align: left;
+    background-color: $white;
+    border-color: #e5e5e5;
+    color: $night-rider;
+    font-weight: 300;
+    padding: 15px 20px;
+    font-size: em(19.8);
+    span {
+        font-weight: 300;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 90%
+    }
+    i {
+        position: relative;
+        top: 4px
+    }
+}
+
+.btn-red {
+    background: $theme-color;
+    border-color: $theme-color;
+    color: $white;
+    font-size: 1.44em;
+    line-height: 1.48em;
+    padding: .55em 1.6em;
+    font-weight: 600;
+    &:hover,
+    &:active,
+    &:visited,
+    &:focus {
+        color: $white;
+    }
+    i {
+        margin-left: 10px;
+        font-size: 125%;
+        vertical-align: text-bottom
+    }
+}
+
+.link-text-color {
+    color: $theme-color;
+}
+.box-style{
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+}
+.page-view .xf-content-height {
+    min-height: 0;
+}
+
+.heading-2{
+    font-size: em(29.0859);
+    font-weight: 300;
+}
+.description-1{
+    font-size: 1.21429em;
+}
+.quote-text {
+    @media #{$medium-up}{
+        padding: 0.4em 12em 0.8em;
+    }
+    padding:1em 2em;
+}
+
+.loadingExtend {
+  width: 100%;
+  height: 100%;
+  background: $white url("#{$assetPath}/preloader.gif") center 200px
+    no-repeat;
+  margin: auto;
+  background-size: em(64) em(64);
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+.data-loading {
+  position: relative;
+  min-height: em(500);
+  float: left;
+  width: 100%;
+  &:after {
+    content: "";
+    top: 0;
+    bottom: 0;
+    @extend .loadingExtend;
+    display: block;
+  }
+}
+.next-data-loading {
+  position: relative;
+  overflow: hidden;
+  &:after {
+    content: "";
+    @extend .loadingExtend;
+    margin: 20px auto;
+    width: em(64);
+    height: em(64);
+    background-position: 0 0;
+    bottom: -17px;
+  }
+}
+.tile-content {
+    h4 {
+        &.tile-name {
+            line-height: normal;
+        }
+    }
+    h3 {
+        &.tile-name {
+            line-height: normal;
+        }
+    }
+    .tile-rating {
+        font-size: 1.03em;
+    }
+    p {
+        margin: 0;
+    }
+}
+body:not(.basepage-ecomm) .outer-wrapper{
+    .inner-wrapper{
+        .page-view {
+            @media #{$medium-up} {
+                padding-left: 0;
+                padding-right: 0;
+            }
+        }
+    }
+}
+.event-management-container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    background-color: $white;
+    padding:15px;
+}
+.video {
+    .modal-backdrop {
+        z-index: $zindex-modal-background;
+    }
+    .modal {
+        z-index: $zindex-modal;
+    }
+}
+.productGridPromoBanner {
+    .modal-backdrop {
+        z-index: $zindex-modal-background;
+    }
+    .modal {
+        z-index: $zindex-modal;
+    }
+}
+#usntA40Toggle {
+    z-index: $zindex-usablenet !important;
+}

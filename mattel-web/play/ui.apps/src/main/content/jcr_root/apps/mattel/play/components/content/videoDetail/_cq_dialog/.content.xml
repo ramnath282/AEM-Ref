@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Video Detail Component"
+    sling:resourceType="cq/gui/components/authoring/dialog"
+    helpPath="https://www.adobe.com/go/aem_cmp_text_v2">
+    <content
+        granite:class="play-cmp-list--editor"
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <videoPlayerConfig
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Video Player Config"
+                        sling:resourceType="granite/ui/components/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <ooyalaPlayerId
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                emptyText="Brand Specific Ooyala Player ID"
+                                fieldLabel="Ooyala Player Id"
+                                name="./ooyalaPlayerId"
+                                useFixedInlineToolbar="{Boolean}true"/>
+                            <autoPlayText
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                emptyText="Auto Play Label text"
+                                fieldLabel="Text for Auto Play"
+                                name="./autoPlayText"
+                                useFixedInlineToolbar="{Boolean}true"/>
+                            <disableAutoPlay
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/foundation/form/checkbox"
+                                fieldDescription="Disable Auto-play Videos"
+                                name="./disableAutoplay"
+                                text="Disable Auto-Play ?"
+                                uncheckedValue="{Boolean}true"
+                                value="{Boolean}false"/>
+                            <nowPlaying
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                emptyText="Now Playing Label Text"
+                                fieldLabel="Text for Now Playing Video"
+                                name="./nowPlaying"
+                                useFixedInlineToolbar="{Boolean}true"/>
+                            <relatedContentTitle
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                emptyText="Title for Related Content/Videos"
+                                fieldLabel="Title for Related Videos"
+                                name="./relVideoTitle"
+                                useFixedInlineToolbar="{Boolean}true"/>
+                            <playerBgColour
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/colorfield"
+                                emptyText="Background Color here"
+                                fieldLabel="Video Player Module Background Color"
+                                name="./playerBgColor"/>
+                            <playerBgImage
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                allowUpload="{Boolean}false"
+                                autoStart="{Boolean}false"
+                                class="cq-droptarget"
+                                fieldLabel="Video Player Module Background Image"
+                                fileReferenceParameter="./playerBgImg"
+                                mimeTypes="[image/gif,image/jpeg,image/png,image/webp,image/tiff]"
+                                multiple="{Boolean}false"
+                                name="./playerBackgroundImage"
+                                uploadUrl="${suffix.path}"
+                                useHTML5="{Boolean}true"/>
+                            <backgroundoption
+                                granite:class="cq-dialog-dropdown-showhide"
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                fieldLabel="Video Player Module Background Option"
+                                name="./playerBackOption">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <image
+                                        jcr:primaryType="nt:unstructured"
+                                        text="Image"
+                                        value="image"/>
+                                    <color
+                                        jcr:primaryType="nt:unstructured"
+                                        text="Color"
+                                        value="color"/>
+                                </items>
+                            </backgroundoption>
+                            <alwaysEnglish
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Always English check for Multi-Lingual  Site Tagging"
+                                fieldLabel="Adobe Tracking Name"
+                                name="./alwaysEnglish"
+                                required="{Boolean}true"/>
+                        </items>
+                    </videoPlayerConfig>
+                    <videoCategoryConfig
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Video Category Config"
+                        sling:resourceType="granite/ui/components/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <categoryDisplay
+                                granite:class="cq-dialog-dropdown-showhide"
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                fieldLabel="Category Display Option"
+                                name="./categoryDisplay"
+                                value="text">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <text
+                                        jcr:primaryType="nt:unstructured"
+                                        text="Text"
+                                        value="text"/>
+                                    <textnImage
+                                        jcr:primaryType="nt:unstructured"
+                                        text="Text &amp; Image"
+                                        value="textnImage"/>
+                                    <image
+                                        jcr:primaryType="nt:unstructured"
+                                        text="Image"
+                                        value="image"/>
+                                </items>
+                            </categoryDisplay>
+                            <displaycategory
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/foundation/form/checkbox"
+                                defaultChecked="{Boolean}false"
+                                name="./displayCategories"
+                                text="Show the Categories"
+                                uncheckedValue="{Boolean}false"
+                                value="{Boolean}true"/>
+                            <allLabel
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                emptyText="Title for Default/All Categories"
+                                fieldDescription="Textual alternative of the meaning or function of the image, for visually impaired readers."
+                                fieldLabel="Label for all Categories"
+                                name="./allLabel"
+                                wrapperClass="cmp-image--editor-alt"/>
+                            <categoryDetail
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                composite="{Boolean}true"
+                                fieldLabel="Video Category List">
+                                <field
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/fieldset"
+                                    name="./categoryDetail">
+                                    <items jcr:primaryType="nt:unstructured">
+                                        <column
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                                            <items jcr:primaryType="nt:unstructured">
+                                                <category
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="/libs/granite/ui/components/coral/foundation/form/pathbrowser"
+                                                    fieldLabel="Please Choose Category"
+                                                    fileReferenceParameter="./category"
+                                                    name="./category"
+                                                    rootPath="/content/"
+                                                    useHTML5="{Boolean}true"/>
+                                            </items>
+                                        </column>
+                                    </items>
+                                </field>
+                            </categoryDetail>
+                            <sectionTitleAlt
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Section Title for Grid If No Categories Available"
+                                fieldLabel="Section Title If No Categories Selected"
+                                name="./sectionAltTitle"
+                                wrapperClass="cmp-image--editor-alt"/>
+                            <categoryBgColour
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/colorfield"
+                                fieldLabel="Category Background Color"
+                                name="./catBgColour"/>
+                            <categoryBgImage
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                allowUpload="{Boolean}false"
+                                autoStart="{Boolean}false"
+                                class="cq-droptarget"
+                                fieldLabel="Category Background Image:"
+                                fileReferenceParameter="./catBgImg"
+                                mimeTypes="[image/gif,image/jpeg,image/png,image/webp,image/tiff]"
+                                multiple="{Boolean}false"
+                                name="./backgroundImage"
+                                uploadUrl="${suffix.path}"
+                                useHTML5="{Boolean}true"/>
+                            <backgroundoption
+                                granite:class="cq-dialog-dropdown-showhide"
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                fieldLabel="Text Section Background Option"
+                                name="./catBackOption">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <image
+                                        jcr:primaryType="nt:unstructured"
+                                        text="Image"
+                                        value="image"/>
+                                    <color
+                                        jcr:primaryType="nt:unstructured"
+                                        text="Color"
+                                        value="color"/>
+                                </items>
+                            </backgroundoption>
+                            <adobeTrackingNameForAllLabel
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Adobe Tracking Name For All Label"
+                                name="./allAnalyticsName"/>
+                        </items>
+                    </videoCategoryConfig>
+                    <videoGridConfig
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Video Grid Config"
+                        sling:resourceType="granite/ui/components/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <videoDamPath jcr:primaryType="nt:unstructured"
+								sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+								fieldLabel="Video Source Path" name="./videoAssetPath"
+								emptyText="Video Source Path Here"
+								rootPath="/content/dam" />
+                            <columnLayout
+                                granite:class="cq-dialog-dropdown-showhide"
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                fieldLabel="Character Column Layout"
+                                name="./columnLayout">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <threeColumn
+                                        jcr:primaryType="nt:unstructured"
+                                        selected="{Boolean}true"
+                                        text="Three Column Layout"
+                                        value="column-3"/>
+                                    <fourColumn
+                                        jcr:primaryType="nt:unstructured"
+                                        text="Four Column Layout"
+                                        value="column-4"/>
+                                </items>
+                            </columnLayout>
+                            <orderVideos
+                                granite:class="cq-dialog-dropdown-showhide"
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                fieldLabel="Order Videos"
+                                name="./orderVideo">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <manual
+                                        jcr:primaryType="nt:unstructured"
+                                        selected="{Boolean}true"
+                                        text="Manual Order"
+                                        value="manual"/>
+                                    <automatic
+                                        jcr:primaryType="nt:unstructured"
+                                        text="Automatic Order"
+                                        value="automatic"/>
+                                </items>
+                            </orderVideos>
+                            <onPageLoadLimit
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/foundation/form/numberfield"
+                                fieldLabel="Number of Videos to display"
+                                name="./onLoadLimit"/>
+                            <titleAlign
+                                granite:class="cq-dialog-dropdown-showhide"
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                fieldLabel="Align Video Name to"
+                                name="./nameAlign"
+                                required="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <left
+                                        jcr:primaryType="nt:unstructured"
+                                        text="Left"
+                                        value="left"/>
+                                    <right
+                                        jcr:primaryType="nt:unstructured"
+                                        text="Right"
+                                        value="right"/>
+                                    <center
+                                        jcr:primaryType="nt:unstructured"
+                                        text="Center"
+                                        value="center"/>
+                                </items>
+                            </titleAlign>
+                            <landingBackgroundColour
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/colorfield"
+                                fieldLabel="Video Landing Background Color"
+                                name="./landingBgColor"/>
+                            <landingBackgroundImage
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                allowUpload="{Boolean}false"
+                                autoStart="{Boolean}false"
+                                class="cq-droptarget"
+                                fieldLabel="Video Landing Background Image:"
+                                fileReferenceParameter="./landingBgReference"
+                                mimeTypes="[image/gif,image/jpeg,image/png,image/webp,image/tiff]"
+                                multiple="{Boolean}false"
+                                name="./catBgImage"
+                                uploadUrl="${suffix.path}"
+                                useHTML5="{Boolean}true"/>
+                            <landingBackgroundoption
+                                granite:class="cq-dialog-dropdown-showhide"
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                fieldLabel="Video Landing Background Option"
+                                name="./landingBackOption">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <image
+                                        jcr:primaryType="nt:unstructured"
+                                        text="Image"
+                                        value="image"/>
+                                    <color
+                                        jcr:primaryType="nt:unstructured"
+                                        text="Color"
+                                        value="color"/>
+                                </items>
+                            </landingBackgroundoption>
+                        </items>
+                    </videoGridConfig>
+                    <lazyLoadConfig
+                            jcr:primaryType="nt:unstructured"
+                            jcr:title="Lazy Loading Config"
+                            sling:resourceType="granite/ui/components/foundation/container"
+                            margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <disableLazyLoad
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/foundation/form/checkbox"
+                                    fieldDescription="Enabling this will disable lazy loading"
+                                    name="./disableLazyLoad"
+                                    text="Disable Lazy Loading ?"
+                                    uncheckedValue="{Boolean}false"
+                                    value="{Boolean}true"/>
+                            <numberOfGridElements
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+                                    fieldLabel="Number of grid elements to be shown"
+                                    min="0"
+                                    name="./gridElements"
+                                    step="1"/>
+                        </items>
+                    </lazyLoadConfig>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>

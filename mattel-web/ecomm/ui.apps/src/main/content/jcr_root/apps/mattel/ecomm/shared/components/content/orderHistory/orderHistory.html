@@ -1,0 +1,41 @@
+<div class="user-info-wrapper">
+   <div class="my-order-summary">
+      <h2 class="header-label add-float">${properties.orderHistoryTitle @context='text'}</h2>
+      <script id="orderListTemp" type="text/x-handlebars-template">
+         {{#if this.length}}
+         <a href="${properties.viewAllOrderCta @context='html'}" class="view-recent-order">${properties.viewAllCtaText @context='text'}</a>
+         <table>
+            <caption><span class="sr-only">${properties.orderHistoryTitle @context='scriptString'}</span></caption>
+            <thead class="hidden-xs">
+            <tr>
+               <th scope="col">${properties.orderNumberLabel @context='scriptString'}</th>
+               <th scope="col">${properties.orderDateLabel  @context='scriptString'}</th>
+               <th scope="col">${properties.orderStatusLabel  @context='scriptString'}</th>
+               <th scope="col">${properties.orderTypeLabel  @context='scriptString'}</th>
+               <th scope="col">${properties.totalPriceLabel  @context='scriptString'}</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#each this}}
+            <tr>
+               <td><span class="visible-xs-inline"><strong>${properties.orderNumberLabel @context='scriptString'}: </strong>{{orderId}}</span><a href="${properties.orderDetailPageLink  @context='html'}.html?orderId={{orderId}}" data-track-recent-order-history="view order number"><span class="hidden-xs">{{orderId}}</span></a></td>
+                <td><span class="visible-xs-inline"><strong>${properties.orderDateLabel  @context='scriptString'}: </strong></span>{{placedDate}}</td>
+                <td><span class="visible-xs-inline"><strong>${properties.orderStatusLabel  @context='scriptString'}: </strong></span>{{orderStatus}}</td>
+               <td><span class="visible-xs-inline"><strong>${properties.orderTypeLabel  @context='scriptString'}: </strong></span>{{orderType}}</td>
+                <td><span class="visible-xs-inline"><strong>${properties.totalPriceLabel  @context='scriptString'}: </strong>&dollar;{{grandTotal}}</span><strong class="hidden-xs">&dollar;{{grandTotal}}</strong></td>
+                {{/each}}
+
+            </tbody>
+         </table>
+         {{else}}
+         <p style="text-align: center;clear: both;font-size: 1.2em;">${properties.noOrderText @context='scriptString'}</p>
+         {{/if}}
+
+      </script>
+      <div id="orderSummary"></div>
+   </div>
+</div>
+
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
+    <sly data-sly-call="${clientlib.js @ categories='ecomm.orderHistory'}"/>
+</sly>

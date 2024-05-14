@@ -1,0 +1,105 @@
+.toast-container {
+    position: fixed;
+    z-index: 9999991;
+    opacity: 0;
+    transition: opacity .5s ease-out, max-height .5s ease-out;
+    overflow: hidden;
+
+    &.active{
+        opacity: 1;
+        transition: opacity .5s ease-in;
+         z-index: 9999994;
+         .toast-message {
+              &:before {
+                 z-index: 9999994;
+              }
+         }
+    }
+    &.toast-top-center {
+        top: em(8);
+        left: 50%;
+        @include transform(translateX(-50%));
+    }
+    .toast-message {
+        margin: 0 auto;
+        width: 630px;
+        @media #{$xsmall-down} {
+            width: 100%;
+        }
+        .toast-text{
+            position: relative;
+            overflow: hidden;
+            width: auto;
+            color: $white;
+            padding: em(9,20) 15px em(11,20) 15px;
+            font-size: em(18);
+            font-weight: $fontSemiBold;
+            text-align: center;
+            max-width: 464px;
+            margin: 0 auto;
+            .info-icon {
+                display: inline-block;
+                position: relative;
+                width: 25px;
+                height: 25px;
+                &:before {
+                    @include font-awesome();
+                    font-size: inherit;
+                    position: absolute;
+                    top: 9px;
+                    left: 2px;
+                }
+            }
+            @media #{$xsmall-down} {
+                width: 85%;
+            }
+        }
+        &.toast-success {
+            background-color: #35852E;
+            .toast-text{
+                .info-icon {
+                    &:before {
+                        content: "\f00c";
+                    }
+                }
+            }
+        }
+
+        &.toast-error {
+            background-color: #E62605;
+            .toast-text{
+                .info-icon {
+                    &:before {
+                        content: "\f00d";
+                    }
+                }
+            }
+        }
+
+        &.toast-warning {
+            background-color: #fb3;
+            .toast-text{
+                .info-icon {
+                    &:before {
+                        content: "\f071";
+                    }
+                }
+            }
+        }
+
+        &.toast-info {
+            background-color: #33b5e5;
+            .toast-text{
+                .info-icon {
+                    &:before {
+                        content: "\f05a";
+                    }
+                }
+            }
+        }
+    }
+    @media #{$small-down}{
+        width: 90%;
+        text-align: center;
+    }
+}

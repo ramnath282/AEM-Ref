@@ -1,0 +1,1686 @@
+/*
+** _layout.scss
+*/
+
+.page-heading-default {
+    font-family: mapping($layout, heading, font), sans-serif;
+    font-weight: mapping($layout, heading, fontWeight);
+    height: inherit;
+
+}
+
+.page-heading-font {
+    @extend .page-heading-default;
+    font-size: mapping($layout, heading, fontSize);
+}
+
+.page-description-font {
+    font-family: mapping($layout, description, font), sans-serif;
+    font-weight: mapping($layout, description, fontWeight);
+    font-size: mapping($layout, description, fontSize);
+}
+
+.clearDiv {
+    float: left;
+    width: 100%;
+}
+
+*,
+body {
+    font-family: if(mapping($layout, body, font), mapping($layout, body, font), Swiss), sans-serif;
+    font-weight: if(mapping($layout, body, fontWeight), mapping($layout, body, fontWeight), $fontRegular);
+}
+
+html {
+    font-size: 1em;
+}
+
+body {
+    font-size: 87.5%;
+    background: if(mapping($layout, body, bodybg), mapping($layout, body, bodybg), $white);
+
+    @if mapping($layout, main, canvasNav)==true {
+        background: $white;
+    }
+}
+
+//for lang el-gr
+body:lang(el-gr) {
+    font-family: Arial, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+span,
+a {
+    &:lang(el-gr) {
+        font-family: Arial, sans-serif;
+        font-weight: 700;
+    }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    @extend .page-heading-font;
+}
+
+a {
+    @extend .page-heading-default;
+
+    &:link,
+    &:hover,
+    &:active,
+    &:visited,
+    &:hover {
+        color: if(mapping($layout, linkS, linkColor), mapping($layout, linkS, linkColor), $light-pink);
+    }
+
+    &.play-backtotop {
+        margin: mapping($layout, gototop, marginContainer);
+        color: mapping($layout, gototop, fontColor);
+        display: inline-block !important;
+    }
+
+}
+
+.backToTop{
+    text-align: center;
+}
+
+@if mapping($layout, main, canvas)==true {
+    .aem-GridColumn {
+        padding: 0;
+    }
+}
+
+.page-view {
+    margin-top: if(mapping($layout, pageView, marginTop), mapping($layout, pageView, marginTop), 156px);
+
+    @if mapping($layout, main, canvas)==true {
+        margin-top: mapping($layout, pageView, marginTop);
+
+        @media #{$medium-down} {
+            margin-top: mapping($layout, pageView, marginTopMobile);
+        }
+    }
+
+    @if mapping($layout, main, isParentBrand)==true {
+        margin-top: 0 !important;
+    }
+}
+
+.outer-wrapper {
+    @if mapping($layout, main, canvasNav)==true {
+        max-width: mapping($layout, outerWrapper, maxWidth);
+        margin: mapping($layout, outerWrapper, margin);
+    }
+
+    .inner-wrapper {
+        .page-view {
+            background: mapping($layout, body, bgnd);
+            background-size: mapping($layout, body, bgndSize);
+            background-position: mapping($layout, body, bgndPosition);
+            padding-left: 0;
+            padding-right: 0;
+
+            &>div:not(.modal),
+            &>section {
+                margin-left: 0;
+                margin-right: 0;
+            }
+        }
+    }
+
+    .aem-GridColumn {
+        padding: 0;
+    }
+}
+
+.footer-wrapper {
+    @if mapping($layout, main, canvasNav)==true {
+        max-width: mapping($layout, outerWrapper, maxWidth);
+        margin: mapping($layout, outerWrapper, margin);
+    }
+}
+
+.page-view .xf-content-height {
+    min-height: 0;
+}
+
+.slick-next {
+    right: em(25);
+    /*@if mapping($layout,main,isEnchantimals) == true {
+        @media #{$medium-down} {
+            right: -25px;
+        }
+    }*/
+}
+
+.slick-prev {
+    left: em(25);
+    /*@if mapping($layout,main,isEnchantimals) == true {
+        @media #{$medium-down} {
+            left: -25px;
+        }
+    }*/
+}
+
+.slick-next,
+.slick-prev {
+    width: 70px;
+    height: 70px;
+    z-index: 1;
+
+    @if mapping($layout, main, isEnchantimals)==true {
+        @media #{$small-up} {
+            top: 38%;
+        }
+
+        @media #{$small-down} {
+            top: 20%;
+        }
+    }
+
+    @if mapping($layout, arrow, isCircleBgnd)==true {
+        background: mapping($layout, arrow, circleBgnd);
+        border-radius: 50%;
+
+        &:hover,
+        &:focus {
+            background: mapping($layout, arrow, circleHoverBgnd);
+        }
+
+        @if mapping($layout, main, isEnchantimals)==true {
+            @media #{$small-down} {
+                background: transparent;
+            }
+        }
+    }
+
+    &:before {
+        background-color: if(mapping($layout, arrow, bgndColor), mapping($layout, arrow, bgndColor), $navy-blue);
+        opacity: mapping($layout, arrow, opacity);
+        color: mapping($layout, arrow, color);
+
+        @if mapping($layout, main, isEnchantimals)==true {
+            @media #{$small-down} {
+                color: mapping($layout, arrow, mobArwColor);
+            }
+        }
+
+        @if mapping($layout, arrow, isRoundedBgnd)==false {
+            @include border-radius(0);
+        }
+
+        @else {
+            @include border-radius(50%);
+        }
+
+        font-size:mapping($layout, arrow, arwfntSize);
+        padding: 5px;
+        font-weight: bold;
+    }
+
+    &:focus {
+        outline: 1px dashed $black;
+    }
+}
+
+@if mapping($layout, arrow, isSemiCircle)==true {
+    .slick-prev {
+        border-radius: 0 50px 50px 0;
+    }
+
+    .slick-next {
+        border-radius: 50px 0 0 50px;
+    }
+}
+
+.slick-dots {
+    @media #{$small-only} {
+        position: if(mapping($layout, dots, pos), mapping($layout, dots, pos), static);
+
+        @if mapping($layout, main, isEnchantimals)==true {
+            padding-bottom: mapping($layout, dots, bottomPad);
+        }
+    }
+
+    bottom:if(mapping($layout, dots, bottomPositon), mapping($layout, dots, bottomPositon), 0 20px);
+
+    @if mapping($layout, main, isRescueHeroes)==true {
+        z-index: mapping($layout, dots, zIndex);
+
+        @media #{$medium-down} {
+            bottom: mapping($layout, dots, posBottomTab);
+        }
+
+        @media #{$small-down} {
+            bottom: mapping($layout, dots, osBottomMob);
+        }
+    }
+
+    li {
+        margin: if(mapping($layout, dots, margin), mapping($layout, dots, margin), 0 7px);
+
+        button {
+            font-size: if(mapping($layout, dots, fontSize), mapping($layout, dots, fontSize), 14px);
+            display: block;
+            width: em(12);
+            height: em(12);
+            margin: 5px 7px;
+            opacity: if(mapping($layout, dots, bgndColor), mapping($layout, dots, bgndColor), .5);
+            -webkit-border-radius: em(20);
+            -moz-border-radius: em(20);
+            border-radius: em(20);
+            background: if(mapping($layout, dots, bgndColor), mapping($layout, dots, bgndColor), $light-green);
+            border: mapping($layout, dots, border);
+
+            &:before {
+                content: none;
+            }
+
+            &:focus {
+                outline: 1px solid if(mapping($layout, dots, focusColor), mapping($layout, dots, focusColor), $light-blue);
+            }
+        }
+
+        &.slick-active {
+            button {
+                width: em(14);
+                opacity: 1;
+                height: em(14);
+                background: if(mapping($layout, dots, activeBgndColor), mapping($layout, dots, activeBgndColor), $light-red);
+                border-color: mapping($layout, dots, activeBorder);
+            }
+        }
+    }
+}
+
+a.play {
+    display: none;
+
+    @media #{$small-down} {
+        display: none;
+    }
+
+    position: absolute;
+    width: em(20);
+    height: em(20);
+    right: em(20);
+    bottom: em(32);
+
+    @media #{$medium-up} {
+        bottom: em(10);
+    }
+
+    z-index: 2;
+    margin: 0 auto;
+    text-align: center;
+    background: $light-green;
+    padding: 0px;
+
+    // opacity: 0.6;
+    &:after {
+        @include font-awesome();
+        content: "\f04b";
+        color: $white;
+    }
+}
+
+a.pause {
+    &:after {
+        content: "\f04c";
+    }
+}
+
+.sprite-extend-btn {
+    background: mapping($layout, spriteBtn, spriteImage);
+    background-size: mapping($layout, spriteBtn, spriteSlices);
+    background-position: mapping($layout, spriteBtn, spritePos);
+
+    &:active {
+        background-image: mapping($layout, spriteBtn, spriteImage);
+        box-shadow: none;
+        -webkit-box-shadow: none;
+    }
+
+    &:hover {
+        background: mapping($layout, spriteBtn, spriteHoverImage);
+        background-size: mapping($layout, spriteBtn, spriteSlices);
+        background-position: mapping($layout, spriteBtn, spriteHoverPos);
+    }
+}
+
+.theme-btn {
+    @if mapping($layout, main, isWhyPlay)==true {
+        &:after {
+            content: "\f054";
+            font-family: "Font Awesome", sans-serif;
+            margin-left: 10px;
+            position: relative;
+            top: 2px;
+            font-size: 16px
+        }
+    }
+
+    @if mapping($layout, main, isRescueHeroes)==true {
+        width: mapping($layout, themeBtn, btnWidth);
+        min-width: mapping($layout, themeBtn, btnMinWidth);
+    }
+
+    padding: if(mapping($layout, themeBtn, padding), mapping($layout, themeBtn, padding), em(10) em(20));
+
+    @if mapping($layout, main, canvasNav)==true {
+        margin: mapping($layout, themeBtn, btnPrimaryMargin)
+    }
+
+    @media #{$small-down} {
+        padding: mapping($layout, themeBtn, mobilePadding);
+    }
+
+    max-width: if(mapping($layout, themeBtn, btnMaxWidth), mapping($layout, themeBtn, btnMaxWidth), 100%);
+    z-index: 1;
+
+    @if mapping($layout, main, isEnchantimals)==true {
+        height: if(mapping($layout, themeBtn, height), mapping($layout, themeBtn, height), auto);
+    }
+
+    @if mapping($layout, themeBtn, iscurveShape)==true {
+        position: relative;
+
+        &:hover {
+            &:before {
+                background: mapping($layout, themeBtn, bgndColor);
+            }
+        }
+
+        &:before {
+            content: '';
+            position: absolute;
+            clip-path: mapping($layout, themeBtn, clipPath);
+            -webkit-clip-path: mapping($layout, themeBtn, clipPath);
+            background: mapping($layout, themeBtn, hoverBgndColor);
+            display: block;
+            top: mapping($layout, themeBtn, borderSize);
+            left: mapping($layout, themeBtn, borderSize);
+            width: calc(100% - #{mapping($layout, themeBtn, borderSize)+mapping($layout, themeBtn, borderSize)});
+            height: calc(100% - #{mapping($layout, themeBtn, borderSize)+mapping($layout, themeBtn, borderSize)});
+            z-index: -1;
+        }
+    }
+
+    @else {
+        border: if(mapping($layout, themeBtn, border), mapping($layout, themeBtn, border), 2px solid $white);
+    }
+
+    @if mapping($layout, themeBtn, isnextArrw)==true {
+        &:after {
+            content: ">";
+            font-family: inherit;
+            margin-left: 5px;
+            font-weight: 300;
+            text-align: mapping($layout, themeBtn, isnextArrw)
+        }
+    }
+
+    @if mapping($layout, themeBtn, isSpriteImg)==true {
+        @extend .sprite-extend-btn;
+    }
+
+    @if mapping($layout, themeBtn, isPlay)==true {
+        &:before {
+            content: mapping($layout, themeBtn, icnPlaycontent);
+            font-family: mapping($layout, themeBtn, icnFntFamily);
+            font-size: mapping($layout, themeBtn, icnSize);
+            margin-right: mapping($layout, themeBtn, icnMarginRight);
+            vertical-align: mapping($layout, themeBtn, icnAlign);
+            position: mapping($layout, themeBtn, icnPos);
+            top: mapping($layout, themeBtn, icnPosTop);
+        }
+    }
+
+    clip-path: mapping($layout, themeBtn, clipPath);
+    -webkit-clip-path: mapping($layout, themeBtn, clipPath);
+    border-radius: if(mapping($layout, themeBtn, borderRadius), mapping($layout, themeBtn, borderRadius), 2.14286em) !important;
+    background-color: if(mapping($layout, themeBtn, bgndColor), mapping($layout, themeBtn, bgndColor), transparent);
+    color: if(mapping($layout, themeBtn, color), mapping($layout, themeBtn, color), $white);
+
+    @if mapping($layout, themeBtn, isDefaultHeadingFont)==true {
+        @extend .page-heading-default;
+        font-size: mapping($layout, themeBtn, fontSize);
+        font-weight: mapping($layout, themeBtn, fontWeight);
+    }
+
+    @else {
+        font-family: mapping($layout, themeBtn, fontFamily);
+        font-size: if(mapping($layout, themeBtn, fontSize), mapping($layout, themeBtn, fontSize), em(16));
+        font-weight: mapping($layout, themeBtn, fontWeight);
+    }
+
+    line-height: if(mapping($layout, themeBtn, lineHeight), mapping($layout, themeBtn, lineHeight), 1);
+    text-align: center;
+    letter-spacing: mapping($layout, themeBtn, letterSpacing);
+    text-transform: mapping($layout, themeBtn, transform);
+
+    @media #{$xsmall-down} {
+        font-size: mapping($layout, themeBtn, mobFontSize);
+    }
+
+    &:hover {
+        background-color: mapping($layout, themeBtn, hoverBgndColor);
+        color: mapping($layout, themeBtn, hoverColor);
+    }
+
+    &.red {
+        background-color: $red;
+        border-color: $red;
+    }
+
+    .fas {
+        font-size: mapping($layout, themeBtn, icnFntSize);
+        display: mapping($layout, themeBtn, icnDisp);
+        vertical-align: mapping($layout, themeBtn, icnVerticalAlign);
+    }
+}
+
+.secondary-btn {
+    @extend .theme-btn;
+
+    @if mapping($layout, main, canvas)==true {
+        font-size: mapping($layout, secThemeBtn, fntSize);
+        font-weight: mapping($layout, secThemeBtn, fntWeight);
+        text-transform: mapping($layout, secThemeBtn, txtTransform);
+        margin: mapping($layout, secThemeBtn, btnMargin);
+        padding: if(mapping($layout, secThemeBtn, padding), mapping($layout, secThemeBtn, padding), em(10) em(20));
+
+        @media #{$medium-down} {
+            margin: mapping($layout, secThemeBtn, btnMarginMob);
+        }
+    }
+
+    @if mapping($layout, secThemeBtn, isSpriteImg)==true {
+        @extend .sprite-extend-btn;
+        background: mapping($layout, secThemeBtn, spriteImage);
+        background-position: mapping($layout, secThemeBtn, spritePos);
+        background-size: mapping($layout, secThemeBtn, spriteSlices);
+
+        &:active {
+            background-image: mapping($layout, secThemeBtn, spriteImage);
+        }
+
+        &:hover {
+            background: mapping($layout, secThemeBtn, spriteHoverImage);
+            background-position: mapping($layout, secThemeBtn, spriteHoverPos);
+            background-size: mapping($layout, secThemeBtn, spriteSlices);
+        }
+    }
+
+    @if mapping($layout, secThemeBtn, isSecondaryBtn)==false {
+        font-family: inherit;
+    }
+
+    @else {
+        display: inline-block;
+
+        @if mapping($layout, secThemeBtn, iscurveShape)==true {
+            &:hover {
+                &:before {
+                    background: mapping($layout, secThemeBtn, bgndColor);
+                }
+            }
+
+            &:before {
+                background: mapping($layout, secThemeBtn, hoverBgndColor);
+            }
+        }
+
+        @else {
+            @if mapping($layout, secThemeBtn, hoverFalseMob)==true {
+                @media #{$large-down} {
+                    &:hover:before {
+                        background: mapping($layout, themeBtn, hoverBgndColor);
+                    }
+                }
+            }
+
+            border: if(mapping($layout, secThemeBtn, border), mapping($layout, secThemeBtn, border), 2px solid $white);
+        }
+
+        @if mapping($layout, secThemeBtn, isPlus)==true {
+            @if mapping($layout, main, canvas)==true {
+                &:before {
+                    display: none;
+                }
+
+                font-size:mapping($layout, secThemeBtn, fntSize);
+            }
+
+            &:after {
+                @if mapping($layout, secThemeBtn, isFontAwesomeIcon)==true {
+                    content: mapping($layout, secThemeBtn, iconContent);
+                    @include font-awesome();
+
+                    @if mapping($layout, main, canvasNav)==true {
+                        line-height: mapping($layout, secThemeBtn, emLineHeight);
+                    }
+                }
+
+                @else {
+                    content: '+';
+                    font-family: if(mapping($layout, secThemeBtn, iconFontFamily), mapping($layout, secThemeBtn, iconFontFamily), 'monospace');
+                    font-weight: if(mapping($layout, secThemeBtn, ArrowWeight), mapping($layout, secThemeBtn, ArrowWeight), 200);
+                    -webkit-font-smoothing: antialiased;
+                    font-style: normal;
+                    font-variant: normal;
+                    text-rendering: auto;
+                    vertical-align: middle;
+                    line-height: if(mapping($layout, secThemeBtn, ArrowlineHeight), mapping($layout, secThemeBtn, ArrowlineHeight), .32);
+                }
+
+                position: relative;
+                top: if(mapping($layout, secThemeBtn, ArrowtopVal), mapping($layout, secThemeBtn, ArrowtopVal), 7px);
+                margin-right: if(mapping($layout, secThemeBtn, marginRghtVal), mapping($layout, secThemeBtn, marginRghtVal), 7px);
+                background: 0 0;
+                float: left;
+                font-size: if(mapping($layout, secThemeBtn, ArrowfontSize), mapping($layout, secThemeBtn, ArrowfontSize), 185%);
+            }
+
+            &[aria-expanded="true"]:after {
+                @if mapping($layout, secThemeBtn, isFontAwesomeIcon)==true {
+                    content: mapping($layout, secThemeBtn, iconHoverContent);
+                }
+
+                @else {
+                    content: '-';
+                }
+            }
+        }
+
+        background-color: if(mapping($layout, secThemeBtn, bgndColor), mapping($layout, secThemeBtn, bgndColor), transparent);
+        color: if(mapping($layout, secThemeBtn, color), mapping($layout, secThemeBtn, color), $white) !important;
+
+        &:hover {
+            background-color: mapping($layout, secThemeBtn, hoverBgndColor);
+            color: mapping($layout, secThemeBtn, hoverColor);
+
+            @if mapping($layout, secThemeBtn, hoverFalseMob)==true {
+                @media #{$large-down} {
+                    @if mapping($layout, secThemeBtn, isSpriteImg)==true {
+                        background: mapping($layout, secThemeBtn, spriteImage);
+                        background-position: mapping($layout, secThemeBtn, spritePos);
+                        background-size: mapping($layout, secThemeBtn, spriteSlices);
+                    }
+
+                    background-color: if(mapping($layout, secThemeBtn, bgndColor), mapping($layout, secThemeBtn, bgndColor), transparent);
+                    color: if(mapping($layout, secThemeBtn, color), mapping($layout, secThemeBtn, color), $white) !important;
+                }
+            }
+        }
+    }
+}
+
+.theme-btn3 {
+    display: inline-block;
+    padding: if(mapping($layout, themeBtn3, padding), mapping($layout, themeBtn3, padding), em(10) em(20));
+    max-width: 100%;
+    z-index: 1;
+
+    @if mapping($layout, themeBtn3, iscurveShape)==true {
+        position: relative;
+
+        &:hover {
+            &:before {
+                background: mapping($layout, themeBtn3, bgndColor);
+            }
+        }
+
+        &:before {
+            content: '';
+            position: absolute;
+            clip-path: mapping($layout, themeBtn3, clipPath);
+            -webkit-clip-path: mapping($layout, themeBtn3, clipPath);
+            background: mapping($layout, themeBtn3, hoverBgndColor);
+            display: block;
+            top: mapping($layout, themeBtn3, borderSize);
+            left: mapping($layout, themeBtn3, borderSize);
+            width: calc(100% - #{mapping($layout, themeBtn3, borderSize)+mapping($layout, themeBtn3, borderSize)});
+            height: calc(100% - #{mapping($layout, themeBtn3, borderSize)+mapping($layout, themeBtn3, borderSize)});
+            z-index: -1;
+        }
+    }
+
+    @else {
+        border: mapping($layout, themeBtn3, border);
+    }
+
+    @if mapping($layout, themeBtn3, isnextArrw)==true {
+        &:after {
+            content: ">";
+            font-family: inherit;
+            margin-left: 5px;
+            font-weight: 300;
+            text-align: mapping($layout, themeBtn3, isnextArrw)
+        }
+    }
+
+    clip-path: mapping($layout, themeBtn3, clipPath);
+    -webkit-clip-path: mapping($layout, themeBtn3, clipPath);
+    border-radius: mapping($layout, themeBtn3, borderRadius);
+    background-color: mapping($layout, themeBtn3, bgndColor);
+    color: mapping($layout, themeBtn3, color);
+
+    @if mapping($layout, themeBtn3, isDefaultHeadingFont)==true {
+        @extend .page-heading-default;
+        font-size: mapping($layout, themeBtn3, fontSize)
+    }
+
+    @else {
+        font-family: mapping($layout, themeBtn3, fontFamily);
+        font-size: if(mapping($layout, themeBtn3, fontSize), mapping($layout, themeBtn3, fontSize), em(16));
+        font-weight: mapping($layout, themeBtn3, fontWeight);
+    }
+
+    line-height: 1;
+    text-align: center;
+    letter-spacing: mapping($layout, themeBtn3, letterSpacing);
+    text-transform: mapping($layout, themeBtn3, transform);
+
+    @media #{$xsmall-down} {
+        font-size: mapping($layout, themeBtn3, mobFontSize);
+    }
+
+    @if mapping($layout, main, canvas)==true {
+        @media #{$small-down} {
+            font-size: mapping($layout, themeBtn3, mobFontSize);
+        }
+    }
+
+    &:hover,
+    &.active {
+        background-color: mapping($layout, themeBtn3, hoverBgndColor);
+        color: mapping($layout, themeBtn3, hoverColor);
+    }
+}
+
+.right-arrow {
+    font-family: monospace;
+    display: inline-block;
+    margin-left: em(10);
+    font-size: 125%;
+    line-height: inherit;
+    color: inherit;
+    vertical-align: middle;
+}
+
+.text-blue {
+    color: $light-blue;
+}
+
+.text-sm-center {
+    @media #{$small-only} {
+        text-align: center;
+    }
+}
+
+.full-width {
+    @extend .col-lg-12;
+    @extend .col-md-12;
+    @extend .col-sm-12;
+    @extend .col-xs-12;
+}
+
+.play-page-title {
+    background: mapping($layout, main, bgColor);
+    border-top: 1px solid #E6E7E8;
+    border-bottom: 1px solid #E6E7E8;
+    @extend .container-fluid;
+    padding: if(mapping($layout, pageTitle, paddingPageTitle), mapping($layout, pageTitle, paddingPageTitle), em(0) em(55));
+
+    @media #{$medium-down} {
+        padding: mapping($layout, pageTitle, paddingTab);
+        border-top: mapping($layout, pageTitle, borderTopMob);
+    }
+
+    @media #{$small-down} {
+        padding: if(mapping($layout, pageTitle, paddingMob), mapping($layout, pageTitle, paddingMob), em(30) em(20));
+    }
+
+    >div {
+        @extend .col-lg-9;
+        @extend .col-md-9;
+        @extend .col-sm-8;
+        @extend .col-xs-12;
+        padding: if(mapping($layout, pageTitle, padding), mapping($layout, pageTitle, padding), 4.2em 0);
+        padding: mapping($layout, pageTitle, paddingTitleDiv);
+        width: mapping($layout, pageTitle, pageTitleWidth);
+
+        &.full-width {
+            @extend .full-width;
+            padding: 4.2em 0;
+        }
+
+        @media #{$small-down} {
+            padding: em(35) 0 em(25) 0;
+            padding: mapping($layout, pageTitle, paddingTitleDiv);
+        }
+
+        h1 {
+            margin: if(mapping($layout, heading, margin), mapping($layout, heading, margin), 0);
+            color: if(mapping($layout, heading, color), mapping($layout, heading, color), $page-title);
+            font-size: if(mapping($layout, heading, fontSize), mapping($layout, heading, fontSize), em(38));
+            font-family: if(mapping($layout, heading, font), mapping($layout, heading, font), 'Swiss'), sans-serif;
+            font-weight: if(mapping($layout, heading, fontWeight), mapping($layout, heading, fontWeight), 300);
+            text-transform: if(mapping($layout, heading, transform), mapping($layout, heading, transform), none);
+            letter-spacing: 1px;
+            line-height: if(mapping($layout, heading, lineHeight), mapping($layout, heading, lineHeight), 1);
+            text-align: mapping($layout, heading, align);
+
+            @if mapping($layout, main, isEnchantimals)==true {
+                font-size: mapping($layout, heading, fontSizeh1);
+            }
+
+            @if mapping($layout, main, isWhyPlay)==true {
+                font-size: mapping($layout, heading, fontSizeh1);
+                padding: mapping($layout, heading, paddingh1);
+                color: mapping($layout, heading, colorh1);
+            }
+
+            @media #{$small-down} {
+                font-size: mapping($layout, heading, mobFontSize);
+            }
+
+            @if mapping($layout, main, canvas)==true {
+                font-size: mapping($layout, pageTitle, fontSize);
+                line-height: mapping($layout, pageTitle, lineHeight);
+
+                @media #{$small-down} {
+                    margin-top: mapping($layout, heading, margintopXs);
+                }
+            }
+
+            span {
+                @if mapping($layout, main, canvas)==true {
+                    display: mapping($layout, pageTitleSpan, display);
+                    padding: mapping($layout, pageTitleSpan, padding);
+                    background: mapping($layout, pageTitleSpan, background);
+                    border-radius: mapping($layout, pageTitleSpan, border);
+
+                    @media #{$small-down} {
+                        padding: mapping($layout, pageTitleSpan, paddingxs);
+                    }
+                }
+            }
+        }
+
+        @if mapping($layout, main, canvas)==true {
+            h2 {
+                margin: 0;
+                color: if(mapping($layout, heading, color), mapping($layout, heading, color), $page-title);
+                font-size: if(mapping($layout, heading, fontSize), mapping($layout, heading, fontSize), em(38));
+                font-family: if(mapping($layout, heading, font), mapping($layout, heading, font), 'Swiss'), sans-serif;
+                font-weight: if(mapping($layout, heading, fontWeight), mapping($layout, heading, fontWeight), 300);
+                text-transform: if(mapping($layout, heading, transform), mapping($layout, heading, transform), none);
+                letter-spacing: 1px;
+                line-height: 1;
+                text-align: mapping($layout, heading, align);
+
+                @media #{$small-down} {
+                    font-size: mapping($layout, heading, mobFontSize);
+                }
+            }
+        }
+
+        p {
+            color: if(mapping($layout, description, color), mapping($layout, description, color), $page-sub-title);
+            font-size: if(mapping($layout, description, fontSize), mapping($layout, description, fontSize), em(19));
+            font-family: if(mapping($layout, description, font), mapping($layout, description, font), Arial);
+            font-weight: if(mapping($layout, description, fontWeight), mapping($layout, description, fontWeight), 300);
+            margin: 0;
+
+            @if mapping($layout, main, canvas)==true {
+                color: if(mapping($layout, description, color), mapping($layout, description, color), $page-sub-title);
+                font-size: if(mapping($layout, description, fontSize), mapping($layout, description, fontSize), em(19));
+                font-family: if(mapping($layout, description, font), mapping($layout, description, font), Arial);
+                font-weight: if(mapping($layout, description, fontWeight), mapping($layout, description, fontWeight), 300);
+                margin: 0;
+
+                @media #{$small-down} {
+                    font-weight: mapping($layout, description, fontWeightMob);
+                    font-size: mapping($layout, description, fontSizeMob);
+                }
+            }
+
+            span {
+                //font-family: "Arial-Rounded", Arial, sans-serif;
+                //font-weight: 300;
+            }
+
+            &.category-title {
+                color: $navy-blue;
+                font-size: 1.2em;
+            }
+        }
+
+        @if mapping($layout, main, isRescueHeroes)==true {
+            .theme-btn {
+                margin: mapping($layout, themeBtn, titlebtnMargin);
+
+                @media #{$medium-down} {
+                    margin: mapping($layout, themeBtn, titlebtnMarginMob);
+                }
+            }
+        }
+
+        @if mapping($layout, charactersPage, isEnchantCharTitle)==true {
+            padding: if(mapping($layout, charactersPage, titlePad), mapping($layout, charactersPage, titlePad), 0);
+
+            h1 {
+                color: if(mapping($layout, charactersPage, titleTxtColor), mapping($layout, charactersPage, titleTxtColor), $page-title);
+            }
+        }
+    }
+
+    >div+div {
+        @extend .col-lg-3;
+        @extend .col-md-3;
+        @extend .col-sm-4;
+        @extend .hidden-xs;
+        padding: 14px 40px;
+
+        @media #{$small-up} {
+            padding: 0;
+        }
+
+        @media #{$large-up} {
+            padding: 15px 40px;
+        }
+
+        img {
+            @extend .img-responsive;
+        }
+    }
+
+    img {
+        @if mapping($layout, main, canvas)==true {
+            max-width: mapping($layout, PageBrandIcon, imgWidth);
+            margin-bottom: mapping($layout, PageBrandIcon, margin);
+
+            @media #{$medium-down} {
+                max-width: mapping($layout, PageBrandIcon, imgWidthTab);
+                margin-bottom: mapping($layout, PageBrandIcon, marginTab);
+            }
+
+            @media #{$small-down} {
+                max-width: mapping($layout, PageBrandIcon, imgWidthMob);
+                margin-bottom: mapping($layout, PageBrandIcon, marginMob);
+            }
+        }
+    }
+}
+
+.bgwhite {
+    background-color: $white;
+}
+
+.play-backtotop {
+    display: mapping($layout, gototop, goToTopDisplay);
+    font-weight: mapping($layout, gototop, backFontWeight);
+    color: if(mapping($layout, gototop, fntColor), mapping($layout, gototop, fntColor), $footer-bg-color);
+    font-family: if(mapping($layout, gototop, fntFamily), mapping($layout, gototop, fntFamily), inherit);
+    margin: mapping($layout, gototop, goToTopMargin);
+    font-size: if(mapping($layout, gototop, fntSize), mapping($layout, gototop, fntSize), 22px);
+    line-height: if(mapping($layout, gototop, lineHeight), mapping($layout, gototop, lineHeight), 1.25);
+    text-align: mapping($layout, gototop, goToTopCenter);
+
+    &:hover {
+        text-decoration: underline;
+    }
+
+    &:after {
+        margin: if(mapping($layout, gototop, arrowMargin), mapping($layout, gototop, arrowMargin), 0px auto 10px);
+        content: if(mapping($layout, gototop, iconContent), mapping($layout, gototop, iconContent), "\f106");
+        font-family: mapping($layout, gototop, iconFontFamily);
+        position: mapping($layout, gototop, iconPos);
+        left: mapping($layout, gototop, iconLeft);
+        top: mapping($layout, gototop, iconTop);
+        font-size: mapping($layout, gototop, iconFontSize);
+        display: inline-block;
+        height: 28px;
+        overflow: hidden;
+    }
+}
+
+.loading-icon-extend {
+    content: "\f110" !important;
+    font-family: "Font Awesome", sans-serif;
+    font-weight: 900;
+    -webkit-font-smoothing: antialiased;
+    display: inline-block !important;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height: 1;
+    font-size: 56px;
+    color: if(mapping($layout, main, loadingGIFColor), mapping($layout, main, loadingGIFColor), $violet);
+    text-align: center;
+    -moz-animation: fa-spin 2s infinite linear;
+    -webkit-animation: fa-spin 2s infinite linear;
+    animation: fa-spin 2s infinite linear;
+}
+
+.data-loading {
+    position: relative;
+    min-height: 31.71429em;
+    float: left;
+    width: 100%;
+}
+
+.data-loading:after {
+    @extend .loading-icon-extend;
+    margin-left: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    position: absolute;
+    left: 0;
+    right: 0;
+
+    @if mapping($layout, main, isTransparenGIF)==true {
+        background-color: transparent;
+        width: auto;
+        height: auto;
+        bottom: auto;
+    }
+}
+
+.next-data-loading {
+    position: relative;
+    overflow: hidden
+}
+
+.next-data-loading:after {
+    @extend .loading-icon-extend;
+    width: 100%;
+    margin: 20px 0;
+    background: transparent;
+    height: auto;
+    position: static;
+}
+
+//buttons
+//btn-colors
+$icegreen:#C4D600;
+$dark-pink:#f10196;
+
+.btn-theme-play {
+    color: $white;
+    background-color: $pink;
+    border-color: $icegreen;
+    &:hover,
+    &:focus
+
+    /*, &.active*/
+        {
+        background-color: $icegreen;
+        border-color: $pink;
+    }
+}
+
+.btn-show-more {
+    cursor: pointer;
+    min-width: 240px;
+    padding: 28px;
+    border-width: 5px;
+    line-height: 1.4em;
+    display: inline-block;
+    font-size: em(19);
+    text-align: center;
+    text-transform: none;
+    @include border-radius(em(50));
+    border-style: solid;
+    font-weight: $fontLight;
+
+    &:before {
+        font-family: 'Font Awesome', sans-serif;
+        /*font-weight:700;*/
+        content: "\f055";
+        margin: 5px;
+        vertical-align: middle;
+    }
+
+    &.active:before {
+        content: "\f056";
+    }
+
+    @extend .btn-theme-play;
+}
+
+:link.btn-view-all,
+a.btn-view-all:link {
+    color: if(mapping($layout, viewAll, linkcolor), mapping($layout, viewAll, linkcolor), $pink);
+}
+
+.view-all {
+
+    a:link,
+    :link.btn-view-all,
+    a.btn-view-all:link {
+        color: $white;
+    }
+
+    @media #{$small-down} {
+        margin-right: mapping($layout, viewAll, parentMgnRghtMob);
+    }
+
+    margin-bottom: mapping($layout, viewAll, parentMgnBtm);
+}
+
+.btn-view-all {
+    @if mapping($layout, viewAll, isOverwritePrimaryBtn)==true {
+        @extend .theme-btn;
+        padding: mapping($layout, viewAll, padding);
+        background-color: mapping($layout, viewAll, bgndColor);
+        border-color: mapping($layout, viewAll, borderColor);
+        color: mapping($layout, viewAll, color);
+        padding-left: mapping($layout, viewAll, padLft);
+        padding-right: mapping($layout, viewAll, paddRght);
+        text-transform: mapping($layout, viewAll, fntCase);
+
+        @if mapping($layout, main, canvasNav)==true {
+            min-width: mapping($layout, viewAll, minWidth);
+        }
+
+        &:hover {
+            background-color: mapping($layout, viewAll, bgndColorHover);
+            border-color: mapping($layout, viewAll, borderColorHover);
+            color: mapping($layout, viewAll, colorHover);
+        }
+    }
+
+    @else {
+        cursor: pointer;
+        max-width: 100%;
+        min-width: 162px;
+        margin: 0;
+        padding: 0.78em 1.45em;
+        border-width: em(3);
+        display: inline-block;
+        font-size: em(19);
+        font-weight: $fontLight;
+        white-space: normal;
+        text-align: center;
+        text-decoration: none;
+        text-transform: none;
+        border-style: solid;
+        border-color: $icegreen;
+        color: $pink;
+        background: $white;
+        @include border-radius(2em !important);
+        &:hover,
+        &:focus
+
+        /*, &.active */
+            {
+            border-color: $pink;
+            color: $white;
+            background: $icegreen;
+        }
+    }
+
+    @if mapping($layout, main, isWhyPlay)==true {
+        &:after {
+            content: "\f054";
+            font-family: "Font Awesome", sans-serif;
+            margin-left: 10px;
+            position: relative;
+            top: 2px;
+            font-size: 16px;
+        }
+    }
+}
+
+.btn-primary {
+    cursor: pointer;
+    max-width: 100%;
+    min-width: if(mapping($layout, themeBtn, btnPrimaryMinWidthMob), mapping($layout, themeBtn, btnPrimaryMinWidthMob), 150px);
+
+    @media #{$small-up} {
+        min-width: mapping($layout, themeBtn, btnPrimaryMinWidth);
+    }
+
+    padding: 5px 15px;
+    border-width: 4px;
+    display: inline-block;
+    font-size: em(21);
+    font-family: "Arial-Rounded",
+    Arial,
+    sans-serif;
+    font-weight: $fontBold;
+    text-align: center;
+    text-decoration: none;
+    border-style: solid;
+    border-color: if(mapping($layout, themeBtn, borderColor), mapping($layout, themeBtn, borderColor), $pink);
+    background-color:if(mapping($layout, themeBtn, bgndColor), mapping($layout, themeBtn, bgndColor), $white);
+    color: if(mapping($layout, themeBtn, color), mapping($layout, themeBtn, color), $violet) !important;
+    @include border-radius(if(mapping($layout, themeBtn, borderRadius), mapping($layout, themeBtn, borderRadius), 2em) !important);
+
+    &:hover,
+    &:focus,
+    &.active {
+        border-color: if(mapping($layout, themeBtn, hoverBorderColor), mapping($layout, themeBtn, hoverBorderColor), $white);
+        color: if(mapping($layout, themeBtn, hoverColor), mapping($layout, themeBtn, hoverColor), $pink);
+
+        @if mapping($layout, main, canvasNav)==true {
+            background-color: mapping($layout, themeBtn, hoverBgndColor);
+        }
+    }
+
+    @if mapping($layout, main, isRescueHeroes)==true {
+        display: inline-block;
+        border-color: transparent;
+        background-color: $black;
+        color: $white;
+        @include border-radius(0);
+
+        &:hover,
+        &:focus,
+        &.active {
+            border-color: transparent;
+            color: transparent;
+        }
+    }
+}
+
+//esrb-model-btns
+.btn-cancel,
+.btn-continue {
+    cursor: pointer;
+    margin: em(10);
+    padding: em(5) em(20);
+    display: inline-block;
+    border-width: em(2);
+    font-size: em(24);
+    font-family: "Arial-Rounded", Arial, sans-serif;
+    font-weight: $fontBold;
+    text-align: center;
+    border-style: solid;
+    @include border-radius(2em !important);
+}
+
+.btn-continue {
+    color: $white;
+    background: $violet;
+    border-color: $dark-pink;
+
+    &:hover,
+    &:focus,
+    &.active {
+        background: $dark-pink;
+        color: $white;
+        border-color: $violet;
+    }
+}
+
+.btn-cancel {
+    color: $violet;
+    background: $white;
+    border-color: $dark-pink;
+
+    &:hover,
+    &:focus,
+    &.active {
+        color: $pink;
+        background: $white;
+        border-color: $violet
+    }
+}
+
+.btn-cta {
+    padding: 20px 90px;
+    border-width: 4.5px;
+    border-style: solid;
+    font-family: "Arial-Rounded", Arial, sans-serif;
+    font-size: em(19);
+    font-weight: $fontBold;
+    text-transform: none;
+    letter-spacing: 1px;
+    line-height: 1;
+    @include border-radius(2em !important);
+
+    &:link {
+        color: $white;
+    }
+
+    @extend .btn-theme-play;
+}
+
+:link.btn-play-default {
+    color: $white;
+}
+
+.btn-play-default {
+    cursor: pointer;
+    display: inline-block;
+    max-width: 100%;
+    min-width: 150px;
+    padding: em(10) em(20);
+    border-width: em(4.5);
+    border-style: solid;
+    @include border-radius(2em);
+    font-size: 1em;
+    font-family: "Swiss", sans-serif;
+    font-weight: "$fontRegular";
+    text-align: center;
+    text-decoration: none;
+    text-transform: none;
+    white-space: normal;
+    letter-spacing: 1px;
+    line-height: 1;
+    @extend .btn-theme-play;
+}
+
+//margins
+.margin-LR0 {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
+.video-page-title,
+.play-page-title {
+
+    &.no-image,
+    &.full-width {
+        &>div {
+            width: 100%;
+            padding: mapping($layout, pageTitle, padding);
+            padding: mapping($layout, pageTitle, paddingTitleDiv);
+
+            @media #{$medium-down} {
+                padding: mapping($layout, pageTitle, paddingTab);
+                padding: mapping($layout, pageTitle, paddingTitleDiv);
+            }
+
+            @media #{$small-down} {
+                padding: mapping($layout, pageTitle, paddingMob);
+                padding: mapping($layout, pageTitle, paddingTitleDiv);
+            }
+        }
+
+        @if mapping($layout, pageTitle, isAfterBgnd)==true {
+            position: relative;
+            display: inline-block;
+            width: 100%;
+
+            p:empty {
+                display: none;
+            }
+
+            &:after {
+                content: "";
+                background: mapping($layout, pageTitle, afterBgnd);
+                background-size: mapping($layout, pageTitle, afterBgndSize);
+
+                @if mapping($layout, pageTitle, isAfterBgndFixedBtm)==true {
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    width: 100%;
+                    height: mapping($layout, pageTitle, afterBgndHght);
+                }
+            }
+        }
+
+        @if mapping($layout, main, canvas)==true {
+            //background-image:mapping($layout, pageTitle, pageTitleTopBgndImg);
+            // background-repeat:mapping($layout, pageTitle, pageTitleTopBgndRepeat);
+            // background-size:mapping($layout, pageTitle, pageTitleTopBgndsize);
+            padding-top: mapping($layout, pageTitle, pageTitleTopPad);
+
+            @media #{$medium-down} {
+                padding-bottom: mapping($layout, pageTitle, paddingBottomMob);
+                border-bottom: mapping($layout, pageTitle, borderBottomMob);
+                border-top: mapping($layout, pageTitle, borderBottomMob);
+
+            }
+        }
+    }
+}
+
+.globalHeader {
+    top: 84px;
+    left: 0px;
+    // z-index: 1025;
+    z-index: 1;
+    position: fixed;
+
+    @media #{$large-up} {
+        top: 84px;
+    }
+
+    @media #{$medium-down} {
+        top: 75px;
+    }
+}
+
+.global-mattel-header {
+    height: 72px;
+
+   
+    @media #{$medium-down} {
+        height: 38px;
+    }
+
+    a {
+        img {
+            height: 56px;
+            width: 160px;
+            margin-top: 1%;
+            margin-left: 50px;
+
+            @media #{$large-up} {
+                margin-top: 10px;
+            }
+
+            @media #{$medium-down} {
+                margin-top: 7px;
+                height: 30px;
+                width: 94px;
+                margin-left: 22px;
+            }
+        }
+
+    }
+
+    .slick-arrow {
+        font-size: 1em;
+        top: 45%;
+        background: transparent;
+        transform: translate(0, -50%);
+
+        &.slick-next:before,
+        &.slick-prev:before {
+            content: "\f359";
+            @include font-awesome();
+            color: #674B9e;
+            vertical-align: top;
+            font-size: 58px;
+            background: none;
+            opacity: 1;
+
+            @media #{$medium-down} {
+                font-size: em(48);
+            }
+        }
+
+        &.slick-next:before {
+            content: "\f35a";
+        }
+    }
+
+    .slick-prev:before,
+    .slick-next:before {
+        opacity: 1;
+    }
+
+    .slick-dots li {
+        width: auto;
+        height: auto;
+        margin: 0;
+        max-width: 18.5px;
+
+        button {
+            width: 18.5px;
+            height: 18px;
+            margin: 5px 0px;
+            background-color: $athens-grey;
+        }
+
+        &.slick-active {
+            button {
+                background-color: $yellow;
+            }
+        }
+    }
+}
+
+.slick-arrow-extend {
+    .slick-arrow {
+        font-size: 1em;
+        width: 35px;
+        height: 35px;
+
+        &.slick-next:before,
+        &.slick-prev:before {
+            content: "\f104";
+            @include font-awesome();
+            color: $white;
+            vertical-align: top;
+            font-size: em(38);
+            line-height: inherit;
+            background: none;
+        }
+
+        &.slick-prev {
+            left: -25px;
+        }
+
+        &.slick-next {
+            right: -30px;
+
+            &:before {
+                content: "\f105";
+            }
+        }
+    }
+}
+
+.banner-btn-theme {
+    // background-color: $banner-bg;
+    // border: em(3) solid $banner-border;
+    // color: $banner-txt;
+    font-size: em(19);
+
+    &:hover {
+        // background: $banner-border !important;
+        // border: em(3) solid $banner-bg;
+    }
+}
+
+.grid-border-style {
+    border-color: inherit;
+    border: mapping($layout, grid, border);
+    border-radius: mapping($layout, grid, borderRadius);
+    -webkit-border-radius: mapping($layout, grid, borderRadius);
+    -moz-border-radius: mapping($layout, grid, borderRadius);
+    -ms-border-radius: mapping($layout, grid, borderRadius);
+}
+
+.filter-tab-style {
+    font-family: inherit;
+    font-size: mapping($layout, filterTab, fntSize);
+    padding: mapping($layout, filterTab, padding);
+    color: mapping($layout, filterTab, color);
+    text-transform: mapping($layout, filterTab, transform);
+    background: mapping($layout, filterTab, bgnd);
+    background-size: mapping($layout, filterTab, bgndSize);
+
+    @media #{$medium-down} {
+        font-size: mapping($layout, filterTab, fntSizeTab);
+    }
+
+    @media #{$small-down} {
+        font-size: mapping($layout, filterTab, fntSizeMob);
+        color: mapping($layout, filterTab, colorMob);
+        font-family: mapping($layout, filterTab, fntFamilyMob);
+        font-weight: mapping($layout, filterTab, fntWeightMob);
+        text-transform: mapping($layout, filterTab, transformMob);
+        background: mapping($layout, filterTab, bgndMob);
+    }
+
+    &:hover,
+    &.active {
+        color: mapping($layout, filterTab, colorHover);
+        background: mapping($layout, filterTab, bgndHover);
+        background-size: mapping($layout, filterTab, bgndSize);
+    }
+}
+
+.nav-categorylist {
+    li {
+        a {
+            @extend .filter-tab-style;
+        }
+    }
+}
+
+@if mapping($layout, main, isEnchantimals)==true {
+    .modal-open {
+        padding-right: 0 !important;
+        overflow: auto;
+    }
+}
+
+@mixin page-after-bgnd($pos) {
+    @if mapping($layout, afterBgnd, isAvailable)==true {
+        position: relative;
+
+        &:after {
+            content: "";
+            background: mapping($layout, afterBgnd, bgnd);
+            height: mapping($layout, afterBgnd, bhndHeight);
+            width: 100%;
+            position: absolute;
+            left: 0;
+            #{$pos}: 0;
+            //background-size: 16px;
+        }
+    }
+}
+
+//flex mixin
+@mixin flex-direction($direction) {
+    -webkit-flex-direction: $direction;
+    -ms-flex-direction: $direction;
+    flex-direction: $direction;
+}
+
+@mixin align-self($flexalign) {
+    -ms-flex-item-align: $flexalign;
+    align-self: $flexalign;
+}
+
+@mixin justify-content($justifyContent) {
+    -webkit-justify-content: $justifyContent;
+    justify-content: $justifyContent;
+}
+
+//breadcrumb - page title
+.bc-title {
+    color: #000000;
+    font-family: "Noto Sans Bold", sans-serif;
+    font-size: 32px;
+    font-weight: bold;
+    // line-height: 36px;
+    text-align: center;
+    line-height: 1;
+    margin-top: 10px;
+    margin-bottom: 25px;
+
+    @media #{$small-down} {
+        font-size: 20px;
+        line-height: 24px;
+        margin-bottom: 10px;
+        margin-top: 0px;
+
+        // display: none;
+        @if mapping($layout, breadCrumb, isFisherPriceBC)==true {
+            margin-bottom: mapping($layout, breadCrumb, BCmarginBT);
+        }
+    }
+}
+
+.bc-title+h1 {
+    margin: 0;
+    padding: 0;
+}
+
+.bc-title sup {
+    font-size: 18px;
+
+    @media #{$small-down} {
+        font-size: 12px;
+    }
+
+    //top:-0.9em;
+}
+
+#BVRRContainer,
+#BVQAContainer {
+    float: left;
+    width: 100%;
+}
+
+@if mapping($layout, main, canvasNav)==true {
+    body {
+        &.body-overflow {
+            overflow-y: hidden;
+        }
+    }
+}
+
+.oo-action-icon {
+    content: '';
+    background-image: url('/apps/mattel/play/clientlibs/clientlib-canvas/resources/img/play.png') !important;
+    background-repeat: no-repeat !important;
+    display: block !important;
+    width: 100px !important;
+    height: 100px !important;
+    max-width: 100% !important;
+    background-size: 100% !important;
+
+    @media #{$small-only} {
+        width: 60px !important;
+        height: 60px !important;
+        background-size: 100% !important;
+    }
+
+    span {
+        display: none;
+    }
+}
+
+.brand-list-item.col-5.global-header-page{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    @media #{$large-up} {
+        padding-bottom: 20px;
+    }
+    
+    @media #{$medium-only} {
+        margin: 0 125px;
+    }
+    @media #{$small-only} {
+        margin: 0 20px;
+    }
+    li{
+        width: 17%;
+        padding: 0;
+        @media #{$medium-only} {
+            width: 33%;
+        }
+        @media #{$small-only} {
+            width: 50%;
+        }
+
+    }
+    .title-name{
+        display: none;
+    }
+}

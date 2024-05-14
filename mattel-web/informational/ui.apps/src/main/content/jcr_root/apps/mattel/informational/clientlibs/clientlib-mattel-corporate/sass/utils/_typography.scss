@@ -1,0 +1,204 @@
+$headerstyles:(
+  h1:(
+        font:(
+            xl: 42px,
+            lg: 42px,
+            md: 42px,
+            sm: 32px,
+            xs: 32px
+        ),
+        line-height:(
+            xl: 48px,
+            lg: 48px,
+            md: 48px,
+            sm: 32px,
+            xs: 32px
+        )
+    ),
+    h2:(
+      font:(
+            xl: 36px,
+            lg: 36px,
+            md: 36px,
+            sm: 24px,
+            xs: 24px
+        ),
+        line-height:(
+            xl: 42px,
+            lg: 42px,
+            md: 42px,
+            sm: 28px,
+            xs: 28px
+        )
+    ),
+    h3:(
+      font:(
+            xl: 32px,
+            lg: 32px,
+            md: 32px,
+            sm: 20px,
+            xs: 20px
+        ),
+        line-height:(
+            xl: 32px,
+            lg: 32px,
+            md: 32px,
+            sm: 24px,
+            xs: 24px
+        )
+    ),
+    h4:(
+      font:(
+            xl: 24px,
+            lg: 24px,
+            md: 24px,
+            sm: 18px,
+            xs: 18px
+        ),
+        line-height:(
+            xl: 32px,
+            lg: 32px,
+            md: 32px,
+            sm: 24px,
+            xs: 24px
+        )
+    ),
+    h5:(
+      font:(
+            xl: 18px,
+            lg: 18px,
+            md: 18px,
+            sm: 18px,
+            xs: 18px
+        ),
+        line-height:(
+            xl: 24px,
+            lg: 24px,
+            md: 24px,
+            sm: 24px,
+            xs: 24px
+        )
+    ),
+);
+// @include font-style(map-get($headerstyles, description));
+@mixin font-style($fontsize) {
+  $isFontsize : type-of(map-get($fontsize, font))==map;
+  $isLineheight : type-of(map-get($fontsize, line-height))==map;
+
+  font-size: $isFontsize and map-get(map-get($fontsize, font), xs) or null;
+  line-height: $isLineheight and map-get(map-get($fontsize, line-height), xs) or null;
+
+  @media #{$sm-only} {
+      font-size: $isFontsize and map-get(map-get($fontsize, font), sm) or null;
+      line-height: $isLineheight and map-get(map-get($fontsize, line-height), sm) or null;
+  }
+  @media #{$md-only} {
+      font-size: $isFontsize and map-get(map-get($fontsize, font), md) or null;
+      line-height: $isLineheight and map-get(map-get($fontsize, line-height), md) or null;
+  }
+  @media #{$lg-only} {
+      font-size: $isFontsize and map-get(map-get($fontsize, font), lg) or null;
+      line-height: $isLineheight and map-get(map-get($fontsize, line-height), lg) or null;
+  }
+  @media #{$xl-only} {
+      font-size: $isFontsize and map-get(map-get($fontsize, font), xl) or null;
+      line-height: $isLineheight and map-get(map-get($fontsize, line-height), xl) or null;
+  }
+
+}
+
+body {
+  &.corporate-basepage, .corp-xf-page {
+    font-family: $MattelCorpPrimaryFontRoman;
+    color: $black;
+    font-size: 16px;
+    letter-spacing: 0.15px;
+    
+    .body-lg{
+      font-size: 16px !important;
+    }
+    .body-md{
+      font-size: 14px !important;
+    }
+    .body-sm{
+      font-size: 12px !important;
+    }
+    .primaryfont{
+      font-family: $MattelCorpPrimaryFontRoman !important;
+    }
+    .secondaryfont {
+      font-family: $MattelCorpPrimaryFontLight !important;
+    }
+    .tertiaryfont {
+      font-family: $MattelCorpPrimaryFontBold !important;
+    }
+  }
+
+  // Headings styles
+
+  h1{
+    @include font-style(map-get($headerstyles, h1));
+  }
+  h2{
+    @include font-style(map-get($headerstyles, h2));
+  }
+  h3{
+    @include font-style(map-get($headerstyles, h3));
+  }
+  h4{
+    @include font-style(map-get($headerstyles, h4));
+  }
+  h5{
+    @include font-style(map-get($headerstyles, h5));
+  }
+  h1,h2,h3,h4,h5{
+    font-family: $MattelCorpPrimaryFontBold;
+    margin: 0;
+    padding: 0;
+    .center{
+      text-align: center;
+    }
+    .left{
+      text-align: left;
+    }
+    .right{
+      text-align: right;
+    }
+    .black{
+      color: $black;
+    }
+    .white{
+      color: $white;
+    }
+    .gray{
+      color: $corp-gray;
+    }
+    .mattel-red{
+      color: $mattel-red;
+    }
+    .ada-red{
+      color: $ada-red;
+    }
+    .light{
+      font-weight: 300;
+    }
+    .regular{
+      font-weight: 400;
+    }
+    .bold{
+      font-weight: 600;
+    }
+    .italic{
+      font-style: italic;
+    }
+  }  
+  h4 {
+    font-family: $MattelCorpPrimaryFontRoman;
+  }
+}
+
+
+
+
+
+

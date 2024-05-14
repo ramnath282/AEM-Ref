@@ -1,0 +1,34 @@
+<sly data-sly-test="${properties.backgroundType == 'image'}">
+	<sly data-sly-test.bgConfig="background-image: url('${properties.backgroundImage}'); 
+								 background-repeat: ${properties.backgroundImgType}; 							
+								background-size: ${properties.backgroundImgType == 'cover' ? 'cover' : ''};">
+	</sly>							
+</sly>		
+<sly data-sly-test="${properties.backgroundType == 'color'}">
+	<sly data-sly-test.bgConfig="background-color: ${properties.backgroundColor}"></sly>
+</sly>				
+<sly data-sly-test="${properties.backgroundType == 'gradient'}">
+	<sly data-sly-test.bgConfig="background-image: ${properties.backgroundGradient}"></sly>
+</sly>
+
+<div class="gt-wrapper" style="${bgConfig @ context='unsafe'}">
+	  <div class="gt-container" style="background-color: ${properties.containerColor @ context='unsafe'}">
+			 <div class="row">
+				<sly data-sly-resource="${'columnone' @ resourceType='wcm/foundation/components/responsivegrid'}"></sly>
+			</div>
+		</div>
+</div>
+
+<script>
+	$(document).ready(function(){
+    $(document).on("click", ".aem-Grid.aem-Grid--12.aem-Grid--default--12  a.gt-btn.summary-page", function () {
+        if(sessionStorage.getItem("pdp")=="true"){
+        	window.location.href= $('.aem-Grid.aem-Grid--12.aem-Grid--default--12 span.gt-btn-pdp-span.hidden').text();
+        } else {
+			window.location.href= $('.aem-Grid.aem-Grid--12.aem-Grid--default--12 span.gt-btn-cta-span.hidden').text();
+        }
+
+    });
+});
+</script>
+

@@ -1,0 +1,146 @@
+.return-form-body{
+    padding: em(17) 0;
+    .return-form{
+        ul{
+            display:flex;
+            justify-content: center;
+             @media #{$small-down} {
+                display: block;
+            }
+            li{
+                @media #{$small-down} {
+                    margin-bottom: 15px;
+                    width: 100%;
+                }
+                &:last-child{
+                    @media #{$small-down} {
+                        margin-bottom: 0px;
+                    }
+                }
+                //
+
+                .default-state{
+                    .bs-caret{
+                        position: absolute;
+                        right: em(26);
+                        top: em(26);
+                        margin-top: em(-10);
+                        width:em(15);
+                        height: em(15);
+                        display: flex;
+                        z-index: -1;
+                        &:before{
+                            content: "\f078";
+                            font-family: $iconFontFamily;
+                            vertical-align: middle;
+                            width: 100%;
+                            text-align: center;
+                            font-size: em(15);
+                        }
+                    }
+                    select{
+                        background: transparent;
+                        background-image: none;
+                        z-index: 1;
+                        color: inherit;
+                    }
+                    select:not(.active) ~ .bs-caret:before{
+                        content: "\f078";
+                    }
+                    // select:focus ~ .bs-caret:before {
+                    //     //content: "\f077";
+                    // }
+                    select.active ~ .bs-caret:before{
+                        content: "\f077";
+                    }
+                    select:not(:focus):invalid {
+                        color: $color-medium-grey;
+                    }
+                }
+
+                //
+            }
+        }
+        .placeholder-label {
+            padding: em(14);
+            left: em(4);
+        }
+        select ~ .placeholder-label{
+            font:mapping($form,placeholderLabel,font) !important;
+			color: mapping($form,placeholderLabel,color);
+			@include content-spacing(map-get($form, placeholderLabel));
+			pointer-events: none;			
+			top: 0;
+			transition: -webkit-transform .2s ease;
+			transition: transform .2s ease;
+			transition: transform .2s ease, -webkit-transform .2s ease;
+			will-change: transform;
+			-webkit-transform-origin: left;
+			transform-origin: left;
+			position: absolute;
+			text-transform: capitalize;
+			display: inline-block;
+			max-width: 100%;
+			margin: 0 0 em(5) 0 !important;
+			padding: em(14);
+            left: em(4);
+        }
+        select:focus~.placeholder-label, select.not-empty~.placeholder-label {
+			@include transform(translateY(-10px) scale(.6));
+			font-weight: $fontBold !important;
+		}
+        fieldset{
+            margin: em(15) 0;
+        }
+        .has-error{
+            .form-message, .hint-message{
+                font-size: em(13);
+                width: em(264,14);
+                @media #{$small-down} {
+                    width: 100%;
+                }
+            }
+        }
+        
+        .form-input {
+            font: $fontRegular em(16) $primaryFontFamily;
+            height: em(41);
+            @include content-spacing(map-get($layout, input));
+            border: mapping($layout, input, border);
+            margin-bottom: 0;
+            &.long-input {
+                max-width: map-get(mapping($layout, input, widthSize), long);
+                //width: 100%;
+                width: em(206);
+                border-radius: em(10);
+                font-size: em(18);
+                box-shadow: none;
+                &:focus{	
+                    border: 1px solid $hoverColor !important;	
+                    outline:0;	
+                }
+                @media #{$small-down} {
+                    width: 100%;
+                }
+            }
+            &.no-placeholder-label {
+                @include content-spacing(map-get($layout, placeholderPadding));
+            }
+        }
+
+        .generate-lebel{
+            text-align: center;
+            .theme-btn{
+                border-radius: 10px;
+                width: em(126.5);
+                height: em(31.5);
+                font-size: em(20);
+                padding: 0;
+                &:focus{
+                    outline: none;
+                    border: 1px solid $hoverColor;
+                }
+            }
+        }
+    }
+}

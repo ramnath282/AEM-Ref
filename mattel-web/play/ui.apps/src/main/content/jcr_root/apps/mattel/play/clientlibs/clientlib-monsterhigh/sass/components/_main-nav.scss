@@ -1,0 +1,431 @@
+// Hamburger Styles
+.hamburger {
+  color: mapping($mainNav, hamburger, txtColor);
+  margin: 25px 25px 20px 0;
+  float: mapping($mainNav, hamburger, floating);
+  padding: 0;
+  @media #{$medium-up} {
+    // display: mapping($mainNav, hamburger, tabLandscapeDisplay);
+    display: none;
+  }
+  @media #{$large-up} {
+    display: mapping($mainNav, hamburger, desktopDisplay);
+  }
+  @media #{$small-only} {
+    margin: 14px 18px 4px 0;
+  }
+  &.open {
+    @media #{$medium-only} {
+    margin: 23px 25px 20px 0;
+    }
+    &:after {
+       content: " ";
+            background-size: cover;
+            background-image: url("/content/dam/monster-high/monsterhigh-play/header/nav-images/MH_nav-close.png");
+            @media #{$medium-only} {
+            height: 39px;
+            width: 39px;
+            }
+            @media #{$small-only} {
+              height: 26px;
+               width: 26px;
+            }
+    }
+  }
+  &:focus {
+    color: $white; // mapping($mainNav,hamburger,focusColor);
+  }
+  &:hover {
+    color: $white; //mapping($mainNav,hamburger,hoverColor);
+  }
+}
+.hamburger{
+  &:after {
+          content: " ";
+            background-size: cover;
+            background-image: url("/content/dam/monster-high/monsterhigh-play/header/nav-images/MH_nav-hamburger.png");
+            @media #{$medium-only} {
+            height: 35px;
+            width: 46px;
+            }
+            @media #{$small-only} {
+              height: 27.13px;
+              width: 35px;
+            }
+  }
+}
+// Primary Navigation Styles
+.primary-nav {
+  @media #{$medium-down} {
+    display: none;
+    position: absolute;
+    left: mapping($mainNav, primaryNav, mobPosLeft);
+    top: mapping($mainNav, primaryNav, mobPosTop);
+    width: mapping($mainNav, primaryNav, mobWidth);
+    height: mapping($mainNav, primaryNav, mobHeight);
+    // background-color: mapping($mainNav,primaryNav,mobBgndColor);
+    box-shadow: 0 0.125em 0.125em rgba(0, 0, 0, 0.25);
+    max-height: mapping($mainNav, primaryNav, mobMaxHeight);
+    background-image: mapping($mainNav, primaryNav, deskDownBgImage);
+    background-size: if(
+      mapping($mainNav, primaryNav, bgSize),
+      mapping($mainNav, primaryNav, bgSize),
+      7em
+    );
+    background-repeat: mapping($mainNav, primaryNav, bgRepeat);
+    background-position: mapping($mainNav, primaryNav, bgPosition);
+    // overflow-y: scroll;
+    ul {
+      // background-color: mapping($mainNav,primaryNavUL,mobBgndColor);
+      // background-image: mapping($mainNav, primaryNavUL, deskDownBgImage);
+      // background-position: 95% 90%;
+      // background-size: if(
+      //   mapping($mainNav, primaryNavUL, bgSize),
+      //   mapping($mainNav, primaryNavUL, bgSize),
+      //   7em
+      // );
+      // background-repeat: no-repeat;
+      @media #{$small-down} {
+        text-align: mapping($mainNav, primaryNavUL, textAlign);
+        background-image: mapping($mainNav, primaryNavUL, mobBgImage);
+      }
+    }
+  }
+  @media #{$medium-up} {
+    float: mapping($mainNav, primaryNav, floating);
+    display: mapping($mainNav, primaryNav, desktopDisplay);
+    min-height: mapping($mainNav, primaryNav, minHeight);
+    background: mapping($mainNav, primaryNav, bgnd);
+    height: mapping($mainNav, primaryNav, height);
+  }
+  ul {
+    font-family: mapping($mainNav, primaryNavUL, fontFamily);
+    // margin: mapping($mainNav,primaryNavUL,mobMargin);
+    // padding-top: 75px;
+    // padding-left: 60px;
+    @media #{$medium-up} {
+      margin: 0;
+    }
+    @media #{$large-up} {
+      margin: mapping($mainNav, primaryNavUL, desktopMargin);
+    }
+    @media #{$medium-up} {
+      height: mapping($mainNav, primaryNavUL, desktopHeight);
+    }
+    li {
+       @media #{$medium-up} {
+         margin-left:-4px;
+       }
+      display: block;
+      position: relative;
+      // padding: mapping($mainNav,primaryNavUlLi,mobPad);
+      @media #{$small-up} {
+        padding: mapping($mainNav, primaryNavUlLi, mobTabPad);
+      }
+      @media #{$medium-up} {
+        display: inline-table;
+        // padding: mapping($mainNav,primaryNavUlLi,mobPad);
+        // height: mapping($mainNav,primaryNavUL,desktopHeight);
+        &:hover,
+        &:focus,
+        &:focus-within {
+          ul {
+            display: block;
+            visibility: visible;
+          }
+        }
+      }
+      a {
+        font-family: "YellowBalloon";
+        font-weight: 400;
+        color: mapping($mainNav, primaryNavUlLiA, mobAnchorColor);
+        letter-spacing: 1px;
+        line-height: 41px;
+        height: 41px;
+        padding: 0;
+        text-align: center;
+        @media #{$medium-up} {
+          color: mapping($mainNav, primaryNavUlLiA, desktopAnchorColor);
+          display: table-cell;
+          vertical-align: middle;
+          border-bottom: mapping($mainNav, primaryNavUlLiA, borderBottom);
+          // padding: mapping($mainNav,primaryNavUlLiA,desktopPad);
+          &.active {
+            border-bottom: mapping(
+              $mainNav,
+              primaryNavUlLiA,
+              anchActiveBrdrBot
+            );
+            color: mapping($mainNav, primaryNavUlLiA, anchorActiveColor);
+            background: #000;
+          }
+          &:hover {
+            color: mapping($mainNav, primaryNavUlLiA, desktopAnchorHoverColor);
+            background: #000;
+          }
+        }
+        display: block;
+        text-decoration: mapping($mainNav, primaryNavUlLiA, textDecoration);
+        font-size: mapping($mainNav, primaryNavUlLiA, fontSize);
+        // font-size: 30px;
+        text-transform: none;
+        // padding:mapping($mainNav,primaryNavUlLiA,mobPad);
+        @media #{$large-down} {
+          -webkit-text-stroke-width: mapping(
+            $mainNav,
+            primaryNavUlLiA,
+            strokeWidth
+          );
+          -webkit-text-stroke-color: mapping(
+            $mainNav,
+            primaryNavUlLiA,
+            strokeColor
+          );
+        }
+        @media #{$medium-only} {
+          height: 52px;
+          // color: #FFFDFD;
+          font-family: "YellowBalloon";
+          font-weight: 400;
+          font-size: 42px;
+          line-height: 52px;
+        }
+        span {
+          font-family: inherit;
+          font-weight: inherit;
+        }
+      }
+      .header-img {
+        width: mapping($mainNav, headerImage, width);
+        height: mapping($mainNav, headerImage, height);
+        margin-right: mapping($mainNav, headerImage, marRight);
+      }
+      ul {
+        display: none;
+        background-color: mapping($mainNav, primaryNavUlLiUL, bgndColor);
+        position: absolute;
+        top: mapping($mainNav, primaryNavUlLiUL, posTop);
+        left: mapping($mainNav, primaryNavUlLiUL, posLeft);
+        width: mapping($mainNav, primaryNavUlLiUL, width);
+        -webkit-transition: 250ms cubic-bezier(0.25, 0.75, 0.75, 1.25);
+        -o-transition: 250ms cubic-bezier(0.25, 0.75, 0.75, 1.25);
+        transition: 250ms cubic-bezier(0.25, 0.75, 0.75, 1.25);
+        height: auto;
+        @media #{$medium-up} {
+          top: 100%;
+          left: 0;
+          width: 100%;
+          background: #00aeef;
+        }
+        li {
+          display: block;
+          font-size: mapping($mainNav, primaryNavUlLiUlLi, fontSize);
+          padding: mapping($mainNav, primaryNavUlLiUlLi, pad);
+          @media #{$medium-up} {
+            padding: 0;
+          }
+          a {
+            color: mapping($mainNav, primaryNavUlLiUlLiA, txtColor);
+            border-bottom: mapping(
+              $mainNav,
+              primaryNavUlLiUlLiA,
+              borderBottom
+            ); // padding: mapping($mainNav,primaryNavUlLiUlLiA,pad);
+            font-family: "Yellow Balloon";
+            display: inline-block;
+          }
+        }
+      }
+    }
+  }
+  @media #{$medium-up} {
+    ul {
+      li {
+        a {
+          &.show-sub-nav {
+            font-size: mapping($mainNav, primaryNavUlLiA, showSubNavFontSize);
+            color: mapping($mainNav, primaryNavUlLiA, showSubNavColor);
+            width: mapping($mainNav, primaryNavUlLiA, showSubNavWidth);
+            height: mapping($mainNav, primaryNavUlLiA, showSubNavHeight);
+            float: mapping($mainNav, primaryNavUlLiA, showSubNavFloat);
+            // padding: mapping($mainNav,primaryNavUlLiA,showSubNavPad);
+            line-height: mapping(
+              $mainNav,
+              primaryNavUlLiA,
+              showSubNavLineHeight
+            );
+            text-align: mapping($mainNav, primaryNavUlLiA, showSubNavTextAlign);
+            margin-top: mapping($mainNav, primaryNavUlLiA, showSubNavMarginTop);
+          }
+        }
+        ul {
+          display: none;
+          background-color: mapping(
+            $mainNav,
+            primaryNavUlLiUL,
+            deskDownBgndColor
+          );
+          position: mapping($mainNav, primaryNavUlLiUL, deskDownPos);
+          top: mapping($mainNav, primaryNavUlLiUL, deskDownPosTop);
+          left: mapping($mainNav, primaryNavUlLiUL, deskDownPosLeft);
+          width: mapping($mainNav, primaryNavUlLiUL, deskDownWidth);
+          li {
+            font-size: mapping($mainNav, primaryNavUlLiUlLi, deskDownFontSize);
+            padding: mapping($mainNav, primaryNavUlLiUlLi, deskDownPad);
+            border: mapping($mainNav, primaryNavUlLiUlLi, deskDownBrdr);
+            text-indent: mapping(
+              $mainNav,
+              primaryNavUlLiUlLi,
+              deskDownTxtIndent
+            );
+          }
+        }
+      }
+    }
+  }
+  & > ul {
+    & > li {
+      height: 100%;
+      a {
+        @media #{$medium-up} {
+          padding-left: 32px;
+          padding-right: 32px;
+        }
+      }
+      &:last-of-type {
+        a {
+          @media #{$medium-up} {
+            padding-right: 43px;
+          }
+        }
+      }
+      ul {
+        @media #{$medium-up} {
+          left: 0;
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+// tablet view monster high 
+@media #{$medium-only} {
+  .primary-nav {
+    background-image: url("/content/dam/monster-high/monsterhigh-play/bg-images/video-filter-bg.png");
+    background-repeat: no-repeat;
+    background-size: inherit;
+    top: 80px;
+    ul {
+      padding-left: 113px;
+      padding-top: 75px;
+      li {
+          &:nth-child(1) {
+          ::before {
+            content: " ";
+            height: 39px;
+            width: 39px;
+            position: absolute;
+            left: -55px;
+            background-size: cover;
+            background-image: url("/content/dam/monster-high/monsterhigh-play/header/nav-images/game_icon.png");
+          }
+        }
+        &:nth-child(2) {
+          ::before {
+            content: " ";
+            height: 39px;
+            width: 36px;
+            position: absolute;
+            left: -55px;
+            background-size: cover;
+            background-image: url("/content/dam/monster-high/monsterhigh-play/header/nav-images/character_icon.png");
+          }
+        }
+        a {
+          color: #fffdfd;
+          font-family: "YellowBalloon";
+          font-weight: 400;
+          font-size: 42px;
+          line-height: 42px;
+          text-align: left;
+        }
+        padding: 0;
+        &:nth-child(2),
+        &:nth-child(3) {
+          padding-top: 20px;
+        }
+      }
+    }
+     &::after{
+      content: " ";
+      width: 100%;
+      height: 188px;
+      background-image: url("/content/dam/monster-high/monsterhigh-play/header/nav-images/nav_doll.png");
+      background-size: contain;
+      display: block;
+      background-repeat: no-repeat;
+      background-position: right;
+    }
+  }
+}
+// mobile view
+@media #{$small-only} {
+  .primary-nav {
+    background-image: url("/content/dam/monster-high/monsterhigh-play/bg-images/video-filter-bg.png");
+    background-repeat: no-repeat;
+    background-size: inherit;
+    top: 50px;
+    ul {
+      padding-left: 97px;
+      padding-top: 38px;
+      li {
+        &:nth-child(1) {
+          ::before {
+            content: " ";
+            height: 39px;
+            width: 39px;
+            position: absolute;
+            left: -55px;
+            background-size: cover;
+            background-image: url("/content/dam/monster-high/monsterhigh-play/header/nav-images/game_icon.png");
+          }
+        }
+        &:nth-child(2) {
+          ::before {
+            content: " ";
+            height: 39px;
+            width: 36px;
+            position: absolute;
+            left: -55px;
+            background-size: cover;
+            background-image: url("/content/dam/monster-high/monsterhigh-play/header/nav-images/character_icon.png");
+          }
+        }
+        a {
+          font-family: "YellowBalloon";
+          font-weight: 400;
+          font-size: 33px;
+          line-height: 39px;
+          color: #ffffff;
+          text-align: left;
+        }
+        padding: 0;
+        &:nth-child(2),
+        &:nth-child(3) {
+          padding-top: 25px;
+        }
+      }
+    }
+    &::after{
+      content: " ";
+      width: 100%;
+      height: 156px;
+      background-image: url("/content/dam/monster-high/monsterhigh-play/header/nav-images/nav_doll.png");
+      background-size: contain;
+      display: block;
+      background-repeat: no-repeat;
+      background-position: center;
+      margin-top: 22px;
+    }
+  }
+}

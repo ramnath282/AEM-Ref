@@ -1,0 +1,130 @@
+<sly data-sly-test="${wcmmode.edit}">${'Configure My Account Summary'@i18n}</sly>
+<div class="my-account-summary" id="myAccountSummary">
+    <h1>${properties.sectionTitle}</h1>
+    <div class="user-info-wrapper">
+        <div class="username">
+            <span>${properties.welcomeText}</span>
+        </div>
+        <p class="user-note">${properties.instructionText}</p>
+    </div>
+
+    <div class="user-info-wrapper col-3-set ag-rewards">
+        <sly data-sly-include="${'/apps/mattel/ecomm/shared/components/content/accountPromoBanner/accountPromoBanner.html'}"></sly>
+        <script id="rewardDetailsTemp" type="text/x-handlebars-script">
+            {{#if loyaltyDetails}}
+
+            <div class="details-list-item">
+            <h2 class="header-label">${properties.agRewardsTitle @context='scriptString'}</h2>
+                 <p>
+					<span class="value-label">${properties.membershipNumberLabel @context='scriptString'} <strong>&nbsp;{{loyaltyDetails.loyaltyNumber}}</strong></span>
+                    <span class="value-label">${properties.rewardPoints @context='scriptString'} <strong> &nbsp;{{loyaltyDetails.loyaltyPoints}}</strong></span>
+                    <span class="value-label">${properties.rewardTier @context='scriptString'} <strong> &nbsp;{{loyaltyDetails.loyaltySegment}}</strong></span>
+                    <span class="value-label">${properties.dollarsOfNextTier @context='scriptString'} <strong> &nbsp;{{loyaltyDetails.loyaltyPointsToNextTier}}</strong></span>
+                    <span class="value-label">${properties.tierExpDate @context='scriptString'} <strong> &nbsp;{{loyaltyDetails.tierExpirationDate}}</strong></span>
+                </p>
+            </div>
+            <div class="details-list-item">
+                <h2 class="header-label">${properties.addReceiptsAndMoreTitle @context='scriptString'}</h2>
+                <p class="value-label">${properties.addReceiptsAndMoreExplanation @context='scriptString'}</p>
+                <a class="agrewards-addnow" href="${properties.addNowLabelCta @context='uri'}{{loyaltyDetails.loyaltyNumber}}" target="_blank">${properties.addNowLabel @context='scriptString'}<span class="sr-only">${properties.addReceiptsAndMoreTitle @context='scriptString'}</span></a>
+            </div>
+
+             <div class="modal fade" id="rewardModal" aria-labelledby="agRewardsModal" data-focus="ag-reward-popup" role="dialog" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" aria-label="close"  class="close close-rewards-modal" data-dismiss="modal"></button>
+                            <h4 id="agRewardsModal" class="modal-title">${properties.modalTitle @context='scriptString'}</h4>
+                        </div>
+                        <div class="modal-body clearfix">
+                            <div class="reward-logo">
+                                <img src="${properties.agRewardsLogo @context='scriptString'}" alt="AG Rewards" >
+                            </div>
+                            <div class="join-rewards">
+                                <p>
+									${properties.modalDescription @context='scriptString'}
+                                </p>
+                                <form>
+                                    <fieldset>
+                                        <div class="input-field required">
+                                            <input type="text" id="childName" class="form-input long-input" />
+                                            <label class="placeholder-label" for="childName">${properties.modalInputboxPlaceholder @context='scriptString'}</label>
+                                        </div>
+                                    </fieldset>
+                                     <input id="jion-agrewards" class="theme-btn" type="submit" value="${properties.joinAGRewardCtaText @context='scriptString'}"/>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{/if}}
+         </script>
+        <div class="details-list row" id="rewardDetails"> </div>
+    </div>
+
+    <div class="user-info-wrapper col-3-set">
+        <div class="details-list row">
+            <div class="details-list-item">
+                <h2 class="header-label">${properties.defaultAddressTitle}</h2>
+                <p>
+                    <script id="addressDetailsTmpl" type="text/x-handlebars-template">
+                        {{#if city}}
+                        <p>
+                            <span class="value-label">{{firstName}} {{lastName}}</span>
+							{{#each addressLine}}
+                            <span class="value-label">{{this}}</span>
+                            {{/each}}
+                            <span class="value-label">{{city}}, {{state}} {{zipCode}} </span>
+                        </p>
+                        <a class="edit-default-address" href="${properties.editrAddAddressCta @context='html'}">${properties.editAddress  @context='scriptString'}<span class="sr-only">${properties.defaultAddressTitle  @context='scriptString'}</span></a>
+                        {{else}}
+                        <a class="add-default-address" href="${properties.editrAddAddressCta @context='html'}">Add new address <span class="sr-only">Default address</span></a>
+                        {{/if}}
+                    </script>
+                <div id="defaultAdd"></div>
+                </p>
+            </div>
+            <div class="details-list-item">
+                <h2 class="header-label">${properties.defaultShippingMethod}</h2>
+                <script id="shippingDetailsTmpl" type="text/x-handlebars-template">
+
+                    {{#if defaultShipMethod}}
+                    <p class="value-label">{{defaultShipMethod}}</p>
+                    <a class="edit-default-shippingmethod" href="${properties.editrAddShippingCta @context='html'}">${properties.editShipping  @context='scriptString'}<span class="sr-only">${properties.defaultShippingMethod  @context='scriptString'}</span></a>
+                    {{else}}
+                    <a class="add-default-shippingmethod" href="${properties.editrAddShippingCta @context='html'}">Add new shipping method<span class="sr-only">Add new shipping method</span></a>
+                    {{/if}}
+
+                </script>
+                <div id="defaultShip"></div>
+            </div>
+            <div class="details-list-item">
+                <h2 class="header-label">${properties.defaultPayment}</h2>
+                <script id="paymentDetailsTmpl" type="text/x-handlebars-template">
+                    {{#if maskAccount}}
+                    <span class="value-label">{{cardType}} ending in {{cardEndDigits}}</span>
+                    
+                        {{#if address.addressLine}}    
+                            <p>
+							<strong>Billing address</strong>
+							{{#each address.addressLine}}
+                             <span class="value-label">{{this}}</span>
+                            {{/each}}
+                            <span class="value-label">{{address.city}}, {{address.state}} {{address.zipCode}}</span>
+                            </p>
+                        {{/if}} 
+
+                    <a class="edit-default-payment" href="${properties.editrAddCrDCardCta @context='html'}">Edit <span class="sr-only">Default Paymet</span></a>
+                    {{else}}
+                    <a class="add-default-payment" href="${properties.editrAddCrDCardCta @context='html'}">Add new credit/debit card <span class="sr-only">Add default payment</span></a>
+                    {{/if}}
+                </script>
+                <div id="defaultPayment"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
+    <sly data-sly-call="${clientlib.js @ categories='ecomm.accountSummary'}"/>
+</sly>

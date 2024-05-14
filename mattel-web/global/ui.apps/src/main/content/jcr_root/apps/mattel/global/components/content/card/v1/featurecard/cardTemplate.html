@@ -1,0 +1,28 @@
+<template data-sly-template.tpl="${ @model}">
+<div data-sly-test="${((!model.cardVariant) || model.cardVariant == 'small') && model.smallImage}" class="small-image">
+	<img src="${model.smallImage}" alt="">
+</div>
+<sly data-sly-test="${properties.stickyBGn == 'true' && model.cardVariant == 'large'}">
+	<div data-sly-test="${model.image}" class="thumbnail-image sticky-bgnd-image-banner" data-mobile-src = "${properties.mobileImage ? properties.mobileImage : model.image}" style="background-image:url(${model.image @ context='html'})"></div>
+</sly>
+<sly data-sly-test="${properties.stickyBGn != 'true'}">
+	<div data-sly-test="${model.cardVariant == 'large'}" class="thumbnail-image">
+	<sly data-sly-test="${properties.promoCardAnchor}"><a data-sly-test="${properties.promoCardAnchor}" href="${properties.promoCardAnchor}"></sly>
+		<picture data-sly-test="${properties.mobileImage || model.image}">
+			<source srcset="${properties.mobileImage ? properties.mobileImage : model.image}" media="(max-width:768px)">
+			<img src="${model.image}" alt="${model.imgAltText}" >
+		</picture>
+	<sly data-sly-test="${properties.promoCardAnchor}"></a></sly>
+	</div>
+</sly>
+<div class="content">
+	<h3 data-sly-test="${model.title}" data-sly-element="${model.titleTag}">${model.title}</h3>
+	${model.description @ context='html'}
+	<sly data-sly-list.button="${model.buttonDetailslist}">
+		<a class="${button.ctaType=='button' ? 'theme-btn' : 'cta-link-with-arrow'}" href="${button.link}" style="color:${button.ctaType =='link'? button.ctaStyle : '' @ context='html'}" role="button">${button.text}</a>
+	</sly>
+</div>
+<div data-sly-test="${model.cardVariant == 'small' &&  model.image}" class="thumbnail-image">
+	<img src="${model.image}" alt="${model.imgAltText}">
+</div>
+</template>

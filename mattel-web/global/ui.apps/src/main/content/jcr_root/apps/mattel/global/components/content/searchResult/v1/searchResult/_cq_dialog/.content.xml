@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Search Result"
+    sling:resourceType="cq/gui/components/authoring/dialog"
+    extraClientlibs="[global.customContentChildreneditor]">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <searchResultconfig
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Search Result Config"
+                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <searchType
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                emptyText="Select search type"
+                                                fieldDescription="search Type"
+                                                fieldLabel="search type"
+                                                name="./searchType"
+                                                required="{Boolean}true">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <corporate
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="corporate"
+                                                        value="corporate"/>
+                                                    <newsroom
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="newsroom"
+                                                        value="newsroom"/>
+                                                    <products
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="products"
+                                                        value="products"/>
+                                                </items>
+                                            </searchType>
+                                            <siteName
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                emptyText="corp"
+                                                fieldDescription="Provide SiteName"
+                                                fieldLabel="Site name"
+                                                name="./siteName"/>
+                                            <articleLoadCount
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Please enter result load count. Result load count and Article load count should be multiples for each other"
+                                                fieldLabel="Article load count"
+                                                name="./articleLoadCount"/>
+                                            <noResultTitle
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                emptyText="oh no! No search Results for: "
+                                                fieldDescription="No Search Result Title"
+                                                fieldLabel="No search result title"
+                                                name="./noSearchResultTitle"/>
+                                            <noResultDesciption
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                emptyText="Please try searching for something else"
+                                                fieldDescription="No Search Result Description"
+                                                fieldLabel="No search result description"
+                                                name="./noSearchResultDescription"/>
+                                            <searchResultTitle
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                emptyText="Search Results for:"
+                                                fieldDescription="Search Result Title"
+                                                fieldLabel="Search result title"
+                                                name="./searchResultTitle"/>
+                                            <resultsTitle
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                emptyText="results"
+                                                fieldDescription="Results title"
+                                                fieldLabel="Results title"
+                                                name="./resultsTitle"/>
+                                            <seeMore
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                emptyText="See More"
+                                                fieldDescription="See more option to load more articles"
+                                                fieldLabel="See more title"
+                                                name="./seeMoreTitle"/>
+                                            <docResultImg
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                                autoStart="{Boolean}false"
+                                                class="cq-droptarget"
+                                                fieldDescription="Image to be displayed when the result type is a Document"
+                                                fieldLabel="Display image for Document result"
+                                                fileNameParameter="./docResultImgFileName"
+                                                fileReferenceParameter="./docResultImgFileRef"
+                                                mimeTypes="[image/gif,image/jpeg,image/png,image/tiff,image/svg+xml]"
+                                                multiple="{Boolean}false"
+                                                name="./docResultImg"
+                                                title="Upload Image Asset"
+                                                uploadUrl="${suffix.path}"
+                                                useHTML5="{Boolean}true"/>
+                                            <webResultImg
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                                autoStart="{Boolean}false"
+                                                class="cq-droptarget"
+                                                fieldDescription="Image to be displayed when the result type is a Webpage"
+                                                fieldLabel="Display image for Webpage result"
+                                                fileNameParameter="./webResultImgFileName"
+                                                fileReferenceParameter="./webResultImgFileRef"
+                                                mimeTypes="[image/gif,image/jpeg,image/png,image/tiff,image/svg+xml]"
+                                                multiple="{Boolean}false"
+                                                name="./webResultImg"
+                                                title="Upload Image Asset"
+                                                uploadUrl="${suffix.path}"
+                                                useHTML5="{Boolean}true"/>
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </searchResultconfig>
+                    <content
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Content"
+                        sling:resourceType="granite/ui/components/foundation/include"
+                        path="mattel/global/master/components/core/content/v1/content/cq:dialog/content/items/tabs/items/items"/>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>

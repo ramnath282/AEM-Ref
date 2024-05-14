@@ -1,0 +1,184 @@
+.error-style-extend{
+	color: mapping($form,error, color);	
+  	font-size: mapping($form,error, fontSize);
+}
+
+.form-component{
+	h2{
+		font-size: mapping($form,heading, fontSize);
+		color: mapping($form,heading, color);
+		text-align: mapping($form,heading, align);
+		font-family: mapping($form,heading, fontFamily);
+		font-weight: mapping($form,heading, fontWeight);
+	}
+	#crm-form{
+		.required{
+			.input_label{
+				&:after{
+					color: mapping($form,required, color);
+					font-size: mapping($form,required, fontSize);
+				}
+			}
+		}
+		input,select{
+			font-size: mapping($form,input, fontSize);
+			max-width: mapping($form,input, maxWidth);
+			@include border-radius(mapping($form,input, borderRadius));
+		}
+		input{
+			border-color:mapping($form,input, borderColor);
+			@include placeholders{
+				color:mapping($form,input, placeholderColor);
+				font-size: mapping($form,input, placeholderFontsize);
+				-webkit-transform:translate3d(0,em(mapping($form,input, placeholderFontsize))/2,0);
+				-moz-transform:translate3d(0,em(mapping($form,input, placeholderFontsize))/2,0);
+				-ms-transform:translate3d(0,em(mapping($form,input, placeholderFontsize))/2,0);
+				transform:translate3d(0,em(mapping($form,input, placeholderFontsize))/2,0);
+			}
+		}
+		select{
+			font-size: mapping($form,select, fontSize);
+			max-width: mapping($form,select, maxWidth);
+	    	border-color:mapping($form,select, borderColor);
+			color: mapping($form,select, color);
+			option {
+			  	color:mapping($form,select, placeholderColor);
+				font-size: mapping($form,select, placeholderFontsize);;
+			}
+		}
+		textarea{
+			border-radius: mapping($form,input, borderRadius) !important;
+		}
+		.country-code-dropdown{
+			.relative-dropdown-container{
+				@include border-radius(mapping($form,input, borderRadius));
+				color:mapping($form,select, placeholderColor);
+				.arrow{
+				    border-color: mapping($form,select, placeholderColor) transparent transparent;
+				    font-size: mapping($form,select, arrowFontSize);
+				}
+			}
+		}
+		.input_label{
+			font-size: mapping($form,label, fontSize);
+			font-weight: mapping($form,label, fontWeight);
+			color: mapping($form,label, color);	
+		}
+		input[type="radio"]{
+			&+ label:before {
+			    background: mapping($form,radio, bgColor);
+			    border: 1px solid mapping($form,radio, defaultColor);
+			}
+			&:checked + label:before {
+			    background: -webkit-radial-gradient(circle cover,mapping($form,radio, checkedColor) 0,mapping($form,radio, checkedColor) 40%,#fff 41%,#fff 100%);
+				background:-ms-radial-gradient(circle cover,mapping($form,radio, checkedColor) 0,mapping($form,radio, checkedColor) 40%,#fff 41%,#fff 100%);
+				background:-moz-radial-gradient(circle cover,mapping($form,radio, checkedColor) 0,mapping($form,radio, checkedColor) 40%,#fff 41%,#fff 100%);
+				background:-o-radial-gradient(circle cover,mapping($form,radio, checkedColor) 0,mapping($form,radio, checkedColor) 40%,#fff 41%,#fff 100%);
+				background:radial-gradient(circle cover,mapping($form,radio, checkedColor) 0,mapping($form,radio, checkedColor) 40%,#fff 41%,#fff 100%);
+			}
+			&:focus + label:before {
+				border-color: mapping($form,radio, checkedColor);
+			}
+		}
+		.has-error{
+			input{
+				border-color: mapping($form,error, borderColor);
+			}
+			input[type="radio"]{
+				outline:1px solid mapping($form,error, borderColor);
+			}
+			.form-error{	
+				@extend .error-style-extend;
+			}
+	    }
+	    .has-api-error{
+	    	input{
+				border-color: mapping($form,error, borderColor);
+			}
+			input[type="radio"]{
+				outline:1px solid mapping($form,error, borderColor);
+			}
+			.api-error{	
+				@extend .error-style-extend;
+			}
+	    }
+	    .add-child-option{
+			color: mapping($form,addChild, color);		
+			span{
+				font-size: mapping($form,addChild, color);
+				font-weight: mapping($form,addChild, fontWeight);
+			}
+		}
+		span.terms{
+			font-size: mapping($form,agree,fontSize);
+			a{
+				font-weight: mapping($form,agree,linkFontWeight);
+				text-decoration: mapping($form,agree,linkUnderline);
+				color: mapping($form,agree,linkColor);
+			}
+		}
+		fieldset{
+			&:not(.sub-fieldset){
+				>legend{
+					font-size: mapping($form,legend, fontSize);
+					font-weight: mapping($form,legend, fontWeight);
+					color: mapping($form,legend, color);
+				}
+			}
+			&.sub-fieldset{
+				legend{
+					font-size:mapping($form,subLegend, fontSize);
+				}
+				.item-list{
+					label{
+						font-size:mapping($form,subLegend, fontSize);
+					}
+				}
+				
+			}
+		}
+		.country-code-dropdown{
+			.relative-dropdown-container{
+				border: 1px solid mapping($form,select, borderColor);
+				color:mapping($form,select, color);
+				font-size: mapping($form,select, customCountryColor);
+			}
+		}
+		.form-action-btn{
+			text-align: mapping($form,cta, align);
+			&.api-fails:before{
+				color: mapping($form,cta, submitBgnd);
+			}
+		}
+		#crm-form-submit,
+			#crm-form-reset{
+	    		// @extend .theme-btn;
+	    		font-size: mapping($form,cta, fontSize);
+	    		font-weight: mapping($form,cta, fontWeight);
+	    		border: mapping($form,cta, borderSize) solid;
+	    }
+	    #crm-form-submit{
+	    	background: mapping($form,cta, submitBgnd);
+	    	color: mapping($form,cta, submitColor);
+	    	border-color: mapping($form,cta, submitBorder);
+	    	&:hover{
+	    		background: mapping($form,cta, submitBgndHover);
+		    	color: mapping($form,cta, submitColorHover) !important;
+		    	border-color: mapping($form,cta, submitBorderHover);
+	    	}
+	    }
+	    #crm-form-reset{
+			background: mapping($form,cta, resetBgnd);
+	    	color: mapping($form,cta, resetColor) !important;
+	    	border-color: mapping($form,cta, resetBorder);
+	    	&:hover{
+	    		background: mapping($form,cta, resetBgndHover);
+		    	color: mapping($form,cta, resetColorHover) !important;
+		    	border-color: mapping($form,cta, resetBorderHover);
+	    	}	
+	    }
+	}
+	.small_txt1{
+		font-size: mapping($form,label, fontSize);
+	}
+}

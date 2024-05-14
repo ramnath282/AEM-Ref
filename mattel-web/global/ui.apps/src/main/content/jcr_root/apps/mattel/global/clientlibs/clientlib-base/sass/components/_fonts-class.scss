@@ -1,0 +1,44 @@
+
+/* 
+Noto sans Regular : noto-r
+Noto sans Regular Italic: noto-r-i
+Noto sans Bold : noto-b
+Noto sans Bold Italic : noto-b-i 
+*/
+
+[class^='noto-'], 
+[class*=' noto-']{
+	font-family: "Noto sans",sans-serif;
+	@include fontVariations('noto-',r r-i b b-i);
+}
+
+/* 
+Archer Light : archer-l
+Archer Light Italic : archer-l-i
+Archer Regular : archer-r
+Archer Regular Italic : archer-r-i
+Archer Medium : archer-m
+Archer Medium Italic  : archer-m-i
+Archer Semi Bold : archer-s-b
+Archer Semi Bold Italic : archer-s-b-i
+Archer Bold  : archer-b
+Archer Bold Italic : archer-b-i
+*/
+
+[class^='archer-'], 
+	[class*=' archer-']{
+		font-family: "Archer",sans-serif;
+		@include fontVariations('archer-',l l-i r r-i m m-i s-b s-b-i b b-i);
+}
+@for $i from 8 through 60 {
+    .desktop-fontsize-#{$i}{
+        font-size: $i+px !important;
+    }
+}
+@media #{$small-down} {
+    @for $i from 8 through 60 {
+        .mobile-fontsize-#{$i}{
+            font-size: $i+px !important;
+        }
+    }
+}

@@ -1,0 +1,1073 @@
+.image-text-component {
+    padding: mapping($imagetextcomponent, imagetextTitle, pad);
+    display: mapping($imagetextcomponent, imagetextTitle, display);
+    width: mapping($imagetextcomponent, imagetextTitle, width);
+    float: mapping($imagetextcomponent, imagetextTitle, float);
+
+    .title-block {
+        @extend .gallery-headings;
+        padding: mapping($imagetextcomponent, imagetextTitle, titlePadding);
+    }
+
+    .text-block {
+        @media #{$medium-down} {
+            padding-top: mapping($imagetextcomponent, imagetextBlock, tabMobPadTop);
+        }
+
+        p {
+            @media #{$medium-down} {
+                margin-top: mapping($imagetextcomponent, imageTxtWidthVideo, marginTop);
+            }
+        }
+    }
+
+    &.with-video-player {
+        background-size: mapping($imagetextcomponent, imageWidthVideo, bgSize);
+        background-position: mapping($imagetextcomponent, imageWidthVideo, bgPosition);
+
+        @media #{$medium-down} {
+            background-position: mapping($imagetextcomponent, imageWidthVideo, tabbgPosition);
+        }
+
+        p {
+            @media #{$medium-down} {
+                margin: mapping($imagetextcomponent, imageWidthVideo, margin);
+
+            }
+        }
+
+        .oo-player-container .oo-start-screen .oo-start-screen-linear-gradient {
+            background: mapping($imagetextcomponent, imageWidthVideo, ooPlayerBg);
+        }
+
+    }
+}
+
+@if mapping($imagetextcomponent, textComponent, isRescueHeroes)==true {
+    #real-heroes.image-text-component {
+        .image-text-container {
+            @media #{$medium-up} {
+                padding: 7.1428em 0 0 7.14286em;
+            }
+        }
+    }
+}
+
+.image-text-container {
+    &.email-bg {
+        background: mapping($imagetextcomponent, emailBG, bgrndURL);
+        background-size: mapping($imagetextcomponent, emailBG, bgrndSize);
+        padding: mapping($imagetextcomponent, emailBG, padding);
+
+        .text-block {
+            margin: mapping($imagetextcomponent, emailTextBlock, emailTextMargin);
+            padding: mapping($imagetextcomponent, emailTextBlock, emailTextPadding);
+
+            @media #{$medium-down} {
+                padding: mapping($imagetextcomponent, emailTextBlock, emailTextPaddingMob);
+            }
+
+            h2 {
+                color: mapping($imagetextcomponent, emailH2, emailH2Color);
+                font-family: mapping($imagetextcomponent, emailH2, emailH2FontFamily);
+                font-size: mapping($imagetextcomponent, emailH2, emailH2FontSize);
+                font-weight: mapping($imagetextcomponent, emailH2, emailH2FontWeight);
+                line-height: mapping($imagetextcomponent, emailH2, emailH2LineHeight);
+                padding: mapping($imagetextcomponent, emailH2, emailH2Padding);
+            }
+
+            .input-group {
+                width: mapping($imagetextcomponent, emailInput, emailInputGrpwidth);
+            }
+
+            input[type=text] {
+                padding: mapping($imagetextcomponent, emailInput, emailInputPadding);
+                border-radius: mapping($imagetextcomponent, emailInput, emailInputBorderRadius);
+                border: mapping($imagetextcomponent, emailInput, emailInputBorder);
+                line-height: mapping($imagetextcomponent, emailInput, emailInputLineHeight);
+                width: mapping($imagetextcomponent, emailInput, emailInputWidth);
+                //margin-top: mapping($imagetextcomponent,emailInput,emailInputMarginTop);				
+
+            }
+
+            input::-webkit-input-placeholder {
+                font-size: mapping($imagetextcomponent, emailInputPlaceHolder, emailInputPlaceHolderFontSize);
+            }
+
+            .theme-btn {
+                padding: mapping($imagetextcomponent, emailThemeBtn, emailThemeBtnPadding);
+                border-radius: mapping($imagetextcomponent, emailThemeBtn, emailThemeBtnBorderRadius);
+                background: mapping($imagetextcomponent, emailThemeBtn, emailThemeBtnBackground);
+                color: mapping($imagetextcomponent, emailThemeBtn, emailThemeBtnColor);
+                display: mapping($imagetextcomponent, emailThemeBtn, emailThemeBtnDisplay);
+                font-size: mapping($imagetextcomponent, emailThemeBtn, emailThemeBtnFontSize);
+                margin-left: mapping($imagetextcomponent, emailThemeBtn, emailThemeBtnMarginLeft);
+                font-weight: mapping($imagetextcomponent, emailThemeBtn, emailThemeBtnFontWeightB);
+                width: mapping($imagetextcomponent, emailThemeBtn, emailThemeBtnWidth);
+                float: mapping($imagetextcomponent, emailThemeBtn, emailThemeBtnFloat);
+                z-index: mapping($imagetextcomponent, emailThemeBtn, emailThemeBtnZindex);
+                position: mapping($imagetextcomponent, emailThemeBtn, emailThemeBtnposition);
+            }
+
+            p {
+                color: mapping($imagetextcomponent, emailP, emailPColor);
+                font-size: mapping($imagetextcomponent, emailP, emailPFontSize);
+                margin-top: mapping($imagetextcomponent, emailP, emailPMarginTop);
+            }
+        }
+    }
+
+    @extend .container;
+    margin: mapping($imagetextcomponent, imagetextContainer, margin);
+    padding: mapping($imagetextcomponent, imagetextContainer, pad);
+
+    @media #{$medium-only} {
+        padding: mapping($imagetextcomponent, imagetextContainer, tabPad);
+    }
+
+    @media #{$small-down} {
+        padding: mapping($imagetextcomponent, imagetextContainer, mobPad);
+    }
+
+    width: mapping($imagetextcomponent, imagetextContainer, width);
+    background: mapping($imagetextcomponent, imagetextContainer, bgndDetail);
+
+    .image-block {
+        @extend .col-xs-12;
+        @extend .col-sm-12;
+        @extend .col-md-#{$imgColCount};
+
+        img {
+            width: if(mapping($imagetextcomponent, imageBlockImg, width), mapping($imagetextcomponent, imageBlockImg, width), auto);
+
+            @media #{$medium-down} {
+                width: mapping($imagetextcomponent, imageBlockImg, widthTab);
+
+                @if mapping($imagetextcomponent, imageBlockImg, isImageCenterDevice)==true {
+                    display: block;
+                    margin: auto;
+                }
+
+                @media #{$small-down} {
+                    width: mapping($imagetextcomponent, imageBlockImg, widthMob);
+                }
+            }
+        }
+    }
+
+    .single-video-player {
+        z-index: 1;
+        position: relative;
+    }
+
+
+}
+
+.title-block {
+    @extend .gallery-headings;
+}
+
+.text-block {
+    @extend .col-xs-12;
+    @extend .col-sm-12;
+    @extend .col-md-#{$txtColCount};
+    padding: mapping($imagetextcomponent, imagetextblock, pad);
+
+    @media #{$medium-down} {
+        padding: mapping($imagetextcomponent, imagetextblock, tabPad);
+    }
+
+    @media #{$small-down} {
+        padding: mapping($imagetextcomponent, imagetextblock, mobPad);
+    }
+
+    h2 {
+        font-size: mapping($imagetextcomponent, imagetextblockH2, fntSize);
+        color: mapping($imagetextcomponent, imagetextblockH2, txtColor);
+        margin: mapping($imagetextcomponent, imagetextblockH2, margin);
+
+        small {
+            color: mapping($imagetextcomponent, imagetextblockH2, smalltxtColor);
+        }
+
+        @media #{$medium-down} {
+            font-size: mapping($imagetextcomponent, imagetextblockH2, tabFontSize);
+        }
+
+        @media #{$small-down} {
+            font-size: mapping($imagetextcomponent, imagetextblockH2, mobFontSize);
+        }
+    }
+
+    p {
+        @include font-properties($maax,$localFontVerdana);
+        font-size: mapping($imagetextcomponent, imagetextblockP, fntSize);
+        color: mapping($imagetextcomponent, imagetextblockP, txtColor);
+        line-height: mapping($imagetextcomponent, imagetextblockP, lineHeight);
+
+        a {
+            text-decoration: mapping($imagetextcomponent, imagetextblockLink, txtDecoration);
+            color: mapping($imagetextcomponent, imagetextblockLink, txtColor);
+        }
+
+        @media #{$medium-down} {
+            font-size: mapping($imagetextcomponent, imagetextblockP, tabFontSize);
+        }
+
+        @media #{$small-down} {
+            font-size: mapping($imagetextcomponent, imagetextblockP, mobFontSize);
+        }
+
+        span {
+            font-weight: mapping($imagetextcomponent, imagetextblockSpan, fntWeight);
+        }
+
+        &:last-child {
+            padding: 0;
+        }
+    }
+
+}
+
+/*clarify*/
+.cta-btn {
+
+    // @if mapping($layout,main,isRescueHeroes) == true{
+    //     margin:mapping($imagetextcomponent,imagetextCta,ctaMargin);
+    //     @media #{$medium-down}{
+    //         margin:mapping($imagetextcomponent,imagetextCta,ctaMarginMob);
+    //     }
+    // }
+    &.align-right {
+        text-align: mapping($imagetextcomponent, imagetextCta, txtAlignRight);
+    }
+
+    &.align-left {
+        text-align: mapping($imagetextcomponent, imagetextCta, txtAlignLeft);
+    }
+
+    &.align-center {
+        text-align: mapping($imagetextcomponent, imagetextCta, txtAlignCenter);
+    }
+
+    @media #{$medium-down} {
+        text-align: mapping($imagetextcomponent, imagetextCta, tabtxtAlign);
+    }
+
+    .fp-email-btn {
+        background: mapping($imagetextcomponent, fpemailBtn, BgCol);
+        padding: mapping($imagetextcomponent, fpemailBtn, pad);
+        border-radius: mapping($imagetextcomponent, fpemailBtn, borderRadius) !important;
+        font-size: mapping($imagetextcomponent, fpemailBtn, fontSize);
+        margin: mapping($imagetextcomponent, fpemailBtn, emailBtnMargin);
+        @media #{$small-down} {
+            margin: 0 0 31px 0;
+        }
+    }
+
+}
+
+.text-component {
+    @extend .text-block;
+    @extend .col-md-12;
+    margin: mapping($imagetextcomponent, textcomp, margin);
+    //background-color:$white-smoke;
+}
+
+@if mapping($imagetextcomponent, imagetextContainer, imgOrderChangeDevices)==true {
+    .imageAndText {
+        p:empty {
+            display: none;
+        }
+
+        @media #{$medium-down} {
+            .image-text-container {
+                display: table;
+                padding-bottom: 0;
+
+                .image-block {
+                    float: none !important;
+                    display: table-footer-group;
+                }
+
+                .text-block {
+                    margin-bottom: 2em;
+                }
+            }
+
+            &+.imageAndText {
+                .image-text-container {
+                    display: block;
+                    padding-bottom: em(55);
+
+                    .image-block {
+                        float: none !important;
+                        display: block;
+                        margin-bottom: 2em;
+                    }
+
+                    .text-block {
+                        margin-bottom: 0;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@if mapping($imagetextcomponent, textComponent, isFisherPriceNav)==true {
+    .image-text-container {
+        .image-block {
+            text-align: right;
+            width: 35%;
+
+            @media #{$medium-down} {
+                text-align: left;
+            }
+
+            img {
+                max-width: 100%;
+                width: 10.28571em;
+                height: auto;
+                margin: 0.5em;
+                display: inline-block;
+
+                @media #{$medium-down} {
+                    width: em(89);
+                }
+            }
+        }
+    }
+
+    .text-block {
+        .cta-btn {
+            @media #{$medium-down} {
+                text-align: left;
+            }
+        }
+    }
+}
+
+// only for Jurassic 
+@if mapping($imagetextcomponent, textComponent, isJurassic)==true {
+    .title {
+        .play-page-title {
+            background-color: mapping($imagetextcomponent, textComponent, bgColor);
+            padding: mapping($imagetextcomponent, textComponent, padd);
+
+            >div {
+                padding: mapping($imagetextcomponent, textComponent, divPadding);
+
+                p {
+                    @include font-properties($maax,$localFontVerdana);
+                    font-size: mapping($imagetextcomponent, textComponent, fontSize);
+                    color: mapping($imagetextcomponent, textComponent, color);
+                    text-align: mapping($imagetextcomponent, textComponent, textAlign);
+                    margin: mapping($imagetextcomponent, textComponent, margin);
+
+                }
+            }
+        }
+    }
+
+}
+
+// only for FisherPrice Site 
+@if mapping($imagetextcomponent, textComponent, isFisherPriceNav)==true {
+    .title {
+        .play-page-title {
+            background-color: mapping($imagetextcomponent, textComponent, bgColor);
+            padding: mapping($imagetextcomponent, textComponent, padd);
+            border-top: mapping($imagetextcomponent, textComponent, borderTop);
+            border-bottom: mapping($imagetextcomponent, textComponent, borderBottom);
+
+            >div {
+                padding: mapping($imagetextcomponent, textComponent, divPadding);
+
+                p {
+                    @include font-properties($maax,$localFontVerdana);
+                    font-size: mapping($imagetextcomponent, textComponent, fontSize);
+                    color: mapping($imagetextcomponent, textComponent, color);
+                    text-align: mapping($imagetextcomponent, textComponent, textAlign);
+                    margin: mapping($imagetextcomponent, textComponent, margin);
+                    line-height: mapping($imagetextcomponent, textComponent, lineHeight);
+
+                }
+            }
+        }
+    }
+
+}
+
+.recall-component {
+    text-align: mapping($imagetextcomponent, recallcomponent, textAlign);
+    background-color: mapping($imagetextcomponent, recallcomponent, bgColor);
+    padding: mapping($imagetextcomponent, recallcomponent, padding);
+    margin-top: mapping($imagetextcomponent, recallcomponent, marginTop);
+    margin-bottom: mapping($imagetextcomponent, recallcomponent, marginBottom);
+    position: relative;
+    z-index: 100;
+    //border-top: mapping($imagetextcomponent,recallcomponent,borderTop);
+
+    h1 {
+        margin: 0;
+    }
+
+    @media #{$large-down} {
+        margin-top: mapping($imagetextcomponent, recallcomponent, tabmarginTop);
+        margin-bottom: mapping($imagetextcomponent, recallcomponent, tabmarginBottom);
+    }
+
+    .mobile-container {
+        display: mapping($imagetextcomponent, recallcomponent, dflex);
+        margin-left: mapping($imagetextcomponent, recallcomponent, marginLeft);
+        justify-content: mapping($imagetextcomponent, recallcomponent, justifyContent);
+
+        @media #{$small-down} {
+            display: mapping($imagetextcomponent, recallcomponentMob, divNone);
+            /*margin-top: mapping($imagetextcomponent,recallcomponentMob,marginTop);*/
+        }
+
+        &.active {
+            display: mapping($imagetextcomponent, recallcomponentMob, divBlock);
+        }
+    }
+
+    .mobarrow-icon {
+        display: mapping($imagetextcomponent, recallcomponentMob, divNone);
+
+        @media #{$small-down} {
+            display: mapping($imagetextcomponent, recallcomponentMob, divBlock);
+            border: mapping($imagetextcomponent, recallcomponentMob, btnBorder);
+            font-size: mapping($imagetextcomponent, recallcomponentMob, btnFont);
+            position: mapping($imagetextcomponent, recallcomponentMob, btnPos);
+            right: mapping($imagetextcomponent, recallcomponentMob, btnRight);
+            top: mapping($imagetextcomponent, recallcomponentMob, btnTop);
+            background: mapping($imagetextcomponent, recallcomponentMob, btnBG);
+            outline: 0;
+            padding: 0;
+            line-height: mapping($imagetextcomponent, recallcomponentMob, btnLine);
+            font-family: mapping($imagetextcomponent, recallcomponentMob, btnFontFamily);
+            color: mapping($imagetextcomponent, recallcomponentMob, btnColor);
+
+            &.arrowDown {
+                &::before {
+                    background: mapping($imagetextcomponent, recallcomponentMob, beforeDownBg) !important;
+                }
+            }
+
+            &::before {
+                background: mapping($imagetextcomponent, recallcomponentMob, beforeBg);
+                width: mapping($imagetextcomponent, recallcomponentMob, beforeWidth);
+                height: mapping($imagetextcomponent, recallcomponentMob, beforeHeight);
+                content: mapping($imagetextcomponent, recallcomponentMob, beforeContent);
+                margin: mapping($imagetextcomponent, recallcomponentMob, beforeMargin);
+                display: mapping($imagetextcomponent, recallcomponentMob, beforeDisplay);
+            }
+        }
+    }
+
+
+    @media #{$small-down} {
+        border-top: mapping($imagetextcomponent, recallcomponent, mobborderTop);
+        padding: mapping($imagetextcomponent, recallcomponent, mobpadding);
+    }
+
+    .recall-alert {
+        color: mapping($imagetextcomponent, recallAlert, color);
+        @include font-properties($maaxMedium,$localFontVerdana);
+        font-size: mapping($imagetextcomponent, recallAlert, fontSize);
+        font-weight: mapping($imagetextcomponent, recallAlert, fontWeight);
+        letter-spacing: mapping($imagetextcomponent, recallAlert, letterSpacing);
+        line-height: mapping($imagetextcomponent, recallAlert, lineHeight);
+
+        @media #{$small-down} {
+            display: mapping($imagetextcomponent, recallAlert, mobdisplay);
+            color: mapping($imagetextcomponent, recallAlert, mobcolor);
+            font-weight: mapping($imagetextcomponent, recallAlert, mobfontWeight);
+            font-size: mapping($imagetextcomponent, recallAlert, mobfontSize);
+        }
+    }
+
+    .recall-alert-txt {
+        color: mapping($imagetextcomponent, recallAlertTxt, color);
+        @include font-properties($maax,$localFontVerdana);
+        font-size: mapping($imagetextcomponent, recallAlertTxt, fontSize);
+        line-height: mapping($imagetextcomponent, recallAlertTxt, lineHeight);
+
+        a {
+            color: mapping($imagetextcomponent, recallAlertTxt, linkColor);
+
+            &:hover {
+                color: mapping($imagetextcomponent, recallAlertTxt, linkColor);
+            }
+        }
+    }
+
+    .recall-link {
+        color: mapping($imagetextcomponent, recallLink, color);
+        @include font-properties($maax,$localFontVerdana);
+        font-size: mapping($imagetextcomponent, recallLink, fontSize);
+        font-weight: mapping($imagetextcomponent, recallLink, fontWeight);
+        line-height: mapping($imagetextcomponent, recallLink, lineHeight);
+        text-decoration: mapping($imagetextcomponent, recallLink, textDecoration);
+        cursor: mapping($imagetextcomponent, recallLink, cursor);
+
+        @media #{$small-down} {
+            text-decoration: mapping($imagetextcomponent, recallLink, mobtextDecoration);
+            font-weight: mapping($imagetextcomponent, recallLink, mobfontWeight);
+            @include font-properties($maaxBold,$localFontVerdana);
+        }
+
+    }
+}
+
+//Tilte text describtion
+@if mapping($imagetextcomponent, textComponent, isFisherPriceNav)==true {
+    .seoCopy {
+        .title-desc {
+            padding: mapping($imagetextcomponent, titleSeo, padding);
+            @media #{$medium-down} {
+                padding: mapping($imagetextcomponent, titleSeo, padTab);
+            }
+
+            @media #{$small-down} {
+                padding: mapping($imagetextcomponent, titleSeo, padMobile);
+            }
+
+            span {
+                text-align: mapping($imagetextcomponent, titleSeo, textAlignSpan);
+                @include font-properties($maaxBold,$localFontVerdana);
+                font-weight: mapping($imagetextcomponent, titleSeo, fontWeight);
+                line-height: mapping($imagetextcomponent, titleSeo, lineHeight);
+
+                @media #{$small-down} {
+                    text-align: mapping($imagetextcomponent, titleSeo, textAlignSpanMOB);
+                }
+            }
+
+            h2 {
+                text-align: mapping($imagetextcomponent, titleSeo, textAlign);
+
+                @media #{$medium-down} {
+                    width: mapping($imagetextcomponent, titleSeo, titleWidth);
+                }
+            }
+        }
+    }
+}
+
+.title-desc {
+    clear: both;
+    text-align: mapping($imagetextcomponent, titleDesc, textAlign);
+    padding: mapping($imagetextcomponent, titleDesc, Pad);
+    background-color: mapping($imagetextcomponent, titleDesc, BgColor);
+    color: mapping($imagetextcomponent, titleDesc, TextColor);
+
+    @media #{$medium-down} {
+        padding: mapping($imagetextcomponent, titleDesc, padTab);
+    }
+
+    @media #{$small-down} {
+        padding: mapping($imagetextcomponent, titleDesc, padMobile);
+        text-align: mapping($imagetextcomponent, titleDesc, mobileTextAlign);
+    }
+
+
+    span {
+        display: mapping($imagetextcomponent, titleText, Disp);
+        font-size: mapping($imagetextcomponent, titleText, fontSize);
+        font-weight: mapping($imagetextcomponent, titleText, fontWeight);
+        line-height: mapping($imagetextcomponent, titleText, lineHght);
+        margin-bottom: mapping($imagetextcomponent, titleText, marBot);
+
+    }
+
+    h2 {
+        width: mapping($imagetextcomponent, TitlePrgh, titleWidth);
+        margin: mapping($imagetextcomponent, TitlePrgh, titleMar);
+        display: mapping($imagetextcomponent, TitlePrgh, titleDisplay);
+        @include font-properties($maax,$localFontVerdana);
+        font-size: mapping($imagetextcomponent, TitlePrgh, titleFontSize);
+        line-height: mapping($imagetextcomponent, TitlePrgh, lineHeight);
+        text-align: mapping($imagetextcomponent, TitlePrgh, textAlign);
+        font-weight: mapping($imagetextcomponent, TitlePrgh, textWeight);
+
+        @media #{$medium-down} {
+            width: mapping($imagetextcomponent, TitlePrgh, tabWith);
+            text-align: mapping($imagetextcomponent, TitlePrgh, mobileTextAlign);
+        }
+
+        @media #{$small-down} {
+            width: mapping($imagetextcomponent, TitlePrgh, mobWidth);
+            text-align: mapping($imagetextcomponent, TitlePrgh, mobileTextAlign);
+        }
+    }
+}
+
+//download image text component
+.download-img-text {
+
+    //margin-bottom: mapping($imagetextcomponent,downloadImgText,marginBottom);
+    h2 {
+        color: mapping($imagetextcomponent, downloadImgTextH, color);
+        @include font-properties($maaxMedium,$localFontVerdana);
+        font-size: mapping($imagetextcomponent, downloadImgTextH, fontSize);
+        font-weight: mapping($imagetextcomponent, downloadImgTextH, fontWeight);
+        line-height: mapping($imagetextcomponent, downloadImgTextH, lineHeight);
+    }
+
+    ul {
+        li {
+            margin-bottom: mapping($imagetextcomponent, downloadImgTextLi, marginBottom);
+
+            &:before {
+                content: mapping($imagetextcomponent, downloadImgTextLiBefore, content);
+                margin-right: mapping($imagetextcomponent, downloadImgTextLiBefore, marginRight);
+                background-image: url($spriteImgPath);
+                background-repeat: no-repeat;
+                display: inline-block;
+                width: 24px;
+                height: 24px;
+                background-position: -208px -24px;
+                vertical-align: middle;
+
+            }
+
+            a {
+                color: mapping($imagetextcomponent, downloadImgTextLiA, color);
+                @include font-properties($maax,$localFontVerdana);
+                font-size: mapping($imagetextcomponent, downloadImgTextLiA, fontSize);
+                font-weight: mapping($imagetextcomponent, downloadImgTextLiA, fontWeight);
+                line-height: mapping($imagetextcomponent, downloadImgTextLiA, lineHeight);
+
+                @media #{$small-down} {
+                    font-size: 16px;
+                }
+
+                &:hover {
+                    text-decoration: mapping($imagetextcomponent, downloadImgTextLiA, textDecoration);
+                }
+
+            }
+
+            span {
+                color: mapping($imagetextcomponent, downloadImgTextLiSpan, color);
+                @include font-properties($maax,$localFontVerdana);
+                font-size: mapping($imagetextcomponent, downloadImgTextLiSpan, fontSize);
+                font-weight: mapping($imagetextcomponent, downloadImgTextLiSpan, fontWeight);
+                line-height: mapping($imagetextcomponent, downloadImgTextLiSpan, lineHeight);
+                margin-left: mapping($imagetextcomponent, downloadImgTextLiSpan, marginLeft);
+
+                @media #{$small-down} {
+                    display: mapping($imagetextcomponent, downloadImgTextLiSpan, mobdisplay);
+                    margin-left: mapping($imagetextcomponent, downloadImgTextLiSpan, mobmarginLeft);
+                    font-size: 16px;
+                    color: #000;
+                }
+            }
+        }
+    }
+
+}
+
+.flex-lg {
+    text-align: center;
+
+    @media #{$medium-up} {
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+
+        width: 100%;
+        padding: 0;
+
+        .image-block {
+            padding: 0;
+
+            img {
+                width: 100%;
+                margin: 0;
+            }
+        }
+
+        .text-block,
+        .text-component {
+            padding: 30px;
+            max-width: 100%;
+
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+
+            @include flex-direction(column);
+            @include align-self(stretch);
+            @include justify-content(center);
+        }
+    }
+
+    .text-block,
+    .text-component {
+        background: #6F3FCF; // #4DA848;
+
+        h2 {
+            color: $white;
+            font-size: 32px;
+            margin-bottom: 10px;
+
+            @media #{$medium-down} {
+                color: #000;
+                font-size: 22px;
+                margin-bottom: 18px;
+            }
+        }
+
+        p {
+            color: $black;
+            @include font-properties($maax,$localFontVerdana);
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 22px;
+            text-align: center;
+
+            span {
+                font-size: 16px;
+                font-weight: 400;
+            }
+        }
+
+        strong {
+            @include font-properties($maaxBold,$localFontVerdana);
+            font-weight: 700;
+        }
+
+        .btn-view-all {
+            background-color: $white !important;
+            color: #1377C9 !important;
+
+            &:hover,
+            &:focus {
+                background-color: $lbk-red;
+                color: $white;
+            }
+        }
+    }
+}
+
+.flex-sm {
+    @media #{$medium-down} {
+        padding: 0;
+
+        .image-block {
+            width: 100%;
+            padding-left: 0;
+            padding-right: 0;
+
+            img {
+                width: 100%;
+                margin: 0;
+            }
+        }
+
+        .text-block {
+            .cta-btn {
+                text-align: center;
+            }
+        }
+    }
+}
+
+.flex-rowReverse {
+    &.row-reverse {
+        @media #{$medium-up} {
+            @include flex-direction(row-reverse);
+        }
+    }
+}
+
+@if mapping($imagetextcomponent, textComponent, isFisherPriceNav)==true {
+
+    .txtcomp-brand-logo {
+        display: inline-block;
+        margin-bottom: 20px;
+        pointer-events: none;
+
+        @media #{$medium-down} {
+            margin-bottom: 10px;
+
+        }
+    }
+
+    .image-text-container {
+        .text-component {
+            strong {
+                @include font-properties($maaxBold,$localFontVerdana);
+                font-weight: mapping($imagetextcomponent, textStrong, fontWeight);
+            }
+        }
+
+        &.media-50-50 {
+
+            @extend .flex-lg;
+
+            .image-block {
+                img {
+                    height: 100%
+                }
+            }
+
+            .fp-email-btn {
+                margin-bottom: 0px;
+            }
+
+            .text-block {
+                padding: 20px;
+
+                h2 {
+                    @media #{$medium-down} {
+                        font-size: 22px;
+                        margin-bottom: 10px;
+                    }
+                }
+
+                p {
+                    margin-top: 0px;
+                    margin-bottom: 0px;
+                    font-size: 18px;
+                    line-height: 28px;
+
+                    @media #{$medium-down} {
+                        margin-bottom: 0px;
+                        font-size: 16px;
+                        line-height: 26px;
+                    }
+
+                }
+
+                .btn-view-all {
+                    color: #147BD1 !important;
+                    min-width: 187px;
+                    padding: 18px 20px;
+                    @include font-properties($maaxMedium,$localFontVerdana);
+                    font-weight: 500;
+                    margin: 10px 0 0 0;
+
+                    &:hover,
+                    &:focus {
+                        background-color: $lbk-red !important;
+                        color: $white !important;
+
+                    }
+
+                    @media #{$medium-down} {
+                        min-width: 157px;
+                        font-size: 16px;
+                        padding: 14px;
+                        margin: 20px 0 0 0;
+                    }
+
+                }
+
+            }
+
+            @media #{$medium-up} {
+                justify-content: space-between;
+                display: flex;
+                padding: 40px 40px 40px 40px;
+
+                &:before,
+                &:after {
+                    display: none;
+                }
+
+                @include flex-direction(row);
+
+                .image-block,
+                .text-block,
+                .text-component {
+                    width: calc(50% - 20px);
+                }
+
+                .text-block {
+
+                    h2,
+                    p {
+                        color: $black !important;
+                    }
+                }
+            }
+
+            @media #{$small-down} {
+                padding: 0;
+                margin-bottom: 20px;
+            }
+
+            @extend .flex-rowReverse;
+            @extend .flex-sm;
+
+            @media #{$medium-up} {
+                .image-block {
+
+                    .oo-player-container {
+                        @media #{$small-down} {
+                            width: 100%;
+                            min-width: 100%;
+                        }
+                    }
+
+
+                }
+            }
+
+
+            &.row-reverse {
+                padding: 68px 45px;
+
+                @media #{$medium-down} {
+                    flex-direction: column-reverse;
+                    display: flex;
+                    padding: 34px 20px 56px 20px;
+
+                }
+
+                .text-block {
+                    @media #{$medium-down} {
+                        padding: 0 0 54px 0;
+                    }
+                }
+            }
+        }
+
+        &.media-70-30 {
+            @extend .flex-lg;
+
+            @media #{$medium-up} {
+                @include flex-direction(row);
+
+                .image-block {
+                    flex: 0 0 70%;
+                    width: 70%;
+
+                    img {
+                        height: 100%
+                    }
+                }
+
+                .text-block {
+                    flex: 0 0 30%;
+                    width: 30%;
+                    padding: 20px;
+
+                    @media #{$medium-down} {
+                        padding: 20px;
+                    }
+
+                    h2 {
+                        font-size: 22px;
+                    }
+
+                    p {
+                        margin: 0;
+                        font-size: 18px;
+                        line-height: 28px;
+                    }
+
+                    .btn-view-all {
+                        min-width: 187px;
+                        margin: 20px 0 0;
+                        padding: 18px 20px;
+                        @include font-properties($maaxMedium,$localFontVerdana);
+                        font-size: 16px;
+                        font-weight: 500;
+
+                        @media #{$medium-down} {
+                            min-width: 157px;
+                            padding: 14px 20px;
+                            margin: 20px 0 0;
+                        }
+
+                        &:hover {
+                            background-color: #e51c06 !important;
+                            color: #fff !important;
+                        }
+                    }
+                }
+            }
+
+            @media #{$medium-down} {
+                .text-block {
+                    padding: 20px;
+
+                    h2 {
+                        font-size: 22px;
+                    }
+
+                    p {
+                        margin: 0;
+                        font-size: 16px;
+                        line-height: 26px;
+
+                    }
+
+                    .btn-view-all {
+                        min-width: 157px;
+                        padding: 14px 20px;
+                        margin: 20px 0 0;
+                    }
+                }
+
+            }
+
+            @extend .flex-rowReverse;
+            @extend .flex-sm;
+
+            @media #{$small-down} {
+                margin-bottom: 20px;
+                .txtcomp-brand-logo img {
+                    max-width: 70%;
+                }
+            }
+
+        }
+
+        &.row-reverse {
+            .text-block {
+                p {
+                    text-align: center;
+
+                }
+            }
+        }
+    }
+}
+
+.richText .theme-btn {
+    min-width: 143px;
+    @include font-properties($maaxMedium,$localFontVerdana);
+    font-weight: 500;
+    font-size: 16px;
+    color: #1377C9 !important;
+    padding: 13px 30px;
+    margin: 20px 0 42px 0;
+    background-color: #ffffff !important;
+
+    &:hover,
+    &:focus {
+        background-color: #E51C06 !important;
+        color: #fff !important;
+
+    }
+
+    @media #{$medium-down} {
+        margin: 16px 0 39px 0;
+    }
+}
+
+.rich-text {
+     color: mapping($imagetextcomponent, richText, fontColor);
+
+    @media #{$medium-down} {
+        font-size: mapping($imagetextcomponent, richText, fontSizeMob);
+    }
+}
+

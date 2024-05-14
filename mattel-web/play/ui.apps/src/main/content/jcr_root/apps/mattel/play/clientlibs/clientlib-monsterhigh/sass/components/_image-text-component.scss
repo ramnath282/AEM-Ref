@@ -1,0 +1,200 @@
+.image-text-component{
+    padding: mapping($imagetextcomponent,imagetextTitle,pad);
+    display: mapping($imagetextcomponent,imagetextTitle,display);
+    width: mapping($imagetextcomponent,imagetextTitle,width);
+    float: mapping($imagetextcomponent,imagetextTitle,float);
+    .title-block{
+        @extend .gallery-headings;
+         padding: mapping($imagetextcomponent,imagetextTitle,titlePadding);
+    }
+    &::before, &::after { 
+        background-repeat: mapping($layout,waveBorder,waveBdrbgndRptX);
+        width: mapping($layout,waveBorder,waveBdrWidth);
+        height: mapping($layout,waveBorder,waveBdrHeight);
+        display: mapping($layout,waveBorder,waveBdrDisplay);
+        position: mapping($layout,waveBorder,waveBdrPosition);
+        background-size: mapping($layout,waveBorder,waveBdrsize);
+		 @media #{$large-up} {
+			margin-top:-2px;
+		 }
+        @media #{$medium-down} {
+            background-size: 300%;
+            margin-top:-1px;
+        }
+        @media #{$small-down} {
+            background-size: cover;
+        }  
+    }
+    &::before {
+        @if mapping($layout, waveBorder, isWaveBtmBdr) == true {
+            content:"";
+            background-image: mapping($layout,waveBorder,waveBdrGreen);
+            margin-top:mapping($layout,waveBorder,waveBdrMarignTop);
+            @media #{$medium-down} {
+                margin-top:-1px;
+                z-index:1;
+            }
+            @media #{$small-down} {
+                margin-top:-7px;
+                z-index:1;
+            }
+        }
+    }
+     &::after {
+		@if mapping($layout, waveBorder, isWaveBtmBdr) == true {
+		    content:"";
+		    background-image: mapping($layout,waveBorder,waveBdrBlue);
+		}
+	}
+}
+.image-text-container{
+    @extend .container;
+    margin: mapping($imagetextcomponent,imagetextContainer,margin);
+    // padding: mapping($imagetextcomponent,imagetextContainer,pad);
+    @media #{$medium-only}{
+        // padding: mapping($imagetextcomponent,imagetextContainer,tabPad);
+    }
+    @media #{$small-down}{
+        // padding: mapping($imagetextcomponent,imagetextContainer,mobPad);
+    }
+    width: mapping($imagetextcomponent,imagetextContainer,width);
+    // background: mapping($imagetextcomponent,imagetextContainer,bgndDetail);
+    .image-block{
+        margin-top: if(mapping($imagetextcomponent,imageBlock,marginTop),mapping($imagetextcomponent,imageBlock,marginTop),auto);
+        
+        @extend .col-xs-12;
+        @extend .col-sm-12;
+        @extend .col-md-#{$imgColCount};
+        @media #{$medium-only}{
+			text-align:center;
+        }
+        @media #{$small-down}{
+			margin-top: mapping($imagetextcomponent,imageBlock,mobMarginTop);
+		}
+        img {
+          width: if(mapping($imagetextcomponent,imageBlockImg,width),mapping($imagetextcomponent,imageBlockImg,width),auto);
+            @media #{$medium-down}{
+                width: mapping($imagetextcomponent,imageBlockImg,widthTab);
+                @if mapping($imagetextcomponent,imageBlockImg, isImageCenterDevice) == true {
+                    display: block;
+                    margin: auto;
+                }
+                @media #{$small-down}{
+                    width: mapping($imagetextcomponent,imageBlockImg,widthMob);
+                }
+            }
+        }
+    }
+    .single-video-player{
+        z-index: 1;
+        position: relative;
+    }
+    //
+}
+.title-block{
+    @extend .gallery-headings;
+}
+.text-block{
+    @extend .col-xs-12;
+    @extend .col-sm-12;
+    @extend .col-md-#{$txtColCount};
+    padding: mapping($imagetextcomponent,imagetextblock,pad);
+    @media #{$medium-down} {
+        padding: mapping($imagetextcomponent,imagetextblock,tabPad);
+    }
+    @media #{$small-down} {
+        padding: mapping($imagetextcomponent,imagetextblock,mobPad);
+    }
+    h2 {
+        font-size: mapping($imagetextcomponent,imagetextblockH2,fntSize);
+        color: mapping($imagetextcomponent,imagetextblockH2,txtColor);
+        margin: mapping($imagetextcomponent,imagetextblockH2,margin);
+        small {
+        color: mapping($imagetextcomponent,imagetextblockH2,smalltxtColor);
+        }
+        @media #{$medium-down}{
+            font-size: mapping($imagetextcomponent,imagetextblockH2,tabFontSize);    
+        }
+        @media #{$small-down}{
+            font-size: mapping($imagetextcomponent,imagetextblockH2,mobFontSize);    
+        }
+    }
+    div {
+        line-height: mapping($imagetextcomponent,imagetextblockP,lineHt);
+    }
+    p {
+        font-family: mapping($imagetextcomponent,imagetextblockP,fntFamily);
+        font-size: mapping($imagetextcomponent,imagetextblockP,fntSize);
+        color: mapping($imagetextcomponent,imagetextblockP,txtColor);
+        margin-top: mapping($imagetextcomponent,imageTxtWidthVideo,marginTop);
+        line-height:mapping($imagetextcomponent,imagetextblockP,lineHeight);
+        a{
+        	text-decoration:mapping($imagetextcomponent,imagetextblockLink,txtDecoration);
+        	color: mapping($imagetextcomponent,imagetextblockLink,txtColor);
+        }
+        @media #{$medium-down}{
+            font-size: mapping($imagetextcomponent,imagetextblockP,tabFontSize);    
+        }
+        @media #{$small-down}{
+            font-size: mapping($imagetextcomponent,imagetextblockP,mobFontSize);    
+        }
+    }
+}
+/*clarify*/
+.cta-btn {
+    &.align-right{
+        text-align: mapping($imagetextcomponent,imagetextCta,txtAlignRight);
+    }
+    &.align-left{
+        text-align: mapping($imagetextcomponent,imagetextCta,txtAlignLeft);
+    }
+    &.align-center{
+        text-align: mapping($imagetextcomponent,imagetextCta,txtAlignCenter);
+    }
+    @media #{$medium-down}{
+        text-align: mapping($imagetextcomponent,imagetextCta,tabtxtAlign);
+    }
+}
+
+    
+
+.text-component{
+    @extend .text-block;
+    @extend .col-md-12;
+    margin: mapping($imagetextcomponent,textcomp,margin);
+    //background-color:$white-smoke;
+}
+@if mapping($imagetextcomponent,imagetextContainer,imgOrderChangeDevices) == true {
+    .imageAndText{
+        p:empty{
+            display: none;
+        }
+        @media #{$medium-down}{
+            .image-text-container{
+                display: table;
+                padding-bottom: 0;
+                .image-block{
+                    float: none !important;
+                    display: table-footer-group;
+                }
+                .text-block{
+                    margin-bottom: 2em;
+                }
+            }
+            &+.imageAndText{
+                .image-text-container{
+                    display: block;
+                    padding-bottom: em(55);
+                    .image-block{
+                        float: none !important;
+                        display: block;
+                        margin-bottom: 2em;
+                    }
+                    .text-block{
+                        margin-bottom: 0;
+                    }
+                }
+            }
+        }
+    }
+}

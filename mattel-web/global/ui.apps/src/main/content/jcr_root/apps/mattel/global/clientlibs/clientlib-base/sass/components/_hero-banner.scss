@@ -1,0 +1,326 @@
+.heroImageBanner {
+  &.image-text-button {
+    .hero-wrapper {
+      @include print-css(
+          map-merge((
+            width: 100%,
+          ), 
+          if(variable-exists(herobanner) and map-has-key($herobanner, heroImageWrapper), 
+              map-get($herobanner,heroImageWrapper), ()
+          )
+      ));
+
+      .hero-container {
+        @include print-css(
+          map-merge((
+            display: table,
+            position: relative,
+          ), 
+          if(variable-exists(herobanner) and map-has-key($herobanner, heroContainer), 
+              map-get($herobanner,heroContainer), ()
+          )
+        ));
+      }
+
+      .banner-card {
+        @include print-css(
+          map-merge((
+            display: table-cell,
+            vertical-align: middle,
+            width: 20%,
+            padding-left: .71429em,
+          ), 
+          if(variable-exists(herobanner) and map-has-key($herobanner, bannerCard), 
+              map-get($herobanner,bannerCard), ()
+          )
+        ));
+      }
+
+      .textOverlayComponent {
+        @include print-css(
+          map-merge((
+            display: table-cell,
+            vertical-align: middle,
+            width: 60%,
+            padding: .71429em,
+            float: none,
+          ), 
+          if(variable-exists(herobanner) and map-has-key($herobanner, herotextOverlayComp), 
+              map-get($herobanner,herotextOverlayComp), ()
+          )
+        ));
+      }
+
+      .banner-cta {
+        @include print-css(
+          map-merge((
+            display: table-cell,
+            vertical-align: middle,
+            width: 20%,
+            padding-right: .71429em,
+          ), 
+          if(variable-exists(herobanner) and map-has-key($herobanner, heroBannerCta), 
+              map-get($herobanner, heroBannerCta), ()
+          )
+        ));
+      }
+    }
+  }
+
+  &.image-and-text {
+    .hero-image-banner {
+      .hero-wrapper {
+        .textOverlayComponent {
+          @include print-css(
+            map-merge((
+              width: 80%,
+            ), 
+            if(variable-exists(herobanner) and map-has-key($herobanner, heroTxtImgTxtOverlayComp), 
+                map-get($herobanner, heroTxtImgTxtOverlayComp), ()
+            )
+          ));
+        }
+
+        .banner-cta {
+          @include print-css(
+            map-merge((
+              display: none,
+            ), 
+            if(variable-exists(herobanner) and map-has-key($herobanner, heroTxtImgTxtOverlayCompCta), 
+                map-get($herobanner, heroTxtImgTxtOverlayCompCta), ()
+            )
+          ));
+        }
+      }
+    }
+  }
+
+  &.text-only {
+    .hero-image-banner {
+      .hero-wrapper {
+        .hero-container {
+          @include print-css(
+            map-merge((
+              display: block,
+            ), 
+            if(variable-exists(herobanner) and map-has-key($herobanner, heroTxtOnlyContainer), 
+                map-get($herobanner, heroTxtOnlyContainer), ()
+            )
+          ));
+
+          .textOverlayComponent {
+            @include print-css(
+              map-merge((
+                display: block,
+                width: 100%,
+              ), 
+              if(variable-exists(herobanner) and map-has-key($herobanner, heroTxtOnlyTxtOverlayComp), 
+                  map-get($herobanner, heroTxtOnlyTxtOverlayComp), ()
+              )
+            ));
+          }
+
+          .banner-card {
+            @include print-css(
+              map-merge((
+                display: none,
+              ), 
+              if(variable-exists(herobanner) and map-has-key($herobanner, heroTxtOnlyTxtBannerCard), 
+                  map-get($herobanner, heroTxtOnlyTxtBannerCard), ()
+              )
+            ));
+          }
+
+          .banner-cta {
+            @include print-css(
+              map-merge((
+                display: none,
+              ), 
+              if(variable-exists(herobanner) and map-has-key($herobanner, heroTxtOnlyTxtBannerCta), 
+                  map-get($herobanner, heroTxtOnlyTxtBannerCta), ()
+              )
+            ));
+          }
+        }
+      }
+    }
+  }
+
+  .hero-image-banner {
+    @include print-css(
+      map-merge((
+        width: 100%,
+      ), 
+      if(variable-exists(herobanner) and map-has-key($herobanner, heroImgBanner), 
+          map-get($herobanner, heroImgBanner), ()
+      )
+    ));
+
+    .hero-wrapper {
+      @include print-css(
+        map-merge((
+          width: 100%,
+        ), 
+        if(variable-exists(herobanner) and map-has-key($herobanner, heroImgBannerWrapper), 
+            map-get($herobanner, heroImgBannerWrapper), ()
+        )
+      ));
+
+      .hero-container {
+        @include print-css(
+          map-merge((
+            display: block,
+            position: relative,
+          ), 
+          if(variable-exists(herobanner) and map-has-key($herobanner, heroImgBannerContainer), 
+              map-get($herobanner, heroImgBannerContainer), ()
+          )
+        ));
+      }
+
+      .banner-card {
+        @include print-css(
+          map-merge((
+            display: table-cell,
+            vertical-align: middle,
+            width: 20%,
+            padding-left: .71429em,
+          ), 
+          if(variable-exists(herobanner) and map-has-key($herobanner, heroImgBannerBannerCard), 
+              map-get($herobanner, heroImgBannerBannerCard), ()
+          )
+        ));
+      }
+
+      .textOverlayComponent {
+        @include print-css(
+          map-merge((
+            display: table-cell,
+            vertical-align: middle,
+            width: 60%,
+            padding: .71429em,
+            float: none,
+          ), 
+          if(variable-exists(herobanner) and map-has-key($herobanner, heroImgBannertextOverlayComponent), 
+              map-get($herobanner, heroImgBannertextOverlayComponent), ()
+          )
+        ));
+      }
+
+      .banner-cta {
+        @include print-css(
+          map-merge((
+            display: table-cell,
+            vertical-align: middle,
+            width: 20%,
+            padding-right: .71429em,
+          ), 
+          if(variable-exists(herobanner) and map-has-key($herobanner, heroImgBannerCta), 
+              map-get($herobanner, heroImgBannerCta), ()
+          )
+        ));
+      }
+    }
+  }
+  &.marketing-grid-vertical {
+    &.image-and-text{
+      .hero-image-banner {
+        .hero-wrapper{
+          .textOverlayComponent{
+            @include print-css(
+                map-merge((
+                  width: 100%,
+                  display: block,
+                ), 
+                if(variable-exists(herobanner) and map-has-key($herobanner, heroMarketingTxtOverlayComp), 
+                    map-get($herobanner,heroMarketingTxtOverlayComp), ()
+                )
+            ));
+          }
+        }
+      }  
+    }
+    .hero-image-banner{
+      .hero-wrapper {
+        .hero-container {
+          @include print-css(
+              map-merge((
+                text-align: (
+                  smallDown: center,
+                ),
+                padding: (
+                  smallDown: 10px 5px,
+                ),
+              ), 
+              if(variable-exists(herobanner) and map-has-key($herobanner, heroImageBannerContainer), 
+                  map-get($herobanner,heroImageBannerContainer), ()
+              )
+          ));
+        }
+        .banner-card {
+          @include print-css(
+              map-merge((
+                display: (
+                  smallDown: block,
+                ),
+                width: (
+                  smallDown: 100%,
+                ),
+                padding-left: (
+                  smallDown: 0,
+                ),
+              ), 
+              if(variable-exists(herobanner) and map-has-key($herobanner, heroImageWrapperBannerCard), 
+                  map-get($herobanner,heroImageWrapperBannerCard), ()
+              )
+          ));
+        }
+        .textOverlayComponent {
+          @include print-css(
+              map-merge((
+                display: (
+                  smallDown: block,
+                ),
+                width: (
+                  smallDown: 100%,
+                ),
+              ), 
+              if(variable-exists(herobanner) and map-has-key($herobanner, heroImageWrapperTxtOverlayComp), 
+                  map-get($herobanner,heroImageWrapperTxtOverlayComp), ()
+              )
+          ));
+        }
+        .banner-cta {
+          @include print-css(
+            map-merge((
+              display: (
+                smallDown: block,
+              ),
+              width: (
+                smallDown: 100%,
+              ),
+              padding: (
+                smallDown: 0,
+              ),
+            ), 
+            if(variable-exists(herobanner) and map-has-key($herobanner, heroImageWrapperBannerCta), 
+                map-get($herobanner,heroImageWrapperBannerCta), ()
+            )
+          ));
+          .btn-cta-item {
+            @include print-css(
+              map-merge((
+                margin: (
+                  smallDown: 0,
+                ),
+              ), 
+              if(variable-exists(herobanner) and map-has-key($herobanner, heroImageWrapperBannerCtaItem), 
+                  map-get($herobanner,heroImageWrapperBannerCtaItem), ()
+              )
+            ));
+          }
+        }
+      }
+    }
+  }
+}

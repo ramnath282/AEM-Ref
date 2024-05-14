@@ -1,0 +1,39 @@
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
+  <sly data-sly-test="${wcmmode.edit}">${'Configure Site Mattel Landing Header' @i18n}</sly>
+    <sly data-sly-use.headerObj="com.mattel.play.core.model.HeaderModel">
+        <!-- page view -->
+		
+              <div class="welcome-banner">
+                    <div data-sly-resource="${'imageText' @resourceType='/apps/mattel/play/components/content/title'}"></div>
+                </div>
+                <div class="brand-list-wrapper">
+                 <!--<h2>${properties.brandsTitle}</h2>-->
+                    <ul class="brand-list-item col-5 global-header-page" data-maintain-height=".title-name">
+                        <sly data-sly-list.navList="${headerObj.mainNavList}">
+                            <sly data-sly-test="${navList.navTarget =='sameWindow'}">
+                                <li>
+                                    <a href="${navList.navLink}" data-tracking-id="Play.Mattel.com Home page|${navList.alwaysEnglish}|${navList.navLabel}|${navList.navAltText}">
+                                        <img src="${navList.navImage}" alt="${navList.navAltText}" data-src="${navList.navImage}" data-hover="${navList.navDesktopHoverImage}" data-mobile-src="${navList.navMobileImage}"/>
+										<span class="title-name">${navList.navLabel @i18n} </span></a>
+                                </li>
+                            </sly>
+                            <sly data-sly-test="${navList.navTarget == 'tabWindow'}">
+                                <li>
+                                    <a href="${navList.navLink}" target="_blank" data-tracking-id="Play.Mattel.com Home page|${navList.alwaysEnglish}|${navList.navLabel}|Brand Logos" >
+                                        <img src="${navList.navImage}" alt="${navList.navAltText}" data-src="${navList.navImage}" data-hover="${navList.navDesktopHoverImage}" data-mobile-src="${navList.navMobileImage}"/>
+										<span class="title-name">${navList.navLabel @i18n}<span class="sr-only"> ${'Opens in a new tab' @ i18n}</span></span></a>
+                                </li>
+                            </sly>
+                            <sly data-sly-test="${navList.navTarget == 'newWindow'}">
+                                <li>
+                                    <a data-url="${navList.navLink}" onclick="window.open(this.dataset.url,'AG','width=500, height=500');" data-tracking-id="Play.Mattel.com Home page|${navList.alwaysEnglish}|${navList.navLabel}|Brand Logos" >
+                                        <img src="${navList.navImage}" alt="${navList.navAltText}" data-src="${navList.navImage}" data-hover="${navList.navDesktopHoverImage}" data-mobile-src="${navList.navMobileImage}"/> 
+										<span class="title-name">${navList.navLabel @i18n}</span>
+										<span class="sr-only"> ${'Opens in new window' @ i18n}</span></a>
+                                </li>
+                            </sly>
+                        </sly>
+
+                    </ul>
+                </div>
+       </sly>

@@ -1,0 +1,14 @@
+<sly data-sly-use.Breadcrumb="com.mattel.ecomm.core.models.ProductDetailBreadcrumbModel">
+    <nav aria-label="breadcrumb">
+        <ul role="tablist">
+            <sly data-sly-list.breadcrumbItem="${Breadcrumb.breadcrumbLinks}">
+                <sly data-sly-test="${breadcrumbItem.pagePath}">
+                    <li role="presentation"><a href="${breadcrumbItem.pagePath}" role="tab" aria-selected="false" aria-controls="${breadcrumbItem.title}">${breadcrumbItem.title}</a></li>
+                </sly>
+                <sly data-sly-test="${!breadcrumbItem.pagePath}">
+                    <li role="presentation"><a href="#" role="tab" class="active" aria-current="true" aria-disabled="true" aria-controls="${breadcrumbItem.title}">${breadcrumbItem.title @ context='html'}</a></li>
+                </sly>
+            </sly>
+        </ul>
+    </nav>
+</sly>

@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Mattel Brands"
+    sling:resourceType="cq/gui/components/authoring/dialog"
+    height="{Long}500"
+    width="{Long}600">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <brandDetails
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Brand Details"
+                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <titleText
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Mattel Brands Title "
+                                name="./TitleText"
+                                required="{Boolean}true"
+                                wrapperClass="cmp-image--editor-alt"/>
+                            <brands
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                composite="{Boolean}true"
+                                fieldLabel="Brand Details">
+                                <field
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/fieldset"
+                                    name="./brandDetails">
+                                    <items jcr:primaryType="nt:unstructured">
+                                        <column
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                                            <items jcr:primaryType="nt:unstructured">
+                                                <brandImage
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                    allowUpload="{Boolean}false"
+                                                    autoStart="{Boolean}false"
+                                                    class="cq-droptarget"
+                                                    fieldDescription="Browse Logo/Image"
+                                                    fieldLabel="Brand Image"
+                                                    fileReferenceParameter="./brandImageSrc"
+                                                    mimeTypes="[image/gif,image/jpeg,image/png,image/webp,image/tiff]"
+                                                    multiple="{Boolean}false"
+                                                    name="./logoImage"
+                                                    required="{Boolean}false"
+                                                    rootPath="/content/dam"
+                                                    uploadUrl="${suffix.path}"
+                                                    useHTML5="{Boolean}true"/>
+                                                <brandAltText
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldDescription="Textual alternative of the meaning or function of the image, for visually impaired readers."
+                                                    fieldLabel="Alternative Text"
+                                                    name="./logoAltText"
+                                                    required="{Boolean}true"
+                                                    wrapperClass="cmp-image--editor-alt"/>
+                                                <brandLink
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="/libs/granite/ui/components/coral/foundation/form/pathbrowser"
+                                                    fieldLabel="navLink"
+                                                    name="./logoURL"
+                                                    required="{Boolean}true"
+                                                    rootPath="/content"/>
+                                                <brandTarget
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                    fieldLabel="Open URL In"
+                                                    name="./targetURL">
+                                                    <items jcr:primaryType="nt:unstructured">
+                                                        <sameWindow
+                                                            jcr:primaryType="nt:unstructured"
+                                                            text="Same Window"
+                                                            value="sameWindow"/>
+                                                        <newTab
+                                                            jcr:primaryType="nt:unstructured"
+                                                            text="New Tab"
+                                                            value="tabWindow"/>
+                                                        <newWindow
+                                                            granite:hide="${cqDesign.disableSearch}"
+                                                            jcr:primaryType="nt:unstructured"
+                                                            text="New Window"
+                                                            value="newWindow"/>
+                                                    </items>
+                                                </brandTarget>
+                                                <alwaysEnglish
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldDescription="Always English check for Multi-Lingual  Site Tagging"
+                                                    fieldLabel="Adobe Tracking Name"
+                                                    name="./alwaysEnglish"
+                                                    required="true"/>
+                                            </items>
+                                        </column>
+                                    </items>
+                                </field>
+                                <granite:data
+                                    jcr:primaryType="nt:unstructured"
+                                    maxbrandsallowed="8"/>
+                            </brands>
+                        </items>
+                    </brandDetails>
+                    <backgroundStyle
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Background Style"
+                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <column
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <backgroundColor
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/colorfield"
+                                        fieldLabel="Background Color:"
+                                        name="./backgroundColor"/>
+                                    <backgroundImage
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                        allowUpload="{Boolean}false"
+                                        autoStart="{Boolean}false"
+                                        class="cq-droptarget"
+                                        fieldLabel="Upload Background Image:"
+                                        fileReferenceParameter="./fileReferenceBgImg"
+                                        mimeTypes="[image/gif,image/jpeg,image/png,image/webp,image/tiff]"
+                                        multiple="{Boolean}false"
+                                        name="./backgroundImage"
+                                        uploadUrl="${suffix.path}"
+                                        useHTML5="{Boolean}true"/>
+                                    <backgroundoption
+                                        granite:class="cq-dialog-dropdown-showhide"
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                        fieldLabel="Background Option"
+                                        name="./backOption">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <image
+                                                jcr:primaryType="nt:unstructured"
+                                                text="Image"
+                                                value="image"/>
+                                            <color
+                                                jcr:primaryType="nt:unstructured"
+                                                text="Color"
+                                                value="color"/>
+                                        </items>
+                                    </backgroundoption>
+                                </items>
+                            </column>
+                        </items>
+                    </backgroundStyle>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>

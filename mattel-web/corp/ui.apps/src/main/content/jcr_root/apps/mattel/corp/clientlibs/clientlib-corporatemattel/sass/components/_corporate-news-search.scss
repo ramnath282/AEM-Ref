@@ -1,0 +1,221 @@
+header {
+  top: 0 !important;
+  .news-search {
+    .search-icon {
+      background: mapping($newsSearch, searchIcon, bgnd);
+      border: mapping($newsSearch, searchIcon, border);
+      padding: mapping($newsSearch, searchIcon, padding);
+      outline: mapping($newsSearch, searchIcon, outline);
+
+      @media #{$tablet-mobile}{
+        display: mapping($newsSearch, searchIcon, mobDisplay);
+      }
+
+      .fa-search {
+        font-size: mapping($newsSearch, searchIcon, fontSize);
+        padding: mapping($newsSearch, searchIcon, iconPadding);
+        margin: -8px 0 0 0;
+      }
+      &:focus{
+        i{
+          &::before{
+            outline: 5px auto -webkit-focus-ring-color;
+            outline-offset: -2px;
+          }
+        }
+      }
+    }
+    .search-input-field {
+      position: mapping($newsSearch, searchInputField, position);
+      right: mapping($newsSearch, searchInputField, right);
+      width: mapping($newsSearch, searchInputField, width);
+      top: mapping($newsSearch, searchInputField, top);
+      @media #{$tablet-mobile}{
+        width: mapping($newsSearch, searchInputField, mobWidth);
+        left: mapping($newsSearch, searchInputField, left);
+      }
+
+      .input-group {
+        position: mapping($newsSearch, searchInputField, position);
+        @media #{$tablet-mobile}{
+          display: mapping($newsSearch, searchInputField, display);
+          border-bottom: mapping($newsSearch, searchInputField, borderBottom);
+          margin-left: mapping($newsSearch, searchInputField, marginLeft);
+        }
+        .input-group-addon {
+          background-color: mapping($newsSearch, addOn, bgColor);
+          border-radius: mapping($newsSearch, addOn, bordeRadius);
+          z-index: mapping($newsSearch, addOn, zindex);
+          position: mapping($newsSearch, addOn, position);
+          border-color: mapping($newsSearch, addOn, borderColor);
+          border-width: mapping($newsSearch, addOn, borderWidth);
+          border-top-style: mapping($newsSearch, addOn, borderTopStyle);
+          border-right-style: mapping($newsSearch, addOn, borderRightStyle);
+          border-bottom-style: mapping($newsSearch, addOn, borderBottomStyle);
+          border-left-style: mapping($newsSearch, addOn, borderLeftStyle);
+
+          @media #{$tablet-mobile}{
+            border: mapping($newsSearch, addOn, mobBorder);
+            outline: mapping($newsSearch, addOn, mobOutline);
+            padding-left: mapping($newsSearch, addOn, mobPaddingLeft);
+          }
+
+          .fa-search {
+            font-size: mapping($newsSearch, addOn, fontSize);
+            color: mapping($newsSearch, addOn, color);
+
+            &::before{
+              @media #{$tablet-mobile}{
+                padding: 10px;
+              }
+            }
+
+            @media #{$tablet-mobile}{
+              font-size: mapping($newsSearch, addOn, mobFontSize);
+            }
+          }
+        }
+
+        .close-icon {
+          position: mapping($newsSearch, closeIcon, position);
+          display: mapping($newsSearch, closeIcon, display);
+          border: mapping($newsSearch, closeIcon, border);
+          background-color: mapping($newsSearch, closeIcon, bgColor);
+          vertical-align: mapping($newsSearch, closeIcon, verticalAlign);
+          right: mapping($newsSearch, closeIcon, right);
+          outline: mapping($newsSearch, closeIcon, outline);
+          cursor: mapping($newsSearch, closeIcon, cursor);
+          top: mapping($newsSearch, closeIcon, top);
+          width: mapping($newsSearch, closeIcon, width);
+          height: mapping($newsSearch, closeIcon, height);
+          z-index: mapping($newsSearch, closeIcon, zIndex);
+          @media #{$tablet-mobile}{
+            display: mapping($newsSearch, closeIcon, mobDisplay);
+          }
+
+          &:after {
+            content: mapping($newsSearch, closeIcon, content);
+            font-family: mapping($newsSearch, closeIcon, fontFamily);
+            font-size: mapping($newsSearch, closeIcon, fontSize);
+            display: mapping($newsSearch, closeIcon, disp);
+            position: mapping($newsSearch, closeIcon, pos);
+            border-radius: mapping($newsSearch, closeIcon, borderRadius);
+            background-color: mapping($newsSearch, closeIcon, backgroundColor);
+            z-index: mapping($newsSearch, closeIcon, zindex);
+            bottom: mapping($newsSearch, closeIcon, bottom);
+            margin: mapping($newsSearch, closeIcon, margin);
+            padding: mapping($newsSearch, closeIcon, padding);
+            color: mapping($newsSearch, closeIcon, color);
+            left: mapping($newsSearch, closeIcon, left);
+            cursor: mapping($newsSearch, closeIcon, cursor);
+            line-height: mapping($newsSearch, closeIcon, lineHeight);
+          }
+        }
+    
+        #searchInput_field {
+          box-sizing: mapping($newsSearch, searchInput, boxSizing);
+          height: mapping($newsSearch, searchInput, height);
+          border: mapping($newsSearch, searchInput, border);
+          background-color: mapping($newsSearch, searchInput, bgColor);
+          border-width: mapping($newsSearch, searchInput, borderWidth);
+          border-top-style: mapping($newsSearch, searchInput, borderTopStyle);
+          border-right-style: mapping($newsSearch, searchInput, borderRightStyle);
+          border-bottom-style: mapping($newsSearch, searchInput, borderBottomStyle);
+          border-left-style: mapping($newsSearch, searchInput, borderLeftStyle);
+          box-shadow: mapping($newsSearch, searchInput, boxShadow);
+          padding-left: mapping($newsSearch, searchInput, paddingLeft);
+
+          @media #{$tablet-mobile}{
+            border: mapping($newsSearch, searchInput, mobBorder);
+            outline: mapping($newsSearch, searchInput, mobOutline);
+            color: mapping($newsSearch, searchInput, mobColor);
+            font-size: mapping($newsSearch, searchInput, mobFontSize);
+            font-style: mapping($newsSearch, searchInput, mobFontStyle);
+            font-weight: mapping($newsSearch, searchInput, mobFontWeight);
+            line-height: mapping($newsSearch, searchInput, moblineHeight);
+          }
+        }
+
+        .form-control {
+          height: mapping($newsSearch, formControl, height);
+          padding: mapping($newsSearch, formControl, padding);
+          font: mapping($newsSearch, formControl, font);
+        }
+        .type-ahead {
+          -webkit-appearance: mapping($newsSearch, typeAhead, webkitApp);
+          .tt-hint{
+            color: mapping($newsSearch, typeAhead, color);
+          }
+        }
+
+        .twitter-typeahead {
+          display: block !important;
+          .tt-hint{
+            color: #989898 !important;
+            left: mapping($newsSearch, twitterTypeahead, left);
+            font: mapping($newsSearch, twitterTypeahead, font);
+            font-weight: 400 !important;
+            @media #{$tablet-mobile}{
+              font: mapping($newsSearch, twitterTypeahead, mobFont);
+              font-weight: 400 !important;
+              font-style: mapping($newsSearch, twitterTypeahead, fontStyle);
+            }
+          }
+        }
+
+        .tt-menu {
+          background: mapping($newsSearch, ttMenu, background);
+          right: mapping($newsSearch, ttMenu, right);
+          top: mapping($newsSearch, ttMenu, top);
+          left: mapping($newsSearch, ttMenu, left);
+          z-index: mapping($newsSearch, ttMenu, zIndex);
+
+          @media #{$tablet-mobile}{
+            top: mapping($newsSearch, ttMenu, mobTop);
+            left: mapping($newsSearch, ttMenu, mobLeft);
+          }
+
+          .tt-dataset {
+            padding: mapping($newsSearch, ttDataset, padding);
+            background-color: mapping($newsSearch, ttDataset, bgColor);
+            min-height: mapping($newsSearch, ttDataset, minHeight);
+            height: mapping($newsSearch, ttDataset, height);	
+            width: mapping($newsSearch, ttDataset, width);
+            overflow: mapping($newsSearch, ttDataset, overflow);
+            box-shadow: mapping($newsSearch, ttDataset, boxShadow);
+            @media #{$tablet-mobile}{
+              box-shadow: mapping($newsSearch, ttDataset, mobBoxShadow);
+              width: mapping($newsSearch, ttDataset, mobWidth);
+              padding: mapping($newsSearch, ttDataset, mobPadding);
+            }
+
+          .tt-suggestion {
+            display: mapping($newsSearch, ttSuggestion, display);
+            color: mapping($newsSearch, ttSuggestion, color);
+            font: mapping($newsSearch, ttSuggestion, font);
+            font-style: mapping($newsSearch, ttSuggestion, fontStyle);
+            padding: mapping($newsSearch, ttSuggestion, padding);
+            cursor: mapping($newsSearch, ttSuggestion, cursor);
+            
+            .tt-highlight {
+              font: mapping($newsSearch, ttSuggestion, mobFont);
+              font-style: mapping($newsSearch, ttSuggestion, mobFontStyle);
+            }
+          }
+        }
+        }
+      }
+    }
+  }
+}
+
+.overlay {
+  position: mapping($newsSearch, searchOverlay, position);
+  left: mapping($newsSearch, searchOverlay, left);
+  background: mapping($newsSearch, searchOverlay, background);
+  right: mapping($newsSearch, searchOverlay, right);
+  width: mapping($newsSearch, searchOverlay, mobFontStyle);
+  top: mapping($newsSearch, searchOverlay, top);
+  bottom: mapping($newsSearch, searchOverlay, bottom);
+  z-index: mapping($newsSearch, searchOverlay, zIndex);
+}

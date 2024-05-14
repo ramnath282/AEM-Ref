@@ -1,0 +1,27 @@
+<template data-sly-template.template>
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
+	<sly data-sly-call="${clientlib.js @ categories=['ecomm.summaryPage']}"/>
+</sly> 
+
+<footer class="bundle-footer">
+  <div class="container">
+						<div class="row">
+							<div class="col-xs-12 col-sm-4 text-left">
+								<div class="warning"></div>
+	                            <span class="product-status">
+							         <span class="status-detail">Backordered</span> 
+                                     <span class="status-date"></span>
+						        </span>
+							</div>
+							<div class="col-xs-12 col-sm-4 text-center">
+								<div class="selected-product-name"><span class="name gt-product-doll-name"></span></div>
+								<div id="animatePricing"><div class="currency-price"><p class="currency">$</p><p class="total-price"></p></div></div>	    		        
+							</div>
+							<div class="col-xs-12 col-sm-4 text-right">
+								<button href="${properties.addToBagUrl @context='unsafe'}" id="addToBagbutton" class="gt-btn addToBag disabled hide">${properties.addToBagText @context='scriptString'}</button>
+								<a href="${properties.buyNowUrl @context='unsafe'}.html" id="buyNowbutton" class="gt-btn buyNow disabled hide">${properties.buyNowText @context='scriptString'}</a>
+							</div>
+						</div>
+                   </div>
+</footer>   
+</template>

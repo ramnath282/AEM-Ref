@@ -1,0 +1,676 @@
+#esrb-modal {
+    padding: mapping($esrbmodal, main, pad);
+    background: rgba(253, 237, 246, .75);
+    .modal-dialog {
+        width: mapping($esrbmodal, modalDialog, width);
+        top: mapping($esrbmodal, modalDialog, posTop);
+
+        @media #{$medium-down} {
+            width: mapping($esrbmodal, modalDialog, tabWidth);
+        }
+
+        margin: mapping($esrbmodal, modalDialog, margin);
+    }
+
+    .modal-content {
+        /*@include border-radius(0px);*/
+        @include box-shadow(mapping($esrbmodal, modalContent, boxShadow));
+        @include border-radius(mapping($esrbmodal, modalContent, borderRadius));
+        padding: mapping($esrbmodal, modalContent, pad);
+        border: mapping($esrbmodal, modalContent, border);
+        background-color: mapping($esrbmodal, modalContent, bgndColor);
+        background-image: mapping($esrbmodal, modalContent, bgndImage);
+        background-size: mapping($esrbmodal, modalContent, bgndSize);
+        background-repeat: mapping($esrbmodal, modalContent, bgndRepeat);
+        background-position: mapping($esrbmodal, modalContent, bgndPosition);
+        min-height: if(mapping($esrbmodal, modalContent, minHeight), mapping($esrbmodal, modalContent, minHeight), 'auto');
+        //background-size: unset !important;
+        //background-repeat: no-repeat !important;
+        background-color: #fff !important;
+        background-position: bottom !important;
+        height: 558px !important;
+
+        @media #{$small-down} {
+            background-image: mapping($esrbmodal, modalContent, mobbgndImage);
+            background-size: 100% !important;
+            height: 714px !important;
+            background-repeat: no-repeat !important
+        }
+    }
+
+    .modal-header {
+        @include border-radius(mapping($esrbmodal, modalHeader, borderRadius));
+        border-bottom: mapping($esrbmodal, modalHeader, borderBottom);
+        height: if(mapping($esrbmodal, modalHeader, height), mapping($esrbmodal, modalHeader, height), 'auto');
+        @include background-clip(mapping($esrbmodal, modalHeader, bgndClip));
+        padding: 0;
+
+        .close {
+            opacity: mapping($esrbmodal, modalheaderClose, opacity);
+            color: mapping($esrbmodal, modalheaderClose, txtColor);
+            background-color: #DE1C85;
+            width: 33px;
+            height: 33px;
+            border-radius: 20px;
+            outline: none;
+            z-index: 999;
+            position: relative;
+            &:after {
+                content: mapping($esrbmodal, modalheaderClose, closeContent);
+                @include font-awesome();
+                color: mapping($esrbmodal, modalheaderClose, closetxtColor);
+                //float: mapping($esrbmodal,modalheaderClose,float);
+                font-size: mapping($esrbmodal, modalheaderClose, fntSize);
+                font-weight: mapping($esrbmodal, modalheaderClose, fntWeight);
+                line-height: mapping($esrbmodal, modalheaderClose, lineHeight);
+                text-shadow: mapping($esrbmodal, modalheaderClose, textShadow);
+                opacity: mapping($esrbmodal, modalheaderClose, closeOpacity);
+                margin-top: mapping($esrbmodal, modalheaderClose, marginTop);
+                z-index:999;
+            }
+            &:hover,
+            &:focus {
+                color: mapping($esrbmodal, modalheaderClose, hovertxtColor);
+                opacity: mapping($esrbmodal, modalheaderClose, closeOpacity);
+                outline: -webkit-focus-ring-color auto 5px;
+            }
+        }
+    }
+
+    .modal-body {
+        padding: 0;
+
+        h2 {
+            text-align: mapping($esrbmodal, modalbodyH2, txtAlign);
+            color: mapping($esrbmodal, modalbodyH2, txtColor);
+            font-size: mapping($esrbmodal, modalbodyH2, fntSize);
+            margin: mapping($esrbmodal, modalbodyH2, margin);
+            font-family: mapping($esrbmodal, modalbodyH2, fntFamily);
+            font-weight: mapping($esrbmodal, modalbodyH2, fntWeight);
+            @media #{$small-down} {  
+                transform: translate(0, 0) !important;
+                font-size: 28px !important;
+                line-height: 33px !important;
+            }
+        }
+
+        @media #{$small-up} {
+            padding: mapping($esrbmodal, modalbody, mobPadding);
+            margin: 0 auto;
+            width: auto;
+        }
+
+        .play-retailers {
+            background: mapping($esrbmodal, playRetailer, bgndColor);
+            float: unset;
+
+            /*padding:em(5) em(10);*/
+            ul {
+                li {
+                    /*padding-bottom:em(20);*/
+                    // background: mapping($esrbmodal, playretailerulList, bgnd);
+                    @include border-radius(mapping($esrbmodal, playretailerulList, borderRadius));
+
+                    &:nth-of-type(1n+5) {
+                        display: mapping($esrbmodal, playretailerulList, display);
+                    }
+                }
+            }
+            .gallery-tile {
+                ul {
+                    @media #{$small-down} {
+                        display: mapping($esrbmodal, gallerytileUl, display);
+                    }
+
+                    //display: mapping($esrbmodal, gallerytileUl, displayFlex);
+                    display: block;
+                    text-align: mapping($esrbmodal, gallerytileUl, txtAlign);
+                    //margin: mapping($esrbmodal,gallerytileUl,margin);
+                    //padding: mapping($esrbmodal, gallerytileUl, pad);
+                    padding: 0 !important;
+
+                    @media (max-width: 1366px) {
+                        display: block;
+                        padding: 0 !important;
+                    }
+
+                    @media (max-width: 1024px) {
+                        display: flex;
+                        //padding: 0 15% !important;
+                    }
+
+                    @media #{$medium-down} {
+                        display: mapping($esrbmodal, gallerytileUl, displayFlex);
+                        display: flex;
+                    }
+
+                    @media #{$small-down} {
+                        margin: mapping($esrbmodal, gallerytileUl, mobmargin);
+                        display: block !important;
+                    }
+
+                    li {
+                        display: mapping($esrbmodal, gallerytileulList, display);
+                        float: mapping($esrbmodal, gallerytileulList, float);
+                        margin: mapping($esrbmodal, gallerytileulList, margin);
+                        padding: mapping($esrbmodal, gallerytileulList, pad);
+                        overflow: mapping($esrbmodal, gallerytileulList, overflow);
+
+                        //width: mapping($esrbmodal,gallerytileulList,width);
+                        @media #{$small-down} {
+                            width: mapping($esrbmodal, gallerytileulList, mobWidth);
+                            //margin: mapping($esrbmodal,gallerytileulList,mobMargin);
+                        }
+
+                        &:nth-of-type(1n+5) {
+                            display: mapping($esrbmodal, gallerytileulList, typeDisplay);
+                        }
+
+                        &:nth-child(1) {
+                            margin: 0 !important;
+                            a{
+                                img{
+                                    width: auto !important;
+                                    height: auto !important;
+                                }
+                            }
+                        }
+                        &:nth-child(2) {
+                            //margin: 0 auto;
+                            a{
+                                img{
+                                    width: auto !important;
+                                    height: auto !important;
+                                    //margin-top: 15px;
+                                }
+                            }
+                        }
+
+                        &:last-child {
+                            margin-right: mapping($esrbmodal, gallerytileulList, marginLeft);
+
+                            @media #{$small-down} {
+                                margin-left: mapping($esrbmodal, gallerytileulList, marginLeft);
+                            }
+                        }
+                       
+                    }
+                }
+            }
+
+            @media (max-width:767px) {
+                .play-tiles-gallery {
+                    width: 100%;
+                    float: none;
+                }
+            }
+        }
+
+        p {
+            span {
+                &:before {
+                    content: mapping($esrbmodal, modalbodyP, spanContent);
+                }
+            }
+
+            @media #{$small-up} {
+                font-size: mapping($esrbmodal, modalbodyP, mobfntSize);
+                width: 576px;
+                margin: 0 auto;
+            }
+
+            text-align: mapping($esrbmodal, modalbodyP, txtAlign);
+            color: mapping($esrbmodal, modalbodyP, txtColor);
+            font-size: mapping($esrbmodal, modalbodyP, fntSize);
+            margin: mapping($esrbmodal, modalbodyP, margin);
+            //font-weight: mapping($esrbmodal, modalbodyP, fntWeight);
+            font-weight: 600;
+            padding-bottom: mapping($esrbmodal, modalbodyP, paddingBottom);
+            font-family: mapping($esrbmodal, modalbodyP, fntFamily);
+            line-height: mapping($esrbmodal, modalbodyP, lineHeight);
+            @media #{$small-down} {
+                font-size: 14px !important;
+                line-height: 20px !important;
+                width: auto;
+                padding-bottom: 10px;
+            }
+            /*margin:0;
+            font-family:"Arial",Sans-serif;
+            font-weight:$fontBold;
+            margin-bottom:30px;
+            @media (max-width:$screen-xs-max) {
+                margin-bottom:20px;
+            }*/
+        }
+
+        a {
+            text-decoration: mapping($esrbmodal, modalbodyLink, txtDecoration);
+
+            /*padding:em(10) em(30);*/
+            img {
+                width: mapping($esrbmodal, modalbodyLink, imgWidth);
+                height: mapping($esrbmodal, modalbodyLink, imgHeight);
+            }
+        }
+
+        .modal-btn-wrap {
+            background-image: mapping($esrbmodal, bodyBgImg, bgImg);
+            background-size: mapping($esrbmodal, bodyBgImg, bgSize);
+            background-position: mapping($esrbmodal, bodyBgImg, bgPosition);
+            background-repeat: mapping($esrbmodal, bodyBgImg, bgRepeat);
+            padding-bottom: mapping($esrbmodal, bodyBgImg, padd);
+
+            @media #{$small-down} {
+                padding-bottom: mapping($esrbmodal, bodyBgImg, mobPadd);
+                background-position: mapping($esrbmodal, bodyBgImg, mobbgPosition);
+            }
+
+            width: mapping($esrbmodal, modalbtnWrap, width);
+            display: mapping($esrbmodal, modalbtnWrap, display);
+            text-align: mapping($esrbmodal, modalbtnWrap, txtAlign);
+        }
+
+        .continue-btn,
+        .go-back-btn {
+            @if mapping($esrbmodal, modalbodycontinueBtn, sameasSecondaryBtn)==true {
+                @extend .secondary-btn;
+
+                @if mapping($esrbmodal, modalbodycontinueBtn, isArrowWithBtn)==false {
+                    &:after {
+                        content: none;
+                    }
+
+                    padding: mapping($esrbmodal, modalbodycontinueBtn, secondaryPadding);
+                }
+
+                @if mapping($esrbmodal, modalbodycontinueBtn, isSingleRowInMob)==true {
+                    @media #{$xsmall-down} {
+                        display: block !important;
+                        width: auto;
+                        max-width: 65%;
+                        margin-left: auto !important;
+                        margin-right: auto !important;
+                    }
+                }
+            }
+
+            @else if mapping($esrbmodal, modalbodycontinueBtn, sameasPrimaryBtn)==true {
+                @extend .secondary-btn;
+
+                @if mapping($esrbmodal, modalbodycontinueBtn, isArrowWithBtn)==false {
+                    &:after {
+                        content: none;
+                    }
+
+                    padding: mapping($esrbmodal, modalbodycontinueBtn, secondaryPadding);
+                }
+
+                @if mapping($esrbmodal, modalbodycontinueBtn, isSingleRowInMob)==true {
+                    @media #{$xsmall-down} {
+                        display: block !important;
+                        width: auto;
+                        max-width: 65%;
+                        margin-left: auto !important;
+                        margin-right: auto !important;
+                    }
+                }
+            }
+
+            @else {
+                text-align: mapping($esrbmodal, modalbodygobackcontinueBtn, txtAlign);
+                padding: mapping($esrbmodal, modalbodygobackcontinueBtn, pad);
+                display: mapping($esrbmodal, modalbodygobackcontinueBtn, display);
+                border: mapping($esrbmodal, modalbodygobackcontinueBtn, borderColor);
+                @include border-radius(mapping($esrbmodal, modalbodygobackcontinueBtn, borderRadius));
+                font-size: mapping($esrbmodal, modalbodygobackcontinueBtn, fntSize);
+                font-family: mapping($esrbmodal, modalbodygobackcontinueBtn, fntFamily), Sans-serif;
+                font-weight: mapping($esrbmodal, modalbodygobackcontinueBtn, fntWeight);
+                @include transition(mapping($esrbmodal, modalbodygobackcontinueBtn, transition));
+            }
+        }
+
+        .continue-btn {
+            margin: mapping($esrbmodal, modalbodycontinueBtn, margin);
+
+            @if mapping($esrbmodal, modalbodycontinueBtn, sameasSecondaryBtn)==true {
+                margin: mapping($esrbmodal, modalbodycontinueBtn, margin);
+            }
+
+            @else {
+                color: mapping($esrbmodal, modalbodycontinueBtn, txtColor);
+                background: mapping($esrbmodal, modalbodycontinueBtn, bgnd);
+
+                // &:hover,
+                // &:focus,
+                // &:active {
+                //     background: mapping($esrbmodal, modalbodycontinueBtn, hoverBgnd);
+                //     color: mapping($esrbmodal, modalbodycontinueBtn, hovertxtColor);
+                //     border: mapping($esrbmodal, modalbodycontinueBtn, hoverborderColor);
+                // }
+            }
+        }
+
+        .go-back-btn {
+            margin: mapping($esrbmodal, modalbodygobackBtn, margin);
+
+            @if mapping($esrbmodal, modalbodycontinueBtn, sameasSecondaryBtn)==true {
+                margin: mapping($esrbmodal, modalbodygobackBtn, margin);
+            }
+
+            @else {
+                display: mapping($esrbmodal, modalbodygobackBtn, display);
+                color: mapping($esrbmodal, modalbodygobackBtn, txtColor);
+                background: mapping($esrbmodal, modalbodygobackBtn, bgnd);
+            
+                // &:hover,
+                // &:focus,
+                // &:active {
+                //     color: mapping($esrbmodal, modalbodygobackBtn, hovertxtColor);
+                //     background: mapping($esrbmodal, modalbodygobackBtn, hoverBgnd);
+                //     border: mapping($esrbmodal, modalbodygobackBtn, hoverborderColor);
+                // }
+            }
+        }
+
+        /*@media(max-width:$screen-sm-max) {
+            padding:0;
+            width:75%;
+        }*/
+        @media(max-width:$screen-xs-max) {
+            padding: mapping($esrbmodal, modalbody, tabPadding);
+            width: mapping($esrbmodal, modalbody, tabWidth);
+            float: mapping($esrbmodal, modalbody, tabFloat);
+            margin: mapping($esrbmodal, modalbody, tabMargin);
+            background-size: mapping($esrbmodal, modalbody, tabbgndSize);
+        }
+
+        .close-btn {
+            //float:left;
+            margin-right: mapping($esrbmodal, modalheaderClose, marginRight);
+        }
+    }
+
+    .modal-footer {
+        border-top: mapping($esrbmodal, modalFooter, borderTop);
+        background: mapping($esrbmodal, modalFooter, bgnd);
+    }
+
+    /*.modal-backdrop {
+        background-color:$modal-opacity-bg;
+    }
+    .modal-backdrop.in {
+        opacity:0.65;
+    }*/
+}
+
+.interstitial-modal {
+    @extend #esrb-modal;
+
+    .modal-title {
+        text-align: if(mapping($esrbmodal, heading, txtAlign), mapping($esrbmodal, heading, txtAlign), center);
+        color: if(mapping($esrbmodal, heading, txtColor), mapping($esrbmodal, heading, txtColor), #DE1C85);
+        font-size: if(mapping($esrbmodal, heading, fntSize), mapping($esrbmodal, heading, fntSize), em(38));
+        margin: if(mapping($esrbmodal, heading, margin), mapping($esrbmodal, heading, margin), em(35, 38) 0 0);
+        font-family: mapping($esrbmodal, heading, fntFamily);
+        font-weight: mapping($esrbmodal, heading, fntWeight);
+        transform: translate(25px,0);
+        @media #{$small-down}{
+            transform: translate(20px,0);
+        }
+        * {
+            font-family: inherit;
+            font-weight: inherit;
+        }
+
+        h2 {
+            span {
+                color: #DE1C85 !important;
+                font-size: 32px;
+                font-family: 'Raleway', sans-serif;
+                text-align: center;
+                width: 383px;
+                letter-spacing: 1.33px;
+                @media #{$small-down} {
+                    font-size: 14px;
+                    line-height: 20px;
+                    width: auto;
+                }
+            }
+            @media #{$small-down} {
+                font-size:28px;
+                line-height: 33px;
+            }
+        }
+
+        span {
+            text-align: center;
+            color: #DE1C85 !important;
+            font-size: 32px;
+            margin: 40px 0 0 0;
+            font-family: 'Raleway', sans-serif;
+        }
+    }
+
+    &#interstitialGameRetailerModal {
+        // .modal-content{
+        // @media #{$small-down} {
+        //     height: 500px !important;
+        //     }
+        // }
+        .modal-title {
+            color: $white;
+            text-align: center;
+            transform: translate(25px,0);
+            @media #{$small-down} {
+                font-size:28px;
+                line-height: 33px;
+            }
+        }
+        .modal-body {
+           
+            p{
+               
+                @media #{$small-up} {
+                    padding-bottom: 10px;
+                    width: auto !important;
+                }
+            }
+            
+            .play-retailers{
+                Ul{
+                    @media (max-width: 1024px){
+                        display: block;
+                    }
+                    
+                    li{
+                        border-radius: 0;
+                        @media #{$medium-down} {
+                            width: 25%;  
+                            //margin: 15px;
+                        }
+                        @media (max-width: 1024px){
+                            width: 25%;  
+                        }
+                        //&:nth-child(1) {
+                            //margin: 0 auto;
+                            a{
+                                img{
+                                    width: auto;
+                                    height: auto;
+                                }
+                            }
+                        //}
+                        @media #{$small-down} {
+                            margin: 0 auto;
+                            padding-top: 0;
+                        }
+                         &:nth-child(3) {
+                            padding-top: 0;
+                            margin-left: 0;
+                            @media #{$small-down} {
+                                margin-left: 0;
+                            }
+                             a{
+                                  img{
+                                    width: auto;
+                                    height: auto;
+                                  }
+                              }
+                         }
+                    }
+                }
+            }
+        }
+    }
+
+    .modal-body {
+        .play-retailers .gallery-tile ul li {
+            @media #{$small-up} {
+                margin: 0 1.4%;
+
+                &:first-child {
+                    margin: 0 1.4%;
+                }
+
+                &:nth-child(3n+3) {
+                    margin-right: 0;
+                }
+
+                &:nth-child(n+4) {
+                    float: unset;
+                    margin-top: 0;
+                }
+            }
+        }
+
+        a img {
+            width: auto;
+        }
+
+        p {
+            span {
+                text-align: center;
+                color: #6F2E91 !important;
+                font-size: 18px;
+                margin: 20px 0 0 0;
+                font-weight: 400;
+                padding-bottom: 0.21429em;
+                font-family: 'Raleway', sans-serif;
+                font-weight: bold;
+                width: 576px;
+                @media #{$small-down} {
+                    font-size: 14px;
+                    line-height: 20px;
+                    width: auto;
+                }
+            }
+        }
+    }
+
+}
+
+.retailerInterstitial {
+    .modal-body {
+        .play-retailers {
+            .gallery-tile {
+                ul {
+                    @media #{$small-down} {
+                        display: mapping($esrbmodal, gallerytileUl, display);
+                    }
+
+                    //display: mapping($esrbmodal, gallerytileUl, displayFlex);
+                    display: flex;
+                    text-align: mapping($esrbmodal, gallerytileUl, txtAlign);
+                    //margin: mapping($esrbmodal,gallerytileUl,margin);
+                    //padding: mapping($esrbmodal, gallerytileUl, pad);
+                    padding: 0 !important;
+
+                    @media (max-width: 1366px) {
+                        display: flex;
+                        padding: 0 !important;
+                    }
+
+                    @media (max-width: 1024px) {
+                        display: flex;
+                        //padding: 0 15% !important;
+                    }
+
+                    @media #{$medium-down} {
+                        display: mapping($esrbmodal, gallerytileUl, displayFlex);
+                        display: flex;
+                    }
+
+                    @media #{$small-down} {
+                        margin: mapping($esrbmodal, gallerytileUl, mobmargin);
+                        display: block !important;
+                    }
+
+                    li {
+                        display: mapping($esrbmodal, gallerytileulList, display);
+                        float: mapping($esrbmodal, gallerytileulList, float);
+                        margin: mapping($esrbmodal, gallerytileulList, margin);
+                        padding: mapping($esrbmodal, gallerytileulList, pad);
+                        overflow: mapping($esrbmodal, gallerytileulList, overflow);
+
+                        //width: mapping($esrbmodal,gallerytileulList,width);
+                        @media #{$small-down} {
+                            width: mapping($esrbmodal, gallerytileulList, mobWidth);
+                            //margin: mapping($esrbmodal,gallerytileulList,mobMargin);
+                        }
+
+                        &:nth-of-type(1n+5) {
+                            display: mapping($esrbmodal, gallerytileulList, typeDisplay);
+                        }
+
+                        &:nth-child(1) {
+                            margin-left: mapping($esrbmodal, gallerytileulList, marginLeft);
+                        }
+
+                        &:last-child {
+                            margin-right: mapping($esrbmodal, gallerytileulList, marginLeft);
+
+                            @media #{$small-down} {
+                                margin-left: mapping($esrbmodal, gallerytileulList, marginLeft);
+                            }
+                        }
+                    }
+                }
+            }
+
+            @media (max-width:767px) {
+                .play-tiles-gallery {
+                    width: 100%;
+                    float: none;
+                }
+            }
+        }
+    }
+}
+.interstitialLeavingSite{
+    .interstitial-modal{
+        .modal-dialog{
+            .modal-content{
+                @media #{$small-down} {
+                    height: auto !important;
+                }
+                .modal-title{
+                    transform: translate(0,0) !important;
+                    @media #{$small-down} {
+                        font-size: 28px !important;
+                        line-height: 33px !important;
+                    }
+                }
+                p{
+                    font-size: 18px !important;
+                    line-height: 28px !important;
+                    width: 456px;
+                    @media #{$small-down} {
+                        font-size: 14px !important;
+                        line-height: 20px !important;
+                        width: auto;
+                    }
+                }
+            }
+        }
+    }
+}

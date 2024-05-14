@@ -1,0 +1,147 @@
+<sly data-sly-test="${wcmmode.edit}">${'Edit PLP Facets And Left Nav Component' @i18n}</sly>
+<div id="product-category-nav" class="hide" data-sly-test="${! inheritedPageProperties.FPproductCategoryNavDisplay}">
+    <h2 class="nav-header visible-lg-block" data-sly-test="${currentPage.name !='search-results'}">${properties.category || 'Category' @i18n }</h2>
+    <div class="nav-header hidden-md hidden-lg">
+        <button class="active-name-mob collapsed hide" data-toggle="collapse" data-target="#categoryNav" aria-expanded="false">
+            <span class="active-text"></span>
+            <span class="arrow-icon hidden-lg">
+                <em class="fa fa-chevron-down"></em>
+            </span>
+        </button>
+    </div>
+    <div id="categoryNav">
+        <nav role="navigation" aria-label="left" data-sly-use.ecomPage="com.mattel.ecomm.core.models.PLPLayoutModel">
+                <div>
+                    <ul class="dropmenu doll_list" data-initial-load="${properties.initialCategoryCount != null ? properties.initialCategoryCount : 10}" data-category-url="${ecomPage.relCategoryPath}" id="product-category-list"></ul>
+                </div>
+            <a class='see-options link hide' tabindex="0">${properties.seeMore || 'See More' @i18n}</a>
+            <a class='see-less link hide' tabindex="0">${properties.seeLess || 'See Less' @i18n}</a>
+        </nav>
+    </div>
+</div>
+<script id="productCategoryTemp" type="text/x-handlebars-template">
+    {{#each this}}
+    <li data-page-ranking="{{pageRanking}}" data-hide-nav="{{hideInNav}}" class="{{#if @first}}submenu doll-subhead {{/if}}{{#if active}}active-list {{/if}}{{#if skipNav}}hide skip-nav-parent {{/if}}{{#if skipNavChild}}skip-nav-child {{/if}}" {{#if @first}}aria-current="page"{{/if}} {{#if @first}}tabindex="0"{{/if}}>
+        {{#if active}}
+        <span class="active">{{title}}</span>
+        {{else}}
+        <a href="{{url}}">{{title}}</a>
+        {{/if}}
+    </li>
+    {{/each}}
+</script>
+<div class="filter-grid">
+    <div class="filter-btn-slider">
+        <div class="slide-header">
+            <sly data-sly-test="${! inheritedPageProperties.pTagForProductCount}">
+            	<h2 class="slider-h2 total-filtered-cnt"><span class="total-itemcnt-inner">0</span> ${properties.items || 'Items' @i18n}</h2>
+            </sly>  
+            <sly data-sly-test="${ inheritedPageProperties.pTagForProductCount}">
+            	<p class="slider-h2 total-filtered-cnt"><span class="total-itemcnt-inner">0</span> ${properties.items || 'Items' @i18n}</p>
+            </sly>
+            <div class="slider-h3 sortMobileBtn"><div class="details-list-item grid-sort visible-xs visible-sm"></div></div>
+            <h3 class="slider-h3"><a class="expand-collapse-filter" href="javascript:void(0)" role="button" aria-expanded="false">${properties.filter || 'Filter' @i18n}</a></h3>
+        </div>
+  </div>
+    <div class="filter-wrapper sliding-cont hide">
+        <div class="sliding-div-mask"></div>
+        <div class="sliding-div">
+            <div class="filter-header">
+                <div class="clear-wrapper hide">
+                    <a class="clear-all-filters hide" role="button" href="#">
+                        ${properties.clearAll || 'Clear All' @i18n}<span class="total-filtered-cnt">&#40;<span class="total-cnt-inner">0</span>&#41;</span>
+                    </a>
+                    <button class="theme-btn hide-overlay visible-xs no-bg-btn clear-h3 apply-filter">${properties.apply || 'Apply' @i18n}</button>
+                </div>
+                <div class="details-list-item grid-sort visible-xs visible-sm"></div>
+                <h2 class="filter-h2">${'Filters' @i18n}</h2>
+            </div>
+            <div id="product-filter-section"></div>
+        </div>
+    </div>
+</div>
+<script id="productSortTemp" type="text/x-handlebars-template"> 
+    <div class="sortDesktop">
+		{{#each this.menus}}
+			<span>{{label}}:</span> 
+			<button type="button" class="btn custom-dropdown-toggle btn-default" data-toggle="dropdown" aria-selected="true" role="button"> 
+				<span class="text">{{getSelectedTitle items}}</span> 
+			</button> 
+			<div class="custom-dropdown dropdown-menu open" role="listbox" aria-expanded="true"> 
+				<ul class="inner"> 
+					{{#each items}}
+					<li role="presentation"> <a href="{{path}}" data-track-product-grid="sortby" role="option" aria-disabled="false" tabindex="0" aria-selected="{{#if selected}}true{{else}}false{{/if}}"> <span class="text">{{label}}</span> </a> </li>
+					{{/each}}
+				</ul> 
+			</div>
+		{{/each}}
+    </div>
+    <div class="sortMobile">
+		{{#each this.menus}}
+		<button type="button" class="btn custom-dropdown-toggle btn-default" data-toggle="dropdown" aria-selected="true" role="button">
+			<span class="text">{{getSelectedTitle items}}</span>
+		</button>
+		<label class="sortLabel">${properties.sort || 'Sort' @context='html',i18n}</label>
+		<div class="custom-dropdown" role="listbox" aria-expanded="true">
+			<select class="inner">
+				{{#each items}}
+				<option value="{{path}}" data-track-product-grid="sortby" role="option" aria-disabled="false" tabindex="0" aria-selected="{{#if selected}}true{{else}}false{{/if}}"> <span class="text">{{label}}</span> </option>
+				{{/each}}
+			</select>
+		</div>
+		{{/each}}
+	</div>
+</script>
+<script id="productFiltersTemp" type="text/x-handlebars-template">
+    {{#each this.facets}}
+    {{#if this.label}}
+    <div class="products-list-item checkbox-cont">
+        <h2 class="value-label">
+            <a data-toggle="collapse" data-parent="#product-filter-section" href="#collapse{{@key}}" data-index="{{this.label}}" aria-expanded="{{#checkIndexExist ../activeFilter @key}}true{{/checkIndexExist}}">
+                    {{this.label}}<span class="arrow-toggle arrowLink"></span>
+            </a>
+        </h2>
+        <fieldset class="collapse {{#checkIndexExist ../activeFilter this.label}}in{{/checkIndexExist}} {{#checkIndexExist ../activeFilter @key}}in{{/checkIndexExist}} {{#ifNotEquals ../deviceName 'desktop'}}in{{/ifNotEquals}}" id="collapse{{@key}}" data-index="{{this.label}}" >
+            <legend class="sr-only">{{this.label}}. Page will refresh based on your selection</legend>
+                {{#if this.showColorTone}}
+                    <div class="productTypes checkPreference skin-tone-container">
+                    {{#each this.values}}
+                    <div class="products-list-item list-item skin-tone">
+                        <input class="custom-checkbox" type="checkbox" data-total-count="{{this.count}}" id="checkbox-{{@../key}}{{@key}}" data-action="{{#if this.undolink}}{{this.undolink}}{{else}}{{this.link}}{{/if}}" {{#ifEquals this.selected 'true'}}checked{{/ifEquals}} >
+                        {{#if_equal this.selected 'true'}}
+                            <label for="checkbox-{{@../key}}{{@key}}"  class="selected-check">
+                        {{else}}
+                            <label for="checkbox-{{@../key}}{{@key}}">  
+                        {{/if_equal}}
+                        <img alt="{{this.value}}" src="//mattel.scene7.com/is/image/Mattel/{{this.value}}" >                                   
+                        </label>
+                    </div>
+                    {{/each}}
+                {{/if}}
+                {{#if this.rating}}
+                        <div class="productTypes checkPreference">  
+                        {{#each this.values}}
+                        <div class="products-list-item list-item">
+                            <input class="custom-checkbox" type="checkbox" id="checkbox-{{@../key}}{{@key}}" data-action="{{#if this.undolink}}{{this.undolink}}{{else}}{{this.link}}{{/if}}" {{#ifEquals this.selected 'true'}}checked{{/ifEquals}} data-total-count="{{this.count}}">
+                            <label for="checkbox-{{@../key}}{{@key}}">  
+                                <span class="rating-section rating-{{changeToHyphen this.value}}"></span>                            
+                                <span class="sr-only">{{this.value}}</span>
+                            </label>
+                        </div>
+                        {{/each}}
+                {{/if}}
+                {{#if this.other}}
+                    <div class="productTypes checkPreference"> 
+                    {{#each this.values}}
+                    <div class="products-list-item list-item">
+                        <input class="custom-checkbox" type="checkbox" data-total-count="{{this.count}}" id="checkbox-{{@../key}}{{@key}}" data-action="{{#if this.undolink}}{{this.undolink}}{{else}}{{this.link}}{{/if}}" {{#ifEquals this.selected 'true'}}checked{{/ifEquals}} >
+                        <label for="checkbox-{{@../key}}{{@key}}">{{this.value}}</label>
+                    </div>
+                    {{/each}}
+                {{/if}} 
+            </div>
+        </fieldset>
+    </div>
+    {{/if}}
+    {{/each}}
+</script>

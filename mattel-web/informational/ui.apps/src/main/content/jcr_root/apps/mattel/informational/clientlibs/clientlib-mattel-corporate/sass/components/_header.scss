@@ -1,0 +1,157 @@
+.corporate-basepage, .corp-xf-page {
+  .navigationHeader {
+    header {
+      .overlay{
+        @media #{$tablet-mobile} {
+          background: rgba(0, 0, 0, 0.5);
+        }
+      }
+      @media #{$desktop} {
+        background-color: $white;
+      }
+      .primary-nav {
+        &.collapsing{
+          @media #{$tablet-mobile} {
+            opacity: 0;
+          }
+        }
+        > ul {
+          > li {
+            .show-sub-nav {
+              &:before {
+                  @media #{$tablet-mobile} {
+                    background:url(#{$spriteLightPath}) no-repeat -200px 0;
+                  }
+              }
+            }
+            &:hover {
+              .show-sub-nav {
+                &:before{
+                  background:url(#{$spriteLightPath}) no-repeat -56px 0;
+                  @media #{$tablet-mobile} {
+                    background:url(#{$spriteLightPath}) no-repeat -200px 0;
+                  }
+                }
+              }
+            }
+            ul {
+              @media #{$tablet-mobile} {
+                padding: 0;
+                margin-top: -4px;
+              }
+              li{
+                @media #{$tablet-mobile} {
+                  text-indent: 0;
+                }
+                &:last-child{
+                  a{
+                    @media #{$desktop} {
+                      padding:0;
+                    }
+                  }
+                }
+              }
+            }
+            > a {
+              @media #{$desktop} {
+                border-bottom: none;
+              }
+            }
+          }
+        }
+        .search {
+          @media #{$desktop} {
+            position: relative;
+            margin-left: 0;
+          }
+        }
+      }
+      .news-search {
+        .search-icon {
+          .fa-search:before {
+            @media #{$desktop} {
+              top: 20px;
+              right:-14px;
+            }
+          }
+        }
+        .search-input-field {
+          @media #{$desktop} {
+            right: 0;
+          }
+          .input-group {
+            @media #{$tablet-mobile} {
+              background: #EBEBEB;
+            }
+            @media #{$desktop} {
+              top: -8px;
+            }
+            .input-group-addon {
+               padding: 11px 0px 6px 14px;
+              @media #{$tablet-mobile} {
+                background: #EBEBEB;
+              }
+              @media #{$desktop} {
+                 padding: 8px 12px 0px 12px;
+              }
+            }
+            .tt-menu {
+              .tt-dataset {
+                .tt-suggestion {
+                  font-family: $MattelCorpPrimaryFontRoman;
+                  font-size: 16px;
+                  font-style: normal;
+                    &:hover{
+                      text-decoration: underline;
+                    }
+                  .tt-highlight{
+                    font-family: $MattelCorpPrimaryFontRoman;
+                    font-size: 16px;
+                    font-style: normal;
+                  }
+                }
+              }
+            }
+            input{
+               @media #{$tablet-mobile} {
+                  background: #EBEBEB !important;
+               }
+            }
+            #searchInput_field {
+              font: normal 16px $MattelCorpPrimaryFontRoman;
+            }
+          }
+        }
+        .search-focus{
+          .input-group {
+            @media #{$tablet-mobile} {
+              background: #fff !important;
+              border: 1px solid #979797 !important;
+            }
+            .input-group-addon {
+                @media #{$tablet-mobile} {
+                  background: #fff !important;
+                }
+            } 
+            input {
+              @media #{$tablet-mobile} {
+                background: #fff !important;
+              }
+            }
+          }
+        }
+      }
+    }
+    .primary-nav > ul {
+      .search {
+        .input-group {
+          .twitter-typeahead {
+            .tt-hint {
+              font: normal 16px $MattelCorpPrimaryFontRoman;
+            }
+          }
+        }
+      }
+    } 
+  }
+}

@@ -1,0 +1,44 @@
+<sly data-sly-test="${wcmmode.edit}">${'Configure Retailer Component' @ i18n}</sly>
+	<sly data-sly-test="${(properties.retBgPattern == null && properties.retBgColor == null )||(properties.retBackOption=='image'&& properties.retBgPattern ==null)||(properties.retBackOption=='color'&& properties.retBgColor ==null)}">
+   		<div class="play-tiles-gallery play-retailers" data-height-sync=".gallery-image" id="${properties.linkNavigationCheck?properties['linkNavOption']:''}" data-link-attribute="${properties.linkNavigationCheck?properties['linkNavOption']:''}" >
+    </sly>
+    <sly data-sly-test="${properties.retBackOption=='color' && properties.retBgColor !=null}">
+    	<div class="play-tiles-gallery play-retailers" data-height-sync=".gallery-image" id="${properties.linkNavigationCheck?properties['linkNavOption']:''}" data-link-attribute="${properties.linkNavigationCheck?properties['linkNavOption']:''}" style="background:${properties.retBgColor @ context='styleString'};">
+    </sly>
+    <sly data-sly-test="${properties.retBackOption=='image'&& properties.retBgPattern !=null}">
+    	<div class="play-tiles-gallery play-retailers" data-height-sync=".gallery-image" id="${properties.linkNavigationCheck?properties['linkNavOption']:''}" data-link-attribute="${properties.linkNavigationCheck?properties['linkNavOption']:''}" style="background-image: url('${properties.retBgPattern @ context='styleString'}');background-size: cover;">
+    </sly>
+    <sly data-sly-test="${properties.titleBgImg == null}">
+		<div class="gallery-title">
+    </sly>
+    <sly data-sly-test="${properties.titleBgImg != null}">
+		<div class="gallery-title" style="background-image: url('${properties.titleBgImg @ context='styleString'}');background-repeat: no-repeat;background-size: cover;">
+    </sly>
+    	<h2 style="text-align:${properties.titleAlignOpt @ context='styleString'};">${properties.sectionTitle @ i18n}</h2>
+    </div>
+    <div class="gallery-tile">
+		<ul class="image-list" data-sly-use.retailerDetail="com.mattel.play.core.model.RetailerModel">
+			<sly data-sly-list.retailList="${retailerDetail.retailerDetailsList}">
+				<li class="fp-brands-${retailerDetail.listLength}">
+					<sly data-sly-test="${retailList.retailerTarget =='sameWindow'}">
+						<a href="${retailList.retailerUrl}"   data-tracking-id="${properties.locationName!=null ? properties.locationName : 'Retailer Section'}-click|${properties.alwaysEnglish}|${retailList.retailLogoAlt @i18n}|${properties.locationName!=null ? properties.locationName :''}"><div class="gallery-image"><img src="${retailList.retailerLogoSrc}" alt="${retailList.retailLogoAlt @i18n}" /></div></a>
+					</sly>
+					<sly data-sly-test="${retailList.retailerTarget =='tabWindow'}">
+						<a href="${retailList.retailerUrl}"  data-tracking-id="${properties.locationName!=null ? properties.locationName : 'Retailer Section'}-click|${properties.alwaysEnglish}|${retailList.retailLogoAlt @i18n}|${properties.locationName!=null ? properties.locationName :''}" target="_blank"><div class="gallery-image"><img src="${retailList.retailerLogoSrc}" alt="${retailList.retailLogoAlt @i18n}" /></div><span class="sr-only"> ${'Opens in a new tab' @ i18n}</span></a>
+					</sly>
+					<sly data-sly-test="${retailList.retailerTarget =='newWindow'}">
+						<a data-url="${retailList.retailerUrl}" data-tracking-id="${properties.locationName!=null ? properties.locationName : 'Retailer Section'}-click|${properties.alwaysEnglish}|${retailList.retailLogoAlt @i18n}|${properties.locationName!=null ? properties.locationName :''}" onclick="window.open(this.dataset.url,'PLAY','width=500, height=500');">
+                    		<div class="gallery-image"><img src="${retailList.retailerLogoSrc}" alt="${retailList.retailLogoAlt @i18n}" /></div>
+                    		<span class="sr-only"> ${'Opens in new window' @ i18n}</span>
+                    	</a>
+					</sly>
+                    <sly data-sly-test="${retailList.retailerTarget =='interstitial'}">
+                    	<a href="javascript:void(0);" data-tracking-id="${properties.locationName!=null ? properties.locationName : 'Retailer Section'}-click|${properties.alwaysEnglish}|${retailList.retailLogoAlt @i18n}|${properties.locationName!=null ? properties.locationName :''}" data-toggle="modal" data-url="${retailList.retailerUrl}" data-target="#interstitialModal">
+                        	<div class="gallery-image"><img src="${retailList.retailerLogoSrc}" alt="${retailList.retailLogoAlt @i18n}"/></div><span class="sr-only"> ${'Opens a pop up' @ i18n}</span>
+						</a>
+                    </sly>
+				</li>
+			</sly>
+		</ul>
+	</div>
+</div>

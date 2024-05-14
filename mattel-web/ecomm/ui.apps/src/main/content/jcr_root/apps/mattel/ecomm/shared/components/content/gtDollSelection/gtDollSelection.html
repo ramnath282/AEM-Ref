@@ -1,0 +1,18 @@
+<sly data-sly-test.author="${wcmmode.edit}">${'Gift Trunk - Doll Selection / Truly Me' @i18n}</sly>
+<sly data-sly-use.dollObj="com.mattel.ecomm.core.services.GTCompositeImageService">
+  <input type="hidden" value="${dollObj.nonTMImageParams}" id="gtDollImageParams"/>
+  <input type="hidden" value="${dollObj.trulyMeImageParams}" id="gtTMImageParams"/>
+     <sly data-sly-test="${properties.componentType == 'dollRecommendation'}">
+	<sly data-sly-use.dollRecommend="dollrecommend.html"> 
+    	<sly data-sly-call="${dollRecommend.template}"></sly>
+    </sly>
+</sly>
+
+<sly data-sly-test="${properties.componentType == 'trulyMe'}">
+	<sly data-sly-use.trulyme="trulyme.html"> 
+    	<sly data-sly-call="${trulyme.template}"></sly>
+    </sly>
+</sly> 
+</sly>
+
+

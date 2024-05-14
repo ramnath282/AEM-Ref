@@ -1,0 +1,228 @@
+.corporate-basepage {
+    @media #{$medium-up} {
+        overflow-y: scroll;
+        &.modal-open {
+            overflow: hidden;
+        }
+    }
+    a {
+        color: $black;
+        &:hover {
+            color: $primaryTextColor;
+        }
+    }
+    .outer-wrapper {
+        max-width: 1440px;
+        margin: 50px auto 0 auto;
+        @media #{$large-up} {
+            margin: 57px auto 0 auto;
+        }
+        hr {
+            margin: 0;
+        }
+        p {
+            line-height: em(24, 16);
+            font-size: 16px;
+            margin: 0;
+            padding: 0;
+            a {
+                text-decoration: underline;
+            }
+        }
+        .main-title,
+        .text-para {
+            a {
+                text-decoration: underline;
+            }
+        }
+        .cta-with-image {
+            display: flex;
+            align-items: center;
+            a {
+                padding-left: 30px;
+                @media #{$tablet-mobile} {
+                    padding-left: 16px;
+                }
+                &:hover {
+                    text-decoration: underline;
+                    text-decoration-color: $primaryTextColor;
+                    color: $primaryTextColor;
+                }
+            }
+        }
+        .document-view {
+            .cta-with-image {
+                a {
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+    .aem-GridColumn {
+        padding: 0;
+        &.corp-container {
+            @media #{$large-down} {
+                padding: 0 20px;
+            }
+        }
+    }
+    .corp-container {
+        @extend .col-sm-10;
+        @media #{$medium-up} {
+            width: 83.33% !important;
+            margin: 0 auto !important;
+            float: unset !important;
+            clear: both !important;
+        }
+        @media #{$tablet-mobile} {
+            width: 100% !important;
+        }
+    }
+    .small-cta {
+        .btn-cta-item {
+            font-size: 16px
+        }
+    }
+    .left-arrow-cta {
+        .btn-cta-item {
+            color: $black;
+            background-image: none;
+            background-color: transparent;
+            border-color: transparent;
+            background-color: transparent;
+            border-width: 0 0 2px 0;
+            padding: 0 0 0 13px;
+            &:hover {
+                color: $primaryTextColor;
+                text-decoration: underline;
+            }
+            &:before {
+                content: '';
+                position: absolute;
+                width: 17px;
+                height: 20px;
+                background-image:url(#{$spriteLightPath});
+                background-position: -377px -3px;
+                top: 0;
+                left: 0;
+                right: auto;
+                transform: rotate(-180deg);
+            }
+        }
+    }
+    .text-arrow {
+        .btn-cta-item {
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+    .columnControl {
+        &.pd-0 {
+            .image-text-container {
+                .col-first,
+                .col-second {
+                    padding: 0;
+                }
+            }
+        }
+        &.reverse-mobile-order {
+            .col-2 {
+                @media #{$medium-down} {
+                    display: table;
+                    .col-second {
+                        display: table-header-group;
+                        float: none;
+                    }
+                }
+            }
+        }
+        .video-player-container{
+            .video-player-label{
+                min-height: auto;
+            }
+        }
+    }
+// AEMMPCORP-691 youtube video, the video does not take dimensions as per VD
+    #video-player-component {
+        #video-youtube-player {
+            display: block;
+            padding-top: 56.25%;
+            height: 0;
+            position: relative;
+            iframe {
+                width: 100%;
+                margin: 0 auto;
+                position: absolute;
+                height: 100%;
+                top: 0;
+            }
+        }
+    }
+
+    a:focus, 
+    input:focus, 
+    input[type=checkbox]:focus, 
+    input[type=radio]:focus, 
+    .slick-arrow:focus, button:focus,
+    .carouselContainer.fullbleed .flexible-carousel-component .slider-content.grid-column-one .wrap-dots-section .play-pause-button button:focus{
+        outline: #0570C2 auto 1px; 
+    }
+    a.skip-main:focus, .footer-wrapper a:focus {
+        outline: #BFE3FC auto 1px;
+    }
+    .carouselContainer .flexible-carousel-component .slick-dots li button:focus {
+        outline: #0570C2 auto 1px; 
+        opacity: 1;
+    }
+}
+.corp-xf-page .btn-cta-item:hover{
+    text-decoration: underline;
+}
+/* Edge Browser fix */
+@supports (-ms-ime-align: auto) {
+    a:focus, 
+    input:focus, 
+    input[type=checkbox]:focus, 
+    input[type=radio]:focus, 
+    .slick-arrow:focus, button:focus,
+    .carouselContainer.fullbleed .flexible-carousel-component .slider-content.grid-column-one .wrap-dots-section .play-pause-button button:focus{
+        outline: 1px solid #0570C2; 
+    }
+    a.skip-main:focus, .footer-wrapper a:focus {
+        outline: 1px solid #BFE3FC;
+    }
+    .carouselContainer .flexible-carousel-component .slick-dots li button:focus {
+        outline: 1px solid #0570C2; 
+        opacity: 1;
+    }
+} 
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {    
+    .corporate-basepage {       
+        overflow-y: auto;
+    }
+    .corporate-basepage .corp-container {
+        float: none !important;
+    }
+	.corporate-basepage .outer-wrapper .grid-container .grid-xl-3 .cta-with-image{
+        width: 100%;
+        max-width: 380px;
+    }
+    .corporate-basepage .outer-wrapper .grid-container .grid-xl-4 .cta-with-image{
+        width: 100%;
+        max-width: 281px;
+    }
+    .corporate-basepage .left-arrow-cta .btn-cta-item::before{
+        top:-3px;
+    }
+    .text-arrow .btn-cta-item::before, .light-theme .text-arrow .btn-cta-item:before{
+        top:0;
+    }
+    .corporate-basepage .btn-cta-item{
+            padding: 16px 55px 4px 55px !important;
+    }
+}
+// ADPB-4686 - fixes
+.ticker-outer-wrapper .ticker-component .ticker-content .ticker-close::before{
+    background-position: -177px -78px;
+}

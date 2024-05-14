@@ -1,0 +1,17 @@
+<sly data-sly-test="${wcmmode.edit}">${'Edit Employee Validation Component' @i18n}</sly>
+<div class="signin col-md-5">
+	<h1>Employee Sign in</h2>
+	<form action="${properties.redirectLink @ extension = 'html'}" class="employee-signin-form">
+		<div class="input-field required">
+			<input class="form-input long-input" type="text" name="employeeId" value="" id="employee-signin" maxlength=""
+				autocomplete="on" aria-required="true"/>
+			<label class="placeholder-label" for="employee-signin">${properties.empIdPlaceholderText}</label>
+			<div class="help-block form-message"></div>
+		</div>                                    
+                <input class="theme-btn" type="submit" value="${properties.submitButtonText}">
+	</form>
+</div>
+
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
+    <sly data-sly-call="${clientlib.js @ categories='ecomm.empvalidation'}"/>
+</sly>

@@ -1,0 +1,36 @@
+<sly data-sly-test="${wcmmode.edit}">${'Article Landing Banner Component' @i18n}</sly>
+<!-- article hero starts -->
+<sly data-sly-use.articleLanding = "com.mattel.ag.explore.core.model.ArticleLandingPageModel">
+    <div class="grid-module grid-article-Hero">
+        <div class="container">
+            <div>
+                <h1>${properties.heading}</h1>
+                ${properties.description @context='html'}
+                <div class="article-hero">
+                    <div class="article-sub-section">
+                        <div class="tile-container">
+                            <img alt="" src="${articleLanding.articleBannerImagePath}">
+                        </div>
+                    </div>
+                    <div class="article-sub-section">
+                        <div class="tile-container">
+                            <div class="tile-content">
+                                <span class="tile-category">${articleLanding.primaryTagTitle @i18n}</span>
+                                <h2 class="tile-name">${articleLanding.title @i18n}</h2>
+                                <div class="tile-description"><p>${articleLanding.description @i18n}</p></div>
+                                <sly data-sly-test="${properties.readMore != null}">
+                                    <a class="arrow-right read-more track-explore-hero-banner" data-tracking-banner="Explore Hero Banner|${articleLanding.title @i18n}" href="${articleLanding.pagePath}"><span>${properties.readMore @i18n}</span></a></sly>
+                                <sly data-sly-test="${properties.readMore == null}">
+                                    <a class="arrow-right read-more track-explore-hero-banner" data-tracking-banner="Explore Hero Banner|${articleLanding.title @i18n}" href="${articleLanding.pagePath}"><span>${'Read More' @i18n}</span></a></sly>
+                                <sly data-sly-test="${articleLanding.socialMediaEnabled=='true'}">
+                                    <sly data-sly-use.templ="/apps/mattel/ecomm/ag/components/content/socialSharetemplate/socialSharetemplate.html" data-sly-call="${templ.socialShare @ title=articleLanding.title, description=articleLanding.description, mediaUrl=articleLanding.articleBannerImagePath, pageUrl=articleLanding.pagePath, componentname='Explore Hero Banner'}"></sly>
+                                </sly>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</sly>
+<!-- article hero Ends -->

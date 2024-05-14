@@ -1,0 +1,525 @@
+//file-info
+//css1.footer css
+//css1.footer css start
+.footer-wrapper.reusable-footer, .informationalFooter{
+    .footer,
+    .parentFooter,
+    .richText {
+        &.aem-GridColumn {
+            padding: 0;
+        }
+    }
+
+
+    // why play footer and FisherPrice New
+    .footer-links-accordion {
+        @include print-css(
+            map-merge((
+                background-color: #ee0024,
+                background-size: cover,
+                padding: (
+                    defaultVal:31px 0px 31px 74px,
+                    desktopOnly:31px 0 31px 0,
+                    tabletMobile: 0
+                ),
+                padding-left:(
+                    largeUp:calc((100% - 1440px)/2)
+                ),
+                padding-right:(
+                    largeUp:calc((100% - 1440px)/2)
+                ),
+            ), 
+            if(variable-exists(footer) and map-has-key($footer, footerlinksAccordion), 
+                map-get($footer,footerlinksAccordion), ()
+            )
+        ));
+        h4 {
+            @include print-css(
+                map-merge((
+                    margin: 0
+                ), 
+                if(variable-exists(footer) and map-has-key($footer, footerlinksAccordionH4), 
+                    map-get($footer,footerlinksAccordionH4), ()
+                )
+            ));
+        }
+
+        .footer-links {
+            @include print-css(
+                map-merge((
+                    width: (
+                        defaultVal:16%,
+                        tabletMobile:100%,
+                        desktopOnly:14.5%
+                    ),
+                    display: inline-block,
+                    text-align: left,
+                    vertical-align: top,
+                    margin-right: (
+                        tabletMobile:0,
+                        defaultVal:18px
+                    ),
+                    margin-left:(
+                        largeUp :  40px
+                    )
+                ), 
+                if(variable-exists(footer) and map-has-key($footer, footerlinks), 
+                    map-get($footer,footerlinks), ()
+                )
+            ));
+            &:first-child{
+                @media #{$desktop} {
+                    margin-left: 8%;
+                }
+            }
+            &:last-child{
+                @media #{$desktop} {
+                    margin-right: 8.889%;
+                } 
+            }
+            &:nth-child(1){
+                @media #{$tablet-mobile} {
+                    border-bottom: 1px solid $white;
+                }
+            }
+            &:nth-child(2){
+                @media #{$tablet-mobile} {
+                    border-bottom: 1px solid $white;
+                }
+            }
+
+            h4 {
+                @include print-css(
+                    map-merge((
+                        font-size: 1rem,
+                        font-weight: 400,
+                        text-align: left,
+                        padding-bottom: (
+                            defaultVal:0
+                        ),
+                        padding:(
+                            tabletMobile:20px 20px 14px 20px
+                        ),
+                        position:(
+                            tabletMobile:relative
+                        ),
+                        margin:(
+                            tabletMobile:0
+                        ),
+                        border:(
+                            tabletMobile:none
+                        ),
+                        line-height:(
+                            tabletMobile:normal
+                        )
+                    ), 
+                    if(variable-exists(footer) and map-has-key($footer, footerlinksH4), 
+                        map-get($footer,footerlinksH4), ()
+                    )
+                ));
+                &.expand-in{
+                    @include print-css(
+                        map-merge((
+                            border:(
+                                tabletMobile:0,
+                            ),
+                            margin-bottom:(
+                                tabletMobile:0
+                            )
+                        ), 
+                        if(variable-exists(footer) and map-has-key($footer, footerlinksExpand), 
+                            map-get($footer,footerlinksExpand), ()
+                        )
+                    ));
+                }
+                a{
+                    @media #{$desktop} {
+                        display: inline-block;
+                        font-size: 16px;
+                    }
+                    @media #{$tablet-mobile} {
+                        font-size:20px;
+                        padding: 0;
+                    }
+                }
+            }
+
+            &.footer-social {
+                @include print-css(
+                    map-merge((
+                        width:(
+                            defaultVal:auto,
+                            tabletMobile:100%
+                        ),
+                        vertical-align: top,
+                        margin-left:(
+                            desktopOnly:4%
+                        ),
+                        margin-right:(
+                            desktopOnly:0
+                        ),
+                        text-align:(
+                            tabletMobile:left
+                        ),
+                        padding:(
+                            tabletMobile: 30px 20px
+                        )
+                    ), 
+                    if(variable-exists(footer) and map-has-key($footer, footerSocial), 
+                        map-get($footer,footerSocial), ()
+                    )
+                ));
+                a {
+                    @include print-css(
+                        map-merge((
+                            font-weight: 400,
+                            color: $white,
+                            font-family:  $siteMainFontBold,
+                            letter-spacing: 0.17px,
+                            line-height: 23px,
+                            font-size: 20px
+                        ), 
+                        if(variable-exists(footer) and map-has-key($footer, footerSocialAnchor), 
+                            map-get($footer,footerSocialAnchor), ()
+                        )
+                    ));
+                }
+
+                img {
+                    @include print-css(
+                        map-merge((
+                            width: 40px,
+                            height: 40px
+                        ), 
+                        if(variable-exists(footer) and map-has-key($footer, footerSocialImg), 
+                            map-get($footer,footerSocialImg), ()
+                        )
+                    ));
+                }
+
+                ul {
+                    @include print-css(
+                        map-merge((
+                            margin-top: 6px,
+                            margin:(
+                                tabletMobile:0
+                            )
+                        ), 
+                        if(variable-exists(footer) and map-has-key($footer, footerSocialUl), 
+                            map-get($footer,footerSocialUl), ()
+                        )
+                    ));
+                    li{
+                        margin-bottom: 7px;
+                    }
+                }
+
+                li {
+                    @include print-css(
+                        map-merge((
+                            float:(
+                                defaultVal:left,
+                                tabletMobile:none
+                            ),
+                            margin-right:4px,
+                            display:(
+                                tabletMobile:inline-block
+                            ),
+                            text-align:(
+                                tabletMobile:center
+                            )
+                        ), 
+                        if(variable-exists(footer) and map-has-key($footer, footerSocialUlLi), 
+                            map-get($footer,footerSocialUlLi), ()
+                        )
+                    ));
+                }
+                h4{
+                    @include print-css(
+                        map-merge((
+                            padding:(
+                                tabletMobile:0 0 16px 0
+                            )
+                        ), 
+                        if(variable-exists(footer) and map-has-key($footer, footerSocialH4), 
+                            map-get($footer,footerSocialH4), ()
+                        )
+                    ));
+                }
+            }
+
+            &.footer-esrblogo {
+                @include print-css(
+                    map-merge((
+                        width: (
+                            desktopOnly: auto,
+                        ),
+                        margin: (
+                            desktopOnly: 0,
+                        ),
+                        margin-right:(
+                            desktopOnly:8.889%
+                        ),
+                        float: (
+                            desktopOnly: right
+                        ),
+                        padding:(
+                            tabletMobile: 0 20px 40px
+                        )
+                    ), 
+                    if(variable-exists(footer) and map-has-key($footer, footeresbrLogo), 
+                        map-get($footer,footeresbrLogo), ()
+                    )
+                ));
+            }
+
+        }
+
+        .accordion-action {
+            @include print-css(
+                map-merge((
+                    pointer-events: (
+                        defaultVal:none,
+                        tabletMobile:auto
+                    ),
+                    cursor:(
+                        tabletMobile: pointer,
+                    ),
+                    font-size:(
+                        tabletMobile: 1rem,
+                    ),
+                    border-bottom:(
+                        tabletMobile: 1px solid #fff,
+                    ),
+                    margin-bottom:(
+                        tabletMobile: 15px,
+                    ),
+                    padding-bottom:(
+                        tabletMobile:  20px
+                    )
+                ), 
+                if(variable-exists(footer) and map-has-key($footer, footerAccordionAction), 
+                    map-get($footer,footerAccordionAction), ()
+                )
+            ));
+            &:after {
+ 				// ADPB-4686 fixes
+                @media #{$tablet-mobile}{
+                    @include print-css(
+                    map-merge((
+                        content: ' ',
+                        background: url(#{$HeaderspriteLightPath}) no-repeat  -167px  -274px,
+                        width: 28px,
+                        height: 24px,
+                        position: absolute,
+                        right: 20px,
+                        top:14px
+                    ), 
+                    if(variable-exists(footer) and map-has-key($footer, footerAccordionActionAfter), 
+                        map-get($footer,footerAccordionActionAfter), ()
+                    )
+                ));
+                }
+            }
+            &.footer-legal{
+                &:after{
+                    display: none;
+                }
+            }
+            &.expand-in {
+                &:after {
+                    @include print-css(
+                        map-merge((
+                            background: url(#{$HeaderspriteLightPath}) no-repeat  -195px  -274px,
+                        ), 
+                        if(variable-exists(footer) and map-has-key($footer, footerAccordionExpand), 
+                            map-get($footer,footerAccordionExpand), ()
+                        )
+                    ));
+                }
+            }
+            a {
+                @include print-css(
+                    map-merge((
+                        font-size: 20px,
+                        font-weight:  500,
+                        padding-bottom: 10px,
+                        color: $white,
+                        font-family:  $siteMainFontBold,
+                        letter-spacing: 0.17px,
+                        line-height: 23px
+                    ), 
+                    if(variable-exists(footer) and map-has-key($footer, footerAccordionAnchor), 
+                        map-get($footer,footerAccordionAnchor), ()
+                    )
+                ));
+            }
+
+        }
+
+        .accordion-container {
+            @include print-css(
+                map-merge((
+                    display:(
+                        xLargeOnly:block,
+                        tabletMobile:none
+                    )
+                ), 
+                if(variable-exists(footer) and map-has-key($footer, footerAccordionContainer), 
+                    map-get($footer,footerAccordionContainer), ()
+                )
+            ));
+            &.footer-legal{
+                   display: block;
+                   ul{
+                        @media #{$tablet-mobile} {
+                          padding: 0px 20px 0;
+                        }
+                   }
+            }
+            ul {
+                @include print-css(
+                    map-merge((
+                        padding:(
+                            defaultVal:0,
+                            tabletMobile:0px 20px 16px,
+                        ),
+                        margin:(
+                            tabletMobile:0
+                        )
+                    ), 
+                    if(variable-exists(footer) and map-has-key($footer, footerAccordionContainerUl), 
+                        map-get($footer,footerAccordionContainerUl), ()
+                    )
+                ));
+                
+
+                li {
+                    @include print-css(
+                        map-merge((
+                            font-size: em(16),
+                            margin-top:  0,
+                            line-height:(
+                                defaultVal:20px,
+                                tabletMobile:24px
+                            ),
+                            padding-bottom:(
+                                defaultVal:15px,
+                                tabletMobile:17px
+                            )
+                        ), 
+                        if(variable-exists(footer) and map-has-key($footer, footerAccordionContainerUlLi), 
+                            map-get($footer,footerAccordionContainerUlLi), ()
+                        )
+                    ));
+                    
+                    a {
+                        @include print-css(
+                            map-merge((
+                                font-family:  $siteMainFont,
+                                font-weight: 500,
+                                font-size: 16px,
+                                line-height: 0,
+                                color:$white
+                            ), 
+                            if(variable-exists(footer) and map-has-key($footer, footerAccordionContainerAnchor), 
+                                map-get($footer,footerAccordionContainerAnchor), ()
+                            )
+                        ));
+                        &:hover{
+                            text-decoration: underline;
+                        }
+                    }
+                    &:last-child{
+                        padding-bottom: 0;
+                    }
+                    &:first-child {
+                        @include print-css(
+                            map-merge((
+                                margin: 0
+                            ), 
+                            if(variable-exists(footer) and map-has-key($footer, footerAccordionContainerFirstChild), 
+                                map-get($footer,footerAccordionContainerFirstChild), ()
+                            )
+                        ));
+                        margin-top: 0,
+                    }
+                }
+            }
+        }
+
+
+    }
+
+    .footer-links:nth-child(3) {
+        .accordion-container {
+            ul {
+                li:nth-child(3) {
+                    a {
+                        @include print-css(
+                            map-merge((
+                                line-height:  0
+                            ), 
+                            if(variable-exists(footer) and map-has-key($footer, footerlinksNthchild), 
+                                map-get($footer,footerlinksNthchild), ()
+                            )
+                        ));
+                    }
+                }
+            }
+        }
+    }
+
+
+    .go-back-btn {
+        @include print-css(
+            map-merge((
+                color: $black,
+                background-color: #652f93,
+                padding: 6px,
+                border-radius: 4px
+            ), 
+            if(variable-exists(footer) and map-has-key($footer, footergobackBtn), 
+                map-get($footer,footergobackBtn), ()
+            )
+        ));
+    }
+
+    .continue-btn {
+        @include print-css(
+            map-merge((
+                color: $black,
+                background-color: #652f93,
+                padding: 6px,
+                border-radius: 4px
+            ), 
+            if(variable-exists(footer) and map-has-key($footer, footerContinueBtn), 
+                map-get($footer,footerContinueBtn), ()
+            )
+        ));
+    } 
+    .aem-GridColumn{
+        &.retailer{
+            &.family-brands{
+                @include print-css(
+                map-merge((
+                    padding: 0
+                ), 
+                if(variable-exists(footer) and map-has-key($footer, retailerFamilyBrand), 
+                    map-get($footer,retailerFamilyBrand), ()
+                )
+            ));
+            }
+        }
+    }
+}
+.reusable-footer{
+    .richText{
+        .rich-text{
+            >div{
+                padding: 18px 0 10px;
+            }
+        }
+    }
+}
+//css1.footer css end

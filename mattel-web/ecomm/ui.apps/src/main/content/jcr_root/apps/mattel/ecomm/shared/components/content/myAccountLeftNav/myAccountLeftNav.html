@@ -1,0 +1,20 @@
+<sly data-sly-test="${wcmmode.edit}">${'Edit My Account Left Nav Component' @i18n}</sly>
+<sly data-sly-use.leftNav="com.mattel.ecomm.core.models.MyAccountLeftNavModel">
+	<h2 data-sly-test="${properties.title}"class="nav-header visible-md visible-lg-block">${properties.title}</h2>
+	<div class="nav-header hidden-md hidden-lg" data-sly-test="${properties.title}"><button data-toggle="collapse" data-target="#myAccountNav" aria-expanded="false" aria-controls="myAccountNav">${properties.title}<span class="arrow-icon hidden-lg"><i class="fa fa-chevron-down"></i></span></button></div>
+	<div id="myAccountNav">
+	    <nav role="navigation" aria-label="left" >
+			<h3 class="submenu" aria-expanded="false" data-sly-test="${properties.generalLabel}">${properties.generalLabel}<span class="arrow-icon hidden-md hidden-lg"><i class="fa fa-chevron-down"></i></span></h3>
+	        <ul class="dropmenu" data-sly-list.accountList="${leftNav.accountDetailList}">
+	            <li><a data-track-left-nav-account="${accountList.pageName}" href="${accountList.pageLink}" class="${accountList.currentPage ?'active':''}">${accountList.pageName}</a></li>
+			</ul>
+			<h3 class="submenu" aria-expanded="false" data-sly-test="${properties.ordersLabel}">${properties.ordersLabel}<span class="arrow-icon hidden-md hidden-lg"><i class="fa fa-chevron-down"></i></span></h3>
+	        <ul class="dropmenu" data-sly-list.orderList="${leftNav.orderDetailList}">
+	            <li><a data-track-left-nav-order="${orderList.pageName}" href="${orderList.pageLink}" class="${orderList.currentPage ?'active':''}">${orderList.pageName}</a></li>
+	        </ul>
+	    </nav>
+	</div>
+</sly>
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
+    <sly data-sly-call="${clientlib.js @ categories=['ecomm.accountLeftNav']}"/>
+</sly>

@@ -1,0 +1,54 @@
+<sly data-sly-test="${wcmmode.edit}">${'Listing Detail Component' @i18n}</sly>
+<sly data-sly-use.listingDetailsModel = "com.mattel.global.core.model.ListingDetailModel"/>
+<sly data-sly-test.itemListPojo = "${listingDetailsModel.itemListPojo}"/>
+<div class="article-component-outerWrapper">
+	<div class="banner-wrapper">
+		<div class="banner-inner-wrapper">
+			<h1 data-sly-test="${itemListPojo.title}" class="banner-title">${itemListPojo.title}</h1>
+		</div>
+	</div>
+	<div class="content-wrapper">
+		<div class="content-inner-wrapper">
+			<div class="left-wrapper">
+				<img data-sly-test="${itemListPojo.mediaContent}" class="media-image" src="${itemListPojo.mediaContent}"/>
+				${itemListPojo.content @ context="unsafe"}
+			   <div data-sly-resource="${'socialLink' @ resourceType='wcm/foundation/components/parsys'}" data-sly-unwrap></div>
+			</div>
+			<div class="right-wrapper">
+				<div data-sly-resource="${'mediaContent' @ resourceType='wcm/foundation/components/parsys'}" data-sly-unwrap></div>
+				<div data-sly-test="${itemListPojo.attachmentDetails && itemListPojo.attachmentDetails.size}" class="download-media">
+					<h2 data-sly-test="${listingDetailsModel.downloadMedia}" class="download-media-header">${listingDetailsModel.downloadMedia}</h2>
+					<ul>
+						<sly data-sly-list.attachmentDetail="${itemListPojo.attachmentDetails}">
+							<li data-sly-test="${attachmentDetail}" class="media-details">
+								<img class="media-image" src="${attachmentDetail.attachmentUrlPrv}"/>
+								<div class="media-content">
+									<h3 class="media-title">${attachmentDetail.attachmentTitle}</h3>
+									<p class="media-description">${attachmentDetail.attachmentDescription @ context="html"}</p>
+									<div class="media-button view-and-download">
+										<ul data-sly-test="${attachmentDetail.attachmentPdf}">
+											<li>
+												<a href="${attachmentDetail.attachmentPdf}">${listingDetailsModel.downloadPdfLabel}</a>
+											</li>
+										</ul>
+									</div>
+									<div class="media-button" data-sly-test="${itemListPojo.attachmentZip}">
+										<ul>
+											<li>
+												<a href="${itemListPojo.attachmentZip}">${listingDetailsModel.downloadAllFilesLabel} ${attachmentDetail.attachmentTitle}</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</li>
+						</sly>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
+	<sly data-sly-call="${clientlib.css @ categories=['clientlib.corporate.news.articles']}"/>
+	<sly data-sly-call="${clientlib.js @ categories=['global.listingDetail']}"/>
+</sly>

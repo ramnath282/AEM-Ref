@@ -1,0 +1,38 @@
+<sly data-sly-test="${wcmmode.edit}">${'COPPA Site Entry Modal' @i18n}</sly>
+<sly data-sly-use.copaSiteEntryModel="com.mattel.ecomm.core.models.CopaSiteEntryModel"/>
+
+<div class="${wcmmode.edit ? '' : 'entry-modal-container' } full-screen modal fade" data-keyboard="false" aria-labelledby="entry-modal-title" aria-labelledby="entry-modal-title" data-excludeKeywords="${copaSiteEntryModel.excudeKeywords}" 
+        data-excludePages="${copaSiteEntryModel.excudePages}" data-cookieExpiry="${properties.cookieExpiry}"
+		style="background-image: url(${properties.componentBackgroundReferenceImage @context='html'});background-size: cover;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-content-inner">
+                <div class="modal-header text-center">
+                    <h1 id="entry-modal-title">
+                        ${properties.welcomeText} <span class="sr-only">American Girl</span>
+                    </h1>
+                    <div class="site-logo">
+                    	<picture>
+                            <source srcset="${properties.smLogoReferenceImage ? properties.smLogoReferenceImage : properties.lgLogoReferenceImage}" media="(max-width:765px)">
+                            <img alt="${properties.altTextLogo}" src="${properties.lgLogoReferenceImage}">
+                        </picture>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div class="shop-section col-sm-6 text-center">
+                        ${properties.shopVerbiage @ context='html'}
+                        <a href="${copaSiteEntryModel.shopCtaLink ? copaSiteEntryModel.shopCtaLink : '#'}" class="theme-btn no-bg-btn" role="button" tabindex="0">${properties.shopCtaLabel || 'Show now'} </a>
+                    </div>
+                    <div class="play-section col-sm-6 text-center">
+                        ${properties.playVerbiage @ context='html'}
+                        <a href="${copaSiteEntryModel.playCtaLink}" class="theme-btn no-bg-btn">${properties.playCtaLabel || 'Play now'} </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+	<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
+	    <sly data-sly-call="${clientlib.js @ categories='ecomm.coppaentrymodal'}"/>
+	</sly>

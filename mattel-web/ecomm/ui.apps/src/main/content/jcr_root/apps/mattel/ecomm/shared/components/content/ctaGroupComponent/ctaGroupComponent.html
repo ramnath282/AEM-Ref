@@ -1,0 +1,24 @@
+<sly data-sly-use.ctaGroupModel="com.mattel.ecomm.core.models.CTAGroupModel">
+	<div data-sly-test.isAuthored="${(wcmmode.edit || wcmmode.preview) && !properties.ctaGroupTitle}"
+		 class="cq-placeholder cmp-image"
+		 data-emptytext="${component.properties.jcr:title}"></div>
+	<div data-sly-test="${!isAuthored}" class="container-fluid flexible-cta-component">
+		<div class="inner-section">
+			<div class="text-center">
+				<div data-sly-test="${properties.ctaGroupTitle}" class="title ${ctaGroupModel.dropShadow == true ? 'text-shadow-on' :'' }">
+					${properties.ctaGroupTitle @context='html'}
+				</div>
+				<div  class="description-content">
+					<div data-sly-test="${properties.ctaGroupDescription}" class="description ${ctaGroupModel.dropShadow == true ? 'text-shadow-on' :'' }">
+						${properties.ctaGroupDescription @context='html'}
+					</div>
+					<div class="cta-button cta-btn-column-${ctaGroupModel.ctaGroupDetails.size} ${ctaGroupModel.ctaGroupDetails.size ? '' : 'hide'}">
+						<sly data-sly-list.ctaGroup="${ctaGroupModel.ctaGroupDetails}">
+							<a href="${ctaGroup.ctaLink}" role="button" class="theme-btn">${ctaGroup.ctaLabel}</a>
+						</sly>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</sly>  

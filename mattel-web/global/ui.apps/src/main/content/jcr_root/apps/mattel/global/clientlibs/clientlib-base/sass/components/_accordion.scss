@@ -1,0 +1,557 @@
+.accordionContainer {
+    .accordion-item {
+        @include print-css(
+            map-merge((
+                clear: both,
+                float: left,
+		        width: 100%,
+            ), 
+            if(variable-exists(accordion) and map-has-key($accordion, accordionItem), 
+                map-get($accordion,accordionItem), ()
+            )
+        ));
+        .accordion-page-title {
+            position: relative;
+            .main-title {
+                @include print-css(
+                    map-merge((
+                        font-size: (
+                            defaultVal: 36px,
+                            smOnly: 22px,
+                        ),
+                        padding: 0,
+                        margin: (
+                            defaultVal: 0 0 10px 0,
+                            smOnly: 0 0 10px 0,
+                            largeUp: 0 0 10px 0,
+                            mediumOnly: 0 0 10px 0,
+                            largeOnly: 0 0 10px 0,
+                        )
+                    ), 
+                    if(variable-exists(accorOverlayProp) and map-has-key($accorOverlayProp, accorOverlayProp), 
+                        map-get($accorOverlayProp,accorOverlayProp), ()
+                    )
+                ));
+            }
+            .sub-title {
+                @include print-css(
+                    map-merge((
+                        font-size:(
+                            defaultVal: 20px,
+                            smOnly: 18px
+                        ),
+                        padding: 0,
+                        margin: (
+                            largeUp:  0 0 10px 0,
+                            largeOnly:  0 0 10px 0,
+                            mediumOnly:  0 0 10px 0,
+                            smOnly:  0 0 10px 0,
+                            defaultVal:  0 0 10px 0,
+                        ),
+                    ), 
+                    if(variable-exists(accorOverlayProp) and map-has-key($accorOverlayProp, subTitle), 
+                        map-get($accorOverlayProp,subTitle), ()
+                    )
+                ));
+            }
+            .text-para {
+                @include print-css(
+                    map-merge((
+                        font-size:(
+                            defaultVal: 18px,
+                            smOnly: 16px
+                        ),
+                        padding: 0,
+                        margin: (
+                            largeUp: 0 0 20px 0,
+                            largeOnly: 0 0 20px 0,
+                            mediumOnly: 0 0 20px 0,
+                            smOnly: 0 0 10px 0,
+                            defaultVal: 0 0 10px 0,
+                        ),
+                    ), 
+                    if(variable-exists(accorOverlayProp) and map-has-key($accorOverlayProp, textPara), 
+                        map-get($accorOverlayProp,textPara), ()
+                    )
+                ));
+            }
+           
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6,
+            p {
+                margin: 0;
+                padding: 0
+            }
+        }
+        .ctaItem {
+            @media #{$xs-only} {
+                display: block;
+            }
+            .btn-cta-item {
+                @include print-css(
+                    map-merge((
+                        margin: (
+                            largeUp:   0 0 40px 0,
+                            largeOnly:   0 0 40px 0,
+                            mediumOnly:   0 0 40px 0,
+                            smOnly:   0 0 10px 0,
+                            defaultVal:   0 0 10px 0,
+                        )
+                    ), 
+                    if(variable-exists(accorOverlayProp) and map-has-key($accorOverlayProp, ctaBtn), 
+                        map-get($accorOverlayProp,ctaBtn), ()
+                    )
+                ));
+            }
+        }
+        .accordion {
+            @include print-css(
+                map-merge((
+                    border-bottom: 2px solid #000000,
+                    float:left,
+                    width: 100%,
+                ), 
+                if(variable-exists(accordion) and map-has-key($accordion, accordion), 
+                    map-get($accordion,accordion), ()
+                )
+            ));
+            .accordion-title {
+                @include print-css(
+                    map-merge((
+                        padding: (
+                            largeUp: 15px 60px 15px 10px,
+                            largeOnly: 17px 60px 17px 10px,
+                            mediumOnly: 17px 60px 17px 10px,
+                            smOnly: 12px 45px 12px 10px,
+                            defaultVal: 17px 45px 17px 10px,
+                        ),
+                        margin: (
+                            largeUp: 0,
+                            largeOnly: 0,
+                            mediumOnly: 0,
+                            smOnly: 0,
+                            defaultVal: 0,
+                        ),
+                        color: inherit,
+                        font-size:(
+                            defaultVal: 24px,
+                            smOnly: 18px
+                        ),
+                        font-weight: 500,
+                        line-height:(
+                            defaultVal: 36px,
+                            smOnly: 23px
+                        ),
+                        background-color:inherit,
+                        border-top:2px solid #000000,
+                        position: relative,
+                        float: left,
+                        width: 100%,
+                    ), 
+                    if(variable-exists(accordion) and map-has-key($accordion, accordionTitle), 
+                        map-get($accordion,accordionTitle), ()
+                    )
+                ));
+            }
+            .accordion-content {
+                @include print-css(
+                    map-merge((
+                        padding: (
+                            largeUp: 25px 50px 40px,
+                            largeOnly: 23px 50px 40px,
+                            mediumOnly: 23px 50px 40px,
+                            smOnly: 8px 40px 30px,
+                            defaultVal: 3px 40px 30px,
+                        ),
+                        float: left,
+                        width: 100%,
+                    ), 
+                    if(variable-exists(accordion) and map-has-key($accordion, accordionContent), 
+                        map-get($accordion,accordionContent), ()
+                    )
+                ));
+            }
+            .arrow {
+                @include print-css(
+                    map-merge((
+                        text-indent: -99999px,
+                        display: block,
+                        position: absolute,
+                        right: 10px,
+                        cursor: pointer,
+                        top: 50%,
+                        transform: translateY(-50%),
+                        width: 24px,
+                        height: 24px,
+                    ), 
+                    if(variable-exists(accordion) and map-has-key($accordion, arrow), 
+                        map-get($accordion,arrow), ()
+                    )
+                ));
+                &:before,
+                &:after {
+                    @include print-css(
+                        map-merge((
+                            content: '',
+                            display: block,
+                            position: absolute,
+                            background-image:url($spriteLightPath),
+                            background-repeat: no-repeat,
+                            top: 0,
+                        ), 
+                        if(variable-exists(accordion) and map-has-key($accordion, arrowAfterBefore), 
+                            map-get($accordion,arrowAfterBefore), ()
+                        )
+                    ));
+                }
+                &.arrowDown {
+                    &:after {
+                        @include print-css(
+                            map-merge((
+                                width: 24px,
+                                height: 24px,
+                                background-position: -184px  -50px,
+                            ), 
+                            if(variable-exists(accordion) and map-has-key($accordion, arrowDownAfter), 
+                                map-get($accordion,arrowDownAfter), ()
+                            )
+                        ));
+                    }
+                }
+                &.arrowUp {
+                    &:before {
+                        @include print-css(
+                            map-merge((
+                                width: 24px,
+                                height: 24px,
+                                background-position: -160px  -50px,
+                            ), 
+                            if(variable-exists(accordion) and map-has-key($accordion, arrowUpBefore), 
+                                map-get($accordion,arrowUpBefore), ()
+                            )
+                        ));
+                    }
+                }
+            }
+        }
+    }
+    &.dark-theme {
+        .accordion {
+            @include print-css(
+                map-merge((
+                    border-bottom-color:#cccccc,
+                ), 
+                if(variable-exists(accordion) and map-has-key($accordion, darkThemeAccordian), 
+                    map-get($accordion,darkThemeAccordian), ()
+                )
+            ));
+            .accordion-title {
+                @include print-css(
+                    map-merge((
+                        border-top-color:#cccccc,
+                    ), 
+                    if(variable-exists(accordion) and map-has-key($accordion, darkThemeAccordianTitle), 
+                        map-get($accordion,darkThemeAccordianTitle), ()
+                    )
+                ));
+                // need to remove the additional attributes from FP and corporate
+            }
+            .arrow {
+                &:before,
+                &:after {
+                    @include print-css(
+                        map-merge((
+                            background-image: url($spriteDarkPath)
+                        ), 
+                        if(variable-exists(accordion) and map-has-key($accordion, darkThemeTextParaArrowBeforeAfter), 
+                            map-get($accordion,darkThemeTextParaArrowBeforeAfter), ()
+                        )
+                    ));
+                }
+                &.arrowDown {
+                    &:after {
+                        @include print-css(
+                            map-merge((
+                                background-position: -184px  -50px
+                            ), 
+                            if(variable-exists(accordion) and map-has-key($accordion, darkThemeTextParaArrowDownAfter), 
+                                map-get($accordion,darkThemeTextParaArrowDownAfter), ()
+                            )
+                        ));
+                    }
+                }
+                &.arrowUp {
+                    &:before {
+                        @include print-css(
+                            map-merge((
+                                background-position: -160px  -50px
+                            ), 
+                            if(variable-exists(accordion) and map-has-key($accordion, darkThemeTextParaArrowUpBefore), 
+                                map-get($accordion,darkThemeTextParaArrowUpBefore), ()
+                            )
+                        ));
+                    }
+                }
+            }
+        }
+    }
+    &.dark-alt-theme {
+        .accordion {
+            @include print-css(
+                map-merge((
+                    border-bottom-color: #cccccc
+                ), 
+                if(variable-exists(accordion) and map-has-key($accordion, darkThemeAccordian), 
+                    map-get($accordion,darkThemeAccordian), ()
+                )
+            ));
+            .accordion-title {
+                @include print-css(
+                    map-merge((
+                        border-top-color: #cccccc
+                    ), 
+                    if(variable-exists(accordion) and map-has-key($accordion, darkThemeAccordianTitle), 
+                        map-get($accordion,darkThemeAccordianTitle), ()
+                    )
+                ));
+                // need to remove the additional attributes from FP and corporate
+            }
+            .arrow {
+                &:before,
+                &:after {
+                    @include print-css(
+                        map-merge((
+                            background-image: url($spriteDarkPath),
+                        ), 
+                        if(variable-exists(accordion) and map-has-key($accordion, darkThemeTextParaArrowBeforeAfter), 
+                            map-get($accordion,darkThemeTextParaArrowBeforeAfter), ()
+                        )
+                    ));
+                }
+                &.arrowDown {
+                    &:after {
+                        @include print-css(
+                            map-merge((
+                                background-position: -184px  -50px,
+                            ), 
+                            if(variable-exists(accordion) and map-has-key($accordion, darkThemeTextParaArrowDownAfter), 
+                                map-get($accordion,darkThemeTextParaArrowDownAfter), ()
+                            )
+                        ));
+                    }
+                }
+                &.arrowUp {
+                    &:before {
+                        @include print-css(
+                            map-merge((
+                                background-position: -160px  -50px,
+                            ), 
+                            if(variable-exists(accordion) and map-has-key($accordion, darkThemeTextParaArrowUpBefore), 
+                                map-get($accordion,darkThemeTextParaArrowUpBefore), ()
+                            )
+                        ));
+                    }
+                }
+            }
+        }
+    }
+    &.light-theme {
+        .accordion {
+            @include print-css(
+                map-merge((
+                    border-bottom-color: #000000
+                ), 
+                if(variable-exists(accordion) and map-has-key($accordion, lightThemeAccordian), 
+                    map-get($accordion,lightThemeAccordian), ()
+                )
+            ));
+            .accordion-title {
+                @include print-css(
+                    map-merge((
+                        border-top-color: #000000
+                    ), 
+                    if(variable-exists(accordion) and map-has-key($accordion, lightThemeAccordianTitle), 
+                        map-get($accordion,lightThemeAccordianTitle), ()
+                    )
+                ));
+                // need to remove the additional attributes from FP and corporate
+            }
+            .arrow {
+                &:before,
+                &:after {
+                    @include print-css(
+                        map-merge((
+                            background-image: url($spriteLightPath),
+                        ), 
+                        if(variable-exists(accordion) and map-has-key($accordion, lightThemeTextParaArrowBeforeAfter), 
+                            map-get($accordion,lightThemeTextParaArrowBeforeAfter), ()
+                        )
+                    ));
+                }
+                &.arrowDown {
+                    &:after {
+                        @include print-css(
+                            map-merge((
+                                background-position: -184px  -50px,
+                            ), 
+                            if(variable-exists(accordion) and map-has-key($accordion, darkThemeAltTextParaArrowDownAfter), 
+                                map-get($accordion,darkThemeAltTextParaArrowDownAfter), ()
+                            )
+                        ));
+                    }
+                }
+                &.arrowUp {
+                    &:before {
+                        @include print-css(
+                            map-merge((
+                                background-position: -160px  -50px,
+                            ), 
+                            if(variable-exists(accordion) and map-has-key($accordion, darkThemeAltTextParaArrowUpBefore), 
+                                map-get($accordion,darkThemeAltTextParaArrowUpBefore), ()
+                            )
+                        ));
+                    }
+                }
+            }
+        }
+    }
+    &.light-alt-theme {
+        .accordion {
+            @include print-css(
+                map-merge((
+                    border-bottom-color: #cccccc
+                ), 
+                if(variable-exists(accordion) and map-has-key($accordion, darkThemeAltAccordian), 
+                    map-get($accordion,darkThemeAltAccordian), ()
+                )
+            ));
+            .accordion-title {
+                @include print-css(
+                    map-merge((
+                        border-top-color: #cccccc
+                    ), 
+                    if(variable-exists(accordion) and map-has-key($accordion, darkThemeAltAccordianTitle), 
+                        map-get($accordion,darkThemeAltAccordianTitle), ()
+                    )
+                ));
+            }
+            .arrow {
+                &:before,
+                &:after {
+                    @include print-css(
+                        map-merge((
+                            background-image: url($spriteLightAltPath),
+                        ), 
+                        if(variable-exists(accordion) and map-has-key($accordion, lightAltThemeAltTextParaArrowBeforeAfter), 
+                            map-get($accordion,lightAltThemeAltTextParaArrowBeforeAfter), ()
+                        )
+                    ));
+                }
+                &.arrowDown {
+                    &:after {
+                        @include print-css(
+                            map-merge((
+                                background-position: -184px  -50px,
+                            ), 
+                            if(variable-exists(accordion) and map-has-key($accordion, darkThemeAltTextParaArrowDownAfter), 
+                                map-get($accordion,darkThemeAltTextParaArrowDownAfter), ()
+                            )
+                        ));
+                    }
+                }
+                &.arrowUp {
+                    &:before {
+                        @include print-css(
+                            map-merge((
+                                background-position:  -160px  -50px,
+                            ), 
+                            if(variable-exists(accordion) and map-has-key($accordion, darkThemeAltTextParaArrowUpBefore), 
+                                map-get($accordion,darkThemeAltTextParaArrowUpBefore), ()
+                            )
+                        ));
+                    }
+                }
+            }
+        }
+    }
+    &.fullbleed {
+        @include print-css(
+            map-merge((
+                padding: (
+                    largeUp: 0,
+                    largeOnly: 0,
+                    mediumOnly: 0,
+                    smOnly: 0,
+                    defaultVal: 0,
+                ),
+            ), 
+            if(variable-exists(accordion) and map-has-key($accordion, fullbleed), 
+                map-get($accordion,fullbleed), ()
+            )
+        ));
+    }
+    &.text-right {
+        .accordion-title {
+            @include print-css(
+                map-merge((
+                    padding: (
+                        largeUp: 18px 10px 18px 60px,
+                        largeOnly: 18px 10px 18px 60px,
+                        mediumOnly: 18px 10px 18px 60px,
+                        smOnly: 18px 10px 18px 60px,
+                        defaultVal: 18px 10px 18px 60px,
+                    ),
+                ), 
+                if(variable-exists(accordion) and map-has-key($accordion, textRightAccordianTitle), 
+                    map-get($accordion,textRightAccordianTitle), ()
+                )
+            ));
+        }
+        .arrow {
+            @include print-css(
+                map-merge((
+                    right: inherit,
+                    left: 10px,
+                    text-align: left,
+                ), 
+                if(variable-exists(accordion) and map-has-key($accordion, textRightarrow), 
+                    map-get($accordion,textRightarrow), ()
+                )
+            ));
+        }
+    }
+    &.toggle-text {
+        .accordion-item {
+            .arrow {
+                @include print-css(
+                    map-merge((
+                        font-size:20px,
+                        color:#147bd1, 
+                        width: inherit,
+                        height: inherit,
+                        text-indent: inherit,
+                        text-align: right,
+                    ), 
+                    if(variable-exists(accordion) and map-has-key($accordion, toggleTextArrow), 
+                        map-get($accordion,toggleTextArrow), ()
+                    )
+                ));
+                &:before,
+                &:after {
+                    @include print-css(
+                        map-merge((
+                            content: none
+                        ), 
+                        if(variable-exists(accordion) and map-has-key($accordion, toggleTextArrowBeforeAfter), 
+                            map-get($accordion,toggleTextArrowBeforeAfter), ()
+                        )
+                    ));
+                }
+            }
+        }
+    }
+}

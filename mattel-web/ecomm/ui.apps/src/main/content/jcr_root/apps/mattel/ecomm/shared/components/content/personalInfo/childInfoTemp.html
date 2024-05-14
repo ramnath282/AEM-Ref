@@ -1,0 +1,259 @@
+  <div class="update-childInfo{{index}}">                            
+                            <fieldset>
+                                <div class="input-field required">
+                                    <input type="text" id="childName{{index}}" name="childName" aria-describedby="childNameError{{index}}" class="form-input long-input child-input-val" data-key="firstName" value="{{firstName}} {{lastName}}" required autocomplete="off"/>
+									<sly data-sly-test="${properties.childNameLabel}"> 
+										<label class="placeholder-label" for="childName{{index}}">${properties.childNameLabel}</label>
+									</sly>
+                                    <div id="childNameError{{index}}" class="help-block form-message"></div>
+                                </div>
+                            </fieldset>  
+                            <fieldset class="select-picker-wrapper" aria-describedby="birthFormatError{{index}}">
+								<sly data-sly-test="${properties.birthDuedateLabel}"> 
+									<legend>${properties.birthDuedateLabel}:</legend> 
+								</sly>
+                                <ul>
+                                    <li>
+                                        <div class="input-field required">
+                                            <select class="form-input small-input dob-select child-input-val" name="childBirthMonth" aria-describedby="monthSelectError{{index}}" required id="childBirthMonth{{index}}" data-key="dateOfBirth" >
+                                                {{#if  dateOfBirth}}
+                                                    {{{monthSelector}}}
+                                                {{else}}
+                                                    <option value="">MM</option>
+                                                    <option value="01">01</option>
+                                                    <option value="02">02</option>
+                                                    <option value="03">03</option>
+                                                    <option value="04">04</option>
+                                                    <option value="05">05</option>
+                                                    <option value="06">06</option>
+                                                    <option value="07">07</option>
+                                                    <option value="08">08</option>
+                                                    <option value="09">09</option>
+                                                    <option value="10">10</option>
+                                                    <option value="11">11</option>
+                                                    <option value="12">12</option>
+                                                {{/if}}
+                                            </select>
+											<sly data-sly-test="${properties.monthLabel}"> 
+												<label class="placeholder-label" for="childBirthMonth{{index}}"> ${properties.monthLabel}</label>
+											</sly>
+                                            <div id="monthSelectError{{index}}" class="help-block form-message"></div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="input-field required">
+                                            <select class="form-input small-input dob-select child-input-val" name="childBirthDay" aria-describedby="daySelectError{{index}}" required id="childBirthDay{{index}}" data-key="dateOfBirth">
+                                                {{#if  dateOfBirth}}
+                                                    {{{daySelector}}}
+                                                {{else}}
+                                                    <option value="">DD</option>
+                                                    <option value="01">01</option>
+                                                    <option value="02">02</option>
+                                                    <option value="03">03</option>
+                                                    <option value="04">04</option>
+                                                    <option value="05">05</option>
+                                                    <option value="06">06</option>
+                                                    <option value="07">07</option>
+                                                    <option value="08">08</option>
+                                                    <option value="09">09</option>
+                                                    <option value="10">10</option>
+                                                    <option value="11">11</option>
+                                                    <option value="12">12</option>
+                                                    <option value="13">13</option>
+                                                    <option value="14">14</option>
+                                                    <option value="15">15</option>
+                                                    <option value="16">16</option>
+                                                    <option value="17">17</option>
+                                                    <option value="18">18</option>
+                                                    <option value="19">19</option>
+                                                    <option value="20">20</option>
+                                                    <option value="21">21</option>
+                                                    <option value="22">22</option>
+                                                    <option value="23">23</option>
+                                                    <option value="24">24</option>
+                                                    <option value="25">25</option>
+                                                    <option value="26">26</option>
+                                                    <option value="27">27</option>
+                                                    <option value="28">28</option>
+                                                    <option value="29">29</option>
+                                                    <option value="30">30</option>
+                                                    <option value="31">31</option>
+                                                {{/if}}
+                                            </select>
+											<sly data-sly-test="${properties.dayLabel}"> 
+												<label class="placeholder-label" for="childBirthDay{{index}}"> ${properties.dayLabel}</label>
+											</sly>
+                                            <div id="daySelectError{{index}}" class="help-block form-message"></div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="input-field required">
+                                            <select class="form-input small-input dob-select child-input-val" name="childBirthYear" aria-describedby="yearSelectError{{index}}" required id="childBirthYear{{index}}" data-key="dateOfBirth">
+                                                {{#if dateOfBirth}}
+                                                    {{{yearSelector}}}
+                                                {{else}}
+                                                    <option value="">YYYY</option>
+                                                    <option value="2019">2019</option>
+                                                    <option value="2018">2018</option>
+                                                    <option value="2017">2017</option>
+                                                    <option value="2016">2016</option>
+                                                    <option value="2015">2015</option>
+                                                    <option value="2014">2014</option>
+                                                    <option value="2013">2013</option>                                        
+                                                    <option value="2012">2012</option>                                        
+                                                    <option value="2011">2011</option>
+                                                    <option value="2010">2010</option>                                        
+                                                    <option value="2009">2009</option>                                        
+                                                    <option value="2008">2008</option>                                        
+                                                    <option value="2007">2007</option>                                        
+                                                    <option value="2006">2006</option>                                        
+                                                    <option value="2005">2005</option>                                        
+                                                    <option value="2004">2004</option>                                        
+                                                    <option value="2003">2003</option>                                        
+                                                    <option value="2002">2002</option>                                        
+                                                    <option value="2001">2001</option>                                        
+                                                    <option value="2000">2000</option>                                        
+                                                    <option value="1999">1999</option>                                        
+                                                    <option value="1998">1998</option>                                        
+                                                    <option value="1997">1997</option>                                        
+                                                    <option value="1996">1996</option>                                        
+                                                    <option value="1995">1995</option>                                        
+                                                    <option value="1994">1994</option>                                        
+                                                    <option value="1993">1993</option>                                        
+                                                    <option value="1992">1992</option>                                        
+                                                    <option value="1991">1991</option>                                        
+                                                    <option value="1990">1990</option>                                        
+                                                    <option value="1989">1989</option>
+                                                {{/if}}                                                
+                                            </select>
+											<sly data-sly-test="${properties.yearLabel}"> 
+												<label class="placeholder-label" for="childBirthYear{{index}}">${properties.yearLabel}</label>
+											</sly>
+                                            <div id="yearSelectError{{index}}" class="help-block form-message"></div>
+                                        </div>
+                                    </li>
+                                    <li>
+										<sly data-sly-test="${properties.prvcStatementLabel}">
+											<a href="${properties.prvcStatementLink}" target="_blank">${properties.prvcStatementLabel}<span class="sr-only"> opens in new tab</span></a>
+										</sly>
+                                    </li>
+                                </ul>
+                                <div id="birthFormatError{{index}}" class="help-block form-message"></div>                             
+                            </fieldset>                                  
+                            <fieldset aria-describedby="genderError{{index}}">
+								<sly data-sly-test="${properties.genSelectionTitle}"> 
+									<legend>${properties.genSelectionTitle}:</legend> 
+								</sly>
+                                <div class="input-field">
+                                    {{#if gender}}
+                                        <ul class="radio">
+                                            <li>
+                                                <input type="radio" value="F" data-key="gender" name="childOption{{index}}" class="child-input-val" id="childGirl{{index}}" required />
+												<sly data-sly-test="${properties.girlSelLabel}"> 
+													<label for="childGirl{{index}}">${properties.girlSelLabel}</label>
+												</sly>
+                                            </li>
+                                            <li>                        
+                                                <input type="radio" value="M" data-key="gender" name="childOption{{index}}" class="child-input-val" id="childBoy{{index}}" required />
+												<sly data-sly-test="${properties.boySelLabel}"> 
+													<label for="childBoy{{index}}">${properties.boySelLabel}</label>
+												</sly>
+                                            </li>
+                                            <li>
+                                                <input type="radio" value="O" data-key="gender" name="childOption{{index}}" class="child-input-val" id="childNone{{index}}" required />
+												<sly data-sly-test="${properties.expSelLabel}"> 
+													<label for="childNone{{index}}">${properties.expSelLabel}</label>
+												</sly>
+                                            </li>
+                                        </ul>
+                                    {{else}}
+                                        <ul class="radio">
+                                            <li>
+                                                <input type="radio" value="F" data-key="gender" name="childOption" class="child-input-val" id="childGirl" required />
+												<sly data-sly-test="${properties.girlSelLabel}"> 
+													<label for="childGirl">${properties.girlSelLabel}</label>
+												</sly>
+                                            </li>
+                                            <li>
+                                                <input type="radio" value="M" data-key="gender" name="childOption" class="child-input-val" id="childBoy" required />
+												<sly data-sly-test="${properties.boySelLabel}"> 
+													<label for="childBoy">${properties.boySelLabel}</label>
+												</sly>
+                                            </li>
+                                            <li>
+                                                <input type="radio" value="O" data-key="gender" name="childOption" class="child-input-val" id="childNone" required />
+												<sly data-sly-test="${properties.expSelLabel}"> 
+													<label for="childNone">${properties.expSelLabel}</label>
+												</sly>
+                                            </li>
+                                        </ul>
+                                    {{/if}}
+                                    <div id="genderError{{index}}" class="help-block form-message"></div>
+                                </div>
+                            </fieldset>
+                            <fieldset aria-describedby="guardianError{{index}}">
+                                <sly data-sly-test="${properties.rltnshpSelectionTitle}"> 
+									<legend>${properties.rltnshpSelectionTitle}:</legend>
+								</sly>
+                                <div class="input-field">
+                                    {{#if relationship}}
+                                        <ul class="radio">
+                                            <li>
+                                                <input type="radio" value="Mother" data-key="relationship" name="guardianOption{{index}}" class="child-input-val" id="childMother{{index}}" required />
+												<sly data-sly-test="${properties.motherSelLabel}"> 
+													<label	for="childMother{{index}}">${properties.motherSelLabel}</label> 
+												</sly>
+                                            </li>
+                                            <li>
+                                                <input type="radio" value="Father" data-key="relationship" name="guardianOption{{index}}" class="child-input-val" id="childFather{{index}}" required />
+                                                <sly data-sly-test="${properties.fatherSelLabel}"> 
+													<label for="childFather{{index}}">${properties.fatherSelLabel}</label> 
+												</sly>
+                                            </li>
+                                            <li>
+                                                <input type="radio" value="GrandParent" data-key="relationship" name="guardianOption{{index}}" class="child-input-val" id="childGrandparent{{index}}" required />
+                                                <sly data-sly-test="${properties.gParentSelLabel}"> 
+													<label for="childGrandparent{{index}}">${properties.gParentSelLabel}</label>
+												</sly>
+                                            </li>
+                                            <li>
+                                                <input type="radio" value="Friend / Family Member" data-key="relationship" name="guardianOption{{index}}" class="child-input-val" id="childFriendFamily{{index}}" required />
+                                                <sly data-sly-test="${properties.fFamMmbrSelLabel}"> 
+													<label for="childFriendFamily{{index}}">${properties.fFamMmbrSelLabel}</label>
+												</sly>
+                                            </li>
+                                        </ul>
+                                    {{else}}
+                                        <ul class="radio">
+                                            <li>
+                                                <input type="radio" value="Mother" data-key="relationship" name="guardianOption" class="child-input-val" id="childMother" required />
+												<sly data-sly-test="${properties.motherSelLabel}"> 
+													<label	for="childMother">${properties.motherSelLabel}</label> 
+												</sly>
+                                            </li>
+                                            <li>
+                                                <input type="radio" value="Father" data-key="relationship" name="guardianOption" class="child-input-val" id="childFather" required />
+                                                <sly data-sly-test="${properties.fatherSelLabel}"> 
+													<label for="childFather">${properties.fatherSelLabel}</label> 
+												</sly>
+                                            </li>
+                                            <li>
+                                                <input type="radio" value="GrandParent" data-key="relationship" name="guardianOption" class="child-input-val" id="childGrandparent" required />
+                                                <sly data-sly-test="${properties.gParentSelLabel}"> 
+													<label for="childGrandparent">${properties.gParentSelLabel}</label>
+												</sly>
+                                            </li>
+                                            <li>
+                                                <input type="radio" value="Friend / Family Member" data-key="relationship" name="guardianOption" class="child-input-val" id="childFriendFamily" required />
+                                                <sly data-sly-test="${properties.fFamMmbrSelLabel}"> 
+													<label for="childFriendFamily">${properties.fFamMmbrSelLabel}</label>
+												</sly>
+                                            </li>
+                                        </ul>
+                                    {{/if}}
+                                    <div id="guardianError{{index}}" class="help-block form-message"></div>
+                                </div>
+                            </fieldset>
+                            <input class="theme-btn update-info" type="submit" data-formname=".update-childInfo{{index}}" data-update="{{index}}" data-addressid="{{addressId}}" value="${properties.applyButtonLabel}" />
+                            <input class="theme-btn transparent-btn cancel-child-info add-child-birth" type="submit"  data-update="{{index}}" value="${properties.cCancelButtonLabel} " />
+                        </div>

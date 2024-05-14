@@ -1,0 +1,137 @@
+.personal-info-body{
+    .user-info-readMode {
+        fieldset {
+            ul{
+                display: inline-block;
+                vertical-align: middle;
+                li{
+                    display: inline-block;
+                    @include content-spacing(map-get($personalInfo, childrendetLi));
+                    a{
+                        display: inline-block;
+                        @include content-spacing(map-get($personalInfo, privacyTxt));
+                    }
+                    .input-field {
+                        .form-input{
+                            &.small-input{
+                                width:em(74.5);
+                            }
+                        }
+                    }
+                    label {
+                        &.placeholder-label {
+                            font: mapping($personalInfo, childrendetLi, font) !important;
+                        }                            
+                    }                    
+                }
+                &.radio{
+                    @include content-spacing(map-get($personalInfo, radioUl));
+                    li{
+                        @include content-spacing(map-get($personalInfo, radioli));
+                    }
+                }
+            }                        
+        }
+        .child-info-edit{
+            input {
+                &.form-input.long-input {
+                    max-width: mapping($personalInfo, input, width);
+                }
+            }
+        }
+        .theme-btn{
+            @include content-spacing(map-get($personalInfo, themeBtn));
+        }
+        h2 em {
+            font: mapping($personalInfo, headerh2, font);
+        }
+        .details-list{
+            .details-list-item{
+                vertical-align: top;
+                @include content-spacing(map-get($personalInfo, detailListMargin));
+                .value-label{
+                    @include content-spacing(map-get($personalInfo, valueLabelMargin));
+                }
+                a{
+                    &.edit-child-info, &.delete-info {
+                        margin: 0;
+                    }
+                }
+            }
+        }
+        #personalInfoDetails{
+            .details-list{
+                .details-list-item{
+                    .edit-link{
+                        font: mapping($personalInfo,editLinkFont,font);
+                        margin: 0;
+                    }            
+                }
+            }
+        }
+         #childInfoList{
+             .edit-child-info{
+                font: mapping($personalInfo,editLinkFont,font);
+             }
+             .delete-info{
+                font: mapping($personalInfo,editLinkFont,font);
+             }
+         }
+    }
+    .user-info-editMode {
+        $borderProperty: mapping($personalInfo, userinfoEdit, border);
+        @if(map-get($borderProperty, enabled)) {
+            border-#{map-get($borderProperty,position)}: (map-get($borderProperty, size) solid map-get($borderProperty, color));
+        }
+        @include content-spacing(map-get($personalInfo, userinfoEdit));
+        .update-pass {
+            fieldset{
+                .help-block {
+                    &.form-message {
+                        ul {
+                            li{
+                                display: block;
+                            }
+                        }
+
+                    }
+                }
+            }
+        }
+    }
+    .user-info-wrapper {
+        .add-child-birth {
+            color: mapping($personalInfo,addChild,color);
+            cursor: pointer;
+            a {
+                font: mapping($personalInfo,addChild,font);
+                i{
+                    @include content-spacing(map-get($personalInfo, addChild));
+               }
+            }
+            
+        }
+        .child-information-wrapper, .child-info-edit  {
+            fieldset {
+                @include content-spacing(map-get($personalInfo, fieldGap));
+                legend {
+                    color: mapping($personalInfo,fieldGap,color);
+                }
+            }
+            input {
+                &.add-child-birth {
+                    color: mapping($personalInfo,fieldGap,color);
+                }
+            }
+        }
+    }
+    #duplicateEmailModal {
+        .modal-body {
+            @include content-spacing(map-get($personalInfo, emailModal));
+            p {
+                font: mapping($personalInfo,emailModal,font);
+                line-height: em(30);
+            }
+        }            
+    }
+}

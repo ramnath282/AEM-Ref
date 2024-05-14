@@ -1,0 +1,201 @@
+<sly data-sly-test="${wcmmode.edit}">${'Edit Navigation Component' @i18n}</sly>
+<sly data-sly-use.navModel="com.mattel.ecomm.core.models.NavigationModel">
+	<div id="header-wrapper" class="${properties.stickToTop == 'true' ? 'navbar-fixed-top' : ''}">
+		<div id="consent_blackbar"></div>
+		<header class="main-header navbar navbar-default not-target" style="background-color: ${properties.navBgColor @ context='styleToken'};">
+			<div class="main-nav-container">
+				<button class="aghamburger" data-toggle="collapse" aria-label="Hamburger menu toggle" aria-expanded="false" aria-controls="primary-nav" aria-haspopup="true"></button>
+				<div class="inline-nav hide-md-sm">
+					<ul data-sly-list.navLinks="${navModel.navLinksList}">
+						<li><a href="${navLinks.navLinkUrl}"><span>${navLinks.navLinkText}</span></a></li>
+					</ul>
+				</div>
+				<a class="brand-logo" href="${properties.logoLinkUrl}">
+					<picture>
+						<source media="(min-width: 481px)" srcset="${properties.logoDesktop}">
+						<source media="(max-width: 480px)" srcset="${properties.logoMobile}">
+						<img src="${properties.logoDesktop}" alt="${properties.brandLogoAlt}">
+					</picture>
+				</a>
+				<div class="pull-right">
+					<div class="nav-search hide-md-sm">
+						<sly data-sly-include="search.html"></sly>
+					</div>
+					<div class="user-info-in-header">
+						<div data-sly-test="${properties.enableSignInLink}" class="not-activated-user disable-signin-modal">
+							<a href="${navModel.agSignInLink}" class="popupAgRewardSignUp">
+								<span>
+									<i class="fa fa-user-circle" aria-hidden="true"></i>
+									<span class="hidden-xs">${properties.agSigninText}</span>
+								</span>
+							</a>
+						</div>
+						<div data-sly-test="${!properties.enableSignInLink}" class="not-activated-user">
+							<a href="javascript:void(0);" class="popupAgRewardSignUp">
+								<span>
+									<i class="fa fa-user-circle" aria-hidden="true"></i>
+									<span class="hidden-xs">${properties.agSigninText}</span>
+								</span>
+							</a>
+						</div>
+						<div class="activated-user active">
+							<a href="${navModel.myAccountLink}" class="">
+							  <span class="user-icon-info">
+								<i class="fa fa-user-circle" aria-hidden="true"></i>
+								<span class="rewards-total"></span>  
+							  </span>
+							</a>
+							<span class="hidden-xs">
+							  <span>${properties.welcomeText} <span class="username"></span></span>
+							  <span class="reward-available-txt hide">${properties.rewardsAvailableText}</span>
+							</span>
+						</div>		
+					</div>
+					<a href="${navModel.shoppingBagLink}" class="shopping-bag">
+						<!--/*<span class="sr-only">shopping bag</span>*/-->
+						<img src="${properties.shoppingBagLogo}" alt="Shopping Bag">
+						<div id="minishopcart_total"></div>
+					</a>
+					
+				</div>
+				<div class="header-spark-menu">
+					<div class="close-navigation">
+						<a class="ham-homelogo" href="${properties.homeIconUrl @extension='html'}" title="Homepage" data-allowtab="1"> <i class="fas fa-home"></i>
+						</a>
+						<button class="" type="button" aria-expanded="true" aria-label="Close Navigation Menu" id="spark-menu-close-button">
+							<i class="fas fa-times"></i>
+						</button>
+					</div>
+					<div class="main-menu-wrappper">
+						<div class="ham-view hide-lg">
+							<sly data-sly-include="search.html"></sly>
+						</div>
+
+						<!--/* Main menu Back Button */-->
+						<div class="backButtons hide">
+							<a href="javascript:void(0);" class="back-to-menu"><span>${properties.backBtnText}</span></a>
+						</div>
+
+						<sly data-sly-test="${navModel.navLinksList}">
+							<hr class="ham-menu-devider hide-lg" />
+						</sly>
+
+						<!--/* Category Nav Menu */-->
+						<ul class="category-menu" >
+							<sly data-sly-list.navLinksDesktop="${navModel.navLinksList}">
+								<li class="desktop-menu" data-sly-test="${navLinksDesktop.navLinkUrl && navLinksDesktop.navLinkText}" ><a href="${navLinksDesktop.navLinkUrl}"><span>${navLinksDesktop.navLinkText}</span></a></li>
+							</sly>
+							<hr class="ham-menu-devider" />
+							<sly data-sly-list.firstListItem="${navModel.firstLevel}">
+
+								<sly data-sly-test.firstListItemValue=${navModel.firstLevel[firstListItem]}>
+									<sly data-sly-list.firstListValueItem=${firstListItemValue}>
+
+										<li data-sly-test = "${navModel.secondLevel[firstListValueItem].size != 0 || navModel.secondLevel[firstListValueItem].size == 0 }">
+
+
+											<sly data-sly-use.info="${'com.mattel.ecomm.core.helper.EcommHelper' @ text= firstListItemValue[firstListValueItem]}">
+												<sly data-sly-test = "${navModel.secondLevel[firstListValueItem].size != 0}">
+													<a href="javascript:void(0);" data-key-url="${firstListItemValue[firstListValueItem]}" class="main-menu" data-rootshoppage="${info.isRootShopPage ? 'true' : 'false'}"><span>${firstListValueItem}</span></a>
+												</sly>
+												<sly data-sly-test = "${navModel.secondLevel[firstListValueItem].size == 0}">
+													<a class="sub-sub-menu" href="${firstListItemValue[firstListValueItem]}" data-rootshoppage="${info.isRootShopPage ? 'true' : 'false'}"><span>${firstListValueItem}</span></a>
+												</sly>
+											</sly>
+											<ul data-sly-list.secondListItem="${navModel.secondLevel}">
+												<sly data-sly-test = "${firstListValueItem == secondListItem}">
+
+													<sly data-sly-test.secondListItemValue=${navModel.secondLevel[secondListItem]}>
+														<sly data-sly-list.secondListValueItem=${secondListItemValue}>
+															<li data-sly-test = "${navModel.thirdLevel[secondListValueItem].size != 0 || navModel.thirdLevel[secondListValueItem].size == 0 }">
+																<sly data-sly-test = "${navModel.thirdLevel[secondListValueItem].size != 0}">
+																	<a class="sub-menu" data-parent-value="${firstListValueItem}" data-key-url="${secondListItemValue[secondListValueItem]}" href="javascript:void(0);"><span>${secondListValueItem}</span></a>
+																</sly>
+																<sly data-sly-test = "${navModel.thirdLevel[secondListValueItem].size == 0}">
+																	<a class="sub-sub-menu" data-parent-value="${firstListValueItem}" href="${secondListItemValue[secondListValueItem]}"><span>${secondListValueItem}</span></a>
+																</sly>
+
+
+																<sly  data-sly-list.thirdListItem="${navModel.thirdLevel}">
+																	<sly data-sly-test = "${secondListValueItem == thirdListItem}">
+																		<ul  class="sub-active" data-sly-list.thirdListItemValue="${navModel.thirdLevel[thirdListItem]}">
+																			<li data-sly-test ="${navModel.thirdLevel[thirdListItem][thirdListItemValue]} && thirdListItemValue"><a href="${navModel.thirdLevel[thirdListItem][thirdListItemValue]}" data-parent-value="${secondListValueItem}" class="sub-sub-menu"><span>${thirdListItemValue}</span></a></li>
+																		</ul>
+																	</sly>
+																</sly>
+															</li>
+														</sly>
+														<sly data-sly-test="${firstListValueItem == navModel.locationTitle}">
+															<hr class="ham-menu-devider" />
+															<sly data-sly-repeat.storeLocations="${navModel.externalStoreLocations}">
+																<li data-sly-test ="${storeLocations.storeLink && storeLocations.storeLocation}" >
+																	<a href="${storeLocations.storeLink}"><span>${storeLocations.storeLocation}</span></a>
+																</li>
+															</sly>
+														</sly>
+													</sly>
+												</sly>
+											</ul>
+										</li>
+									</sly>
+								</sly>
+							</sly>
+						</ul>
+						<div>
+							<sly data-sly-resource="${'shopsection-container' @ resourceType='wcm/foundation/components/parsys'}"></sly>
+						</div>
+
+						<hr class="ham-menu-devider" />
+
+						<!--/* Account Nav Menu /*-->
+						<ul class="account-menu">
+							<li>
+								<a href="${navModel.helpLink}"><span><i class="far fa-question-circle"></i> ${properties.helpLinkText}</span></a>
+							</li>
+							<li data-sly-test="${properties.enableSignInLink}" class="not-activated-user disable-signin-modal">
+								<a href="${navModel.agSignInLink}" class="popupAgRewardSignUp"><span><i class="far fa-star"></i>${properties.agSigninText}</span></a>
+							</li>
+							<li data-sly-test="${!properties.enableSignInLink}" class="not-activated-user">
+								<a href="javascript:void(0);" class="popupAgRewardSignUp"><span><i class="far fa-star"></i>${properties.agSigninText}</span></a>
+							</li>
+							<li class="activated-user active">
+								<a href="javascript:void(0);" class="account-sub-menu"><span><i class="far fa-star"></i>${properties.welcomeText} <span class="username"></span></span></a>
+								<ul>
+									<li class="tier-name"><a href="javascript:void(0);" class=""><span>${properties.tireInfoText} <span class="usertype"></span></span></a></li>
+									<li><a href="${navModel.myAccountLink}" class=""><span>${properties.myAccountText}</span></a></li>
+									<li><a href="${navModel.agRewardsLink}" class=""><span>${properties.agRewardsText}</span></a></li>
+									<li><a href="${navModel.signoutLink}" class="signout"><span>${properties.signOutText}</span></a></li>
+								</ul>
+							</li>
+							<li>
+								<a data-sly-test="${navModel.disableClientLibs}" href="${navModel.signUpUrl || 'https://www.americangirl.com/shop/ag/email-signup'}" class="emailLink"><span><i class="fas fa-envelope"></i>${properties.emailSignUp}</span></a>
+								<a data-sly-test="${!navModel.disableClientLibs}" href="${properties.signUpType!='modelPopup' ? navModel.signUpUrl : ''}" class="emailLink ${properties.signUpType=='modelPopup' ? 'popupEmailSignUp' : ''}"><span><i class="fas fa-envelope"></i>${properties.emailSignUp}</span></a>
+							</li>
+						</ul>
+
+						<div>
+							<sly data-sly-resource="${'container3' @ resourceType='wcm/foundation/components/parsys'}"></sly>
+						</div>
+
+						<ul class="social-icons">
+							<li data-sly-test="${!properties.hideFacebook}" class="ham-facebook"><a href="${properties.facebookLink}" title="Facebook" aria-lable="Facebook" target="_blank" rel="nofollow"><span><i class="fa fa-facebook-f"></i></span></a></li>
+							<li data-sly-test="${!properties.hideInstagram}" class="ham-instagram"><a href="${properties.instagramLink}" title="Instagram" aria-lable="Instagram"  target="_blank" rel="nofollow"><span><i class="fab fa-instagram"></i></span></a></li>
+							<li data-sly-test="${!properties.hidePintrest}" class="ham-pinterest"><a href="${properties.pintrestLink}" title="Pinterest" aria-lable="Pinterest"  target="_blank" rel="nofollow"><span><i class="fab fa-pinterest-p"></i></span></a></li>
+						</ul>
+
+					</div>
+				</div>
+			</div>
+		</header>
+	</div>
+
+<sly data-sly-test="${!navModel.disableClientLibs}">
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
+	<sly data-sly-call="${clientlib.js @ categories='ecomm.navigation'}" />
+</sly>
+</sly>
+<sly data-sly-test="${navModel.disableClientLibs}">
+   <input type="hidden" value="${navModel.shopifyDomain}" id="shopify-domain" name="shopify-domain"/>
+</sly>
+</sly>
+

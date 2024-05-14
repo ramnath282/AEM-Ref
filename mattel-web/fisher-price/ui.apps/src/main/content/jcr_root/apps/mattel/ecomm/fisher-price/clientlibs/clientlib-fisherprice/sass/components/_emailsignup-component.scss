@@ -1,0 +1,761 @@
+.create-benefits {
+    strong {
+        font-weight: mapping($emailSignUp, emailContainer, FontWeight);
+        font-family: mapping($emailSignUp, emailContainer, FontFamily);
+    }
+
+    p {
+        margin-top: mapping($emailSignUp, emailContainer, mobParaPad);
+    }
+
+    ul {
+        li {
+            font: inherit;
+            color: mapping($emailSignUp, listArrow, listColor);
+            margin: mapping($emailSignUp, listArrow, listMar);
+
+            &:before {
+                content: mapping($emailSignUp, listArrow, listArrowCon);
+                color: mapping($emailSignUp, listArrow, listArrowColor);
+                padding: mapping($emailSignUp, listArrow, listArrowPad);
+                @include font-awesome;
+            }
+        }
+    }
+}
+
+.form-wrapper,
+.register {
+    input.theme-btn {
+        display: mapping($emailSignUp, signUpButton, display);
+        float: mapping($emailSignUp, signUpButton, float);
+        margin-right: mapping($emailSignUp, signUpButton, marginRight);
+    }
+
+    .theme-btn {
+        background-color: mapping($emailSignUp, signUpButton, signUpButtonBG);
+        font-family: mapping($emailSignUp, signUpButton, signUpButtonFont);
+        font-weight: mapping($emailSignUp, signUpButton, fontWeight);
+        margin-bottom: mapping($emailSignUp, signUpButton, btnMarBot);
+
+        // &:active,
+        &:focus {
+            outline: 1px solid #000;
+        }
+
+        &.expand-form {
+            &[aria-expanded='true'] {
+                display: none
+            }
+
+        }
+    }
+
+    padding: 0;
+    margin: mapping($emailSignUp, signinTitle, marginRight);
+
+    @media #{$medium-down} {
+        margin: mapping($emailSignUp, signinTitle, TabmarginLeft);
+    }
+
+    @media #{$small-down} {
+        margin: mapping($emailSignUp, signinTitle, mobMarginLeft);
+    }
+
+    h1 {
+        font-size: mapping($emailSignUp, signinTitle, fontSize);
+        margin: mapping($emailSignUp, signinTitle, titleMar);
+        padding: mapping($emailSignUp, signinTitle, titlePad);
+    }
+
+    h2 {
+        font-size: mapping($emailSignUp, signinTitle, fontSize);
+        margin: mapping($emailSignUp, signinTitle, titleMar);
+        padding: mapping($emailSignUp, signinTitle, titlePad);
+    }
+
+    .input-field {
+        margin: mapping($emailSignUp, signinTitle, inputMar);
+    }
+
+    fieldset {
+        margin-top: 0;
+        padding: 0;
+        z-index: 1;
+
+        legend {
+            color: mapping($emailSignUp, signinTitle, lgndColor);
+        }
+
+        .input-field {
+            margin: 0;
+        }
+
+        ul {
+            overflow: hidden;
+        }
+
+        li {
+            padding: 0;
+        }
+    }
+
+    input[type="checkbox"] {
+        + {
+            label {
+
+                &:before,
+                &:after {
+                    top: mapping($emailSignUp, checkBoxLabel, checkBoxLabelTop);
+                    margin-top: mapping($emailSignUp, checkBoxLabel, checkBoxLabelMar);
+                    -moz-border-radius: 0;
+                    -webkit-border-radius: 0;
+                    -ms-border-radius: 0;
+                    border-radius: 0;
+                }
+            }
+        }
+    }
+}
+
+//margin:mapping($emailSignUp,signinTitle,containerMar); 
+.signin {
+    padding: 0;
+    margin: mapping($emailSignUp, signinTitle, marginLeft);
+
+    @media #{$medium-down} {
+        margin: mapping($emailSignUp, signinTitle, TabmarginLeft);
+    }
+
+    @media #{$small-down} {
+        margin: mapping($emailSignUp, signinTitle, mobMarginLeft);
+    }
+
+    h1 {
+        font-size: mapping($emailSignUp, signinTitle, fontSize);
+        margin: mapping($emailSignUp, signinTitle, titleMar);
+        padding: mapping($emailSignUp, signinTitle, titlePad);
+    }
+
+    h2 {
+        font-size: mapping($emailSignUp, signinTitle, fontSize);
+        margin: mapping($emailSignUp, signinTitle, titleMar);
+        padding: mapping($emailSignUp, signinTitle, titlePad);
+    }
+
+    .input-field {
+        margin: mapping($emailSignUp, signinTitle, inputMar);
+    }
+
+    fieldset {
+        margin-top: 0;
+        padding: 0;
+        z-index: 1;
+
+        legend {
+            color: mapping($emailSignUp, inputField, lgndColor);
+        }
+
+        .input-field {
+            margin: 0;
+        }
+
+        ul {
+            overflow: hidden;
+        }
+
+        li {
+            padding: 0;
+        }
+    }
+
+    input[type="checkbox"] {
+        + {
+            label {
+
+                &:before,
+                &:after {
+                    top: mapping($emailSignUp, checkBoxLabel, checkBoxLabelTop);
+                    margin-top: mapping($emailSignUp, checkBoxLabel, checkBoxLabelMar);
+                    @include border-radius(0);
+                }
+            }
+        }
+    }
+
+    .theme-btn {
+        margin-top: mapping($emailSignUp, signUpButton, signupMarTop);
+        background-color: mapping($emailSignUp, signUpButton, signUpButtonBG);
+        font-family: mapping($emailSignUp, signUpButton, signUpButtonFont);
+        font-weight: mapping($emailSignUp, signUpButton, fontWeight);
+
+        // &:active,
+        &:focus {
+            outline: 1px solid #000;
+        }
+
+    }
+
+    p {
+        font: mapping($emailSignUp, signInForm, paraFont);
+        color: mapping($emailSignUp, signInForm, paraColor);
+        margin: mapping($emailSignUp, signInForm, paraMar);
+    }
+
+    .signin-form {
+        .forgot-password {
+            margin: mapping($emailSignUp, signInForm, passwordMar);
+        }
+    }
+}
+
+
+.user-info-wrapper,
+.form-wrapper,
+.register form,
+.signin form {
+    .input-field {
+        position: mapping($emailSignUp, formglobalStyle, formPos);
+        margin: mapping($emailSignUp, formglobalStyle, formMar);
+        clear: mapping($emailSignUp, formglobalStyle, formClear);
+
+        a {
+            &:focus {
+                text-decoration: underline;
+            }
+        }
+
+        label {
+            >a {
+                color: mapping($emailSignUp, formglobalStyle, labelColor);
+                font-weight: mapping($emailSignUp, formglobalStyle, labelFontStyle);
+                font-family: mapping($emailSignUp, formglobalStyle, labelFontFamily);
+            }
+        }
+    }
+
+    legend {
+        border: none;
+    }
+
+    input {
+        &:disabled {
+            background: mapping($emailSignUp, formglobalStyle, inputDisabledBG);
+        }
+
+        &:focus {
+            ~ {
+                .placeholder-label {
+                    -moz-transform: mapping($emailSignUp, formglobalStyle, transformField);
+                    -o-transform: mapping($emailSignUp, formglobalStyle, transformField);
+                    -ms-transform: mapping($emailSignUp, formglobalStyle, transformField);
+                    -webkit-transform: mapping($emailSignUp, formglobalStyle, transformField);
+                    transform: mapping($emailSignUp, formglobalStyle, transformField);
+                    font-weight: 700;
+                }
+            }
+        }
+
+        @include border-radius(0);
+        -webkit-appearance: none;
+    }
+
+    .input-field.required {
+        label {
+            &:after {
+                color: mapping($emailSignUp, requiredStar, requiredColor);
+                content: mapping($emailSignUp, requiredStar, requiredContent);
+                font-weight: mapping($emailSignUp, requiredStar, requiredFontWeight);
+                @include font-awesome;
+                display: mapping($emailSignUp, requiredStar, requiredDis);
+                font-size: mapping($emailSignUp, requiredStar, requiredSize);
+                margin: mapping($emailSignUp, requiredStar, requiredMar);
+                padding: mapping($emailSignUp, requiredStar, requiredPad);
+                margin-top: mapping($emailSignUp, requiredStar, requiredMarTop);
+            }
+        }
+    }
+
+    fieldset {
+        margin: mapping($emailSignUp, formglobalStyle, filedMargin);
+
+        ul {
+            >li {
+                display: mapping($emailSignUp, UnlistLI, listDisplay);
+                vertical-align: mapping($emailSignUp, UnlistLI, listVertical);
+                margin: mapping($emailSignUp, UnlistLI, listMar);
+            }
+
+            margin-bottom: 0;
+        }
+
+        .input-field {
+            margin: 0;
+        }
+
+        legend {
+            font-size: mapping($emailSignUp, formglobalStyle, legendFontSize);
+            margin: mapping($emailSignUp, formglobalStyle, legendMar);
+            border: none;
+        }
+    }
+
+    .placeholder-label {
+        font-size: mapping($emailSignUp, placeHolder, holderFontSize);
+        color: mapping($emailSignUp, placeHolder, holderColor);
+        padding: mapping($emailSignUp, placeHolder, holderPadding);
+        pointer-events: mapping($emailSignUp, placeHolder, holderPointerEvents);
+        left: mapping($emailSignUp, placeHolder, holderLeft);
+        top: mapping($emailSignUp, placeHolder, holderTop);
+        transition: -webkit-transform .2s ease;
+        transition: transform .2s ease;
+        transition: transform .2s ease, -webkit-transform .2s ease;
+        will-change: transform;
+        -webkit-transform-origin: left;
+        transform-origin: left;
+        position: mapping($emailSignUp, placeHolder, holderPosition);
+        text-transform: mapping($emailSignUp, placeHolder, holdertextTransform);
+        font-weight: mapping($emailSignUp, placeHolder, holderFontWeight);
+    }
+
+    input.not-empty {
+        ~ {
+            .placeholder-label {
+                -moz-transform: mapping($emailSignUp, formglobalStyle, transformField);
+                -o-transform: mapping($emailSignUp, formglobalStyle, transformField);
+                -ms-transform: mapping($emailSignUp, formglobalStyle, transformField);
+                -webkit-transform: mapping($emailSignUp, formglobalStyle, transformField);
+                transform: mapping($emailSignUp, formglobalStyle, transformField);
+                font-weight: 700;
+            }
+        }
+    }
+
+    .help-block {
+        &:empty {
+            display: mapping($emailSignUp, helpBlock, helpBlockDis);
+        }
+    }
+
+    input.form-input.small-input,
+    input.form-input.long-input {
+        margin-top: mapping($emailSignUp, inputField, fieldMarTop);
+        padding-left: mapping($emailSignUp, inputField, fieldLeftPad);
+    }
+
+    select {
+        color: mapping($emailSignUp, selectBox, selectboxColor);
+        font-size: mapping($emailSignUp, selectBox, selectboxFontSize);
+        margin: mapping($emailSignUp, selectBox, selectboxMar);
+        -moz-border-radius: mapping($emailSignUp, selectBox, selectboxRadius);
+        -webkit-border-radius: mapping($emailSignUp, selectBox, selectboxRadius);
+        -ms-border-radius: mapping($emailSignUp, selectBox, selectboxRadius);
+        border-radius: mapping($emailSignUp, selectBox, selectboxRadius);
+        text-transform: mapping($emailSignUp, selectBox, selectboxTransform);
+        height: mapping($emailSignUp, selectBox, selectboxHeight);
+        -webkit-appearance: mapping($emailSignUp, selectBox, selectboxTransform);
+        -moz-appearance: mapping($emailSignUp, selectBox, selectboxTransform);
+        appearance: mapping($emailSignUp, selectBox, selectboxTransform);
+
+        &:focus {
+            border-color: mapping($emailSignUp, selectBox, selectboxBrdColor);
+            border: mapping($emailSignUp, selectBox, selectboxBorder);
+        }
+
+        &::-ms-expand {
+            display: none;
+        }
+
+        ~ {
+            .placeholder-label {
+                font-size: mapping($emailSignUp, placeHolder, selectHolderFont);
+                margin: mapping($emailSignUp, placeHolder, selectHolderMar);
+                padding: mapping($emailSignUp, placeHolder, selectHolderPad);
+            }
+        }
+    }
+
+    select.form-input.long-input {
+        margin-top: 0;
+        padding-left: 0.64286em;
+
+        + {
+            .placeholder-label {
+                margin-left: mapping($emailSignUp, selectBox, selectboxMarLeft);
+                font-size: mapping($emailSignUp, selectBox, selectboxFntSize);
+                margin-top: mapping($emailSignUp, selectBox, selectboxMarTop);
+            }
+        }
+    }
+
+    select.form-input.small-input {
+        margin-top: 0;
+        padding-left: 0.64286em;
+
+        + {
+            .placeholder-label {
+                margin-left: mapping($emailSignUp, selectBox, selectboxMarLeft);
+                font-size: mapping($emailSignUp, selectBox, selectboxFntSize);
+                margin-top: mapping($emailSignUp, selectBox, selectboxMarTop);
+            }
+        }
+
+    }
+
+    [type="checkbox"] {
+        &:not(:checked) {
+            position: mapping($emailSignUp, checkBoxProp, Pos);
+            left: mapping($emailSignUp, checkBoxProp, textLeft);
+
+            + {
+                label {
+                    position: mapping($emailSignUp, checkBoxProp, labelPos);
+                    cursor: mapping($emailSignUp, checkBoxProp, labelCursor);
+                    padding-left: mapping($emailSignUp, checkBoxProp, labelPad);
+                    color: mapping($emailSignUp, checkBoxProp, labelColor);
+                    font-size: mapping($emailSignUp, checkBoxProp, labelFontSize);
+                    font-weight: mapping($emailSignUp, checkBoxProp, labelWeight);
+
+                    &:before {
+                        content: mapping($emailSignUp, checkBoxProp, tickContent);
+                        position: mapping($emailSignUp, checkBoxProp, tickPos);
+                        left: mapping($emailSignUp, checkBoxProp, tickLeft);
+                        width: mapping($emailSignUp, checkBoxProp, tickWidth);
+                        height: mapping($emailSignUp, checkBoxProp, tickHeight);
+                        border: mapping($emailSignUp, checkBoxProp, tickBorder);
+                        background: mapping($emailSignUp, checkBoxProp, tickBg);
+                        -moz-border-radius: mapping($emailSignUp, checkBoxProp, tickRadius);
+                        -webkit-border-radius: mapping($emailSignUp, checkBoxProp, tickRadius);
+                        -ms-border-radius: mapping($emailSignUp, checkBoxProp, tickRadius);
+                        border-radius: mapping($emailSignUp, checkBoxProp, tickRadius);
+                        -webkit-box-shadow: mapping($emailSignUp, checkBoxProp, tickShadow);
+                        box-shadow: mapping($emailSignUp, checkBoxProp, tickShadow);
+                        top: mapping($emailSignUp, checkBoxProp, tickTop);
+                        margin-top: mapping($emailSignUp, checkBoxProp, tickMarTop);
+                    }
+
+                    &:after {
+                        content: mapping($emailSignUp, checkBoxProp, tickFont);
+                        @include font-awesome;
+                        position: mapping($emailSignUp, checkBoxProp, tickPos);
+                        left: mapping($emailSignUp, checkBoxProp, tickLeft);
+                        font-size: mapping($emailSignUp, checkBoxProp, FontSize);
+                        line-height: mapping($emailSignUp, checkBoxProp, LineHeight);
+                        text-align: mapping($emailSignUp, checkBoxProp, textAlign);
+                        color: mapping($emailSignUp, checkBoxProp, tickColor);
+                        width: mapping($emailSignUp, checkBoxProp, tickWidth);
+                        height: mapping($emailSignUp, checkBoxProp, tickHeight);
+                        -moz-border-radius: mapping($emailSignUp, checkBoxProp, tickRadius);
+                        -webkit-border-radius: mapping($emailSignUp, checkBoxProp, tickRadius);
+                        -ms-border-radius: mapping($emailSignUp, checkBoxProp, tickRadius);
+                        border-radius: mapping($emailSignUp, checkBoxProp, tickRadius);
+                        top: mapping($emailSignUp, checkBoxProp, tickTop);
+                        margin-top: mapping($emailSignUp, checkBoxProp, tickMarTop);
+                        opacity: 0;
+                        transform: scale(0);
+                    }
+                }
+            }
+        }
+
+        &:checked {
+            position: mapping($emailSignUp, checkBoxProp, Pos);
+            left: mapping($emailSignUp, checkBoxProp, textLeft);
+
+            + {
+                label {
+                    position: mapping($emailSignUp, checkBoxProp, labelPos);
+                    cursor: mapping($emailSignUp, checkBoxProp, labelCursor);
+                    padding-left: mapping($emailSignUp, checkBoxProp, labelPad);
+                    color: mapping($emailSignUp, checkBoxProp, labelColor);
+                    font-size: mapping($emailSignUp, checkBoxProp, labelFontSize);
+                    font-weight: mapping($emailSignUp, checkBoxProp, labelWeight);
+
+                    &:before {
+                        content: mapping($emailSignUp, checkBoxProp, tickContent);
+                        position: mapping($emailSignUp, checkBoxProp, tickPos);
+                        left: mapping($emailSignUp, checkBoxProp, tickLeft);
+                        width: mapping($emailSignUp, checkBoxProp, tickWidth);
+                        height: mapping($emailSignUp, checkBoxProp, tickHeight);
+                        border: mapping($emailSignUp, checkBoxProp, tickBorder);
+                        background: mapping($emailSignUp, checkBoxProp, tickBg);
+                        -moz-border-radius: mapping($emailSignUp, checkBoxProp, tickRadius);
+                        -webkit-border-radius: mapping($emailSignUp, checkBoxProp, tickRadius);
+                        -ms-border-radius: mapping($emailSignUp, checkBoxProp, tickRadius);
+                        border-radius: mapping($emailSignUp, checkBoxProp, tickRadius);
+                        -webkit-box-shadow: mapping($emailSignUp, checkBoxProp, tickShadow);
+                        box-shadow: mapping($emailSignUp, checkBoxProp, tickShadow);
+                        top: mapping($emailSignUp, checkBoxProp, tickTop);
+                        margin-top: mapping($emailSignUp, checkBoxProp, tickMarTop);
+                    }
+
+                    &:after {
+                        content: mapping($emailSignUp, checkBoxProp, tickFont);
+                        @include font-awesome;
+                        position: mapping($emailSignUp, checkBoxProp, tickPos);
+                        left: mapping($emailSignUp, checkBoxProp, tickLeft);
+                        font-size: mapping($emailSignUp, checkBoxProp, FontSize);
+                        line-height: mapping($emailSignUp, checkBoxProp, LineHeight);
+                        text-align: mapping($emailSignUp, checkBoxProp, textAlign);
+                        color: mapping($emailSignUp, checkBoxProp, tickColor);
+                        width: mapping($emailSignUp, checkBoxProp, tickWidth);
+                        height: mapping($emailSignUp, checkBoxProp, tickHeight);
+                        -moz-border-radius: mapping($emailSignUp, checkBoxProp, tickRadius);
+                        -webkit-border-radius: mapping($emailSignUp, checkBoxProp, tickRadius);
+                        -ms-border-radius: mapping($emailSignUp, checkBoxProp, tickRadius);
+                        border-radius: mapping($emailSignUp, checkBoxProp, tickRadius);
+                        top: mapping($emailSignUp, checkBoxProp, tickTop);
+                        margin-top: mapping($emailSignUp, checkBoxProp, tickMarTop);
+                        opacity: 1;
+                        transform: scale(1);
+                    }
+                }
+            }
+        }
+
+        &:disabled {
+            &:not(:checked) {
+                + {
+                    label {
+                        &:before {
+                            box-shadow: mapping($emailSignUp, checkBoxProp, checkedShadow);
+                            border-color: mapping($emailSignUp, checkBoxProp, checkedBorderColor);
+                            background-color: mapping($emailSignUp, checkBoxProp, checkedBG);
+                        }
+                    }
+                }
+            }
+
+            &:checked {
+                + {
+                    label {
+                        &:before {
+                            box-shadow: mapping($emailSignUp, checkBoxProp, checkedShadow);
+                            border-color: mapping($emailSignUp, checkBoxProp, checkedBorderColor);
+                            background-color: mapping($emailSignUp, checkBoxProp, checkedBG);
+                        }
+
+                        &:after {
+                            color: mapping($emailSignUp, checkBoxProp, checkedColor);
+                        }
+                    }
+                }
+            }
+
+            + {
+                label {
+                    color: mapping($emailSignUp, checkBoxProp, checkedColor);
+                }
+            }
+        }
+    }
+}
+
+.main-section {
+
+    form [type="radio"]:checked+label,
+    form [type="radio"]:not(:checked)+label,
+    .form [type="radio"]:checked+label,
+    .form [type="radio"]:not(:checked)+label {
+        position: mapping($emailSignUp, radioButton, radioPos);
+        padding-left: mapping($emailSignUp, radioButton, radioPad);
+        cursor: mapping($emailSignUp, radioButton, radioCursor);
+        line-height: mapping($emailSignUp, radioButton, radioLine);
+        display: mapping($emailSignUp, radioButton, radioDis);
+        color: mapping($emailSignUp, radioButton, radioColor);
+        font-weight: mapping($emailSignUp, radioButton, radioWeight);
+    }
+
+    form [type="radio"]:checked+label:before,
+    form [type="radio"]:not(:checked)+label:before,
+    .form [type="radio"]:checked+label:before,
+    .form [type="radio"]:not(:checked)+label:before {
+        content: mapping($emailSignUp, radioButton, radioBfrcontent);
+        position: mapping($emailSignUp, radioButton, radioBfrPos);
+        left: mapping($emailSignUp, radioButton, radioBfrLeft);
+        top: mapping($emailSignUp, radioButton, radioBfrTop);
+        width: mapping($emailSignUp, radioButton, radioBfrWidth);
+        height: mapping($emailSignUp, radioButton, radioBfrHeight);
+        border: mapping($emailSignUp, radioButton, radioBfrBor);
+        @include border-radius(100%);
+        background: mapping($emailSignUp, radioButton, radioBfrBG);
+    }
+
+    form [type="radio"]:not(:checked)+label:after,
+    .form [type="radio"]:not(:checked)+label:after {
+        opacity: mapping($emailSignUp, radioButton, radioBfrOpacity);
+        -webkit-transform: scale(0);
+        transform: scale(0);
+    }
+
+    form [type="radio"]:checked+label:after,
+    form [type="radio"]:not(:checked)+label:after,
+    .form [type="radio"]:checked+label:after,
+    .form [type="radio"]:not(:checked)+label:after {
+        content: mapping($emailSignUp, radioButton, radioAfrcontent);
+        width: mapping($emailSignUp, radioButton, radioAfrWidth);
+        height: mapping($emailSignUp, radioButton, radioAfrHeight);
+        background: mapping($emailSignUp, radioButton, radioAfrBG);
+        position: mapping($emailSignUp, radioButton, radioAfrPos);
+        top: mapping($emailSignUp, radioButton, radioAfrTop);
+        left: mapping($emailSignUp, radioButton, radioAfrLeft);
+        @include border-radius(100%);
+        -webkit-transition: all, 0.2s, ease;
+        -o-transition: all, 0.2s, ease;
+        transition: all, 0.2s, ease;
+    }
+
+}
+
+.link-rewards-member {
+    display: mapping($emailSignUp, helpBlock, helpBlockDis);
+}
+
+.form-input {
+    max-width: mapping($emailSignUp, inputField, maxWidth);
+    width: mapping($emailSignUp, inputField, inputWidth);
+    font-size: mapping($emailSignUp, inputField, inputFontSize);
+    height: mapping($emailSignUp, inputField, inputHeight);
+    padding: mapping($emailSignUp, inputField, inputPad);
+    border: mapping($emailSignUp, inputField, inputBorder);
+    margin-bottom: mapping($emailSignUp, inputField, inputMarBot);
+    color: mapping($emailSignUp, inputField, inputColor);
+}
+
+.forgot-password {
+    a {
+        color: mapping($emailSignUp, forgotPassword, FPcolor);
+        font-family: mapping($emailSignUp, forgotPassword, FPfont);
+        font-weight: mapping($emailSignUp, forgotPassword, FPfontWeight);
+    }
+}
+
+.has-error {
+
+    .hint-message,
+    .form-message {
+        color: mapping($emailSignUp, forgotPassword, errorColor);
+        font-weight: mapping($emailSignUp, forgotPassword, errorFont);
+        display: mapping($emailSignUp, forgotPassword, errorDis);
+    }
+
+    // .hint-message {
+    // 	color: #E62605;
+    // 	font-weight: 600;
+    // 	display: block;
+    // }
+}
+
+.col-sm-8.col-lg-6 {
+    ul {
+        li {
+            position: relative;
+
+            &::before {
+                position: mapping($emailSignUp, selectBox, arrowPos);
+                content: mapping($emailSignUp, selectBox, arrowSymbol);
+                @include font-awesome;
+                color: mapping($emailSignUp, selectBox, arrowColor);
+                top: mapping($emailSignUp, selectBox, arrowTop);
+                right: mapping($emailSignUp, selectBox, arrowRight);
+                height: mapping($emailSignUp, selectBox, arrowHeight);
+                width: mapping($emailSignUp, selectBox, arrowWidth);
+            }
+
+            select {
+                background: transparent;
+                background-image: mapping($emailSignUp, selectBox, selectboxTransform);
+                -webkit-appearance: mapping($emailSignUp, selectBox, selectboxTransform);
+                -moz-appearance: mapping($emailSignUp, selectBox, selectboxTransform);
+                appearance: mapping($emailSignUp, selectBox, selectboxTransform);
+            }
+        }
+    }
+}
+
+.form-wrapper,
+.register,
+.signin {
+    margin-top: mapping($emailSignUp, emailContainer, conMarTop);
+    padding: mapping($emailSignUp, emailContainer, conPad);
+    border: mapping($emailSignUp, emailContainer, conBorder);
+
+    @media #{$small-down} {
+        padding: mapping($emailSignUp, emailContainer, mobConPad);
+        margin: mapping($emailSignUp, emailContainer, mobConMar);
+
+    }
+
+    h2,
+    h1 {
+        font-size: mapping($emailSignUp, signinTitle, headerFont);
+        color: mapping($emailSignUp, signinTitle, headerColor);
+        margin: mapping($emailSignUp, signinTitle, headerMar);
+        padding: mapping($emailSignUp, signinTitle, headerPad);
+
+        @media #{$small-down} {
+            font: mapping($emailSignUp, forgotProp, mobForgotFont);
+            padding: mapping($emailSignUp, forgotProp, mobForgotTitlepad);
+            margin: mapping($emailSignUp, forgotProp, mobWrapperMar);
+        }
+    }
+
+}
+
+.help-block:empty {
+    display: none;
+}
+
+.has-error input,
+.has-error select,
+.has-error .bootstrap-select {
+    border: mapping($emailSignUp, errorMessage, errorBorder);
+}
+
+.forgotPassword {
+    float: mapping($emailSignUp, forgotProp, forgotConfloat);
+    width: mapping($emailSignUp, forgotProp, forgotConWidth);
+
+    .row {
+        margin: mapping($emailSignUp, forgotProp, marginRow);
+    }
+
+    span {
+        font-size: mapping($emailSignUp, forgotProp, spanFontSize);
+        font-family: mapping($emailSignUp, forgotProp, spanFamily);
+        color: mapping($emailSignUp, forgotProp, spanColor);
+
+
+    }
+
+    p {
+        font-size: mapping($emailSignUp, forgotProp, paraFont);
+        margin: mapping($emailSignUp, forgotProp, paraMar);
+    }
+
+    .form-wrapper {
+        margin: mapping($emailSignUp, forgotProp, wrapperMar);
+        border-color: mapping($emailSignUp, forgotProp, wrapperBorderColor);
+
+        @media #{$small-down} {
+            margin: mapping($emailSignUp, forgotProp, mobWrapperMar);
+        }
+
+        .theme-btn {
+            margin-top: mapping($emailSignUp, forgotProp, buttonMarTop);
+
+            &:active,
+            &:focus {
+                outline: mapping($emailSignUp, forgotProp, focusBorder);
+            }
+        }
+    }
+}
+
+.createAccount {
+    .modal-body {
+        a {
+            color: mapping($emailSignUp, forgotProp, linkColor);
+        }
+    }
+}

@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Product Detail Component"
+    sling:resourceType="cq/gui/components/authoring/dialog"
+    helpPath="https://www.adobe.com/go/aem_cmp_text_v2">
+    <content
+        granite:class="play-cmp-list--editor"
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <productDetailConfig
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Product Detail Config"
+                        sling:resourceType="granite/ui/components/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <productPath
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                fieldLabel="Product Path"
+                                filter="nosystem"
+                                name="./productPath"
+                                rootPath="/var/commerce/products"/>
+                            <productbackgroundoption
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                fieldLabel="Product Module Background Option"
+                                name="./productBackOption">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <image
+                                        jcr:primaryType="nt:unstructured"
+                                        text="Image"
+                                        value="image"/>
+                                    <color
+                                        jcr:primaryType="nt:unstructured"
+                                        text="Color"
+                                        value="color"/>
+                                </items>
+                            </productbackgroundoption>
+                            <productBgColour
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/colorfield"
+                                emptyText="Background Color here"
+                                fieldLabel="Product Module Background Color"
+                                name="./productBgColor"/>
+                            <productBgImage
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                allowUpload="{Boolean}false"
+                                autoStart="{Boolean}false"
+                                class="cq-droptarget"
+                                fieldLabel="Product Module Background Image"
+                                fileReferenceParameter="./productBgImg"
+                                mimeTypes="[image/gif,image/jpeg,image/png,image/webp,image/tiff]"
+                                multiple="{Boolean}false"
+                                name="./productBackgroundImage"
+                                uploadUrl="${suffix.path}"
+                                useHTML5="{Boolean}true"/>
+                            <productdetailbackgroundoption
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                fieldLabel="Product Text Section Background Option"
+                                name="./productdetailBackOption">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <image
+                                        jcr:primaryType="nt:unstructured"
+                                        text="Image"
+                                        value="image"/>
+                                    <color
+                                        jcr:primaryType="nt:unstructured"
+                                        text="Color"
+                                        value="color"/>
+                                </items>
+                            </productdetailbackgroundoption>
+                            <productdetailBgColour
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/colorfield"
+                                fieldLabel="Product Text Section Background Color"
+                                name="./productDetailBgColour"/>
+                            <productdetailBgImage
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                allowUpload="{Boolean}false"
+                                autoStart="{Boolean}false"
+                                class="cq-droptarget"
+                                fieldLabel="Product Text Section Background Image:"
+                                fileReferenceParameter="./productdetailBgImg"
+                                mimeTypes="[image/gif,image/jpeg,image/png,image/webp,image/tiff]"
+                                multiple="{Boolean}false"
+                                name="./productdetailbackgroundImage"
+                                uploadUrl="${suffix.path}"
+                                useHTML5="{Boolean}true"/>
+                            <alwaysEnglish
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Tagging Name"
+                                fieldLabel="Adobe Tracking Name"
+                                name="./alwaysEnglish"
+                                required="{Boolean}true"/>
+                            <whereToBuyLink
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                fieldDescription="Where To Buy Link"
+                                fieldLabel="Where To Buy Link"
+                                name="./whereToBuyLink"/>
+                            <whereToBuyCtaLinks
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                fieldDescription="Where To Buy CTA Link"
+                                fieldLabel="Where To Buy CTA Link"
+                                name="./whereToBuyCtaLinksIn">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <sameWindow
+                                        jcr:primaryType="nt:unstructured"
+                                        text="Same Window"
+                                        value="samewindow"/>
+                                    <newTab
+                                        jcr:primaryType="nt:unstructured"
+                                        text="New Tab"
+                                        value="newtab"/>
+                                    <newWindow
+                                        jcr:primaryType="nt:unstructured"
+                                        text="New Window"
+                                        value="newwindow"/>
+                                    <interstitial
+                                        jcr:primaryType="nt:unstructured"
+                                        text="Interstitial"
+                                        value="interstitial"/>
+                                </items>
+                            </whereToBuyCtaLinks>
+                            <productdetailHoverImage
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                allowUpload="{Boolean}false"
+                                autoStart="{Boolean}false"
+                                class="cq-droptarget"
+                                fieldLabel="Product Hover Image"
+                                fileReferenceParameter="./productHoverOverImage"
+                                mimeTypes="[image/gif,image/jpeg,image/png,image/webp,image/tiff]"
+                                multiple="{Boolean}false"
+                                name="./productHoverOverImagebackgroundImage"
+                                uploadUrl="${suffix.path}"
+                                useHTML5="{Boolean}true"/>
+                            <productHoverOverImageAltText
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Product HoverOver Image Alternative Text"
+                                fieldLabel="Product HoverOver Image Alternative Text"
+                                name="./productHoverOverImageAltText"/>
+                        </items>
+                    </productDetailConfig>
+                    <retailer-config
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Retailer Configuration"
+                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <retailerDetailList
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                class="full-width"
+                                composite="{Boolean}true"
+                                eaem=""
+                                fieldLabel="Retailer Details">
+                                <field
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/fieldset"
+                                    name="./retailerDetailList">
+                                    <items jcr:primaryType="nt:unstructured">
+                                        <column
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                                            <items jcr:primaryType="nt:unstructured">
+                                                <retailerLink
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="/libs/granite/ui/components/coral/foundation/form/pathbrowser"
+                                                    fieldDescription="Retailer Website URL"
+                                                    fieldLabel="Retailer Link"
+                                                    name="./retailerUrl"
+                                                    rootPath="/content/"/>
+                                                <retailerLogo
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                    allowUpload="{Boolean}false"
+                                                    autoStart="{Boolean}false"
+                                                    class="cq-droptarget"
+                                                    fieldDescription="Browse Logo/Image"
+                                                    fieldLabel="Retailer Logo"
+                                                    fileReferenceParameter="./retailerLogoSrc"
+                                                    mimeTypes="[image/gif,image/jpeg,image/png,image/webp,image/tiff]"
+                                                    multiple="{Boolean}false"
+                                                    name="./retailerLogo"
+                                                    required="{Boolean}true"
+                                                    rootPath="/content/dam"
+                                                    uploadUrl="${suffix.path}"
+                                                    useHTML5="{Boolean}true"/>
+                                                <retailerAltText
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldDescription="Textual alternative of the meaning or function of the image, for visually impaired readers."
+                                                    fieldLabel="Alternative Text"
+                                                    name="./retailLogoAlt"
+                                                    required="{Boolean}true"
+                                                    wrapperClass="cmp-image--editor-alt"/>
+                                                <targetUrl
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                    fieldLabel="Open URL In"
+                                                    name="./retailerTarget">
+                                                    <items jcr:primaryType="nt:unstructured">
+                                                        <sameWindow
+                                                            jcr:primaryType="nt:unstructured"
+                                                            text="Same Window"
+                                                            value="sameWindow"/>
+                                                        <newTab
+                                                            jcr:primaryType="nt:unstructured"
+                                                            text="New Tab"
+                                                            value="tabWindow"/>
+                                                        <newWindow
+                                                            granite:hide="${cqDesign.disableSearch}"
+                                                            jcr:primaryType="nt:unstructured"
+                                                            selected="{Boolean}true"
+                                                            text="New Window"
+                                                            value="newWindow"/>
+                                                    </items>
+                                                </targetUrl>
+                                                <alwaysEnglish
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldDescription="Tagging Name"
+                                                    fieldLabel="Tagging Name"
+                                                    name="./alwaysEnglish"
+                                                    required="{Boolean}true"/>
+                                            </items>
+                                        </column>
+                                    </items>
+                                </field>
+                            </retailerDetailList>
+                        </items>
+                    </retailer-config>
+                    <linkToNavigation
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Link To Navigation"
+                        sling:resourceType="granite/ui/components/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <linkToNavigation
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/foundation/form/checkbox"
+                                fieldDescription="Is this section to be linked to Navigation"
+                                name="./linkNavigationCheck"
+                                text="Link To Navigation?"
+                                uncheckedValue="{Boolean}false"
+                                value="{Boolean}true"/>
+                            <NavigationOptions
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                fieldLabel="Navigation Mapping"
+                                name="./linkNavOption">
+                                <datasource
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="/bin/homepagedropdown"/>
+                            </NavigationOptions>
+                        </items>
+                    </linkToNavigation>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>

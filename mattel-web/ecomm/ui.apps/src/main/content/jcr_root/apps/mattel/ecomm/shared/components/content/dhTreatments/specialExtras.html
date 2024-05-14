@@ -1,0 +1,69 @@
+<script id="specialExtra-dynamic" type="text/x-handlebars-template">
+    <form>
+        {{#each this}}
+        <div class="col-xs-12 col-sm-4 sku-card">
+           <div class="sku-container" safety-msg="{{this.safetyMessage}}">
+              <div class="sku-image" data-sku-image="sku-image">
+                 <img alt="{{this.imageAltText}}" src="{{this.imageLink}}" />
+              </div>
+              <div class="info">
+                    {{#if this.childProduct}}
+                    {{else}}
+                        <input type="checkbox" name="splExtra" id="specialExtra{{{@index}}}" value="{{this.partNumber}}">
+                        <label for="specialExtra{{{@index}}}">{{{this.skuName}}}</label>
+                    {{/if}}
+                        <p class="name"></p>
+                        <h3 aria-hidden="true" value={{this.partNumber}}>{{{this.skuName}}}</h3>
+                    {{#if this.childProduct}}
+                        <fieldset>
+                            <legend class="sr-only">Hearing Aid Placement:</legend>
+                            {{#each this.childProduct}}
+                            <input type="radio" name="sha-selection" id="seHAid{{{@index}}}" value="{{this.childPartNumber}}">
+                            <label for="seHAid{{{@index}}}"><span>{{this.childSkuName}}</span></label>
+                            {{/each}}
+                        </fieldset>
+                    {{else}}
+                        <p class="desc">{{{this.description}}}</p>
+                    {{/if}}
+                        <p class="includes"></p>
+                        <p class="additional-desc"></p>
+                </div>
+           </div>
+           <div class="item-price"><span>$</span>{{this.price.salePrice}}</div>
+        </div>
+        {{/each}}
+</form>
+</script>
+				  <div class="dh-specialExtra-block">
+                    <section class="active">
+		<div class="sub-brand-logo">
+           <picture>
+             <sly data-sly-test="${properties.subBrandLogoImageParameterMobileForDollName @ context='unsafe'}">
+             <source srcset="${properties.subBrandLogoImageParameterMobileForDollName @ context='unsafe'}" media="(max-width:768px)" />
+             </sly>
+             <img  alt="Doll Hospital logo" src="${properties.subBrandLogoImageParameterForDollName @ context='unsafe'}" />
+          </picture>
+        </div>
+                      <h1 class="sr-only">Special Extra Page</h1>
+                      <h2>${properties.questionSpecialExtras}</h2>
+					   <div class="instructions"><p>${properties.instructionCopy}</p></div>
+                      <div class="main-content-section  data-loading">
+                        <div class="main-inner-content dynamic-data-load">
+
+                        </div>
+                      </div>
+                      <div class="dh-btn-span" style="background-color: ${properties.backgroundColor @ context='unsafe'}">
+                          <a
+                              href="${properties.backButtonLink @ extension='html'}" role="${properties.backButtonLink @ extension='html'}">
+                              <button type="submit" role="presentation" class="dh-back-btn" data-wellness-url ="${properties.wellnessUserBackButtonLink}.html">${properties.backButtonText}</button>
+                          </a>
+                          <a
+                              href="${properties.nextButtonLink @ extension='html'}" role="${properties.nextButtonLink @ extension='html'}">
+                              <button type="submit" class="dh-next-btn">${properties.nextButtonText}</button>
+                          </a>
+                      </div>
+                    </section>
+                  </div>
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
+       <sly data-sly-call="${clientlib.js @ categories=['dollHospital.speciaExtras']}"/>
+</sly> 			

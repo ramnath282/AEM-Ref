@@ -1,0 +1,94 @@
+<sly data-sly-test="${wcmmode.edit}">${'Character Component' @i18n}</sly>
+
+<!-- image fade-in component starts -->
+<div class="hc-content-section">
+    <sly data-sly-test="${properties.imageReference}">
+        <div class="fadein-image-cmp big-content-${properties.layoutContent}">
+    </sly>
+    <sly data-sly-test="${!properties.imageReference}">
+        <div class="fadein-image-cmp img-text-cmp big-content-${properties.layoutContent}">
+    </sly>
+    <div class="section-A" data-aos="fade-up">
+        <img src="${properties.bigImageReference}" alt="${properties.bigImageAltText}">
+    </div>
+    <sly data-sly-test="${properties.imageReference}">
+        <div class="section-B">
+    </sly>
+    <sly data-sly-test="${!properties.imageReference}">
+        <div class="section-C" data-aos="fade-${properties.layoutContent}">
+    </sly>
+    <div class="chap-title" data-aos="fade-${properties.layoutContent}">${properties.heading @context='html'}</div>
+    ${properties.description @context='html'}
+</div>
+<sly data-sly-test="${properties.imageReference}">
+    <div class="section-C" data-aos="fade-${properties.layoutContent}">
+        <sly data-sly-use.characterModel="com.mattel.ag.explore.core.model.CharacterModel">
+            <sly data-sly-test="${properties.imagelink}">
+                <sly data-sly-test="${properties.renderoption =='sameWindow'}">
+                    <sly data-sly-test="${characterModel.characterPojo.external}">
+                        <a class="track-historical-character-image" href="${properties.imagelink}" data-tracking-historic-character-image="Character Book|Character Book Image|${characterModel.characterPojo.heading}">
+                            <img class="chapter-img" src="${properties.imageReference}" alt="${properties.imageAltText @i18n}">
+
+                        </a>
+                    </sly>
+                    <sly data-sly-test="${!characterModel.characterPojo.external}">
+                        <a class="track-historical-character-image" href="${properties.imagelink @extension='html'}" data-tracking-historic-character-image="Character Book|Character Book Image|${characterModel.characterPojo.heading}">
+                            <img class="chapter-img" src="${properties.imageReference}" alt="${properties.imageAltText @i18n}">
+
+                        </a>
+                    </sly>
+                </sly>
+                <sly data-sly-test="${properties.renderoption =='tabWindow'}">
+                    <sly data-sly-test="${characterModel.characterPojo.external}">
+                        <a class="track-historical-character-image" href="${properties.imagelink}" target="_blank" data-tracking-historic-character-image="Character Book|Character Book Image|${characterModel.characterPojo.heading}">
+                            <img class="chapter-img" src="${properties.imageReference}" alt="${properties.imageAltText @i18n}">
+
+                        </a>
+                    </sly>
+                    <sly data-sly-test="${!characterModel.characterPojo.external}">
+                        <a class="track-historical-character-image" href="${properties.imagelink @extension='html'}" target="_blank" data-tracking-historic-character-image="Character Book|Character Book Image|${characterModel.characterPojo.heading}">
+                            <img class="chapter-img" src="${properties.imageReference}" alt="${properties.imageAltText @i18n}">
+
+                        </a>
+                    </sly>
+                </sly>
+                <sly data-sly-test="${properties.renderoption =='newWindow'}">
+                    <sly data-sly-test="${characterModel.characterPojo.external}">
+                        <a class="track-historical-character-image" data-url="${properties.imagelink}" onclick="window.open(this.dataset.url,'AG','width=500, height=500');" style="cursor: pointer;" data-tracking-historic-character-image="Character Book|Character Book Image|${characterModel.characterPojo.heading}">
+                            <img class="chapter-img" src="${properties.imageReference}" alt="${properties.imageAltText @i18n}">
+                        </a>
+                    </sly>
+                    <sly data-sly-test="${!characterModel.characterPojo.external}">
+                        <a class="track-historical-character-image" data-url="${properties.imagelink @extension='html'}" onclick="window.open(this.dataset.url,'AG','width=500, height=500');" style="cursor: pointer;" data-tracking-historic-character-image="Character Book|Character Book Image|${characterModel.characterPojo.heading}">
+                            <img class="chapter-img" src="${properties.imageReference}" alt="${properties.imageAltText @i18n}">
+                        </a>
+                    </sly>
+                </sly>
+            </sly>
+
+                <sly data-sly-test="${properties.hyperlinkText}">
+                    <a href="#" data-target="" class="track-historical-character-link" aria-label="${properties.hyperlinkText} of ${characterModel.characterPojo.heading} Opens a popup" data-tracking-historic-character="${properties.hyperlinkText}|Character Book|${characterModel.characterPojo.heading}" data-toggle="modal" data-target="#">${properties.hyperlinkText}</a>
+                </sly>
+            </sly>
+        </div>
+    </sly>
+    <sly data-sly-test="${properties.hyperlinkText}">
+        <div class="modal" tabindex="-1" role="dialog" aria-labelledby="">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <i class="fa fa-times" style="font-size:2em" aria-hidden="true"></i>
+                        </button>
+                        ${properties.overlayHeading @context='html'}
+                    </div>
+                    <div class="modal-body">
+                        ${properties.overlayDescription @context='html'}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </sly>
+    </div>
+    </div>
+    <!-- image fade-in component ends -->

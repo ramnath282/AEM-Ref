@@ -1,0 +1,58 @@
+<sly data-sly-test.author="${wcmmode.edit}">
+    ${'Edit Doll Hospital - Basic Information Collection Component'}
+
+</sly>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+
+<div class="dh-basicinfo-block">
+
+                <h1 class="sr-only">Doll hospital Basic information page</h1>
+				 <!--- Welcome Screen Starts -->
+                <!--- Welcome Screen Ends -->
+                <!--- Welcome Screen Starts -->
+
+                <sly data-sly-test="${properties.type == 'welcomeScreen' }">
+                    <sly data-sly-include ="welcomeScreen.html"></sly>
+                </sly>
+
+                <!--- Welcome Screen Ends -->
+
+                <!--- Doll Name Screen Starts -->
+
+                <sly data-sly-test="${properties.type == 'dollNameScreen' }">
+                    <sly data-sly-include ="dollNameScreen.html"></sly>
+                </sly>
+
+                <!--- Doll Name Screen Ends -->
+
+                <!--- Doll Type Screen Starts -->
+
+                <sly data-sly-test="${properties.type == 'dollTypeScreen' }">
+                    <sly data-sly-include ="dollTypeScreen.html"></sly>
+                </sly>
+
+                <!--- Doll Type Screen Ends -->
+
+                <!--- Eye Color Screen Starts -->
+
+                <sly data-sly-test="${properties.type == 'eyeColorScreen' }">
+                    <sly data-sly-include ="eyeColorScreen.html"></sly>
+                </sly>
+
+                <!--- Eye Color Screen Ends -->
+
+                <!--- Hair Color Screen Starts -->
+
+                <sly data-sly-test="${properties.type == 'hairColorScreen' }">
+                    <sly data-sly-include ="hairColorScreen.html"></sly>
+                </sly>
+
+                <!--- Hair Color Screen Ends -->
+</div>
+
+
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
+    <sly data-sly-call="${clientlib.js @ categories=['ecomm.basicInformationCollection']}"/>
+</sly> 
+
+

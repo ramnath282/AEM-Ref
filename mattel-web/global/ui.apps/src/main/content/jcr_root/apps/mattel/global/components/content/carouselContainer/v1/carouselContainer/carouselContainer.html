@@ -1,0 +1,43 @@
+<sly data-sly-use.model="com.mattel.global.core.model.CarouselContainerModel"/>
+<sly data-sly-test.isColorBg="${properties.backOption == 'color' && properties.backgroundColor != null}">
+	<div style="background-color:${properties.backgroundColor @ context='styleString'};">
+		<sly data-sly-call="${carouselComponent @ model=model}"></sly>
+	</div>
+</sly>
+<sly data-sly-test.isImageBg="${properties.backOption == 'image' && properties.fileReferenceBgImg != null}">
+	<div style="background-image: url('${properties.fileReferenceBgImg @ context='styleString'}');background-size: cover;">
+		<sly data-sly-call="${carouselComponent @ model=model}"></sly>
+	</div>
+</sly>
+<sly data-sly-test="${!isColorBg && !isImageBg}">
+	<div>
+		<sly data-sly-call="${carouselComponent @ model=model}"></sly>
+	</div>
+</sly>
+
+<sly data-sly-template.carouselComponent="${@ model}">
+<div class="container-fluid ${wcmmode.edit ? '' : 'flexible-carousel-component'} ${model.slideToShow == '1' ? 'single-stretched-slider' : ''}"
+     data-center-mode="${model.centerMode ? 'true' : 'false'}" data-rotation-speed="${model.slideRotationSpeed ? model.slideRotationSpeed : '2000'}" data-auto-play="${model.autoPlay ? 'true' : 'false'}" data-arrows="${model.arrows ? 'true' : 'false'}" data-dots="${model.dots ? 'true' : 'false'}" data-slide-to-show="${model.slideToShow}" data-slide-to-scroll="${model.slidetoscroll}" data-rewind="true">
+    <div class="inner-section">
+        <div data-sly-test="${model.title || model.description}" class="section-title ${model.textPosition}">
+            <h2>${model.title}</h2>
+            <p>${model.description}</p>
+        </div>
+        <ul class="slider-content ${model.outerArrows == true ? 'outer-arrows' : 'inner-arrows'}">
+            <li data-sly-repeat.item="${model.items}"
+                 data-sly-resource="${item.name @ decorationTagName='div'}"></li>
+        </ul>
+    </div>
+</div>
+</sly>
+<sly data-sly-resource="${resource.path @ resourceType='wcm/foundation/components/parsys/newpar', appendPath='/*', decorationTagName='div', cssClassName='new section aem-Grid-newComponent'}"
+     data-sly-test="${(wcmmode.edit || wcmmode.preview) && model.items.size < 1}"></sly>
+
+<sly data-sly-use.isCloudConfg="${'/apps/mattel/global/clientlibs/global-utils/js/utils.js' @ uri=request.requestURI, text='nocloudconfigs'}" />
+<sly data-sly-test="${!isCloudConfg.isCloudConf}">
+	<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
+		<sly data-sly-call="${clientlib.js @ categories=['global.carouselContainer.v1']}"/>
+		<sly data-sly-call="${clientlib.css @ categories=['core.wcm.components.carousel']}"/>
+	</sly>
+</sly>
+</sly>

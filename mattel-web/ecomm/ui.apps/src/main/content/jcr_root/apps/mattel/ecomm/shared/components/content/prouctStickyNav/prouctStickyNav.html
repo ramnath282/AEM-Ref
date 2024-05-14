@@ -1,0 +1,29 @@
+<sly data-sly-test="${wcmmode.edit}">${'Product Sticky Navigation' @ i18n}</sly>
+<sly data-sly-use.prodStickyNav="com.mattel.ecomm.core.models.PDPModel">
+    <input type="hidden" id="prodRatingAvg" value="${prodStickyNav.analyticsRatingAvg}" />
+    <div class="productNav-sticky" id="navbar">
+        <div class="header-section">
+            <sly data-sly-test="${prodStickyNav.productTitle}">
+                <h4>${prodStickyNav.productTitle @ context='html',i18n}</h4>
+            </sly>
+            <sly data-sly-test="${prodStickyNav.enableCustomerReview == true}">
+            	<div class="product-reviews">
+                    <a href="javascript:void(0);" id="starLink">
+                        <span class="rating-section rating-${prodStickyNav.ratingAvgSepByHyphen}">
+									<span class="sr-only">${prodStickyNav.analyticsRatingAvg @context='html',i18n} stars</span>
+                        </span>
+                    </a>
+                    <span class="total-reviews">(${prodStickyNav.productReviewCount == ''?'0':prodStickyNav.productReviewCount})<span class="sr-only">${"Reviews" @i18n}</span></span>
+                </div>
+            </sly>
+        </div>
+        <div class="fullxs-width pull-right">
+            <sly data-sly-test="${prodStickyNav.enableProductPrice == true && prodStickyNav.productPrice}" data-sly-use.currencyMapping="com.mattel.ecomm.core.models.CurrencyMapping"> 				
+                <span class="price-tag">${currencyMapping.currencyCode @context='html',i18n}${prodStickyNav.productPrice @ i18n}</span>                   
+            </sly>
+            <sly data-sly-test="${properties.ctaButtonLabel}">
+                <a href="javascript:void(0);" class="link-button" id="pricespider-link-button">${properties.ctaButtonLabel @ i18n}</a>
+            </sly>
+        </div>
+    </div>
+</sly>

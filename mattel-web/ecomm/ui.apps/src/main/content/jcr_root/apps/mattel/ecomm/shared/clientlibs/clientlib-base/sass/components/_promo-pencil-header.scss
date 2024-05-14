@@ -1,0 +1,193 @@
+// carousel-properties-white
+.extend-ctaGroupComponent {
+    .flexible-cta-component {
+        max-width: none;
+        padding: 0;
+        @include flex();
+        align-items: center;
+        justify-content: center;
+        font-size: 14px;
+        @media #{$medium-up}{
+            font-size: 16px;
+        }
+        .title,
+        .description-content {
+            width: auto;
+            float: none;
+            @media #{$medium-up} {
+                display: inline-block;
+                vertical-align: middle;
+                padding: 0;
+            }
+            p {
+                margin: 0;
+            }
+        }
+        .description-content {
+            .cta-button {
+                width: auto;
+                padding: 0;
+                color: $white;
+                margin-bottom: 0;
+                .theme-btn {
+                    height: auto;
+                    margin: auto;
+                    font-size: 14px;
+                    letter-spacing: 0.28px;
+                    @media #{$medium-up} {
+                        letter-spacing: 0.32px;
+                    }
+                    background: transparent;
+                    border: none !important;
+                    padding: 0 !important;
+                    min-width: 0 !important;
+                    padding: 0 !important;
+                    margin: 0 !important;
+                    font-weight: $fontMedium;
+                    &:hover{
+                        background: inherit !important;
+                    }
+                    &:after{
+                        font-size: 75%;
+                    }
+                }
+                &.cta-btn-column-1{
+                    @media #{$medium-up} {
+                        padding-left: 15px;
+                        position: relative;
+                        margin-left: 15px;
+                        &:before {
+                            content: '';
+                            position: absolute;
+                            left: 0;
+                            top: 50%;
+                            height: 80%;
+                            width:1px;
+                            background: $white;
+                            max-height: 15px;
+                            top: 0;
+                            margin: auto;
+                            bottom: 0;
+                        }
+                    }
+                    .theme-btn {
+                        padding: 0 !important;
+                    }
+                }
+            }
+        }
+    }
+}
+.extend-theme-light{
+   .ctaGroupComponent{
+       color: $white;
+   }
+}
+body.ecomm.basepage-ecomm.promo-pencil-on .promoPencilHeader .flexible-cta-component .cta-button .theme-btn{
+    padding:0 !important;
+}
+.promoPencilHeader {
+    z-index: 1;
+    @extend .extend-theme-light;
+    &>div{
+        background-color: #85144B;
+    }
+    .single-stretched-slider {
+        &>.inner-section {
+            max-width: 1600px;
+            margin: 0 7px;
+            @media #{$small-up}{
+                margin: 0 1.78571em;
+            }
+            @media (min-width: 1599px){
+                margin: auto;
+            }
+        }
+        *:focus {
+            outline: none;
+        }
+        @extend .extend-ctaGroupComponent;
+        .slider-content{
+            padding: 10px 12px 10.85px;
+            width: 100%;
+            margin-bottom: 0;
+            .slick-track{
+                @include flex();
+                align-items: center;
+            }
+        }
+        .slick-slider .slick-list{
+            max-width: calc(100% - 28px);
+            margin: auto;
+        }
+        .slick-arrow{
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            @include transform(none);
+            &:before{
+                font-size: 14px;
+                @media #{$small-up}{
+                    font-size: 17px;
+                }
+                opacity: 1;
+            }
+            &.slick-disabled{
+                opacity: .5;
+                cursor: default;
+            }
+            &.slick-prev{
+                left: 5px;
+                @media #{$medium-up}{
+                    margin-left: 20px;
+                }
+            }
+            &.slick-next{
+                right: 10px;
+                margin-right: 0;
+            }
+        }
+    }
+}
+.experiencefragment_header{
+    .experiencefragment.aem-GridColumn{
+        padding: 0;
+        .xf-content-height{
+            margin: 0;
+        }
+    }
+}
+.promoPencilContainer.aem-GridColumn{
+    padding:0;
+    position: relative;
+    z-index: 11;
+    .carouselContainer{
+        position: static;
+        
+    }
+}
+.promo-pencil-container{
+    position: relative;
+    // z-index: 0;
+    .promo-guest-user,.promo-signed-in-user{
+        &:not(.active){
+            display: none;
+        }
+    }
+    .carouselContainer{
+        .ctaGroupComponent{
+            .inner-section{
+                .title{
+                    p{
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
+        .description-content{
+            a.theme-btn{
+                text-decoration: underline;
+            }
+        }
+    }
+}

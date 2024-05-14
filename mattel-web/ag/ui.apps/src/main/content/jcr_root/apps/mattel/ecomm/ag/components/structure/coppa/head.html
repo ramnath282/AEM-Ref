@@ -1,0 +1,121 @@
+<!--/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  ~ Copyright 2016 Adobe Systems Incorporated
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/-->
+<template data-sly-template.head="${ @ page }"
+          data-sly-use.headlibRenderer="headlibs.html"
+          data-sly-use.headResources="head.resources.html">
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1">
+    <link rel="shortcut icon" href="/content/dam/ag-dam/ag-global-dam/parent-site-dam/images/ag-favicon.ico" type="image/png" />
+    <sly data-sly-use.ecommPageModel="com.mattel.ecomm.core.models.EcommPageModel">
+        <sly data-sly-test="${!ecommPageModel.seoPageTitleFlag}">
+            <link rel="canonical" href=${ecommPageModel.canonicalTag} />
+        </sly>
+
+        <sly data-sly-test="${!ecommPageModel.seoPageTitleFlag}">
+            <title>${ecommPageModel.pageTitleValue @context='html'}</title>
+        </sly>
+
+        <sly data-sly-test="${ecommPageModel.seoPageTitleFlag}">
+            <title>${ecommPageModel.seoVarPageTitle @context='html'}</title>
+        </sly>
+
+
+        <sly data-sly-test="${!ecommPageModel.keywordsFlag}">
+            <meta data-sly-test.keywords="${page.keywords}" name="keywords" content="${keywords}"/>
+        </sly>
+
+        <sly data-sly-test="${!ecommPageModel.seoMetaDescrptionFlag}">
+            <meta data-sly-test.description="${ecommPageModel.pageDescription}" name="description" content="${ecommPageModel.pageDescription}"/>
+        </sly>
+
+        <sly data-sly-test="${ecommPageModel.seoMetaDescrptionFlag}">
+            <meta data-sly-test.description="${ecommPageModel.seoMetaDescription}" name="description" content="${ecommPageModel.seoMetaDescription @context='html'}"/>
+        </sly>
+
+        <sly data-sly-test="${!ecommPageModel.templateFlag}">
+            <meta data-sly-test.templateName="${page.templateName}" name="template" content="${templateName}"/>
+        </sly>
+
+        <sly data-sly-test="${!ecommPageModel.seoPageTitleFlag}">
+            <meta name="title" name="title" content="${ecommPageModel.pageTitleValue @context='html'}"/>
+        </sly>
+
+        <sly data-sly-test="${ecommPageModel.seoPageTitleFlag}">
+            <meta name="title" name="title" content="${ecommPageModel.seoVarPageTitle @context='html'}"/>
+        </sly>
+
+        <sly data-sly-test="${!ecommPageModel.seoMetaDescrptionFlag}">
+            <sly data-sly-list.key="${ecommPageModel.metaKeywordsDescription}">
+                <meta name="${key}" content="${ecommPageModel.metaKeywordsDescription[key]}"/>
+            </sly>
+        </sly>
+
+        <sly data-sly-list.key="${ecommPageModel.ogTags}">
+            <meta name="${key}" content="${ecommPageModel.ogTags[key]}"/>
+        </sly>
+
+        <sly data-sly-test="${!ecommPageModel.seoPageTitleFlag}">
+            <sly data-sly-list.robotTagValues="${ecommPageModel.robotTags}">
+                <meta name="robots" content="${robotTagValues}"/>
+            </sly>
+        </sly>
+
+        <sly data-sly-test="${ecommPageModel.seoPageTitleFlag}">
+            <meta name="Keyword URL" content="${ecommPageModel.seoUrlKeyword}"/>
+            <sly data-sly-list.robotTagValues="${ecommPageModel.robotTags}">
+                <meta name="robots" content="${robotTagValues}"/>
+            </sly>
+            <link rel="canonical" href="${ecommPageModel.canonicalTag}"/>
+        </sly>
+
+        <sly data-sly-test="{ecommPageModel.seoMetaDescription}">
+            <meta property="og:description" content="${ecommPageModel.seoMetaDescription @context='html'}"/>
+        </sly>
+        <sly data-sly-test="${ecommPageModel.seoVarPageTitle}">
+            <meta property="og:title" content="${ecommPageModel.seoVarPageTitle @context='html'}"/>
+        </sly>
+        <meta property="og:image" content="" />
+        <meta property="og:image:type" content="image/jpeg" />
+        <meta property="og:image:width" content="573" />
+        <meta property="og:image:height" content="499" />
+
+
+        <sly data-sly-include="customheaderlibs.html"></sly>
+        <sly data-sly-call="${headlibRenderer.headlibs @
+                                designPath         = page.designPath,
+                                staticDesignPath   = page.staticDesignPath,
+                                clientLibCategories = page.clientLibCategories}"></sly>
+        <sly data-sly-test.appResourcesPath=${page.appResourcesPath} data-sly-call="${headResources.favicons @ path = appResourcesPath}"></sly>
+        <input type="hidden" value="${ecommPageModel.storeName}" id="storeName">
+        <input type="hidden" value="${ecommPageModel.domainKey}" id="domainKey">
+        <input type="hidden" value="${ecommPageModel.pageType}" id="pageType">
+        <input type="hidden" value="${ecommPageModel.storeId}" id="storeId">
+        <input type="hidden" value="${ecommPageModel.catalogId}" id="catalogId">
+        <input type="hidden" value="${ecommPageModel.langId}" id="langId">
+        <input type="hidden" value="${currentPage.path}" id="currentPagePathForAnalytics"/>
+        <input type="hidden" value="${ecommPageModel.snpAccountUrl}" id="snpAccountUrl"/>
+        <input type="hidden" value="${ecommPageModel.snpArticleAccountURLs}" id="snpArticleAccountUrl"/>
+        <input type="hidden" value="${ecommPageModel.errorPage}" id="siteErrorPage"/>
+        <input type="hidden" value="${ecommPageModel.siteKey}" id="siteKey"/>
+        <input type="hidden" value="${ecommPageModel.pageTypeGT}" id="pageTypeGT">
+        <input type="hidden" value="${ecommPageModel.pageNameGT}" id="pageNameGT">
+        <sly data-sly-test="${wcmmode.edit || wcmmode.preview}">
+            <input type="hidden" value="author" id="pageEditMode">
+        </sly>
+    </sly>
+</template>

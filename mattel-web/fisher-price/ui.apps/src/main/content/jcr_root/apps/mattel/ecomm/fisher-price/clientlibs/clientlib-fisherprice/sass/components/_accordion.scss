@@ -1,0 +1,490 @@
+.accordion-component {
+  background-color: mapping($accordion, main, bgndColor);
+  padding: mapping($accordion, main, pad);
+
+  @media #{$medium-only} {
+    padding: mapping($accordion, main, tabPad);
+  }
+
+  @media #{$small-down} {
+    padding: mapping($accordion, main, mobPad);
+  }
+
+  .col-lg-9 {
+    background: #F8F6F5;
+    width: 100%;
+    padding: 0;
+
+    @media #{$medium-down} {
+      padding: 0 20px;
+
+      .video-component.video-rightscroll {
+        padding: 28px 0px 40px !important
+      }
+    }
+
+  }
+
+  .col-xs-12 {
+    @media #{$small-up} {
+      min-height: 0;
+    }
+  }
+
+  .title-block {
+    padding: mapping($accordion, main, titleBlockPad);
+  }
+
+  .accordion {
+    margin: if(mapping($accordion, main, sectionBlockPad), mapping($accordion, main, sectionBlockPad), mapping($accordion, main, pad));
+    border-top: 2px solid #E5E0DC;
+    border-bottom: 2px solid #E5E0DC;
+
+    @media #{$medium-down} {
+      margin: mapping($accordion, main, mobMargin);
+    }
+
+    @if mapping($accordion, accordionLastBorder, isAccordionJurrasic)==true {
+      padding: mapping($accordion, accordionLastBorder, padding);
+      margin: mapping($accordion, accordionLastBorder, margin);
+      border-bottom: mapping($accordion, accordionLastBorder, accordianBottom);
+    }
+
+    @if mapping($accordion, accordionLastBorder, isAccordionPDP)==true {
+      //border-bottom: mapping($accordion,accordionLastBorder,accordianBottomBorder);
+    }
+
+    .accordion-title {
+      position: relative;
+      margin: mapping($accordion, title, margin);
+      padding: mapping($accordion, title, pad);
+      font-weight: mapping($accordion, title, fntWeight);
+      border-bottom: mapping($accordion, title, borderBottom);
+      color: mapping($accordion, title, txtColor);
+      font-size: mapping($accordion, title, fntSize);
+      border-top: mapping($accordion, title, borderTop);
+      @include font-properties($maaxMedium,$localFontVerdana);
+      //border-top: 2px solid #E5E0DC;
+      line-height: 36px;
+
+      @if mapping($accordion, title, isAccordionPDP)==true {
+        background-color: mapping($accordion, title, bgColor);
+        margin-bottom: mapping($accordion, title, mrgnBottom);
+
+        @media #{$small-down} {
+          line-height: 28px;
+          font-size: mapping($accordion, title, mobFntSize);
+          margin-bottom: mapping($accordion, title, mobmrgnBottom);
+        }
+      }
+
+      .view {
+        font-size: mapping($accordion, view, fntSize);
+        line-height: mapping($accordion, view, lineHeight);
+        font-weight: mapping($accordion, view, fntWeight);
+        text-align: mapping($accordion, view, txtAlign);
+      }
+
+    }
+
+    >div {
+      &:last-child {
+        .accordion-title {
+          border-bottom: mapping($accordion, title, borderTop);
+
+          @if mapping($accordion, accordionLastBorder, isAccordionJurrasic)==true {
+            border-bottom: mapping($accordion, accordionLastBorder, borderBottom);
+          }
+        }
+      }
+    }
+
+    .accordion-content {
+      display: mapping($accordion, accContent, display);
+      padding: mapping($accordion, accContent, pad);
+      margin: mapping($accordion, accContent, mgrTopBot);
+
+      @if (mapping($layout, main, isFisherPriceNav)==true) {
+        margin-top: mapping($accordion, accContent, mgrTop);
+      }
+
+      &.default {
+        display: mapping($accordion, acccontentDefault, display);
+      }
+
+      p {
+        font-weight: mapping($accordion, accContentP, fntWeight);
+        color: mapping($accordion, accContentP, txtColor);
+        font-size: mapping($accordion, accContentP, fntSize);
+        font-family: mapping($accordion, accContentP, fntFamily);
+        padding: mapping($accordion, accContentP, pad);
+        margin: mapping($accordion, accContentP, margin);
+      }
+
+      h2,
+      h3 {
+        font-size: mapping($accordion, accContentH, fntSize);
+        color: mapping($accordion, accContentH, txtColor);
+        margin: mapping($accordion, accContentH, margin);
+
+        @media #{$small-down} {
+          font-size: mapping($accordion, accContentH, mobFntSize);
+        }
+      }
+
+      #video-player-title {
+        margin: mapping($accordion, accContentVideoTitle, margin);
+      }
+
+      .video-player-container .video-player-label h2 {
+        @include font-properties($maaxMedium,$localFontVerdana);
+        font-weight: 500;
+        line-height: 36px;
+
+        @media #{$small-down} {
+          font-size: 16px;
+          line-height: 22px;
+        }
+      }
+
+      .video-component .video-player-container {
+        padding: 0;
+      }
+
+      #video-gallery-player-component .video-player-in,
+      .video-component .video-player-in {
+        padding: 0;
+      }
+
+      #video-gallery-player-component #videos-gallery,
+      .video-component #videos-gallery {
+        //padding: 0 !important;
+      }
+
+      .videos-gallery-playlist .play-tiles-gallery .gallery-tile ul>li {
+        // padding: 0 16px 0 0 !important;
+        // @media #{$small-down}{
+        //   padding: 10px 0 !important;
+        // }
+      }
+
+      .video-player-container .video-player-label p {
+        @include font-properties($maax,$localFontVerdana);
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 26px;
+
+        @media #{$small-down} {
+          font-size: 16px;
+        }
+      }
+
+      .videos-gallery-playlist .play-tiles-gallery .gallery-tile ul>li a span {
+        font-size: mapping($accordion, accContentH, fntSize);
+        line-height: mapping($accordion, accContentH, lineHeight);
+        @include font-properties($maaxMedium,$localFontVerdana);
+        font-weight: mapping($accordion, accContentH, fontWeight);
+        padding: mapping($accordion, accContentH, padding);
+
+        @media #{$small-down} {
+          font-size: mapping($accordion, accContentH, mobFntSize);
+          padding: mapping($accordion, accContentH, mobPadding);
+          line-height: 22px;
+        }
+      }
+
+      .videos-gallery-playlist .play-tiles-gallery .gallery-tile ul>li a span.play-text {
+        font-size: 14px;
+        @include font-properties($maaxBold,$localFontVerdana);
+        font-weight: 600;
+        line-height: 18px;
+        border-radius: 16px;
+        top: 8px;
+        left: 11px;
+        background-color: #000;
+        padding: 5px 12px 4px 12px;
+      }
+
+      .videos-gallery-playlist .play-tiles-gallery .gallery-tile ul>li a .gallery-image {
+
+        &:active,
+        &:focus,
+        &:hover {
+          img {
+            //border: mapping($accordion,videoImg,imgBorder);
+            opacity: mapping($accordion, videoImg, opacity);
+
+            @media #{$small-down} {
+              border: mapping($accordion, videoImg, mobimgBorder);
+            }
+
+          }
+        }
+
+        &:after {
+          content: '';
+        }
+      }
+
+      .videos-gallery-playlist .play-tiles-gallery .gallery-tile ul>li.active a .gallery-image {
+        img {
+
+          opacity: mapping($accordion, videoImg, opacity);
+          outline: mapping($accordion, videoImg, imgOutline);
+          outline-offset: mapping($accordion, videoImg, imgOutlineOffset);
+
+          @media #{$small-down} {
+            border: mapping($accordion, videoImg, mobhoverimgBorder);
+          }
+        }
+      }
+
+      .cd-prev {
+        background: transparent;
+        top: 40%;
+
+        @media #{$small-down} {
+          top: 30%;
+          display: none;
+        }
+
+        &:before {
+          content: '';
+          background-image: url($spriteImgPath);
+          background-repeat: no-repeat;
+          display: block;
+          width: 50px;
+          height: 50px;
+          background-position: -100px 0px;
+
+          @media #{$small-down} {
+            padding: 0;
+          }
+        }
+      }
+
+      .cd-next {
+        background-color: transparent;
+        top: 40%;
+
+        @media #{$small-down} {
+          display: none;
+          top: 30%;
+        }
+
+        &:before {
+          content: '';
+          background-image: url($spriteImgPath);
+          background-repeat: no-repeat;
+          display: block;
+          width: 50px;
+          height: 50px;
+          background-position: -150px 0px;
+
+          @media #{$small-down} {
+            padding: 0;
+          }
+        }
+      }
+
+      .oo-action-icon {
+        &:before {
+          content: '';
+          background-image: url($spriteImgPath);
+          background-repeat: no-repeat;
+          display: block;
+          width: 167px;
+          height: 166px;
+          background-position: 0px -171px;
+          text-indent: -999px;
+
+          @media #{$small-down} {
+            width: 63px;
+            height: 63px;
+            background-position: 0px -78px;
+          }
+        }
+      }
+
+      .oo-icon-play-slick {
+        display: none;
+      }
+
+      .show-more {
+
+        //margin: mapping($accordion,accContentShowMore,showMoreMargin);
+        //border-bottom: mapping($accordion,accContentShowMore,showBorder);
+        //padding-bottom: mapping($accordion,accContentShowMore,showMorePading);
+        a {
+          // padding: mapping($accordion,accContentShowMore,padding);
+          // margin: mapping($accordion,accContentShowMore,margin);
+          // background-color: #fff !important;
+          // color: #147BD1 !important;
+          // font-family:$maaxMedium;
+          // font-size: 16px;
+          // font-weight: 500;
+          // letter-spacing: 0.57px;
+          // line-height: 19px;
+          // text-align: center;
+          // border-bottom: none;
+          // border: 2px solid #147BD1;
+          border-top: 0px;
+          border-bottom: 0;
+
+          // &:after {
+          //   content: '';
+          //   background-image: url($spriteImgPath);
+          //   background-repeat: no-repeat;
+          //   display: block;
+          //   width: 24px;
+          //   height: 24px;
+          //   background-position: -24px -50px;
+          // }
+
+          // &:hover {
+          //   background-color: #ef1c06 !important;
+          //   color: #fff !important;
+          //   background-position: -48px -50px;
+          //   border: 2px solid #ef1c06;
+
+          //   &:after {
+          //     content: '';
+          //     width: 24px;
+          //     height: 24px;
+          //     background-position: -48px -50px;
+          //   }
+          // }
+
+        }
+      }
+
+      ol {
+        padding-left: 23px;
+
+        li {
+
+          list-style-type: inherit;
+
+          @if (mapping($layout, main, isFisherPriceNav)==true) {
+            list-style-type: disc;
+          }
+
+          font-weight: mapping($accordion, accContentOlLi, fntWeight);
+          color: mapping($accordion, accContentOlLi, txtColor);
+          font-size: mapping($accordion, accContentOlLi, fntSize);
+          @include font-properties($maax,$localFontVerdana);
+          padding: mapping($accordion, accContentOlLi, pad);
+          margin: mapping($accordion, accContentOlLi, margin);
+          line-height: mapping($accordion, accContentOlLi, lineHeight);
+
+          @media #{$small-down} {
+            font-size: 16px;
+            line-height: 32px;
+          }
+        }
+      }
+
+      h2:empty,
+      p:empty {
+        display: none;
+      }
+
+      .image-text-container,
+      .text-component {
+        padding: 0;
+      }
+
+      .text-component {
+        h4 {
+          margin: mapping($accordion, accContentHeading, margin);
+        }
+      }
+
+      .image-text-component {
+        padding: mapping($accordion, imgTextComp, padd);
+      }
+
+      .download-img-text {
+        //border-bottom: mapping($accordion,downloadImgText,borderBottom);
+        padding: mapping($accordion, downloadImgText, padding);
+
+        @media #{$small-down} {
+          //border-bottom: mapping($accordion,downloadImgText,mobborderBottom);
+          padding: mapping($accordion, downloadImgText, mobPad);
+        }
+      }
+
+      .play-video {
+        float: none;
+
+        .video-component {
+          /*border-bottom: mapping($accordion,videoComp,borderBottom);
+				  margin-bottom: mapping($accordion,videoComp,marginBottom);*/
+
+          .video-page-title {
+            @include font-properties($maax,$localFontVerdana);
+            font-size: mapping($accordion, videoTitle, fontSize);
+            font-weight: mapping($accordion, videoTitle, fontWeight);
+            margin-bottom: mapping($accordion, videoTitle, marginBottom);
+            background: #F8F6F5;
+          }
+        }
+
+        .videos-gallery-playlist {
+          padding-bottom: mapping($accordion, videoCompPlaylist, paddBottom);
+
+          .play-tiles-gallery {
+            .gallery-tile {
+              ul {
+                >li {
+                  padding-bottom: mapping($accordion, videoCompLi, paddBottom);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .arrow {
+      margin-left: mapping($accordion, accArrow, marginLeft);
+      display: mapping($accordion, accArrow, display);
+      position: mapping($accordion, accArrow, pos);
+      right: mapping($accordion, accArrow, posRight);
+      border: mapping($accordion, accArrow, brdr);
+      border-radius: mapping($accordion, accArrow, brdrRadius);
+      width: mapping($accordion, accArrow, iconWidth);
+      height: mapping($accordion, accArrow, iconHeight);
+      cursor: mapping($accordion, accArrow, cursor);
+      top: 30%;
+    }
+
+    .arrowUp {
+      background-image: url($spriteImgPath);
+      background-repeat: no-repeat;
+      display: block;
+      width: 24px;
+      height: 24px;
+      background-position: -176px 0px;
+    }
+
+    .arrowDown {
+      background-image: url($spriteImgPath);
+      background-repeat: no-repeat;
+      display: block;
+      width: 24px;
+      height: 24px;
+      background-position: -200px 0px;
+    }
+  }
+}
+
+.accordionContainer{
+  .accordion-item{
+    .accordion{
+      .accordion-title{
+        @include font-properties($letsBeGlyphs,$localFontInfo)
+      }
+    }
+  }
+}   

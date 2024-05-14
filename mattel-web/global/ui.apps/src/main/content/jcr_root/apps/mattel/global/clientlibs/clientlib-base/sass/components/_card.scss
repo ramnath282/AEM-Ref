@@ -1,0 +1,659 @@
+.card {
+    .card-component {
+      @include print-css(
+          map-merge((
+              clear: both,
+          ), 
+          if(variable-exists(card) and map-has-key($card, cardComponent), 
+              map-get($card,cardComponent), ()
+          )
+      ));
+      .text-container {
+        @include print-css(
+            map-merge((
+              margin: (
+                  defaultVal: 10px 20px 30px 20px,
+                  smOnly: 10px 20px 30px 20px,
+                  mediumOnly: 10px 30px 40px  30px,
+                  largeOnly: 10px 30px 40px  30px,
+                  largeUp: 10px 30px 40px 30px
+              )
+            ), 
+            if(variable-exists(card) and map-has-key($card, cardtextConatiner), 
+                map-get($card,cardtextConatiner), ()
+            )
+          ));
+      }
+      .content {
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p {
+          @include print-css(
+            map-merge((
+              margin: 0,
+              padding: 0,
+              word-break: break-word,
+            ), 
+            if(variable-exists(card) and map-has-key($card, cardContentSpacing), 
+                map-get($card,cardContentSpacing), ()
+            )
+          ));
+        }
+        .sub-title {
+          @include print-css(
+            map-merge((
+              margin: (
+                  defaultVal: 10px 0 0 0,
+                  smOnly: 10px 0 0 0,
+                  mediumOnly: 10px 0 0 0,
+                  largeOnly: 10px 0 0 0,
+                  largeUp: 10px 0 0 0
+              )
+            ), 
+            if(variable-exists(card) and map-has-key($card, cardsubtitleSpacing), 
+                map-get($card,cardsubtitleSpacing), ()
+            )
+          ));
+        }
+        .text-para {
+          @include print-css(
+            map-merge((
+              margin: (
+                  defaultVal: 10px 0 0 0,
+                  smOnly: 10px 0 0 0,
+                  mediumOnly: 10px 0 0 0,
+                  largeOnly: 10px 0 0 0,
+                  largeUp: 10px 0 0 0
+              )
+            ), 
+            if(variable-exists(card) and map-has-key($card, cardDescSpacing), 
+                map-get($card,cardDescSpacing), ()
+            )
+          ));
+        }
+      }
+      .cta-item {
+        @include print-css(
+            map-merge((
+              margin: (
+                defaultVal: 10px 0 0 0,
+                smOnly: 10px 0 0 0,
+                mediumOnly: 20px 0 0 0,
+                largeOnly: 20px 0 0 0,
+                largeUp: 20px 0 0 0
+            )
+            ), 
+            if(variable-exists(card) and map-has-key($card, cardFirstCtaSpacing), 
+                map-get($card,cardFirstCtaSpacing), ()
+            )
+          ));
+      }
+    }
+    &.default-container {
+      @include print-css(
+            map-merge((
+              padding: 0 !important 
+            ), 
+            if(variable-exists(card) and map-has-key($card, cardDefaultSpacing), 
+                map-get($card,cardDefaultSpacing), ()
+            )
+          ));
+      .image-container {
+        @include print-css(
+            map-merge((
+              padding: (
+                defaultVal:  20px 20px 0 20px,
+                smOnly: 20px 20px 0 20px,
+                mediumOnly: 40px 30px 0 30px,
+                largeOnly: 40px 30px 0 30px,
+                largeUp: 40px 30px 0 30px
+            )
+            ), 
+            if(variable-exists(card) and map-has-key($card, cardDefaultImageContainerSpacing), 
+                map-get($card,cardDefaultImageContainerSpacing), ()
+            )
+          ));
+      }
+    }
+    &.default-container.plain-50-50 {
+      .image-container {
+        @include print-css(
+            map-merge((
+              padding: (
+                defaultVal:  40px 0 40px 30px,
+                smOnly: 30px 20px 0 20px,
+                xsOnly: 20px 20px 0 20px,
+            )
+            ), 
+            if(variable-exists(card) and map-has-key($card, card5050DefaultSpacing), 
+                map-get($card,card5050DefaultSpacing), ()
+            )
+          ));
+      }
+    }
+    &.default-container.layout-reverse {
+      .image-container {
+        @include print-css(
+          map-merge((
+            padding: (
+              defaultVal:  40px 30px 40px 0,
+              smOnly: 30px 20px 0 20px,
+              xsOnly: 30px 20px 0 20px,
+          )
+          ), 
+          if(variable-exists(card) and map-has-key($card, card5050DefaultReverseSpacing), 
+              map-get($card,card5050DefaultReverseSpacing), ()
+          )
+        ));
+      }
+    }
+    &.text-off {
+      .text-container {
+        @include print-css(
+          map-merge((
+             display: none
+          ), 
+          if(variable-exists(card) and map-has-key($card, cardTextOffDisplay), 
+              map-get($card,cardTextOffDisplay), ()
+          )
+        ));
+      }
+    }
+    &.plain-full {
+      .image-container {
+        @include print-css(
+          map-merge((
+            width: auto
+          ), 
+          if(variable-exists(card) and map-has-key($card, cardPlainFullwidth), 
+              map-get($card,cardPlainFullwidth), ()
+          )
+        ));
+      }
+    }
+    &.plain-50-50 {
+      .card-component {
+        @include print-css(
+          map-merge((
+            display: (
+              defaultVal:  flex,
+              smOnly: block,
+              xsOnly: block,
+            ),
+          ), 
+          if(variable-exists(card) and map-has-key($card, cardPlain5050ContainerDisplay), 
+              map-get($card,cardPlain5050ContainerDisplay), ()
+          )
+        ));
+        .image-container {
+          @include print-css(
+            map-merge((
+             margin: (
+              defaultVal:  0
+            ),
+            width: (
+              defaultVal:  50%,
+              smOnly: 100%,
+              xsOnly: 100%,
+            ),
+            clear: (
+              smOnly: both,
+              xsOnly: both,
+            ),
+            margin-bottom:(
+              smOnly: 10px,
+              xsOnly: 10px
+            )
+            ), 
+            if(variable-exists(card) and map-has-key($card, cardPlain5050ImageContainerCss), 
+                map-get($card,cardPlain5050ImageContainerCss), ()
+            )
+          ));
+        }
+        .text-container {
+          @include print-css(
+            map-merge((
+              width: (
+                defaultVal:  50%,
+                xsOnly: 100%,
+                smOnly: 100%,
+              ),
+             margin: 0,
+             align-self: center,
+            padding: (
+                defaultVal:  0 20px 30px 20px,
+                smOnly: 0 20px 30px 20px,
+                mediumOnly: 0 30px 0 30px,
+                largeOnly: 0 30px 0 30px,
+                largeUp: 0 30px 0 30px
+            ),
+            ), 
+            if(variable-exists(card) and map-has-key($card, cardPlain5050TextContainerCss), 
+                map-get($card,cardPlain5050TextContainerCss), ()
+            )
+          ));
+        }
+      }
+    }
+    &.plain-70-30 {
+      .card-component {
+        @include print-css(
+          map-merge((
+            display: (
+              defaultVal:  table,
+              smOnly: block,
+              xsOnly: block
+            ),
+          ), 
+          if(variable-exists(card) and map-has-key($card, cardPlain7030cardCss), 
+              map-get($card,cardPlain7030cardCss), ()
+          )
+        ));
+        .image-container {
+          @include print-css(
+            map-merge((
+              margin: (
+                defaultVal:  0
+              ),
+              margin-bottom:(
+                smOnly: 10px,
+                xsOnly: 10px
+              ),
+              padding-right: (
+                defaultVal:  0,
+                smOnly: 20px,
+                xsOnly: 20px
+              ),
+              width: (
+                smOnly: 100%,
+                xsOnly: 100%
+              ),
+              clear: (
+                smOnly: both,
+                xsOnly: both
+              )
+            ), 
+            if(variable-exists(card) and map-has-key($card, cardPlain7030imageContainerCss), 
+                map-get($card,cardPlain7030imageContainerCss), ()
+            )
+          ));
+        }
+        .text-container {
+          @include print-css(
+            map-merge((
+              width: (
+                defaultVal:  30%,
+                smOnly: 100%,
+                xsOnly: 100%,
+              ),
+            padding: (
+                defaultVal:  0 20px 30px 20px,
+                smOnly: 0 20px 30px 20px,
+                mediumOnly: 0 30px 0 30px,
+                largeOnly: 0 30px 0 30px,
+                largeUp: 0 30px 0 30px
+            ),
+            margin: 0,
+            display: table-cell,
+            vertical-align: middle
+            ), 
+            if(variable-exists(card) and map-has-key($card, cardPlain7030TextContainerCss), 
+                map-get($card,cardPlain7030TextContainerCss), ()
+            )
+          ));
+        }
+      }
+    }
+    &.layout-reverse {
+      .card-component {
+        @include print-css(
+          map-merge((
+            display: flex,
+            flex-direction: (
+              defaultVal:  row-reverse,
+              xsOnly: column,
+              smOnly: column,
+            ),
+            box-orient: (
+              defaultVal:  null,
+              xsOnly: vertical,
+              smOnly: vertical,
+            )
+          ), 
+          if(variable-exists(card) and map-has-key($card, reverseCardCompCss), 
+              map-get($card,reverseCardCompCss), ()
+          )
+        ));
+        .image-container {
+          @include print-css(
+          map-merge((
+            margin: (
+                defaultVal:  0
+              ),
+              margin-bottom:(
+                smOnly: 10px,
+                xsOnly: 10px
+              ),
+              float: right,
+              width: (
+                defaultVal:  50%,
+                smOnly: 100%,
+                xsOnly: 100%
+              ),
+              clear: (
+                smOnly: both,
+                xsOnly: both
+              ),
+          ), 
+          if(variable-exists(card) and map-has-key($card, reverseCardimageContCss), 
+              map-get($card,reverseCardimageContCss), ()
+          )
+        ));
+        }
+        .text-container {
+          @include print-css(
+          map-merge((
+            padding: (
+                defaultVal:  0 20px 30px 20px,
+                smOnly: 0 20px 30px 20px,
+                mediumOnly: 0 30px 0 30px,
+                largeOnly: 0 30px 0 30px,
+                largeUp: 0 30px 0 30px
+            ),
+            width: (
+                defaultVal:  50%,
+                xsOnly: 100%,
+                smOnly: 100%,
+            ),
+            margin: 0,
+            display: table-cell,
+            vertical-align: middle,
+            float: left,
+            align-self: center
+          ), 
+          if(variable-exists(card) and map-has-key($card, reverseCardtextContCss), 
+              map-get($card,reverseCardtextContCss), ()
+          )
+        ));
+        }
+      }
+    }
+    &.img-wrap-left {
+      .image-container {
+        @include print-css(
+          map-merge((
+            float: (
+              defaultVal:  left,
+              smOnly: none,
+              xsOnly: none,
+            ),
+            margin: (
+              defaultVal:0 30px 0 0,
+              smOnly: 0,
+              xsOnly: 0,
+            )
+          ), 
+          if(variable-exists(card) and map-has-key($card, leftimagewrapContCss), 
+              map-get($card, leftimagewrapContCss), ()
+          )
+        ));
+        img {
+          @include print-css(
+            map-merge((
+              margin: 0 !important
+            ), 
+            if(variable-exists(card) and map-has-key($card, leftimagewrapContImgCss), 
+                map-get($card,leftimagewrapContImgCss), ()
+            )
+          ));
+        }
+      }
+      .text-container {
+        @include print-css(
+            map-merge((
+              margin: 0 
+            ), 
+            if(variable-exists(card) and map-has-key($card, leftimagewraptextContCss), 
+                map-get($card,leftimagewraptextContCss), ()
+            )
+          ));
+      }
+    }
+    &.img-wrap-right {
+      .image-container {
+        @include print-css(
+          map-merge((
+            float: (
+              defaultVal:  right,
+              smOnly: none,
+              xsOnly: none
+            ),
+            margin: (
+              defaultVal: 0 0 0 30px,
+              smOnly: 0,
+              xsOnly: 0
+            )
+          ), 
+          if(variable-exists(card) and map-has-key($card, rightimagewrapContCss), 
+              map-get($card,rightimagewrapContCss), ()
+          )
+        ));
+        img {
+          @include print-css(
+            map-merge((
+              margin: 0 !important
+            ), 
+            if(variable-exists(card) and map-has-key($card, rightimagewrapContImgCss), 
+                map-get($card,rightimagewrapContImgCss), ()
+            )
+          ));
+        }
+      }
+      .text-container {
+        @include print-css(
+            map-merge((
+              margin: 0
+            ), 
+            if(variable-exists(card) and map-has-key($card, rightimagewraptextContCss), 
+                map-get($card,rightimagewraptextContcss), ()
+            )
+          ));
+      }
+    }
+    a,
+    a:active,
+    a:hover,
+    a:link,
+    a:visited {
+      @include print-css(
+            map-merge((
+              text-decoration: none,
+              color: inherit
+            ), 
+            if(variable-exists(card) and map-has-key($card, cardAnchorText), 
+                map-get($card,cardAnchorText), ()
+            )
+          ));
+    }
+  }
+  .special-100-100 {
+    .card-component {
+      .image-container {
+        @include print-css(
+            map-merge((
+              padding:0,
+              float: left,
+              width: 30%
+            ), 
+            if(variable-exists(card) and map-has-key($card, cardSpecialImageContainerCss), 
+                map-get($card,cardSpecialImageContainerCss), ()
+            )
+          ));
+      }
+      .text-container {
+        @include print-css(
+            map-merge((
+              padding: (
+                defaultVal:  0 0 0 15px,
+                smOnly: 0 0 0 15px,
+                mediumOnly: 0 0 30px 20px,
+                largeOnly: 0 0 30px 20px,
+                largeUp:0 0 30px 20px
+              ),
+              margin: 0,
+              float: left,
+              width: 70%
+            ), 
+            if(variable-exists(card) and map-has-key($card, cardSpecialTextContainerCss), 
+                map-get($card,cardSpecialTextContainerCss), ()
+            )
+          ));
+        .content {
+          .main-title {
+            @include print-css(
+            map-merge((
+              margin-top: 0
+            ), 
+            if(variable-exists(card) and map-has-key($card, cardSpecialH2Spacing), 
+                map-get($card,cardSpecialH2Spacing), ()
+            )
+          ));
+          }
+        }
+      }
+    }
+  }
+  .grid-container {
+    .grid-content {
+      .card-component {
+        .text-container {
+          @include print-css(
+            map-merge((
+              margin-bottom: 0
+            ), 
+            if(variable-exists(card) and map-has-key($card, gridcardTextContSpacing), 
+                map-get($card,gridcardTextContSpacing), ()
+            )
+          ));
+        }
+      }
+    }
+    .grid-default.grid-xl-2,
+    .grid-default.grid-xl-3 {
+      .card.special-100-100 {
+        @include print-css(
+          map-merge((
+            width: (
+              smOnly: 100%,
+              xsOnly: 100%,
+            ),
+          ), 
+          if(variable-exists(card) and map-has-key($card, cardgridCard2ColumnWidth), 
+              map-get($card,cardgridCard2ColumnWidth), ()
+          )
+        ));
+        .image-container {
+          @include print-css(
+            map-merge((
+              width: auto,
+            ), 
+            if(variable-exists(card) and map-has-key($card, cardspecialImageContWidth), 
+                map-get($card,cardspecialImageContWidth), ()
+            )
+          ));
+        }
+        .text-container {
+          @include print-css(
+            map-merge((
+              padding: 0 0 0 20px
+            ), 
+            if(variable-exists(card) and map-has-key($card, cardspecialTextContSpacing), 
+                map-get($card,cardspecialTextContSpacing), ()
+            )
+          ));
+        }
+        .cta-item {
+          @include print-css(
+                map-merge((
+                    margin: (
+                    mediumOnly: 10px 0 0
+                    )
+                ), 
+                if(variable-exists(card) and map-has-key($card, cardspecialCtaSpacing), 
+                    map-get($card,cardspecialCtaSpacing), ()
+                )
+          ));
+        }
+      }
+    }
+  }
+  .plain-70-30.stackedCTA .ctaItem .btn-cta-item,
+  .plain-30-70.stackedCTA .ctaItem .btn-cta-item {
+    @include print-css(
+        map-merge((
+            margin-top: 0
+        ), 
+        if(variable-exists(card) and map-has-key($card, palin7030stackeCtaSpacing), 
+            map-get($card,palin7030stackeCtaSpacing), ()
+        )
+    ));
+  }
+  .stackedCTA .ctaItem .btn-cta-item {
+    @include print-css(
+        map-merge((
+            margin-top: 0
+        ), 
+        if(variable-exists(card) and map-has-key($card, stackeCtaSpacing), 
+            map-get($card,stackeCtaSpacing), ()
+        )
+    ));
+  }
+  /*Flexible Carousel*/
+  .carouselContainer {
+    .flexible-carousel-component {
+      ul {
+        li {
+          .card {
+            .image-container {
+              img {
+                @include print-css(
+                    map-merge((
+                        display: inline-block
+                    ), 
+                    if(variable-exists(card) and map-has-key($card, carouselDisplayCss), 
+                        map-get($card,carouselDisplayCss), ()
+                    )
+                ));
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .card-component, .cta-button-container {
+    &:not(.cta-block){
+        .ctaItem + .ctaItem{
+          @include print-css(
+                    map-merge((
+                        margin-left:(
+                          mediumUp: -5px,
+                          smOnly: -4px,
+                        )
+                    ), 
+                    if(variable-exists(card) and map-has-key($card, cardSecondCTAMargin), 
+                        map-get($card,cardSecondCTAMargin), ()
+                    )
+                ));
+        }
+    }
+}
+.ctaContainer.cta-block {
+  .cta-button-container .ctaItem + .ctaItem{
+    margin-left:0;
+  }
+}

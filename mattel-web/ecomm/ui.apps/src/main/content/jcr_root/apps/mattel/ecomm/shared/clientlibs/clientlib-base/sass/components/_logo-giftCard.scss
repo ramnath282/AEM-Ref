@@ -1,0 +1,466 @@
+.giftCard-container {
+     @extend .col-lg-12;
+     @media #{$small-down} {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    input[type=number]::-webkit-inner-spin-button, 
+    input[type=number]::-webkit-outer-spin-button { 
+        -webkit-appearance: none; 
+        margin: 0; 
+    }
+    .logo-giftCard-wrapper{
+        @extend .col-sm-12;
+        @media #{$small-down} {
+            padding-left: 0;
+            padding-right: 0;
+        }
+        nav{
+            @media #{$medium-down}{
+                display:none;
+            }
+            ul{          
+                @extend .breadcrumb;
+                background-color: mapping($logoGiftCard,logoGiftCardNav,background);
+                @include content-spacing(map-get($logoGiftCard, logoGiftCardNav));
+                li{
+                    @include content-spacing(map-get($logoGiftCard, logoGiftCardNavLi));
+                    a{
+                        display: block;
+                        font: mapping($logoGiftCard,logoGiftCardNav,font);
+                    }                  
+                    a.active{
+                        color: mapping($logoGiftCard,logoGiftCardNavLi,color) !important;
+                    }
+                    color: mapping($logoGiftCard,logoGiftCardNav,color);
+                    display: block;
+                    float: left;      
+                }            
+            }
+        }
+        .breadcrumb > li + li:before{
+            display: none;
+        }
+        .logo-giftCard-container{
+            @include content-spacing(map-get($logoGiftCard, logoGiftCardContainer));
+            background-color: mapping($logoGiftCard,logoGiftCardContainer,background);        
+            width: mapping($logoGiftCard,logoGiftCardContainer,width);
+            clear: both;
+            .product-callout{
+                @include content-spacing(map-get($logoGiftCard, productCallout));
+                .product-callout-attribute{
+                    color: mapping($logoGiftCard,productCallout,color);
+                    font: mapping($logoGiftCard,productCallout,font);
+                     text-transform: capitalize;
+                }
+            }
+            h1{
+                @include content-spacing(map-get($logoGiftCard, header));
+                color: mapping($logoGiftCard,header,color);
+                font: mapping($logoGiftCard,header,font);
+            }
+            .grid-section {
+                @include content-spacing(map-get($logoGiftCard, gridSection));
+                .product-reviews{
+                    @media #{$small-down} {
+                        clear: both;
+                        float: left;
+                    }
+                    @extend .row;
+                    @include content-spacing(map-get($logoGiftCard, productReview));
+                    .review-status{
+                        @extend .col-xs-12;
+                        @extend .col-md-12;
+                        @extend .col-lg-8;
+                        @media #{$small-down} {
+                            clear: both;
+                            float: left;
+                            margin-top: 0.5em;
+                        }
+                        span{
+                            display: inline-block;
+                            @include content-spacing(map-get($logoGiftCard, productReviewStatus));
+                        }
+                        .read-reviews{
+                            &:after {
+                                content: "|";
+                                padding: 0 0.35714em;
+                                color: #666666;
+                                margin-left: 0.57143em;
+                            }
+                            span{
+                                margin: 0;
+                            }
+                            .read-review {
+                                @extend .write-review;
+                            }
+                        }
+                    }
+                    .write-review{
+                        color: mapping($logoGiftCard,gridSection,color);
+                        font: mapping($logoGiftCard,gridSection,font);
+                        cursor: pointer;
+                    }            
+                }
+            }
+            .inventory-status{
+                margin-bottom: em(10);
+                .inventory-status-message{
+                    color: $errorColor;
+                    font: mapping($skuBundle,reviewText,font);
+                    @media #{$small-down} {
+                        font-size: em(12);
+                    }
+                }
+                .back-oderable-date {
+                    @media #{$small-down} {
+                        font-size: em(12);
+                    }
+                    font-weight: $fontRegular;
+                }
+                .available-status{
+                    color:$SuccessColor !important;
+                }
+            }
+            form {
+                @media #{$medium-down} {
+                    clear:both;
+                }
+                fieldset {
+                    @include content-spacing(map-get($logoGiftCard, fieldset));
+                    .input-field {
+                        &.has-error{
+                            .help-block.form-message {
+                                display: block;
+                            }
+                        }
+                        .dollar-sign {
+                            font: mapping($logoGiftCard,input,font);
+                            position: absolute;
+                            top: em(23, 16);
+                            left: em(16, 16);
+                        }
+                        input {
+                            &.form-input {
+                                @include content-spacing(map-get($logoGiftCard, input));
+                                max-width: mapping($logoGiftCard,input,width);
+                                border: mapping($logoGiftCard,input,border);
+                                height: mapping($logoGiftCard,input,height);
+                                font: mapping($logoGiftCard,input,font);
+                            }
+                            &.amount-field {
+                                @include content-spacing(map-get($logoGiftCard, amountInput));
+                            }
+                        }
+                        .form-input:focus ~ .placeholder-label,
+                        .not-empty ~ .placeholder-label {
+                            font: mapping($logoGiftCard,placeholder,font);
+                            transform: translateY(-8px) scale(1);
+                        }
+                        label {
+                            &.placeholder-label {
+                                @include content-spacing(map-get($logoGiftCard, placeholder));
+                                top: 0;
+                                left: 0;
+                                text-transform: none;
+                                &:after {
+                                    content: '';
+                                }
+                            }
+                        }
+                        .help-block.form-message {
+                            display:none;
+                            color: $errorRed;
+                            &:before {
+                                content: "\f071";
+                                @include font-awesome();
+                                @include content-spacing(map-get($logoGiftCard, errorIcon));
+                            }
+                        }
+                    }
+                    .message-select-container {
+                        .message-box-container {
+                            @include content-spacing(map-get($logoGiftCard, messageBoxContainer));
+                            .input-field {
+                                input {
+                                    &.no-border-input {
+                                        @include content-spacing(map-get($logoGiftCard, messageBoxInput));
+                                        height: mapping($logoGiftCard,messageBoxInput,height);
+                                        border: none;
+                                        font: mapping($logoGiftCard,messageBoxInput,font);
+                                        color: mapping($logoGiftCard,messageBoxInput,color);
+                                    }
+                                }
+                                .form-input:focus ~ .placeholder-label,
+                                .not-empty ~ .placeholder-label {
+                                    display: none;
+                                }
+                                label {
+                                    &.placeholder-label { 
+                                        top: em(8, 16);
+                                    }
+                                }
+                                .help-block.form-message {
+                                    color: $errorRed;
+                                }
+                            }
+                        }
+                        .bootstrap-select {
+                            width: 100% !important;
+                            border: mapping($logoGiftCard,customDropdown,border);
+                            &.open {
+                                .dropdown-toggle {
+                                    border: mapping($logoGiftCard,dropDownToggle,border);
+                                    border-bottom: mapping($logoGiftCard,customDropdown,border);
+                                    &:hover, &:focus {
+                                        border: mapping($logoGiftCard,dropDownToggle,border);
+                                        border-bottom: mapping($logoGiftCard,customDropdown,border);
+                                    }
+                                    .bs-caret {
+                                        &:before {
+                                            content: "\f077";
+                                        }
+                                    }                
+                                }
+                                .dropdown-menu.open {
+                                    .dropdown-title-text { 
+                                        display: none;
+                                    }
+                                }
+                            }
+                            .dropdown-toggle {
+                                @include content-spacing(map-get($logoGiftCard, customDropdown));
+                                background-color: mapping($logoGiftCard,customDropdown,background) !important;
+                                height: mapping($logoGiftCard,customDropdown,height);
+                                border: none;
+                                &:focus {
+                                    outline: mapping($logoGiftCard,customDropdown,outline) !important;
+                                }
+                                &.bs-placeholder {
+                                    .filter-option {
+                                        .filter-option-inner { 
+                                            .filter-option-inner-inner {
+                                                @include content-spacing(map-get($logoGiftCard, customDropdownPlaceHolder));
+                                                font: mapping($logoGiftCard,customDropdown,font);
+                                                color: mapping($logoGiftCard,customDropdown,color);
+                                            }
+                                        }
+                                    }
+                                }
+                                .filter-option {
+                                    .filter-option-inner {
+                                        .filter-option-inner-inner {
+                                            overflow: visible;
+                                            .dropdown-title-text {
+                                                position: relative;
+                                                left: em(3);
+                                                top: em(5);
+                                                font: mapping($logoGiftCard,dropdownTitleTxt,font);
+                                                color: mapping($logoGiftCard,dropdownTitleTxt,color);
+                                                &:after {
+                                                    content: '';
+                                                }
+                                            }
+                                            .dropdown-details-text {
+                                                position: relative;
+                                                font: mapping($logoGiftCard,dropdownDtlsTxt,font);
+                                                color: mapping($logoGiftCard,dropdownDtlsTxt,color);
+                                                left: -5.625em;
+                                                top: em(25, 16);
+                                                &:after {
+                                                    content: '';
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                                .bs-caret {
+                                    @include content-spacing(map-get($logoGiftCard, bsCaret));
+                                    &:before {
+                                        content: "\f078";
+                                        @include font-awesome();
+                                        color: mapping($logoGiftCard,bsCaret,color);
+                                        font-size: mapping($logoGiftCard,bsCaret,fontSize);
+                                    }
+                                    .caret {
+                                        display: none;                    
+                                    }
+                                }
+                                &:hover, &:focus {
+                                    border: none;
+                                    background-color: mapping($logoGiftCard,customDropdown,background) !important;                
+                                }
+                            }
+                            .dropdown-menu.open {
+                                @include content-spacing(map-get($logoGiftCard, outerDropDownMenu));
+                                border: mapping($logoGiftCard,dropDownToggle,border);
+                                border-top: none;
+                                border-radius: 0;
+                                min-width: mapping($logoGiftCard,outerDropDownMenu,minWidth) !important;
+                                .dropdown-menu.inner {
+                                    li {
+                                        @include content-spacing(map-get($logoGiftCard, innerDropDownMenu));
+                                        display: block;
+                                        height: mapping($logoGiftCard,innerDropDownMenu,height);
+                                        &:first-child {
+                                            a{
+                                                span{
+                                                   margin: 0 0 0.38462em 0.38462em;
+                                                   font: ($fontRegular 1.07692em $primaryFontFamily);
+                                                   color: $headingColor;
+                                                }
+                                            }
+                                        }
+                                        &.active, &.disabled {
+                                            a {
+                                                background-color: mapping($logoGiftCard,innerDropDownMenu,background) !important;
+                                                &:hover {
+                                                    background-color: mapping($logoGiftCard,innerDropDownMenu,background) !important;
+                                                }
+                                            }
+                                        }
+                                        a {
+                                            @include content-spacing(map-get($logoGiftCard, innerDropDownMenuAnchor));
+                                            color: mapping($logoGiftCard,innerDropDownMenu,color) !important;
+                                            background-color: mapping($logoGiftCard,innerDropDownMenu,backgroundColor);
+                                            &:hover {
+                                                background-color: mapping($logoGiftCard,innerDropDownMenu,background);
+                                            }
+                                            span {
+                                                label {
+                                                    &.dropdown-details-text {
+                                                        @include content-spacing(map-get($logoGiftCard, innerDropDownMenuTxt));
+                                                        font: mapping($logoGiftCard,innerDropDownMenu,font);
+                                                        color: mapping($logoGiftCard,innerDropDownMenu,color);
+                                                        &:after {
+                                                            content: '';
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }            
+            }
+        }
+        // Button Wrapper Component Starts
+        .button-wrapper{
+            @include content-spacing(map-get($logoGiftCard, buttonWrapper));
+            position: relative;
+            @media #{$small-down} {
+                background-color: mapping($logoGiftCard,buttonWrapper,background);
+                box-shadow: 0 -2px 4px 0 rgba(0,0,0,0.15);
+            }
+            @media #{$small-up} {
+                background-color: mapping($logoGiftCard,buttonWrapper,backgroundColor);
+            }
+            .btn-add-to-bag{
+                @extend .btn;
+                @extend .btn-primary;
+                // @extend .btn-block;
+                display: block;
+                width: 100%;
+                font: mapping($logoGiftCard,button,font);
+                background-color: mapping($logoGiftCard,button,background) !important;
+                color: mapping($logoGiftCard,button,color);
+                border-color: mapping($logoGiftCard,button,background) !important;
+                &:focus{
+                    outline: em(2, 20) solid $secondary-color;
+                }
+                @include content-spacing(map-get($logoGiftCard, button));
+                @media #{$small-down} {
+                    width: mapping($logoGiftCard,button,width);
+                }
+                &:disabled{
+                    cursor: default;
+                    background: $btndisableColor !important;
+                    border:none !important;
+                }
+            }
+            .terms-conditions{
+                @include content-spacing(map-get($logoGiftCard, termsCondtions));
+                .terms-conditions-details{
+                    p{
+                        color: mapping($logoGiftCard,termsCondtions,color);
+                        font: mapping($logoGiftCard,termsCondtions,font);
+                    }
+                }
+            }   
+        }  
+        // Button Wrapper Component Ends
+    }
+    .giftcard-amount-section {
+    .giftcard-amount-title {
+        font: 400 16px/22px $primaryFontFamily;
+        color: $black;
+        margin: 0 0 10px;
+    }
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-wrap: wrap;
+        li.innerCont {
+            display: inline-block;
+            margin: 0 1.4% 1.4% 0;
+            height: 50px;
+            width: 18.6%;
+            border: 1px solid $color-grey;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            transition: box-shadow .75s ease;
+            font-family: $primaryFontFamily;
+            background: $white;
+            @media #{$small-down} {
+                width: 23.9%;
+            }
+            &:nth-child(4n) {
+                @media #{$small-down} {
+                    margin-right:0;
+                }
+            }
+            &.active, &:hover {
+                border: 2px solid #C80A4C;
+            }
+            a {
+                display: flex;
+                width: 100%;
+                height: 100%;
+                justify-content: center;
+                align-items: center;
+                span {
+                    color: $color-dark-grey;
+                    font: 600 14px $primaryFontFamily;
+                    display: inline-block;
+                    padding: 0;
+                }
+                &:focus{
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+}
+}
+.image-text-container {
+    @media #{$medium-down} {
+        .col-2 {
+            .col-first {
+                .socialShareForProducts {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+.socialShareForProducts {
+    margin: 0 0 em(10) em(110);
+    clear: both;
+    padding:1em 0;
+}

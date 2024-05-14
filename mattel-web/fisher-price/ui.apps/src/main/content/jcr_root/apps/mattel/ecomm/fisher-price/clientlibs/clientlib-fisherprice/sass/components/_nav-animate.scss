@@ -1,0 +1,640 @@
+//test
+$overflowHeight: 24px;
+$puppySlices: 45;
+@import '_nav-animate-keyframes';
+
+.top-bottom-slide {
+    top: calc(-100% - #{$overflowHeight});
+    position: absolute;
+    left: -2px;
+    width: calc(100% - -4px);
+    height: calc(100% - -#{$overflowHeight});
+    max-width: inherit;
+    max-height: inherit;
+    background: transparent;
+    object-fit: cover;
+}
+
+.bottom-center-slide {
+    bottom: calc(-100% - #{$overflowHeight});
+    position: absolute;
+    max-width: inherit;
+    max-height: inherit;
+    background: transparent;
+    left: -2px;
+    width: calc(100% - -4px);
+}
+
+.only-center-slide {
+    bottom: -14px;
+    top: 0;
+    margin: auto;
+    position: absolute;
+    max-width: 100%;
+    max-height: 100%;
+    background: transparent;
+    width: auto;
+    height: auto;
+    left: 0;
+    right: 0;
+}
+
+#menuNav0,
+.sub-nav.explore {
+
+    .link-list,
+    .img-list {
+        ul {
+
+            >li[class^="column-"],
+            >li[class*=" column-"],
+            >li[class^="col-"],
+            >li[class*=" col-"] {
+                a {
+                    position: relative;
+                    .title-wrap {
+                        z-index: 11;
+
+                        .title-content {
+
+                            .title,
+                            .description {
+                                color: $black;
+                            }
+                        }
+                    }
+
+                    .list-image {
+                        position: relative;
+                        overflow: hidden;
+
+                        &+.title {
+                            opacity: 1;
+                            transition: opacity .3s;
+                            padding-top: 6px;
+                            display: block;
+                        }
+                    }
+
+                    .overlay-block {
+                        display: block;
+                    }
+
+                    .overlay-image-1 {
+                        @include slide-animation("top", 0.5s);
+                        height: 100%;
+
+                        .overlay-text {
+                            @include slide-animation("bottom", 0.5s);
+                            @include transform(translateY(10%));
+                            bottom: 10%;
+                            margin: auto;
+                            padding: 0 15px;
+                            opacity: 0;
+                            transition: all .2s;
+                            text-align: center;
+                            color: $black;
+                            @include font-properties($maaxMedium,$localFontVerdana);
+                            font-weight: 500;
+                            font-size: 16px;
+                        }
+
+                        img.image {
+                            @extend .top-bottom-slide;
+                            @include transition(top 0.5s);
+                        }
+                    }
+
+                    .overlay-image-3 {
+                        @include slide-animation("top", 0s);
+                        overflow: hidden;
+                        height: 100%;
+                        // opacity: 0;
+                        display: none;
+
+                        .top-bottom-effect {
+                            @extend .top-bottom-slide;
+                            @include animation(top-bottom-out .5s linear);
+                            // @include transition(top .5s);
+                            animation-fill-mode: backwards;
+                            animation-delay: .4s;
+                        }
+
+                        .bottom-center-effect {
+                            @extend .bottom-center-slide;
+                            @include animation(bottom-center-out .8s linear);
+                            // @include transition(bottom .5s);
+                            animation-fill-mode: backwards;
+                            animation-delay: 0s;
+                        }
+
+                        .only-center-effect {
+                            @extend .only-center-slide;
+                            // @include transition(bottom .5s);
+                            opacity: 0;
+                            max-height: 160px;
+                            @include animation(only-center-out .5s linear);
+                            animation-fill-mode: backwards;
+                            animation-delay: 0.25s;
+                        }
+                    }
+                }
+
+                &:not(.no-effect) a:hover {
+                    .heading {
+                        // display: none;
+                    }
+
+                    .list-image+.title{
+                        opacity: 0;
+                        transition: opacity .3s;
+                    }
+                    .list-image+.heading {
+                        opacity: 1;
+                        transition: opacity .3s;
+                    }
+
+                    .overlay-image-1 {
+                        div.overlay-text {
+                            animation: bottom-center-text 0.2s;
+                            animation-fill-mode: forwards;
+                            animation-delay: .25s;
+                            @include font-properties($maaxMedium,$localFontVerdana);
+                            font-weight: 500;
+                            font-size: 16px;
+                            // transition: all .2s;
+                        }
+
+                        img {
+                            top: -2px;
+                            @include transition(top .5s);
+                        }
+                    }
+
+                    .overlay-image-3.animation-active {
+
+                        // opacity: 1;
+                        .top-bottom-effect {
+                            @include animation(top-bottom-in .5s linear);
+                            // @include transition(top .5s);
+                            animation-fill-mode: forwards;
+                        }
+
+                        .bottom-center-effect {
+                            @include animation(bottom-center-in .8s linear);
+                            // @include transition(bottom .5s);
+                            animation-fill-mode: forwards;
+                            animation-delay: .25s;
+                        }
+
+                        .only-center-effect {
+                            @include animation(only-center-in .5s linear);
+                            animation-fill-mode: forwards;
+                            // @include transition(bottom .5s);
+                            animation-delay: .4s;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+#primary-category-data {
+    >li {
+        #menuNav0 {
+            display: block;
+            visibility: visible;
+
+            .shop-by-category {
+                .link-list {
+                    .column-3{
+                        padding: 2px 30px !important;
+                    }
+                    .collapse {
+                        li a .heading {
+                            display: block;
+                        }
+                    }
+                }
+
+                .img-list {
+                    .overlay-text {
+                        @include font-properties($maaxMedium,$localFontVerdana);
+                        font-weight: 500;
+                        font-size: 16px;
+                    }
+                }
+            }
+        }
+
+        .sub-nav.explore {
+            .link-list {
+                .heading {
+                    display: block;
+                    line-height: normal;
+                    padding-top: 6px;
+                }
+            }
+
+            .img-list {
+                >ul>li {
+                    // margin-bottom: 15px;
+                }
+            }
+        }
+
+        .shop-by-category,.shop-by-brands {
+            #featured-section0 li a {
+                &:before {
+                    background: $white;
+                }
+
+                &:hover {
+                    color: #e51c06;
+                }
+            }
+            & #featured-section0 li a{
+                &:after {
+                    background: $black;
+                }
+            }
+            & #featured-section0 li a:hover {
+                color: $black;
+
+                &:after {
+                    background: $black;
+                }
+            }
+
+            .featured-list {
+                position: static;
+                background-image: none;
+                padding-left: 85px;
+                max-width: 294px;
+
+                &:after {
+                    content: '';
+                    background-image: url('#{$navImgPath}/dog_ears_transparent-Spite-Frame.png');
+                    //background-size: (calc(#{$puppySlices} * 100%) 100%);
+                    background-size: cover;
+                    position: absolute;
+                    left: 0;
+                    bottom: 0;
+                    opacity: 0;
+                    // max-width: 24.51%;
+                    height: 375px;
+                    width: 323.5px;
+                    @include transition(transition .5s);
+                }
+
+                #featured-section0 {
+                    position: static;
+
+                    .animation-on {
+                        position: static;
+
+                        &:after {
+                            content: "";
+                            background: url('#{$navImgPath}/Confetti_default.svg');
+                            position: absolute;
+                            top: -100%;
+                            left: 0;
+                            height: 100%;
+                            right: 0;
+                            z-index: 1;
+                            width: 95%;
+                            margin: 0 auto;
+                            // @include transition(top 2.5s);
+                        }
+
+                        &:hover {
+                            &:after {
+                                @include animation(confetti-keyframe 2.5s linear);
+                                animation-fill-mode: forwards;
+                                -webkit-animation-fill-mode: forwards;
+                                -moz-animation-fill-mode: forwards;
+                                // @include transition(top 2.5s);
+                            }
+                        }
+                    }
+                }
+            }
+
+            .link-list {
+                padding-left: 20px;
+
+                .overlay-block {
+                    display: none !important;
+                }
+            }
+
+            .featured-list,
+            .link-list .column-3,
+            .link-list .wrapped-ul,
+            .link-list,
+            .img-list {
+                >ul {
+                    >li {
+                        line-height: normal;
+                        padding: 2px 0 !important;
+
+                        &>a {
+                            @include transform(translateY(50px));
+                            @include transition(all .3s);
+                            padding: 5px 0;
+                            font-size: 15px;
+                        }
+
+                        & {
+                            &>a {
+                                opacity: 0;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        &:hover {
+            .shop-by-category,.shop-by-brands {
+
+                // @include transform(scaleY(1));
+                // @include transition(transform .2s ease-in);
+                .featured-list:after {
+                    opacity: 1;
+                    @include animation(playPuppy-keyframe 1s steps(#{$puppySlices}));
+                    animation-fill-mode: forwards;
+                    animation-delay: 0.8s;
+                }
+
+                .link-list>ul>li>a {
+                    @include animation(text-fade-out-in .3s);
+                    animation-fill-mode: forwards;
+                    animation-delay: 0.10s;
+                }
+
+                .featured-list,
+                .link-list .column-3,
+                .link-list .wrapped-ul,
+                .img-list {
+                    >ul {
+                        >li {
+                            >a {
+                                @include animation(text-fade-out-in .3s);
+                                animation-fill-mode: forwards;
+                                // @include transition(all .5s);
+                            }
+
+                            @for $i from 1 through 20 {
+                                &:nth-child(#{$i}n)>a {
+                                    animation-delay: #{$i*0.08}s;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+#primary-category-data .shop-by-brands {
+    .link-list ul {
+
+        >li[class^="column-"],
+        >li[class*="column-"] {
+            >a {
+                padding: 5px 0;
+
+                .heading {
+                    font-size: 15px;
+                }
+            }
+        }
+    }
+
+    .img-list {
+        ul {
+
+            >li[class^="col-"],
+            >li[class*=" col-"] {
+                padding: 7.5px 8px !important;
+                a {
+                    position: relative;
+                    overflow: hidden;
+
+                    .title-wrap {
+                        z-index: 11;
+
+                        .title-content {
+
+                            .title,
+                            .description {
+                                color: $black;
+                            }
+                        }
+                    }
+
+                    .list-image {
+                        position: relative;
+                        overflow: hidden;
+
+                        &+.title,
+                        &+.heading {
+                            opacity: 1;
+                            transition: opacity .3s;
+                        }
+                    }
+
+                    .overlay-block {
+                        display: block;
+                    }
+
+                    .overlay-image-1 {
+                        @include slide-animation("top",
+                            0.5s);
+                        height: 100%;
+
+                        .overlay-text {
+                            @include slide-animation("bottom",
+                                0.5s);
+                            @include transform(translateY(10%));
+                            bottom: 10%;
+                            margin: auto;
+                            padding: 0 15px;
+                            opacity: 0;
+                            transition: all .2s;
+                            text-align: center;
+                            color: $black;
+                            @include font-properties($maaxMedium,$localFontVerdana);
+                            font-weight: 500;
+                            font-size: 16px;
+                        }
+
+                        img.image {
+                            @extend .top-bottom-slide;
+                            @include transition(top 0.5s);
+                        }
+                    }
+                }
+
+                &:not(.no-effect) a:hover {
+                    .heading {
+                        // display: none;
+                        opacity: 0;
+                    }
+
+                    .list-image+.title {
+                        opacity: 0;
+                        transition: opacity .3s;
+                    }
+
+                    .overlay-image-1 {
+                        div.overlay-text {
+                            animation: bottom-center-text 0.2s;
+                            animation-fill-mode: forwards;
+                            animation-delay: .25s;
+                            @include font-properties($maaxMedium,$localFontVerdana);
+                            font-weight: 500;
+                            font-size: 16px;
+                            // transition: all .2s;
+                        }
+
+                        img {
+                            top: -2px;
+                            @include transition(top .5s);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+// Effect1 :: subdropdown expand/collapse effects
+#primary-category-data {
+    >li {
+        >a::before {
+            height: 3px;
+            content: "";
+            position: absolute;
+            left: 1px;
+            right: 0;
+            background: #e51c06;
+            width: 0;
+            bottom: -2px;
+            @include transition(all .5s);
+        }
+        .subMenu-container {
+            display: block;
+
+            .sub-nav {
+                -webkit-transform-origin: 0 0;
+                -moz-transform-origin: 0 0;
+                -ms-transform-origin: 0 0;
+                transform-origin: 0 0;
+                @include transform(scaleY(0));
+                @include transition(transform .2s ease-out);
+                overflow: hidden;
+
+                &:before {
+                    content: "";
+                    height: 0;
+                    @include transition(all .3s);
+                    width: 100%;
+                    background: #6ad1e2;
+                    display: inline-block;
+                    position: absolute;
+                    left: 0;
+                    right: 0;
+                    top: 0;
+                    z-index: 1;
+                }
+            }
+        }
+
+        &:hover {
+            >a::before {
+                width: calc(100% - 2px);
+            }
+            .subMenu-container .sub-nav {
+                @include transform(scaleY(1));
+                @include transition(transform .2s ease-in);
+
+                &:before {
+                    height: 5px;
+                    @include transition(all .3s);
+                }
+            }
+        }
+    }
+}
+
+// Effect2 :: underline effect
+#primary-category-data {
+
+    .shop-by-brands,
+    .shop-by-category {
+        ul {
+            display: block;
+
+            .listTitle,
+            .collapse>li>a,
+            .no-sub-heading li[class^="column-"]>a,
+            .no-sub-heading li[class*=" column-"]>a,
+            &.collapse>li>a {
+                display: inline-block;
+                z-index: 11;
+                position: relative;
+
+                &:after {
+                    content: "";
+                    background: #e51c06;
+                    width: 0px;
+                    height: 3px;
+                    padding: 0;
+                    display: inline-block;
+                    margin: auto;
+                    position: absolute;
+                    bottom: 2px;
+                    top: auto;
+                    z-index: 111;
+                    @include transition(all .5s);
+                    left: 0;
+                    right: auto;
+                }
+
+                .heading {
+                    display: block;
+
+                    &:after {
+                        content: none;
+                    }
+                }
+
+                &:hover {
+                    overflow: inherit;
+                    color: #e51c06;
+
+                    .heading {
+                        // color: inherit;
+                        opacity: 1;
+                        color: #e51c06;
+                        border: none;
+                    }
+
+                    &:after {
+                        width: 100%;
+                        @include transition(all .5s);
+                    }
+                }
+            }
+        }
+    }
+}
+.sub-nav.explore .link-list ul>li[class^="column-"]:not(.no-effect) a:hover .list-image+.heading{opacity:0;}
+.sub-nav.explore .img-list ul>li[class^="col-md-12"]:not(.no-effect) a:hover .overlay-image-1 div.overlay-text{
+    display: none !important;
+}

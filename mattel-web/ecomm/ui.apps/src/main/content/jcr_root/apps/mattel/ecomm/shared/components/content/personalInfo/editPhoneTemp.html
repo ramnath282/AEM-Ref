@@ -1,0 +1,25 @@
+			<div class="update-phone">
+                <fieldset>
+                    <sly data-sly-test="${properties.phoneLabel}">
+                       	<h2>${properties.phoneLabel}:</h2>
+                    </sly>
+                    <div class="input-field required">
+                        <input type="text" maxlength="32" id="phoneNo" aria-describedby="phoneNoError" name="Phone" data-key="phone1" class="form-input long-input phone-field" value="{{personalInfo.phone1}}" required autocomplete="off"/>
+							<sly data-sly-test="${properties.sPhoneLabel}">
+								<label class="placeholder-label" for="phoneNo">${properties.sPhoneLabel}</label>
+							</sly>
+                        <div id="phoneNoError" class="help-block form-message"></div>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <div class="input-field required">
+                        <input type="text"  maxlength="32" id="phoneNoVerify" aria-describedby="phoneNoVerifyError" name="verifyPhone" class="form-input long-input verify-phone" value="" required autocomplete="off"/>
+							<sly data-sly-test="${properties.vPhoneLabel}">
+                            	<label class="placeholder-label" for="phoneNoVerify">${properties.vPhoneLabel}</label>
+                            </sly>
+                        <div id="phoneNoVerifyError" class="help-block form-message"></div>
+                    </div>
+                </fieldset>
+                <input class="theme-btn no-bg-btn update-info" data-val="update" data-formname=".update-phone" type="submit" value="${properties.updateButtonLabel}" />
+                <input class="theme-btn transparent-btn remove-template" data-val="cancel" type="submit" value="${properties.cancelButtonLabel}" />
+            </div> 

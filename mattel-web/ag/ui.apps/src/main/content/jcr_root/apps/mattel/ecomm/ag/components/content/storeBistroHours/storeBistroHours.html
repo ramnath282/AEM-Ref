@@ -1,0 +1,135 @@
+<sly data-sly-test="${wcmmode.edit}">${'Store/Bistro Hours Component' @ i18n} </sly>
+<div class="dropdown-module">
+	<div class="container">
+		<div class="row col-2">
+			<div class="dropdown-content">
+				<div>
+					<h2 class="">
+						<a href="#collapseListGroup1" role="button" data-toggle="collapse" aria-expanded="false" aria-controls="collapseListGroup1">${properties.storeHoursTitle @ i18n}</a>
+					</h2>
+					<div class="collapse" role="tabpanel" id="collapseListGroup1" aria-expanded="false">
+						<ul class="">
+							<li class="">
+								<span>Monday</span>
+								<span>${properties.storeMondayHrs}</span>
+							</li>
+							<li class="">
+								<span>Tuesday</span>
+								<span>${properties.storeTuesdayHrs}</span>
+							</li>
+							<li class="">
+								<span>Wednesday</span>
+								<span>${properties.storeWednesdayHrs}</span>
+							</li>
+							<li class="">
+								<span>Thursday</span>
+								<span>${properties.storeThursdayHrs}</span>
+							</li>
+							<li class="">
+								<span>Friday</span>
+								<span>${properties.storeFridayHrs}</span>
+							</li>
+							<li class="">
+								<span>Saturday</span>
+								<span>${properties.storeSaturdayHrs}</span>
+							</li>
+							<li class="">
+								<span>Sunday</span>
+								<span>${properties.storeSundayHrs}</span>
+							</li>
+						</ul>
+						<h3 class="heading">${properties.specialStoreHoursTitle @ i18n}</h3>
+						<sly data-sly-use.storebistro = "com.mattel.ag.retail.core.model.StoreBistroHoursModel">
+							<ul>
+								<sly data-sly-list.head="${storebistro.storeHoursDetails}">
+									<li class="">
+										<sly data-sly-test="${head.storeEndDate==0}">
+											<span>${head.month} ${head.date}</span>
+										</sly>
+										<sly data-sly-test="${head.storeEndDate!=0}">
+											<span>${head.month} ${head.date} — ${head.storeEndMonth} ${head.storeEndDate}</span>
+										</sly>
+										<sly data-sly-test="${head.storeStoreClosed!=true}">
+											<span>  ${head.storeStartTime} — ${head.storeEndTime} </span>
+										</sly>
+										<sly data-sly-test="${head.storeStoreClosed==true}">
+											<span>  Closed </span>
+										</sly>
+									</li>
+								</sly>
+							</ul>
+						</sly>
+
+					</div>
+				</div>
+			</div>
+			<sly data-sly-test="${properties.hideBistroDetails!='true'}">
+				<div class="dropdown-content">
+					<div>
+						<h2 class="">
+							<a href="#collapseListGroup2" role="button" data-toggle="collapse" aria-expanded="false" aria-controls="collapseListGroup2">${properties.bistroHoursTitle @ i18n}</a>
+						</h2>
+						<div class="collapse" role="tabpanel" id="collapseListGroup2" aria-expanded="false">
+							<ul class="">
+								<li class="">
+									<span>Monday</span>
+									<span>${properties.bistroMondayHrs}</span>
+								</li>
+								<li class="">
+									<span>Tuesday</span>
+									<span>${properties.bistroTuesdayHrs}</span>
+								</li>
+								<li class="">
+									<span>Wednesday</span>
+									<span>${properties.bistroWednesdayHrs}</span>
+								</li>
+								<li class="">
+									<span>Thursday</span>
+									<span>${properties.bistroThursdayHrs}</span>
+								</li>
+								<li class="">
+									<span>Friday</span>
+									<span>${properties.bistroFridayHrs}</span>
+								</li>
+								<li class="">
+									<span>Saturday</span>
+									<span>${properties.bistroSaturdayHrs}</span>
+								</li>
+								<li class="">
+									<span>Sunday</span>
+									<span>${properties.bistroSundayHrs}</span>
+								</li>
+							</ul>
+							<h3 class="heading">${properties.specialBistroHoursTitle @ i18n}</h3>
+							<sly data-sly-use.bistroHrs = "com.mattel.ag.retail.core.model.StoreBistroHoursModel">
+								<ul>
+									<sly data-sly-list.head="${bistroHrs.bistroHoursDetails}">
+										<li class="">
+											<sly data-sly-test="${head.bistroEndDate==0}">
+												<span>${head.month} ${head.date}</span>
+											</sly>
+											<sly data-sly-test="${head.bistroEndDate!=0}">
+												<span>${head.month} ${head.date} — ${head.bistroEndMonth} ${head.bistroEndDate}</span>
+											</sly>
+											<sly data-sly-test="${head.bistroStoreClosed!=true}">
+												<span> ${head.bistroStartTime} — ${head.bistroEndTime} </span>
+											</sly>
+											<sly data-sly-test="${head.bistroStoreClosed==true}">
+												<span>  Closed </span>
+											</sly>
+										</li>
+									</sly>
+								</ul>
+							</sly>
+						</div>
+					</div>
+				</div>
+			</sly>
+			<div class="dropdown-notice">
+				<div class="ml-15">
+					<em>${properties.notice @context='html'}</em>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

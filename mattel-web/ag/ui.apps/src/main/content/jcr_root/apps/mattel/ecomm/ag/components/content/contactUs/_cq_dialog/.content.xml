@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Contact Us"
+    sling:resourceType="cq/gui/components/authoring/dialog"
+    height="{Long}500"
+    width="{Long}600">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <callUs
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Call Us"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <column
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <callUsLogoImage
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                        allowUpload="{Boolean}false"
+                                        autoStart="{Boolean}false"
+                                        class="cq-droptarget"
+                                        fieldLabel="Logo Image"
+                                        fileReferenceParameter="./callUsLogoImagePath"
+                                        mimeTypes="[image/gif,image/jpeg,image/png,image/webp,image/tiff]"
+                                        multiple="{Boolean}false"
+                                        name="./callUsLogoImage"
+                                        uploadUrl="${suffix.path}"
+                                        useHTML5="{Boolean}true"/>
+                                    <callUsAltText
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldLabel="Alt-text for Image:"
+                                        name="./callUsAltText"/>
+                                    <callUsTitle
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please enter the title."
+                                        fieldLabel="Title:"
+                                        name="./callUsTitle"/>
+                                    <generalSubtitleText
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldLabel="General Help Text:"
+                                        name="./generalSubtitleText"/>
+                                    <callRedirectUrl
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+                                        fieldLabel="URL for redirection:"
+                                        name="./callRedirectUrl"/>
+                                    <generalPhoneNumber
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldLabel="Number for General help:"
+                                        name="./generalPhoneNumber"/>
+                                    <retailSubtitleText
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldLabel="Retail Help Text:"
+                                        name="./retailSubtitleText"/>
+                                    <retailPhoneNumber
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldLabel="Number for Retail help:"
+                                        name="./retailPhoneNumber"/>
+                                </items>
+                            </column>
+                        </items>
+                    </callUs>
+                    <emailUs
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Email Us"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <column
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <emailUsLogoImage
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                        allowUpload="{Boolean}false"
+                                        autoStart="{Boolean}false"
+                                        class="cq-droptarget"
+                                        fieldLabel="Logo Image"
+                                        fileReferenceParameter="./emailUsLogoImagePath"
+                                        mimeTypes="[image/gif,image/jpeg,image/png,image/webp,image/tiff]"
+                                        multiple="{Boolean}false"
+                                        name="./emailUsLogoImage"
+                                        uploadUrl="${suffix.path}"
+                                        useHTML5="{Boolean}true"/>
+                                    <emailUsAltText
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldLabel="Alt-text for Image:"
+                                        name="./emailUsAltText"/>
+                                    <emailUsTitle
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please enter the title."
+                                        fieldLabel="Title:"
+                                        name="./emailUsTitle"/>
+                                    <emailUsSubTitle
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please enter the subtitle."
+                                        fieldLabel="Subtitle:"
+                                        name="./emailUsSubTitle"/>
+                                    <emailRedirectUrl
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+                                        fieldLabel="URL for redirection:"
+                                        name="./emailRedirectUrl"/>
+                                </items>
+                            </column>
+                        </items>
+                    </emailUs>
+                    <dollCare
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Doll Care"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <column
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <dollCareLogoImage
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                        allowUpload="{Boolean}false"
+                                        autoStart="{Boolean}false"
+                                        class="cq-droptarget"
+                                        fieldLabel="Logo Image"
+                                        fileReferenceParameter="./dollCareLogoImagePath"
+                                        mimeTypes="[image/gif,image/jpeg,image/png,image/webp,image/tiff]"
+                                        multiple="{Boolean}false"
+                                        name="./dollCareLogoImage"
+                                        uploadUrl="${suffix.path}"
+                                        useHTML5="{Boolean}true"/>
+                                    <dollCareAltText
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldLabel="Alt-text for Image:"
+                                        name="./dollCareAltText"/>
+                                    <dollCareTitle
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please enter the title."
+                                        fieldLabel="Title:"
+                                        name="./dollCareTitle"/>
+                                    <dollCareSubTitle
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please enter the subtitle."
+                                        fieldLabel="Subtitle:"
+                                        name="./dollCareSubTitle"/>
+                                    <dollCareRedirectUrl
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+                                        fieldLabel="URL for redirection:"
+                                        name="./dollCareRedirectUrl"/>
+                                </items>
+                            </column>
+                        </items>
+                    </dollCare>
+                    <agRewards
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="AG Rewards"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <column
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <agRewardsLogoImage
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                        allowUpload="{Boolean}false"
+                                        autoStart="{Boolean}false"
+                                        class="cq-droptarget"
+                                        fieldLabel="Logo Image"
+                                        fileReferenceParameter="./agRewardsLogoImagePath"
+                                        mimeTypes="[image/gif,image/jpeg,image/png,image/webp,image/tiff]"
+                                        multiple="{Boolean}false"
+                                        name="./agRewardsLogoImage"
+                                        uploadUrl="${suffix.path}"
+                                        useHTML5="{Boolean}true"/>
+                                    <agRewardsAltText
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldLabel="Alt-text for Image:"
+                                        name="./agRewardsAltText"/>
+                                    <agRewardsTitle
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+                                            fieldDescription="Please enter the title."
+                                            fieldLabel="Title:"
+                                            name="./agRewardsTitle"
+                                            useFixedInlineToolbar="{Boolean}true">
+                                        <rtePlugins
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceSuperType="mattel/ecomm/ag/components/content/exploreRtePlugins/rtePlugins"/>
+                                        <uiSettings
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceSuperType="mattel/ecomm/ag/components/content/exploreRtePlugins/uiSettings"/>
+                                        <htmlRules
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceSuperType="mattel/ecomm/ag/components/content/exploreRtePlugins/htmlRules"/>
+                                    </agRewardsTitle>
+                                    <agRewardsSubTitle
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please enter the subtitle."
+                                        fieldLabel="Subtitle:"
+                                        name="./agRewardsSubTitle"/>
+                                    <agRewardsRedirectUrl
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+                                        fieldLabel="URL for redirection:"
+                                        name="./agRewardsRedirectUrl"/>
+                                </items>
+                            </column>
+                        </items>
+                    </agRewards>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>

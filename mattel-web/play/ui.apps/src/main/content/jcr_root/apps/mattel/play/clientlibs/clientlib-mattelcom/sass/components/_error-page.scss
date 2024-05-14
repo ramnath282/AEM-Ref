@@ -1,0 +1,127 @@
+/*
+**_error-page.scss
+*/
+.page-error-component{
+    @extend .row;
+    position: relative; 
+    background: #674B9E;
+    height: auto;
+    margin: 0;
+    @media #{$large-up} {
+        min-height: 604px;
+    }
+    @media #{$large-down} {
+        min-height: 361px;
+    }
+    @media #{$xsmall-down} {
+        min-height: 500px;
+    }
+    .image-block{
+        @extend .col-md-6;
+        @extend .col-sm-12;
+        @extend .col-xs-12;
+         //background-color:gold;
+        padding:0 0;
+        @media #{$medium-down} {
+            padding: 0 em(50);
+        }
+        @media #{$small-down} {
+            padding: 0 em(20);
+        }
+        visibility: hidden;
+    }
+    .text-block{
+        @extend .col-md-6;
+        @extend .col-sm-12;
+        @extend .col-xs-12;
+        margin: 0;
+        @media #{$large-up} {
+            padding:55px;     
+            position:absolute;
+            z-index: 1;
+			top:180px;
+			//right:30%;
+			@include transform(translateY(-50%));     
+        } 
+        @media #{$large-down} {
+            padding: em(50);
+            width: 100%;
+        }
+        @media #{$small-down} {
+            padding:em(20);
+        }
+        h2{
+            
+            color: #FBD635;	
+            font-size: 48px;
+            font-weight: 500;
+            line-height: 78px;
+            font-family: 'MattelFounders', sans-serif;
+            @media #{$large-down} {
+                font-size: 30px;
+                line-height: 78px;
+            }
+            @media #{$xsmall-down} {
+                font-size: 40px;
+                line-height: 50px;
+            }
+
+        }
+        p{
+            font-family: 'MattelFounders', sans-serif;
+            color:#FFF;
+            font-size: 18px;	
+            font-weight: 300;
+            line-height: 36px;
+            margin-top: 0;
+            @media #{$large-down} {
+                margin-top: -20px
+            }
+            @media #{$xsmall-down} {
+                font-size: 18px;
+                line-height: 24px;
+                margin-top: 10px
+            }
+        }
+        .error-cta{
+            margin-top:em(16);
+            display: block;
+            @media #{$small-down} {
+                text-align:center;
+            }
+            a{
+                &.btn-cta{
+                    display: inline-block;
+                    font-size: 22px;	
+                    font-weight: 500;	
+                    line-height: 26px;
+                    background-color: transparent;
+                    border: none;
+                    padding: 0px;
+                    margin-top: 10px;
+                    font-family: 'MattelFounders', sans-serif;
+                    @media #{$large-down} {
+                        margin-top: 5px
+                    }
+                    @media #{$xsmall-down} {
+                        margin-top: 0px
+                    }
+                }
+            }
+        }
+
+        &.full-width{
+            @extend .col-md-12;
+            @extend .col-sm-12;
+            @extend .col-xs-12;
+            @media #{$medium-up} {
+                padding:em(60);
+                padding-top:em(40);
+                @include transform(translateY(0));
+            }
+        }
+    }
+}
+.error-cta a:not(:lang(en-us)){
+text-transform:none
+}

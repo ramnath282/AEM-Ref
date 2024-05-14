@@ -1,0 +1,25 @@
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
+   <sly data-sly-call="${clientlib.js @ categories=['dollHospital.commonClientLib']}"/>
+</sly>
+<sly data-sly-test="${properties.backgroundType == 'image'}">
+	<sly data-sly-test.bgConfig="background-image: url('${properties.backgroundImage}'); 
+								 background-repeat: ${properties.backgroundImgType}; 							
+								background-size: 'contain';">
+	</sly>							
+</sly>		
+<sly data-sly-test="${properties.backgroundType == 'color'}">
+	<sly data-sly-test.bgConfig="background-color: ${properties.backgroundColor}"></sly>
+</sly>				
+<sly data-sly-test="${properties.backgroundType == 'gradient'}">
+	<sly data-sly-test.bgConfig="background-image: ${properties.backgroundGradient}"></sly>
+</sly>
+
+<div class="dh-wrapper" style="${bgConfig @ context='unsafe'}">
+	  <div class="dh-container" style="background-color: ${properties.containerColor @ context='unsafe'}">
+			 <div class="row">
+				<sly data-sly-resource="${'columnone' @ resourceType='wcm/foundation/components/responsivegrid'}"></sly>
+			</div>
+		</div>
+</div>
+
+

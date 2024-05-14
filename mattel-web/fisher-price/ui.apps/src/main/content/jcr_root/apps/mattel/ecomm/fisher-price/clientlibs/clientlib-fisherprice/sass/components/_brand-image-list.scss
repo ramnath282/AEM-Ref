@@ -1,0 +1,223 @@
+.brand-container {
+  .brand-more.show-moreButton {
+    display: none;
+    float: left;
+    width: 100%;
+    text-align: center;
+  }
+
+  .brand-header {
+    &.custom-padd-margn {
+      margin: mapping($brandImageContainer, brandHeader, headerMarTop);
+    }
+
+    background-color:mapping($brandImageContainer, brandHeader, headerBG);
+    padding:mapping($brandImageContainer, brandHeader, headerPad);
+    text-align: mapping($brandImageContainer, brandHeader, headerAlign);
+    min-height: mapping($brandImageContainer, brandHeader, minHeight);
+    float:mapping($brandImageContainer, brandHeader, Float);
+    width:mapping($brandImageContainer, brandHeader, headerWidth);
+    margin:mapping($brandImageContainer, brandHeader, tabBrandPad);
+
+    @media #{$medium-down} {
+      margin: mapping($brandImageContainer, brandHeader, tabBrandPad);
+      line-height: mapping($brandImageContainer, brandTitle, moblineHeight);
+    }
+
+    @media #{$small-down} {
+      margin: mapping($brandImageContainer, brandHeader, mobBrandPad);
+      line-height: mapping($brandImageContainer, brandTitle, moblineHeight);
+    }
+
+    &.all-brand {
+      background-color: mapping($brandImageContainer, brandHeader, brandHeaderBG);
+      margin: mapping($brandImageContainer, brandHeader, brandHeaderMB);
+
+      @media #{$medium-down} {
+        margin: mapping($brandImageContainer, brandHeader, mobBrandHeaderMB);
+      }
+
+      @media #{$small-down} {
+        margin: mapping($brandImageContainer, brandHeader, mobBrandHeaderMB);
+      }
+
+      .brand-title {
+        font-size: mapping($brandImageContainer, brandTitle, brandHeaderFont);
+        color: mapping($brandImageContainer, brandTitle, brandHeaderColor);
+
+        @media #{$small-down} {
+          font-size: mapping($brandImageContainer, brandCon, mobbrandHeaderFont);
+        }
+      }
+    }
+
+    .brand-title {
+      display: mapping($brandImageContainer, brandTitle, titleDis);
+      @include font-properties($maaxBold,$localFontVerdana);
+      font-size: mapping($brandImageContainer, brandTitle, titleFontSize);
+      font-weight: mapping($brandImageContainer, brandTitle, titleBold);
+      color: mapping($brandImageContainer, brandTitle, titleColor);
+      text-transform: mapping($brandImageContainer, brandTitle, titleTransform);
+
+      @media #{$medium-down} {
+        font-size: mapping($brandImageContainer, brandTitle, tabFontSize);
+
+      }
+    }
+  }
+
+  .brandlist {
+    width: mapping($brandImageContainer, brandCon, brandWidth);
+    padding: mapping($brandImageContainer, brandCon, brandPad);
+    float: left;
+    text-align: mapping($brandImageContainer, brandCon, brandAlign);
+    margin-bottom: mapping($brandImageContainer, brandCon, mgnBottom);
+
+    @media #{$small-down} {
+      padding: mapping($brandImageContainer, brandCon, mobBrandPad);
+    }
+
+    @media #{$medium-down} {
+      padding: mapping($brandImageContainer, brandCon, tabPad);
+      margin-bottom: mapping($brandImageContainer, brandCon, tabMarBot);
+
+      &.tablist li:nth-child(4)~li {
+        display: mapping($brandImageContainer, brandCon, mobDisplay);
+      }
+    }
+
+    &.brand-images {
+      li {
+        @media #{$medium-up} {
+          width: mapping($brandImageContainer, brandlistContainer, width);
+        }
+      }
+    }
+
+    li {
+      width: mapping($brandImageContainer, listContainer, listWidth);
+      display: mapping($brandImageContainer, listContainer, listDisplay);
+
+      @media #{$medium-down} {
+        width: mapping($brandImageContainer, listContainer, tabwidth);
+      }
+
+      @media #{$small-down} {
+        width: mapping($brandImageContainer, listContainer, mobWidth);
+      }
+
+      a {
+        display: block;
+        margin: mapping($brandImageContainer, listContainer, listMargin);
+
+        @media #{$medium-down} {
+          margin: mapping($brandImageContainer, listContainer, mobMargin);
+        }
+
+        &:focus {
+          outline: mapping($brandImageContainer, listContainer, focusBorder);
+        }
+      }
+    }
+
+    .brand-img {
+      min-height: mapping($brandImageContainer, listContainer, listHeight);
+
+    }
+
+    .brand-title {
+      width: 100%;
+      @include font-properties($maaxBold,$localFontVerdana);
+      font-weight: 700;
+      font-size: mapping($brandImageContainer, titleText, titleTextFont);
+      text-align: mapping($brandImageContainer, titleText, titleTextAlign);
+      display: mapping($brandImageContainer, titleText, disTable);
+      color: mapping($brandImageContainer, titleText, titleTextColor);
+      //  font-weight:mapping($brandImageContainer, titleText, titleTextBold);
+      line-height: mapping($brandImageContainer, titleText, titleTextline);
+      height: mapping($brandImageContainer, titleText, titleTextHeight);
+      margin-top: mapping($brandImageContainer, titleText, titleTextMarTop);
+
+      @media #{$medium-down} {
+        font-size: mapping($brandImageContainer, titleText, mobtitleTextFont);
+      }
+
+    }
+  }
+
+  @media #{$medium-down} {
+    .brand-more.show-moreButton {
+      display: block;
+      margin-bottom: 30px;
+
+      a {
+        display: inline-block;
+        border: 0;
+        margin-top: 0;
+        padding: 13px 44px 13px 60px;
+        background-color: $lbk-blue;
+        color: #fff;
+        @include font-properties($maaxMedium,$localFontVerdana);
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 19px;
+        position: relative;
+        font-weight: normal;
+
+        &::before {
+          content: '';
+          // content: "\f055";
+          background-image: url($spriteImgPath);
+          margin-right: 7px;
+          background-position: -184px -141px;
+          width: 22px;
+          height: 22px;
+          position: absolute;
+          left: 33px;
+        }
+
+        &.active {
+          &::before {
+            //content: "\f056";
+            background-position: -160px -141px;
+          }
+        }
+
+        &:hover {
+          background-color: $lbk-red;
+        }
+      }
+
+
+    }
+  }
+
+  &.all-brand {
+    .brand-header {
+      background-color: mapping($brandImageContainer, allBrandList, bgColor);
+      padding: mapping($brandImageContainer, allBrandList, padHeader);
+      text-align: center;
+      margin: mapping($brandImageContainer, allBrandList, marHeader);
+      min-height: mapping($brandImageContainer, allBrandList, headerHeight);
+
+      .brand-title {
+        font-size: mapping($brandImageContainer, allBrandTitle, allBrandFontSize);
+        color: mapping($brandImageContainer, allBrandTitle, allBrandColor);
+
+        @media #{$small-down} {
+          // margin:mapping($brandImageContainer, brandHeader, mobBrandHeaderMB);
+          font-size: mapping($brandImageContainer, brandCon, mobbrandHeaderFont);
+
+        }
+      }
+
+      @media #{$small-down} {
+        line-height: mapping($brandImageContainer, allBrandList, mobLineHeight);
+        // margin:mapping($brandImageContainer, brandHeader, mobBrandHeaderMB);
+        margin: mapping($brandImageContainer, allBrandList, mobHeaderMar);
+
+      }
+    }
+  }
+
+}

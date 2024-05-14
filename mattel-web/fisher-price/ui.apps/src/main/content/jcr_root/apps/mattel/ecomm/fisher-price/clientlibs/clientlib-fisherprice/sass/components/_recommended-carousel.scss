@@ -1,0 +1,339 @@
+.recommended-products {
+    padding: mapping($recommendedProp, res-con, resconPad);
+    float: mapping($recommendedProp, res-con, resconFloat);
+    width: mapping($recommendedProp, res-con, resconWidth);
+    background-image: none;
+
+    .headerPart {
+        text-align: center;
+        padding-top: 40px;
+        @media #{$small-down} {
+            padding-top: 30px;
+        }
+        span {
+            display: inline-block;
+            color: #000000;
+            @include font-properties($letsBeGlyphs,$localFontInfo);
+            font-size: 32px;
+            letter-spacing: 0.73px;
+            line-height: 42px;
+            margin: 40px 0px 30px 0;
+
+            @media #{$medium-down} {
+                font-size: 22px;
+                margin: 30px 0px 20px 0;
+            }
+        }
+
+    }
+
+    .track-recommended {
+        margin-bottom: 5px;
+        height: 220px;
+        display: flex;
+        background-repeat: no-repeat;
+        background-size: contain;
+        line-height: 26px;
+
+        @media #{$small-down} {
+            height: 120px;
+        }
+    }
+
+    .item-desc {
+        position: mapping($recommendedProp, itemDesc, itemDescpos);
+        @include font-properties($maax,$localFontVerdana);
+        font-weight: 400;
+        font-size: 18px;
+        margin: mapping($recommendedProp, itemDesc, itemDesMargin);
+        line-height: mapping($recommendedProp, itemDesc, itemDesLH);
+        display: mapping($recommendedProp, itemDesc, itemDesDis);
+        -webkit-line-clamp: mapping($recommendedProp, itemDesc, lineCamp);
+        -webkit-box-orient: mapping($recommendedProp, itemDesc, orient);
+        overflow: mapping($recommendedProp, itemDesc, itemOverflow);
+        color: mapping($recommendedProp, itemDesc, color);
+
+        a {
+
+            &:link,
+            &:hover,
+            &:active,
+            &:visited,
+            &:hover {
+                color: #000000;
+                @include font-properties($maax,$localFontVerdana);
+                font-size: 18px;
+                font-weight: 400;
+                margin-bottom: 0;
+                display: block;
+                height: auto;
+
+                @media #{$medium-down} {
+                    @include font-properties($maax,$localFontVerdana);
+                    font-weight: 400;
+                    font-size: 16px;
+                }
+            }
+        }
+    }
+
+    .rating-count {
+        position: mapping($recommendedProp, itemDesc, startPos);
+        top: mapping($recommendedProp, itemDesc, starTop);
+        color: #6A6A6A;
+        @include font-properties($maaxLight,$localFontVerdana);
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 22px;
+    }
+
+    .star-rating {
+        @media #{$medium-down} {
+            margin-bottom: 0px;
+        }
+    }
+
+    .product-badges {
+        display: mapping($recommendedProp, badge, badgeDis);
+        margin: mapping($recommendedProp, badge, badgeMargin);
+        @include font-properties($maaxMedium,$localFontVerdana);
+        font-size: 14px;
+        font-weight: 500;
+        letter-spacing: mapping($recommendedProp, badge, badgeLS);
+        //height: mapping($recommendedProp, badge, badgeHeight);
+        text-transform: mapping($recommendedProp, badge, badgeTF);
+        color: mapping($recommendedProp, badge, badgeColor);
+        //background-color: mapping($recommendedProp, badge, badgeBG);
+        padding: mapping($recommendedProp, badge, badgePad);
+        line-height: mapping($recommendedProp, badge, badgeLH);
+        border-radius: mapping($recommendedProp, badge, badgeBR);
+        overflow: mapping($recommendedProp, badge, badgeOverflow);
+        align-items: mapping($recommendedProp, badge, alignItems);
+
+    }
+
+    .item-message {
+        .type {
+            display: mapping($recommendedProp, messageDes, mesDis);
+            font-size: mapping($recommendedProp, messageDes, mesFont);
+            font-weight: mapping($recommendedProp, messageDes, mesFontWeight);
+        }
+    }
+
+    .item-price {
+        @include font-properties($maaxMedium,$localFontVerdana);
+        font-size: 18px;
+        font-weight: 500;
+        line-height: mapping($recommendedProp, itemPrice, priceHeight);
+        color: mapping($recommendedProp, itemPrice, priceColor);
+        margin: 5px 0 20px 4px;
+
+        @media #{$medium-down} {
+            font-size: 16px;
+            line-height: 20px;
+        }
+    }
+
+    .owl-nav {
+        button.owl-next {
+            background-image: url($spriteImgPath);
+            background-repeat: no-repeat;
+            display: block;
+            width: 50px;
+            height: 50px;
+            background-position: -217px -171px;
+            top: 20%;
+            right: 0%;
+            position: absolute;
+
+            span {
+                display: none;
+            }
+
+            &:focus {
+                outline: none;
+            }
+
+            &:hover {
+                background: url($spriteImgPath);
+                background-repeat: no-repeat;
+                display: block;
+                width: 50px;
+                height: 50px;
+                background-position: -217px -171px;
+                top: 20%;
+                right: 0%;
+                position: absolute;
+            }
+        }
+
+        button.owl-prev {
+            background-image: url($spriteImgPath);
+            background-repeat: no-repeat;
+            display: block;
+            width: 50px;
+            height: 50px;
+            background-position: -167px -171px;
+            top: 20%;
+            left: 0%;
+            position: absolute;
+
+            span {
+                display: none;
+            }
+
+            &:focus {
+                outline: none;
+            }
+
+            &:hover {
+                background: url($spriteImgPath);
+                background-repeat: no-repeat;
+                display: block;
+                width: 50px;
+                height: 50px;
+                background-position: -167px -171px;
+                top: 20%;
+                left: 0%;
+                position: absolute;
+            }
+        }
+
+        .owl-next.disabled {
+            display: mapping($recommendedProp, arrowCon, arrDisplay);
+        }
+
+        .owl-prev.disabled {
+            display: mapping($recommendedProp, arrowCon, arrDisplay);
+        }
+    }
+
+    .owl-theme {
+        .owl-dots {
+            margin-top: 30px;
+            margin-bottom: 40px;
+
+            @media #{$medium-down} {
+                margin-top: 20px;
+                margin-bottom: 30px;
+            }
+
+            .owl-dot.active {
+                span {
+                    background: mapping($recommendedProp, dotProp, dotBG);
+                }
+            }
+
+            .owl-dot {
+                span {
+                    background: mapping($recommendedProp, dotProp, dotPropBG);
+                    width: mapping($recommendedProp, dotProp, dotWidth);
+                    height: mapping($recommendedProp, dotProp, dotHeight);
+                    margin: mapping($recommendedProp, dotProp, dotMargin);
+                }
+
+                &:focus,
+                &:active {
+                    outline: none;
+                }
+            }
+        }
+
+        .owl-nav {
+            margin-top: mapping($recommendedProp, dotProp, navMargin);
+
+            @media #{$medium-down} {
+                display: mapping($recommendedProp, navAB, navDisplay);
+            }
+
+            button {
+                @media #{$medium-down} {
+                    display: mapping($recommendedProp, navAB, navDisplay);
+                }
+            }
+
+        }
+    }
+
+    .owl-carousel {
+        -ms-touch-action: pan-x;
+        touch-action: pan-x;
+
+        @media #{$medium-down} {
+            touch-action: auto !important;
+        }
+
+        @media #{$small-down} {
+            touch-action: auto !important;
+        }
+
+        .owl-item {
+            img {
+                display: block;
+                width: auto;
+                height: 100%;
+                margin-right: 5px;
+            }
+        }
+    }
+}
+
+.fp-productdetail-page {
+    .recommended-products {
+        background-image: url('#{$imagePath}/PDP_desk_scallop1.png');
+        background-repeat: repeat-x;
+        display: block;
+        background-size: 100% 40px;
+
+        @media #{$medium-down} {
+            padding: mapping($recommendedProp, res-con, Mobpadding);
+            background-image: url('#{$imagePath}/PDP_mobile_scallop1.png');
+            background-repeat: repeat-x;
+            background-size: 100% 40px;
+        }
+
+        @media #{$small-down} {
+            padding: mapping($recommendedProp, res-con, Mobpadding);
+            background-image: url('#{$imagePath}/PDP_mobile_scallop1.png');
+            background-repeat: repeat-x;
+            background-size: 100% 30px;
+        }
+
+        
+
+        .headerPart {
+        padding-top: 40px;
+        @media #{$small-down} {
+            padding-top: 30px;
+        }
+            span {
+                margin: 32px 0 30px;				
+              
+            }
+        }
+    }
+
+    .recommended-products1 {
+        .recommended-products {
+            background-image:url('#{$imagePath}/PDP_scallop2.png');
+            padding-bottom: 47px;
+            background-position: bottom;
+
+            @media #{$medium-down} {
+                padding-bottom: 27px;
+                background-image: url('#{$imagePath}/PDP_mobile_scallop2.png');
+            }
+
+            .headerPart {
+                span {
+                    margin: 40px 0 30px;
+
+                    @media #{$medium-down} {
+                        margin: 30px 0px 20px 0;
+                    }
+                }
+            }
+        }
+    }
+
+}

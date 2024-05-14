@@ -1,0 +1,47 @@
+<sly data-sly-test="${wcmmode.edit}">${' Configure Leaving The Site Modal' @ i18n}</sly>
+<div class="modal interstitial-modal" id="interstitialModal" tabindex="-1" role="dialog" aria-labelledby="interstitialLeavingSiteModalLabel">
+	<div class="modal-dialog" role="document">
+        <sly data-sly-test="${properties.backOption == 'color'}">
+			<div class="modal-content"  style="background:${properties.backgroundColorModel @ context='styleString'};">
+		</sly>
+		<sly data-sly-test="${properties.backOption == 'image'}">
+			<div class="modal-content" style="background-image: url('${properties.fileReferenceBgImgmodel @ context='styleString'}');">
+		</sly>
+        <sly data-sly-test="${properties.backOption==null}">
+            <div class="modal-content">
+        </sly>
+                <div class="modal-header">
+                    <button type="button" class="close" data-tracking-leavingsite-id="interstitial section|${properties.alwaysEnglish}|Model Close|Interstitial Leaving The Site" data-dismiss="modal" aria-label="Close"> </button>
+                </div>
+                <div class="modal-body" id="interstitialLeavingSiteModalLabel">
+					<div class="modal-page-title" data-sly-test="${properties.modelTitle || properties.modelDescription || properties.modelSubTitle}">
+						<div class="main-title" data-sly-test="${properties.modelTitle}">
+							<h2>${properties.modelTitle @ context='html',i18n}</h2>
+						</div>
+                        <div class="sub-title" data-sly-test="${properties.modelSubTitle}">${properties.modelSubTitle  @ context='html',i18n}</div>
+						<div class="text-para" data-sly-test="${properties.modelDescription}">
+							<p>${properties.modelDescription @ context='html',i18n}</p>
+						</div>
+					</div>
+					<div class="modal-btn-wrap modal-footer-goback text-primary">
+						<a class="go-back-btn btn-cta-item" href="javascript:void(0)" data-tracking-leavingsite-id="interstitial section|${properties.alwaysEnglish}|Go Back|Interstitial Leaving The Site" >${properties.modelGoBackButton @ i18n}</a>
+						<sly data-sly-test="${properties.buttonsTargetUrl =='sameWindow'}">
+							<a class="continue-btn btn-cta-item"  data-interstitial-window="${properties.buttonsTargetUrl}" data-tracking-leavingsite-id="interstitial section|${properties.alwaysEnglish}|Continue|Interstitial Leaving The Site">${properties.modelContinueButton @ i18n}</a>
+                        </sly>
+                        <sly data-sly-test="${properties.buttonsTargetUrl =='tabWindow'}">
+                            <a class="continue-btn btn-cta-item"   data-interstitial-window="newTab" aria-label="Continue opens a new tab" data-tracking-leavingsite-id="interstitial section|${properties.alwaysEnglish}|Continue|Interstitial Leaving The Site">${properties.modelContinueButton @ i18n}<span class="sr-only"> ${'Opens in a new tab' @ i18n}</span></a>
+                        </sly>
+                        <sly data-sly-test="${properties.buttonsTargetUrl =='newWindow'}">
+                            <a  class="continue-btn btn-cta-item"  data-interstitial-window="${properties.buttonsTargetUrl}" data-tracking-leavingsite-id="interstitial section|${properties.alwaysEnglish}|Continue|Interstitial Leaving The Site" data-target="#selectLocationModal" aria-label="Continue opens a new window" >${properties.modelContinueButton @ i18n}<span class="sr-only"> ${'Opens in new window' @ i18n}</span></a>
+                        </sly>
+					</div>
+				</div>
+            </div>
+	</div>
+</div>
+<sly data-sly-use.isCloudConfg="${'/apps/mattel/global/clientlibs/global-utils/js/utils.js' @ uri=request.requestURI, text='nocloudconfigs'}" />
+<sly data-sly-test="${!isCloudConfg.disableClientLibs}">
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
+    <sly data-sly-call="${clientlib.js @ categories='global.interstitialLeavingSite'}" />
+</sly>
+</sly>

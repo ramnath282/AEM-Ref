@@ -1,0 +1,22 @@
+.backToTop{
+    a{
+        // background: $germanYellow url(#{$imagePath}/Back-To-Top.png);
+        background: url($spriteImagePath) no-repeat;
+        background-position: -154px 0;
+        @extend .font-knapford-b;
+        color: $black;
+        width:5.75rem;
+        height:5.75rem;
+        right:10px;
+        font-size:1.5rem;
+        padding: 0;
+        line-height: 5.9rem;
+        &:before{
+            content: none;
+        }
+        @media #{$small-down}{
+            @include transform(scale(.75));
+            right: 0;
+        }
+    }
+}

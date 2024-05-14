@@ -1,0 +1,559 @@
+.fpimage-text-component {
+    padding: mapping($imagetextcomponent, imagetextTitle, pad);
+    display: mapping($imagetextcomponent, imagetextTitle, display);
+    width: mapping($imagetextcomponent, imagetextTitle, width);
+    float: mapping($imagetextcomponent, imagetextTitle, float);
+    position: mapping($imagetextcomponent, imagetextTitle, position);
+    z-index: mapping($imagetextcomponent, imagetextTitle, zindex);
+
+    .title-block {
+        @extend .gallery-headings;
+        padding: mapping($imagetextcomponent, imagetextTitle, titlePadding);
+    }
+
+    &::after {
+        @if mapping($layout, waveBorder, isWaveBtmBdr)==true {
+            content: "";
+            background-image: mapping($layout, waveBorder, waveBdrBlue);
+            background-repeat: mapping($layout, waveBorder, waveBdrbgndRptX);
+            width: mapping($layout, waveBorder, waveBdrWidth);
+            height: mapping($layout, waveBorder, waveBdrHeight);
+            display: mapping($layout, waveBorder, waveBdrDisplay);
+            position: mapping($layout, waveBorder, waveBdrPosition);
+            background-size: mapping($layout, waveBorder, waveBdrsize);
+        }
+    }
+
+    .fptext-block {
+        padding-left: 0;
+
+        @media #{$medium-down} {
+            padding-top: mapping($imagetextcomponent, imagetextBlock, tabMobPadTop);
+        }
+
+        @media #{$medium-down} {
+            padding: 0 20px;
+        }
+
+        p {
+            @media #{$medium-down} {
+                margin-top: mapping($imagetextcomponent, imageTxtWidthVideo, marginTop);
+            }
+        }
+    }
+
+    &.with-video-player {
+        background-size: mapping($imagetextcomponent, imageWidthVideo, bgSize);
+        background-position: mapping($imagetextcomponent, imageWidthVideo, bgPosition);
+
+        @media #{$medium-down} {
+            background-position: mapping($imagetextcomponent, imageWidthVideo, tabbgPosition);
+        }
+
+        p {
+            @media #{$medium-down} {
+                margin: mapping($imagetextcomponent, imageWidthVideo, margin);
+
+            }
+        }
+
+    }
+}
+
+@if mapping($layout, main, isRescueHeroes)==true {
+    #real-heroes.fpimage-text-component {
+        .fpimage-text-container {
+            @media #{$medium-up} {
+                padding: 7.1428em 0 0 7.14286em;
+            }
+        }
+    }
+}
+
+.fpimage-text-container {
+    &.email-bg {
+        background: mapping($imagetextcomponent, emailBG, bgrndURL);
+        background-size: mapping($imagetextcomponent, emailBG, bgrndSize);
+        padding: mapping($imagetextcomponent, emailBG, padding);
+
+        .fptext-block {
+            margin: mapping($imagetextcomponent, emailTextBlock, emailTextMargin);
+            padding: mapping($imagetextcomponent, emailTextBlock, emailTextPadding);
+
+            @media #{$medium-down} {
+                padding: mapping($imagetextcomponent, emailTextBlock, emailTextPaddingMob);
+            }
+
+            h2 {
+                color: mapping($imagetextcomponent, emailH2, emailH2Color);
+                font-family: mapping($imagetextcomponent, emailH2, emailH2FontFamily);
+                font-size: mapping($imagetextcomponent, emailH2, emailH2FontSize);
+                font-weight: mapping($imagetextcomponent, emailH2, emailH2FontWeight);
+                line-height: mapping($imagetextcomponent, emailH2, emailH2LineHeight);
+                padding: mapping($imagetextcomponent, emailH2, emailH2Padding);
+            }
+
+            .input-group {
+                width: mapping($imagetextcomponent, emailInput, emailInputGrpwidth);
+            }
+
+            input[type=text] {
+                padding: mapping($imagetextcomponent, emailInput, emailInputPadding);
+                border-radius: mapping($imagetextcomponent, emailInput, emailInputBorderRadius);
+                border: mapping($imagetextcomponent, emailInput, emailInputBorder);
+                line-height: mapping($imagetextcomponent, emailInput, emailInputLineHeight);
+                width: mapping($imagetextcomponent, emailInput, emailInputWidth);
+            }
+
+            input::-webkit-input-placeholder {
+                font-size: mapping($imagetextcomponent, emailInputPlaceHolder, emailInputPlaceHolderFontSize);
+            }
+
+            .theme-btn {
+                padding: mapping($imagetextcomponent, emailThemeBtn, emailThemeBtnPadding);
+                border-radius: mapping($imagetextcomponent, emailThemeBtn, emailThemeBtnBorderRadius);
+                background: mapping($imagetextcomponent, emailThemeBtn, emailThemeBtnBackground);
+                color: mapping($imagetextcomponent, emailThemeBtn, emailThemeBtnColor);
+                display: mapping($imagetextcomponent, emailThemeBtn, emailThemeBtnDisplay);
+                font-size: mapping($imagetextcomponent, emailThemeBtn, emailThemeBtnFontSize);
+                /*font-weight: mapping($imagetextcomponent,emailThemeBtn,emailThemeBtnFontWeight);*/
+                font-weight: mapping($imagetextcomponent, emailThemeBtn, emailThemeBtnFontWeightB);
+                margin-left: mapping($imagetextcomponent, emailThemeBtn, emailThemeBtnMarginLeft);
+                width: mapping($imagetextcomponent, emailThemeBtn, emailThemeBtnWidth);
+                float: mapping($imagetextcomponent, emailThemeBtn, emailThemeBtnFloat);
+                z-index: mapping($imagetextcomponent, emailThemeBtn, emailThemeBtnZindex);
+                position: mapping($imagetextcomponent, emailThemeBtn, emailThemeBtnposition);
+            }
+
+            p {
+                color: mapping($imagetextcomponent, emailP, emailPColor);
+                font-size: mapping($imagetextcomponent, emailP, emailPFontSize);
+                margin-top: mapping($imagetextcomponent, emailP, emailPMarginTop);
+            }
+        }
+    }
+
+    @extend .container;
+    margin: mapping($imagetextcomponent, imagetextContainer, margin);
+    padding: mapping($imagetextcomponent, imagetextContainer, pad);
+
+    @media #{$medium-only} {
+        padding: mapping($imagetextcomponent, imagetextContainer, tabPad);
+    }
+
+    @media #{$small-down} {
+        padding: mapping($imagetextcomponent, imagetextContainer, mobPad);
+    }
+
+    width: mapping($imagetextcomponent, imagetextContainer, width);
+    background: mapping($imagetextcomponent, imagetextContainer, bgndDetail);
+
+    .fpimage-block {
+        @extend .col-xs-12;
+        @extend .col-sm-12;
+        @extend .col-md-#{$imgColCount};
+
+        @if mapping($layout, main, isRescueHeroes)==true {
+            padding: mapping($imagetextcomponent, imageBlock, pad);
+        }
+
+        img {
+            width: if(mapping($imagetextcomponent, imageBlockImg, width), mapping($imagetextcomponent, imageBlockImg, width), auto);
+
+            @media #{$medium-down} {
+                width: mapping($imagetextcomponent, imageBlockImg, widthTab);
+
+                @if mapping($imagetextcomponent, imageBlockImg, isImageCenterDevice)==true {
+                    display: block;
+                    margin: auto;
+                }
+
+                @media #{$small-down} {
+                    width: mapping($imagetextcomponent, imageBlockImg, widthMob);
+                }
+            }
+        }
+    }
+
+    .single-video-player {
+        z-index: 1;
+        position: relative;
+    }
+
+
+}
+
+.title-block {
+    @extend .gallery-headings;
+}
+
+.fptext-block {
+    @extend .col-xs-12;
+    @extend .col-sm-12;
+    @extend .col-md-#{$txtColCount};
+
+    @media #{$medium-down} {
+        padding: mapping($imagetextcomponent, imagetextblock, tabPad);
+    }
+
+    @media #{$small-down} {
+        padding: mapping($imagetextcomponent, imagetextblock, mobPad);
+    }
+
+    h2 {
+        @if mapping($layout, main, isRescueHeroes)==true {
+            font-family: mapping($imagetextcomponent, imagetextblockH2, fntFamily);
+            line-height: mapping($imagetextcomponent, imagetextblockH2, lineHeight);
+            padding: mapping($imagetextcomponent, imagetextblockH2, padDesk);
+        }
+
+        @include font-properties($maaxMedium,$localFontVerdana);
+        font-weight: mapping($imagetextcomponent, imagetextblockH2, fntweight);
+        letter-spacing: mapping($imagetextcomponent, imagetextblockH2, letspacing);
+        line-height: mapping($imagetextcomponent, imagetextblockH2, lineheight);
+        font-size: mapping($imagetextcomponent, imagetextblockH2, fntSize);
+        color: mapping($imagetextcomponent, imagetextblockH2, txtColor);
+
+        margin: mapping($imagetextcomponent, imagetextblockH2, margin);
+
+        small {
+            color: mapping($imagetextcomponent, imagetextblockH2, smalltxtColor);
+        }
+
+        @media #{$medium-down} {
+            font-size: mapping($imagetextcomponent, imagetextblockH2, tabFontSize);
+
+            @if mapping($layout, main, isRescueHeroes)==true {
+                padding: mapping($imagetextcomponent, imagetextblockH2, padTab);
+            }
+        }
+
+        @media #{$small-down} {
+            font-size: 18px;
+            line-height: 36px;
+
+            @if mapping($layout, main, isRescueHeroes)==true {
+                padding: mapping($imagetextcomponent, imagetextblockH2, padMob);
+            }
+        }
+    }
+
+    p {
+        @include font-properties($maax,$localFontVerdana);
+        font-size: mapping($imagetextcomponent, imagetextblockP, fntSize);
+        color: mapping($imagetextcomponent, imagetextblockP, txtColor);
+        line-height: mapping($imagetextcomponent, imagetextblockP, lineHeight);
+
+        @if mapping($layout, main, isFisherPriceNav)==true {
+            margin: mapping($imagetextcomponent, imagetextblockP, SignUpmargin);
+        }
+
+        @if mapping($layout, main, isRescueHeroes)==true {
+            padding: mapping($imagetextcomponent, imagetextblockP, padDesk);
+            margin: mapping($imagetextcomponent, imagetextblockP, margin);
+        }
+
+        a {
+            @include font-properties($maax,$localFontVerdana);
+            font-weight: mapping($imagetextcomponent, imagetextblockLink, fntWeight);
+            text-decoration: mapping($imagetextcomponent, imagetextblockLink, txtDecoration);
+            color: mapping($imagetextcomponent, imagetextblockLink, txtColor);
+
+            &:hover {
+                color: #E51C06;
+                text-decoration: none;
+                border-bottom: 3px solid #E51C06;
+            }
+        }
+
+        @media #{$medium-down} {
+            font-size: 14px;
+
+            @if mapping($layout, main, isRescueHeroes)==true {
+                padding: mapping($imagetextcomponent, imagetextblockP, padTab);
+            }
+        }
+
+        @media #{$small-down} {
+            font-size: mapping($imagetextcomponent, imagetextblockP, mobFontSize);
+
+            @if mapping($layout, main, isRescueHeroes)==true {
+                padding: mapping($imagetextcomponent, imagetextblockP, padMob);
+            }
+        }
+
+        span {
+            font-weight: mapping($imagetextcomponent, imagetextblockSpan, fntWeight);
+        }
+
+        &:last-child {
+            padding: 0;
+        }
+    }
+
+}
+
+/*clarify*/
+.cta-btn {
+    @if mapping($layout, main, isRescueHeroes)==true {
+        margin: mapping($imagetextcomponent, imagetextCta, ctaMargin);
+
+        @media #{$medium-down} {
+            margin: mapping($imagetextcomponent, imagetextCta, ctaMarginMob);
+        }
+    }
+
+    &.align-right {
+        text-align: mapping($imagetextcomponent, imagetextCta, txtAlignRight);
+    }
+
+    &.align-left {
+        text-align: mapping($imagetextcomponent, imagetextCta, txtAlignLeft);
+    }
+
+    &.align-center {
+        text-align: mapping($imagetextcomponent, imagetextCta, txtAlignCenter);
+    }
+
+    @media #{$medium-down} {
+        text-align: mapping($imagetextcomponent, imagetextCta, tabtxtAlign);
+    }
+
+    .fp-email-btn {
+        min-width: mapping($imagetextcomponent, fpemailBtn, minWidth);
+        background: mapping($imagetextcomponent, fpemailBtn, BgCol);
+        padding: mapping($imagetextcomponent, fpemailBtn, pad);
+        border-radius: mapping($imagetextcomponent, fpemailBtn, borderRadius) !important;
+        @include font-properties($maaxMedium,$localFontVerdana);
+        font-size: mapping($imagetextcomponent, fpemailBtn, fontSize);
+        font-weight: mapping($imagetextcomponent, fpemailBtn, fontWeight);
+        color: mapping($imagetextcomponent, fpemailBtn, fontColor);
+        letter-spacing: mapping($imagetextcomponent, fpemailBtn, letterSpacing);
+        line-height: mapping($imagetextcomponent, fpemailBtn, lineHeight);
+
+        @media #{$small-down} {
+            font-size: mapping($imagetextcomponent, fpemailBtn, fontSize_sm);
+        }
+
+        @media #{$medium-down} {
+            font-size: 16px;
+        }
+
+        &:hover {
+            background: mapping($imagetextcomponent, fpemailBtn, BgColHv) !important;
+        }
+    }
+
+}
+
+.fpimage-text-container {
+    @if mapping($layout, main, isWhyPlay)==true {
+        @media #{$medium-down} {
+            .fpimage-block {
+                img {
+                    width: 100%;
+                }
+            }
+        }
+
+        @media #{$medium-up} {
+            display: flex !important;
+            width: 100%;
+            padding: 0;
+
+            .fpimage-block {
+                width: 50%;
+                padding: 0;
+                flex: 0 0 50%;
+                max-width: 100%;
+
+                img {
+                    width: 100%;
+                }
+            }
+
+            .fptext-block,
+            .text-component {
+                padding: 45px;
+                display: flex;
+                flex: 0 0 50%;
+                max-width: 100%;
+                flex-direction: column;
+                -ms-flex-item-align: center;
+                align-self: center;
+            }
+        }
+
+        @media #{$medium-down} {
+            .fpimage-block {
+                padding-left: 0;
+                padding-right: 0;
+            }
+
+            .fptext-block {
+                .cta-btn {
+                    text-align: left;
+                }
+            }
+
+        }
+    }
+}
+
+
+
+.text-component {
+    @extend .fptext-block;
+    @extend .col-md-12;
+    margin: mapping($imagetextcomponent, textcomp, margin);
+}
+
+@if mapping($imagetextcomponent, imagetextContainer, imgOrderChangeDevices)==true {
+    .imageAndText {
+        p:empty {
+            display: none;
+        }
+
+        @media #{$medium-down} {
+            .fpimage-text-container {
+                display: table;
+                padding-bottom: 0;
+
+                .fpimage-block {
+                    float: none !important;
+                    display: table-footer-group;
+                }
+
+                .fptext-block {
+                    margin-bottom: 2em;
+                }
+            }
+
+            &+.imageAndText {
+                .fpimage-text-container {
+                    display: block;
+                    padding-bottom: em(55);
+
+                    .fpimage-block {
+                        float: none !important;
+                        display: block;
+                        margin-bottom: 2em;
+                    }
+
+                    .fptext-block {
+                        margin-bottom: 0;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@if mapping($layout, main, isFisherPrice)==true {
+    .fpimage-text-container {
+        .fpimage-block {
+            text-align: right;
+            width: 35%;
+
+            @media #{$medium-down} {
+                text-align: left;
+            }
+
+            img {
+                //max-width:100%;
+                max-width: em(108.89);
+                width: 10.28571em;
+                height: auto;
+                margin: 0.5em;
+                display: inline-block;
+
+                @media #{$medium-down} {
+                    width: em(89);
+                    margin: 0em;
+                }
+            }
+        }
+    }
+
+    .fptext-block {
+        .cta-btn {
+            @media #{$medium-down} {
+                text-align: left;
+            }
+        }
+    }
+}
+
+// only for Jurassic 
+@if mapping($imagetextcomponent, textComponent, isJurassic)==true {
+    .title {
+        .play-page-title {
+            background-color: mapping($imagetextcomponent, textComponent, bgColor);
+            padding: mapping($imagetextcomponent, textComponent, padd);
+
+            >div {
+                padding: mapping($imagetextcomponent, textComponent, divPadding);
+
+                p {
+                    font-family: mapping($imagetextcomponent, textComponent, fntFamily);
+                    font-size: mapping($imagetextcomponent, textComponent, fontSize);
+                    color: mapping($imagetextcomponent, textComponent, color);
+                    text-align: mapping($imagetextcomponent, textComponent, textAlign);
+                    margin: mapping($imagetextcomponent, textComponent, margin);
+
+                }
+            }
+        }
+    }
+
+}
+
+// only for FisherPrice Site 
+@if mapping($imagetextcomponent, textComponent, isFisherpricenav)==true {
+    .title {
+        .play-page-title {
+            background-color: mapping($imagetextcomponent, textComponent, bgColor);
+            padding: mapping($imagetextcomponent, textComponent, padd);
+            border-top: mapping($imagetextcomponent, textComponent, borderTop);
+            border-bottom: mapping($imagetextcomponent, textComponent, borderBottom);
+
+            >div {
+                padding: mapping($imagetextcomponent, textComponent, divPadding);
+
+                p {
+                    @include font-properties($maax,$localFontVerdana);
+                    font-size: mapping($imagetextcomponent, textComponent, fontSize);
+                    color: mapping($imagetextcomponent, textComponent, color);
+                    text-align: mapping($imagetextcomponent, textComponent, textAlign);
+                    margin: mapping($imagetextcomponent, textComponent, margin);
+                    line-height: mapping($imagetextcomponent, textComponent, lineHeight);
+                }
+            }
+        }
+    }
+
+}
+
+.fp-productdetail-page {
+    .footer-wrapper {
+        .fpimage-text-container {
+            border-top: 1px solid #bfbfbf !important;
+            padding-top: 27px;
+
+            @media #{$medium-down} {
+                padding-top: 22px;
+            }
+        }
+    }
+}
+
+.footer-wrapper {
+    .fpimage-text-container {
+        padding-top: 27px;
+    }
+}
+
+/*BaZarVoice Star rating css*/
+.bv-cv2-cleanslate .bv-submission .bv-submission-star-rating-control.bv-heat-map-off .bv-submission-star-rating-on .bv-rating-link.bv-focusable {
+    background-color: #0078c8 !important;
+}

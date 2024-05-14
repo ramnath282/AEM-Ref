@@ -1,0 +1,16 @@
+<template data-sly-template.socialShare="${@ title,description,mediaUrl,pageUrl,componentName,ulId,ulClasses}">
+    <sly data-sly-use.socialShareTemplate="com.mattel.ag.explore.core.model.SocialShareTemplateModel">
+        <ul id="${ulId}" class="social-icons ${ulClasses}">
+            <li>
+                <a class="facebook track-social-share social-media-action track-social-media-action" data-tracking-social = "facebook" data-link-attr="Facebook" data-componentName="${componentName}" aria-label="facebook opens a new window" data-url="${pageUrl @ extension='html'}" data-title="${title}" data-description="${description}" data-media="${mediaUrl}"></a>
+                </li>
+                <li>
+                    <a class="twitter track-social-share social-media-action track-social-media-action" data-tracking-social = "twitter" data-link-attr="Twitter" data-componentName="${componentName}" aria-label="twitter opens a new window" data-url="${pageUrl @ extension='html'}" data-title="${title}" data-description="${description}" data-media="${mediaUrl}" ></a>
+            </li>
+            <li>
+                <a class="pinterest track-social-share social-media-action track-social-media-action" data-tracking-social = "pinterest" data-link-attr="Pinterest" data-componentName="${componentName}" aria-label="pinterest opens a new window" data-url="${pageUrl @ extension='html'}" data-title="${title}" data-description="${description}" data-media="${mediaUrl}" > </a>
+                </li>
+            </ul>
+</sly>
+
+</template>

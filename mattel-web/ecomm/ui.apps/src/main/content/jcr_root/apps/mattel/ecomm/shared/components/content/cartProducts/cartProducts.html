@@ -1,0 +1,33 @@
+<sly data-sly-test="${wcmmode.edit}">${'AG Cart Products Component' @i18n}</sly>
+<div class="right-margin" data-sly-test="${properties.inYourBagTitle || properties.seeAllText || properties.seeAllLink}">
+	<div class="recently_viewed-aemcomp">
+		<div class="heading_text">
+			<p>${properties.inYourBagTitle} (<span>0</span>)
+				<sly data-sly-test.linkVar="${properties.seeAllLink}" data-sly-use.linkUtil="${'com.mattel.ecomm.core.utils.EcomUtil' @ url= linkVar}">
+					<a data-sly-test="${properties.seeAllLink && properties.seeAllText}" href="${linkUtil.pageUrl}">${properties.seeAllText} </a>
+				</sly>
+			</p>
+		</div>
+		<section>
+			<a class="mini-carousel-slider-prev"></a>
+			<ul id="agMiniCarouselUl"></ul>
+			<a class="mini-carousel-slider-next"></a>
+		</section>
+	</div>
+</div>
+<script type="text/x-handlebars-template" id="agMiniCarouselTmpl">
+	{{#each this}}
+        <li>
+            <a href="/shop/p/{{url}}">
+                {{#if imageLink}}
+                	<img src="{{imageLink}}" alt="{{optionalName}}">
+                {{else}}
+                	<img src=${properties.defaultImagePath @ context='html'} alt="{{optionalName}}">
+                {{/if}}
+            </a>
+        </li>
+	{{/each}}
+</script>
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
+	<sly data-sly-call="${clientlib.js @ categories='ecomm.cartProducts'}" />
+</sly>

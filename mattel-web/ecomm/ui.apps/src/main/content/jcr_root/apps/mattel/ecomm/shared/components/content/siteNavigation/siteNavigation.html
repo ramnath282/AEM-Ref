@@ -1,0 +1,45 @@
+<sly data-sly-test="${wcmmode.edit}">${'Navigation Component' @i18n}</sly>
+    <sly data-sly-use.myNav="com.mattel.ag.retail.core.model.SiteNavigationModel">
+    <div class="pull-right">
+     <!-- location droplink -->
+     	<sly data-sly-test="${properties.enableStoreLocation=='true'}">
+        <button class="location-dropdown analytics-track-store-locator" type="submit" name="action" data-toggle="modal" data-target="#selectLocationModal">Select a location
+			<span class="sr-only"> opens a pop up</span>
+        </button>
+        </sly>
+        <!-- hamburger button -->
+        <button class="hamburger" data-toggle="collapse" aria-label="menu" aria-expanded="false" aria-controls="primary-nav">
+        </button>
+
+        <!--main navigation starts -->
+        <nav class="primary-nav" id="primary-nav" role="navigation" aria-label="primary">
+            <ul>
+                <sly data-sly-list.head="${myNav.navItemsList}">
+                    <sly data-sly-test="${head.url != null }">
+                        <sly data-sly-test="${head.targetUrl =='sameWindow'}">
+                            <li>
+                                <a class="track-nav" data-track-nav="Navigation" href="${head.url}">${head.label @i18n}</a></li>
+                        </sly>
+                        <sly data-sly-test="${head.targetUrl =='tabWindow'}">
+                            <li>
+                                <a class="track-nav" data-track-nav="Navigation" href="${head.url}" target="_blank">${head.label @i18n}<span class="sr-only">${'opens a new window' @i18n}</span></a></li>
+                        </sly>
+                        <sly data-sly-test="${head.targetUrl =='newWindow'}">
+                            <li>
+                                <a class="track-nav" data-track-nav="Navigation" data-url="${head.url}" onclick="window.open(this.dataset.url,'AG','width=500, height=500');">${head.label @i18n}</a></li>
+                        </sly>
+                    </sly>
+                </sly>
+                <sly data-sly-test="${properties.enableStoreLocation=='true'}">
+                <li class="visible-xs select-location-menu"><a href="#">${'Select a location' @i18n}</a></li>
+                </sly>
+
+            </ul>
+        </nav>
+        <sly data-sly-test="${properties.enableSearch=='true'}">
+            <sly data-sly-include="search.html"></sly>
+        </sly>
+    </div>
+    </sly>
+</sly>
+<script type="text/javascript" src="//product.reflektion.com/rfk/js/11185-187695672/init.js" async="true"></script>

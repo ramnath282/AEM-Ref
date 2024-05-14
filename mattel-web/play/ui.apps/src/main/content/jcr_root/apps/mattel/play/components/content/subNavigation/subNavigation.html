@@ -1,0 +1,42 @@
+<sly data-sly-test="${wcmmode.edit}">${'Configure Sub-Navigation Component' @ i18n}</sly>
+<sly data-sly-test="${(properties.retBgPattern == null && properties.subBgColor == null )||(properties.subBackOption=='image'&& properties.retBgPattern ==null)||(properties.subBackOption=='color'&& properties.subBgColor ==null)}">
+    <div class="cda-banner enable-carousel-chartiles fpSubHead" data-slide-show="7" data-slide-scroll="1" data-dots="false" data-autoplay="false" data-arrows="true">
+</sly>
+<sly data-sly-test="${properties.subBackOption=='color' && properties.subBgColor !=null}">
+    <div class="cda-banner enable-carousel-chartiles fpSubHead" data-slide-show="7" data-slide-scroll="1" data-dots="false" data-autoplay="false" data-arrows="true" style="background:${properties.subBgColor @ context='styleString'};">
+</sly>
+<sly data-sly-test="${properties.subBackOption=='image'&& properties.retBgPattern !=null}">
+    <div class="cda-banner enable-carousel-chartiles fpSubHead" data-slide-show="7" data-slide-scroll="1" data-dots="false" data-autoplay="false" data-arrows="true" style="background-image: url('${properties.retBgPattern @ context='styleString'}');background-size: cover;">
+</sly>
+<div class="crm-container">
+    <ul class="nav-carousel-slides char-tiles" data-sly-use.subBrandDetail="com.mattel.play.core.model.SubNavigation">
+        <sly data-sly-list.subNavList="${subBrandDetail.subBrandsList}">
+            <li>
+                <sly data-sly-test="${subNavList.brandTarget =='sameWindow'}">
+                    <a href="${subNavList.subBrandUrl}" data-tracking-id="Brand Header Section|${subNavList.alwaysEnglish}|${subNavList.brandLogoAlt @i18n}|Brand Header">
+                        <img src="${subNavList.brandLogoD}" alt="${subNavList.brandLogoAlt @i18n}" data-src="${subNavList.brandLogoD}" data-hover="${subNavList.brandHoverD}" data-mobile-src="${subNavList.brandLogoM}" data-mobile-active-src="${subNavList.brandActiveM}" class="image-container" />
+                    </a>
+                </sly>
+                <sly data-sly-test="${subNavList.brandTarget =='tabWindow'}">
+                    <a href="${subNavList.subBrandUrl}" target="_blank" data-tracking-id="Brand Header Section|${subNavList.alwaysEnglish}|${subNavList.brandLogoAlt @i18n}|Brand Header">
+                        <img src="${subNavList.brandLogoD}" alt="${subNavList.brandLogoAlt @i18n}" data-src="${subNavList.brandLogoD}" data-hover="${subNavList.brandHoverD}" data-mobile-src="${subNavList.brandLogoM}" data-mobile-active-src="${subNavList.brandActiveM}" class="image-container" />
+                    	<span class="sr-only"> ${'Opens in a new tab' @ i18n}</span>
+                    </a>
+                </sly>
+                <sly data-sly-test="${subNavList.brandTarget =='newWindow'}">
+                    <a data-url="${subNavList.subBrandUrl}" onclick="window.open(this.dataset.url,'PLAY','width=500, height=500');" data-tracking-id="Brand Header Section|${subNavList.alwaysEnglish}|${subNavList.brandLogoAlt @i18n}|Brand Header">
+                        <img src="${subNavList.brandLogoD}" alt="${subNavList.brandLogoAlt @i18n}" data-src="${subNavList.brandLogoD}" data-hover="${subNavList.brandHoverD}" data-mobile-src="${subNavList.brandLogoM}" data-mobile-active-src="${subNavList.brandActiveM}" class="image-container" />
+                        <span class="sr-only"> ${'Opens in new window' @ i18n}</span>
+                    </a>
+                </sly>
+                <sly data-sly-test="${subNavList.brandTarget =='interstitial'}">
+                    <a href="javascript:void(0);" data-tracking-id="Brand Header Section|${subNavList.alwaysEnglish}|${subNavList.brandLogoAlt @i18n}|Brand Header" data-toggle="modal" data-url="${subNavList.subBrandUrl}" data-target="#interstitialModal">
+                        <img src="${subNavList.brandLogoD}" alt="${subNavList.brandLogoAlt @i18n}" data-src="${subNavList.brandLogoD}" data-hover="${subNavList.brandHoverD}" data-mobile-src="${subNavList.brandLogoM}" data-mobile-active-src="${subNavList.brandActiveM}" class="image-container" />
+                    	<span class="sr-only"> ${'Opens pop up' @ i18n}</span>
+                    </a>
+                </sly>
+            </li>
+        </sly>
+    </ul>
+</div>
+</div>

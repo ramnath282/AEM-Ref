@@ -1,0 +1,47 @@
+<sly data-sly-use.cardModel="com.mattel.global.core.model.v2.CardModel" />
+<sly data-sly-use.cta="com.mattel.global.master.core.model.CTATab" />
+<sly data-sly-test="${wcmmode.edit}">${'Configure Card' @i18n}</sly>
+<sly data-sly-use.lib="mattel/global/components/content/dynamicMedia/v1/dynamicMedia/imageblock.html" />
+<div class="card-component ${properties.entrCompClickable ? 'link-element' : ''}" data-sly-attribute.data-type="${properties.entrCompClickable ? 'click' : ''}" data-sly-attribute.data-section="${!properties.entrCompClickable ? '' : cardModel.sectionTitleAnalytics}" data-sly-attribute.data-component="${properties.entrCompClickable ? 'card' : ''}" data-sly-attribute.data-cta="${properties.entrCompClickable ? cardModel.ctaTrackingText : ''}" role="link"  tab index="0" data-element-link="${cardModel.url}" data-open-window="${cardModel.cardLinkOption}">
+    <div class="image-container" data-hover-enabled="${properties.isHoverImageEnabled}" data-custom-enabled="${properties.isCustomMobileEnabled}" data-custom-tablet-enabled="${properties.isCustomTabletEnabled}">
+        <div data-sly-test="${properties.image}" class="mainImage">
+            <div data-sly-call="${lib.imageVideoSection @ imageDetail='image'}" data-sly-unwrap></div>
+        </div>
+        <div data-sly-test="${properties.isHoverImageEnabled && properties.hoverImage}" class="hoverImage hide">
+            <div data-sly-call="${lib.imageVideoSection @ imageDetail='hoverImage'}" data-sly-unwrap></div>
+        </div>
+        <div data-sly-test="${properties.isCustomMobileEnabled && properties.mobileImage}" class="mobileImage hide">
+            <div data-sly-call="${lib.imageVideoSection @ imageDetail='mobileImage'}" data-sly-unwrap></div>
+        </div>
+        <div data-sly-test="${properties.isHoverImageEnabled && properties.isCustomMobileEnabled && properties.mobileHoverImage}" class="mobileHoverImage hide">
+            <div data-sly-call="${lib.imageVideoSection @ imageDetail='mobileHoverImage'}" data-sly-unwrap></div>
+        </div>
+        <div data-sly-test="${properties.isCustomTabletEnabled && properties.tabletImage}" class="tabletImage hide">
+            <div data-sly-call="${lib.imageVideoSection @ imageDetail='tabletImage'}" data-sly-unwrap></div>
+        </div>
+        <div data-sly-test="${properties.isHoverImageEnabled && properties.isCustomTabletEnabled && properties.tabletHoverImage}" class="tabletHoverImage hide">
+            <div data-sly-call="${lib.imageVideoSection @ imageDetail='tabletHoverImage'}" data-sly-unwrap></div>
+        </div>
+    </div>
+    <div class="text-container" data-sly-test="${cardModel.strippedTitle || cardModel.strippedSubTitle || properties.description || cta.items && cta.items.size > 0}">
+        <div class="content" data-sly-test="${cardModel.strippedTitle || cardModel.strippedSubTitle || properties.description}">
+            <div class="main-title" data-sly-test="${cardModel.strippedTitle}">
+                ${cardModel.strippedTitle @ context='html',i18n}
+            </div>
+            <div class="sub-title" data-sly-test="${cardModel.strippedSubTitle}">
+                ${cardModel.strippedSubTitle @ context='html',i18n}
+            </div>
+            <div class="text-para" data-sly-test="${properties.description}">
+                ${properties.description @ context='html',i18n}
+            </div>
+        </div>
+        <sly data-sly-use.template="cta-template.html" data-sly-call="${template.ctaDetails @cta = cta}"/>
+    </div>
+    <sly data-sly-resource="${resource.path @ resourceType='wcm/foundation/components/parsys/newpar', appendPath='/*', decorationTagName='div', cssClassName=''}" data-sly-test="${(wcmmode.edit || wcmmode.preview) && cta.items.size < 1}"></sly>
+
+</div>
+
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
+    <sly data-sly-call="${clientlib.js @ categories='global.clickableComponent'}" />
+    <sly data-sly-call="${clientlib.js @ categories='global.card'}" />
+</sly>

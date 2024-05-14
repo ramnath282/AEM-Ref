@@ -1,0 +1,16 @@
+<div data-sly-test="${wcmmode.edit}" data-sly-unwrap>${'Configure Image and Text with CTA' @ i18n}</div>
+<div data-sly-test.sectionUrl="${properties.imageTextLink}" data-sly-use.info="${'com.mattel.ecomm.core.utils.EcomUtil' @ url= sectionUrl}" data-sly-unwrap>
+    <div data-sly-test="${properties.imageTextUrlOption == 'samewindow' || properties.imageTextUrlOption == 'newtab'}" data-sly-unwrap>
+        <a class="banner-link" href="${info.pageUrl}" target="${properties.imageTextUrlOption == 'newtab'?'_blank':'_self'}">
+            <div data-sly-include="imageTextInfo.html" data-sly-unwrap />
+        </a>
+    </div>
+    <div data-sly-test="${properties.imageTextUrlOption == 'newwindow'}" data-sly-unwrap>
+        <a class="banner-link" href="${info.pageUrl}" data-url="${info.pageUrl}" onclick="window.open(this.dataset.url,'AG','width=500, height=500');" data-sly-unwrap>
+            <div data-sly-include="imageTextInfo.html" data-sly-unwrap />
+        </a>
+    </div>
+</div>
+<div data-sly-test="${!sectionUrl}" data-sly-unwrap>
+    <div data-sly-include="imageTextInfo.html" data-sly-unwrap/>
+</div>

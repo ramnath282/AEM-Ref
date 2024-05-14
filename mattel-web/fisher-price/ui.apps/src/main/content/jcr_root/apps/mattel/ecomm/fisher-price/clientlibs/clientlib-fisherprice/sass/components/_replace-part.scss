@@ -1,0 +1,70 @@
+.replace-part {
+    background-color: #F8F6F5;
+    width: mapping($replacePart, replaceProp, replacePropwidth);
+    float: mapping($replacePart, replaceProp, replacePropFloat);
+    padding: mapping($replacePart, replaceProp, replacePropPad);
+
+    @media #{$medium-down} {
+        padding: mapping($replacePart, replaceProp, mobilePad);
+        //margin: mapping($replacePart, replaceProp, mobreplacePropMT);
+    }
+
+    span {
+        color: mapping($replacePart, replaceSpan, replaceSpanColor);
+        display: mapping($replacePart, replaceSpan, replaceSpanDisplay);
+        @include font-properties($maaxMedium,$localFontVerdana);
+        font-weight: 500;
+        font-size: mapping($replacePart, replaceSpan, replaceSpanFontSize);
+        line-height: mapping($replacePart, replaceSpan, replaceSpanLine);
+        margin: mapping($replacePart, replaceSpan, replaceSpanMarBot);
+
+        @media #{$medium-down} {
+            margin-top: 15px;
+            margin-bottom: 18px;
+            font-size: 18px;
+            line-height: 23px;
+        }
+    }
+
+    .button-part {
+        display: mapping($replacePart, button, disp);
+        color: mapping($replacePart, button, buttonColor);
+        @include font-properties($maaxMedium,$localFontVerdana);
+        letter-spacing: mapping($replacePart, button, buttonSpacing);
+        background-color: mapping($replacePart, button, buttonBG);
+        line-height: mapping($replacePart, button, buttonLine);
+        padding: mapping($replacePart, button, buttonPad);
+        min-width: mapping($replacePart, button, minWidth);
+        border: mapping($replacePart, button, border);
+        font-size: mapping($replacePart, button, fontSize);
+        font-weight: mapping($replacePart, button, fontWeight);
+        position: relative;
+        margin-bottom: mapping($replacePart, replaceProp, replacePropMT);
+
+        @media #{$medium-down} {
+            margin-bottom: 20px;
+            padding: mapping($replacePart, button, mobButtonPad);
+        }
+
+        &:before {
+            content: '';
+            background-image: url($spriteImgPath);
+            background-repeat: no-repeat;
+            display: inline-block;
+            width: 28px;
+            height: 24px;
+            background-position: -76px -24px;
+            position: absolute;
+            left: 27px;
+
+            @media #{$medium-down} {
+                left: 12px;
+            }
+        }
+
+        .fa-wrench {
+            display: none;
+        }
+    }
+
+}

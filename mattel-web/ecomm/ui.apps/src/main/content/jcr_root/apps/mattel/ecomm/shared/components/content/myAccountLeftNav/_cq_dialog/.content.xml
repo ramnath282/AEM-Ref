@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Configure My Account Summary Left Nav"
+    sling:resourceType="cq/gui/components/authoring/dialog"
+    helpPath="https://www.adobe.com/go/aem_cmp_text_v2">
+    <content
+        granite:class="play-cmp-list--editor"
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <generalConfig
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="General Section"
+                        sling:resourceType="granite/ui/components/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <title
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Please enter the title"
+                                fieldLabel="Title:-"
+                                name="./title"/>
+                            <generalLabel
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Please enter the Label for General"
+                                fieldLabel="Label For General:-"
+                                name="./generalLabel"/>
+                            <accountDetails
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                class="full-width"
+                                composite="{Boolean}true"
+                                fieldLabel="Account Detail Pages"
+                                id="account-detail-multi">
+                                <field
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/fieldset"
+                                    acs-commons-nested="JSON_STORE"
+                                    name="./accountDetailsList">
+                                    <items jcr:primaryType="nt:unstructured">
+                                        <column
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                                            <items jcr:primaryType="nt:unstructured">
+                                                <pageLink
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                    fieldDescription="Link For Page"
+                                                    fieldLabel="Page Link"
+                                                    name="./pageLink"
+                                                    rootPath="/content/ag"/>
+                                                <pageLabel
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldDescription="Title for Page"
+                                                    fieldLabel="Page Title"
+                                                    name="./pageTitle"/>
+                                            </items>
+                                        </column>
+                                    </items>
+                                </field>
+                            </accountDetails>
+                        </items>
+                    </generalConfig>
+                    <orderConfig
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Order Detail Section"
+                        sling:resourceType="granite/ui/components/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <ordersLabel
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Please enter the Label for Orders"
+                                fieldLabel="Label For Orders:-"
+                                name="./ordersLabel"/>
+                            <ordersDetails
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                class="full-width"
+                                composite="{Boolean}true"
+                                fieldLabel="Order Detail Pages"
+                                id="order-detail-multi">
+                                <field
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/fieldset"
+                                    acs-commons-nested="JSON_STORE"
+                                    name="./orderDetailsList">
+                                    <items jcr:primaryType="nt:unstructured">
+                                        <column
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                                            <items jcr:primaryType="nt:unstructured">
+                                                <pageLink
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                    fieldDescription="Link For Page"
+                                                    fieldLabel="Page Link"
+                                                    name="./pageLink"
+                                                    rootPath="/content/ag"/>
+                                                <pageLabel
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldDescription="Title for Page"
+                                                    fieldLabel="Page Title"
+                                                    name="./pageTitle"/>
+                                            </items>
+                                        </column>
+                                    </items>
+                                </field>
+                            </ordersDetails>
+                        </items>
+                    </orderConfig>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>

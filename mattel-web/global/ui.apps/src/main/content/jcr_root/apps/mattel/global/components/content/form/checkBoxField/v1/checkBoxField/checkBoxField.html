@@ -1,0 +1,22 @@
+<sly data-sly-test="${wcmmode.edit}">${'Edit CheckBox Field Component' @i18n}</sly>
+<sly data-sly-use.model="com.mattel.global.core.model.CrmCheckBoxFieldModel"/>
+<div class="input-field ${properties.required ? 'required' : ''} checkbox-field">
+	<label data-sly-test="${properties.title}" for="${properties.elementName @i18n}">${properties.title @i18n}</label>
+	<sly data-sly-test="${properties.tooltipMessage}">
+		<button type="button" class="fp-tooltip" data-toggle="popover" data-trigger="hover" data-placement="top" title="${properties.tooltipMessage}"> </button>
+	</sly>
+	<p data-sly-test="${properties.description}" class="input-description">${properties.description @i18n}</p>
+    <sly data-sly-test.checkList="${model.keyList}">
+        <sly data-sly-list.check="${checkList}">
+            <sly data-sly-test="${properties.checked == 'true'}">
+                <input id="${properties.elementName}" type="checkbox" name="${properties.elementName}" aria-required="${properties.required ? 'true' : ''}" class=" preferences-checkbox " data-subscription-id="${check.itemKey}" checked>
+            </sly>
+            <sly data-sly-test="${properties.checked != 'true'}">
+                <input id="${properties.elementName}" type="checkbox" name="${properties.elementName}" aria-required="${properties.required ? 'true' : ''}" class=" preferences-checkbox " data-subscription-id="${check.itemKey}">
+            </sly>
+            <label for="${properties.elementName @i18n}">${check.itemValue @i18n}</label>
+        </sly>
+    </sly>
+    <span data-sly-test="${properties.requiredMessage}" class="form-message err-msg custom-message">${properties.requiredMessage @i18n}</span>
+    <span class="application-message err-msg "></span>
+</div>

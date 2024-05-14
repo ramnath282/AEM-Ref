@@ -1,0 +1,99 @@
+.footer.aem-GridColumn{
+    padding:0 0;
+}
+
+footer {
+  background-color: $footer-bg-color;
+  border-top: darken($footer-bg-color, 10%) 0px solid;
+  background-size:cover;
+  padding: em(35) 0 em(11);
+  position: relative;
+  >div {
+    @extend .container;
+    @media #{$medium-down} {
+      padding-top: 0;
+    }
+
+    >div {
+      @extend .row;
+      .play-footer-mattel-logo {
+        @extend .col-md-1;
+        @extend .col-sm-6;
+        @extend .col-xs-6;          
+        @media #{$medium-down} {
+          text-align: right;
+          padding:0;
+        }
+      }
+  
+      .play-esrb-logo {
+        @extend .col-md-1;
+        @extend .col-sm-6;
+        @extend .col-xs-6;
+        @extend .pull-right;
+        padding-left: 24px;
+        @media #{$large-only}{
+          right: 50px;
+          bottom: 15px;
+          z-index: 1;
+        } 
+        @media #{$medium-down} {
+          text-align: left;
+        }
+        a {
+          img {
+            height: em(80);
+          }
+        }
+      }
+  
+      .play-footer-link {
+                @extend .col-md-10;
+                padding-top: em(25);
+                text-align: center;
+                @media #{$medium-down} {
+                    clear: both;
+                    padding-left: em(4);
+                    padding-right: em(4);
+                }
+                ul {
+                    text-align: center;
+                    display: inline-block;
+                    @media #{$medium-down} {
+                        margin-bottom: 0px;
+                    }
+                    li {
+                        display: inline-block;
+                        font-size: em(15);
+						 @media #{$small-up} {                            
+                            /*display: block;*/
+                        }
+                        a {
+                            color: $footer-link-txt;
+                            font-family: 'Arial-Rounded', Arial,sans-serif;
+                            font-weight: $fontBold;							
+						    padding: em(8) em(12);
+							display: inline-block;
+                        @media #{$small-up} {
+                            padding: 0 em(25);                            
+                        }
+                        }
+                        &:last-child {}
+                    }
+                }
+        span {
+          font-family:"Arial-Rounded",Arial,sans-serif;
+             font-weight:$fontBold; 
+          font-size: em(15);
+          padding: 0 em(12);
+          display: block;
+          padding-top: em(10);
+          @media #{$medium-up} {
+            display: inline-block;
+            padding-top: 0;
+          }
+        }
+      }
+    }
+  }
+}

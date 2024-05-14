@@ -1,0 +1,47 @@
+.back-to-top {
+    display: none;
+
+    &.active {
+        display: inline-block;
+    }
+
+    #return-to-top {
+        background: $color-dark-grey !important;
+        margin-bottom: em(20, 24);
+        position: fixed;
+        bottom: 8%;
+        font: $fontRegular em(24) $primaryFontFamily;
+        line-height: 1;
+        width: em(47, 24);
+        height: em(47, 24);
+        @include border-radius(50%);
+        text-align: center;
+        padding: em(9, 24);
+        right: 4.7%;
+        z-index: 111;
+        span{
+            // @extend .sr-only;
+            border: 0;
+            clip: rect(0,0,0,0);
+            height: 1px;
+            margin: -1px;
+            overflow: hidden;
+            padding: 0;
+            position: absolute;
+            width: 1px;
+        }
+        &:after {
+            content: "\f077";
+            color: $white;
+            @include font-awesome();
+        }
+    }
+}
+.fixed-body-position{
+    position: fixed;
+    .back-to-top{
+        #return-to-top{
+            right: -15%;
+        }
+    }
+}

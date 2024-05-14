@@ -1,0 +1,31 @@
+<sly data-sly-use.model="com.mattel.ecomm.core.models.ImageFacetContainerModel"/>
+<div class="facetContainer">
+	<div class="facetHeading">
+		<h2>
+			<span class="h-sr-only" style="display: none;"></span>
+			<br aria-hidden="true">${properties.title @i18n}
+		</h2>
+	</div>
+	 <div class="faveListContainer" data-index="">
+	 	<fieldset class="field-section" id="collapse-" data-index="">
+	 		<ul class="facet-list">
+	 			<li data-sly-repeat.item="${model.items}" data-sly-resource="${item.name @ decorationTagName='div'}"></li>
+	 		</ul>
+	 	</fieldset>
+	 	<div class="seemoreBtn">
+			<button class="facetBtn" data-text-collapse="${properties.showmore @i18n}" data-text-expand="${properties.showless @i18n}">${properties.showmore @i18n}</button>
+		</div>
+	</div>
+</div>
+
+<sly data-sly-resource="${resource.path @ resourceType='wcm/foundation/components/parsys/newpar', appendPath='/*', decorationTagName='div', cssClassName='new section aem-Grid-newComponent'}"
+     data-sly-test="${(wcmmode.edit || wcmmode.preview) && model.items.size < 1}">
+</sly>
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
+    <sly data-sly-call="${clientlib.js @ categories=['ecomm.imageContainer']}"/>
+</sly>
+
+
+
+
+

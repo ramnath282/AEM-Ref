@@ -1,0 +1,49 @@
+<sly data-sly-test="${wcmmode.edit}">${'Edit Listing Component' @i18n}</sly>
+<sly data-sly-use.listingModel="com.mattel.global.core.model.ListingModel"/>
+<input type="hidden" id="DefaultLoad" value="${listingModel.initialLoadCount}">
+<input type="hidden" id="ProductLimit" value="${listingModel.productLimit}">
+<input type="hidden" id="snpEP" value="${listingModel.snpUrl}">
+<input type="hidden" id="searchType" value="${listingModel.searchType || 'newsroom'}">
+<input type="hidden" id="defaultImage" value="${listingModel.defaultImage}">
+<div class="listingComponent-outer-wrapper">
+    <div class="listingComponent-container">
+        <ul class="row" id="listingComponentInfo">  
+        </ul>
+        <div class="cta-button cta-btn-column-1">
+            <a href="javascript:void(0);" role="button" class="view-all-btn">${listingModel.viewAllLabel}</a>
+        </div>
+    </div>
+</div>
+
+<div class="loader-outer">
+    <div class="loader">Loading</div>
+</div>
+
+<script type="text/x-handlebars-template" id="listingComponentTemplate" >
+    {{#each this}}
+            <li>
+                    <div class="listingComponent-info">
+                        <a href="{{link}}" class="total-content">
+                            <div class="img-wrapper">
+                                <img alt="#" src="{{media_url}}">
+                            </div>
+                            <div class="listingComponent-date">{{getMMDDYYYY pubDate}}</div>
+                            <div class="listingComponent-content">
+                                <div class="listingComponent-headline">{{title}}</div>
+                            </div>
+                            {{#if dataEnd}}
+                                {{else}}
+                                <div class="listingComponent-cta">
+                                    <div class="learn-more">${listingModel.seeMoreLabel @ context="unsafe"}
+                                            <span class="sr-only">opens details Page</span>
+                                    </div>
+                                </div>
+                            {{/if}}
+                        </a>
+                    </div>
+            </li>
+    {{/each}}
+</script>
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
+    <sly data-sly-call="${clientlib.js @ categories='global.listingComponent'}"/>
+</sly>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Promo Pencil Container"
+    sling:resourceType="cq/gui/components/authoring/dialog"
+    helpPath="https://www.adobe.com/go/aem_cmp_text_v2">
+    <content
+        granite:class="cq-dialog-ag-productgrid"
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <loyaltyConfig
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Promo Pencil Variation Config"
+                        sling:resourceType="granite/ui/components/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <guestUserPromo
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                fieldDescription="Enter the promo pencil experience fragment path for Guest User and Signed In (Non AGR) User"
+                                fieldLabel="Promo Pencil for Guest User and Signed In (Non AGR) User"
+                                name="./guestNonAgrUserPromo"
+                                rootPath="/content/experience-fragments"/>
+                            <signedInUserPromo
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                fieldDescription="Enter the promo pencil experience fragment path for Signed In (AGR) User"
+                                fieldLabel="Promo Pencil for Signed In (AGR) User"
+                                name="./signedInAgrUserPromo"
+                                rootPath="/content/experience-fragments"/>
+                        </items>
+                    </loyaltyConfig>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>

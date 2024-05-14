@@ -1,0 +1,46 @@
+.crm-brand-banner {
+		 border-top:1px solid;
+		.module-title {
+			text-align:center;
+		}
+		.module-image {
+			@media #{$large-up} {
+				display:block;
+			}
+			@media #{$small-up} {
+				display:block;
+			}
+			@media #{$small-down} {
+                	width: 50%;
+                	margin: 0 auto;
+            		} 
+			display:table;
+			padding:em(6) 1em;
+			margin-bottom:0;
+			li {
+				@include make-md-column(3);
+				@include make-sm-column(3);
+				@include make-xs-column(3);
+				padding:0;
+				margin:0;
+				display: inline-block;
+				float:none;
+				@media #{$large-up} {
+					width:em(120);
+				}
+				@media #{$small-down} {
+                    			width: 33%;
+                		}
+				@media #{$xsmall-down} {
+				    width: 50%;
+				}  
+				@media #{$small-up} {
+					float:none;
+				}
+			}
+		}
+		img {
+			padding:em(15);			
+	    }
+		
+}

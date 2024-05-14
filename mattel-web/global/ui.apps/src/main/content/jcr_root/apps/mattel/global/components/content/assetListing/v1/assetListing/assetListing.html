@@ -1,0 +1,115 @@
+<sly data-sly-test="${wcmmode.edit}">${'Configure Asset Listing Component' @i18n}</sly>
+<sly data-sly-use.assetListingModel="com.mattel.global.core.model.AssetListingModel"/>
+<sly data-sly-use.lib="mattel/global/components/content/dynamicMedia/v1/dynamicMedia/imageblock.html" />
+<sly data-sly-use.ctaTab="com.mattel.global.master.core.model.CTATab">
+<div class="${properties.image || properties.mobileImage ? 'bg_wrapperImg dynamic-media-wrapper' : 'bg_color'} ${properties.tileOption}" style="background-image:url(${properties.backgroundOption!='color' && properties.tileImage ? assetListingModel.backgroundImagePath : '' @ context='html'});">
+	<sly data-sly-test="${properties.backgroundOption!='color' && !properties.tileImage}">
+	    <div class="dynamicMedia" data-sly-test="${properties.image || properties.mobileImage}">
+	        <div class="desktop-bg ${!properties.customMobile || !properties.mobileImage ? 'customMobileoff' : ' '}" data-sly-test="${properties.image}" data-sly-call="${lib.imageVideoSection @ imageDetail='image'}"></div>
+	        <div class="mobile-bg" data-sly-test="${properties.mobileImage && properties.customMobile}" data-sly-call="${lib.imageVideoSection @ imageDetail='mobileImage'}"></div>
+	    </div>
+	</sly>
+	<div class="container-fluid ${properties.image || properties.mobileImage ? 'dynamic-media-container' : ''}" style="background-color:${properties.backgroundOption=='color' ? properties.backgroundColor : ''  @context='html'}">
+		<div class="grid-page-title" data-sly-test="${properties.title || properties.subTitle || properties.description || ctaTab.items && ctaTab.items.size > 0}">
+            <div class="main-title" data-sly-test="${properties.title}">
+                ${properties.title @ context="html",i18n}
+            </div>
+            <div class="sub-title" data-sly-test="${properties.subTitle}">
+                ${properties.subTitle @ context="html",i18n}
+            </div>
+            <div class="text-para" data-sly-test="${properties.description}">
+                ${properties.description @ context="html",i18n}
+            </div>
+            <sly data-sly-test="${properties.showMoreFeature !='true'}">
+                <sly data-sly-test="${ctaTab.items && ctaTab.items.size > 0}">
+                    <sly data-sly-repeat.item="${ctaTab.items}" data-sly-resource="${item.name @ decorationTagName='div',cssClassName=ctaTab.items.size == 1 ? 'btn-first-cta-margin gridItemContainer' : 'gridItemContainer'}"></sly>
+                </sly>
+
+			</sly>
+
+		</div>
+        <div class="ctaItem cta-filter-item outline visible-xs" data-sly-test="${assetListingModel.enableFilter == 'true' && assetListingModel.filterSectionLabel}">
+				<div class="cta-item">
+					<a href="javascript:void(0)"
+							role="button" target="_self" class="cta_button_tracking btn-cta-item cta-filter">${assetListingModel.filterSectionLabel @ context="html",i18n}
+					</a>
+				</div>
+			</div>
+		<div class="overlay"></div>
+		<div class="grid-filter col-sm-3" data-sly-test="${assetListingModel.enableFilter == 'true'}" data-enable-filer="${assetListingModel.enableFilter}" data-enable-clearall="${assetListingModel.enableClearAll}" data-clearall-label="${assetListingModel.clearAllLabel}">
+			<div class="grid-filter-header">
+				<div class="ctaItem solid visible-xs">
+						<div class="cta-item">
+							<a href="javascript:void(0)"
+									role="button" target="_self" class="cta_button_tracking btn-cta-item cta-apply">Apply
+							</a>
+						</div>
+				</div>	
+				<div class="filter-heading">${assetListingModel.filterSectionLabel @ context="html",i18n} 
+					<sly data-sly-test="${properties.clearAllLabel}" >
+					<a href="javascript:void(0)" id="clearAllFilter" class="${properties.enableFiltersOnFirstLoad ? '': 'hide'}" >${properties.clearAllLabel @ context="html",i18n} (<span></span>)</a> 
+					</sly>
+				</div>			
+			</div>
+			<input type="hidden" id="brandPortfolioSelectAll" value="${properties.enableFiltersOnFirstLoad ? 'true' :  'false'}"/>
+			<sly data-sly-test="${assetListingModel.assetFilterList}"  data-sly-list.parentAssets="${assetListingModel.assetFilterList}">
+				<h5 class="accordion-action"><a href="javascript:void(0);" role="presentation" >${parentAssets.filterTitle}</a></h5>
+				<ul data-sly-test="${parentAssets.children}" data-sly-list.assetFilterList="${parentAssets.children}" class="category-group" >
+				
+					<sly data-sly-test="${parentAssets.filterType == 'CHECKBOX'}" >
+					<li>                
+						<input type="checkbox" data-parent="${parentAssets.name}" value="${assetFilterList.filterValue}" id="${assetFilterList.filterId}" data-sly-attribute.checked="${properties.enableFiltersOnFirstLoad ? true :  false}"></input>
+						<label for="${assetFilterList.filterId}">${assetFilterList.filterTitle}</label>
+					</li>
+					</sly>
+					
+					<sly data-sly-test="${parentAssets.filterType == 'RADIOBUTTON'}" >
+					<li>                
+						<input type="radio" name="filterRadio" data-parent="${parentAssets.name}" class="${assetFilterList.filterType == 'ALL'? 'all-radio-btn' : ''}" value="${assetFilterList.filterValue}" id="${assetFilterList.filterId}" data-sly-attribute.checked="${assetFilterList.filterType == 'ALL'   ? true :  false}"></input>
+						<label for="${assetFilterList.filterId}">${assetFilterList.filterTitle}</label>
+					</li>
+					</sly>
+				</ul>
+				<hr />
+			</sly>
+		</div>
+
+		<div class="asset-listing-container filter-grid ${assetListingModel.enableFilter == 'true' ? 'col-sm-9' : ''} ${assetListingModel.showMoreFeature=='true' ?'with-see-more': ''}">
+			<sly data-sly-resource="${resource.path @ resourceType='wcm/foundation/components/parsys/newpar', appendPath='/*', decorationTagName='div', cssClassName=''}" data-sly-test="${(wcmmode.edit || wcmmode.preview) && ctaTab.items.size < 1}"></sly>
+			<sly data-sly-use.content="com.mattel.global.master.core.model.ContentTab">
+				<sly data-sly-test="${content.items && content.items.size > 0}">
+					<ul data-sly-test="${assetListingModel.showMoreFeature!='true'}" data-is-mobile-scroll="${properties.scrollMobile}" class="grid-default  grid-xl-${assetListingModel.xlColumns} grid-lg-${assetListingModel.largeColumns} grid-md-${assetListingModel.mediumColumns} grid-sm-${assetListingModel.smallColumns} grid-xs-${assetListingModel.xsColumns}">
+
+						<li class="grid-content" data-sly-repeat.item="${content.items}" data-sly-resource="${item.name @ decorationTagName='div',cssClassName='grid-inner'}"></li>
+					</ul>
+					<ul data-sly-test="${assetListingModel.showMoreFeature=='true'}" data-is-mobile-scroll="${properties.scrollMobile}" data-grid-count='{ "xl": ${assetListingModel.xlColumns},"lg": ${assetListingModel.largeColumns},"md": ${assetListingModel.mediumColumns},"sm" : ${assetListingModel.smallColumns},"xs": ${assetListingModel.xsColumns} }' data-grid-row-count='{ "xl": ${assetListingModel.xlInitial},"lg": ${assetListingModel.largeInitial},"md": ${assetListingModel.mediumInitial},"sm" : ${assetListingModel.smallInitial},"xs": ${assetListingModel.xsInitial} }' data-grid-row-display='{ "xl": ${assetListingModel.xlShowMore},"lg": ${assetListingModel.largeShowMore},"md": ${assetListingModel.mediumShowMore},"sm" : ${assetListingModel.smallShowMore},"xs": ${assetListingModel.xsShowMore} }' class="grid-default grid-xl-${assetListingModel.xlColumns} grid-lg-${assetListingModel.largeColumns} grid-md-${assetListingModel.mediumColumns} grid-sm-${assetListingModel.smallColumns} grid-xs-${assetListingModel.xsColumns}" data-grid-see-more="${assetListingModel.ctaRepeat}" data-is-row="true">
+
+						<li class="grid-content" data-sly-repeat.item="${content.items}" data-sly-resource="${item.name @ decorationTagName='div',cssClassName='grid-inner'}"></li>
+					</ul>
+					<sly data-sly-test="${properties.showMoreFeature =='true'}">
+						<sly data-sly-test="${properties.viewAllCtaSwitch =='true'}">
+							<div class="ctaItem viewAllBtn solid">
+								 <div class="cta-item">
+									<a data-sly-test="${properties.linkOptions == 'newTab' || properties.linkOptions == 'self'}" class="btn-cta-item" href="${assetListingModel.linkURL ? assetListingModel.linkURL : 'javascript:;'}" data-sly-attribute.data-tracking-cta-id="${properties.trackThisCTA ? properties.trackingText : ''}" role="button" style="background-color : ${properties.fillColor @ context = 'styleToken'}" alt="${properties.linkAltText}" data-sly-attribute.target="${properties.linkOptions == 'newTab' ? '_blank' : '' }" >${assetListingModel.linkText || "View All" @ context="html",i18n}</a>
+									<a data-sly-test="${prpoerties.linkOptions == 'download'}" class="btn-cta-item" href="${assetListingModel.linkURL ? assetListingModel.linkURL : 'javascript:;'}" data-sly-attribute.data-tracking-cta-id="${properties.trackThisCTA ? properties.trackingText : ''}" role="button" style="background-color : ${properties.fillColor @ context = 'styleToken'}" alt="${properties.linkAltText}" >${assetListingModel.linkText || "View All" @ context="html",i18n}</a>
+									<a data-sly-test="${properties.linkOptions == 'blank'}" class="btn-cta-item" onclick="window.open('${assetListingModel.linkURL ? assetListingModel.linkURL : 'javascript:;' @ context = 'html'}','FP','width=500, height=500');" data-sly-attribute.data-tracking-cta-id="${properties.trackThisCTA ? properties.trackingText : ''}" role="button" style="background-color : ${properties.fillColor @ context = 'styleToken'}" alt="${properties.linkAltText}" >${assetListingModel.linkText || "View All" @ context="html",i18n}</a>
+								</div>
+							</div>
+						</sly>
+						<div class="ctaItem showMoreBtn solid">
+							<div class="cta-item">
+								<a class="btn-cta-item show-more-active" href="javascript:void(0)" data-sly-attribute.data-tracking-cta-id="${properties.trackThisCTA ? properties.trackingText : ''}" role="button" data-text-collapse="${assetListingModel.showMoreText || 'Show More' @ context='html' }" data-text-expand="${assetListingModel.showLessText || 'Show Less' @ context='html' }">${assetListingModel.showMoreText || "Show More" @ context="html",i18n}</a>
+							</div>
+						</div>
+					</sly>
+					<p id="assetNoFilterData">${properties.noResultsLabel ? properties.noResultsLabel : 'Sorry, no matching results. Please reduce your filter' @ context="html",i18n}</p>
+				</sly>
+				<sly data-sly-resource="${resource.path @ resourceType='wcm/foundation/components/parsys/newpar', appendPath='/*', decorationTagName='div', cssClassName='grid-inner'}" data-sly-test="${(wcmmode.edit || wcmmode.preview) && content.items.size < 1}">
+				</sly>
+			</sly>
+		</div>
+	</div>
+</div>
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
+    <sly data-sly-call="${clientlib.js @ categories=['global.assetListingV1']}"/>
+</sly>

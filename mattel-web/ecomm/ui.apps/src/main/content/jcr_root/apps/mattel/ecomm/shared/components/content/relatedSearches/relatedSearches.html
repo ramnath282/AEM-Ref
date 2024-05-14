@@ -1,0 +1,13 @@
+<sly data-sly-test="${wcmmode.edit}">${'Related Searches' @i18n}</sly>
+<div class="related-search"
+	data-sly-use.relatedSearches="com.mattel.ecomm.core.models.RelatedSearches"
+	data-sly-test="${relatedSearches.enableRelatedSearches}">
+	<div class="rs-header">${relatedSearches.relatedSearchTitle @i18n}</div>
+	<div class="rs-rightDiv">
+		<ul id="relatedSearch">
+		</ul>
+	</div>
+</div>
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
+   <sly data-sly-call="${clientlib.js @ categories='ecomm.relatedSearch'}"/>
+</sly>

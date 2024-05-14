@@ -1,0 +1,6 @@
+<sly data-sly-test="${wcmmode.edit}">${'Divider Component' @ i18n} </sly>
+<div class="separator text-center">
+    <hr aria-hidden="true" style="border : ${properties.dividerwidth @context='html'}px solid ${properties.dividerColor @context='html'}">
+    <sly data-sly-test="${!properties.dividerImagePath && properties.dividerText}">${properties.dividerText @context='html'}</sly>
+    <img data-sly-test="${properties.dividerImagePath}" src="${properties.dividerImagePath}" alt="${properties.alt}">
+</div>

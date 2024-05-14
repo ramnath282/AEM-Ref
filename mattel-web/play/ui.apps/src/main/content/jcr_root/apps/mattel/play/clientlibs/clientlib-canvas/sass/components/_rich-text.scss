@@ -1,0 +1,91 @@
+// Rich Text Styles
+.rich-text {
+    overflow: mapping($richText, main, overflow);
+    padding: mapping($richText, main, padding);
+    margin-bottom: mapping($richText, main, marBottom);
+    font-size: mapping($richText, main, fontSize);
+    width: mapping($richText, main, width);
+    font-weight: mapping($richText, main, fontWeight);
+
+    @media #{$large-up}{
+        margin-bottom: 10px;
+    }
+
+    @media #{$medium-only} {
+        width: mapping($richText, main, widthTab);
+        text-align: mapping($richText, main, textAlignTab);
+        padding-left: 125px;
+        padding-right: 125px;
+    }
+
+    @media #{$small-only} {
+        margin: 0;
+        padding: 0 20px;
+        width: mapping($richText, main, widthMob);
+    }
+
+    p {
+        display: mapping($richText, richTxtP, Pdisplay);
+        overflow: mapping($richText, richTxtP, POverflow);
+        margin: mapping($richText, richTxtP, PMargin);
+        width: mapping($richText, richTxtP, width);
+        margin-left: mapping($richText, richTxtP, leftMargin);
+        font-weight:300;
+
+        @media #{$medium-only} {
+            width: mapping($richText, richTxtP, widthTab);
+            margin-left: mapping($richText, richTxtP, leftMarginTab);
+        }
+
+        @media #{$small-only} {
+            width: mapping($richText, richTxtP, widthTab);
+            margin-left: mapping($richText, richTxtP, leftMarginTab);
+        }
+
+        img {
+            float: mapping($richText, richTxtP, ImgDisplay);
+        }
+    }
+
+    h2 {
+        margin: mapping($richText, richTxtHeading, HeadingMargin);
+        padding: mapping($richText, richTxtHeading, HeadingPadding);
+        font-size: mapping($richText, richTxtHeading, HeadingFontSize);
+        line-height: mapping($richText, richTxtHeading, HeadingLineHeight);
+        color: mapping($richText, richTxtHeading, HeadingColor);
+        margin-left: mapping($richText, richTxtHeading, leftMargin);
+        font-weight: normal;
+
+        @media #{$large-up} {
+            margin-top: 28px;
+        }
+
+        @media #{$medium-only} {
+            font-size: mapping($richText, richTxtHeading, HeadingFontSizeTab);
+            line-height: mapping($richText, richTxtHeading, HeadingLineHeightTab);
+            margin: mapping($richText, richTxtHeading, marginTab);
+        }
+
+        @media #{$small-only} {
+            font-size: mapping($richText, richTxtHeading, HeadingFontSizeTab);
+            line-height: mapping($richText, richTxtHeading, HeadingLineHeightTab);
+            margin: mapping($richText, richTxtHeading, marginMob);
+        }
+    }
+    a {
+        font-family: "MattelFounders",sans-serif;
+        text-transform: uppercase;
+        margin: 15px 0 0px 0;
+        padding: 12px 48px;
+        display: inline-block;
+        border: 0;
+        background-color: #fcd02f;
+        color: #000 !important;
+        border-radius: 50px;
+        font-size: 20px;
+
+        &:hover{
+            background-color: #FFE97C;
+        }
+    }
+}

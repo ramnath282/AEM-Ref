@@ -1,0 +1,37 @@
+<sly data-sly-use.isCloudConfg="${'/apps/mattel/global/clientlibs/global-utils/js/utils.js' @ uri=request.requestURI, text='nocloudconfigs'}" />
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html" />
+
+<sly data-sly-test="${!isCloudConfg.disableClientLibs}">
+	<sly data-sly-call="${clientlib.css @ categories='corp.search'}"/>
+</sly>
+<sly data-sly-use.searchModel="com.mattel.global.core.model.SearchModel"/>
+	<sly data-sly-test="${wcmmode.edit}">${'Edit Search Component' @i18n}</sly>
+	<div class="news-search pull-right">
+		<div class="search-input-field">
+			<div class="input-group hide">
+				<span class="input-group-addon" id="basic-addon1" aria-label="search">
+					<i class="fas fa-search"></i>
+				</span>
+				<label class="sr-only" for="searchInput_field"> ${searchModel.placeholderText @ context='attribute'} </label>				
+				<input type="text" name="search" id="searchInput_field" class="form-control typeahead" placeholder="${searchModel.placeholderText @ context='attribute'}" display-count="${searchModel.suggestionLimit @ context='attribute'}" aria-describedby="basic-addon1">
+					<button class="close-icon close-x icon-show" type="button" aria-label="Close"></button>
+			</div>
+		</div>
+		<button class="search-icon" aria-label="search">
+			<i class="fas fa-search"></i>
+		</button>
+	</div>
+	<div class="overlay hide"> </div>
+	<input type="hidden" id="searchResultPageLink" value="${searchModel.searchResultPageLink}"/>
+	<input type="hidden" id="characterLimit" value="${searchModel.characterLimit}"/>
+	<input type="hidden" id="suggestionLimit" value="${searchModel.suggestionLimit}"/>
+	<input type="hidden" id="typeAheadUrl" value="${searchModel.typeAheadUrl}"/>
+<sly data-sly-test="${!isCloudConfg.disableClientLibs}">                    
+    <sly data-sly-call="${clientlib.js @ categories='global.typeahead'}"/>	
+    <sly data-sly-call="${clientlib.js @ categories='global.search'}"/>
+</sly>
+<sly data-sly-test="${pageProperties.siteKey}">
+    <input type="hidden" id="shortSearchResultPageLink" value="${searchModel.siteKeyToShortSearchUrl[pageProperties.siteKey]}"/>
+	<input type="hidden" id="targetedDomain" value="${searchModel.siteDomain[pageProperties.siteKey]}"/>
+</sly>
+<div class="clearfix"></div>

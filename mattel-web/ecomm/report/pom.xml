@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+   Copyright (c) 2009, 2019 Mountainminds GmbH & Co. KG and Contributors
+   All rights reserved. This program and the accompanying materials
+   are made available under the terms of the Eclipse Public License v1.0
+   which accompanies this distribution, and is available at
+   http://www.eclipse.org/legal/epl-v10.html
+   Contributors:
+      Marc R. Hoffmann, Jan Wloka - initial API and implementation
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.mattel.ecomm</groupId>
+        <artifactId>ecomm</artifactId>
+        <version>1.0.39-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+  <artifactId>report</artifactId>
+  <name>Aggregate Report</name>
+
+  <dependencies>
+    <dependency>
+      <groupId>com.mattel.ecomm</groupId>
+      <artifactId>addressinfo.core</artifactId>
+      <version>1.0.39-SNAPSHOT</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.mattel.ecomm</groupId>
+      <artifactId>agrewards.core</artifactId>
+      <version>1.0.39-SNAPSHOT</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.mattel.ecomm</groupId>
+      <artifactId>carddetails.core</artifactId>
+      <version>1.0.39-SNAPSHOT</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.mattel.ecomm</groupId>
+      <artifactId>contactPreferences.core</artifactId>
+      <version>1.0.39-SNAPSHOT</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.mattel.ecomm</groupId>
+      <artifactId>coreservice.core</artifactId>
+      <version>1.0.39-SNAPSHOT</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.mattel.ecomm</groupId>
+      <artifactId>ecomm.core</artifactId>
+      <version>1.0.39-SNAPSHOT</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.mattel.ecomm</groupId>
+      <artifactId>dolls.core</artifactId>
+      <version>1.0.39-SNAPSHOT</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.mattel.ecomm</groupId>
+      <artifactId>login.core</artifactId>
+      <version>1.0.39-SNAPSHOT</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.mattel.ecomm</groupId>
+      <artifactId>orderhistory.core</artifactId>
+      <version>1.0.39-SNAPSHOT</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.mattel.ecomm</groupId>
+      <artifactId>paymentInfo.core</artifactId>
+      <version>1.0.39-SNAPSHOT</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.mattel.ecomm</groupId>
+      <artifactId>personalinfo.core</artifactId>
+      <version>1.0.39-SNAPSHOT</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.mattel.ecomm</groupId>
+      <artifactId>productinterest.core</artifactId>
+      <version>1.0.39-SNAPSHOT</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.mattel.ecomm</groupId>
+      <artifactId>registration.core</artifactId>
+      <version>1.0.39-SNAPSHOT</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.mattel.ecomm</groupId>
+      <artifactId>shippingmodes.core</artifactId>
+      <version>1.0.39-SNAPSHOT</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.mattel.ecomm</groupId>
+      <artifactId>productDetails.core</artifactId>
+      <version>1.0.39-SNAPSHOT</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.mattel.ecomm</groupId>
+      <artifactId>pdp.core</artifactId>
+      <version>1.0.39-SNAPSHOT</version>
+      <scope>compile</scope>
+    </dependency>
+	<dependency>
+      <groupId>com.mattel.ecomm</groupId>
+      <artifactId>fedex.core</artifactId>
+      <version>1.0.39-SNAPSHOT</version>
+      <scope>compile</scope>
+    </dependency>
+	<dependency>
+      <groupId>com.mattel.ecomm</groupId>
+      <artifactId>loyaltyRewards.core</artifactId>
+      <version>1.0.39-SNAPSHOT</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.jsonschema2pojo</groupId>
+      <artifactId>jsonschema2pojo-core</artifactId>
+      <version>1.0.0</version>
+    </dependency>
+<!--     <dependency>
+      <groupId>jacoco</groupId>
+      <artifactId>child1-test</artifactId>
+      <version>${project.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>jacoco</groupId>
+      <artifactId>child2</artifactId>
+      <version>[2-SNAPSHOT,)</version>
+      <scope>runtime</scope>
+    </dependency> -->
+  </dependencies>
+
+  <build>
+    <plugins>
+<!--       <plugin>
+        <groupId>@project.groupId@</groupId>
+        <artifactId>jacoco-maven-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>report-aggregate</id>
+            <phase>verify</phase>
+            <goals>
+              <goal>report-aggregate</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin> -->
+<plugin>
+        <groupId>org.jacoco</groupId>
+        <artifactId>jacoco-maven-plugin</artifactId>
+            <version>0.8.3</version>
+               
+        <executions>
+          <execution>
+            <id>report-aggregate</id>
+            <phase>verify</phase>
+            <goals>
+              <goal>report-aggregate</goal>
+            </goals>
+             <configuration>
+                    <!-- stub generated code excluded -->
+                    <exclude>com/mattel/ecomm/esb/cdm/**/*</exclude>
+                     <exclude>**/*com/mattel/ecomm/esb/cdm/**/*</exclude>
+                     <exclude>**/com/mattel/ecomm/esb/cdm/**/*</exclude>
+                </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>

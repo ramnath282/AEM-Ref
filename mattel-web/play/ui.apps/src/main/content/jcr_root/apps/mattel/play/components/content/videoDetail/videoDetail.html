@@ -1,0 +1,232 @@
+<sly data-sly-include="/apps/mattel/global/components/content/globalVideoConfig/globalVideoConfig.html"/>
+<sly data-sly-test="${wcmmode.edit && properties.orderVideo!='automatic'||wcmmode.edit && properties.orderVideo=='manual'||properties.orderVideo==null}">${'Configure Video Details Module' @ i18n}
+    <div class="video-component" id="video-player-component">
+        <input type="hidden" id="currentPath" value="${currentNode.path}" />
+        <sly data-sly-test="${(properties.playerBgImg == null && properties.playerBgColor == null )|| (properties.playerBackOption =='image' && properties.playerBgImg == null ) || (properties.playerBackOption =='color' && properties.playerBgColor == null )}">
+            <div class="video-player-container">
+        </sly>
+        <sly data-sly-test="${properties.playerBackOption =='image' && properties.playerBgImg != null }">
+            <div class="video-player-container" style="background-image: url('${properties.playerBgImg @ context='styleString'}');">
+        </sly>
+        <sly data-sly-test="${properties.playerBackOption =='color' && properties.playerBgColor != null }">
+            <div class="video-player-container" style="background:${properties.playerBgColor @ context='styleString'};">
+        </sly>
+        <div class="video-player-in">
+            <a href="javascript:void(0)" class="slide-btn cd-prev" data-action="prev"></a>
+            <div class="video-banner video-player-wrapper">
+                <div id="main-player-container" class="featured-promo video-player" data-autoplay="true"></div>
+                <a href="javascript:void(0)" class="next-btn"></a>
+            </div>
+            <div class="video-player-label col-md-12">
+                <h2 id="video-player-title"></h2>
+                <p id="video-player-desc"></p>
+            </div>
+            <a href="javascript:void(0)" class="slide-btn cd-next" data-action="next"></a>
+        </div>
+        <div class="video-vertical-playlist-container">
+            <div class="video-play-option">
+                <div class="autoplay-label">${properties.autoPlayText @i18n}</div>
+                <div class="autoplay-checkbox">
+                    <input type="checkbox" value="1" id="enable-autoplay" data-autoplay-id="Video Player Section|${properties.alwaysEnglish}" name="" />
+                    <label aria-label="autoplay" for="enable-autoplay"></label>
+                </div>
+            </div>
+            <div id="video-play-list" class="video-vertical-playlist">
+                <div class="title-block">
+                    <h2>${properties.relVideoTitle @i18n}</h2>
+                </div>
+                <div class="video-play-list-area">
+                    <ul id="play-list-datas"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <sly data-sly-use.categoryFilter="com.mattel.play.core.model.CategoryFilterModel">
+        <sly data-sly-test="${properties.displayCategories && categoryFilter.displayCategory}">
+            <sly data-sly-test="${(properties.catBgImg == null && properties.catBgColour == null )|| (properties.catBackOption =='image' && properties.catBgImg == null ) || (properties.catBackOption =='color' && properties.catBgColour == null )}">
+                <div class="video-category-filter">
+            </sly>
+            <sly data-sly-test="${properties.catBackOption =='image' && properties.catBgImg != null }">
+                <div class="video-category-filter" style="background-image:url('${properties.catBgImg @ context='styleString'}') ;">
+            </sly>
+            <sly data-sly-test="${properties.catBackOption =='color' && properties.catBgColour != null }">
+                <div class="video-category-filter" style="background:${properties.catBgColour @ context='styleString'};">
+            </sly>
+            <div class="cda-banner enable-carousel-nav" data-slide-show="8" data-slide-scroll="1" data-dots="false" data-autoplay="false" data-arrows="true">
+                <div class="crm-container">
+                    <a href="javascript:void(0)" class="category-drpdown-display">${properties.allLabel @i18n}<span></span></a>
+                    <ul class="nav-carousel-slides nav-categorylist" id="filter-category-items">
+                        <li data-sly-test="${properties.allLabel}">
+                            <sly data-sly-test.myVar="${categoryFilter.homePagePath}" data-sly-use.info="${'com.mattel.play.core.helper.PlayHelper' @ text= myVar}">
+                                <a href="${info.pathURL}">${properties.allLabel @i18n}</a>
+                            </sly>
+                        </li>
+                        <sly data-sly-list.head="${categoryFilter.categoryList}">
+                            <li>
+                                <a href="javascript:void(0)" target="_self" data-tracking-id="Category Filter Section|Always English|${head.catName @ i18n}|Game Category">${head.catName @ i18n}</a>
+                            </li>
+                        </sly>
+                    </ul>
+                </div>
+            </div>
+            </div>
+        </sly>
+    </sly>
+    <sly data-sly-test="${(properties.landingBgReference == null && properties.landingBgColor == null )|| (properties.landingBackOption =='image' && properties.landingBgReference == null ) || (properties.landingBackOption =='color' && properties.landingBgColor == null )}">
+        <div class="videos-gallery-playlist" data-height-sync=".gallery-image">
+
+    </sly>
+    <sly data-sly-test="${properties.landingBackOption =='image' && properties.landingBgReference != null }">
+        <div class="videos-gallery-playlist" data-height-sync=".gallery-image" style="background-image:url('${properties.landingBgReference @ context='styleString'}') ;">
+    </sly>
+    <sly data-sly-test="${properties.landingBackOption =='color' && properties.landingBgColor != null }">
+        <div class="videos-gallery-playlist" data-height-sync=".gallery-image" style="background:${properties.landingBgColor @ context='styleString'};">
+    </sly>
+    <h2></h2>
+    <div class="play-tiles-gallery default">
+        <div class="gallery-tile">
+            <ul class="play-list">
+                <li class="${properties.columnLayout @ context='styleString'}" data-sly-resource="${'videoGalleryColumn1' @ resourceType='wcm/foundation/components/parsys'}"></li>
+                <li class="${properties.columnLayout @ context='styleString'}" data-sly-resource="${'videoGalleryColumn2' @ resourceType='wcm/foundation/components/parsys'}"></li>
+                <li class="${properties.columnLayout @ context='styleString'}" data-sly-resource="${'videoGalleryColumn3' @ resourceType='wcm/foundation/components/parsys'}"></li>
+                <sly data-sly-test="${properties.columnLayout =='column-4'}">
+                    <li class="${properties.columnLayout @ context='styleString'}" data-sly-resource="${'videoGalleryColumn4' @ resourceType='wcm/foundation/components/parsys'}"></li>
+                </sly>
+            </ul>
+
+        </div>
+    </div>
+    </div>
+    </div>
+</sly>
+<sly data-sly-test="${wcmmode.edit && properties.orderVideo=='automatic'||!wcmmode.edit} ">
+    <div class="video-component" id="video-player-component">
+        <input type="hidden" id="currentPath" value="${currentNode.path}" />
+        <sly data-sly-test="${(properties.playerBgImg == null && properties.playerBgColor == null )|| (properties.playerBackOption =='image' && properties.playerBgImg == null ) || (properties.playerBackOption =='color' && properties.playerBgColor == null )}">
+            <div class="video-player-container">
+        </sly>
+        <sly data-sly-test="${properties.playerBackOption =='image' && properties.playerBgImg != null }">
+            <div class="video-player-container" style="background-image:url('${properties.playerBgImg @ context='styleString'}');">
+        </sly>
+        <sly data-sly-test="${properties.playerBackOption =='color' && properties.playerBgColor != null }">
+            <div class="video-player-container" style="background:${properties.playerBgColor @ context='styleString'};">
+        </sly>
+        <div class="video-player-in">
+            <a href="javascript:void(0)" class="slide-btn cd-prev" data-action="prev"></a>
+            <div class="video-banner video-player-wrapper">
+                <div id="main-player-container" class="featured-promo video-player" data-autoplay="true"></div>
+                <a href="javascript:void(0)" class="next-btn"></a>
+            </div>
+            <div class="video-player-label col-md-12">
+                <h2 id="video-player-title">Video</h2>
+                <p id="video-player-desc"></p>
+            </div>
+            <a href="javascript:void(0)" class="slide-btn cd-next" data-action="next"></a>
+        </div>
+        <div class="video-vertical-playlist-container">
+            <div class="video-play-option">
+                <div class="autoplay-label">${properties.autoPlayText @i18n}</div>
+                <div class="autoplay-checkbox">
+                    <input type="checkbox" value="1" id="enable-autoplay" data-autoplay-id="Video Player Section|${properties.alwaysEnglish}" name="" />
+                    <label for="enable-autoplay"><span class="sr-only">${'autoplay' @i18n}</span></label>
+                </div>
+            </div>
+            <div id="video-play-list" class="video-vertical-playlist">
+                <div class="title-block">
+                    <h2></h2>
+                </div>
+                <div class="video-play-list-area">
+                    <ul id="play-list-datas"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--section 2-->
+    <input type="hidden" value="${properties.alwaysEnglish}" id="filter-alway-english" />
+    <input type="hidden" value="${properties.nowPlaying}" id="now-playing-text" />
+    <sly data-sly-test="${properties.displayCategories}">
+        <sly data-sly-test="${(properties.catBgImg == null && properties.catBgColour == null )|| (properties.catBackOption =='image' && properties.catBgImg == null ) || (properties.catBackOption =='color' && properties.catBgColour == null )}">
+            <div class="video-category-filter">
+        </sly>
+        <sly data-sly-test="${properties.catBackOption =='image' && properties.catBgImg != null }">
+            <div class="video-category-filter" style="background-image:url('${properties.catBgImg @ context='styleString'}') ;">
+        </sly>
+        <sly data-sly-test="${properties.catBackOption =='color' && properties.catBgColour != null }">
+            <div class="video-category-filter" style="background:${properties.catBgColour @ context='styleString'};">
+        </sly>
+        <div class="cda-banner enable-carousel-nav" data-slide-show="8" data-slide-scroll="1" data-dots="false" data-autoplay="false" data-arrows="true">
+            <div class="crm-container">
+                <a href="javascript:void(0)" class="category-drpdown-display">${properties.allLabel}<span></span></a>
+                <ul class="nav-carousel-slides nav-categorylist" id="filter-category-items">
+                    <script type="text/template" id="filter-items-template">
+                        <% var englishFilterName = $("#filter-alway-english").val() || '' %>
+                        <% _.each(items,function(item,key,arr) { %>
+                        <li data-analytics-id="Category Filter Section|<%= englishFilterName %>|<%= item.analyticsCategoryName %>|Video Category" data-filter='<%= item.categoryTag[0] %>' data-seo-name='<%= item.seotitle %>' data-seo-desc='<%= item.metaDesc %>' data-seo-keywords='<%= item.metaKeywords %>'>
+                            <a href="javascript:void(0)" title='<%= item.categoryName %>' target="_self">
+                                <%= item.categoryTitle %>
+                            </a>
+                        </li>
+                        <% }) %>
+                    </script>
+                </ul>
+            </div>
+        </div>
+        </div>
+    </sly>
+    <sly data-sly-test="${(properties.landingBgReference == null && properties.landingBgColor == null )|| (properties.landingBackOption =='image' && properties.landingBgReference == null ) || (properties.landingBackOption =='color' && properties.landingBgColor == null )}">
+        <div id="videos-gallery" class="videos-gallery-playlist" data-height-sync=".gallery-image">
+    </sly>
+    <sly data-sly-test="${properties.landingBackOption =='image' && properties.landingBgReference != null }">
+        <div id="videos-gallery" class="videos-gallery-playlist" data-height-sync=".gallery-image" style="background-image:url('${properties.landingBgReference @ context='styleString'}') ;">
+    </sly>
+    <sly data-sly-test="${properties.landingBackOption =='color' && properties.landingBgColor != null }">
+        <div id="videos-gallery" class="videos-gallery-playlist" data-height-sync=".gallery-image" style="background:${properties.landingBgColor @ context='styleString'};">
+    </sly>
+    <h2></h2>
+    <div class="play-tiles-gallery default ${properties.disableLazyLoad ? '' : 'lazy-load'}">
+        <div class="gallery-tile">
+            <ul class="play-list data-loading" id="player-thumbnail-datas" data-empty="No Records Found." data-initial-load="${properties.gridElements ? properties.gridElements : '12'}" data-next-load="${properties.gridElements ? properties.gridElements : '12'}">
+            </ul>
+            <div class="col-xs-12 text-center">
+                <div class="globalHeader aem-GridColumn aem-GridColumn--default--12 show-more-btn">
+                    <div class="global-mattel-header height-md">
+                        <div class="global-header-wrapper">
+                            <div class="toggle-brands-list">
+                                <a href="javascript:void(0);" role="button" class="action-btn">
+                                    <span class="text-more">show more</span><span class="accordion-icon"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <script type="text/template" id="player-thumbnail-template">
+        <% var trackingName = isPlaylist ? "Video Player Section" : "Video Thumbnail Section",
+        trackingLocation = isPlaylist ? "Playlist" : "Video Thumbnail",
+        pathName = window.location.pathname,
+        nowPlaying = $("#now-playing-text").val() || 'Now Playing'
+        %>
+        <% _.each(items,function(item,key,arr) { %>
+        <li data-analytics-id="<%= trackingName %>|<%= item.alwaysEnglish %>|<%= item.alwaysEnglish %>|<%= trackingLocation %>" data-index='<%= item.index %>' class='<%= item.colLayout %>' data-video-id="<%= item.videoId %>" data-seo-name="<%= item.seotitle %>" data-seo-desc='<%= item.metaDesc %>' data-seo-keywords='<%= item.metaKeywords %>'>
+            <a href="<%= pathName %>/video/<%= item.videoName %>">
+                <div class="gallery-image"><img src='<%=item.videoThumbnail %>' alt='<%=item.thumbnailAltTxt %> Video' /></div>
+                <span class="tile-content" style='text-align:<%=item.titleAlign %>;'><%= item.videoTitle %></span>
+                <input type="hidden" class="tile-video-name" value="<%= item.videoName %>" />
+                <span class="tile-desc hidden"><%= item.videoDesc %></span>
+                <div class="playing-overlay">
+                    <span class="play-icon"><em class="fas fa-play"></em></span>
+                    <span class="play-text"><%= nowPlaying %></span>
+                </div>
+            </a>
+        </li>
+        <% }) %>
+    </script>
+    </div>
+</sly>
+<sly data-sly-use.clientlibVideo="/libs/granite/sightly/templates/clientlib.html">
+    <sly data-sly-call="${clientlibVideo.js @ categories='global.mattelVideoPlayer'}" />
+</sly>

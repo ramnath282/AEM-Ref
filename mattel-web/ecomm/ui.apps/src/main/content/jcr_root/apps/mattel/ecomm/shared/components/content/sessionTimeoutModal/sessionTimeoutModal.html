@@ -1,0 +1,49 @@
+<sly data-sly-use.model="com.mattel.ecomm.core.models.SessionTimeOutModel">
+<sly data-sly-test="${wcmmode.edit}">${'Session Timeout Modal Component' @i18n}</sly>
+<div class="modal ecomm-modal ecomm-wrapper" role="alert" data-timeout='' aria-atomic="true" id="sessionTimeoutModal" tabindex="-1">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" data-url="${properties.signInRedirectPath}"><em class="fa fa-times fa-lg"><span class="sr-only">close</span></em></button>
+                <div>
+                    <h2 class="modal-header-title" data-sly-test="${properties.title @i18n}">${properties.title @i18n}</h2>
+                    <p data-sly-test="${properties.description @i18n}">${properties.description @context='html',i18n}</p>
+                </div>
+            </div>
+            <div class="modal-body">
+                <form action="" class="signin-form">
+                    <div class="input-field required">
+                        <input class="form-input long-input" type="email" name="emailId" value="" id="session-email" maxlength="" autocomplete="on" aria-required="true">
+                        <label data-sly-test="${properties.emailAddressLabel}" class="placeholder-label" for="session-email">${properties.emailAddressLabel @i18n}</label>
+                        <div id="session-email-error"class="help-block form-message"></div>
+                    </div>
+                    <div class="input-field required">
+                        <input class="form-input long-input" type="password" name="password" value="" id="session-password" maxlength="" autocomplete="on" aria-required="true">
+                        <label data-sly-test="${properties.passwordLabel}" class="placeholder-label" for="session-password">${properties.passwordLabel @i18n}</label>
+                        <div id="session-password-error"class="help-block form-message"></div>
+                    </div>
+                    <input data-sly-test="${properties.signInButtonLabel @i18n}" class="theme-btn" type="submit" value="${properties.signInButtonLabel @i18n}">
+                </form>
+            </div>
+            <div class="modal-footer">
+                <div class="row">
+                    <div data-sly-test="${properties.forgotPasswordLabel && properties.forgotPasswordPath}" class="col-md-6 register-account">
+                        <a href="${properties.forgotPasswordPath}" class="" id="session-forgot-pwd">${properties.forgotPasswordLabel @i18n}</a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div data-sly-test="${properties.createAccountPath && properties.createAccountLabel}" class="col-md-6 register-account">
+                        <a href="${properties.createAccountPath}" class="" id="session-createaccount">${properties.createAccountLabel @i18n}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<sly data-sly-test="${!model.disableClientLibs}">
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
+    <sly data-sly-call="${clientlib.js @ categories='ecomm.minicartheader'}" />
+</sly>
+</sly>
+</sly>

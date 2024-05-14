@@ -1,0 +1,27 @@
+<template data-sly-template.lettertemplate="${@ properties,resolvedLetterPage}">	
+	<div class="letterWrapper hide">
+	  <div id="letterContainer" class="option addon letter disabled">	
+			  <div class="selected">
+				  <span class="name" id="changeLetterAcc">
+					  <sly data-sly-use.ecommUtil="${'com.mattel.ecomm.core.utils.EcomUtil' @ template=properties.letterAccordionLabel}">
+						${ecommUtil.getDynamicTemplate @ context='html'}
+						 </sly>
+				  </span>
+				  <span aria-describedby="changeLetterAcc" class="change" aria-expanded="false" role="link" tabindex="0">
+					  <span>
+						  ${properties.addonsChangeLabel @ context='unsafe'}
+						  <i class="fas fa-chevron-right"></i>
+					  </span>
+				  </span>
+			  </div>
+			  <div class="option-details">
+				  <sly data-sly-use.ecommUtil="${'com.mattel.ecomm.core.utils.EcomUtil' @ template=properties.letterAccordionLabel}">
+						<h2>${ecommUtil.getDynamicTemplate @ context='html'}</h2>
+				  </sly>
+				  <sly data-sly-test="${properties.letterPage}">			 
+						  <div data-sly-resource="${resolvedLetterPage @ wcmmode=disabled}"></div>
+				  </sly>
+			  </div>
+	  </div>
+	 </div>
+  </template>

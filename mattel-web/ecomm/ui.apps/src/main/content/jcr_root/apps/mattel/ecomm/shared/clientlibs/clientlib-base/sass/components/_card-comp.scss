@@ -1,0 +1,107 @@
+.card:not(.aem-GridColumn){
+    .card-component {
+        .image-container{}
+        .text-container{}
+    }
+    &.fixed-content{
+        position: relative;
+        .text-container{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            @include transform(translate(-50%, -50%));
+            width: calc(100% - 16px);
+        }
+    }
+    .ctaItem{
+        margin-top: 0;
+        &.document-view {
+            .btn-cta-item{
+                color: $white;
+                background-color: transparent;
+                padding: 0;
+                &:hover {
+                    text-decoration: underline;
+                }
+                &::before{
+                    content: none;
+                }
+                &::after{
+                    content: "\f054";
+                    @include font-awesome();
+                    font-size: 80%;
+                    color: inherit;
+                    right: -2px;
+                    top:-1px;
+                    position: relative;
+                }
+            }
+        }
+        &.text-arrow {
+            .btn-cta-item {
+                color: $theme-color;
+                min-width: auto;
+                font-size: 1.2857rem;
+                letter-spacing: 0.36px;
+                display: table;
+                &::before{
+                    content: none;
+                }
+                &::after{
+                    content: "\f054";
+                    @include font-awesome();
+                    font-size: 80%;
+                    color: inherit;
+                    right: -2px;
+                    top:-1px;
+                    position: relative;
+                }
+                &:hover{
+                    text-decoration: underline;
+                }
+            }
+        }
+        &.solid{
+            .btn-cta-item {
+                background-color: $theme-color;
+                color: $white;
+                border-color: $theme-color;
+                @include border-radius(10px);
+                &:hover{
+                    color: $theme-color;
+                    background-color: $white;
+                    border-color: $theme-color
+                }
+            }
+        }
+        &.outline{
+            .btn-cta-item {
+                @include border-radius(10px);
+                color: $theme-color;
+                background-color: $white;
+                border-color: $theme-color;
+                &:hover{
+                    background-color: $theme-color;
+                    color: $white;
+                    border-color: $theme-color;
+                }
+            }
+        }
+        &.large-cta .btn-cta-item{
+            font-size: 1.4285rem;
+            letter-spacing: 0.4px;
+        }
+        &.medium-cta .btn-cta-item{
+            font-size: 1.2857rem;
+            letter-spacing: 0.36px;
+        }
+        &.small-cta .btn-cta-item {
+            font-size: 1.14285rem;
+            letter-spacing: 0.32px;
+        }
+        &.xsmall-cta .btn-cta-item {
+            font-size: 1rem;
+            letter-spacing: 0.28px;
+        }
+    }
+}

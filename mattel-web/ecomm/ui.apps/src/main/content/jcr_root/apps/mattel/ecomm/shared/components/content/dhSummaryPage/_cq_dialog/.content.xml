@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="DH-Summary Page"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <summaryConfig
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="DH Summary Page Configs"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <column
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                   <question
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please enter title here"
+                                        fieldLabel="Title"
+                                        name="./reviewTitle"/>
+                                    <desktopLogoImage
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                        allowUpload="{Boolean}false"
+                                        autoStart="{Boolean}false"
+                                        class="cq-droptarget"
+                                        fieldDescription="Please drag and drop desktop logo image to display"
+                                        fieldLabel="Desktop Logo Image"
+                                        fileReferenceParameter="./desktopLogoImageForDollName"
+                                        mimeTypes="[image/gif,image/jpeg,image/png,image/webp,image/tiff]"
+                                        multiple="{Boolean}false"
+                                        name="./desktopLogoImage"
+                                        uploadUrl="${suffix.path}"
+                                        useHTML5="{Boolean}true"/>
+                                    <mobileLogoImage
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                        allowUpload="{Boolean}false"
+                                        autoStart="{Boolean}false"
+                                        class="cq-droptarget"
+                                        fieldDescription="Please drag and drop mobile logo image to display"
+                                        fieldLabel="Mobile Logo Image"
+                                        fileReferenceParameter="./mobileLogoImageForDollName"
+                                        mimeTypes="[image/gif,image/jpeg,image/png,image/webp,image/tiff]"
+                                        multiple="{Boolean}false"
+                                        name="./mobileLogoImage"
+                                        uploadUrl="${suffix.path}"
+                                        useHTML5="{Boolean}true"/>
+                                    <desktopBackgroundImage
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                        allowUpload="{Boolean}false"
+                                        autoStart="{Boolean}false"
+                                        class="cq-droptarget"
+                                        fieldDescription="Please drag and drop image to display"
+                                        fieldLabel="Desktop Background Image"
+                                        fileReferenceParameter="./bgImageRef"
+                                        mimeTypes="[image/gif,image/jpeg,image/png,image/webp,image/tiff]"
+                                        multiple="{Boolean}false"
+                                        name="./bgImage"
+                                        uploadUrl="${suffix.path}"
+                                        useHTML5="{Boolean}true"/>
+                                  <mobileBackgroundImage
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                        allowUpload="{Boolean}false"
+                                        autoStart="{Boolean}false"
+                                        class="cq-droptarget"
+                                        fieldDescription="Please drag and drop Mobile image to display"
+                                        fieldLabel="Mobile Background Image"
+                                        fileReferenceParameter="./bgMobImageRef"
+                                        mimeTypes="[image/gif,image/jpeg,image/png,image/webp,image/tiff]"
+                                        multiple="{Boolean}false"
+                                        name="./bgMobImage"
+                                        uploadUrl="${suffix.path}"
+                                        useHTML5="{Boolean}true"/>
+                                    <dollTypeCopy
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please enter doll type copy text"
+                                        fieldLabel="Doll Type Label"
+                                        name="./dollTypeCopy"/>
+                                    <eyeColorCopy
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please enter eye color copy text"
+                                        fieldLabel="Eye Color Label"
+                                        name="./eyeColorCopy"/>
+                                    <hairColorCopy
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please enter hair color copy text"
+                                        fieldLabel="Hair Color Copy Label"
+                                        name="./hairColorCopy"/>
+                                    <treatmentTypeCopy
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please enter treatment type copy text"
+                                        fieldLabel="Treatment Type Label"
+                                        name="./treatmentTypeCopy"/>
+                                     <subTreatmentTypeCopy
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please enter sub-treatment type copy text"
+                                        fieldLabel="SubTreatment Type Label"
+                                        name="./subTreatmentTypeCopy"/>           
+                                      <treatmentPriceText
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please enter price copy text"
+                                        fieldLabel="Treatment Price Label"
+                                        name="./treatmentPriceCopy"/>
+                                      <specialExtrasCopy
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please enter special extras copy text"
+                                        fieldLabel="Special Extras Copy Label"
+                                        name="./specialExtrasCopy"/>
+                                     <priceText
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please enter price copy text"
+                                        fieldLabel="Special Extras Price Label"
+                                        name="./specialPriceCopy"/>
+                                     <additionalInfoLabel
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please enter additional info copy text"
+                                        fieldLabel="Additional Info Label"
+                                        name="./additionalInfoLabel"/>
+                                     <ageGradeLabel
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please enter Age Grade copy text"
+                                        fieldLabel="Age Grade Label"
+                                        name="./ageGradeLabel"/>
+                                     <emptyContentPlaceHolder
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please enter emptyContent placeholder text"
+                                        fieldLabel="No select placeholder copy"
+                                        name="./emptyContentPlaceHolder"/>
+                                      <footerTitle
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please enter review page pricing footer title"
+                                        fieldLabel="Review Summary Footer Title Copy"
+                                        name="./footerTitle"/>
+                                </items>
+                            </column>
+                        </items>
+                    </summaryConfig>
+                    <errorMsgConfigs
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Error Message Configuration"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <column
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                  <charErrMsg
+                                     jcr:primaryType="nt:unstructured"
+                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                     fieldDescription="Please configure error message for allowed Characters mismatch."
+                                     fieldLabel="Error Message for  Allowed Character Mismatch"
+                                     name="./allowedCharTypeErr"/>
+                                  <maxCharCount
+                                     jcr:primaryType="nt:unstructured"
+                                     sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+                                     fieldDescription="Please configure maximum character count for additional information"
+                                     fieldLabel="Maximum character count for special instruction"
+                                     name="./maxCharCount"/>
+                                 <maxCharCountErrMsg
+                                     jcr:primaryType="nt:unstructured"
+                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                     fieldDescription="Please configure error message for exceeding maximum character count"
+                                     fieldLabel="Error Message for exceeding maximum character count"
+                                     name="./maxAllowedCharsErr"/>
+                                 <profanityErrMsg
+                                     jcr:primaryType="nt:unstructured"
+                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                     fieldDescription="Please configure error message for AG's profanity mismatch"
+                                     fieldLabel="Error Message for AG's profanity mismatch"
+                                     name="./profanityErr"/>
+                                </items>
+                            </column>
+                        </items>
+                    </errorMsgConfigs>
+                    <buttonConfiguration
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Buttons Config"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <column
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <heading
+                                        granite:class="coral-Heading coral-Heading--4"
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/heading"
+                                        level="{Long}4"
+                                        text="Set the Buttons title and Urls"/>
+                                    <well
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/well">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <backButtonText
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Please enter Back Button Text"
+                                                fieldLabel="Back Button Text"
+                                                name="./backButtonText"/>
+                                             <backButtonLink
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                fieldDescription="Please enter the url where needs to redirect"
+                                                fieldLabel="Back button link"
+                                                name="./backButtonLink"
+                                                rootPath="/content/ag/en"/>
+                                            <addToBagButton
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Please enter Add to Bag Button Text"
+                                                fieldLabel="Add to Bag Button Text"
+                                                name="./addToBagButton"/>
+                                            <addToBagButtonUrl
+		                                        jcr:primaryType="nt:unstructured"
+		                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+		                                        fieldDescription="Please provide the link for add to bag"
+		                                        fieldLabel="Add to Bag URL Link"
+		                                        name="./addToBagUrl"/> 
+                                            <backgroundcolor
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <colorpicker
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/colorfield"
+                                                        fieldDescription="Please select background color for sticky button container. This is applicable for mobile view only"
+                                                        fieldLabel="Select Background color for sticky Button Container (Mobile only)"
+                                                        freestylePaletteType="{Boolean}true"
+                                                        name="./backgroundColor"
+                                                        value="hex"/>
+                                                </items>
+                                            </backgroundcolor>
+                                        </items>
+                                    </well>
+                                </items>
+                            </column>
+                        </items>
+                    </buttonConfiguration>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>

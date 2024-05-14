@@ -1,0 +1,33 @@
+<sly data-sly-use.model="com.mattel.global.master.core.model.GridContainerModel"/>
+<sly data-sly-test="${properties.bgType=='color'}"><div class="flexible-grid-component" data-xs-slider="${model.dataXsSlider}" style="background: ${properties.backgroundColor @ context='html'};"></sly>
+<sly data-sly-test="${properties.bgType=='image'}"><div class="flexible-grid-component" data-xs-slider="${model.dataXsSlider}" style="background: url('${properties.backgroundImage @ context='html'}') no-repeat center;"></sly>
+<div data-sly-test="${model.items.size >= 1}" class="flexible-grid-component" data-xs-slider="${model.dataXsSlider}">
+    <div class="inner-section">
+        <div class ="flexible-cta-component" data-sly-test="${properties.containertitle || properties.containerdescription}">
+            <div class="text-center">
+                <div class="title" data-sly-test="${properties.containertitle}">
+                    ${properties.containertitle @context='html'}
+                </div>
+                <div class="description-content" data-sly-test="${properties.containerdescription}">
+                    <div class="description">
+                        ${properties.containerdescription @context='html'}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <ul>
+            <li data-sly-repeat.item="${model.items}"
+                data-sly-resource="${item.name @ decorationTagName='div'}"></li>
+        </ul>
+    </div>
+</div>
+<sly data-sly-resource="${resource.path @ resourceType='wcm/foundation/components/parsys/newpar', appendPath='/*', decorationTagName='div', cssClassName='new section aem-Grid-newComponent'}"
+     data-sly-test="${(wcmmode.edit || wcmmode.preview) && model.items.size < 1}">
+</sly>
+<div class="cta-button" data-sly-test="${properties.link}">
+    <a href="${model.ctaLink}" role="button" class="theme-btn">${properties.text}</a>
+</div>
+</div>
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
+    <sly data-sly-call="${clientlib.js @ categories='ecomm.cardContainer'}"/>
+</sly>

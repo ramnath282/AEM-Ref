@@ -1,0 +1,127 @@
+<template data-sly-template.productInfo="${@ productObj}">
+   <sly data-sly-test.core=${productObj.core}></sly>
+    <div class="product-info-wrapper parent ${core.product_hasSwatches ? 'swatch-available' : ''} ${core.product_isDynamicKit ? 'dynamic-kit-product' : ''}" data-video="${core.product_viewerVideo @ context='unsafe'}" data-partnumber="${productObj.partnumber}" id="productInfo-${productObj.partnumber}" data-producttype="${core.product_type}" data-releasedateweb="${core.product_releaseDateWeb}" data-newOverrideFlag="${core.product_newoverrideflag}" >
+        <sly data-sly-test="${productObj.components && core.product_type == 'PackageBean'}">
+            <sly data-sly-list.component="${productObj.components}">
+                <input type="hidden" value="${component.product_partnumber}" data-partnumber="${component.product_partnumber}" data-variant-id="${component.variants && component.variants.size > 0 ? component.variants[0].id : ''}" data-association-type="COMPONENT" data-product-type="${component.product_type}" class="packageBeanComp"/>
+            </sly>
+        </sly>
+        <div class="product-callout">
+            <span class="product-callout-attribute">${core.product_productcallout}</span>
+        </div>
+        <sly data-sly-test="${core.title}">
+            <h1 class="product-name">${core.title @context='html'}</h1>
+        </sly>
+        <img class="socialimage hide" src="" />
+        <sly data-sly-test="${core.product_marketingAge}">
+            <p class="age-specification">${properties.marketingAgeLabel @i18n} <span>${core.product_marketingAge}</span></p>
+        </sly>
+        <div class="grid-section product-reviews">
+            <span class="rating-section">
+                <span class="sr-only"></span>
+            </span>
+            <div class="review-status">
+                <a class="read-reviews" href="#BVRRContainer">${properties.readReviewLabel @i18n} (<span></span>)</a>
+                <a class="write-review" href="#BVOSWriteReview">${properties.writeReviewLabel @i18n}</a>
+            </div>
+        </div>
+        <div class=" product-price" data-partnumber="${productObj.partnumber}">
+            <sly data-sly-test="${core.product_type == 'BundleBean'}">
+                <span class="hide"><span class="price-currency "></span><span class="current_price"></span></span>
+            </sly>
+            <sly data-sly-test="${core.product_type != 'BundleBean'}">
+                <span class="hide"><span class="price-currency "></span><span class="current_price"></span></span>
+                <span class="price-strike" data-pricestrick-message="${properties.pricestrickMessage @i18n}"> <span class="sr-only"></span> <span class="offer_price"></span></span>
+                <span class="price-saved" data-yousave-message="${properties.yousaveMessage @i18n}"> <span class="discount_price"></span> </span>
+            </sly>
+        </div>
+        <div class="affirm-container">
+            <div id="bagAffirm" class="bag__affirm hide">
+                <p class="bag__affirm-copy">
+                Pay in full or in 4 interest-free installments of <span id="bagAffirmPayments"></span> with <span class="shoppay-logo"><img src="/content/dam/ag-dam/ag-global-dam/parent-site-dam/images/Shop-pay-47.png" /></span>
+				<a class="affirm-modal-trigger" aria-label="Learn more about Affirm Financing" href="${productObj.affirmInfoPagePath}" target="_blank">${properties.affirmLearnMoreLabel}</a>
+                </p>
+            </div>
+        </div>        
+        <div class="inventory-status ${core.product_hasSwatches ? 'hide-inventory' : 'show-inventory'}">
+      <span class="inventory-status-message" aria-live="polite"></span>
+      <span class="back-oderable-date"></span>
+    </div>
+    <div
+      data-sly-resource="${@path='marketingContent', resourceType='/apps/mattel/ecomm/ag/components/content/ecomm/marketingFragmentsContainer'}">
+        </div>
+		<sly data-sly-test="${productObj.hasBittyTwinAssociations}" data-sly-use.templ="bittytwins.html" data-sly-call="${templ.bittyTwinsInfo @ bittyTwinsObj=productObj}"></sly>
+        <sly data-sly-test="${productObj.associations}" data-sly-list.association="${productObj.associations}">
+            <sly data-sly-test="${association.association_type == 'QUICK' && association.product && core.product_type != 'BundleBean'}">
+                <sly data-sly-test.coreassoc="${association.product.core}">
+                     <sly data-sly-test.variantsassoc=${association.product.variants}>
+                        <sly data-sly-list="${variantsassoc}">
+                          <sly data-sly-test.assocvariantid="${item.id}"/>
+                        </sly>
+                     </sly>
+                    <div class="associations-addons row hide">
+                        <div class="addon-option addon-box hide ${!core.product_buyable || core.product_buyable == '0' ? 'non-buyable-product-section' : ''}">
+                            <input class="custom-checkbox " data-partnumber="${association.product.partnumber}" data-variant-id="${assocvariantid}" data-imgUrl="${coreassoc.product_imagelink}" type="checkbox" id="addon-${associationList.index}">
+                            <label for="addon-${associationList.index}" data-partnumber="${association.product.partnumber}"data-variant-id="${assocvariantid}"  class="addon-desc">${coreassoc.title}</label>
+                            <span class="addon-price " data-partnumber="${association.product.partnumber}" data-variant-id="${assocvariantid}"></span>
+                        </div>
+                    </div>
+                 </sly>
+            </sly>
+        </sly>
+        <sly data-sly-test="${productObj.variants && productObj.variants.size > 0}">
+            <sly data-sly-test.isSize="${productObj.options && productObj.options.size > 0 && productObj.options[0].name == 'Clothing Size'}">
+                <div class="select-size-wrapper sku-size-select marketing-savings-cont" data-type="child">
+                    <div class="size-header-wrap filter_cont">
+                        <span class="size-label">${properties.sizeLabel @i18n}:</span>
+                        <div class="size-selection-preference">
+                            <ul role="radiogroup" aria-label="size" class="text-swatches size_category filter_list_cont">
+                                <sly data-sly-list.variant="${productObj.variants}">
+                                    <li class="innerCont" data-partnoswatch="${variant.core['sku']}" data-variant-id="${variant.id}">
+                                        <a href="#" role="radio" aria-setsize="${productObj.variants.size}" aria-posinset="${variantList.count}" aria-label="${variant.core['option1']}" aria-checked="false" alt="${variant.core['option1']}" data-partnumber="${variant.core['sku']}" data-variant-id="${variant.id}">
+                                            <span>${variant.core['option1']}</span>
+                                        </a>
+                                    </li>
+                                </sly>
+                                <sly data-sly-test="${core.product_sizeChartLink}">
+                                    <li class="size-chart-text">
+                                        <a href="javascript:void(0);" data-url="${core.product_sizeChartLink}" onclick="window.open(this.dataset.url,'AG','width=800, height=800');" class="size-chart size-modal-chart">${properties.sizeChartLabel}<span class="sr-only">Opens in a new window</span></a>
+                                    </li>
+                                </sly>
+                            </ul>
+                            <div class="inline-message childErrMsg">
+                                <span class="inline-icon">${properties.selectSwatchErrorMessage || 'Please select size' @i18n}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </sly>
+            <sly data-sly-test="${!isSize && productObj.options && productObj.options.size > 0 && (productObj.options[0].name == 'Color' || productObj.options[0].name == 'Clothing Color')}">
+                <div class="select-size-wrapper sku-cloth-select marketing-savings-cont" data-type="child">
+                    <div class="size-header-wrap filter_cont">
+                        <div class="product-specification cloth-product-specification">
+                            <div class="product-label">
+                                ${properties.colorLabel @i18n}:
+                            </div>
+                            <div class="product-value">
+                            </div>
+                        </div>
+                        <div class="size-selection-preference">
+                            <ul role="radiogroup" data-id="color-selection" aria-label="size" data-sly-list.variant="${productObj.variants}" class="text-swatches color_category filter_list_cont cloth_list">
+                                <li class="innerCont" data-partnoswatch="${variant.core['sku']}" data-variant-id="${variant.id}">
+                                    <a href="#" role="radio" aria-setsize="${productObj.variants.size}" aria-posinset="${variantList.count}" aria-checked="false" data-partnumber="${variant.core['sku']}" data-variant-id="${variant.id}">
+                                        <img alt="${variant.core['option1']}" src="${variant.core['variant_swatch']}" />
+                                        <span></span>
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="inline-message childErrMsg">
+                                <span class="inline-icon">${properties.selectColorMessage || 'Please select color' @i18n}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </sly>
+        </sly>
+  </div>
+</template>

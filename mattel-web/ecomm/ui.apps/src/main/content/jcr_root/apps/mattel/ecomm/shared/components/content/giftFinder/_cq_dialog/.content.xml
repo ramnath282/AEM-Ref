@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Configure Gift Finder"
+    sling:resourceType="cq/gui/components/authoring/dialog"
+    helpPath="https://www.adobe.com/go/aem_cmp_text_v2">
+    <content
+        granite:class="play-cmp-list--editor"
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <giftFinderConfig
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Gift Finder Config"
+                        sling:resourceType="granite/ui/components/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <giftFinderIcon
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                allowUpload="{Boolean}false"
+                                autoStart="{Boolean}false"
+                                class="cq-droptarget"
+                                fieldLabel="Gift Finder Icon"
+                                fileReferenceParameter="./giftFinderIcon"
+                                mimeTypes="[image/gif,image/jpeg,image/png,image/webp,image/tiff]"
+                                multiple="{Boolean}false"
+                                name="./giftFinderImage"
+                                uploadUrl="${suffix.path}"
+                                useHTML5="{Boolean}true"/>
+                            <giftFinderAlt
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Textual alternative of the meaning or function of the image, for visually impaired readers."
+                                fieldLabel="Alternative Text For Gift Finder Icon"
+                                name="./giftFinderAlt"
+                                wrapperClass="cmp-image--editor-alt"/>
+                            <giftFinderTitle
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Gift Finder Title"
+                                fieldLabel="Gift Finder Title"
+                                name="./giftFinderTitle"/>
+                            <giftFinderDesc
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Gift Finder Description"
+                                fieldLabel="Gift Finder Description"
+                                name="./giftFinderDesc"/>
+                            <ageFieldSet
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/fieldset"
+                                name="ageFieldSet">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <ageTitle
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Title For Age"
+                                                fieldLabel="Title For Age"
+                                                name="./ageTitle"/>
+                                            <ageDetailsList
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                                class="full-width"
+                                                composite="{Boolean}true"
+                                                fieldDescription="Click 'Add field' button to add a new field."
+                                                fieldLabel="Age Filter Details"
+                                                id="age-details-multi">
+                                                <field
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/fieldset"
+                                                    acs-commons-nested="JSON_STORE"
+                                                    name="./ageFilterDetails">
+                                                    <items jcr:primaryType="nt:unstructured">
+                                                        <column
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/foundation/container">
+                                                            <items jcr:primaryType="nt:unstructured">
+                                                                <ageLabel
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                    fieldDescription="Label Text For Age"
+                                                                    fieldLabel="Label Text"
+                                                                    name="./labelText"/>
+                                                                <ageValue
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                    fieldDescription="Value For Age"
+                                                                    fieldLabel="Value For Age"
+                                                                    name="./labelValue"/>
+                                                            </items>
+                                                        </column>
+                                                    </items>
+                                                </field>
+                                            </ageDetailsList>
+                                        </items>
+                                    </column>
+                                </items>
+                            </ageFieldSet>
+                            <priceFieldSet
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/fieldset"
+                                name="priceFieldSet">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <priceTitle
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Title For Price"
+                                                fieldLabel="Title For Price"
+                                                name="./priceTitle"/>
+                                            <priceDetailsList
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                                class="full-width"
+                                                composite="{Boolean}true"
+                                                fieldDescription="Click 'Add field' button to add a new field."
+                                                fieldLabel="Price Filter Details"
+                                                id="price-details-multi">
+                                                <field
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/fieldset"
+                                                    acs-commons-nested="JSON_STORE"
+                                                    name="./priceFilterDetails">
+                                                    <items jcr:primaryType="nt:unstructured">
+                                                        <column
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/foundation/container">
+                                                            <items jcr:primaryType="nt:unstructured">
+                                                                <priceLabel
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                    fieldDescription="Label Text For Price"
+                                                                    fieldLabel="Label Text"
+                                                                    name="./labelText"/>
+                                                                <priceValue
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                    fieldDescription="Value For Price"
+                                                                    fieldLabel="Value For Price"
+                                                                    name="./labelValue"/>
+                                                            </items>
+                                                        </column>
+                                                    </items>
+                                                </field>
+                                            </priceDetailsList>
+                                        </items>
+                                    </column>
+                                </items>
+                            </priceFieldSet>
+                            <ctaLabel
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Label For Submit Button"
+                                fieldLabel="Label For Submit Button"
+                                name="./ctaLabel"/>
+                            <ctaLink
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="/libs/granite/ui/components/coral/foundation/form/pathbrowser"
+                                fieldLabel="CTA Link for Submit Action"
+                                name="./submitCtaLink"
+                                rootPath="/content"/>
+                        </items>
+                    </giftFinderConfig>
+                    <promoImageConfig
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Promo Images Config"
+                        sling:resourceType="granite/ui/components/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <leftPromoImage
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                allowUpload="{Boolean}false"
+                                autoStart="{Boolean}false"
+                                class="cq-droptarget"
+                                fieldLabel="Left Promo Image"
+                                fileReferenceParameter="./leftPromoImage"
+                                mimeTypes="[image/gif,image/jpeg,image/png,image/webp,image/tiff]"
+                                multiple="{Boolean}false"
+                                name="./leftPromoImg"
+                                uploadUrl="${suffix.path}"
+                                useHTML5="{Boolean}true"/>
+                            <leftAlt
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Textual alternative of the meaning or function of the image, for visually impaired readers."
+                                fieldLabel="Alternative Text For Left Promo Image"
+                                name="./leftAlt"
+                                wrapperClass="cmp-image--editor-alt"/>
+                            <leftCta
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="/libs/granite/ui/components/coral/foundation/form/pathbrowser"
+                                fieldLabel="CTA Link for Left Promo Image"
+                                name="./leftCtaLink"
+                                rootPath="/content"/>
+                            <leftUrlTarget
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                fieldLabel="Open Left Promo URL In"
+                                name="./leftUrlTarget">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <sameWindow
+                                        jcr:primaryType="nt:unstructured"
+                                        text="Same Window"
+                                        value="sameWindow"/>
+                                    <newTab
+                                        jcr:primaryType="nt:unstructured"
+                                        text="New Tab"
+                                        value="tabWindow"/>
+                                    <newWindow
+                                        granite:hide="${cqDesign.disableSearch}"
+                                        jcr:primaryType="nt:unstructured"
+                                        text="New Window"
+                                        value="newWindow"/>
+                                </items>
+                            </leftUrlTarget>
+                            <rightPromoImage
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                allowUpload="{Boolean}false"
+                                autoStart="{Boolean}false"
+                                class="cq-droptarget"
+                                fieldLabel="Right Promo Image"
+                                fileReferenceParameter="./rightPromoImage"
+                                mimeTypes="[image/gif,image/jpeg,image/png,image/webp,image/tiff]"
+                                multiple="{Boolean}false"
+                                name="./rightPromoImg"
+                                uploadUrl="${suffix.path}"
+                                useHTML5="{Boolean}true"/>
+                            <rightAlt
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Textual alternative of the meaning or function of the image, for visually impaired readers."
+                                fieldLabel="Alternative Text for Right Promo Image"
+                                name="./rightAlt"
+                                wrapperClass="cmp-image--editor-alt"/>
+                            <rightCta
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="/libs/granite/ui/components/coral/foundation/form/pathbrowser"
+                                fieldLabel="CTA Link for Right Promo Image"
+                                name="./rightCtaLink"
+                                rootPath="/content"/>
+                            <rightUrlTarget
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                fieldLabel="Open Right Promo URL In"
+                                name="./rightUrlTarget">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <sameWindow
+                                        jcr:primaryType="nt:unstructured"
+                                        text="Same Window"
+                                        value="sameWindow"/>
+                                    <newTab
+                                        jcr:primaryType="nt:unstructured"
+                                        text="New Tab"
+                                        value="tabWindow"/>
+                                    <newWindow
+                                        granite:hide="${cqDesign.disableSearch}"
+                                        jcr:primaryType="nt:unstructured"
+                                        text="New Window"
+                                        value="newWindow"/>
+                                </items>
+                            </rightUrlTarget>
+                        </items>
+                    </promoImageConfig>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>

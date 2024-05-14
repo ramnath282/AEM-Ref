@@ -1,0 +1,21 @@
+<template data-sly-template.retailStore="${@ productObj}">
+	<a href="#" class="check-store">${properties.checkStoreAvailabilityText @i18n}<span class="sr-only sr-only-focusable">${properties.checkStoreAvailabilityText @i18n}</span></a>
+
+	<select class="selectpicker selectLocation hide" data-header="Check store availability">
+        <option value="">${properties.checkStoreAvailabilityText @i18n}</option>
+		<sly data-sly-list.stores = ${productObj.storeMap}>
+			<option value="${productObj.storeMap[stores][0]}"><span class="sr-only sr-only-focusable">${stores} (${productObj.storeMap[stores][1]})</span></option>
+		</sly>
+	</select>
+
+	<div class="store-availability-message hide">
+		<p class="store-location"><span></span></p>
+		<p class="store-availability"><span></span> ${properties.availabilityStatusLine @i18n}</p>
+		<p class="inventory-message">${properties.inventoryStatusLine @i18n}</p>
+	</div>
+	<sly data-sly-test="${productObj.core && productObj.core.product_hasSwatches}">
+		<div class="inline-message errMsg hide">
+			<span class="inline-icon">${properties.availabilityStatusLine @i18n}</span>
+		</div>
+	</sly>
+</template>

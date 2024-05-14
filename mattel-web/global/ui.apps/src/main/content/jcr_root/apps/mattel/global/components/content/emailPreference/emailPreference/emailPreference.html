@@ -1,0 +1,82 @@
+<sly data-sly-use.emailPreferences="com.mattel.global.core.model.EmailPreferencesModel">
+    <sly data-sly-use.lib="mattel/global/components/content/dynamicMedia/v1/dynamicMedia/imageblock.html" />
+    <sly data-sly-test="${wcmmode.edit}">${'Configure Email Preferences' @ i18n}</sly>
+    <input type="hidden" value="${emailPreferences.isValidEmail ? emailPreferences.decodedEmailId : ''}" id="useremaiID">
+    <input type="hidden" value="${emailPreferences.isValidEmail ? emailPreferences.encryptedEmailId : ''}" id="formApi-useremaiID">
+    <input type="hidden" id="prefApi-key" value="${emailPreferences.prefAPIKey}">
+    <input type="hidden" id="prefApi-url" value="${emailPreferences.prefAPIUrl}">
+    <input type="hidden" id="requestedBy" value="AEM">
+    <input type="hidden" id="redirect_brands" data-sly-test.changePrefCTA="${properties.thankYouForChangePreference}" data-sly-use.changePref="${'com.mattel.ecomm.core.helper.EcommHelper' @ text= changePrefCTA}" value="${changePref.pathURL}">
+    <input type="hidden" id="redirect_unsubscribe" data-sly-test.unsubscribeCTA="${properties.thankYouForUnsubscribe}" data-sly-use.unsubscribe="${'com.mattel.ecomm.core.helper.EcommHelper' @ text= unsubscribeCTA}" value="${unsubscribe.pathURL}">
+    <div class = "reusability-email-preferences">
+        <div class="email-preferences-component ${properties.image || properties.mobileImage ? 'bg_wrapperImg dynamic-media-wrapper' : 'bg_color'}">
+
+        <div class="email-preferences-content-block ${properties.tileOption}" style="background-color:${properties.backgroundOption=='color' ? properties.backgroundColor : ''  @context='html'};background-image:url(${properties.backgroundOption!='color' && properties.tileImage ? emailPreferences.backgroundImagePath : '' @ context='html'});">
+            <sly data-sly-test="${!properties.tileImage}">
+                <div class="dynamicMedia" data-sly-test="${properties.image || properties.mobileImage}">
+
+                    <div class="desktop-bg ${!properties.customMobile || !properties.mobileImage ? 'customMobileoff' : ' '}" data-sly-test="${properties.image}" data-sly-call="${lib.imageVideoSection @ imageDetail='image'}"></div>
+                    <div class="mobile-bg" data-sly-test="${properties.mobileImage && properties.customMobile}" data-sly-call="${lib.imageVideoSection @ imageDetail='mobileImage'}"></div>
+                </div>
+            </sly>
+            <div class="${properties.image || properties.mobileImage ? 'dynamic-media-container' : ''}">
+                <div class="title-block">
+                    <sly data-sly-test="${properties.generalTitle}">
+                        ${properties.generalTitle @context='html',i18n}
+                    </sly>
+                    <div class="sub-title" data-sly-test="${properties.generalSubTitle}">${properties.generalSubTitle @context='html',i18n}</div>
+                    <div class="text-para" data-sly-test="${properties.generalDescription}">${properties.generalDescription @context='html',i18n}</div>
+                    <div class="label">
+                        <sly data-sly-test="${properties.emailAddress}">
+                            <span class="title">${properties.emailAddress @i18n}</span>
+                        </sly>
+
+                        <span data-sly-test="${emailPreferences.isValidEmail}" class="desc" id="useremailId">${emailPreferences.decodedEmailId}</span>
+                    </div>
+                    <p data-sly-test="${properties.optionSelection}">${properties.optionSelection @i18n}</p>
+                </div>
+                <div class="subscription-opt">
+                    <ul>
+                        <li class="radio">
+                            <label class="emailpref-radio">
+                                <input type="radio" name="radio" class="radio-opt unsubscribe">
+                                <span class="checkmark"></span>
+                                <sly data-sly-test="${properties.unsubscribeTitle}">
+                                    <span class="checkval">${properties.unsubscribeTitle @context='html',i18n}</span>
+                                </sly>
+                                <sly data-sly-test="${properties.unsubscribeDescription}">
+                                    <p>${properties.unsubscribeDescription @context='html',i18n}</p>
+                                </sly>
+                            </label>
+                        </li>
+                        <li class="radio">
+                            <label class="emailpref-radio">
+                                <input type="radio" name="radio" id="changeEmailPref" class="radio-opt" checked="">
+                                <span class="checkmark"></span>
+                                <sly data-sly-test="${properties.emailPreferenceTitle}">
+                                    <span class="checkval">${properties.emailPreferenceTitle @context='html',i18n}</span>
+                                </sly>
+                                <div class="text-para" data-sly-test="${properties.emailPreferenceDescription}">${properties.emailPreferenceDescription @context='html',i18n}</div>
+                            </label>
+                            <div class="change-email-pref-opt" id="changeEmailPrefOpt" style="display: block;">
+                                <ul>
+                                    <li class="checkbox">
+                                        <ul id="inputfield">
+                                            <sly data-sly-resource="${'brandsListContainer0' @ resourceType='wcm/foundation/components/responsivegrid'}"></sly>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <button class="btn btn-primary" id="update-btn" type="button" data-tracking-attribute="${properties.trackThisCTA=='on' ? properties.trackingText : '' }">${properties.updateCTALabel @i18n}</button>
+            </div>
+        </div>
+
+    </div>
+    </div>
+</sly>
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
+    <sly data-sly-call="${clientlib.js @ categories='email.preference'}" />
+</sly>

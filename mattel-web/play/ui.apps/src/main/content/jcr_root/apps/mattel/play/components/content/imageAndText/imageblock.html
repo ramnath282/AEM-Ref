@@ -1,0 +1,17 @@
+<template data-sly-template.imageVideoSection="${ @ videoDetail}">
+<sly data-sly-test.isVideo="${videoDetail.ooyalaId}">
+	<div class="single-video-player" data-autoplay="false" data-video-id="${videoDetail.ooyalaId}"></div>
+
+</sly>
+<sly data-sly-test="${!isVideo}">
+	<sly data-sly-test="${properties.imageFileReferenceMainImageDesktop}">
+		<img class="hidden-xs hidden-sm hidden-md" src="${properties.imageFileReferenceMainImageDesktop}" alt="${properties.mainImageDesktopAlt}"/>			  
+	</sly>
+	<sly data-sly-test="${properties.imageFileReferenceMainImageMobile != null}">
+		<img class="hidden-lg" src="${properties.imageFileReferenceMainImageMobile}" alt="${properties.mainImageMobileAlt}"/>		
+	</sly>
+	<sly data-sly-test="${properties.imageFileReferenceMainImageMobile == null && properties.imageFileReferenceMainImageDesktop != null}">
+		<img class="hidden-lg" src="${properties.imageFileReferenceMainImageDesktop}" alt="${properties.mainImageDesktopAlt}"/>
+	</sly>
+</sly>
+</template>

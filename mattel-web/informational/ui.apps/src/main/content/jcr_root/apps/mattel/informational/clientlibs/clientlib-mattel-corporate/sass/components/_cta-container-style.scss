@@ -1,0 +1,66 @@
+.dark-theme.text-arrow {
+	.btn-cta-item {
+		&:before {
+			background-image: url(#{$spriteLightPath});
+		}
+	}
+}
+.dark-theme {
+	.text-arrow {
+		.btn-cta-item {
+			&:before {
+				background-image: url(#{$spriteLightPath});
+			}
+		}
+	}
+}
+
+
+.text-secondary  {
+   .btn-cta-item {
+	font-size: mapping($ctaContainerProp, cta_style, fontSize);
+  }
+}
+
+.text-secondary {
+  .btn-cta-item{
+    &:hover{
+      border-bottom-width: mapping($ctaContainerProp, cta_style, borderWidth);
+    }
+  }
+}
+.text-secondary .btn-cta-item,
+.text-arrow .btn-cta-item {
+    border-radius: mapping($ctaContainerProp, cta_style, boderRadius);
+}
+.solid , .outline {
+	.btn-cta-item{
+		font-family: $MattelCorpPrimaryFontBold;
+		border: 2px solid $primaryTextColor;
+		&:hover{
+			border: 2px solid $primaryTextColor;
+		}
+	}
+}
+/* iPad [portrait + landscape] */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+	.solid{
+		.btn-cta-item{
+			&:hover{
+				color: $white;
+                background-color: $primaryTextColor;
+			}
+		}
+	}
+}
+/* iPhone [portrait + landscape] */
+@media only screen and (max-device-width: 480px) {
+	.solid{
+		.btn-cta-item{
+			&:hover{
+				color: $white;
+                background-color: $primaryTextColor;
+			}
+		}
+	}
+}

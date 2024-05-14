@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Reset Password"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <column
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/container">
+                <items jcr:primaryType="nt:unstructured">
+                    <resetPasswordTitle
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        fieldDescription="Please enter title for Reset Password"
+                        fieldLabel="Reset Password Title :"
+                        name="./resetPasswordTitle"/>
+                    <descriptionText
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+                        fieldDescription="Please enter description"
+                        fieldLabel="Description Text"
+                        name="./description"
+                        useFixedInlineToolbar="{Boolean}true">
+                        <rtePlugins
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceSuperType="mattel/global/components/content/rtePlugins/rtePlugins"/>
+                        <uiSettings
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceSuperType="mattel/global/components/content/rtePlugins/uiSettings"/>
+                    </descriptionText>
+                    <validationCode
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        fieldDescription="Please enter Validation Code Label"
+                        fieldLabel="Validation Code Field Label"
+                        name="./validationCode"/>
+                    <newPassword
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        fieldDescription="Please enter Label for New Password"
+                        fieldLabel="New Password Label :"
+                        name="./newPassword"/>
+                    <verifyPassword
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        fieldDescription="Please enter Label for Verify Password"
+                        fieldLabel="Verify Password Label :"
+                        name="./verifyPassword"/>
+                    <passwordDescriptionText
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+                        fieldDescription="Please enter password description"
+                        fieldLabel="Password Description Text"
+                        name="./passwordDescriptionText"
+                        useFixedInlineToolbar="{Boolean}true">
+                        <rtePlugins
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceSuperType="mattel/global/components/content/rtePlugins/rtePlugins"/>
+                        <uiSettings
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceSuperType="mattel/global/components/content/rtePlugins/uiSettings"/>
+                    </passwordDescriptionText>
+                    <changePasswordButtonLabel
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        fieldDescription="Please enter Label for Change Password Button"
+                        fieldLabel="Change Password Button Label"
+                        name="./changePasswordButtonLabel"
+                        required="{Boolean}true"/>
+                    <successPath
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+                            fieldDescription="Please enter success page path"
+                            fieldLabel="Success Page Path"
+                            name="./successPath"
+                            required="{Boolean}true"/>
+                </items>
+            </column>
+        </items>
+    </content>
+</jcr:root>

@@ -1,0 +1,8 @@
+<sly data-sly-test="${wcmmode.edit}">${'Edit Sign Up Component' @i18n}</sly>
+<img class="visible-lg pull-left" src="${properties.imagePath}" alt="">
+	<div class="pull-left">
+		<h3>${properties.title @i18n}</h3>
+		<sly data-sly-test="${properties.signUpType=='modelPopup'}"><a class="theme-btn signUpButton track-sign-up signup-model-popup" role="button" tabindex="0">${properties.buttonLabel}</a></sly>
+		<sly data-sly-test="${properties.signUpType!='modelPopup'}"><a href="${properties.urlForSignUp}" class="theme-btn signUpButton track-sign-up" role="button">${properties.buttonLabel}</a></sly>
+		<div class="footer-email-disclaimer"><em>${properties.subTitle}</em></div>
+	</div>

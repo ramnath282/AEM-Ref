@@ -1,0 +1,10 @@
+@mixin loaderBg($to, $fColor, $fPercent, $sColor, $sPercent, $linierTo) {
+    background: $fColor;
+    background: -moz-linear-gradient($to, $fColor $fPercent, $sColor $sPercent);
+    background: -webkit-linear-gradient($to, $fColor $fPercent, $sColor $sPercent);
+    background: -o-linear-gradient($to, $fColor $fPercent, $sColor $sPercent);
+    background: -ms-linear-gradient($to, $fColor $fPercent, $sColor $sPercent);
+    background: linear-gradient(to $linierTo, $fColor $fPercent, $sColor $sPercent);
+}
+
+$listingComponent:( loader_outer:( display: none, position: fixed, p_top: 0, p_bottom:0, p_left:0, p_right:0, z_index: 99999), loader:( position: absolute, p_left: 45%, p_top: 28%, font_size: em(10), margin: em(50) auto, text_indent: -9999em, width: em(70), height: em(70), border_radius: 50%, webkit_animation: load3 1.4s infinite linear, animation: load3 1.4s infinite linear, webkit_transform: translateZ(0), ms_transform: translateZ(0), transform: translateZ(0)), loader_before:( width: 50%, height: 50%, background: $corpColor, border_radius: 100% 0 0 0, position: absolute, p_top: 0, p_left: 0, content: ''), loader_after:( background: $white, width: 75%, height: 75%, border_radius: 50%, content: '', margin: auto, position: absolute, p_top: 0, p_left: 0, p_bottom: 0, p_right: 0), loader_load3:( webkit_transform_1: rotate(1deg), transform_1: rotate(1deg), webkit_transform_100: rotate(360deg), transform_100: rotate(360deg)), );

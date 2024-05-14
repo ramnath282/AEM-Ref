@@ -1,0 +1,99 @@
+<sly data-sly-test="${wcmmode.edit}"><b>${'Contact Preferences' @i18n}</b></sly>
+
+<div class="contact-preference-body" id="contactPreferences"> 
+    <h1>${properties.contactPreferencesTitle}</h1>
+    <form>
+        <div class="user-info-wrapper col-1-set"> 
+            <sly data-sly-test="${properties.emailAddressLabel}">
+                <div class="details-list-item">
+                    <h2 class="header-label">${properties.emailAddressLabel}</h2>
+                    <span class="value-label contact-email"></span>
+                </div>
+            </sly>
+            <sly data-sly-test="${properties.emailPreferencesLabel}">
+                <div class="details-list-item">
+                    <h2 class="header-label">${properties.emailPreferencesLabel}</h2>
+                    <fieldset>                
+                        <legend class="value-label">${properties.emailPreferencesReceiveNotificationText}</legend>
+                        <div>             
+                        <input type="radio" value="yes" name="emailPreference" id="emailPreferYes">
+                        <label for="emailPreferYes" class="email-pref-yes">${properties.emailPreferYes}</label>
+                        </div>
+                        <div>
+                        <input type="radio" value="no" name="emailPreference" id="emailPreferNo">
+                        <label for="emailPreferNo">${properties.emailPreferNo}</label>
+                        </div>
+                    </fieldset>
+                </div>
+            </sly>
+            <script id="preferencesTmpl" type="text/x-handlebars-script">
+                {{#each item}}
+                <div class="details-list-item">    
+                    {{#if selected}}
+                        <input type="checkbox" id="{{id}}" checked>
+                    {{else}}
+                        <input type="checkbox" id="{{id}}">
+                    {{/if}}
+                    <label for="{{id}}">{{{val}}} </label>
+                </div> 
+                {{/each}}
+            </script>
+            <script id="loyaltyPreferencesTmpl" type="text/x-handlebars-script">
+                {{#if item.length}}
+                    <h3 class="value-label">${properties.agRewardsLabel @context='scriptString'}</h3> 
+                    <fieldset>
+                        <legend class="value-label note-label">${properties.agRewardsReceiveNotificationText @context='scriptString'}</legend>
+                        {{#each item}} 
+                        <div class="details-list-item">    
+                            {{#if selected}}
+                                <input type="checkbox" id="{{id}}" checked>
+                            {{else}}
+                                <input type="checkbox" id="{{id}}">
+                            {{/if}}
+                            <label for="{{id}}">{{{val}}} </label>
+                        </div> 
+                        {{/each}}
+                    </fieldset>
+                {{/if}}
+            </script>
+
+            <div class="details-list-item">
+                <h3 class="value-label">${properties.messagePreferencesLabel}</h3>  
+                <fieldset>
+                    <legend class="value-label note-label">${properties.messagePreferencesReceiveNotificationText}</legend>
+                    <div id="messagePreferences"></div>
+                </fieldset>
+            </div>
+            <div class="details-list-item">
+                <div id="agrewardsPreferences"></div>
+            </div> 
+            <script id="sharePreferencesTmpl" type="text/x-handlebars-script">
+                {{#each item}}
+                    {{#if selected}}
+                        <input type="checkbox" id="{{id}}" checked>
+                    {{else}}
+                        <input type="checkbox" id="{{id}}">
+                    {{/if}}
+                    <label for="{{id}}">{{val}} </label>
+                {{/each}}
+            </script> 
+            <sly data-sly-include="${'/apps/mattel/ecomm/shared/components/content/accountPromoBanner/accountPromoBanner.html'}"></sly>
+            <div data-sly-test="${properties.receiveCatalougeLabel}" class="details-list-item">
+                <legend class="sr-only">${properties.receiveCatalougeLabel}</legend>
+                <h2 class="header-label" aria-hidden="true">${properties.receiveCatalougeLabel}</h2>
+                <fieldset id="catalougueMail"></fieldset>
+            </div>
+            <div data-sly-test="${properties.informationSharingLabel}" class="details-list-item">
+                <legend class="sr-only">${properties.informationSharingLabel}</legend>
+                <h2 class="header-label" aria-hidden="true">${properties.informationSharingLabel}</h2>
+                <fieldset id="infoSharing"></fieldset>
+            </div>
+            <sly data-sly-test="${properties.updatePreferencesCTAText}">
+            	<input class="theme-btn no-bg-btn update-preferences-btn" type="submit" value="${properties.updatePreferencesCTAText}" />
+            </sly>                
+        </div>
+    </form>
+</div>
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
+    <sly data-sly-call="${clientlib.js @ categories='ecomm.contactPreferences'}"/>
+</sly>

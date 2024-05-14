@@ -1,0 +1,36 @@
+<sly data-sly-use.ecommPageModel="com.mattel.ecomm.core.models.EcommPageModel">
+	<input type="hidden" value="${ecommPageModel.storeName}" id="storeName">
+	<input type="hidden" value="${ecommPageModel.domainKey}" id="domainKey">
+	<input type="hidden" value="${ecommPageModel.pageType}" id="pageType">
+	<input type="hidden" value="${ecommPageModel.storeId}" id="storeId">
+    <input type="hidden" value="${ecommPageModel.catalogId}" id="catalogId">
+    <input type="hidden" value="${ecommPageModel.langId}" id="langId">
+    <input type="hidden" value="${currentPage.path}" id="currentPagePathForAnalytics"/>
+    <input type="hidden" value="${ecommPageModel.errorPage}" id="siteErrorPage"/>
+    <input type="hidden" value="${ecommPageModel.siteKey}" id="siteKey"/>
+    <input type="hidden" value="${ecommPageModel.snpAccountUrl}" id="snpAccountUrl"/>
+</sly>
+<sly data-sly-use.scriptUrl="com.mattel.fisherprice.core.models.FisherPricePageModel">
+    <input type="hidden" id="businessSiteName" value="${scriptUrl.brandName}" />
+    <input type="hidden" id="rescueParentName" value="FisherPrice Shop" />
+    <input type="hidden" id="pageTypesForAnalytics" value="${scriptUrl.parentPageType}" />
+    <input type="hidden" id="templateType" value="${pageProperties['sling:resourceType']}"/>
+	<input type="hidden" id="siteSection" value="${scriptUrl.siteSection}" />
+	<input type="hidden" id="siteCountry" value="${scriptUrl.siteCountry}" />
+	<input type="hidden" id="subBrandNameForAnalytics" value="${pageProperties.adobeTrackingNameForSubBrand}" />
+	<input type="hidden" id="productSKUId" value="${scriptUrl.productId}"/>
+	<input type="hidden" id="siteSubSection" value="${scriptUrl.siteSubSection}"/>  
+	<input type="hidden" id="isFPPage" value="true"/>
+	<input type="hidden" id="ratingsReviewsPLPToggle" value="${! inheritedPageProperties.starRatingToggleOnPLP @ context = 'html'}"/>
+	<sly data-sly-test.isValAuthored="${pageProperties.adobeTrackingNameForPage && scriptUrl.businessSiteName=='rescue-heroes'}">
+		<input type="hidden" id="pageNamesForAnalytics" value="${pageProperties.adobeTrackingNameForPage}" />
+	</sly>
+	<sly data-sly-test="${!isValAuthored}">
+		<input type="hidden" id="pageNamesForAnalytics" value="${scriptUrl.pageName}" />
+	</sly>
+</sly>
+<div id="oo-player-id" class="hiddenPlayerIds" style="display: none;">
+	<input type="hidden" value="default" />
+</div>
+<!-- hidden ooyala video player id -->
+<input type="hidden" id="oo-player-pcode" value="6057994541001" />

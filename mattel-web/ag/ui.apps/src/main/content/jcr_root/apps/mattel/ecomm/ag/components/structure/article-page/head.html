@@ -1,0 +1,91 @@
+<!--/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  ~ Copyright 2016 Adobe Systems Incorporated
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/-->
+<template data-sly-template.head="${ @ page}"
+          data-sly-use.headlibRenderer="headlibs.html"
+          data-sly-use.headResources="head.resources.html">
+    <meta charset="UTF-8">
+    <title>${properties.seoTitle ? properties.seoTitle : page.title}: American Girl</title>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="/content/dam/ag-dam/ag-global-dam/parent-site-dam/images/ag-favicon.ico" type="image/png" />
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900,900i" />
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300i,700"/>
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Amatic+SC:400,700"/>
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Vast+Shadow"/>
+    <link href='https://fonts.googleapis.com/css?family=Audiowide' rel='stylesheet' type='text/css' />
+    <link href='https://fonts.googleapis.com/css?family=Patrick Hand SC' rel='stylesheet' type='text/css' />
+    <link href='https://fonts.googleapis.com/css?family=Playfair Display' rel='stylesheet' type='text/css' />
+    <link href='https://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet' type='text/css' />
+    <link href='https://fonts.googleapis.com/css?family=Permanent Marker' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Clicker Script' rel='stylesheet'>
+	
+	<sly data-sly-use.usableNetScriptModel="com.mattel.ecomm.core.models.UsableNetScriptModel">
+		<script data-sly-test.isAccessibilityEnabled="${usableNetScriptModel.accessibilitySwitch}" src="${usableNetScriptModel.usableNetScriptPath}" type="text/javascript" async></script>
+	</sly>
+
+    <sly data-sly-include="customheaderlibs.html"></sly>
+    <sly data-sly-call="${headlibRenderer.headlibs @
+                                designPath         = page.designPath,
+                                staticDesignPath   = page.staticDesignPath,
+                                clientLibCategories = page.clientLibCategories}"></sly>
+    <sly data-sly-test.appResourcesPath=${page.appResourcesPath} data-sly-call="${headResources.favicons @ path = appResourcesPath}"></sly>
+
+    <sly data-sly-test=${properties.canonicalUrl}>
+        <link rel="canonical" href="${properties.canonicalUrl}" />
+    </sly>
+    <sly data-sly-use.seopagemodel="com.mattel.ag.explore.core.model.PageModel">
+        <sly data-sly-test="${!seopagemodel.keywordsFlag}">
+            <meta data-sly-test.keywords="${page.keywords}" name="keywords" content="${keywords}"/>
+        </sly>
+        <sly data-sly-test="${!seopagemodel.descriptionFlag}">
+            <meta data-sly-test.description="${properties['jcr:description']}" name="description" content="${description}"/>
+        </sly>
+
+        <sly data-sly-test="${!seopagemodel.templateFlag}">
+            <meta data-sly-test.templateName="${page.templateName}" name="template" content="${templateName}"/>
+        </sly>
+
+        <sly data-sly-test="${!seopagemodel.viewportFlag}">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        </sly>
+        <sly data-sly-test="${!seopagemodel.titleFlag}">
+            <meta name="title" data-sly-test.keywords="${page.title}" name="title" content="${properties.seoTitle ? properties.seoTitle : page.title}: American Girl"/>
+        </sly>
+
+        <sly data-sly-list.key="${seopagemodel.metaKeywordsDescription}">
+            <meta name="${key}" content="${seopagemodel.metaKeywordsDescription[key]}"/>
+        </sly>
+        <sly data-sly-list.key="${seopagemodel.ogTags}">
+            <meta name="${key}" content="${seopagemodel.ogTags[key]}"/>
+        </sly>
+
+        <sly data-sly-list.robotTagValues="${seopagemodel.robotTags}">
+            <meta name="robots" content="${robotTagValues}"/>
+        </sly>
+        <sly data-sly-test="${!seopagemodel.isHasOgDescription}">
+            <meta property="og:description" content="${pageProperties.articleDescription}"/>
+        </sly>
+        <sly data-sly-test="${pageProperties.primaryTags}">
+            <meta property="category" content="${pageProperties.primaryTags}"/>
+        </sly>
+        <sly data-sly-test="${!seopagemodel.isHasOgTitle}">
+            <meta property="og:title" content="${page.title}"/>
+        </sly>
+        <sly data-sly-test="${!seopagemodel.isHasOgImage}">
+            <meta property="og:image" content="${seopagemodel.imagePath}"/>
+        </sly>
+    </sly>
+</template>

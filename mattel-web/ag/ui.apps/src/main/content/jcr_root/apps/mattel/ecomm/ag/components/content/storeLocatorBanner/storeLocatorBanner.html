@@ -1,0 +1,27 @@
+<sly data-sly-test="${wcmmode.edit}">${'Store Locator Banner' @ i18n}</sly>
+
+<div class="hero-banner ${properties.scrollingBanner ? '' : 'mb-30'} ${properties.scrollingBanner ? 'rotating-banner' : ''}" data-src="${properties.fileReference}"
+     style="height:594px;">
+    <div class="col-xs-12">
+<section data-sly-test="${!properties.hideLocationPopUp}" class="${properties.scrollingBanner ? 'mt-sm-100' : 'secondary-box-content'}">
+            <h1>${properties.locatorTitle @context='html'}</h1>
+            <button type="button" class="btn theme-btn-primary btn-lg analytics-track-store-locator" data-toggle="modal"
+                    data-target="#selectLocationModal">
+                <span class="pull-left">
+                    <sly data-sly-use.locTitle="com.mattel.ag.retail.core.model.StoreLocatorBannerModel">
+    <sly data-sly-test="${locTitle.storeLocation}">
+     ${currentPage.getTitle} (${locTitle.storeLocation})
+      </sly>
+      <sly data-sly-test="${!locTitle.storeLocation}">
+       <sly data-sly-test="${properties.locatorButtonText!=null}">
+        ${properties.locatorButtonText} </sly>
+        <sly data-sly-test="${properties.locatorButtonText==null}">
+       ${'Select a location' @ i18n} </sly>
+       </sly>
+        <span class="sr-only"> opens a pop up</span>
+		</sly>
+                </span>
+            </button>
+        </section>
+    </div>
+</div>

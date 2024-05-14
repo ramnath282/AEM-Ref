@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Navigation Component"
+    sling:resourceType="cq/gui/components/authoring/dialog"
+    helpPath="https://www.adobe.com/go/aem_cmp_text_v2">
+    <content
+        granite:class="cq-dialog-ag-productgrid"
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <generalConfig
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="General"
+                        sling:resourceType="granite/ui/components/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                           <navrootPath
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+                                fieldLabel="Navigation Root path:"
+                                name="./navRootPath"
+                                value="/content/ag/en"/>
+                            <logoDesktop
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                allowUpload="{Boolean}false"
+                                autoStart="{Boolean}false"
+                                class="cq-droptarget"
+                                fieldLabel="Brand Logo for Desktop"
+                                fileReferenceParameter="./logoDesktop"
+                                mimeTypes="[image/gif,image/jpeg,image/png,image/webp,image/tiff,image/svg+xml]"
+                                multiple="{Boolean}false"
+                                name="./brandLogoDesktop"
+                                uploadUrl="${suffix.path}"
+                                useHTML5="{Boolean}true"/>
+                            <logoMobile
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                allowUpload="{Boolean}false"
+                                autoStart="{Boolean}false"
+                                class="cq-droptarget"
+                                fieldLabel="Brand Logo for Mobile"
+                                fileReferenceParameter="./logoMobile"
+                                mimeTypes="[image/gif,image/jpeg,image/png,image/webp,image/tiff,image/svg+xml]"
+                                multiple="{Boolean}false"
+                                name="./brandLogoMobile"
+                                uploadUrl="${suffix.path}"
+                                useHTML5="{Boolean}true"/>
+                            <logolinkUrl
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+                                fieldLabel="Logo Link URL:"
+                                name="./logoLinkUrl"
+                                rootPath="/content/ag"
+                                value="/"/>
+                            <logoAlt
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Alt text for Brand Logo:"
+                                name="./brandLogoAlt"/>
+                            <navBgColor
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/colorfield"
+                                fieldLabel="Background Color:"
+                                name="./navBgColor"/>
+                            <navLinks
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                composite="{Boolean}true"
+                                fieldLabel="Navigation Links:">
+                                <field
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/fieldset"
+                                    name="./navigationLinks">
+                                    <items jcr:primaryType="nt:unstructured">
+                                        <column
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                                            <items jcr:primaryType="nt:unstructured">
+                                                <linkText
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldLabel="Link Text:"
+                                                    name="./navLinkText"/>
+                                                <linkUrl
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+                                                    fieldLabel="Link URL:"
+                                                    name="./navLinkUrl"
+                                                    rootPath="/content/ag"/>
+                                            </items>
+                                        </column>
+                                    </items>
+                                </field>
+                            </navLinks>
+                            <searchPlaceholder
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Search field placeholer:"
+                                name="./searchPlaceholder"/>
+                            <shoppingBagLogo
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+                                fieldLabel="Shopping bag Logo:"
+                                name="./shoppingBagLogo"
+                                rootPath="/content/dam/ag-dam"/>
+                            <shoppingBagLink
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+                                fieldLabel="Shop Bag Link URL:"
+                                name="./shoppingBagLink"
+                                rootPath="/content/ag"/>
+                            <backbtnText
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Back button Text:"
+                                name="./backBtnText"
+                                value="Back"/>
+                            <sticky
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                checked="{Boolean}true"
+                                fieldDescription="Select to stick the Navigation on top of the page on scrolling"
+                                name="./stickToTop"
+                                text="Stick Navigation to the top"
+                                uncheckedValue="{Boolean}false"
+                                value="{Boolean}true"/>
+                            <homeIconUrl
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+                                fieldLabel="Home Link URL:"
+                                name="./homeIconUrl"
+                                rootPath="/content/ag"/>
+                        </items>
+                    </generalConfig>
+                    <topNavItems
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="External Stores"
+                        sling:resourceType="granite/ui/components/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <externalStoreRootPath
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+                                fieldLabel="Root path to show external store location"
+                                fieldDescription="Select root page path to show external store location ex :Retail"
+                                name="./externalStoreRootPath"
+                                rootPath="/content/ag/en"/>
+                            <extLinks
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                composite="{Boolean}true"
+                                fieldLabel="External Stores Locations:">
+                                <field
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/fieldset"
+                                    name="./externalStores">
+                                    <items jcr:primaryType="nt:unstructured">
+                                        <column
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                                            <items jcr:primaryType="nt:unstructured">
+                                                <storeLocation
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldLabel="Store Location:"
+                                                    name="./storeLocation"/>
+                                                <StoreLink
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+                                                    fieldLabel="Store Link:"
+                                                    name="./storeLink"
+                                                    rootPath="/content/ag"/>
+                                            </items>
+                                        </column>
+                                    </items>
+                                </field>
+                            </extLinks>
+                        </items>
+                    </topNavItems>
+                    <loginSection
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Login Section"
+                        sling:resourceType="granite/ui/components/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                         <signUpType
+                                granite:class="cq-dialog-dropdown-showhide"
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                emptyOption="{Boolean}false"
+                                fieldDescription="Please select the Email SignUp Type"
+                                fieldLabel="Email SignUp Type"
+                                name="./signUpType">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <external
+                                        granite:hide="${cqDesign.disableChildren}"
+                                        jcr:primaryType="nt:unstructured"
+                                        selected="{Boolean}true"
+                                        text="External SignUp URL"
+                                        value="external"/>
+                                    <modelPopup
+                                        granite:hide="${cqDesign.disableChildren}"
+                                        jcr:primaryType="nt:unstructured"
+                                        text="Email SignUp Model Popup"
+                                        value="modelPopup"/>
+                                </items>
+                                <granite:data
+                                    jcr:primaryType="nt:unstructured"
+                                    cq-dialog-dropdown-showhide-target=".list-option-listfrom-showhide-target"/>
+                            </signUpType>
+                            <external
+                                granite:class="hide list-option-listfrom-showhide-target foundation-layout-util-vmargin"
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <granite:data
+                                    jcr:primaryType="nt:unstructured"
+                                    showhidetargetvalue="external"/>
+                                <items jcr:primaryType="nt:unstructured">
+                                    <signUpUrl
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+                                        fieldLabel="SignUp URL:"
+                                        name="./signUpUrl"/>
+                                </items>
+                            </external>
+                            <emailSignUp
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Email Sign Up text"
+                                name="./emailSignUp"/>
+                            <helpLinkText
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Help Link text"
+                                name="./helpLinkText"/>
+                            <helpLink
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+                                fieldLabel="Help Link"
+                                name="./helpLink"
+                                rootPath="/content/ag"/>
+                            <signInText
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="User name will be displayed if already logged in"
+                                fieldLabel="AG Sign-In text"
+                                name="./agSigninText"/>
+                            <enableSignInLink
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                fieldDescription="Enable the Sign In link to redirect to the Sign In page instead of opening Login Pop-up"
+                                name="./enableSignInLink"
+                                text="Enable Sign In Link"
+                                uncheckedValue="false"
+                                value="true"/>
+                            <signinLink
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+                                fieldLabel="Sign In Link"
+                                name="./agSignInLink"
+                                rootPath="/content/ag"/>
+                            <tireInfo
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Please enter the Tire information text. Ex. Your Tire is "
+                                fieldLabel="Tier information Text"
+                                name="./tireInfoText"
+                                value="Your tire is "/>
+                            <welcomeText
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Please enter the Label for Welcome text"
+                                fieldLabel="Welcome text Label "
+                                name="./welcomeText"
+                                value="Hello, "/>
+							<rewardsAvailableText
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Please enter the Rewards Available Text which would be shown below Hello Username Text"
+                                fieldLabel="Rewards Available Text"
+                                name="./rewardsAvailableText"/>
+                            <myAccountText
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="My Account Link text"
+                                name="./myAccountText"/>
+                            <myAccountLink
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+                                fieldLabel="My Account Link URL"
+                                name="./myAccountLink"
+                                rootPath="/content/ag"/>
+                            <agRewardsText
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="AG Rewards Link text"
+                                name="./agRewardsText"
+                                value="AG REWARDS"/>
+                            <agRewardsLink
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+                                fieldLabel="AG Rewards Link URL"
+                                name="./agRewardsLink"
+                                rootPath="/content/ag"/>
+                            <signoutText
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Sign out text"
+                                name="./signOutText"
+                                value="SIGN OUT"/>
+							<signoutLink
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+                                fieldLabel="Sign Out Link"
+                                name="./signoutLink"/>
+                        </items>
+                    </loginSection>
+                    <socialIcons
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Social Icon Links"
+                        sling:resourceType="granite/ui/components/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <facebookLink
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Facebook Link"
+                                name="./facebookLink"/>
+                            <hidefacebook
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                fieldDescription="Select to hide Facebook link"
+                                name="./hideFacebook"
+                                text="Hide Facebook Link"
+                                uncheckedValue="false"
+                                value="true"/>
+                            <instagramLink
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Instagram Text"
+                                name="./instagramLink"/>
+                            <hideInstagram
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                fieldDescription="Select to hide Instagram link"
+                                name="./hideInstagram"
+                                text="Hide Instagram Link"
+                                uncheckedValue="false"
+                                value="true"/>
+                            <pintrestLink
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Pintrest Link"
+                                name="./pintrestLink"/>
+                            <hidePintrest
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                fieldDescription="Select to hide Pintrest link"
+                                name="./hidePintrest"
+                                text="Hide Pintrest Link"
+                                uncheckedValue="false"
+                                value="true"/>
+                        </items>
+                    </socialIcons>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>

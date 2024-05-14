@@ -1,0 +1,50 @@
+<sly data-sly-test="${wcmmode.edit}">${'Edit Accordion Component'  @i18n}</sly>
+
+<sly data-sly-use.response = "com.mattel.ecomm.core.models.AccordionModel">
+	<div class="accordion-comp col-xs-12">
+		<sly  data-sly-test.model = "${response.attrs}" data-sly-list.key="${response.attrs}">
+			<sly data-sly-test="${key == 'Character'}">
+				<div class="hide PDP_Product_character" data-character="${response.attrs[key]}"></div>
+        	</sly>	
+            <sly data-sly-test="${key == 'AGCategory'}">
+				<div class="hide PDP_Product_category" data-category="${response.attrs[key]}"></div>
+        	</sly>
+  		</sly>
+		<sly data-sly-test.model = "${response.attrs}">
+		  	<sly data-sly-list.keyValues=${response.keyList}>
+		  	 <sly data-sly-test="${keyValues.flag}">
+			    <div class="${keyValuesList.first?'accordion-section active':'accordion-section'}">
+			        <div class="accordion-title" data-toggle="collapse" data-target="dropdown" aria-controls=""><a href='#' aria-expanded="true" role='button'>${keyValues.accordianTitle @ context='html'}</a></div>
+			        <div class="dropmenu collapse">
+				       <sly data-sly-list.accordionKey=${keyValues.accordionKeyList}>
+				               <sly data-sly-test= "${model[accordionKey]}">
+									<p data-sly-test="${accordionKey == 'partNumber'}" class="sku">SKU#: ${model[accordionKey] @ context='html'}</p>
+									<p data-sly-test="${accordionKey != 'partNumber'}"> ${model[accordionKey] @ context='unsafe'}</p>
+								</sly>
+				        </sly>
+				         <sly data-sly-test="${keyValuesList.first}">
+					         <div class="visible-xs visible-sm">
+							       <sly data-sly-resource="${'social-share' @resourceType = '/apps/mattel/ecomm/ag/components/content/ecomm/socialShareForProducts'} ">
+							       </sly>
+						     </div>
+				        </sly>
+				    </div>
+			    </div>
+			  </sly>
+			
+		  	</sly>
+		    <sly data-sly-test= "${properties.isVideo == 'checked'}">
+		       <sly data-sly-test="${model['Video']}">
+		       <div class="accordion-section">
+					 <h3 class="doll-vid">Featured Video</h3>
+					 <div class="aem-video-player accordion-video-container" id="accordion-video-player-1" data-video-id="${model['Video']}"></div>
+			   </div>
+		       </sly>
+		    </sly>
+	    </sly>
+	</div>
+</sly>
+
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
+	<sly data-sly-call="${clientlib.js @ categories='ecomm.accordion'}"/>
+</sly>

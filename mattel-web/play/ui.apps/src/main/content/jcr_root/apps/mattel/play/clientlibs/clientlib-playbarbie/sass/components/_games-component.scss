@@ -1,0 +1,127 @@
+.game-player-area-component {
+    .game-player-area-content {
+        padding-bottom: 0;
+        background-color: #fdedf8 !important;
+    }
+
+    .title-block {
+        // padding: 0;
+        background-color: #fdedf8;
+        //padding:if(mapping($gamescomponent,heading, padding), mapping($gamescomponent,heading, padding), em(50) em(55));
+        padding: 0 20px 20px 20px;
+        h2{
+            text-align: mapping($gamescomponent,heading, align);
+            font-size: mapping($gamescomponent,heading, fontSize);
+            padding: if(mapping($gamescomponent, heading, padding), mapping($gamescomponent, heading, padding), em(50) em(55));
+        }
+        h2 {
+            text-transform: uppercase;
+            text-align: mapping($gamescomponent, heading, align);
+            font-size: mapping($gamescomponent, heading, fontSize);
+            //test
+            color: mapping($gamescomponent, heading, color);
+            //text-transform: uppercase;
+            padding: .5em 0 0 0;
+
+            @media #{$small-down} {
+                font-size: 32px;
+                line-height: 37px;
+            }
+        }
+
+        p:empty {
+            display: none;
+        }
+
+        p {
+            margin: 0 auto;
+            color: #6f2e91;
+            font-size: 18px;
+            font-weight: 600;
+            letter-spacing: .75px;
+            line-height: 28px;
+            text-align: center;
+            width: 985px;
+            padding: 10px 0 0;
+            @media #{$medium-down} {
+                width: auto;
+            }
+        }
+    }
+
+    .aem-GridColumn {
+        padding: 0 0;
+    }
+
+    .play-character-landing-block {
+        .gallery-tile {
+            #play-game {
+                h2 {
+                    padding: 40px 55px 25px 55px;
+                }
+
+                ul {
+                    &.play-list {
+                        padding: 0 35px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.game-player-area-content {
+    background-image: url($game-bg-path);
+    background-repeat: repeat;
+    padding: em(50) 0;
+    margin-top: 80px;
+
+    @media #{$medium-down} {
+        //padding:em(50);
+        margin-top: 40px;
+    }
+
+    @media #{$small-down} {
+        padding: em(40) em(20) em(20) em(20);
+        margin-top: 40px;
+    }
+
+    .game-player-area-container {
+        @extend .container;
+        margin: 0 auto;
+        position: relative;
+        padding: 0;
+        
+        @media #{$medium-down} {
+            @if mapping($gamescomponent, iframe, responsive)==true {
+                width: 100% !important;
+                height: 0 !important;
+                padding-bottom: 58.5%;
+            }
+
+            width: 720px !important;
+            height: 434px !important;
+        }
+
+        @media #{$small-up} {
+            //width: 720px !important;
+            //height: 434px !important;
+        }
+
+        //width and height for mobile devices 
+        @media #{$small-down} {
+            width: 280px !important;
+            height: 167px !important;
+        }
+
+        .game_frame {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100% !important;
+            height: 100% !important;
+            max-width: 100%;
+            border: none;
+        }
+    }
+}

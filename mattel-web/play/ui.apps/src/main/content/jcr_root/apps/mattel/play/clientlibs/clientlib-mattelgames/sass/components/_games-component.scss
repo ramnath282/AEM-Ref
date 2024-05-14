@@ -1,0 +1,149 @@
+.game-player-area-component{
+    padding-bottom: 40px;
+    @media #{$small-down}{
+        padding-bottom:30px;
+   } 
+    .game-player-area-content{
+        padding-bottom: 0;
+        position:relative;
+        padding-top: 40px;
+        @media #{$small-down}{
+            font-size:20px;
+            padding-top: 5px;
+       } 
+    }
+    .title-block{
+        // padding: 0;
+        padding:if(mapping($gamescomponent,heading, padding), mapping($gamescomponent,heading, padding), em(50) em(55));
+        @media #{$small-down}{
+            padding: 0 20px;
+       } 
+        h2{
+            text-align: mapping($gamescomponent,heading, align);
+            font-size: mapping($gamescomponent,heading, fontSize);
+            color: mapping($gamescomponent,heading, color);
+            text-transform:mapping($gamescomponent,heading, textTransform);
+            letter-spacing:mapping($gamescomponent,heading, letterSpacing);
+            line-height: 56px;
+            font-weight: 500;
+            position:relative;
+            font-family: $mattelGamesPrimaryFontMedium;
+            margin-top: 20px;
+            // top:15px;
+            // padding: .5em 0 1em 0;
+            @media #{$small-down}{
+                font-size:32px;
+                margin-top: 10px;
+                text-align: center;
+           } 
+        }
+        p{
+            margin-top: 20px;
+            text-align: center;
+            font-family: "neue-haas-unica",sans-serif;
+            font-size: 16px;
+            @media #{$small-down}{
+                margin-top: 10px;
+                text-align: left;
+           } 
+            &:empty{
+                display: none;
+            }
+        }
+    }
+    .aem-GridColumn {
+        padding: 0 0;
+    }
+    .play-character-landing-block{
+        .gallery-tile{
+            #play-game{
+                h2{
+                    padding:40px 55px 25px 55px;
+                }
+                ul{
+                    &.play-list{
+                        padding:0 35px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.game-player-area-content{
+    background-image: url($game-bg-path);
+    background-repeat:repeat;
+    padding:em(50) 0;
+		@media #{$medium-down}{
+       	 	padding:em(50);
+   		 }
+    	@media #{$small-down}{
+         	padding:em(40) em(20) em(20) em(20);
+    	} 
+    .game-player-area-container{
+        @extend .container;
+        margin:0 auto;
+        position:relative;
+        padding:0;
+        @media #{$medium-down}{
+            @if mapping($gamescomponent,iframe, responsive) == true {
+                width: 100% !important;
+                height: 0 !important;
+                padding-bottom: 58.5%;
+            }
+        }
+        @media #{$small-up}{
+            // width: 700px;
+            // height: 513px;
+
+            //Changing for PDP Page
+            width: 950px;
+            height: 534px;
+        }
+        //width and height for mobile devices 
+        @media #{$small-down}{
+            width: 325px;
+            height: 238px;
+        }
+        
+        .game_frame{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100% !important;
+            height: 100% !important;
+            max-width:100%;
+            border: none;
+        }
+    }
+}
+/*PDP Page styles*/
+.pdp-game{
+    .game-player-area-component{
+        background: #FBD635;
+        padding: 40px 0;
+        display: flex;
+        width: 100%;
+        flex-direction: column-reverse;
+        @media #{$small-down}{
+           padding-top: 15px;
+           padding-bottom: 30px;
+        }
+        .title-block{
+            h2{
+                margin: 0;
+            }
+        }
+    }
+}
+/*-------Old Code---------
+#pagename-uno{
+    .game-player-area-component{
+        background: #FBD635;
+        padding: 40px 0;
+        display: flex;
+        width: 100%;
+        flex-direction: column-reverse;
+    }
+}
+*/

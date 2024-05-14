@@ -1,0 +1,7 @@
+<sly data-sly-test="${wcmmode.edit}">${'Rich Text Component' @i18n}</sly>
+
+<div class="rich-text" data-bgColor="${properties.bgcolor}" data-bgImage="${properties.imagePath}" style="background-color: ${properties.backgroundColor @context='html'}; background-image: url(${properties.backgroundImage @context='html'});">
+${properties.text @context='html'}
+</div>
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html"></sly><sly data-sly-call="${clientlib.js @ categories='global.richtext'}"></sly>
+

@@ -1,0 +1,21 @@
+			<div class="update-name">
+                <fieldset>
+                    <sly data-sly-test="${properties.nameLabel}">
+                        	<h2>${properties.nameLabel}:</h2>
+                        </sly>
+                    <div class="input-field required">
+                        <input type="text" id="firstName" aria-describedby="firstNameError" data-key="firstName" name="firstName" class="form-input long-input" value="{{personalInfo.firstName}}" required autocomplete="off" />
+                        <label class="placeholder-label" for="firstName">${properties.fNameLabel}</label>
+                        <div id="firstNameError" class="help-block form-message"></div>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <div class="input-field required">
+                        <input type="text" id="lastName" aria-describedby="lastNameError" data-key="lastName" name="lastName" class="form-input long-input" value="{{personalInfo.lastName}}" required autocomplete="off" />
+                        <label class="placeholder-label" for="lastName">${properties.lNameLabel}</label>
+                        <div id="lastNameError" class="help-block form-message"></div>
+                    </div>
+                </fieldset>
+                <input class="theme-btn no-bg-btn update-info" data-val="update" data-formname=".update-name" type="submit" value="${properties.updateButtonLabel}" />
+                <input class="theme-btn transparent-btn remove-template" data-val="cancel" type="submit" value="${properties.cancelButtonLabel}" />
+            </div>

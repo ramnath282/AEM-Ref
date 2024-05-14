@@ -1,0 +1,427 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+          jcr:primaryType="nt:unstructured"
+          jcr:title="Page"
+          sling:resourceType="cq/gui/components/authoring/dialog"
+          extraClientlibs="[cq.common.wcm,core.wcm.components.page.v2.editor,cq.wcm.msm.properties,granite.contexthub.configuration]"
+          helpPath="https://www.adobe.com/go/aem_cmp_page_v2"
+          mode="edit">
+    <content
+            granite:class="cq-dialog-content-page"
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                    granite:class="cq-siteadmin-admin-properties-tabs"
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                    size="L">
+                <items jcr:primaryType="nt:unstructured">
+                    <seo
+                            cq:showOnCreate="{Boolean}true"
+                            jcr:primaryType="nt:unstructured"
+                            jcr:title="SEO Properties"
+                            sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
+                        <items jcr:primaryType="nt:unstructured">
+                            <column
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <seoTitle
+                                            cq:showOnCreate="{Boolean}true"
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                            fieldLabel="SEO Title"
+                                            name="./seoTitle"/>
+                                    <canonocalUrl
+                                            cq:showOnCreate="{Boolean}true"
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                            fieldLabel="Canonical URL"
+                                            name="./canonicalUrl"/>
+                                    <metaKeywordsDescription
+                                            cq:showOnCreate="{Boolean}true"
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                            composite="{Boolean}true"
+                                            fieldLabel="Meta Keyword-Description">
+                                        <field
+                                                cq:showOnCreate="{Boolean}true"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/fieldset"
+                                                name="./metaKeywordsDescription">
+                                            <items jcr:primaryType="nt:unstructured">
+                                                <column
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                    <items jcr:primaryType="nt:unstructured">
+                                                        <name
+                                                                cq:showOnCreate="{Boolean}true"
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                fieldLabel="Meta Name"
+                                                                name="./metaName"/>
+                                                        <content
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                fieldLabel="Meta Content"
+                                                                name="./metaContent"/>
+                                                    </items>
+                                                </column>
+                                            </items>
+                                        </field>
+                                    </metaKeywordsDescription>
+                                    <ogTags
+                                            cq:showOnCreate="{Boolean}true"
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                            composite="{Boolean}true"
+                                            fieldLabel="OG Tags">
+                                        <field
+                                                cq:showOnCreate="{Boolean}true"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/fieldset"
+                                                name="./ogTags">
+                                            <items jcr:primaryType="nt:unstructured">
+                                                <column
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                    <items jcr:primaryType="nt:unstructured">
+                                                        <name
+                                                                cq:showOnCreate="{Boolean}true"
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                                fieldDescription="Select required OG tag"
+                                                                fieldLabel="OG Property"
+                                                                name="./ogProperty">
+                                                            <items jcr:primaryType="nt:unstructured">
+                                                                <OgTitle
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        text="og:title"
+                                                                        value="og:title"/>
+                                                                <OgType
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        text="og:type"
+                                                                        value="og:type"/>
+                                                                <OgUrl
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        text="og:url"
+                                                                        value="og:url"/>
+                                                                <OgDescription
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        text="og:description"
+                                                                        value="og:description"/>
+                                                                <OgLocale
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        text="og:locale"
+                                                                        value="og:locale"/>
+                                                                <OGLocaleAlternate
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        text="og:locale:alternate"
+                                                                        value="og:locale:alternate"/>
+                                                                <OgSitename
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        text="og:site_name"
+                                                                        value="og:site_name"/>
+                                                                <OgDeterminer
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        text="og:determiner"
+                                                                        value="og:determiner"/>
+                                                                <OgImage
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        text="og:image"
+                                                                        value="og:image"/>
+                                                                <OgImgaeUrl
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        text="og:image:url"
+                                                                        value="og:image:url"/>
+                                                                <OgImageSecureUrl
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        text="og:image:secure_url "
+                                                                        value="og:image:secure_url "/>
+                                                                <OgImageType
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        text="og:image:type"
+                                                                        value="og:image:type"/>
+                                                                <OgImageWidth
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        text="og:image:width"
+                                                                        value="og:image:width"/>
+                                                                <OgImageHeight
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        text="og:image:height"
+                                                                        value="og:image:height"/>
+                                                                <OgImageAlt
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        text="og:image:alt"
+                                                                        value="og:image:alt"/>
+                                                                <OgAudio
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        text="og:audio"
+                                                                        value="og:audio"/>
+                                                                <OgAudioSecureUrl
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        text="og:audio:secure_url"
+                                                                        value="og:audio:secure_url"/>
+                                                                <OgAudioType
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        text="og:audio:type"
+                                                                        value="og:audio:type"/>
+                                                                <OgVideo
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        text="og:video"
+                                                                        value="og:video"/>
+                                                                <OgVideoSecureUrl
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        text="og:video:secure_url"
+                                                                        value="og:video:secure_url"/>
+                                                                <OgVideoType
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        text="og:video:type"
+                                                                        value="og:video:type"/>
+                                                                <OgVideoWidth
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        text="og:video:width"
+                                                                        value="og:video:width"/>
+                                                                <OgVideoHeight
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        text="og:video:height"
+                                                                        value="og:video:height"/>
+                                                            </items>
+                                                        </name>
+                                                        <content
+                                                                cq:showOnCreate="{Boolean}true"
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                fieldLabel="OG Content"
+                                                                name="./ogContent"
+                                                                required="{Boolean}true"/>
+                                                    </items>
+                                                </column>
+                                            </items>
+                                        </field>
+                                    </ogTags>
+                                    <robotTags
+                                            cq:showOnCreate="{Boolean}true"
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                            composite="{Boolean}true"
+                                            fieldLabel="Robots Content">
+                                        <field
+                                                cq:showOnCreate="{Boolean}true"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/fieldset"
+                                                name="./robotTags">
+                                            <items jcr:primaryType="nt:unstructured">
+                                                <column
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                    <items jcr:primaryType="nt:unstructured">
+                                                        <robotContent
+                                                                cq:showOnCreate="{Boolean}true"
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                fieldLabel="Robot Content"
+                                                                name="./robotContent"/>
+                                                    </items>
+                                                </column>
+                                            </items>
+                                        </field>
+                                    </robotTags>
+                                    <errorpage
+                                            cq:showOnCreate="{Boolean}true"
+                                            jcr:primaryType="nt:unstructured"
+                                            jcr:title="Error Page Configuration"
+                                            sling:orderBefore="cloudservices"
+                                            sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <column
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <section
+                                                            jcr:primaryType="nt:unstructured"
+                                                            jcr:title="Error Page configurations"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/form/fieldset">
+                                                        <items jcr:primaryType="nt:unstructured">
+                                                            <errorPage
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                                    fieldDescription="Configure Error page for the site"
+                                                                    fieldLabel="ErrorPage Url"
+                                                                    name="./errorPages"/>
+                                                        </items>
+                                                    </section>
+                                                </items>
+                                            </column>
+                                        </items>
+                                    </errorpage>
+                                </items>
+                            </column>
+                        </items>
+                    </seo>
+                    <theming
+                            cq:showOnCreate="{Boolean}true"
+                            jcr:primaryType="nt:unstructured"
+                            jcr:title="Theming"
+                            sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
+                        <items jcr:primaryType="nt:unstructured">
+                            <column
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <themeCategory
+                                            cq:showOnCreate="{Boolean}true"
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                            fieldLabel="Theme Category Name"
+                                            name="./themeCategory"/>
+                                    <cssLink
+                                            cq:showOnCreate="{Boolean}true"
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+                                            fieldLabel="Dynamic Css Link"
+                                            name="./dynamicCss"/>
+                                </items>
+                            </column>
+                        </items>
+                    </theming>
+                    <sitemap
+                        cq:showOnCreate="{Boolean}true"
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Site Map"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
+                        <items jcr:primaryType="nt:unstructured">
+                            <column
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <section
+                                        jcr:primaryType="nt:unstructured"
+                                        jcr:title="Site Map Properties"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/fieldset">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <frequency
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                fieldDescription="Frequency Of Change In Page Content"
+                                                fieldLabel="Frequency Of Change"
+                                                name="./changefreq.properties"
+                                                value="daily">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <always
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="always"
+                                                        value="always"/>
+                                                    <hourly
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="hourly"
+                                                        value="hourly"/>
+                                                    <daily
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="daily"
+                                                        value="daily"/>
+                                                    <weekly
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="weekly"
+                                                        value="weekly"/>
+                                                    <monthly
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="monthly"
+                                                        value="monthly"/>
+                                                    <yearly
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="yearly"
+                                                        value="yearly"/>
+                                                    <never
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="never"
+                                                        value="never"/>
+                                                </items>
+                                            </frequency>
+                                            <priority
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+                                                fieldDescription="The Value is Required For The Search Engine Crawling."
+                                                fieldLabel="Priority Value"
+                                                name="./priority.properties"
+                                                step="0.1"
+						                        min="0.0"
+						                        max="1.0"/>
+					                        <hideInSitemap
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                name="./hideInSitemap"
+						                        fieldDescription="Checking this checkbox will hide current page as well as child pages in sitemap"
+                                                renderReadOnly="{Boolean}true"
+                                                text="Hide Parent and child pages"
+                                                value="true"/>
+											<skipInSitemap
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                name="./skipInSitemap"
+						                        fieldDescription="Checking this checkbox will skip/hide current page but will include child pages in sitemap"
+                                                renderReadOnly="{Boolean}true"
+                                                text="Hide Parent not child pages"
+                                                value="true"/>
+											<stopInSitemap
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                name="./stopInSitemap"
+						                        fieldDescription="Checking this checkbox will include current page but will exclude child pages in sitemap"
+                                                renderReadOnly="{Boolean}true"
+                                                text="Hide only child pages"
+                                                value="true"/>
+                                        </items>
+                                    </section>
+                                </items>
+                            </column>
+                        </items>
+                    </sitemap>
+                    <ecommPageProperties
+                            cq:showOnCreate="{Boolean}true"
+                            jcr:primaryType="nt:unstructured"
+                            jcr:title="Ecomm Page Properties"
+                            sling:orderBefore="Permissions"
+                            sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
+                        <items jcr:primaryType="nt:unstructured">
+                            <column
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <section
+                                            jcr:primaryType="nt:unstructured"
+                                            jcr:title="Ecomm Page Properties"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/fieldset">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <skipnav
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                    name="./skipnav"
+                                                    renderReadOnly="{Boolean}true"
+                                                    text="Skip in Navigation"
+                                                    value="true"/>
+											<stopnav
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                name="./stopnav"
+                                                renderReadOnly="{Boolean}true"
+                                                text="Stop in Navigation"
+                                                value="true"/>
+                                            <templateClass
+                                                cq:showOnCreate="{Boolean}true"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Wrapper Class Name"
+                                                name="./wrapperClass"/>											
+                                        </items>
+                                    </section>
+                                </items>
+                            </column>
+                        </items>
+                    </ecommPageProperties>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>

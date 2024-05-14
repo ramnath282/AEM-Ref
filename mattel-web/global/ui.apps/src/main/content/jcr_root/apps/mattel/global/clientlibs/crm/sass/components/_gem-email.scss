@@ -1,0 +1,369 @@
+.gem-wrapper {
+    .gem-email{
+        padding:2em 0 2em 6em;
+        margin: 0 auto;
+        width:100%;
+        max-width: 1440px;
+         @media #{$medium-only} {
+            padding-left: 3.5em;          
+        }
+        @media #{$small-down} {
+                padding:0em 1.7em 0em 1.6em;
+                width: 100%;
+            }
+       .crmContainer{
+                max-width: 100%;
+        }  
+        .thank-msg{            
+            p {
+                font-family: 'Noto Sans',sans-serif;
+                font-weight:$fontRegular;
+                font-size: 1.2em;
+                color: $white;
+                padding-bottom: 10.5em;
+                width: 90%;
+            }
+        }
+        
+            h2 {
+                font-family: 'Archer', sans-serif;
+                font-weight: $fontSemiBold;
+                font-size: 1.7em;
+                color: $white;
+                margin-bottom: 1em;
+                text-align: left;
+                padding: 0;
+                outline:0;
+            }
+        .checkbox{
+            clear: both;
+        }
+        .form-component{
+             overflow: visible;
+             display: inline-block;
+             width: 100%;
+             .loading-wrapper {
+                margin-left: -3em;
+                @media #{$medium-only} {
+                    margin-left: -2em;
+                } 
+                @media #{$xsmall-down} {
+                    margin-left: 0;
+                }
+                width: 100%;
+             }
+            #crm-form{
+                overflow: visible;
+                .datepicker-dropdown{
+                    z-index: 999 !important;
+                    top:2.8em !important;
+                }
+                 div{
+                    label{
+                        display: block;
+                        font-family: 'Noto Sans',sans-serif;
+                        font-weight:$fontRegular;
+                        font-size: 1em;
+                        color: $white;
+                    }
+                    input[type = email]{
+                        display: block;
+                        height: 40px;
+                        background: $white;
+                        max-width: 100%;
+                        padding: 0 1em;
+                        border-radius: 0;
+                        border: none;
+                        font-size: 1em;
+                        letter-spacing: 1px;
+                        font-weight: $fontBold;
+                        @media #{$small-down} {
+                             max-width: 100%;
+                        }
+                    }
+                    input[type = text]{
+                        display: block;
+                        height: 40px;
+                        background: $white;
+                        width: 80%;
+                        padding: 0 1em;
+                        border-radius: 0;
+                        border: none;
+                        font-size: 1em;
+                        font-weight: $fontBold;
+                        letter-spacing: 1px;                        
+                    }
+                    .input-group-addon{
+                        background: $calender-gray;
+                        color:$white;
+                        border:none;
+                        border-radius: 0;  
+                        padding: 9px;
+                        display: inline-block;
+                        width: 15%;
+                        height: 40px;
+                        line-height: 23px;                        
+                    }
+                }
+                .has-error, .has-api-error {
+                    .help-block {
+                        font-size: 1em;
+                        color: $white;
+                        margin-top: 0.65em;
+                        position:relative;
+                        padding-left: 1.6em;
+                        &:before {
+                            position: absolute;
+                            content: "\f12a";
+                            width: 1.3em;
+                            height: 1.3em;
+                            background: $pink-error;
+                            border-radius: 50%;
+                            font-family: FontAwesome, sans-serif;
+                            display: inline-block;
+                            text-align: center;
+                            font-size: 1em;
+                            left: 0;
+                        }
+                    }
+                }
+                .sub-fieldset{
+                    margin-left: 1.5em;
+                     @media #{$small-down} {
+                          margin-left: 0;
+                    }
+                }
+                .form-action-btn{
+                    text-align: left;
+                    padding-left: 0;
+                    .form-submit{
+                        @media #{$small-down} {
+                            margin-bottom: 2em;
+                        }
+                    }
+                }
+                span {
+                    &.terms {
+                        font-size: 1em;
+                    }
+                }
+                #crm-form-submit{
+                    &.theme-btn{
+                        background: url('../resources/img/signup-bg.png') no-repeat;
+                        background-size: 100% 100%;
+                        border:0;
+                        font-size: 1.1em;
+                        text-transform: uppercase;
+                        padding: .71429em 3em;
+                        margin: 0;
+                        letter-spacing: 1px;
+                    }
+                    &:hover{
+                        color: $white !important;
+                    }
+                    &.btn-arrow-right{
+                        &:before{
+                            display: none;
+                        }
+                        &:after{
+                            display: none;
+                        }
+                    }
+                } 
+                .checkbox{
+                    &.terms{
+                        padding-left: 0;
+                    }
+                }
+                input[type="checkbox"]{
+                    opacity: 1;
+                    &+ span:after{
+                        display:none;
+                    }
+                    &:checked + span:before{
+                        display:none;
+                    }
+                    &+ label:after{
+                       display:none;               
+                    }
+                    &:checked + label:before{
+                        display:none;
+                    }
+                }    
+            }
+            .popover_window{
+                    position: absolute;
+                    top: -5.8em;
+                    bottom: 0;
+                    left: 0;
+                    right: 15%;
+                    z-index: 99999;
+                    width: 90%;
+                     @media #{$medium-only} {
+                         top: -5em;
+                    }
+                    @media #{$small-down} {
+                        top:-16.4em
+                    }
+                    @media #{$xsmall-down} {
+                        width: 100%;
+                        top:-14.4em
+                    }
+                    &::after{
+                        margin-top: -3px;
+                        left: 17%;
+                        border: solid transparent;
+                        content: " ";
+                        height: 0;
+                        width: 0;
+                        position: absolute;
+                        pointer-events: none;
+                        border-color: rgba(136, 183, 213, 0);
+                        border-top-color: $white;
+                        border-width: 27px;
+                        margin-left: 27px;
+                        @media #{$xsmall-down} {
+                            left: unset;
+                            right: 5%;
+                        }
+                    }
+                    p {
+                        background: $white;
+                        padding: 3em 1.8em 2em;
+                        margin: 0;
+                        border:1px solid $sky-darkblue;
+                        border-radius:10px;
+                        min-height:10.2em;
+                        max-height: 10.2em;
+                        overflow: auto;
+                         @media #{$small-down} {
+                            min-height:23em;
+                            max-height:23em;
+                        }                        
+                    }
+                    .popover-close{
+                        position: absolute;
+                        top: 1em;
+                        right: 1em;
+                        width: 1.7em;
+                        cursor: pointer;
+                        background: url('../resources/img/close-btn.png') no-repeat right;
+                        height: 1.7em;
+                        background-size: contain;
+                    }
+                    a {
+                        color: $gem-popup-link;
+                        text-decoration: underline;
+                    }
+            }
+        } 
+    }
+    .oops-popup{
+        float: left;
+        width: 100%;
+        #errorpopup{
+            z-index: 99999;
+        }
+        .modal-dialog{
+            box-shadow:none;
+            @media #{$medium-up} {
+                max-width: 58.9em !important;
+                width:100%;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+                @media #{$medium-only} {
+                max-width: 41em !important;
+                width:100%;
+                top: 50%;
+                transform: translateY(-50%);
+                }
+                .modal-content{
+                border-radius: 0;
+                border-bottom: 1.1em solid $email-bg-blue;
+                box-shadow:none;
+                }
+            .modal-header{
+                border:none;
+                .close{
+                    font-size: 1.8em;
+                    color: $sky-darkblue;
+                    opacity: 1;
+                    margin-top: .3em;
+                    margin-right: .6em;
+                    background: url('../resources/img/close-btn.png') no-repeat right;
+                    width: 1.5em;
+                    height: 1.5em;
+                    background-size: 100% 100%;
+                }
+            }
+            .modal-body{
+                text-align:center;
+                padding: 0 1em 3em 1em;
+                @media #{$medium-only} {
+                    padding: 0 2em 3em 2em;
+                }
+                @media #{$small-down} {
+                    padding: 0 2em 3em 2em;
+                }
+                h2{
+                    font-weight: $fontBold;
+                    color: $sky-darkblue;
+                    font-size: 2.5em;
+                    font-family: 'Archer', sans-serif;
+                    margin: 0 0 0.75em 0;
+                    @media #{$small-down} {
+                        font-size: 2em;
+                    }
+                }
+                p{
+                    font-family: 'Noto Sans',sans-serif;
+                    font-size:1.25em;
+                    color:$dark-gray;
+                    font-weight:$fontRegular;
+                    margin: 0 0 2em 0;
+                }
+                .yes-btn{
+                    border:none;
+                    background:$sky-darkblue;
+                    padding: 0 2.7em;
+                    height: 2.6em;
+                    line-height: 2.6em;
+                    margin: 0;
+                    font-family: 'Noto Sans',sans-serif;
+                    font-size: 1.4em;
+                    color:$white;
+                    font-weight: $fontBold;
+                }
+            }
+            .modal-footer{
+                border:none;
+                text-align: left;
+                .cancel_btn{
+                    border:none;
+                    font-family: 'Noto Sans',sans-serif;
+                    font-size:1.3em;
+                    color:$sky-darkblue;
+                    font-weight:$fontBold; 
+                    text-transform: uppercase;
+                    @media #{$small-down} {
+                        font-size:1em;
+                  }
+                    em{
+                        font-size: 1.2em;
+                        margin: 0.2em 0.2em;
+                    }
+                    &:hover{
+                        background: none;
+                    }
+                }
+            }
+        }
+    }
+    .gem-email-sub-container {
+        position: relative;
+        width:100vw;
+        left: calc((100% - 100vw) / 2);
+        display: inline-block;
+    }
+}

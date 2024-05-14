@@ -1,0 +1,552 @@
+.flexible-adaptive-container {    
+    padding-top: 40px;    
+    @media #{$mobile-up-only} {
+        padding: em(20);
+        margin-top: 20px !important;
+        margin-bottom: 18px !important;
+    }    
+    @media #{$small-down} {
+        padding-bottom: 35px;
+    }
+    hr {
+        border-bottom: none !important;
+    }
+    .generic-api-message {
+        color: #686868;                
+    }
+    .form-level-error  {
+        margin-bottom: 38px;
+        @media #{$small-down} {
+            margin-bottom: 15px;
+        }
+        &:before {
+            height: 58px;
+            @media #{$small-down} {
+                width: 62px;
+                height: 75px;               
+            }  
+        }
+        p{
+            margin-left: -45px;
+            font-family: $MattelCorpPrimaryFontBold;
+            font-style: italic;
+            font-size: 14px;
+            font-weight: 600;
+            margin-top: 8px;
+            padding-right: 15px;
+            line-height: 17px;
+            @media #{$small-down} {
+                margin-top: 4px;
+            }
+            &:before {
+                @media #{$small-up} {
+                    margin-top: -10px;
+                }   
+                @media #{$small-down} {
+                    margin-top: 0;
+                    margin-right: 28px;
+                    margin-left: 0;
+                }            
+                margin-right: 25px;
+            }
+        }   
+           
+    }
+    .textOverlayComponent {
+        &:first-child {            
+            .text-overlay {
+                .main-title {
+                    padding-bottom: 12px;
+                    margin-bottom: 0;
+                    @media #{$small-down} {
+                        padding-bottom: 0;
+                    }  
+                }
+                .text-para {
+                    p {
+                        margin-bottom: 15px;
+                    }
+                }
+            }
+        }
+        .text-overlay {
+            .text-container {
+                .text-para {
+                    margin-bottom: 0;
+                    ul {
+                        li {
+                            margin-bottom:12px;
+                            line-height: 24px;
+                            list-style: none;  
+                            margin-right: 10px;                          
+                            &:before {
+                                content: "";
+                                position: absolute;
+                                width: 4px;
+                                height: 5px;
+                                border-radius: 50%;
+                                left: -12px;
+	                            top: 7px;
+                                background: $black;
+                            }                            
+                        }
+                    }
+                    p:last-child {
+                        margin-bottom: 20px;
+                        @media #{$small-down} {
+                            margin-bottom: 15px;
+                        }  
+                    }
+                }
+                .sub-title {
+                    font-family: $MattelCorpPrimaryFontBold;
+                    p {
+                        font-size: 18px;
+                        margin-bottom: 20px;
+                    }
+                }
+            }
+        }        
+    }    
+    .adaptive-form {
+        .err-msg {
+            margin-top: 3px;
+            font-family: $MattelCorpPrimaryFontBold;
+            font-style: italic;
+            font-size: 14px;
+            font-weight: 500;
+            color: $mattel-red !important;
+            &:before {
+                margin-right: 2px;
+            }
+        }  
+        
+        .has-error {
+            .dropdown.bootstrap-select {
+                border: 1px solid $mattel-red !important;
+            }
+        }
+        .dropdown.bootstrap-select .dropdown-toggle .filter-option-inner-inner {
+            margin-top: 4px;
+        }
+        .half-width-input {
+            .input-field input {
+                padding: 12px 10px 9px 10px;
+            }
+        }
+        input {
+            padding: 12px 10px 9px 10px;
+        }
+        .submitButton {
+            .btn-cta-item {
+                width: 210px;
+                border-radius: 25px;
+                font-size: 22px;
+                font-family: $MattelCorpPrimaryFontBold;
+                min-height: 50px;
+                @media #{$small-down} {
+                    padding: 9px 10px;
+                    @supports (-webkit-touch-callout: none) {
+                        /* CSS specific to iOS devices */
+                        padding: 7px 10px 9px 10px;
+                    }
+                      
+                }            
+            }            
+        }
+        .input-field {
+            margin: 0 0 30px 0;
+        }
+        .radio-field {
+            margin-bottom: 20px;
+            .sub-input-field {
+                margin-right: 4px !important;
+                @media #{$small-down} {
+                    margin-bottom: 4px !important;
+                }
+            }
+        }
+        .checkbox-field {
+            margin-top: 25px;
+            @media #{$small-down} {
+                margin-top: 0;
+                margin-bottom: 20px;
+            }
+            input[type="checkbox"]+label {
+                font-family: $MattelCorpPrimaryFontRoman !important;
+                &:after {
+                    top: -3px;                
+                }
+                &:before {
+                    top: -3px;                
+                }
+                @media #{$small-down} {
+                    &:after {
+                        top: 1px;                
+                    }
+                    &:before {
+                        top: 1px;                
+                    }
+                }
+            } 
+        }
+        label {
+            font-family: $MattelCorpPrimaryFontBold;
+        }
+        .sub-form-group {
+            fieldset>legend {
+                font-family: $MattelCorpPrimaryFontBold;
+            }
+        }
+        .form-group {
+            margin-bottom: 12px;
+        }
+        .form-group>fieldset>legend {
+            p {
+                font-family: $MattelCorpPrimaryFontBold;
+                margin: 0 0 15px;
+                font-size: 18px;
+                color: $black;
+            }
+        } 
+        .add-sub-form-group {
+            a {
+                @media #{$small-down} {
+                    font-size: 16px;
+                    font-family: $MattelCorpPrimaryFontBold;
+                }
+            }
+        }
+        .form-group { 
+            fieldset {
+                .input-description {
+                    font-style: italic;
+                    font-family: $MattelCorpPrimaryFontRoman;
+                    font-size: 14px;
+                    margin: 0 0 12px 0 ;
+                    @media #{$small-down} {
+                        margin: 0 0 8px 0 ;
+                    }
+                }
+                legend {
+                    font-family: $MattelCorpPrimaryFontBold;
+                    margin-bottom: 5px;
+                    color: $black;
+                }
+            }
+        }
+        .radio-field { 
+            input[type="radio"]+label {
+                background: #EBEBEB;
+                padding-top: 16px;
+                padding-bottom: 11px;
+                font-family: $MattelCorpPrimaryFontRoman;
+                @media #{$small-down} {
+                    padding-top: 13px;
+                    padding-bottom: 9px;
+                    &:before {
+                        top: 11px;
+                    }
+                    &:after {
+                        top: 11px;
+                    }
+                }  
+            }
+            input[type="radio"]:checked+label {
+                background: #CCCCCC;
+            }
+        }  
+        .text-para {
+            p {
+                span.body-sm {
+                    display: block;
+                    line-height: 17px;
+                }        
+            }                
+        }
+    }
+}
+
+.slidein {
+    box-shadow: none !important;
+    right: -401px;
+    @media #{$small-up} {
+        width: 345px;
+        height: 378px;
+    }
+    .close button {
+        @media #{$small-up} {
+            left: -5px;
+            top: -22px;
+        }
+    }
+    .flexible-adaptive-container {  
+        padding: 0;
+        .textOverlayComponent {
+            margin-bottom: 0;
+            &:first-child {                
+                .text-overlay {
+                    .main-title {
+                        h4 {
+                            @media #{$small-down} {
+                                font-family: $MattelCorpPrimaryFontBold;
+                            }                            
+                        }
+                        border-bottom: none;
+                        @media #{$small-down} {
+                            margin-bottom: 15px;
+                        }
+                    }
+                    .text-para {
+                        @media #{$small-down} {
+                            p{
+                                font-size: 14px !important;
+                            }                            
+                        }
+                    }
+                    
+                }
+            }
+                   
+        }
+        .adaptive-form {
+            .input-field {
+                margin-bottom: 10px;
+            }
+            .submitButton {
+                .btn-cta-item {
+                    width: 130px;
+                    min-width: 130px;
+                    font-size: 16px;
+                    min-height: 36px;   
+                    height: 36px;         
+                    padding-top: 9px;
+                }
+            }
+            .text-para {
+                span.body-sm {
+                    line-height: 14px !important;
+                    display: block;
+                }
+            }
+        }
+    }
+}
+
+.dark-theme {
+    .modal-component {
+        .close {
+            background-position: -245px -52px !important;
+        }
+        .slider-content {
+            .main-title, .sub-title, .text-para {
+                color: #fff !important;
+            }
+            .text-para {
+                p {
+                    color: #fff !important;
+                }
+            }
+            .btn-cta-item {
+                &:hover {
+                    color: $mattel-red !important;
+                }
+            }
+        }
+        .submitButton .btn-cta-item {
+            &:hover {
+                border: 2px solid $mattel-red;
+            }            
+        }
+    }
+}
+
+.lightBoxContainer {
+    .modal-component {
+        &.modal {
+            @media #{$small-down} {
+                padding: 20px !important;
+            }
+        }
+    }
+}
+
+body {
+    .modal-component {
+        padding-bottom: 20px !important;    
+        &.modal {
+            @media #{$small-up} {
+                max-height: 555px;
+                padding: 30px 40px 32px !important;
+                max-width: 750px;
+            }        
+            div.close button {
+                left:14px !important;
+                bottom: 5px !important;
+                @media #{$small-down} {
+                    left: -6px !important;
+                    bottom: -6px !important;
+                }
+            }
+            .dynamicMedia {
+                .cq-dd-image .s7dm-dynamic-media .s7responsiveContainer img {
+                    @media #{$small-up} {
+                        max-width: 750px !important;                        
+                    }
+                }
+                .desktop-bg {
+                    padding: 0;
+                }
+            }
+            h3 {
+                line-height: 40px;
+                @media #{$small-down} {
+                    line-height: 24px;
+                }
+            }
+            .slider-content {
+                padding: 0 !important;
+                margin: 0 !important;
+                justify-content: left;
+                li {
+                    left: 0 !important;
+                }
+                .btn-cta-item {
+                    min-width: 210px;
+                    border-radius: 25px;
+                    font-size: 22px;
+                    font-family: $MattelCorpPrimaryFontBold;
+                    min-height: 50px; 
+                    border:2px solid $mattel-red !important;
+                    background-color: $mattel-red !important;
+                    margin: 0;
+                    &:hover {
+                        background-color: $white !important;
+                        color: $mattel-red !important;
+                    }
+                }
+                .text-para p {
+                    color: $black;
+                }
+            }
+        }  
+        .generic-api-message {
+            .cta-button-container {
+                .cta-item {
+                    margin-top: 0;
+                    .btn-cta-item {
+                        padding: 14px 10px 8px 10px;
+                        @media #{$small-down} {
+                            min-height: 37px;
+                            min-width: 130px;
+                            font-size: 16px;
+                        }
+                        &:hover {
+                            text-decoration: none;                            
+                        }
+                        &:before {
+                            background: none;
+                        }
+                    }
+                }
+            }     
+        }  
+        .flexible-adaptive-container {  
+            padding: 5px;
+            .textOverlayComponent {
+                max-width: 305px;
+                clear: both !important;
+                margin-bottom: 0;
+                &:first-child {                
+                    .text-overlay {
+                        .main-title {
+                            border: none;
+                            max-width: 305px;
+                            p {
+                                font-size: 24px;
+                                margin-bottom: 0;
+                                font-family: $MattelCorpPrimaryFontLight;
+                            }
+                        }
+                        
+                    }
+                }
+                .text-overlay {
+                    .text-container {
+                        padding: 0;
+                        width: 100%;
+                    }
+                }   
+                .desktop-bg {
+                    padding: 0;
+                }    
+            }
+            .adaptive-form {
+                padding-bottom: 0;
+                .err-msg {
+                    font-style: normal;
+                    margin-top:0;
+                    padding: 3px 3px 3px 7px;
+                    max-width:305px;
+                    background-color:#ebebeb !important;
+                    font-family: $MattelCorpPrimaryFontBold;
+                }
+                .input-field {
+                    margin-bottom: 10px;
+                    input[type="text"] {
+                        min-width: 305px;
+                        color: $black;
+                    }
+                    label {
+                        font-size: 16px;
+                    }
+                }
+                .checkbox-field {
+                    margin-top: 0;
+                    margin-bottom: 0;
+                    @media #{$small-down} {
+                        margin-bottom: 5px;
+                    }
+                    label {
+                        font-size: 14px;
+                        max-width: 305px;
+                        padding-right: 35px;
+                    }                    
+                }
+                .text-para {
+                    max-width: 305px;
+                    span.body-sm {
+                        line-height: 11px !important;
+                        display: block;
+                    }
+                }
+                .submitButton {
+                    .btn-cta-item {  
+                        margin-bottom: 0;     
+                        margin-top: 10px;  
+                        @media #{$small-down} {
+                            min-height: 37px;
+                            width: 130px;
+                            font-size: 16px;
+                        }   
+                    }
+                    .solid {
+                        .btn-cta-item {
+                            background-color: $solid-btnBg;
+                            color: $white;
+                            &:hover {
+                                background-color: $white;
+                                color: $solid-btnBg;
+                                text-decoration: none;                                
+                            }
+                            &:before {
+                                background: none;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }    
+}
+

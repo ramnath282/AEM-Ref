@@ -1,0 +1,7 @@
+<sly data-sly-use.cta="com.mattel.global.master.core.model.CTATab">
+    <sly data-sly-test="${wcmmode.edit}">${'Edit CTA tab' @i18n}</sly>
+    <sly data-sly-test="${cta.items && cta.items.size > 0}">
+        <sly data-sly-repeat.item="${cta.items}" data-sly-resource="${item.name @ decorationTagName='div'}"></sly>
+    </sly>
+    <sly data-sly-resource="${resource.path @ resourceType='wcm/foundation/components/parsys/newpar', appendPath='/*', decorationTagName='div', cssClassName=''}" data-sly-test="${(wcmmode.edit || wcmmode.preview) && cta.items.size < 1}"></sly>
+</sly>

@@ -1,0 +1,67 @@
+.dropdown-module {
+    color: $night-rider;
+    &>div .dropdown-content:not(.dropdown-notice) {
+        &>div{
+            padding : 0 em(15);
+            @extend .box-style;
+            padding:0;
+            margin-bottom: em(15);
+            background-color: $white;
+            border: 1px solid $light-grey;
+        }
+        h2 {
+            font-size: em(16);
+            margin: 0;
+            a {
+                color: $black;
+                display: block;
+                padding: .49em .68182em;
+                text-decoration: none;
+                font-size: em(22, 16);
+                font-weight: 300;
+                &:after{
+                    content: "\f107";
+                    float: right;
+                    @include font-awesome;
+                }
+            }
+        }
+		.heading {
+			font-weight: 300;
+            font-size: em(22);
+            padding: em(7,22) em(15,22);
+            margin: 0;
+		}
+        ul {
+            border-top: 1px solid $light-grey;
+			margin-bottom:0;
+            li {
+                padding: em(7) em(15);
+                /*&.heading {
+                    font-weight: 300;
+                    font-size: em(22);
+                    padding: em(7,22) em(15,22);
+                    border-bottom: 1px solid $light-grey;
+                    margin-bottom: 0;
+                }*/
+                span {
+                    font-size: em(15.64);
+                    display: inline-block;
+                    &:nth-of-type(1) {
+                        width: calc(45% - 2px);
+                    }
+                    &:nth-of-type(2) {
+                        width: calc(55% - 2px);
+                    }
+                }
+            }
+        }
+    }
+    .dropdown-notice{
+        width: 100%;
+        margin-bottom: em(30);
+	p {
+	   margin:0;
+	}
+    }
+}

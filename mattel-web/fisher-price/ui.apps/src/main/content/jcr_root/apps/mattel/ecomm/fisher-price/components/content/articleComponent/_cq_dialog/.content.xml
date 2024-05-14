@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Article Component"
+    sling:resourceType="cq/gui/components/authoring/dialog"
+    height="{Long}500"
+    width="{Long}600">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <articledetails
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Article Details"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <articleTitle
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Enter Article Title here"
+                                                fieldLabel="Article Title"
+                                                name="./articleTitle"
+                                                required="{Boolean}true"/>
+                                            <articleShortDescription
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                                                fieldDescription="Enter Article Short-description here"
+                                                fieldLabel="Article Short Description"
+                                                name="./articleShortDescription"
+                                                required="{Boolean}true"/>
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </articledetails>
+                    <articleimagedetails
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Article Image Details"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <viewer
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/foundation/section">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <well
+                                                granite:class="toggle-fields-background"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/well"
+                                                margin="{Boolean}true">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <content
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
+                                                        <items jcr:primaryType="nt:unstructured">
+                                                            <tabs
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                                                                maximized="{Boolean}true">
+                                                                <items jcr:primaryType="nt:unstructured">
+                                                                    <default
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        jcr:title="Default"
+                                                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                                        <items jcr:primaryType="nt:unstructured">
+                                                                            <columns
+                                                                                jcr:primaryType="nt:unstructured"
+                                                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                                                <items jcr:primaryType="nt:unstructured">
+                                                                                    <image
+                                                                                        jcr:primaryType="nt:unstructured"
+                                                                                        sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                                                                        allowUpload="{Boolean}false"
+                                                                                        autoStart="{Boolean}false"
+                                                                                        class="cq-droptarget"
+                                                                                        fieldDescription="Please select large image"
+                                                                                        fieldLabel="Large Image"
+                                                                                        fileReferenceParameter="./image"
+                                                                                        mimeTypes="[image/gif,image/jpeg,image/png,image/webp,image/tiff]"
+                                                                                        multiple="{Boolean}false"
+                                                                                        name="./imageLarge"
+                                                                                        required="{Boolean}true"
+                                                                                        uploadUrl="${suffix.path}"
+                                                                                        useHTML5="{Boolean}true"/>
+                                                                                </items>
+                                                                            </columns>
+                                                                        </items>
+                                                                    </default>
+                                                                    <dynamicMedia
+                                                                        granite:class="togglefieldDefault"
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        jcr:title="Dynamic Media"
+                                                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                                        <items jcr:primaryType="nt:unstructured">
+                                                                            <columns
+                                                                                jcr:primaryType="nt:unstructured"
+                                                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                                                <items jcr:primaryType="nt:unstructured">
+                                                                                    <dynamicMedia
+                                                                                        jcr:primaryType="nt:unstructured"
+                                                                                        sling:resourceType="granite/ui/components/foundation/include"
+                                                                                        path="mattel/global/components/content/dynamicMedia/v1/dynamicMedia/dynamicmediaconfiguration/items/viewer/items/column"/>
+                                                                                </items>
+                                                                            </columns>
+                                                                        </items>
+                                                                    </dynamicMedia>
+                                                                </items>
+                                                            </tabs>
+                                                        </items>
+                                                    </content>
+                                                </items>
+                                            </well>
+                                        </items>
+                                    </column>
+                                </items>
+                            </viewer>
+                        </items>
+                    </articleimagedetails>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>

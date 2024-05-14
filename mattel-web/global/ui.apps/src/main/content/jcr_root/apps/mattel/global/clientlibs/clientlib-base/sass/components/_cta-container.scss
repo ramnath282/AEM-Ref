@@ -1,0 +1,650 @@
+@mixin hover {
+    &:hover {
+        @content
+    }
+}
+
+@mixin button-size($font-size, $border-radius, $margin) {
+    font-size: $font-size;
+    margin: $margin;
+    @include border-radius($border-radius);
+}
+
+@mixin button-style($color, $hoverColor, $background, $border, $hoverBg, $hoverBorder) {
+    $hover-background: $hoverBg;
+    $hover-border: $hoverBorder;
+
+    color: $color;
+    background-color: $background;
+    border-color: $border;
+
+
+    // Hover and focus styles are shared
+    @include hover {
+        color: $hoverColor;
+        background-color: $hover-background;
+        border-color: $hover-border;
+
+    }
+
+    // Disabled comes first so active can properly restyle
+    &.disabled,
+    &:disabled {
+        background-color: $background;
+        border-color: $border;
+    }
+
+    &:active,
+    &.active-btn {
+        color: $hoverColor;
+        background-color: $hover-background;
+        border-color: $hover-border;
+    }
+
+}
+
+@mixin button-text($color, $colorHover, $borderColor, $borderHover) {
+    color: $color;
+    background-image: none;
+    background-color: transparent;
+    border-color: $borderColor;
+
+    @include hover {
+        color: $colorHover;
+        background-color: transparent;
+        border-color: $borderHover;
+    }
+
+
+    &.disabled,
+    &:disabled {
+        color: $color;
+        background-color: transparent;
+    }
+
+    &:active,
+    &.active-btn {
+        color: $colorHover;
+        background-color: transparent;
+        border-color: $borderHover;
+    }
+}
+
+@mixin theme-set($image, $position, $hoverPos) {
+    background-color: transparent;
+    border-width: 0 0 2px 0;
+    padding: 0;
+
+    &:before {
+        content: '';
+        position: absolute;
+        width: $arrow-text-iconWidth;
+        height: $arrow-text-iconHeight;
+        background-image: url($image);
+        background-position: $arrow-text-iconPos;
+        right: $arrow-text-iconRight;
+        top: $arrow-text-iconTop;
+    }
+
+    &:hover {
+        &:before {
+            background-position: $hoverPos //-348px -50px;
+        }
+    }
+}
+
+.ctaContainer {
+    &.default-container {
+        @include print-css(map-merge((
+            padding-bottom: 10px !important
+        ),
+        if(variable-exists(buttonProperty) and map-has-key($buttonProperty, defaultContainer),
+            map-get($buttonProperty, defaultContainer), ())));
+    }
+
+    .ctaItem {
+        @include print-css(map-merge((
+            display: (
+                xsOnly: block
+            )
+        ),
+        if(variable-exists(buttonProperty) and map-has-key($buttonProperty, containerBtnWrapper),
+            map-get($buttonProperty, containerBtnWrapper), ())));
+
+        .btn-cta-item {
+            @include print-css(map-merge((
+                margin: (
+                    largeUp: 15px 30px 15px 0px,
+                    largeOnly: 15px 30px 15px 0px,
+                    mediumOnly: 15px 30px 15px 0px,
+                    smOnly: 10px 20px 10px 0px,
+                    defaultVal: 10px 20px 10px 0px
+                ),
+            ),
+            if(variable-exists(buttonProperty) and map-has-key($buttonProperty, containerBtn),
+                map-get($buttonProperty, containerBtn), ())));
+        }
+    }
+
+    .bg_color {
+        @include print-css(map-merge((
+            width: 100%,
+            float: left        ),
+        if(variable-exists(buttonProperty) and map-has-key($buttonProperty, bgColor),
+            map-get($buttonProperty, bgColor), ())));
+    }
+
+    &.btn-first-cta-margin .ctaItem .btn-cta-item {
+        margin: 0;
+    }
+    &.btn-first-cta-margin .ctaItem.text-arrow .btn-cta-item {
+        margin-right: 30px;
+    }
+    &.cta-block{
+        display: flex;
+        .cta-button-container{
+            .ctaItem{
+                display: block;
+            }
+        }
+    }
+}
+
+.btn-cta-item {
+    @include button-size( $btn-font-size, $btn-border-radius, $btn-margin);
+    @include print-css(map-merge((
+        position: relative,
+        display: inline-block,
+        font-weight: $btn-font-weight,
+        line-height: $btn-line-height,
+        text-align: center,
+        white-space: nowrap,
+        background-color: $default-cta,
+        color: $default-cta-txt,
+        user-select: none,
+        text-decoration: none,
+        min-height: 23px,
+        border: $btn-border-width solid transparent,
+        margin: (
+            largeUp: $btn-margin-xl,
+            largeOnly: $btn-margin-lg,
+            mediumOnly: $btn-margin-md,
+            smOnly: $btn-margin-sm,
+            defaultVal: $btn-margin-xs
+        ),
+           padding: (
+            largeUp: $btn-padding-xl,
+            largeOnly: $btn-padding-lg,
+            mediumOnly: $btn-padding-md,
+            smOnly: $btn-padding-sm,
+            defaultVal: $btn-padding-xs
+        ),
+    ),
+    if(variable-exists(buttonProperty) and map-has-key($buttonProperty, btnBox),
+        map-get($buttonProperty, btnBox), ())));
+
+        
+
+    &.disabled,
+    &:disabled {
+        @include print-css(map-merge((
+            cursor: $cursor-disabled,
+            opacity: .65
+        ),
+        if(variable-exists(buttonProperty) and map-has-key($buttonProperty, btnBoxDisabled),
+            map-get($buttonProperty, btnBoxDisabled), ())));
+
+    }
+}
+
+.large-cta {
+    .btn-cta-item {
+        @include print-css(map-merge((
+            padding: (
+                largeUp: 18px 50px 17px 50px,
+                largeOnly: 18px 50px 17px 50px,
+                mediumOnly: 14px 40px 13px 40px,
+                smOnly: 14px 40px 13px 40px,
+                defaultVal: 14px 40px 13px 40px
+            ), 
+            min-width: 130px
+        ),
+        if(variable-exists(buttonProperty) and map-has-key($buttonProperty, largeCta),
+            map-get($buttonProperty, largeCta), ())));
+
+    }
+}
+
+.medium-cta {
+    .btn-cta-item {
+        @include print-css(map-merge((
+            min-width: 130px,
+            padding: (
+                largeUp: 14px 40px 13px 40px,
+                largeOnly: 14px 40px 13px 40px,
+                mediumOnly: 14px 40px 13px 40px,
+                smOnly: 14px 40px 13px 40px,
+                defaultVal: 14px 40px 13px 40px
+            ), 
+        ),
+        if(variable-exists(buttonProperty) and map-has-key($buttonProperty, mediumCta),
+            map-get($buttonProperty, mediumCta), ())));
+    }
+}
+
+.small-cta {
+    .btn-cta-item {
+        @include print-css(map-merge((
+            min-width: 130px,
+            padding: (
+                largeUp: 9px 20px 8px 20px,
+                largeOnly: 9px 20px 8px 20px,
+                mediumOnly: 9px 20px 8px 20px,
+                smOnly: 9px 20px 8px 20px,
+                defaultVal: 9px 20px 8px 20px
+            ), 
+        ),
+        if(variable-exists(buttonProperty) and map-has-key($buttonProperty, smallCta),
+            map-get($buttonProperty, smallCta), ())));
+
+    }
+}
+
+.btn-first-cta-margin {
+    .btn-cta-item {
+        @include print-css(map-merge((
+            margin-right: 0
+        ),
+        if(variable-exists(buttonProperty) and map-has-key($buttonProperty, firstCTAItem),
+            map-get($buttonProperty, firstCTAItem), ())));
+
+    }
+    .text-arrow{
+        .btn-cta-item {
+            @include print-css(map-merge((
+                margin-right: 30px
+            ),
+            if(variable-exists(buttonProperty) and map-has-key($buttonProperty, firstCTAItemtxtArrow),
+                map-get($buttonProperty, firstCTAItemtxtArrow), ())));
+        }
+    }
+}
+
+.retailItem,
+.appItem {
+    @include print-css(map-merge((
+        display: (
+            defaultVal: inline-block,
+            xsOnly:initial,
+        ),
+        text-align: (
+            xsOnly: center
+        ),
+        margin: (
+            largeUp: 0px 30px 0px 0px,
+            largeOnly: 0px 30px 0px 0px,
+            mediumOnly: 0px 30px 0px 0px,
+            smOnly: 0px 20px 0px 0px,
+            defaultVal: 0px 20px 0px 0px,
+            xsOnly: 10px 20px 10px 0
+        ), 
+    ),
+    if(variable-exists(buttonProperty) and map-has-key($buttonProperty, imageCta),
+        map-get($buttonProperty, imageCta), ())));
+}
+
+.showMoreBtn {
+    .btn-cta-item {
+        &:before {
+            @include print-css(map-merge((
+                content: '',
+                height: 24px,
+                width: 24px,
+                margin-top: -2px,
+                display: inline-block,
+                vertical-align: middle,
+                margin-right: 4px,
+                background-image: url($spriteLightPath),
+                background-position: -76px -50px,
+            ),
+            if(variable-exists(buttonProperty) and map-has-key($buttonProperty, showMoreBtnBefore),
+                map-get($buttonProperty, showMoreBtnBefore), ())));
+        }
+    }
+
+    &.active {
+        .btn-cta-item {
+            &:before {
+                @include print-css(map-merge((
+                    height: 24px,
+                    background-position: -52px -50px
+                ),
+                if(variable-exists(buttonProperty) and map-has-key($buttonProperty, activeBtnBefore),
+                    map-get($buttonProperty, activeBtnBefore), ())));
+            }
+        }
+    }
+}
+
+.cta-button-container {
+    @include print-css(map-merge((
+        width: 100%
+    ),
+    if(variable-exists(buttonProperty) and map-has-key($buttonProperty, container),
+        map-get($buttonProperty, container), ())));
+
+    .ctaItem,
+    .cta-item {
+        margin: 0;
+    }
+    &.cta-block {
+        .ctaItem {
+            display: block;
+        }
+    }
+}
+
+.ctaItem {
+    display: inline-block;
+
+    .cta-item {
+        display: inline-block;
+    }
+}
+
+.solid {
+    .btn-cta-item {
+        @include button-style( $solid-btn-color, $solid-btnHover, $solid-btnBg, $solid-btnBorder, $solid-btnBgHover, $solid-btnHoverborder);
+    }
+}
+
+.text-primary {
+    .btn-cta-item {
+        @include print-css(map-merge((
+            background-color: transparent,
+            border-width: 0 0 $primarytext-btn-width 0,
+            padding: 0
+        ),
+        if(variable-exists(buttonProperty) and map-has-key($buttonProperty, primaryCTA),
+            map-get($buttonProperty, primaryCTA), ())));
+
+        @include button-text( $primary-txt-color, // COLOR
+            $primary-txtHover, // HOVER COLOR
+            $primary-btnBorder, // BORDER COLOR
+            $primary-btnHoverborder // HOVER BORDER COLOR
+        );
+
+        &:hover {
+            @include print-css(map-merge((
+                border-bottom-width:$hover-btn-border-width
+            ),
+            if(variable-exists(buttonProperty) and map-has-key($buttonProperty, primaryCTAHover),
+                map-get($buttonProperty, primaryCTAHover), ())));
+
+        }
+    }
+}
+
+.text-secondary {
+    .btn-cta-item {
+        @include print-css(map-merge((
+            background-color: transparent,
+            border-width: 0 0 $secondarytext-btn-width 0,
+            padding: 0
+        ),
+        if(variable-exists(buttonProperty) and map-has-key($buttonProperty, secondaryCTA),
+            map-get($buttonProperty, secondaryCTA), ())));
+
+        @include button-text( $secondary-txt-color, $secondary-txtHover, $secondary-btnBorder, $secondary-btnHoverborder);
+
+        &:hover {
+            @include print-css(map-merge((
+                border-bottom-width:$hover-btn-border-width
+                ),
+                if(variable-exists(buttonProperty) and map-has-key($buttonProperty, secondaryCTAHover),
+                    map-get($buttonProperty, secondaryCTAHover), ())));
+    
+            }
+        }
+    }
+    
+    .outline {
+        .btn-cta-item {
+            @include button-style( $outline-btn-color, $outline-btnHover, $outline-btnBg, $outline-btnBorder, $outline-btnBgHover, $outline-btnHoverborder);
+        }
+    }
+    
+    .text-arrow {
+        .btn-cta-item {
+            @include button-text( $arrow-txt-color, $arrow-txtHover, $arrow-btnBorder, $arrow-btnHoverborder);
+            @include theme-set($spriteLightPath, $arrow-text-iconPos, $arrow-text-hoverPos);
+        }
+    }
+    
+    .dark-theme {
+    
+        &.solid,
+        .solid {
+            .btn-cta-item {
+                @include button-style( $dark-solid-btn-color, $dark-solid-btnHover, $dark-solid-btnBg, $dark-solid-btnBorder, $dark-solid-btnBgHover, $dark-solid-btnHoverborder);
+            }
+        }
+    
+        &.outline,
+        .outline {
+            .btn-cta-item {
+                @include button-style( $dark-outline-btn-color, $dark-outline-btnHover, $dark-outline-btnBg, $dark-outline-btnBorder, $dark-outline-btnBgHover, $dark-outline-btnHoverborder);
+            }
+        }
+    
+        &.text-primary,
+        .text-primary {
+            .btn-cta-item {
+                @include button-text( $dark-primary-txt-color, // COLOR
+                $dark-primary-txtHover, // HOVER COLOR
+                $dark-primary-btnBorder, // BORDER COLOR
+                $dark-primary-btnHoverborder // HOVER BORDER COLOR
+                );
+            }
+        }
+    
+        &.text-secondary,
+        .text-secondary {
+            .btn-cta-item {
+                @include button-text( $dark-secondary-txt-color, $dark-secondary-txtHover, $dark-secondary-btnBorder, $dark-secondary-btnHoverborder);
+            }
+        }
+    
+        &.text-arrow,
+        .text-arrow {
+            .btn-cta-item {
+                @include button-text( $dark-arrow-txt-color, $dark-arrow-txtHover, $dark-arrow-btnBorder, $dark-arrow-btnHoverborder);
+                @include theme-set($spriteDarkPath, $arrow-text-iconPos, $arrow-text-hoverPos);
+            }
+        }
+    
+        .showMoreBtn {
+            .btn-cta-item {
+                &:before {
+                    background-image: url($spriteDarkPath);
+                }
+            }
+        }
+    }
+    
+    .light-theme {
+    
+        &.solid,
+        .solid {
+            .btn-cta-item {
+                @include button-style( $light-solid-btn-color, $light-solid-btnHover, $light-solid-btnBg, $light-solid-btnBorder, $light-solid-btnBgHover, $light-solid-btnHoverborder);
+            }
+        }
+    
+        &.outline,
+        .outline {
+            .btn-cta-item {
+                @include button-style( $light-outline-btn-color, $light-outline-btnHover, $light-outline-btnBg, $light-outline-btnBorder, $light-outline-btnBgHover, $light-outline-btnHoverborder);
+            }
+        }
+    
+        &.text-primary,
+        .text-primary {
+            .btn-cta-item {
+                @include button-text( $light-primary-txt-color, // COLOR
+                $light-primary-txtHover, // HOVER COLOR
+                $light-primary-btnBorder, // BORDER COLOR
+                $light-primary-btnHoverborder // HOVER BORDER COLOR
+                );
+            }
+        }
+    
+        &.text-secondary,
+        .text-secondary {
+            .btn-cta-item {
+                @include button-text( $light-secondary-txt-color, $light-secondary-txtHover, $light-secondary-btnBorder, $light-secondary-btnHoverborder);
+            }
+        }
+    
+        &.text-arrow,
+        .text-arrow {
+            .btn-cta-item {
+                @include button-text( $light-arrow-txt-color, $light-arrow-txtHover, $light-arrow-btnBorder, $light-arrow-btnHoverborder);
+                @include theme-set($spriteLightPath, $arrow-text-iconPos, $arrow-text-hoverPos);
+            }
+        }
+    
+        .showMoreBtn {
+            .btn-cta-item {
+                &:before {
+                    background-image: url($spriteLightPath);
+                }
+            }
+        }
+    }
+    
+    .light-alt-theme {
+    
+        &.solid,
+        .solid {
+            .btn-cta-item {
+                @include button-style( $lightAlt-solid-btn-color, $lightAlt-solid-btnHover, $lightAlt-solid-btnBg, $lightAlt-solid-btnBorder, $lightAlt-solid-btnBgHover, $lightAlt-solid-btnHoverborder);
+            }
+        }
+    
+        &.outline,
+        .outline {
+            .btn-cta-item {
+                @include button-style( $lightAlt-outline-btn-color, $lightAlt-outline-btnHover, $lightAlt-outline-btnBg, $lightAlt-outline-btnBorder, $lightAlt-outline-btnBgHover, $lightAlt-outline-btnHoverborder);
+            }
+        }
+    
+        &.text-primary,
+        .text-primary {
+            .btn-cta-item {
+                @include button-text( $lightAlt-primary-txt-color, // COLOR
+                $lightAlt-primary-txtHover, // HOVER COLOR
+                $lightAlt-primary-btnBorder, // BORDER COLOR
+                $lightAlt-primary-btnHoverborder // HOVER BORDER COLOR
+                );
+            }
+        }
+    
+        &.text-secondary,
+        .text-secondary {
+            .btn-cta-item {
+                @include button-text( $lightAlt-secondary-txt-color, $lightAlt-secondary-txtHover, $lightAlt-secondary-btnBorder, $lightAlt-secondary-btnHoverborder);
+            }
+        }
+    
+        &.text-arrow,
+        .text-arrow {
+            .btn-cta-item {
+                @include button-text( $lightAlt-arrow-txt-color, $lightAlt-arrow-txtHover, $lightAlt-arrow-btnBorder, $lightAlt-arrow-btnHoverborder);
+                @include theme-set($spriteLightAltPath, $arrow-text-iconPos, $arrow-text-hoverPos);
+            }
+        }
+    
+        .showMoreBtn {
+            .btn-cta-item {
+                &:before {
+                    background-image: url($spriteLightAltPath);
+                }
+            }
+        }
+    }
+    
+    .dark-alt-theme {
+    
+        &.solid,
+        .solid {
+            .btn-cta-item {
+                @include button-style( $darkAlt-solid-btn-color, $darkAlt-solid-btnHover, $darkAlt-solid-btnBg, $darkAlt-solid-btnBorder, $darkAlt-solid-btnBgHover, $darkAlt-solid-btnHoverborder);
+            }
+        }
+    
+        &.outline,
+        .outline {
+            .btn-cta-item {
+                @include button-style( $darkAlt-outline-btn-color, $darkAlt-outline-btnHover, $darkAlt-outline-btnBg, $darkAlt-outline-btnBorder, $darkAlt-outline-btnBgHover, $darkAlt-outline-btnHoverborder);
+            }
+        }
+    
+        &.text-primary,
+        .text-primary {
+            .btn-cta-item {
+                @include button-text( $darkAlt-primary-txt-color, // COLOR
+                $darkAlt-primary-txtHover, // HOVER COLOR
+                $darkAlt-primary-btnBorder, // BORDER COLOR
+                $darkAlt-primary-btnHoverborder // HOVER BORDER COLOR
+                );
+            }
+        }
+    
+        &.text-secondary,
+        .text-secondary {
+            .btn-cta-item {
+                @include button-text( $darkAlt-secondary-txt-color, $darkAlt-secondary-txtHover, $darkAlt-secondary-btnBorder, $darkAlt-secondary-btnHoverborder);
+            }
+        }
+    
+        &.text-arrow,
+        .text-arrow {
+            .btn-cta-item {
+                @include button-text( $darkAlt-arrow-txt-color, $darkAlt-arrow-txtHover, $darkAlt-arrow-btnBorder, $darkAlt-arrow-btnHoverborder);
+                @include theme-set($spriteDarkPath, $arrow-text-iconPos, $arrow-text-hoverPos);
+            }
+        }
+    }
+    
+    // AEMMP-3784 fixes
+    .showFirstCtaOnly {
+        .text-container {
+    
+            >.content+.ctaItem,
+            >.ctaItem:first-child {
+                display: block;
+            }
+        }
+    }
+//ADPB-4602 - moving-code-from-FP-to-global
+.textOverlayComponent{
+    .cta-button-container{
+        .ctaItem.solid{
+            .cta-item {
+                a {
+                    @media #{$mobile-down-only} {
+                        margin-right: 0;
+                    }
+                }
+            }
+            &:last-child{
+                .cta-item {
+                    a{
+                        margin-right: 0;
+                    }
+                }
+            }
+        }
+    }
+}

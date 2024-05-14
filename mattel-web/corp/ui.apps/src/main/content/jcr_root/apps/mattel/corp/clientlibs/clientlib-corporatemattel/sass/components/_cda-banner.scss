@@ -1,0 +1,1215 @@
+.arrow-styles {
+
+  .slick-next,
+  .cd-next,
+  .slick-prev,
+  .cd-prev {
+    @if mapping($cdabanner, main, isNoArrowCarousel)==true {
+      display: none !important;
+    }
+
+    background: mapping($cdabanner, playcontainerslickprevNext, bgnd);
+    border-radius: mapping($cdabanner,
+      playcontainerslickprevNext,
+      borderRadius);
+
+    &:before {
+      font-family: mapping($cdabanner, playcontainerslickprevNext, fntFamily);
+      padding: mapping($cdabanner, playcontainerslickprevNext, pad);
+      color: mapping($cdabanner, playcontainerslickprevNext, txtColor);
+      font-size: mapping($cdabanner, playcontainerslickprevNext, fntSize);
+      background: mapping($cdabanner, playcontainerslickprevNext, beforeBgnd);
+
+      @if mapping($layout, main, isWhyPlay)==true {
+        display: none;
+      }
+    }
+
+    @media #{$tablet-mobile} {
+      top: mapping($cdabanner, playcontainerslickprevNext, tabposTop);
+    }
+  }
+
+  .slick-prev,
+  .cd-prev {
+    margin-left: mapping($cdabanner, playcontainerslickPrev, marginLeft);
+  }
+
+  .slick-next,
+  .cd-next {
+    margin-right: mapping($cdabanner, playcontainerslickNext, marginRight);
+  }
+
+  .slick-next:before,
+  .cd-next:before {
+    content: mapping($cdabanner, slicknextBefore, nextContent);
+    margin-left: mapping($cdabanner, slicknextBefore, marginLeft);
+    opacity: mapping($cdabanner, slicknextBefore, opacity);
+  }
+
+  .slick-prev:before,
+  .cd-prev:before {
+    content: mapping($cdabanner, slickprevBefore, prevContent);
+    margin-right: mapping($cdabanner, slickprevBefore, marginRight);
+    opacity: mapping($cdabanner, slickprevBefore, opacity);
+  }
+
+  @if mapping($cdabanner, main, isNoDotsCarousel)==true {
+    .slick-dots {
+      display: none !important;
+    }
+  }
+
+  //@else{
+
+  .slick-dots li button {
+    background-color: mapping($cdabanner, slickdotsButton, bgndColor);
+    width: mapping($cdabanner, slickdotsButton, width);
+    height: mapping($cdabanner, slickdotsButton, height);
+    opacity: mapping($cdabanner, slickdotsButton, opacity);
+
+    @if mapping($layout, main, isWhyPlay)==true {
+      border: mapping($cdabanner, slickdotsButton, circleBorder);
+    }
+
+    @media #{$tablet-mobile} {
+      background-color: mapping($cdabanner, slickdotsButton, tabbgndColor);
+    }
+  }
+
+  .slick-dots li.slick-active button {
+    background: mapping($cdabanner, slickdotsActive, bgnd);
+    opacity: mapping($cdabanner, slickdotsActive, btnOpacity);
+  }
+
+  //}
+
+  @media #{$tablet-mobile} {
+
+    .slick-next,
+    .slick-prev,
+    .cd-next,
+    .cd-prev {
+      display: mapping($cdabanner, playcontainerslickprevNext, tabDisplay);
+    }
+  }
+}
+
+.cda-banner {
+  position: mapping($cdabanner, main, pos);
+  background: mapping($cdabanner, main, bgnd);
+
+  @media #{$tablet-mobile} {
+    margin-top: mapping($cdabanner, main, mobtop);
+  }
+
+  @media #{$desktop} {
+    margin-top: mapping($cdabanner, main, desktop);
+  }
+
+  @if mapping($layout, main, isRescueHeroes)==true {
+    margin-top: 62px;
+  }
+
+  &.fpSubHead {
+    img {
+      max-width: mapping($cdabanner, cdabannerImage, maxWidth);
+      max-height: mapping($cdabanner, cdabannerImage, maxHeight);
+
+      @media #{$tablet-mobile} {
+        max-width: mapping($cdabanner, cdabannerImage, maxWidthTabLs);
+      }
+
+      @media #{$tablet-mobile} {
+        max-width: mapping($cdabanner, cdabannerImage, maxWidthTab);
+      }
+
+      @media #{$tablet-mobile} {
+        max-width: mapping($cdabanner, cdabannerImage, maxWidthMob);
+      }
+    }
+  }
+
+  .carousel-slides {
+    padding-bottom: mapping($cdabanner, carouselSlides, paddingBottom);
+    padding-top: mapping($cdabanner, carouselSlides, paddingTop);
+    border-bottom: mapping($cdabanner, carouselSlides, borderBottom);
+
+    @media #{$desktop} {
+      padding-bottom: mapping($cdabanner, carouselSlides, tabpaddingBottom);
+      border-bottom: mapping($cdabanner, carouselSlides, tabborderBottom);
+    }
+
+    li {
+      position: mapping($cdabanner, carouselslidesList, pos);
+      margin: mapping($cdabanner, carouselslidesList, margin);
+    }
+  }
+
+  .banner-copy {
+    padding: mapping($cdabanner, bannerCopy, pad);
+    width: mapping($cdabanner, bannerCopy, width);
+    word-break: mapping($cdabanner, bannerCopy, wordBreak);
+    text-align: mapping($cdabanner, bannerCopy, txtAlign);
+    background: mapping($cdabanner, bannerCopy, bgnd);
+
+    @media #{$tablet-mobile} {
+      background-image: mapping($cdabanner, bannerCopy, deviceBgImg);
+    }
+
+    @media #{$medium-only} {
+      @if mapping($cdabanner, main, isMobileDesignForiPadPortrait)==true {
+        position: static !important;
+        @include transform(none !important);
+      }
+    }
+
+    @media #{$desktop} {
+      width: mapping($cdabanner, bannerCopy, tabWidth);
+    }
+
+    @media #{$desktop} {
+      @include position-center();
+
+      h2 {
+        margin: mapping($cdabanner, bannercopyH2, margin);
+      }
+    }
+
+    @if mapping($layout, main, isRescueHeroes)==true {
+      .theme-btn {
+        background-color: mapping($cdabanner, carouselCTA, ctaBgColor);
+        color: mapping($cdabanner, carouselCTA, ctaTxtColor);
+        font-family: mapping($cdabanner, carouselCTA, ctaFontFamily);
+
+        &:hover {
+          background-color: mapping($cdabanner, carouselCTA, ctaBgColorHover);
+        }
+      }
+    }
+
+    @if mapping($cdabanner, heroimageBanner, fisherPriceButton)==true {
+      .theme-btn {
+        color: mapping($cdabanner, heroimageBanner, fontColor);
+        min-width: mapping($cdabanner, heroimageBanner, btnWidth);
+        text-transform: mapping($cdabanner, heroimageBanner, textTrans);
+        height: mapping($cdabanner, heroimageBanner, btnHeight);
+        background: mapping($cdabanner, heroimageBanner, bgColor);
+        margin: mapping($cdabanner, heroimageBanner, btnMargin);
+        display: mapping($cdabanner, heroimageBanner, dispInline);
+
+        @media #{$tablet-mobile} {
+          margin-top: mapping($cdabanner, heroimageBanner, mobMargin);
+        }
+
+        &:hover {
+          background: mapping($cdabanner, heroimageBanner, btnColorHover);
+        }
+      }
+    }
+  }
+
+  img {
+    display: mapping($cdabanner, cdabannerImage, display);
+    margin: mapping($cdabanner, cdabannerImage, margin);
+  }
+
+  //play site
+  .play-container {
+    @extend .arrow-styles;
+
+    .banner-copy {
+      @media #{$tablet-mobile} {
+        text-align: if(mapping($cdabanner, bannerCopyPromo, mobTxtAlign),
+            mapping($cdabanner, bannerCopyPromo, mobTxtAlign),
+            left);
+      }
+
+      a,
+      span {
+        background-color: mapping($cdabanner, bannercopySpan, bgndColor);
+        border: mapping($cdabanner, bannercopySpan, borderColor);
+        color: mapping($cdabanner, bannercopySpan, txtColor);
+        font-size: mapping($cdabanner, bannercopySpan, fntSize);
+      }
+
+      a:hover,
+      span:hover {
+        background: mapping($cdabanner, bannercopySpan, hoverBgnd);
+        border: mapping($cdabanner, bannercopySpan, hoverborderColor);
+      }
+
+      /*.module-description {
+        @if mapping($cdabanner, bannercopymoduleDesc, isDefaultDesFont) == true
+        {
+          @extend .page-description-font;
+        } @else {
+          font-family: mapping($cdabanner, bannercopymoduleDesc, fntFamily);
+        }
+        font-weight: mapping($cdabanner, bannercopymoduleDesc, fntWeight);
+        color: mapping($cdabanner, bannercopymoduleDesc, txtColor);
+        font-size: mapping($cdabanner, bannercopymoduleDesc, fntSize);
+        letter-spacing: mapping(
+          $cdabanner,
+          bannercopymoduleDesc,
+          letterSpacing
+        );
+        margin: mapping($cdabanner, bannercopymoduleDesc, margin);
+        @if mapping($layout, main, isRescueHeroes) == true {
+          line-height: mapping($cdabanner, bannercopymoduleDesc, lineHeight);
+        }
+
+        @media #{$tablet-mobile} {
+          color: mapping($cdabanner, bannercopymoduleDesc, tabtxtColor);
+          @if mapping($cdabanner, bannerCopy, mobileViewFP) == true {
+            margin: mapping($cdabanner, bannerCopy, mobDesMargin);
+          }
+        }
+        @if mapping($layout, main, isRescueHeroes) == true {
+          @media #{$tablet-mobile} {
+            font-size: mapping($cdabanner, bannercopymoduleDesc, fntSizeMob);
+          }
+        }
+
+        span {
+          display: mapping($cdabanner, bannercopymoduleSpan, display);
+          color: mapping($cdabanner, bannercopymoduleSpan, txtColor);
+          font-family: mapping($cdabanner, bannercopymoduleSpan, fntFamily);
+          font-weight: mapping($cdabanner, bannercopymoduleSpan, fntWeight);
+          font-size: mapping($cdabanner, bannercopymoduleSpan, fntSsize);
+
+          @media #{$tablet-mobile} {
+            color: mapping($cdabanner, bannercopymoduleSpan, tabtxtColor);
+          }
+        }
+
+        p {
+          margin-bottom: mapping($cdabanner, bannercopymoduleP, marginBottom);
+          span.social_responsibility-title {
+            font-weight: 300;
+            @media #{$tablet-mobile} {
+              font-size: 36px;
+              line-height: 35px;
+              font-weight: 300;
+            }
+          }
+        }
+      }*/
+      .module-description {
+        margin: 0;
+      }
+
+      .module-title,
+      .module-description h1,
+      .module-description h2 {
+        color: if(mapping($cdabanner, bannercopymoduleTitle, mobTxtColor),
+            mapping($cdabanner, bannercopymoduleTitle, mobTxtColor),
+            mapping($cdabanner, bannercopymoduleTitle, txtColor));
+
+        @media #{$desktop} {
+          color: mapping($cdabanner, bannercopymoduleTitle, tabTxtColor);
+        }
+
+        @media #{$desktop} {
+          color: mapping($cdabanner, bannercopymoduleTitle, txtColor);
+          // width: mapping($cdabanner, bannercopymoduleTitle, maxWidth);
+        }
+
+        //font-weight: mapping($cdabanner, bannercopymoduleTitle, fntWeight);
+        font-weight: $fontMedium;
+        font-size: 48px;
+
+        @if mapping($layout, main, isRescueHeroes)==true {
+          line-height: mapping($cdabanner, bannercopymoduleTitle, lineHeight);
+
+          @media #{$tablet-mobile} {
+            padding: mapping($cdabanner, bannercopymoduleTitle, tabpadding);
+          }
+        }
+
+        @media #{$tablet-mobile} {
+          color: mapping($cdabanner, bannercopymoduleTitle, mobileTextColor);
+          font-size: mapping($cdabanner, bannercopymoduleTitle, mobfntSize);
+          max-width: if(mapping($cdabanner, bannercopymoduleTitle, tabMaxWidth),
+              mapping($cdabanner, bannercopymoduleTitle, tabMaxWidth),
+              initial);
+          text-align: if(mapping($cdabanner, bannercopymoduleTitle, mobTxtAlign),
+              mapping($cdabanner, bannercopymoduleTitle, mobTxtAlign),
+              left);
+        }
+
+        sup {
+          font-size: 15%;
+          top: -43px;
+
+          @media #{$tablet-mobile} {
+            top: -30px;
+          }
+        }
+      }
+
+      @media #{$tablet-mobile} {
+        padding: mapping($cdabanner, bannerCopy, tabpadding);
+        position: mapping($cdabanner, bannerCopy, pos);
+        top: mapping($cdabanner, bannerCopy, tabposTop);
+        left: mapping($cdabanner, bannerCopy, tabposLeft);
+        right: mapping($cdabanner, bannerCopy, tabposRight);
+        bottom: mapping($cdabanner, bannerCopy, tabposBottom);
+        text-align: mapping($cdabanner, bannerCopy, tabtxtAlign);
+        background: mapping($cdabanner, bannerCopy, tabBgnd);
+
+        @if mapping($cdabanner, bannercopyposmiddleLeft, fisherPriceBanner)==true {
+          background: mapping($cdabanner, bannercopyposmiddleLeft, ContainBG);
+        }
+
+        @if mapping($layout, main, isRescueHeroes)==true {
+          background-size: cover;
+        }
+
+        /*.module-description {
+          color: if(
+            mapping($cdabanner, bannerCopy, mobModuledestxtColor),
+            mapping($cdabanner, bannerCopy, mobModuledestxtColor),
+            mapping($cdabanner, bannerCopy, moduledestxtColor)
+          );
+          @media #{$desktop} {
+            color: mapping($cdabanner, bannerCopy, tabModuledestxtColor);
+          }
+          @media #{$desktop} {
+            color: mapping($cdabanner, bannerCopy, moduledestxtColor);
+          }
+          @media #{$tablet-mobile} {
+            text-align: if(
+              mapping($cdabanner, bannerCopy, mobTxtAlign),
+              mapping($cdabanner, bannerCopy, mobTxtAlign),
+              left
+            );
+          }
+        }*/
+      }
+
+      @media #{$tablet-mobile} {
+        padding: mapping($cdabanner, bannerCopy, mobPadding);
+      }
+
+      @if mapping($cdabanner, bannerCopy, mobileViewFP)==true {
+        @media #{$tablet-mobile} {
+          padding: mapping($cdabanner, bannerCopy, mobilePad);
+        }
+
+        @media #{$desktop} {
+          padding: mapping($cdabanner, bannerCopy, tabPad);
+        }
+      }
+    }
+  }
+}
+
+.banner-copy {
+
+  &[class*="top-"],
+  &[class*="bottom-"],
+  &[class*="middle-"] {
+    transform: mapping($cdabanner, bannercopyPos, posTransform);
+    -webkit-transform: mapping($cdabanner, bannercopyPos, posTransform);
+    -ms-transform: mapping($cdabanner, bannercopyPos, posTransform);
+    top: mapping($cdabanner, bannercopyPos, posTop);
+    left: mapping($cdabanner, bannercopyPos, posLeft);
+  }
+
+  &.top-left {
+    left: mapping($cdabanner, bannercopypostopLeft, posLeft);
+    top: mapping($cdabanner, bannercopypostopLeft, posTop);
+  }
+
+  &.top-right {
+    right: mapping($cdabanner, bannercopypostopRight, posRight);
+    top: mapping($cdabanner, bannercopypostopRight, posTop);
+  }
+
+  &.bottom-left {
+    left: mapping($cdabanner, bannercopyposbottomLeft, posLeft);
+    bottom: mapping($cdabanner, bannercopyposbottomLeft, posBottom);
+  }
+
+  &.bottom-right {
+    right: mapping($cdabanner, bannercopyposbottomRight, posRight);
+    bottom: mapping($cdabanner, bannercopyposbottomRight, posBottom);
+  }
+
+  //polly Styles
+  &.middle-left {
+    left: mapping($cdabanner, bannercopyposmiddleLeft, posLeft);
+    top: mapping($cdabanner, bannercopyposmiddleLeft, posTop);
+    background-color: #92ccd9;
+
+    //transform: mapping($cdabanner, bannercopyposmiddleLeft, transform);
+    @if mapping($cdabanner, bannercopyposmiddleLeft, fisherPriceBanner)==true {
+      // background-color:mapping($cdabanner, bannercopyposmiddleLeft, ContainBG);
+
+      background-size: cover;
+      //text-align: mapping($cdabanner, bannercopyposmiddleLeft, textAlign);
+      width: 35%;
+      bottom: mapping($cdabanner, bannercopyposmiddleLeft, bottomPos);
+
+      @media #{$tablet-mobile} {
+        background-color: #92ccd9;
+        width: auto;
+      }
+
+      .middle-div {
+        width: mapping($cdabanner, bannercopyposmiddleLeft, titleWidth);
+        width: auto;
+        position: relative;
+        display: mapping($cdabanner, bannercopyposmiddleLeft, midDivdisplay);
+        top: mapping($cdabanner, bannercopyposmiddleLeft, MidDivtop);
+        transform: mapping($cdabanner,
+            bannercopyposmiddleLeft,
+            MidDivtransform);
+        -webkit-transform: mapping($cdabanner,
+            bannercopyposmiddleLeft,
+            MidDivtransform);
+        -ms-transform: mapping($cdabanner,
+            bannercopyposmiddleLeft,
+            MidDivtransform);
+
+        @media #{$tablet-mobile} {
+          width: mapping($cdabanner, bannercopyposmiddleLeft, MobileWidth);
+          margin-top: mapping($cdabanner, bannercopyposmiddleLeft, mobileTop);
+          top: mapping($cdabanner, bannercopyposmiddleLeft, mobileInher);
+          transform: mapping($cdabanner, bannercopyposmiddleLeft, mobileInher);
+          -webkit-transform: mapping($cdabanner,
+              bannercopyposmiddleLeft,
+              mobileInher);
+          -ms-transform: mapping($cdabanner,
+              bannercopyposmiddleLeft,
+              mobileInher);
+        }
+
+        h2,
+        h1 {
+          color: #000000;
+          font-family: "Mattel Founders", sans-serif;
+          font-size: 48px;
+          font-weight: $fontMedium;
+          letter-spacing: 0.41px;
+          line-height: 56px;
+          // text-decoration: underline;
+          padding-bottom: 7px;
+          border-bottom: 2px solid;
+          // margin-left:70px;
+          // ::after{
+          //     height: 4px;
+          //     width: 320px;
+          //     background-color: #000000;
+          // }
+          // @media #{$tablet-mobile} {
+          //     margin-left:0;
+          // }
+        }
+      }
+    }
+
+    @media #{$tablet-mobile} {
+      transform: mapping($cdabanner, bannercopyposmiddleLeft, ipadtransform);
+    }
+
+    @media #{$large-only} {
+      font-size: mapping($cdabanner, bannercopyposmiddleLeft, tabFontSize);
+      width: mapping($cdabanner, bannercopyposmiddleLeft, tabWidth);
+    }
+  }
+
+  &.middle-right {
+    right: mapping($cdabanner, bannercopyposmiddleRight, posRight);
+    top: mapping($cdabanner, bannercopyposmiddleRight, posTop);
+    transform: mapping($cdabanner, bannercopyposmiddleLeft, transform);
+
+    @media #{$tablet-mobile} {
+      transform: mapping($cdabanner, bannercopyposmiddleLeft, ipadtransform);
+    }
+
+    @media #{$large-only} {
+      font-size: mapping($cdabanner, bannercopyposmiddleRight, tabFontSize);
+      width: mapping($cdabanner, bannercopyposmiddleRight, tabWidth);
+    }
+  }
+
+  &.top-center {
+    @media #{$desktop} {
+      left: mapping($cdabanner, bannercopypostopCenter, mobposLeft);
+      top: mapping($cdabanner, bannercopypostopCenter, mobposTop);
+      transform: mapping($cdabanner, bannercopypostopCenter, mobposTransform);
+      -webkit-transform: mapping($cdabanner,
+          bannercopypostopCenter,
+          mobposTransform);
+      -ms-transform: mapping($cdabanner,
+          bannercopypostopCenter,
+          mobposTransform);
+    }
+  }
+
+  @media #{$desktop} {
+    .banner-copy {
+      &.bottom-center {
+        left: mapping($cdabanner, bannercopyposbottomCenter, mobposLeft);
+        bottom: mapping($cdabanner, bannercopyposbottomCenter, mobposBottom);
+        transform: mapping($cdabanner,
+            bannercopyposbottomCenter,
+            mobposTransform);
+      }
+
+      &.v-center {
+        left: mapping($cdabanner, bannercopyposVcenter, mobposLeft);
+        top: mapping($cdabanner, bannercopyposVcenter, mobposTop);
+        transform: mapping($cdabanner, bannercopyposVcenter, mobposTransform);
+      }
+    }
+  }
+
+  &.no-bg {
+    @media #{$desktop} {
+      background: mapping($cdabanner, bannercopyBg, mobBgnd);
+    }
+  }
+
+  .module-title,
+  .module-description h1,
+  .module-description h2 {
+    @media #{$small-only} {
+      margin: mapping($cdabanner, bannercopymodTitle, mobMargin);
+    }
+
+    font-size: mapping($cdabanner, bannercopymodTitle, fntSize);
+
+    @media #{$desktop} {
+      font-size: mapping($cdabanner, bannercopymodTitle, mobfntSize);
+    }
+
+    @media #{$desktop} {
+      font-size: mapping($cdabanner, bannercopymodTitle, tabfntSize);
+    }
+  }
+
+  .module-sub-title {
+    @media #{$desktop} {
+      font-size: mapping($cdabanner, bannercopymodSubtitle, mobfntSize);
+    }
+
+    @media #{$desktop} {
+      font-size: mapping($cdabanner, bannercopymodSubtitle, tabfntSize);
+    }
+  }
+
+  @media #{$small-only} {
+    text-align: mapping($cdabanner, bannercopymodSubtitle, mobtxtAlign);
+  }
+
+  a,
+  span {
+    display: mapping($cdabanner, bannercopySpan, display);
+    margin: mapping($cdabanner, bannercopySpan, margin);
+
+    @if mapping($layout, main, isRescueHeroes)==true {
+      @media #{$small-only} {
+        margin: mapping($cdabanner, bannercopySpan, marginMob);
+      }
+    }
+  }
+}
+
+.heroImageBanner {
+  .cda-banner {
+    text-align: mapping($cdabanner, heroimageBanner, txtAlign);
+
+    .crm-container {
+      display: mapping($cdabanner, heroimageCrm, display);
+      position: mapping($cdabanner, heroimageCrm, pos);
+      text-align: mapping($cdabanner, heroimageCrm, txtAlign);
+    }
+  }
+}
+
+.promoCarousel {
+  @media #{$tablet-mobile} {
+    background: if(mapping($cdabanner, promoCarousel, promoBgMob),
+        mapping($cdabanner, promoCarousel, promoBgMob),
+        transparent);
+    padding: if(mapping($cdabanner, promoCarousel, padMob),
+        mapping($cdabanner, promoCarousel, padMob),
+        0);
+  }
+
+  @media #{$tablet-mobile} {
+    background: mapping($cdabanner, promoCarousel, promoBgMob);
+  }
+
+  .cda-banner {
+    @if mapping($cdabanner, mobBanner, isContainsBorder)==true {
+      @media #{$tablet-mobile} {
+        &::after {
+          content: mapping($cdabanner, mobBanner, afterBdrcontent);
+          background-image: mapping($cdabanner, mobBanner, afterBdrBgimage);
+          background-repeat: mapping($cdabanner, mobBanner, afterBdrBgrepeat);
+          background-size: mapping($cdabanner, mobBanner, afterBdrBgSize);
+          width: mapping($cdabanner, mobBanner, afterBdrWidth);
+          height: mapping($cdabanner, mobBanner, afterBdrHeight);
+          display: mapping($cdabanner, mobBanner, afterBdrDisp);
+          position: mapping($cdabanner, mobBanner, afterBdrPos);
+          bottom: mapping($cdabanner, mobBanner, afterBdrPosBottom);
+          left: mapping($cdabanner, mobBanner, afterBdrPosLeft);
+        }
+      }
+    }
+
+    ul {
+      margin-bottom: 0;
+
+      .slick-track {
+        @media #{$tablet-mobile} {
+          background: mapping($cdabanner, slickTrack, bgColor);
+        }
+      }
+
+      li {
+        margin: 0;
+
+        img {
+          width: 100%;
+          max-width: if(mapping($cdabanner, promoCarousel, maxWidth),
+              mapping($cdabanner, promoCarousel, maxWidth),
+              1600px);
+          padding: 0;
+        }
+
+        @media #{$desktop} {
+          width: 100% !important;
+
+          a {
+            &.hidden-xs {
+              padding-left: 35.416%;
+              display: block;
+              min-height: 200px;
+            }
+          }
+
+          .banner-copy {
+            &.middle-left {
+              width: 35.416% !important;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .slick-dots {
+    @media #{$desktop} {
+      width: auto;
+      transform: translateX(-50%);
+      -webkit-transform: translateX(-50%);
+      -moz-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+      left: 50%;
+      right: auto;
+    }
+
+    @if mapping($cdabanner, slickTrack, fisherPriceTab)==true {
+      @media #{$tablet-mobile} {
+        bottom: mapping($cdabanner, slickTrack, bottomTab);
+      }
+
+      @media #{$tablet-mobile} {
+        // display:mapping($cdabanner, slickTrack, mobileview);
+      }
+    }
+  }
+}
+
+.has-video-carousel:not(.only-video-slider) {
+  li.video-player-container {
+    .oo-player-container {
+      position: mapping($cdabanner, imageAndVideo, imgPosition);
+      left: mapping($cdabanner, imageAndVideo, imgLeft);
+      top: mapping($cdabanner, imageAndVideo, imgTop);
+      height: mapping($cdabanner, imageAndVideo, imgHeight);
+      width: mapping($cdabanner, imageAndVideo, imgWidth);
+
+      .oo-player {
+        padding: mapping($cdabanner, imageAndVideo, imgPad);
+        height: mapping($cdabanner, imageAndVideo, imgHeight);
+        width: mapping($cdabanner, imageAndVideo, imgWidth);
+      }
+    }
+  }
+}
+
+.has-video-carousel {
+  .video-player-banner.oo-player-container {
+    position: mapping($cdabanner, imageAndVideo, imgPosition);
+    left: mapping($cdabanner, imageAndVideo, imgLeft);
+    top: mapping($cdabanner, imageAndVideo, imgTop);
+    height: mapping($cdabanner, imageAndVideo, imgHeight);
+    width: mapping($cdabanner, imageAndVideo, imgWidth);
+  }
+
+  .oo-player {
+    padding: mapping($cdabanner, imageAndVideo, imgPad);
+    height: mapping($cdabanner, imageAndVideo, imgHeight);
+    width: mapping($cdabanner, imageAndVideo, imgWidth);
+  }
+
+  .video-player-container {
+    position: mapping($cdabanner, videoContainer, VideoConPos);
+    padding: mapping($cdabanner, videoContainer, VideoConPad);
+    min-height: mapping($cdabanner, videoContainer, VideoMinheight);
+
+    @media #{$tablet-mobile} {
+      min-height: mapping($cdabanner, videoContainer, VideoBanMin);
+    }
+  }
+
+  .video-player-banner {
+    position: mapping($cdabanner, videoContainer, VideoBanPos);
+    top: mapping($cdabanner, videoContainer, VideoBanTop);
+    right: mapping($cdabanner, videoContainer, VideoBanRight);
+    bottom: mapping($cdabanner, videoContainer, VideoBanBottom);
+    left: mapping($cdabanner, videoContainer, VideoBanLeft);
+  }
+}
+
+.carousel-slides {
+  &.only-video-slider {
+    .slick-slide {
+      min-height: mapping($cdabanner, videoContainer, VideoMinheight);
+
+      @media #{$tablet-mobile} {
+        min-height: mapping($cdabanner, videoContainer, VideoBanMin);
+      }
+    }
+  }
+}
+
+#pagename-responsible-supply-chain {
+  .cda-banner {
+    .play-container {
+      .banner-copy.middle-left {
+        text-align: left;
+        padding: 20px !important;
+        background-color: #ea171f;
+
+        .middle-div {
+          width: auto;
+          position: relative;
+          display: block;
+          text-align: left;
+          /*.module-description {
+            margin-left: 70px;
+            text-align: left;
+            @media #{$tablet-mobile} {
+              margin: 10px 0 10px 20px;
+            }
+            span {
+              font-weight: 300 !important;
+              line-height: 48px;
+              color: $white !important;
+              border-bottom: 1px solid $white;
+              font-size: 48px !important;
+              display: inline-block;
+              @media #{$tablet-mobile} {
+                line-height: 35px;
+                border-bottom: 1px solid $white;
+                font-size: 36px !important;
+                width: 223px;
+                text-align: left;
+              }
+            }
+          }*/
+        }
+      }
+    }
+  }
+
+  .image-text-component {
+    .image-text-container.media-50-50.row-reverse {
+      .text-block {
+        h2 {
+          @media #{$tablet-mobile} {
+            width: 166px;
+          }
+        }
+      }
+    }
+
+    .image-text-container.media-50-50 {
+      .text-block {
+        h2 {
+          @media #{$tablet-mobile} {
+            width: 166px;
+          }
+        }
+      }
+    }
+  }
+
+  .cda-banner.enable-carousel {
+    .carousel-slides {
+      .banner-copy {
+        .middle-div {
+          @media #{$tablet-mobile} {
+            text-align: left;
+            word-spacing: initial;
+          }
+        }
+      }
+    }
+  }
+
+  .imageAndText {
+    &+.imageAndText {
+      .image-text-component {
+        @media #{$desktop} {
+          margin-top: 25px;
+        }
+
+        @media #{$tablet-mobile} {
+          margin-top: 5px;
+        }
+      }
+    }
+  }
+
+  .image-text-container {
+    @media #{$tablet-mobile} {
+      padding: 0;
+    }
+  }
+}
+
+#pagename-leadership,
+#pagename-executive-leadership {
+  .cda-banner {
+    .play-container {
+      .banner-copy.middle-left {
+        @media #{$tablet-mobile} {
+          text-align: left;
+          padding: 20px !important;
+          background-color: #ea171f;
+        }
+        .module-description{
+          @media #{$desktop} {
+            text-align: left;
+          }
+        }
+      }
+    }
+  }
+
+  @media #{$tablet-mobile} {
+    margin-bottom: 5px;
+  }
+
+  @media #{$desktop} {
+    margin-bottom: 49px;
+  }
+
+  .promoCarousel {
+    &+.title {
+      .play-page-title.no-image {
+        &>div {
+          h1 {
+            @media #{$tablet-mobile} {
+              text-align: center;
+            }
+
+            &+p {
+              @media #{$tablet-mobile} {
+                text-align: center;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+#pagename-sustainability {
+  .cda-banner {
+    .play-container {
+      .banner-copy.middle-left {
+        background-color: #43718D;
+      }
+    }
+  }
+
+  .promoCarousel {
+    &+.title {
+      &+.downloadImageGallery {
+        @media #{$desktop} {
+          border-top: 1px solid #979797;
+        }
+
+        &>.play-tiles-gallery {
+          @media #{$desktop} {
+            padding-top: 16px;
+          }
+        }
+      }
+    }
+  }
+}
+
+#pagename-corporate-governance {
+  .cda-banner {
+    .play-container {
+      .banner-copy.middle-left {
+        text-align: left;
+        padding: 20px !important;
+        background-color: #6a9034;
+
+        .middle-div {
+          width: auto;
+          position: relative;
+          display: block;
+          text-align: left;
+          /*.module-description {
+            margin-left: 70px;
+            text-align: left;
+            @media #{$tablet-mobile} {
+              margin: 10px 0 10px 20px;
+            }
+            span {
+              display: block;
+              color: $white;
+              font-family: "Mattel Founders", sans-serif;
+              font-weight: 300;
+              line-height: 48px;
+              border-bottom: 4px solid $white;
+              padding-bottom: 3px;
+              font-size: 48px !important;
+              width: 301px;
+              @media #{$tablet-mobile} {
+                line-height: 35px;
+                border-bottom: 2px solid $white;
+                font-size: 36px !important;
+                width: 223px;
+                text-align: left;
+              }
+            }
+          }*/
+        }
+      }
+    }
+  }
+}
+
+#pagename-our-impact {
+  .play-container {
+    .carousel-slides {
+      .banner-copy.middle-left {
+        text-align: left;
+        padding: 20px !important;
+        background-color: #e33483;
+
+        .middle-div {
+          width: auto;
+          position: relative;
+          display: block;
+          top: 50% !important;
+
+          //   text-align: left;
+          h2.module-title,
+          .module-description h1,
+          .module-description h2 {
+            // margin-left: 70px;
+            // text-align: left;
+            // display: block;
+            color: $white;
+
+            // font-family: "Mattel Founders";
+            // font-weight: 300;
+            // line-height: 48px;
+            // border-bottom: 3px solid $white;
+            // font-size: 48px !important;
+            // width: 260px;
+            @media #{$tablet-mobile} {
+              //   margin: 10px 0 10px 20px;
+              //   line-height: 35px;
+              //   border-bottom: 3px solid $white;
+              //   font-size: 35px !important;
+              //   width: 116px;
+              //   text-align: left;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .image-text-component {
+    .image-text-container {
+      &.media-50-50 {
+        @media #{$tablet-mobile} {
+          padding: 0;
+        }
+      }
+    }
+  }
+
+  .imageAndText {
+    &+.title {
+      .play-page-title {
+        @media #{$tablet-mobile} {
+          padding-top: 32px;
+        }
+      }
+    }
+  }
+}
+
+.cda-banner.enable-carousel {
+  .carousel-slides {
+    .banner-copy {
+      @media #{$tablet-mobile} {
+        width: auto;
+      }
+
+      .middle-div {
+        padding-bottom: 10px;
+
+        @media #{$desktop} {
+          text-align: center;
+          max-width: 85%;
+          margin: auto;
+          padding-bottom: 0;
+
+          h2,
+          h1 {
+            padding-bottom: 0;
+          }
+        }
+
+        @media #{$tablet-mobile} {
+          text-align: left;
+          word-spacing: 1023px;
+        }
+      }
+
+      .module-title,
+      .module-description h1,
+      .module-description h2 {
+        font: $fontMedium 36px "Mattel Founders", sans-serif;
+        @media #{$desktop} {
+          font: $fontMedium 38px "Mattel Founders", sans-serif;
+        }
+
+        @media screen and (min-width: 1200px) {
+          font: $fontMedium 46px "Mattel Founders", sans-serif;
+        }
+
+        @media screen and (min-width: 1440px) {
+          font: $fontMedium 48px "Mattel Founders", sans-serif;
+        }
+
+        border: none;
+        letter-spacing: 0.41px;
+        position: relative;
+        display: inline;
+        color: #ffffff;
+
+        @media #{$tablet-mobile} {
+          text-align: left;
+        }
+
+        &:after {
+          content: "";
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          border-bottom: 4px solid;
+          width: 98%;
+          color: inherit;
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+.image-text-container {
+  &.media-50-50 {
+    h2 {
+      @media #{$tablet-mobile} {
+        word-break: break-word;
+      }
+    }
+
+    .text-block {
+      h2 {
+        position: relative;
+        display: inline;
+        padding-bottom: 8px;
+        border: 0;
+
+        &::after {
+          content: " ";
+          bottom: 0;
+          left: 0;
+          border-bottom: 4px solid;
+          width: 98%;
+          color: inherit;
+          position: absolute;
+          display: none;
+        }
+      }
+
+      p {
+        margin-top: 23px !important;
+
+        @media #{$tablet-mobile} {
+          margin-top: 15px !important;
+        }
+      }
+    }
+
+    @media #{$tablet-mobile} {
+      display: flex;
+      flex-direction: column-reverse;
+    }
+  }
+}
+
+#pagename-home,
+#pagename-contact-us {
+  .cda-banner {
+    ul {
+      li {
+        @media #{$desktop} {
+          a {
+            &.hidden-xs {
+              padding-left: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+#pagename-contact-us {
+  .module-title {
+    color: #000;
+  }
+  .cda-banner.enable-carousel{
+    .carousel-slides{
+      .banner-copy{
+        .module-description{
+          h1{
+            color: #000;
+          }
+        } 
+      } 
+    }   
+  } 
+}

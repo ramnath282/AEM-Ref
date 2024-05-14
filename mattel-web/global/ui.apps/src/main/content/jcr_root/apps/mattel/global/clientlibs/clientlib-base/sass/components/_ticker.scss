@@ -1,0 +1,673 @@
+.body-fixed {
+  @include print-css(
+    map-merge((
+      position: fixed,
+      overflow: hidden
+    ), 
+    if(variable-exists(tickervar) and map-has-key($tickervar, bodyFixed), 
+        map-get($tickervar,bodyFixed), ()
+    )
+  ));
+}
+
+.tickerModule {
+  display: none;
+  padding: 0;
+
+  &.sticky {
+    @include print-css(
+      map-merge((
+        position: fixed,
+        width: 100%,
+        z-index: 9999,
+        top: 0,
+      ), 
+      if(variable-exists(tickervar) and map-has-key($tickervar, tickersticky), 
+          map-get($tickervar,tickersticky), ()
+      )
+    ));
+  }
+
+  &.ticker-available {
+    @include print-css(
+      map-merge((
+        display: block
+      ), 
+      if(variable-exists(tickervar) and map-has-key($tickervar, tickeravailable), 
+          map-get($tickervar,tickeravailable), ()
+      )
+    ));
+  }
+
+  .dynamic-media-wrapper.bg_wrapperImg {
+    .dynamicMedia {
+      @include print-css(
+        map-merge((
+          z-index: -1,
+          left: 0,
+          top: 0,
+        ), 
+        if(variable-exists(tickervar) and map-has-key($tickervar, dynamicMedia), 
+            map-get($tickervar,dynamicMedia), ()
+        )
+      ));
+    }
+  }
+  // ADPB-4684 - fixes
+  &.aem-GridColumn{
+    padding: 0;
+  }
+}
+.ticker-outer-wrapper {
+  .ticker-component {
+    .ticker-content {
+      @include print-css(
+        map-merge((
+          padding: (
+            largeUp: 0,
+            largeOnly: 0,
+            mediumOnly: 0,
+            smOnly: 10px 0 10px,
+            defaultVal: 10px 0 10px
+          ),
+          display: (
+            defaultVal: block,
+            smallUp: flex
+          ),
+          justify-content: center,
+          align-items: center,
+          color: $black,
+          text-align: center,
+          position: relative,
+          float: (
+            smallUp: left
+          ),
+          width: (
+            smallUp: 100%
+          ),
+          min-height: (
+            smallUp: 50px
+          )
+        ), 
+        if(variable-exists(tickervar) and map-has-key($tickervar, tickercontent), 
+            map-get($tickervar,tickercontent), ()
+        )
+      ));
+      &.fixed-ticker {
+        @include print-css(
+          map-merge((
+            position: fixed,
+            left: 0,
+            right: 0,
+            top: (
+              defaultVal: 0,
+              mediumOnly: 54px,
+              smallDown: 54px
+            )
+          ), 
+          if(variable-exists(tickervar) and map-has-key($tickervar, fixedTrackerContent), 
+              map-get($tickervar,fixedTrackerContent), ()
+          )
+        ));
+      }
+
+      .ticker-img {
+        @include print-css(
+          map-merge((
+            margin: (
+              largeUp: 0 20px 0 0,
+              largeOnly: 0 20px 0 0,
+              mediumOnly: 0 20px 0 0,
+              smOnly: 0 0 10px 0,
+              defaultVal: 0 0 10px 0
+            ),
+            height: 40px,
+            width: 40px,
+            display: inline-block,
+          ), 
+          if(variable-exists(tickervar) and map-has-key($tickervar, tickerImgWrapper), 
+              map-get($tickervar,tickerImgWrapper), ()
+          )
+        ));
+        img {
+          @include print-css(
+            map-merge((
+              height: 40px,
+              width: 40px
+            ), 
+            if(variable-exists(tickervar) and map-has-key($tickervar, tickerimg), 
+                map-get($tickervar,tickerimg), ()
+            )
+          ));
+        }
+      }
+
+      .ticker-title {
+        @include print-css(
+          map-merge((
+            margin: (
+              largeUp: 0 20px 0 0,
+              largeOnly: 0 20px 0 0,
+              mediumOnly: 0 20px 0 0,
+              smOnly: 0 0 4px 0,
+              defaultVal: 0 0 6px 0
+            ),
+          ), 
+          if(variable-exists(tickervar) and map-has-key($tickervar, tickertitle), 
+              map-get($tickervar,tickertitle), ()
+          )
+        ));
+      }
+
+      .ticker-subtitle {
+        @include print-css(
+          map-merge((
+            margin: (
+              largeUp: 0 20px 0 0,
+              largeOnly: 0 20px 0 0,
+              mediumOnly: 0 20px 0 0,
+              smOnly: 0 0 6px 0,
+              defaultVal: 0 0 6px 0
+            ),  
+          ), 
+          if(variable-exists(tickervar) and map-has-key($tickervar, tickersubtitle), 
+              map-get($tickervar,tickersubtitle), ()
+          )
+        ));
+      }
+
+      .ticker-description {
+        @include print-css(
+          map-merge((
+            margin: (
+              largeUp: 0 20px 0 0,
+              largeOnly: 0 20px 0 0,
+              mediumOnly: 0 20px 0 0,
+              smOnly: 0 0 6px 0,
+              defaultVal: 0 0 6px 0
+            ),
+            font-size: (
+              defaultVal: 16px,
+              smallDown: 14px
+            )
+          ), 
+          if(variable-exists(tickervar) and map-has-key($tickervar, tickerdescription), 
+              map-get($tickervar,tickerdescription), ()
+          )
+        ));
+      }
+
+      .ticker-button {
+        @include print-css(
+          map-merge((
+            display: flex,
+            justify-content: center,
+          ), 
+          if(variable-exists(tickervar) and map-has-key($tickervar, tickerbutton), 
+              map-get($tickervar,tickerbutton), ()
+          )
+        ));
+      }
+
+      .btn-cta-item {
+        @include print-css(
+          map-merge((
+            font-size: 16px,
+            font-weight: 500,
+            color: $white,
+            height: auto,
+            width: auto,
+            min-height: 36px,
+            min-width: 124px,
+            background-color: #1377c9,
+            letter-spacing: 0.57px,
+            line-height: 19px,
+            text-align: center,
+            display: flex,
+            align-items: center,
+            justify-content: center,
+            margin-right: (
+              mediumOnly: 45px
+            )
+          ), 
+          if(variable-exists(tickervar) and map-has-key($tickervar, tickercta), 
+              map-get($tickervar,tickercta), ()
+          )
+        ));
+
+        &:hover {
+          @include print-css(
+            map-merge((
+              text-decoration: none
+            ), 
+            if(variable-exists(tickervar) and map-has-key($tickervar, tickerctaHover), 
+                map-get($tickervar,tickerctaHover), ()
+            )
+          ));
+        }
+          &.large-cta, &.medium-cta, &.small-cta {
+            .btn-cta-item{
+              @include print-css(
+                map-merge((
+                  min-width: 130px,
+                  margin: (
+                    smallUp: 7px 0
+                  )
+                ), 
+                if(variable-exists(tickervar) and map-has-key($tickervar, tickerCtaVartion), 
+                    map-get($tickervar,tickerCtaVartion), ()
+                )
+              ));
+            }
+        } 
+        &.large-cta .btn-cta-item{
+            min-height: 61px;
+        }
+        &.medium-cta .btn-cta-item{
+            min-height: 53px;
+        }
+        &.small-cta .btn-cta-item{
+            min-height: 43px;
+        }
+      }
+
+      .ticker-close {
+        @include print-css(
+          map-merge((
+            padding: (
+              largeUp: 0,
+              largeOnly: 0,
+              mediumOnly: 0,
+              smOnly: 0,
+              defaultVal: 0
+            ),
+            color: $white,
+            cursor: pointer,
+            font-family: $fontAwesome,
+            float: right,
+            font-size: 24px,
+            background: none,
+            border: none,
+            position: absolute,
+            right: (
+              defaultVal: 10px,
+              smallUp: 10px
+            ),
+            top: (
+              defaultVal: 10px,
+              smallUp: calc(50% - 12px)
+            ),
+            width: 24px,
+            height: 24px
+          ), 
+          if(variable-exists(tickervar) and map-has-key($tickervar, tickerclose), 
+              map-get($tickervar,tickerclose), ()
+          )
+        ));
+        &::before {
+          @include print-css(
+            map-merge((
+              background: url($spriteLightPath) no-repeat -100px -50px,
+              content: "",
+              width: 24px,
+              height: 24px,
+              position: absolute,
+              right: 0,
+              top: 0
+            ), 
+            if(variable-exists(tickervar) and map-has-key($tickervar, tickercloseafter), 
+                map-get($tickervar,tickercloseafter), ()
+            )
+          ));
+        }
+      }
+    }
+
+    &.ticker-available {
+      @include print-css(
+        map-merge((
+          display: block
+        ), 
+        if(variable-exists(tickervar) and map-has-key($tickervar, tickeravailable), 
+            map-get($tickervar,tickeravailable), ()
+        )
+      ));
+    }
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  a,
+  span {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.no-mobile {
+  .ticker-outer-wrapper {
+    @include print-css(
+      map-merge((
+        display: (
+          smallDown: none
+        )
+      ), 
+      if(variable-exists(tickervar) and map-has-key($tickervar, nomobile), 
+          map-get($tickervar,nomobile), ()
+      )
+    ));
+  }
+}
+
+.mobile-modal {
+  &.ticker-available {
+    @include print-css(
+      map-merge((
+        display: (
+          smallDown: flex,
+        ),
+        height: (
+          smallDown: 100%,
+        ),
+        background: (
+          smallDown: rgba(106, 209, 227, 0.7),
+        ),
+        position: (
+          smallDown: fixed,
+        ),
+        top: (
+          smallDown: 0,
+        ),
+        bottom: (
+          smallDown: 0,
+        ),
+        left: (
+          smallDown: 0,
+        ),
+        right: (
+          smallDown: 0,
+        ),
+        z-index: (
+          smallDown: 99999,
+        ),
+        align-items: (
+          smallDown: center,
+        ),
+        justify-content: (
+          smallDown: center
+        ),
+      ), 
+      if(variable-exists(tickervar) and map-has-key($tickervar, mobilemodal), 
+          map-get($tickervar,mobilemodal), ()
+      )
+    ));
+   
+    .ticker-content {
+      @include print-css(
+        map-merge((
+          padding: (smallDown: 30px 15px),
+          margin: (smallDown: 0 auto),
+          align-self: (smallDown: center),
+          width: (smallDown: 95%),
+        ), 
+        if(variable-exists(tickervar) and map-has-key($tickervar, mobilemodaltickercontent), 
+            map-get($tickervar,mobilemodaltickercontent), ()
+        )
+      ));
+
+      .ticker-close {
+        @include print-css(
+          map-merge((
+            right: (smallDown: 4px),
+            top: (smallDown: 4px),
+          ), 
+          if(variable-exists(tickervar) and map-has-key($tickervar, mobilemodaltickerclose), 
+              map-get($tickervar,mobilemodaltickerclose), ()
+          )
+        ));
+      }
+    }
+  }
+}
+
+.light-theme {
+  .ticker-outer-wrapper {
+    .ticker-component {
+      .ticker-content {
+        @include print-css(
+          map-merge((
+            color: inherit
+          ), 
+          if(variable-exists(tickervar) and map-has-key($tickervar, tickerContentLightTheme), 
+              map-get($tickervar,tickerContentLightTheme), ()
+          )
+        ));
+
+        .ticker-close {
+          &::before {
+            @include print-css(
+              map-merge((
+                background: url($spriteLightPath) no-repeat -100px -50px
+              ), 
+              if(variable-exists(tickervar) and map-has-key($tickervar, tickerContentLightThemeAfter), 
+                  map-get($tickervar,tickerContentLightThemeAfter), ()
+              )
+            ));
+          }
+        }
+        .ticker-button{
+          .ctaItem.solid{
+              .btn-cta-item{
+                  line-height: normal;
+                  &:hover{
+                      @include print-css(
+                        map-merge((
+                          color: $white,
+                          background-color: $lbk-red
+                        ), 
+                        if(variable-exists(tickervar) and map-has-key($tickervar, tickerContentLightThemeSolidCtaHover), 
+                            map-get($tickervar,tickerContentLightThemeSolidCtaHover), ()
+                        )
+                      ));
+                  }
+              }
+          }
+          .ctaItem.outline{
+              .btn-cta-item{
+                  line-height: normal;
+                  &:hover{
+                    @include print-css(
+                        map-merge((
+                          color: $white,
+                          background-color: $lbk-red,
+                          border: 2px solid transparent
+                        ), 
+                        if(variable-exists(tickervar) and map-has-key($tickervar, tickerContentLightThemeOutlineCtaHover), 
+                            map-get($tickervar,tickerContentLightThemeOutlineCtaHover), ()
+                        )
+                      ));
+                  }
+              }
+          }
+          .ctaItem.text-arrow{
+              .btn-cta-item{
+                @include print-css(
+                  map-merge((
+                    background-color: transparent,
+                    color: $black,
+                    padding: 0,
+                    width: inherit,
+                    display: inline
+                  ), 
+                  if(variable-exists(tickervar) and map-has-key($tickervar, tickerContentLightThemetextarrow), 
+                      map-get($tickervar,tickerContentLightThemetextarrow), ()
+                  )
+                ));
+                  &:before{
+                      right: -15px;
+                      top: 2px;
+                  }
+                  &:hover{
+                      color: $lbk-red;
+                  }
+              }
+          }
+          .ctaItem.text-primary, .ctaItem.text-secondary{
+              .btn-cta-item{
+                  @include print-css(
+                    map-merge((
+                      background-color: transparent,
+                      color: $black,
+                      padding: 0,
+                      width: auto,
+                      display: inline,
+                      border-bottom-width: 2px
+                    ), 
+                    if(variable-exists(tickervar) and map-has-key($tickervar, tickerContentLightThemetextPrimary), 
+                        map-get($tickervar,tickerContentLightThemetextPrimary), ()
+                    )
+                  ));
+                  &:hover{
+                      color: $lbk-red;
+                      border-bottom-width: 3px;
+                  }
+              }
+          }
+        }
+      }
+    }
+  }
+}
+
+.dark-theme {
+  .ticker-outer-wrapper {
+    .ticker-component {
+      .ticker-content {
+        @include print-css(
+          map-merge((
+            color: inherit
+          ), 
+          if(variable-exists(tickervar) and map-has-key($tickervar, tickerContentDarkTheme), 
+              map-get($tickervar,tickerContentDarkTheme), ()
+          )
+        ));
+
+        .ticker-close {
+          &::before {
+            @include print-css(
+              map-merge((
+                background: url($spriteDarkPath) no-repeat -100px -50px
+              ), 
+              if(variable-exists(tickervar) and map-has-key($tickervar, tickerContentDarkThemeAfter), 
+                  map-get($tickervar,tickerContentDarkThemeAfter), ()
+              )
+            ));
+          }
+        }
+        .ticker-button{
+            .ctaItem.solid{
+                .btn-cta-item{
+                  @include print-css(
+                    map-merge((
+                      line-height: normal,
+                      background-color: $white,
+                      color: $lbk-nav-blue
+                    ), 
+                    if(variable-exists(tickervar) and map-has-key($tickervar, tickerContentDarkThemeSolidBtn), 
+                        map-get($tickervar,tickerContentDarkThemeSolidBtn), ()
+                    )
+                  ));
+                    &:hover{
+                      @include print-css(
+                        map-merge((
+                          color: $white,
+                          background-color: $lbk-red
+                        ), 
+                        if(variable-exists(tickervar) and map-has-key($tickervar, tickerContentDarkThemeSolidBtnHover), 
+                            map-get($tickervar,tickerContentDarkThemeSolidBtnHover), ()
+                        )
+                      ));
+                    }
+                }
+            }
+            .ctaItem.outline{
+                .btn-cta-item{
+                  @include print-css(
+                    map-merge((
+                      line-height: normal,
+                      background-color: $white,
+                      color: $lbk-nav-blue,
+                      border:2px solid $lbk-nav-blue
+                    ), 
+                    if(variable-exists(tickervar) and map-has-key($tickervar, tickerContentDarkThemeOutlinedBtn), 
+                        map-get($tickervar,tickerContentDarkThemeOutlinedBtn), ()
+                    )
+                  ));
+                    &:hover{
+                      @include print-css(
+                        map-merge((
+                          color: $white,
+                          background-color: $lbk-red,
+                          border: 2px solid transparent
+                        ), 
+                        if(variable-exists(tickervar) and map-has-key($tickervar, tickerContentDarkThemeOutlinedBtnHover), 
+                            map-get($tickervar,tickerContentDarkThemeOutlinedBtnHover), ()
+                        )
+                      ));
+                    }
+                }
+            }
+            .ctaItem.text-arrow{
+                .btn-cta-item{
+                  @include print-css(
+                        map-merge((
+                          background-color: transparent,
+                          color: $white,
+                          padding: 0,
+                          width: inherit,
+                          display: inline
+                        ), 
+                        if(variable-exists(tickervar) and map-has-key($tickervar, tickerContentDarkThemetextarrow), 
+                            map-get($tickervar,tickerContentDarkThemetextarrow), ()
+                        )
+                    ));
+                    &:before{
+                        right: -15px;
+                        top: 2px;
+                    }
+                    &:hover{
+                        color: $lbk-red;
+                    }
+                }
+            }
+            .ctaItem.text-primary, .ctaItem.text-secondary{
+                .btn-cta-item{
+                  @include print-css(
+                        map-merge((
+                          background-color: transparent,
+                          color: $white,
+                          padding: 0,
+                          width: auto,
+                          display: inline,
+                          border-bottom-width: 2px
+                        ), 
+                        if(variable-exists(tickervar) and map-has-key($tickervar, tickerContentDarkThemetextPrimary), 
+                            map-get($tickervar,tickerContentDarkThemetextPrimary), ()
+                        )
+                    ));
+                    &:hover{
+                        color: $lbk-red;
+                        border-bottom-width: 3px;
+                    }
+                }
+            }
+        }
+      }
+    }
+  }
+}

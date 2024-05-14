@@ -1,0 +1,315 @@
+<sly data-sly-test="${wcmmode.edit}">${'Edit Product Grid Component' @i18n}</sly>
+<sly data-sly-test="${wcmmode.edit || wcmmode.preview}">
+	<input type="hidden" value="nocache" id="storeCategoryJson">
+</sly>
+<sly data-sly-test="${wcmmode.edit && !properties.categoryType && pageProperties.cq:template != '/conf/ag/settings/wcm/templates/ag-search-results-page'}">
+	<br/>
+	<p style="color:red;">${'Category Query Parameters value is not authored for this page. Please author it to load the relevant products' @i18n}</p>
+</sly>
+<div class="product-grid-no-search-result-txt hide">
+    ${properties.noResultsText @i18n}
+    <span class="hidden-xs hidden-sm">0 Items</span>
+</div>
+<div class="plp-search-container plp-no-search hide" data-sly-use.info="${'com.mattel.ecomm.core.utils.EcomUtil' @ url= currentPage.path}">
+    <form id="gridSearchBox" action="${info.pageUrl}">
+	    <input type="text" id="plpSearchTxt" class="plpSearchTxt" placeholder="${properties.searchBoxPlaceholderText @i18n}" name="search" role="search" aria-label="search">
+	    <button type="submit"><i class="fa fa-search"></i></button>
+    </form>
+</div>
+<div class="product-grid-search-result hide">
+    ${properties.searchResultsTitle @i18n}
+</div>
+<div class="product-grid-text-container hide"></div>
+<script id="productGridTxtTemp" type="text/x-handlebars-template">
+    <div class="product-grid-txt">
+       {{query}} <span class="product-grid-count hidden-xs hidden-sm">{{total}} Items</span>
+    </div>
+</script>
+<div class="details-list-item grid-sort visible-md visible-lg"></div>
+<div class="product-grid-heading hide" data-article-heading="Articles">
+    ${properties.productGridTitle @i18n}
+</div>
+<div class="product-grid-no-results-heading hide">
+    ${properties.noResultsTitle @i18n}
+</div>
+<ul class="grid-lists grid-col-4" data-snp-param="${properties.categoryType}" data-marketing-param="${currentPage.path}" data-truncate=".grid-title" id="product-grid-container"  data-initial-loadcount="${properties.initialLoadCount != null ? properties.initialLoadCount : 20}" data-product-loadcount="${properties.productLoadCount != null ? properties.productLoadCount : 8}"></ul>
+<script id="previewListTemp" type="text/x-handlebars-template">
+    {{#forLoop this}}
+    <li class="preview-list">
+        <div class="image-preview"></div>
+        <div class="product-info">
+            <div>
+                <div class="linePlaceholder"></div>
+                <div class="linePlaceholder"></div>
+                <div class="linePlaceholder"></div>
+            </div>
+            <div class="product-price">
+                <div class="avatarPlaceholder"></div>
+                <div class="price-content">
+                    <div class="linePlaceholder linePlaceholder-thin"></div>
+                </div>
+            </div>
+        </div>
+    </li>
+    {{/forLoop}}
+</script>
+<script id="productGridTemp" type="text/x-handlebars-template">
+    {{#if this.data}}
+    {{#each this.data}}
+    {{#if type}}
+
+     <li class="{{#ifEquals hideOnMobile 'true'}}hidden-xs{{/ifEquals}} {{columnClassName}} espot-grid {{#ifEquals mediaType 'video'}}player-wrapper{{/ifEquals}}">
+        {{#ifEquals mediaType 'video'}}
+            <div class="video-wrapper-section {{../playVidInModal}}">
+                {{#ifEquals ../playVidInModal "false"}}
+                    {{#ifEquals ../videoType 'deluxe'}}
+                        {{#ifEquals ../autoPlayVideo 'true'}}
+                            <img src="{{getDeluxePoster ../videoUrl}}" alt="" class="deluxe-poster-image">
+                        {{/ifEquals}}
+                        <div class="aem-video-player" data-video-id="{{../videoUrl}}" data-autoplay="{{../autoPlayVideo}}"
+                        data-video-type="deluxe"></div>
+                    {{else}}
+                        {{#ifEquals ../videoType 'scene7'}}
+                        <video width="100%" height="100%" src="{{../videoUrl}}" controls
+                            {{#ifEquals ../autoPlayVideo 'true'}}autoplay{{/ifEquals}}></video>
+                        {{else}}
+                        <iframe width="100%" height="100%"
+                            src="{{../videoUrl}}?autoplay={{#ifEquals ../autoPlayVideo 'true'}}1{{else}}0{{/ifEquals}}" frameborder="0"
+                            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
+                            allow='autoplay'></iframe>
+                        {{/ifEquals}}
+                    {{/ifEquals}}
+                {{/ifEquals}}
+                {{#if ../promoImage}}
+                    <div class="video-poster-image video-promo-overlap" data-video-type="{{../videoType}}"
+                        data-action="{{#ifEquals ../playVidInModal "true"}}modal{{else}}inline{{/ifEquals}}"
+                        data-autoplay="{{../autoPlayVideo}}" data-video-id="{{../videoUrl}}">
+                        <img alt="" src="{{../promoImage}}">
+                    </div>
+                {{/if}}
+            </div>
+        {{/ifEquals}}
+        {{#ifEquals mediaType 'image'}}
+			{{#if ../promoImageUrl}}
+				<a href="{{../promoImageUrl}}" aria-hidden="true" class="product-image">
+					<img alt="" src="{{../promoImage}}">
+				</a>
+			{{else}}
+				 <img alt="" src="{{../promoImage}}">
+			{{/if}}
+        {{/ifEquals}}
+    </li>
+    {{else}}
+    <li data-partno="{{PartNumber}}" data-producttype="{{product_type}}">
+        {{#ifEquals ../this.isFPPage 'true'}}
+				<a href="{{../pdpLink}}" class="product-image track-product-grid-image">
+            		<img alt="{{../title}}-Image" src="{{#if ../imageLink}} {{../imageLink}} ?$ossmallindex$ {{else}} ./img/temp/CKK10_Viewer.jpg {{/if}}">
+        		</a>
+        {{/ifEquals}}
+        {{#ifEquals ../this.isFPPage 'false'}}
+            {{#if @root.schema.readMore}}
+                <a href="{{../url}}" class="product-image">
+                    <img alt="{{../title}}-Image" src="{{#if ../imageLink}}{{../imageLink}}{{else}}//mattel.scene7.com/is/image/Mattel/ag_fallback_image{{/if}}">
+                </a>
+            {{else}}
+                <a href="{{../../this.urlPrefix}}{{../../this.concatUrl}}{{../url}}" class="product-image">
+                            <img alt="{{../title}}-Image" src="{{#if ../imageLink}}{{../scene7Url}}{{../thumbnail}} ?$ossmallindex$ {{else}}//mattel.scene7.com/is/image/Mattel/ag_fallback_image{{/if}}">
+                </a>
+            {{/if}}
+        {{/ifEquals}}
+        {{#if @root.schema.quickView}}
+            {{#ifNotEquals disableQuickOption true}}
+                <a href="javascript:void(0);" class="quick-view" ><span>Quick view</span></a>
+            {{/ifNotEquals}}
+        {{/if}}
+	
+        {{#if @root.schema.tagLabel}}
+            {{#if ../this.article_tags}}
+            <div class="product-label-tag">
+                <label>{{../this.article_tags}}</label>
+            </div>
+            {{else}}
+            <div class="product-label-tag tag-not-available">
+                <label>&nbsp;</label>
+            </div>
+            {{/if}}            
+        {{/if}}
+        <div class="product-info">
+            {{#if @root.schema.rating}}
+		    {{#ifEquals ../this.showRatingsReviewsPLP 'true'}}
+            <div class="product-reviews">
+                            <span class="rating-section rating-{{changeToHyphen ../ProductReviewRating}}">
+                                <span class="sr-only">{{../ProductReviewRating}} stars</span>
+                            </span>
+               		 		{{#ifEquals ../../this.isFPPage 'false'}}			
+                				<span class="total-reviews"><span class="sr-only">reviews</span>&#40;{{#if ../ProductReviewCount}} {{../ProductReviewCount}} {{else}} 0 {{/if}}&#41;</span>
+				 			{{/ifEquals}}
+				 			{{#ifEquals ../../this.isFPPage 'true'}}
+				 				<span class="total-reviews"><span class="sr-only">reviews</span>&#40;{{#if ../ProductReviewCount}}{{../ProductReviewCount}}{{else}}0{{/if}}&#41;</span>
+        					{{/ifEquals}}
+            </div>
+            {{/ifEquals}}
+            {{/if}}
+
+            {{#ifEquals ../this.isFPPage 'true'}}
+            <span class="product-badge">{{../badge}}</span>
+             {{/ifEquals}}
+             
+            {{#if @root.schema.promoLabel}}
+            <div class="promo-text">
+                {{#if MarketingCallout}}
+                    {{#isLessThanMonths ReleaseDateWeb 6}}
+                       {{#ifNotEquals ../NewOverrideFlag 'Y'}}
+                         New -
+                       {{/ifNotEquals}}
+                     {{/isLessThanMonths}}
+                    {{MarketingCallout}}
+                {{else}}
+                    {{#isLessThanMonths ReleaseDateWeb 6}}
+                       {{#ifNotEquals ../NewOverrideFlag 'Y'}}
+                         New
+                       {{/ifNotEquals}}
+                        {{else}}
+                            {{#if ../prices.displayPrice}}
+                                {{#ifNotEquals ../product_type 'BundleBean'}}
+                                    {{#if ../prices.displayPrice.0.price}}
+                                        {{#greaterThan ../prices.list_price.0.price ../prices.displayPrice.0.price}}
+                                            Sale
+                                        {{/greaterThan}}
+                                    {{/if}}
+                                {{/ifNotEquals}}
+                            {{/if}}
+                    {{/isLessThanMonths}}
+                {{/if}}
+            </div>
+            {{/if}}
+
+		{{#ifEquals ../this.isFPPage 'true'}}
+			{{#if @root.schema.categoryName}}
+				<div class="grid-category-wrapper">
+					<a href="{{../categoryPageUrl}}" title="{{../category}}" class="grid-category">
+						<p>{{../category}}</p>
+					</a>
+				</div>
+			{{/if}}
+			<div class="grid-title-wrapper">	
+				<a href="{{#if @root.schema.readMore}}{{../url}}{{else}}{{../pdpLink}}{{/if}}" tabindex="0" class="grid-title track-product-grid-title">{{../title}}</a>
+			</div>	
+		{{/ifEquals}}
+
+		{{#ifEquals ../this.isFPPage 'false'}}
+			<div class="grid-title-wrapper">
+				<a href="{{#if @root.schema.readMore}}{{../url}}{{else}}{{../../this.urlPrefix}}{{../../this.concatUrl}}{{../url}}{{/if}}" tabindex="0" class="grid-title">{{../title}}</a>
+			</div>	
+			{{#if @root.schema.categoryName}}
+				<div class="grid-category-wrapper">
+					<a href="{{../categoryUrl}}" title="{{../category}}">
+						<p>{{../category}}</p>
+					</a>
+				</div>
+			{{/if}}
+		{{/ifEquals}}
+
+            {{#if @root.schema.description}}
+                <div class="grid-desc-wrapper">
+                    <a href="{{#if @root.schema.readMore}}{{url}}{{else}}{{../../this.urlPrefix}}{{../../this.concatUrl}}{{url}}{{/if}}" tabindex="0"
+                        class="grid-desc track-product-grid-desc active"
+                        data-title="{{title}}">
+                        <p>{{desc}}</p>
+                    </a>
+                </div>
+            {{/if}}
+            {{#if @root.schema.inventoryStatus}}
+            {{#if availability}}
+                <div class="inventory-status" data-text="{{availability}}">
+                    {{#ifEquals availability 'Backorderable' }}
+                        <strong>Backordered</strong>
+                    {{else}}
+                        <strong>
+                            {{#ifEquals ../availability 'noLongerAvailable'}}
+                                Sold Out
+                            {{else}}
+                                {{#ifEquals ../availability 'Limited'}}
+                                    Limited Quantities
+                                {{else}}
+                                    {{#ifEquals ../availability 'Unavailable'}}
+                                        Unavailable
+                                    {{else}}
+                                        {{#ifEquals ../availability 'PreOrderable'}}
+                                            Preorder
+                                        {{/ifEquals}}
+                                    {{/ifEquals}}
+                                {{/ifEquals}}
+                            {{/ifEquals}}
+                        </strong>
+                    {{/ifEquals}}
+                </div>
+                    {{/if}}
+            {{/if}}
+            {{#if @root.schema.price}}
+            <div class="product-price {{../this.priceName}}">
+                <span>
+        		{{#ifEquals ../this.isFPPage 'true'}}
+			  		{{#if ../list_price}}
+                 		<span class="price price-currency" data-currency="{{../listPriceCurrency}}"></span>{{parseFloat ../list_price ''}}
+        		  	{{/if}}
+				{{/ifEquals}}
+        		{{#ifEquals ../this.isFPPage 'false'}}
+						{{#if ../prices.displayPrice}}
+                            {{#ifEquals ../product_type 'BundleBean'}}
+                                {{#ifEqualsPrice ../prices.displayPrice.0.price ../prices.displayPrice.0.bundleMinPrice}}
+                                    <span class="price price-currency">$</span>{{parseFloat ../prices.displayPrice.0.price ''}}
+                                {{else}}
+                                    <span class="price price-currency">$</span>{{parseFloat ../prices.displayPrice.0.bundleMinPrice ''}}
+                                    <span class="price price-currency"> - $</span>{{parseFloat ../prices.displayPrice.0.price ''}}
+                                {{/ifEqualsPrice}}
+                            {{else}}
+                                 {{#if ../prices.displayPrice.0.price}}
+                                    <span class="price price-currency">$</span>{{parseFloat ../prices.displayPrice.0.price ''}}
+                                    <span class="actual-list-price">{{finalActualPrice ../prices.list_price.0.price ../prices.displayPrice.0.price}}</span>
+                                {{else}}
+                                    {{#ifNotEquals ../product_type 'GiftCard'}}
+                                    <span class="price price-currency">$</span>{{parseFloat ../prices.list_price.0.price ''}}
+                                    {{/ifNotEquals}}
+                                {{/if}}
+                            {{/ifEquals}}
+                		{{/if}}
+        		{{/ifEquals}}
+                </span>
+            </div>
+            {{/if}}
+            {{#if @root.schema.readMore}}
+            <div class="product-read-more">
+                <a href="{{this.url}}" tabindex="0">
+			 		{{#if readmore}}
+						{{readmore}}
+                    {{else}}
+                    	Read More
+                    {{/if}}
+				</a>
+            </div>
+            {{/if}}
+            {{#if  @root.schema.socialIcons}}
+                <div class="social-icons-container">
+                    <ul class="social-icons">
+                        {{{relatedSocialElements this}}}
+                    </ul>
+                </div>
+            {{/if}}
+        </div>
+    </li>
+    {{/if}}
+    {{/each}}
+    {{else}}
+    <li class="zero-result">No Data's Found..</li>
+    {{/if}}
+</script>
+
+<script id="seeMoreTemp" type="text/x-handlebars-template">
+    {{#if this}}
+        <button class="theme-btn no-bg-btn" aria-describedby="product-main-heading">${properties.seeMoreLabel @context='html'}</button>
+    {{/if}}
+</script>
+<div id="see-more" class="hide"></div>
+<script type="text/javascript"
+src="https://s7d1.scene7.com/s7viewers/html5/js/VideoViewer.js"></script>

@@ -1,0 +1,40 @@
+<sly data-sly-test="${wcmmode.edit}">${'Customer Reviews Component' @ i18n} </sly>
+<input type="hidden" value="${currentPage.title}" id="storeTitle">
+<div class="reviews category-content mb-30">
+                    <div class="container">
+                        <div class="row mb-15">
+                            <div class="col-xs-12">
+                                <h2 class="module-title">Customer reviews</h2>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="content-wrapper">
+									<sly data-sly-use.bzvScriptURL="com.mattel.ag.retail.core.model.CustomerReviewsModel">
+                                    <script type='text/javascript' src='${bzvScriptURL.BazaarVoiceBaseURL}'></script>
+                                    </sly>
+							<script type="text/javascript">
+								document.addEventListener('DOMContentLoaded', function() {
+                                    var storetitle = $('#storeTitle').val();
+									$BV.ui("rr", "show_reviews", {
+										productId: "Store-"+storetitle
+									});
+                                    $BV.configure('global', {
+                                          events : {
+                                            submissionSubmitted : function (data) {
+                                                typeof postAreview=="function" && postAreview(data);
+                                              // JavaScript code that executes when the Bazaarvoice application renders.
+                                            }
+                                          }
+                                        });
+                                });
+							</script>
+                                    <div id="BVRRContainer"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+							<div id="BVRRContainer"></div>
+

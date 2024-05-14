@@ -1,0 +1,97 @@
+<sly data-sly-test="${wcmmode.edit}">${'Edit Footer Links Component' @i18n}</sly>
+
+<sly data-sly-use.footerLinks="com.mattel.ag.explore.core.model.FooterLinksExploreModel">
+    <sly data-sly-test="${properties.helpTitle!=null}">
+        <div class="mb-30">
+            <h2  class="accordion-action"><a aria-controls="sect1" id="accordion1id" href="javascript:void(0);" role="presentation" >${properties.helpTitle @i18n}</a></h2>
+            <div id="sect1" aria-labelledby="accordion1id" class="accordion-container">
+                <ul>
+
+                    <sly data-sly-list.helpList="${footerLinks.helpFooterLinksList}">
+
+                        <li>
+                            <sly data-sly-test="${helpList.helpRenderOption =='sameWindow'}">
+                                <a class="track-link" href="${helpList.helpLinkUrl}" data-track-title="${properties.helpTitle @i18n}">${helpList.helpLinkText}</a>
+                            </sly>
+                            <sly data-sly-test="${helpList.helpRenderOption =='tabWindow'}">
+                                <a class="track-link" href="${helpList.helpLinkUrl}" target="_blank" data-track-title="${properties.helpTitle @i18n}">${helpList.helpLinkText}<span class="sr-only">${'opens a new window' @i18n}</span></a>
+                            </sly>
+                            <sly data-sly-test="${helpList.helpRenderOption =='newWindow'}">
+                                <a class="track-link" data-url="${helpList.helpLinkUrl}" onclick="window.open(this.dataset.url,'AG','width=500, height=500');" data-track-title="${properties.helpTitle @i18n}">${helpList.helpLinkText}</a>
+                            </sly>
+
+                        </li>
+                    </sly>
+                </ul>
+            </div>
+        </div>
+    </sly>
+    <sly data-sly-test="${properties.hearTitle!=null}">
+        <div class="mb-30">
+            <h2 class="accordion-action"><a aria-controls="sect2" id="accordion2id" href="javascript:void(0);" role="presentation" >${properties.hearTitle @i18n}</a></h2>
+            <div id="sect2" aria-labelledby="accordion2id" class="accordion-container">
+                <ul>
+                    <sly data-sly-list.hearList="${footerLinks.hearFooterLinksList}">
+                        <li>
+                            <sly data-sly-test="${hearList.hearRenderOption =='sameWindow'}">
+                                <a class="track-link" href="${hearList.hearLinkUrl}" data-track-title="${properties.hearTitle @i18n}">${hearList.hearLinkText}</a>
+                            </sly>
+                            <sly data-sly-test="${hearList.hearRenderOption =='tabWindow'}">
+                                <a class="track-link" href="${hearList.hearLinkUrl}" target="_blank" data-track-title="${properties.hearTitle @i18n}">${hearList.hearLinkText}<span class="sr-only">${'opens a new window' @i18n}</span></a>
+                            </sly>
+                            <sly data-sly-test="${hearList.hearRenderOption =='newWindow'}">
+                                <a class="track-link" data-url="${hearList.hearLinkUrl}" onclick="window.open(this.dataset.url,'AG','width=500, height=500');" data-track-title="${properties.hearTitle @i18n}">${hearList.hearLinkText}</a>
+                            </sly>
+                        </li>
+                    </sly>
+                </ul>
+            </div>
+        </div>
+    </sly>
+    <sly data-sly-test="${properties.visitTitle!=null}">
+        <div class="mb-30">
+            <h2 class="accordion-action"><a aria-controls="sect3" id="accordion3id" href="javascript:void(0);" role="presentation" >${properties.visitTitle @i18n}</a></h2>
+            <div id="sect3" aria-labelledby="accordion3id" class="accordion-container">
+                <ul>
+                    <sly data-sly-list.visitList="${footerLinks.visitFooterLinksList}">
+                        <li>
+                            <sly data-sly-test="${visitList.visitRenderOption =='tabWindow'}">
+                                <a class="track-link" href="${visitList.visitLinkUrl}" target="_blank" data-track-title="${properties.visitTitle @i18n}">${visitList.visitLinkText}<span class="sr-only">${'opens a new window' @i18n}</span></a>
+                            </sly>
+                            <sly data-sly-test="${visitList.visitRenderOption =='sameWindow'}">
+                                <a class="track-link" href="${visitList.visitLinkUrl}" data-track-title="${properties.visitTitle @i18n}">${visitList.visitLinkText}</a>
+                            </sly>
+                            <sly data-sly-test="${visitList.visitRenderOption =='newWindow'}">
+                                <a class="track-link" data-url="${visitList.visitLinkUrl}" data-track-title="${properties.visitTitle @i18n}" onclick="window.open(this.dataset.url,'AG','width=500, height=500');">${visitList.visitLinkText}</a>
+                            </sly>
+
+                        </li>
+                    </sly>
+                </ul>
+            </div>
+        </div>
+    </sly>
+    <sly data-sly-test="${properties.cantFindTitle!=null}">
+        <div class="mb-30">
+            <h2 class="accordion-action"><a aria-controls="sect4" id="accordion4id" href="javascript:void(0);" role="presentation" >${properties.cantFindTitle @i18n}</a></h2>
+            <div id="sect4" aria-labelledby="accordion4id" class="accordion-container">
+                <ul>
+                    <sly data-sly-list.findList="${footerLinks.cantFindFooterLinksList}">
+                        <li>
+                            <sly data-sly-test="${findList.findRenderOption =='sameWindow'}">
+                                <a class="track-link" href="${findList.cantFindLinkUrl}" data-track-title="${properties.cantFindTitle @i18n}">${findList.cantFindLinkText}</a>
+                            </sly>
+                            <sly data-sly-test="${findList.findRenderOption =='tabWindow'}">
+                                <a class="track-link" href="${findList.cantFindLinkUrl}" target="_blank" data-track-title="${properties.cantFindTitle @i18n}">${findList.cantFindLinkText}<span class="sr-only">${'opens a new window' @i18n}</span></a>
+                            </sly>
+                            <sly data-sly-test="${findList.findRenderOption =='newWindow'}">
+                                <a class="track-link" data-url="${findList.cantFindLinkUrl}" onclick="window.open(this.dataset.url,'AG','width=500, height=500');" data-track-title="${properties.cantFindTitle @i18n}">${findList.cantFindLinkText}</a>
+                            </sly>
+
+                        </li>
+                    </sly>
+                </ul>
+            </div>
+        </div>
+    </sly>
+</sly>

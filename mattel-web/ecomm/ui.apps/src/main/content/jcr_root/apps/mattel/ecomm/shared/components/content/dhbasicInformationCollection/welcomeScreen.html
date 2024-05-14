@@ -1,0 +1,38 @@
+<sly data-sly-test.author="${wcmmode.edit}">
+    <sly data-sly-test.active="active"></sly>
+</sly>
+
+<sly data-sly-use.dhCategoryViewObj="com.mattel.ecomm.core.models.DHTreatmentViewModel"></sly>
+
+<section class="animated ${properties.containerAnimation} delay-1s form-section ${active}" data-page="1">
+    <form>
+
+        <div class="content">
+            <h2>${properties.title}</h2>
+            <picture>
+                <source srcset="${properties.imageParameter @ context='unsafe'}" media="(max-width:768px)"/>
+                <img src="${properties.imageParameter @ context='unsafe'}" alt=""/>
+            </picture>
+
+            <sly data-sly-test="${properties.noOfButtons == 'singleButton' }">
+                <div class="dh-btn-span col-size-1" style="background-color: ${properties.backgroundColor @ context='unsafe'}">
+                    <button type="submit" class="dh-next-btn">${properties.nextButtonText}</button>
+                </div>
+            </sly>
+            <sly data-sly-test="${properties.noOfButtons == 'twoButtons' }">
+                <div class="dh-btn-span col-size-2" style="background-color: ${properties.backgroundColor @ context='unsafe'}">
+                    <button type="submit" class="dh-back-btn">${properties.backButtonText}</button>
+                    <button type="submit" class="dh-next-btn" aria-disabled="true">${properties.nextButtonText}</button>
+                </div>
+            </sly>
+        </div>
+    </form>
+</section>
+
+<script type="application/json" id="wellnessTreatmentData">
+   ${dhCategoryViewObj.dhTreatmentServiceUIResponseList @ context='unsafe'}
+</script>
+
+
+
+

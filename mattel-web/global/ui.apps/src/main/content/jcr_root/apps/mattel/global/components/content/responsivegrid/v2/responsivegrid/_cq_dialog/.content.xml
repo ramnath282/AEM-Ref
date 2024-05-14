@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+          jcr:primaryType="nt:unstructured"
+          jcr:title="Enhanced layout Container"
+          sling:resourceType="cq/gui/components/authoring/dialog"
+          extraClientlibs="[extraClientlibs,acs-commons.widgets.showhidedialogfields,global.customContentChildreneditor]">
+    <content
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                    maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <background
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/foundation/include"
+                            path="mattel/global/master/components/core/background/v1/background/cq:dialog/content/items/tabs/items/backgroundInfo"/>
+                    <cta
+                            jcr:primaryType="nt:unstructured"
+                            jcr:title="CTA"
+                            sling:resourceType="granite/ui/components/coral/foundation/container"
+                            margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <viewer
+                                    jcr:primaryType="nt:unstructured"
+                                    jcr:title="CTA Configuration"
+                                    sling:resourceType="granite/ui/components/foundation/section">
+                                <ctaColumn
+                                        jcr:primaryType="nt:unstructured"
+                                        jcr:title="CTA"
+                                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                        margin="{Boolean}true"/>
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                            granite:class="toggelCtaTab"
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <entrCompClickable
+                                                    granite:class="ctaMasterTab-entrCompClick"
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/switch"
+                                                    fieldLabel="Make the Entire Component Clickable"
+                                                    name="./entrCompClickable"/>
+                                            <navigationLink
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+                                                    fieldLabel="Navigation URL"
+                                                    name="./navigationLink"/>
+                                            <openGetDirectionUrlIn
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/foundation/form/select"
+                                                    fieldLabel="Open Navigation Link In"
+                                                    name="./openNavLinkIn">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <sameWindow
+                                                            jcr:primaryType="nt:unstructured"
+                                                            text="Same Window"
+                                                            value="self"/>
+                                                    <newTab
+                                                            jcr:primaryType="nt:unstructured"
+                                                            text="New Tab"
+                                                            value="newTab"/>
+                                                    <newWindow
+                                                            jcr:primaryType="nt:unstructured"
+                                                            text="New Window"
+                                                            value="blank"/>
+                                                    <gotogrid
+                                                            jcr:primaryType="nt:unstructured"
+                                                            text="Link To Grid Below"
+                                                            value="gotogrid"/>
+                                                </items>
+                                            </openGetDirectionUrlIn>
+                                        </items>
+                                    </column>
+                                </items>
+                            </viewer>
+                        </items>
+                    </cta>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>

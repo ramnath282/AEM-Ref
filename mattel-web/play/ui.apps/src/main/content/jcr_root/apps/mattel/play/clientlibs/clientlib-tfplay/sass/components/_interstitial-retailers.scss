@@ -1,0 +1,57 @@
+#interstitialRetailerModal, #interstitialGameRetailerModal{
+    .modal-dialog{
+        @media #{$small-up} {
+            max-width: 51.625rem;
+        }
+        .modal-content{
+            @media #{$small-down} {
+                padding-bottom: .3rem;
+            }
+        }
+    }
+    .modal-body{
+        .play-tiles-gallery{
+            .gallery-tile{
+                max-width: 100%;
+                ul{
+                    margin-top: 1.5rem;
+                    margin-bottom: 1.5rem;
+                    @media #{$small-down} {
+                        margin-top: .7rem;
+                    }
+                    li{
+                        @include border-radius(0);
+                        border: none;
+                        @media #{$small-up}{
+                            max-width: 11.625rem;
+                            margin: 0 0.9375rem;
+                        }
+                        img{
+                            max-height: 4.375rem;
+                        }
+                    }
+                    &:not(.image-list){
+                        li{
+                            background-color: transparent;
+                        }
+                    }
+                }
+            }
+        }
+        .go-back-btn{
+            @extend .tf-back-btn;
+            font-size: 1.125rem;
+            margin-top: 10px;
+            margin-right: auto;
+            margin-left: auto;
+            @media #{$small-up}{
+                font-size: 1.375rem;
+            }
+            @media #{$small-down} {
+                margin: 1.25rem auto;
+                max-width: 20rem;
+                display: block;
+            }
+        }
+    }
+}

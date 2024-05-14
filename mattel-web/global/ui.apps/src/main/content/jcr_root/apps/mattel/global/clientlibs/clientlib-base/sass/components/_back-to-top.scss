@@ -1,0 +1,33 @@
+.play-backtotop {
+    @include print-css(
+            map-merge((
+                width: 50px,
+                height: 50px,
+                position: fixed,
+                display: none,
+                background-color :rgba(0, 116, 217, 0),
+                background-position: -103px -78px,
+                border-radius: 100%,
+                color: $black,
+                font-family: $maax,
+                padding: 2.14286em 0 0 0,
+                margin: auto,
+                text-transform: none,
+                font-size: em(12),
+                line-height: em(16.4),
+                text-align: center,
+                z-index: 1024,
+                right: 5px,
+                bottom: (
+                    defaultVal: 20px,
+                    smallDown: 30px
+                )
+            ), 
+            if(variable-exists(backtotop) and map-has-key($backtotop, backtotopComp), 
+                map-get($backtotop,backtotopComp), ()
+            )
+    ));
+    @media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: none) {  
+        right: 20px;
+    }  
+}

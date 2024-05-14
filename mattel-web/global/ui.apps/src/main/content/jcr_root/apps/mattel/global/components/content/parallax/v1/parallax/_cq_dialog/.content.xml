@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Parallax Component"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs">
+                <items jcr:primaryType="nt:unstructured">
+                    <parallaxSetting
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Parallax Setting"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <column
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <bgImage
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                        allowUpload="{Boolean}false"
+                                        autoStart="{Boolean}false"
+                                        class="cq-droptarget"
+                                        fieldLabel="Background Image"
+                                        fileReferenceParameter="./bgImagePath"
+                                        mimeTypes="[image/gif,image/jpeg,image/png,image/webp,image/tiff]"
+                                        multiple="{Boolean}false"
+                                        name="./bgImage"
+                                        uploadUrl="${suffix.path}"
+                                        useHTML5="{Boolean}true"/>
+                                    <bgMobileImage
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                        allowUpload="{Boolean}false"
+                                        autoStart="{Boolean}false"
+                                        class="cq-droptarget"
+                                        fieldLabel="Background Image for Mobile"
+                                        fileReferenceParameter="./bgMobileImagePath"
+                                        mimeTypes="[image/gif,image/jpeg,image/png,image/webp,image/tiff]"
+                                        multiple="{Boolean}false"
+                                        name="./bgMobileImage"
+                                        uploadUrl="${suffix.path}"
+                                        useHTML5="{Boolean}true"/>
+                                    <heading
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+                                        fieldDescription="The parallax heading should be authored only if the description is not required"
+                                        fieldLabel="Title for parallax"
+                                        name="./heading"
+                                        useFixedInlineToolbar="{Boolean}true">
+                                        <rtePlugins
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceSuperType="mattel/global/components/content/rtePlugins/rtePlugins"/>
+                                        <uiSettings
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceSuperType="mattel/global/components/content/rtePlugins/uiSettings"/>
+                                        <htmlRules
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceSuperType="mattel/ecomm/ag/components/content/exploreRtePlugins/htmlRules"/>
+                                    </heading>
+                                    <shortDescription
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+                                        fieldDescription="The parallax description should be authored only if the heading is not required"
+                                        fieldLabel="Description for parallax"
+                                        name="./shortDescription"
+                                        useFixedInlineToolbar="{Boolean}true">
+                                        <rtePlugins
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceSuperType="mattel/global/components/content/rtePlugins/rtePlugins"/>
+                                        <uiSettings
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceSuperType="mattel/global/components/content/rtePlugins/uiSettings"/>
+                                    </shortDescription>
+                                    <descriptionAlignment
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                        fieldDescription="Alignment for the overlay description : Left/Right "
+                                        fieldLabel="Description Section Alignment"
+                                        name="./descriptionAlignment">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <left
+                                                jcr:primaryType="nt:unstructured"
+                                                text="left"
+                                                value="left"/>
+                                            <right
+                                                jcr:primaryType="nt:unstructured"
+                                                text="right"
+                                                value="right"/>
+                                        </items>
+                                    </descriptionAlignment>
+                                </items>
+                            </column>
+                        </items>
+                    </parallaxSetting>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>

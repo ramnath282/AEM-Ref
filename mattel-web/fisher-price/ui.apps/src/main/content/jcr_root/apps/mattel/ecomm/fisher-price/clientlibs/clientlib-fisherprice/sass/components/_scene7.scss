@@ -1,0 +1,422 @@
+.s7container {
+  height: 500px;
+}
+
+@media all and (min-width: 320px) and (max-width: 410px) {
+  .s7container {
+    width: 100% !important;
+    height: 360px;
+    margin-top: 4px;
+  }
+}
+
+@media all and (min-width: 411px) and (max-width: 500px) {
+  .s7container {
+    width: 100% !important;
+    height: 410px;
+    margin-top: 4px;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .s7container {
+    left: 0;
+    top: 0;
+    width: 69%;
+  }
+
+}
+
+@media all and (min-width: 992px) and (max-width: 1025px) {
+  /* .s7container {
+    left: 0;
+    top: 0;
+    width:65%;
+
+    }
+    .fp #zoomMsg {
+      min-width: 154px;
+   } */
+}
+
+.s7fullscreenbutton {
+  display: none;
+}
+
+/* s7 Big Image */
+@media only screen and (min-width: 992px) {
+  .s7zoomview {
+    left: 150px;
+
+  }
+}
+
+/* swatch configuration */
+
+.s7swatches {
+  bottom: -20px !important;
+  left: 0;
+  right: 0;
+  height: 15px;
+  background-color: transparent;
+  text-align: center;
+}
+
+@media only screen and (min-width: 768px) {
+  .s7swatches {
+    // bottom: 0px;
+    height: 20px;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .s7swatches {
+    top: 10px;
+    // bottom: 0;
+    left: 0;
+    right: auto;
+    width: 150px;
+  }
+}
+
+.s7swatches .s7thumb {
+  border-color: #E6E7E8 !important;
+  width: 60px;
+  height: 60px;
+  margin: 1px;
+  cursor: pointer;
+}
+
+@media only screen and (min-width: 992px) {
+  .s7swatches .s7thumb {
+    width: 85px;
+    height: 85px;
+  }
+
+  .s7swatches .s7thumbcell {
+    width: 85px;
+    left: 0 !important;
+  }
+
+  .s7swatches>div,
+  .s7swatches>div>div {
+    width: 94px;
+  }
+}
+
+@media only screen and (max-width: 991px) {
+  .s7swatches .s7thumb {
+    border-radius: 100%;
+    width: 8px;
+    height: 8px;
+    background-image: none !important;
+    background-color: #ffffff;
+    border-color: #000000 !important;
+  }
+
+  .s7swatches .s7thumb[state="selected"] {
+    border-color: #444344 !important;
+    background-color: #444344;
+
+    margin: 1px 0 0 0 !important;
+  }
+
+  .s7swatches .s7scrollrightbutton[state="disabled"],
+  .s7swatches .s7scrollleftbutton[state="disabled"] {
+    display: none
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .s7swatches>div {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    margin: 12px 30px 0 40px;
+  }
+
+  .s7swatches>div.s7button {
+    margin-top: 0;
+  }
+
+  .s7swatches .s7scrollupbutton {
+    position: absolute !important;
+    left: 45px !important;
+    transform: translateX(-50%);
+    top: -3px !important;
+  }
+
+  .s7swatches .s7scrolldownbutton {
+    bottom: 5px !important;
+    margin-left: 60px;
+  }
+
+  .s7swatches .s7scrollupbutton[state="disabled"],
+  .s7swatches .s7scrolldownbutton[state="disabled"] {
+    display: none
+  }
+
+  .s7iconeffect {
+    display: none !important
+  }
+}
+
+.s7swatches .s7thumb[state="selected"] {
+  //border-color: #1377C9 !important;
+  border-width: 2px;
+  margin: 0;
+}
+
+.s7swatches .s7thumb[state="selected"]:focus {
+  outline: none
+}
+
+.s7swatches .s7scrollleftbutton,
+.s7swatches .s7scrollrightbutton,
+.s7swatches .s7scrollupbutton,
+.s7swatches .s7scrolldownbutton {
+  background-image: none !important;
+  height: 35px;
+  width: 35px;
+  background-color: transparent;
+  border-radius: 100%;
+  position: relative;
+  cursor: pointer;
+}
+
+.s7zoomview:focus,
+.fp .s7scrollleftbutton:focus,
+.fp .s7scrollrightbutton:focus,
+.fp .s7scrollupbutton:focus,
+.fp .s7scrolldownbutton:focus {
+  outline: none;
+}
+
+
+.s7swatches .s7scrollrightbutton::after {
+  content: "\f054";
+  display: inline-block;
+  font-family: $fontAwesome;
+  font-size: 30px;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  color: #145eb3;
+}
+
+.s7swatches .s7scrollleftbutton::after {
+  content: "\f053";
+  display: inline-block;
+  font-family: $fontAwesome;
+  font-size: 30px;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  color: #145eb3;
+}
+
+
+.s7swatches .s7scrolldownbutton::after {
+  content: '';
+  background-image: url($spriteImgPath);
+  background-repeat: no-repeat;
+  display: block;
+  width: 24px;
+  height: 24px;
+  background-position: -104px 0px;
+  position: absolute;
+  left: 65%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.s7swatches .s7scrollupbutton::after {
+  content: '';
+  background-image: url($spriteImgPath);
+  background-repeat: no-repeat;
+  display: block;
+  width: 24px;
+  height: 24px;
+  background-position: -128px 0px;
+  position: absolute;
+  left: 50%;
+  top: 7px;
+  transform: translate(-50%, -50%);
+  margin-top: -2px;
+}
+
+.s7button {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  z-index: 100;
+}
+
+.fp .s7thumbcell:focus,
+.fp .s7zoominbutton:focus,
+.fp .s7zoomoutbutton:focus,
+.fp .s7zoomresetbutton:focus {
+  outline: none;
+}
+
+/* position individual buttons*/
+.fp .s7zoomresetbutton[state='over'],
+.fp .s7zoomresetbutton[state='up'],
+.fp .s7zoomoutbutton[state='over'],
+.fp .s7zoomoutbutton[state='up'],
+.fp .s7zoominbutton[state='over'],
+.fp .s7zoominbutton[state='up'] {
+  background-image: none
+}
+
+.fp .s7zoominbutton {
+  bottom: 0px;
+  right: -145px;
+}
+
+.fp .s7zoomresetbutton::before,
+.fp .s7zoomoutbutton::before,
+.s7zoominbutton::before {
+  /* position: absolute; */
+  font-family: $fontAwesome;
+  font-weight: 900;
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  line-height: 1;
+  vertical-align: middle;
+  font-size: 20px;
+  color: #0078c8;
+  left: 0;
+
+}
+
+.fp .s7zoominbutton::before {
+  content: "";
+  background-image: url($spriteImgPath);
+  background-repeat: no-repeat;
+  display: block;
+  width: 24px;
+  height: 24px;
+  background-position: -224px 0px;
+}
+
+.fp .s7zoomoutbutton::before {
+  content: "";
+  background-image: url($spriteImgPath);
+  background-repeat: no-repeat;
+  display: block;
+  width: 24px;
+  height: 24px;
+  background-position: -248px 0px;
+}
+
+// .fp .s7zoomresetbutton::before{
+// content: "";
+// }
+.fp .s7zoomoutbutton {
+  bottom: 0px;
+  right: -115px;
+}
+
+.fp .s7zoomresetbutton {
+  bottom: 0;
+  right: -85px;
+}
+
+.fp #imgCount {
+  position: absolute;
+  left: 150px;
+  bottom: -35px;
+  color: #484848;
+  font-size: 14px;
+  line-height: 22px;
+}
+
+.fp #zoomMsg {
+  position: absolute;
+  left: 70.8%;
+  bottom: -35px;
+  color: #484848;
+  font-size: 14px;
+  line-height: 22px;
+}
+
+@media only screen and (max-width: 991px) {
+  #s7viewerCont {
+    margin-bottom: 40px !important;
+  }
+
+  .fp #imgCount {
+    left: 20px;
+    display: none;
+  }
+
+  .fp #zoomMsg {
+    left: inherit;
+    right: 20px;
+    display: none;
+  }
+
+  .fp .s7zoominbutton {
+    right: 20px;
+    bottom: -4px;
+    display: none;
+  }
+
+  .fp .s7zoomoutbutton {
+    right: 50px;
+    bottom: -4px;
+    display: none;
+  }
+
+  .fp .s7zoomresetbutton {
+    right: 80px;
+    bottom: -4px;
+    display: none;
+  }
+}
+
+.fp .s7tooltip {
+  display: none
+}
+
+@media only screen and (max-width: 768px) {
+  .fpProductinfo-module .product-image-block {
+    width: 100%;
+    float: none;
+    padding-bottom: 0;
+  }
+
+
+}
+
+/*Recall component changes*/
+
+.recall-fpProductinfo-module .product-image-block {
+  margin-bottom: 0px !important;
+
+  @media #{$small-only} {
+    margin-bottom: 0px !important;
+  }
+
+  @media #{$medium-only} {
+    margin-bottom: 0px !important;
+  }
+}
+
+.recall-fpProductinfo-module .social-share-icons {
+  margin-bottom: 0px !important;
+}
+
+/*.fpProductinfo-module.recall-fpProductinfo-module .product-badges{
+        border: 2px solid #cc2229 !important;
+}*/

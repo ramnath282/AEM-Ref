@@ -1,0 +1,45 @@
+<sly data-sly-test="${wcmmode.edit}">${'Mixed Media Viewer' @i18n}</sly>
+
+<div class="pdp-img-viewer-holder">
+    <section>
+        <ul id="pdpLargeUl">
+        </ul>
+    </section>
+    <aside>
+        <a class="pdp-thumb-prev"></a>
+        <ul id="pdpThumbUl">
+        </ul>
+        <a class="pdp-thumb-next"></a>
+    </aside>
+</div>
+
+<script type="text/x-handlebars-template" id="pdpThumbTmpl">
+    {{#each this}}
+    {{#if isVideo}}
+    <li class="video-thumbnail-viewer" data-target="#video-viewer-player-{{@key}}">
+        <img src="{{xs}}" alt="">
+    </li>
+    {{else}}
+    <li data-img-name="{{i.n}}">
+        <img src="https://s7d9.scene7.com/is/image/{{i.n}}?fmt=jpg" alt="">
+    </li>
+    {{/if}}
+    {{/each}}
+</script>
+
+<script type="text/x-handlebars-template" id="pdpLargeTmpl">
+    {{#each this}}
+    <li class="{{#if isVideo}}video-poster-viewer {{/if}}">
+        {{#if isVideo}}
+        <img src="{{lg}}" alt="">
+        <div id="video-viewer-player-{{@key}}" class="video-viewer-player" data-video-index="{{@key}}" data-video-id="{{id}}"></div>
+        {{else}}
+        <img src="https://s7d9.scene7.com/is/image/{{i.n}}?fit=constrain,1&wid=2000&hei=2000&fmt=jpg" alt="">
+        {{/if}}
+    </li>
+    {{/each}}
+</script>
+
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
+    <sly data-sly-call="${clientlib.js @ categories='ecomm.videoProductViewer'}" />
+</sly>

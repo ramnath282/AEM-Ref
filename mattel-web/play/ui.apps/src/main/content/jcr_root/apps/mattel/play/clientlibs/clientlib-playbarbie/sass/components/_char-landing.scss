@@ -1,0 +1,96 @@
+.play-character-landing-block {
+    @extend .container-fluid;
+    >div {
+        @extend .row;
+        >div {
+            @extend .col-xs-12;
+            @extend .col-sm-6;
+            @extend .col-md-4;
+            margin-left:mapping($characterlanding,childDiv,marginLeft);
+            margin-right:mapping($characterlanding,childDiv,marginRight);
+            margin-bottom: mapping($characterlanding,childDiv,marginBottom);
+            padding: mapping($characterlanding,childDiv,pad);
+            text-align: mapping($characterlanding,childDiv,txtAlign);
+            position: mapping($characterlanding,childDiv,pos);
+            section {
+                text-align: mapping($characterlanding,charSection,txtAlign);
+                position: mapping($characterlanding,charSection,pos);
+                img {
+                    @extend .img-responsive;
+                }
+                span {
+                    background-color: mapping($characterlanding,charSpan,bgndColor);
+                    @include border-radius(mapping($characterlanding,charSpan,borderRadius));
+                    text-align: mapping($characterlanding,charSpan,txtAlign);
+                    padding: mapping($characterlanding,charSpan,pad);
+                    font-size: mapping($characterlanding,charSpan,fntSize);
+                    color: mapping($characterlanding,charSpan,txtcolor);
+                    position: mapping($characterlanding,charSpan,pos);
+                    bottom: mapping($characterlanding,charSpan,posBottom);
+                    left: mapping($characterlanding,charSpan,posLeft);  
+                    text-transform: mapping($characterlanding,charSpan,fntCase); 
+                    transform: mapping($characterlanding,charSpan,posTransform);
+                    display: mapping($characterlanding,charSpan,disp);
+		    &:lang(tr-TR) {
+			font-weight: mapping($characterlanding, charSpan, fntWeightTR);
+		   }
+                }
+            }
+        }
+    }
+    @if mapping($characterlanding, charactersPage, isEnchantCharacterLanding) == true {
+		padding-left: 0;
+		padding-right: 0;
+            .play-page-title{
+                h1{
+                    color:$enchanpurple;
+                }
+            }
+            background:mapping($characterlanding, charactersPage, bgnd);
+            @media #{$small-down}{
+					background:mapping($characterlanding, charactersPage, bgndMob); 
+				}
+            @include box-shadow(inset 0px -850px 100px -300px #BBE0FF);
+            
+            .characterlanding-title{
+                h2{
+                    color:mapping($characterlanding, charactersPage, galHeadingColor);
+                }
+            }
+            .characterlanding-tile{
+                ul{
+                    li{
+                        a{
+                            span{
+                                text-align:mapping($characterlanding, charactersPage, txtAlignLeft);
+                                color:mapping($characterlanding, charactersPage, txtColor);
+                            }
+                        }
+                    }
+                }
+            }
+			.play-list{
+				padding: mapping($characterlanding,playList,deskPad); 
+				@media #{$medium-down}{
+					padding: mapping($characterlanding,playList,tabPad);    
+				}
+				@media #{$small-down}{
+					padding: mapping($characterlanding,playList,mobPad);    
+				}
+			}
+			 >div {
+				>div {
+					&.column-4{
+						@extend .col-md-3;
+					}
+					&.column-3{
+						@extend .col-md-4;
+					}
+				}
+			}
+        }
+        &#play-character-landing{
+            padding-left: 0;
+            padding-right: 0;
+        }
+}

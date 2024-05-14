@@ -1,0 +1,157 @@
+.search-outer-wrapper{
+    @include content-spacing(map-get($newsSearchLanding, search_outer_wrapper));
+    @media #{$tablet-mobile}{
+        margin-top: 0;
+    }
+    .search-title{
+        color: mapping($newsSearchLanding, search_title, color);
+        font: mapping($newsSearchLanding, search_title, font);
+        letter-spacing: mapping($newsSearchLanding, search_title, letter_spacing);
+        line-height: mapping($newsSearchLanding, search_title, line_height);
+    }
+    .total-search{
+        @include content-spacing(map-get($newsSearchLanding, total_search));
+        color: mapping($newsSearchLanding, total_search, color);
+        font: mapping($newsSearchLanding, total_search, font);
+        font-style: mapping($newsSearchLanding, total_search, font_style);
+        letter-spacing: mapping($newsSearchLanding, total_search, letter_spacing);
+        line-height: mapping($newsSearchLanding, total_search, line_height);
+        background-color: mapping($newsSearchLanding, total_search, background_color);
+    }
+    .search-result{
+        font-size: mapping($newsSearchLanding, search_result, font_size);
+        .individual-search{
+            @include content-spacing(map-get($newsSearchLanding, individual_search));
+            border-bottom: mapping($newsSearchLanding, individual_search, border_bottom);
+            .news-doc-type{
+                color: mapping($newsSearchLanding, news_doc_type, color);
+                font: mapping($newsSearchLanding, news_doc_type, font);
+                font-style: mapping($newsSearchLanding, news_doc_type, font_style);
+                letter-spacing: mapping($newsSearchLanding, news_doc_type, letter_spacing);
+                line-height: mapping($newsSearchLanding, news_doc_type, line_height);
+                display: mapping($newsSearchLanding, news_doc_type, display);
+                height: mapping($newsSearchLanding, news_doc_type, height);
+            }
+            .news-title{
+                @include content-spacing(map-get($newsSearchLanding, news_title));
+                color: mapping($newsSearchLanding, news_title, color);
+                font: mapping($newsSearchLanding, news_title, font);
+                font-style: mapping($newsSearchLanding, news_title, font_style);
+                letter-spacing: mapping($newsSearchLanding, news_title, letter_spacing);
+                line-height: mapping($newsSearchLanding, news_title, line_height);
+                @media #{$desktop} {
+                    font: mapping($newsSearchLanding, news_title_md, font);
+                    letter-spacing: mapping($newsSearchLanding, news_title_md, letter_spacing);
+                    line-height: mapping($newsSearchLanding, news_title_md, line_height);
+                }
+            }
+            .read-more{
+                @include content-spacing(map-get($newsSearchLanding, read_more));
+                color: mapping($newsSearchLanding, read_more, color);
+                font: mapping($newsSearchLanding, read_more, font);
+                letter-spacing: mapping($newsSearchLanding, read_more, letter_spacing);
+                line-height: mapping($newsSearchLanding, read_more, line_height);
+                display: mapping($newsSearchLanding, read_more, display);
+                text-decoration: mapping($newsSearchLanding, read_more, text_decoration);
+                @media #{$desktop} {
+                    font: mapping($newsSearchLanding, read_more_md, font);
+                    letter-spacing: mapping($newsSearchLanding, read_more_md, letter_spacing);
+                    line-height: mapping($newsSearchLanding, read_more_md, line_height);
+                }
+            }
+        }
+    }
+    .cta-button{
+        @include content-spacing(map-get($newsSearchLanding, cta_button));
+        .view-all-btn{
+            cursor: mapping($newsSearchLanding, view_all_btn, cursor);
+            color: mapping($newsSearchLanding, view_all_btn, color);
+            font: mapping($newsSearchLanding, view_all_btn, font);
+            letter-spacing: mapping($newsSearchLanding, view_all_btn, letter_spacing);
+            text-align: mapping($newsSearchLanding, view_all_btn, text_align);
+            margin: mapping($newsSearchLanding, view_all_btn, margin);
+            background: mapping($newsSearchLanding, view_all_btn, background);
+            border-radius: mapping($newsSearchLanding, view_all_btn, border_radius);
+            width: mapping($newsSearchLanding, view_all_btn, width);
+            height: mapping($newsSearchLanding, view_all_btn, height);
+            display: mapping($newsSearchLanding, view_all_btn, display);
+            align-items: mapping($newsSearchLanding, view_all_btn, align_items);
+            justify-content: mapping($newsSearchLanding, view_all_btn, justify_content);
+        }
+    }
+}
+
+.loader-outer{
+    display: mapping($newsSearchLanding, loader_outer, display);
+    position: mapping($newsSearchLanding, loader_outer, position);
+    top: mapping($newsSearchLanding, loader_outer, p_top);
+    bottom: mapping($newsSearchLanding, loader_outer, p_bottom);
+    left: mapping($newsSearchLanding, loader_outer, p_left);
+    right: mapping($newsSearchLanding, loader_outer, p_right);
+    z-index: mapping($newsSearchLanding, loader_outer, z_index);
+    .loader {
+        position: mapping($newsSearchLanding, loader, position);
+        left: mapping($newsSearchLanding, loader, p_left);
+        top: mapping($newsSearchLanding, loader, p_top);
+        font-size: mapping($newsSearchLanding, loader, font_size);
+        margin: mapping($newsSearchLanding, loader, margin);
+        text-indent: mapping($newsSearchLanding, loader, text_indent);
+        width: mapping($newsSearchLanding, loader, width);
+        height: mapping($newsSearchLanding, loader, height);
+        border-radius: mapping($newsSearchLanding, loader, border_radius);
+        @include loaderBg(left, $corpColor, 10%, $coprLoaderBg, 42%, right);
+        -webkit-animation: mapping($newsSearchLanding, loader, webkit_animation);
+        animation: mapping($newsSearchLanding, loader, animation);
+        -webkit-transform: mapping($newsSearchLanding, loader, webkit_transform);
+        -ms-transform: mapping($newsSearchLanding, loader, ms_transform);
+        transform: mapping($newsSearchLanding, loader, transform);
+
+        &:before{
+            width: mapping($newsSearchLanding, loader_before, width);
+            height: mapping($newsSearchLanding, loader_before, height);
+            background: mapping($newsSearchLanding, loader_before, background);
+            border-radius: mapping($newsSearchLanding, loader_before, border_radius);
+            position: mapping($newsSearchLanding, loader_before, position);
+            top: mapping($newsSearchLanding, loader_before, p_top);
+            left: mapping($newsSearchLanding, loader_before, p_left);
+            content: ''
+        }
+        &:after{
+            background: mapping($newsSearchLanding, loader_after, background);
+            width: mapping($newsSearchLanding, loader_after, width);
+            height: mapping($newsSearchLanding, loader_after, height);
+            border-radius: mapping($newsSearchLanding, loader_after, border_radius);
+            content: '';
+            margin: mapping($newsSearchLanding, loader_after, margin);
+            position: mapping($newsSearchLanding, loader_after, position);
+            top: mapping($newsSearchLanding, loader_after, p_top);
+            left: mapping($newsSearchLanding, loader_after, p_left);
+            bottom: mapping($newsSearchLanding, loader_after, p_bottom);
+            right: mapping($newsSearchLanding, loader_after, p_right);
+        }
+    }
+
+    @-webkit-keyframes load3 {
+        1% {
+            -webkit-transform: mapping($newsSearchLanding, loader_load3, webkit_transform_1);
+            transform: mapping($newsSearchLanding, loader_load3, transform_1);
+        }
+
+        100% {
+            -webkit-transform: mapping($newsSearchLanding, loader_load3, webkit_transform_100);
+            transform: mapping($newsSearchLanding, loader_load3, transform_100);
+        }
+    }
+
+    @keyframes load3 {
+        1% {
+            -webkit-transform: mapping($newsSearchLanding, loader_load3, webkit_transform_1);
+            transform: mapping($newsSearchLanding, loader_load3, transform_1);
+        }
+
+        100% {
+            -webkit-transform: mapping($newsSearchLanding, loader_load3, webkit_transform_100);
+            transform: mapping($newsSearchLanding, loader_load3, transform_100);
+        }
+    }
+}

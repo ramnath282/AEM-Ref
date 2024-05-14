@@ -1,0 +1,99 @@
+.country-drop-down-menu {
+    margin: 0 auto;
+    padding: 0;
+    width: 100%;
+    max-width: 254px;
+    text-align: left;
+    font-size: 1em;
+    margin-bottom: em(20);
+	@media #{$medium-only} {
+        margin-bottom: em(30);
+    }
+    li {
+        position: relative;
+        padding: 0;
+        background: $white;
+        list-style: none;
+        display: inline-block;
+        width: 100%;
+    }
+    a.dropdown-active {
+        //color: $night-rider;
+        color:#000000;
+        display: block;
+        font-size:em(14);
+        padding: em(5) em(15) em(6);
+        font-family: 'Swiss',  Arial,sans-serif;
+        //font-weight: $fontMedium;
+        font-weight: $fontBold;
+        background: #ededed;
+        @include transition(all 0.2s ease-in);
+        &:hover,
+        &.open {
+            background: $white;
+            color: #484848;
+        }
+        &:after {
+            content: '\f078';
+            font-family: $fontAwesome;
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 30px;
+            height: 30px;
+            padding-top: em(6);
+            text-align: center;
+            background: #d3b9e1;
+            color: $violet;
+            box-sizing: border-box;
+        }
+    }
+    ul {
+        position: absolute;
+        width: 100%;
+        padding: 0;
+        z-index: 999;
+        height: 100px;
+    }
+    .menu-child a {
+        display: block;
+        padding: 0.465em 1.072em;
+        text-decoration: none;
+        color: $black;
+        font-size:14px;
+        font-family: 'Swiss',  Arial,sans-serif;
+        //font-weight: $fontMedium;
+        font-weight: $fontBold;
+        @include transition(all 0.2s ease-in);
+        &:hover {
+            background: $violet;
+            color: $white;
+        }
+    }
+    * {
+        cursor: pointer;
+    }
+    [menu-level="1"] {
+        display: none;
+    }
+    .open[menu-level="1"] {
+        display: block;
+        height: 5em;
+        overflow: hidden;
+        overflow-y: scroll;
+        /*&.overflow-y{
+    	overflow-y: scroll;
+    }*/
+        &::-webkit-scrollbar-thumb {
+            @include box-shadow(0, 0, 6px, rgba(0, 0, 0, 0.3), inset);
+            -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            background-color: $violet;
+        }
+        &::-webkit-scrollbar {
+            width: 7px;
+            background-color: $white;
+            height: 6px;
+        }
+    }
+}

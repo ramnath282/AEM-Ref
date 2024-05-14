@@ -1,0 +1,182 @@
+.product-slider{
+    margin: em(20) 0 0 0;
+    @media #{$small-down}{
+        margin: 0;
+    }
+    #s7viewer{
+        position: relative;
+        margin: 0 auto;
+        .s7zoomview{
+           .s7iconeffect {
+              display:none;
+            }
+         }
+        &.s7container {
+            padding-top:em(10);
+            @media #{$small-down}{
+                height:300px;
+            }
+        }
+        &.s7mixedmediaviewer {
+            @media #{$large-down}{
+                width:100%;
+                height: em(600);
+            }
+             @media #{$small-down}{
+               height:22.85714em
+            }
+            width: mapping($productSlider,main,width);
+            height: mapping($productSlider,main,height);
+            @include content-spacing(map-get($productSlider, main));
+            .s7swatches {
+                .s7thumb {
+                    @media #{$medium-up}{
+                        width: mapping($productSlider,swatchComp,width) !important;
+                        height: mapping($productSlider,swatchComp,height) !important;
+                    }
+                    border: 1px solid $borderColor !important;
+                    &:focus {
+                        border: 1px solid $theme-color !important;
+                    }
+                }
+                .s7thumb[state="selected"] {
+                    border: 1px solid $theme-color !important;
+                }
+                .s7scrollleftbutton, .s7scrollrightbutton {
+                    background-image: none !important;
+                    background-color: mapping($productSlider,swatchComp,background-color);
+                    border-radius: mapping($productSlider,swatchThumb,border-radius);
+                    position: relative;
+                    cursor: mapping($productSlider,swatchComp,cursor);
+                }
+                .s7scrollrightbutton {
+                    &:after {
+                        content: "\f054";
+                        display: mapping($productSlider,s7ArrowBtn,display);
+                        font: mapping($productSlider,s7ArrowBtn,font);
+                        // font-family: 'FontAwesome';
+                        // font-size: 24px;
+                        text-rendering: mapping($productSlider,s7ArrowBtn,text-rendering);
+                        -webkit-font-smoothing: antialiased;
+                        position: absolute;
+                        left: mapping($productSlider,s7ArrowBtn,left);
+                        top: mapping($productSlider,s7ArrowBtn,top);
+                        transform: mapping($productSlider,s7ArrowBtn,transform);
+                    }
+                }
+                .s7scrollleftbutton {
+                    &:after {
+                        content: "\f053";
+                        display: mapping($productSlider,s7ArrowBtn,font);
+                        font: mapping($productSlider, s7ArrowBtn, font);
+                        // font-family: FontAwesome;
+                        // font-size: 24px;
+                        text-rendering: mapping($productSlider,s7ArrowBtn,text-rendering);
+                        -webkit-font-smoothing: antialiased;
+                        position: absolute;
+                        left: mapping($productSlider,s7ArrowBtn,left);
+                        top: mapping($productSlider,s7ArrowBtn,top);
+                        transform: mapping($productSlider,s7ArrowBtn,transform);
+                    }
+                }
+            } 
+            .s7toolbarcontainer { 
+                 visibility: hidden;
+                .s7zoomresetbutton {
+                    background-image: none !important;
+                     @media #{$medium-down}{
+                        visibility: hidden;
+                    }
+                    &:after {
+                        content: "\f021";
+                        display: mapping($productSlider,s7ZoomBtn,display);
+                        font: mapping($productSlider, s7ZoomBtn, font);
+                        //font-family: FontAwesome;
+                        //font-size: 16px;
+                        text-rendering: mapping($productSlider,s7ArrowBtn,text-rendering);
+                        -webkit-font-smoothing: antialiased;
+                        position: absolute;
+                        left: mapping($productSlider,s7ArrowBtn,left);
+                        top: mapping($productSlider,s7ArrowBtn,top);
+                        transform: mapping($productSlider,s7ArrowBtn,transform);
+                    }
+                }
+                .s7zoominbutton {
+                    background-image: none !important;
+                     @media #{$medium-down}{
+                        visibility: hidden;
+                    }
+                    &:after {
+                        content: "\f00e";
+                        display: mapping($productSlider,s7ZoomBtn,display);
+                        font: mapping($productSlider, s7ZoomBtn, font);
+                        // font-family: FontAwesome;
+                        // font-size: 16px;
+                        text-rendering: mapping($productSlider,s7ArrowBtn,text-rendering);
+                        -webkit-font-smoothing: antialiased;
+                        position: absolute;
+                        left: mapping($productSlider,s7ArrowBtn,left);
+                        top: mapping($productSlider,s7ArrowBtn,top);
+                        transform: mapping($productSlider,s7ArrowBtn,transform);
+                    }
+                }
+                .s7zoomoutbutton {
+                    background-image: none !important;
+                    @media #{$medium-down}{
+                        visibility: hidden;
+                    }
+                    &:after {
+                            content: "\f010";
+                            display: mapping($productSlider,s7ZoomBtn,display);
+                            font: mapping($productSlider, s7ZoomBtn, font);
+                            // font-family: FontAwesome;
+                            // font-size: 16px;
+                            text-rendering: mapping($productSlider,s7ArrowBtn,text-rendering);
+                            -webkit-font-smoothing: antialiased;
+                            position: absolute;
+                            left: mapping($productSlider,s7ArrowBtn,left);
+                            top: mapping($productSlider,s7ArrowBtn,top);
+                            transform: mapping($productSlider,s7ArrowBtn,transform);
+                    }
+                }
+            }
+            .s7fullscreenbutton {
+                display: none;
+                &:after {
+                    content: "\f010";
+                    display: mapping($productSlider,s7ZoomBtn,display);
+                    font: mapping($productSlider, s7ZoomBtn, font);
+                    // font-family: FontAwesome;
+                    // font-size: 16px;
+                    text-rendering: mapping($productSlider,s7ArrowBtn,text-rendering);
+                    -webkit-font-smoothing: antialiased;
+                    position: absolute;
+                    left: mapping($productSlider,s7ArrowBtn,left);
+                    top: mapping($productSlider,s7ArrowBtn,top);
+                    transform: mapping($productSlider,s7ArrowBtn,transform);
+                }
+            }
+        }
+    }
+}
+
+    #s7viewer_swatches {
+        &.s7swatches{
+             @media #{$medium-down}{
+                 bottom:-65px;
+            }
+            @media #{$small-down}{
+                 bottom:-80px;
+            }
+        }
+     }
+#s7viewer_setIndicator{
+    &.s7setindicator{
+        @media #{$small-down}{
+            visibility: hidden;
+        }
+    }
+}
+
+
+    

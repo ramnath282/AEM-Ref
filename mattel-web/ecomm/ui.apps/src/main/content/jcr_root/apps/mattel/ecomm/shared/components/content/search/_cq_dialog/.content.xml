@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Search"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <searchconfig
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Search Config"
+                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <placeholdertext
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Fill Text for Placeholder"
+                                                fieldLabel="Text for Placeholder:"
+                                                name="./placeholderText"/>
+                                            <searchTarget
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="/libs/granite/ui/components/coral/foundation/form/pathbrowser"
+                                                fieldDescription="Please Provide a URL to show the search Results"
+                                                fieldLabel="Search Results Page URL"
+                                                name="./searchTarget"
+                                                rootPath="/content"/>
+                                            <doYouMean
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Please enter label for Do You Mean"
+                                                fieldLabel="Do You Mean Label :"
+                                                name="./doYouMean"/>
+                                            <viewMoreTitle
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Please enter label for View More"
+                                                fieldLabel="View More Label :"
+                                                name="./viewMoreTitle"/>
+                                            <vieMoreLink
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+                                                fieldDescription="Please enter View More path"
+                                                fieldLabel="View More Link"
+                                                name="./viewMoreLink"
+                                                rootPath="/content/"/>
+                                            <typeAhead
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Please enter Endpoint for TypeAhead"
+                                                fieldLabel="Endpoint for TypeAhead :"
+                                                name="./taEP"
+                                                required="{Boolean}true"/>
+                                            <loadingLabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Please enter Label for Loading"
+                                                fieldLabel="Label for Loading :"
+                                                name="./loadingLabel"/>
+                                            <minCharTypeAhead
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+                                                fieldDescription="Please enter the minimum Number of characters required to enable Type Ahead functionality"
+                                                fieldLabel="Minimum Number of characters required to enable Type Ahead functionality"
+                                                min="{Long}1"
+                                                name="./minCharTypeAhead"/>
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </searchconfig>
+                    <topResultsConfig
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Popular Searches Config"
+                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <topResultsLabel
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Please enter label for Popular Searches"
+                                fieldLabel="Popular Searches Label :"
+                                name="./topResultsLabel"/>
+                            <topResults
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                class="full-width"
+                                composite="{Boolean}true"
+                                fieldLabel="Popular Searches">
+                                <field
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/fieldset"
+                                    name="./topResultsList">
+                                    <items jcr:primaryType="nt:unstructured">
+                                        <column
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                                            <items jcr:primaryType="nt:unstructured">
+                                                <label
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldLabel="Popular Search Label"
+                                                    name="./topResultLabel"/>
+                                                <labelCategoryId
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldDescription="Please enter Top Result Category Id"
+                                                    fieldLabel="Popular Search Category Id"
+                                                    name="./labelCategoryId"/>
+                                            </items>
+                                        </column>
+                                    </items>
+                                </field>
+                                <granite:data
+                                    jcr:primaryType="nt:unstructured"
+                                    maxTopResults="6"/>
+                            </topResults>
+                        </items>
+                    </topResultsConfig>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>

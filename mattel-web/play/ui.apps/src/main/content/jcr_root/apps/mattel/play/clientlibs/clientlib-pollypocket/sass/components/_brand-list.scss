@@ -1,0 +1,120 @@
+.founder-font-extend{
+  font-family: 'MattelFounders',Arial, Helvetica, sans-serif;
+  font-weight: $fontMedium;
+  *{
+    font-family: inherit;  
+  }
+}
+.brand-list-item {
+  padding: em(30) em(10) 0 em(10);
+  margin: 0;
+  .slick-list {
+	width:90%;
+	margin:0px auto;
+  }
+ @media #{$small-up} {
+    padding: em(50) em(10);
+  }
+  li {
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    vertical-align: top;
+    @media #{$small-down} {
+      padding-left: 5px;
+      padding-right: 5px;
+    }
+    a {
+      img {
+          max-height: em(192);
+          margin: auto;
+	  display:block;
+      }
+      span{
+        display: inline-block;
+        font-size: em(22);
+	line-height:em(14);
+        // font-weight: $fontSemiBold;
+        color: $black;;
+        margin: em(15,24) 0 em(10,24);
+        max-width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+	padding: 0px 10px;
+        &:hover {
+		background-color: #fbd635;
+	}
+	&:focus {
+		background-color: #fbd635;
+	}
+	&:active {
+		background-color: #fbd635;
+	}
+      }
+    }
+  }
+}
+.brand-list-wrapper{
+  @extend .founder-font-extend;
+  h2{
+    font-size: em(48);
+    color: $pelorous-blue;
+    text-align: center;
+    margin-bottom: 0;
+  }
+}
+.welcome-banner{
+  .play-page-title{
+    @extend .founder-font-extend;
+   // text-align: center;
+    padding: em(30) em(20) em(40) em(20);
+	 @media #{$medium-down} {
+		padding: em(27) em(20) em(40) em(20);
+	 }
+	 @media #{$small-down} {
+		padding: em(30) em(20) em(40) em(20);
+	 }
+    &>div{
+      padding: 0;
+      width: auto;
+      float: none;
+    }
+    h1{
+        color: $yellow;
+        line-height: 1;
+        font-size: em(40);
+        margin: 0;
+	    font-weight: $fontMedium;
+	    text-transform: none;
+	    letter-spacing: normal;
+        @media #{$medium-up}{
+        font-size: em(60);
+      }
+    }
+    p{
+      color:$white;
+      font-size: em(22);
+      margin-bottom: 0;
+      margin-top: 15px;
+      font-weight: $fontMedium;
+      line-height:26px; 
+    }
+  }
+}
+
+.mattelhomepage-page{
+  .global-header-page {
+    li {
+      // column should be 3 in a row
+      @media #{$small-down} {
+        width:50%;
+              &:nth-child(2n+1) {
+          clear:left
+         }
+         &:nth-child(3n+1) {
+          clear:none
+         }
+      }
+    }
+    }
+}

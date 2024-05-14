@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Page"
+    sling:resourceType="cq/gui/components/authoring/dialog"
+    extraClientlibs="[cq.common.wcm,core.wcm.components.page.v2.editor,cq.wcm.msm.properties,granite.contexthub.configuration]"
+    helpPath="https://www.adobe.com/go/aem_cmp_page_v2"
+    mode="edit">
+    <content
+        granite:class="cq-dialog-content-page"
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                granite:class="cq-siteadmin-admin-properties-tabs"
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                size="L">
+                <items
+                    jcr:primaryType="nt:unstructured"
+                    sling:hideChildren="[pageBackgroundConfig,ecommPageProperties,fpConfig]">
+                    <FPConfiguration
+                        cq:showOnCreate="{Boolean}true"
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="FP Configuration"
+                        sling:orderBefore="cloudservices"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
+                        <items jcr:primaryType="nt:unstructured">
+                            <column
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <article
+                                        jcr:primaryType="nt:unstructured"
+                                        jcr:title="Article Configuration"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/fieldset">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <articleId
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                disabled="{Boolean}true"
+                                                fieldDescription="Article Id - Dynamically Selected, no need to enter"
+                                                fieldLabel="Article Id"
+                                                name="./articleId"/>
+                                            <primaryTags
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="cq/gui/components/coral/common/form/tagfield"
+                                                fieldDescription="Please Tag the Article Page with a Primary Tag Max Count : 1"
+                                                fieldLabel="Primary Tags"
+                                                multiple="{Boolean}true"
+                                                name="./primaryTags"
+                                                required="{Boolean}true"
+                                                validation="fp.article.tag.max.count.validation.primary"/>
+                                            <secondaryTags
+                                                cq:showOnCreate="{Boolean}true"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="cq/gui/components/coral/common/form/tagfield"
+                                                fieldDescription="Please Tag the Article Page with a Secondary Tags"
+                                                fieldLabel="Secondary Tags"
+                                                multiple="{Boolean}true"
+                                                name="./secondaryTags"/>
+                                        </items>
+                                    </article>
+                                    <webCollageProductLevelConfig
+                                        cq:showOnCreate="{Boolean}true"
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                        fieldDescription="Must be checked to disable webcollage at product Level"
+                                        name="./webCollageProductLevelConfig"
+                                        text="Disable Webcollage On Product"
+                                        uncheckedValue="{Boolean}false"
+                                        value="true"/>
+                                    <section
+                                        jcr:primaryType="nt:unstructured"
+                                        jcr:title="Social Share Configuration"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/fieldset">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <addThisInlineID
+                                                cq:showOnCreate="{Boolean}true"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="AddThis Widget  Inline ID"
+                                                fieldLabel="AddThis Widget  Inline ID"
+                                                name="./addthisInlineId"/>
+                                            <pubId
+                                                cq:showOnCreate="{Boolean}true"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="AddThis Widget  PubID"
+                                                fieldLabel="AddThis Widget  PubID"
+                                                name="./addThisPubId"/>
+                                        </items>
+                                    </section>
+                                </items>
+                            </column>
+                        </items>
+                    </FPConfiguration>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>

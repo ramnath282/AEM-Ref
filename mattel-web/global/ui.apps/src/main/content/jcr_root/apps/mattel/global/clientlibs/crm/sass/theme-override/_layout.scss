@@ -1,0 +1,73 @@
+*,
+body {
+    font-family: mapping($layout,body,font),sans-serif;
+    font-weight: mapping($layout,body,fontWeight);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: mapping($layout,heading,font),sans-serif;
+    font-weight: mapping($layout,heading,fontWeight);
+}
+.standaloneCTA {
+    padding:0 2em;
+}
+.theme-btn{
+    font-family: mapping($layout,themeBtn,font);
+    font-weight: mapping($layout,themeBtn,fontWeight);
+    padding:mapping($layout,themeBtn,btnPadding);
+    margin:mapping($layout,themeBtn,btnMargin);
+    @if mapping($layout,themeBtn,isDefaultTheme){
+        background-color: mapping($layout,themeBtn,bgndColor);
+        border-color: mapping($layout,themeBtn,borderColor);
+        color: mapping($layout,themeBtn,color);
+        border-radius: mapping($layout,themeBtn,borderRadius);
+        transform:  mapping($layout,themeBtn,transformBtn)
+    }
+   &.red{
+        background-color: $red;
+        border-color: $red;
+    }
+   &.span{
+       transform:  mapping($layout,themeBtn,transformSpan)
+   } 
+}
+
+.slick-dots{
+    li{
+        button{
+            font-size: mapping($layout,dots,fontSize);
+            width: mapping($layout,dots,width);
+            height: mapping($layout,dots,height);
+            margin: mapping($layout,dots,margin);
+            opacity: mapping($layout,dots,opacity);
+            -webkit-border-radius: mapping($layout,dots,borderRadius);
+            -moz-border-radius: mapping($layout,dots,borderRadius);
+            border-radius: mapping($layout,dots,borderRadius);
+            background: mapping($layout,dots,bgndColor);
+            border: mapping($layout,dots,border);
+            &:focus{
+                outline: 1px solid mapping($layout,dots,focusColor);
+            }
+        }
+        &.slick-active{
+            button{
+                opacity:1;
+                width: mapping($layout,dots,activeWidth);
+                height: mapping($layout,dots,activeHeight);
+                background: mapping($layout,dots,activeBgndColor);
+                border: mapping($layout,dots,activeBorder);
+            }
+        }
+    }
+}
+.slick-next,
+.slick-prev{
+    &:before{
+        background-color: mapping($layout,arrow,bgndColor);
+    }
+}

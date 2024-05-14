@@ -1,0 +1,171 @@
+.filter-grid {
+    @media #{$medium-up} {
+        width: em(250, 14);
+    }
+    .filter-btn-slider {
+        border: none;
+    }
+
+    .filter-header {
+        border-top: none;
+
+        @media #{$medium-down} {
+            padding: 0;
+            width: auto;
+            margin-top: em(54);
+      @media #{$xsmall-down}{
+        margin-top: em(64);
+      }
+        }
+
+        h2 {
+            @media #{$medium-down} {
+                float: none;
+                display: inline-block;
+                padding: 15px 0;
+                line-height: normal;
+                margin: 0;
+            }
+        }
+
+        .clear-wrapper {
+            @media #{$medium-down} {
+                bottom: 0;
+                overflow: hidden;
+                padding: 15px 23px 15px 23px;
+                display: flex !important;
+                align-items: center;
+                margin: 0 -23px;
+                border-bottom: 1px solid $borderColor;
+                height: 55px;
+                top: 55px;
+                background-color: $white;
+                z-index: 99999;
+                width: 100%;
+                max-width: em(260);
+                position: fixed;
+        @media #{$xsmall-down} {
+          top: 35px;
+        }
+            }
+
+            .clear-all-filters {
+                font-weight: $fontRegular;
+                margin-right: 10px;
+                cursor: pointer;
+
+                @media #{$medium-down} {
+                    display: inline-block !important;
+                    top: 0;
+                }
+            }
+
+            button {
+                bottom: 0;
+                float: right;
+
+                @media #{$medium-down} {
+                    display: inline-block !important;
+                    margin-left: auto;
+                    padding: 2px 20.5px 6.5px;
+                    font-size: 16px;
+                }
+            }
+        }
+    }
+
+    .slide-header {
+        .slider-h3 {
+            cursor: pointer;
+            a.expand-collapse-filter{
+                color: inherit !important;
+                font-weight: 600;
+            }
+        }
+    }
+
+    #product-filter-section {
+        &:empty {
+            @media #{$small-up} {
+                min-height: em(200);
+            }
+        }
+
+        .checkbox-cont {
+            padding: 18px 7px;
+
+            @media #{$medium-down} {
+                padding-left: 0;
+            }
+
+            .custom-checkbox[type="checkbox"]:not(:checked)+label:before,
+            .custom-checkbox[type="checkbox"]:checked+label:before {
+                border-color: $borderColor;
+            }
+        }
+
+        h2.value-label {
+            a[aria-expanded="false"] {
+                .arrow-toggle:after {
+                    content: "\f078";
+                }
+            }
+        }
+        .productTypes {
+            .products-list-item {
+                label {
+                    span {
+                        &.rating-section {
+                            height: em(17);
+                            width: em(94);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .filter-wrapper .sliding-div-mask {
+        width: calc(100% + 60px) !important;
+        margin-left: -30px;
+        position: fixed;
+        cursor: pointer;
+        z-index: 0;
+
+        @media #{$medium-up} {
+            display: none;
+        }
+    }
+
+    .filter-wrapper .sliding-div {
+        @media #{$medium-down} {
+            left: 0px;
+            margin-left: 0;
+            padding-left: 23px;
+            padding-right: 23px;
+            text-align: left;
+            // height: 100vh;
+            bottom:0;
+            overflow: scroll;
+            position: fixed;
+            z-index: 2;
+            top: 0;
+            max-width: em(300);
+        }
+        @media #{$small-down} {
+            max-width: em(260);
+        }
+    }
+
+    .total-filtered-cnt {
+        font-weight: $fontSemiBold;
+
+        span {
+            font: inherit;
+        }
+
+        @media #{$medium-up} {
+            display: none;
+        }
+    }
+}

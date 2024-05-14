@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Store Locator Banner"
+    sling:resourceType="cq/gui/components/authoring/dialog"
+    height="{Long}500"
+    width="{Long}600">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
+        <items jcr:primaryType="nt:unstructured">
+            <column
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/container">
+                <items jcr:primaryType="nt:unstructured">
+                    <bannerImg
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                        autoStart="{Boolean}false"
+                        class="cq-droptarget"
+                        fieldLabel="Upload Banner Image:"
+                        fileReferenceParameter="./fileReference"
+                        mimeTypes="[image/gif,image/jpeg,image/png,image/webp,image/tiff]"
+                        multiple="{Boolean}false"
+                        name="./bannerImg"
+                        uploadUrl="${suffix.path}"
+                        useHTML5="{Boolean}true"/>
+                    <scrollingBanner
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                        fieldDescription="Check this if the banner image needs to be scrolled in background"
+                        name="./scrollingBanner"
+                        text="Scrolling Banner?"
+                        uncheckedValue="false"
+                        value="true"/>
+                    <locatorTitle
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+                        fieldLabel="Store Locator Title:"
+                        name="./locatorTitle"
+                        useFixedInlineToolbar="{Boolean}true">
+                        <rtePlugins
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceSuperType="mattel/global/components/content/rtePlugins/rtePlugins"/>
+                        <uiSettings
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceSuperType="mattel/global/components/content/rtePlugins/uiSettings"/>
+                    </locatorTitle>
+                    <locatorButtonText
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        fieldDescription="Enter the text for Store Locator Button"
+                        fieldLabel="Locator Button Text:"
+                        name="./locatorButtonText"/>
+                    <bannerImgAlt
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        fieldDescription="Alt-text for Banner Image"
+                        fieldLabel="Image Alt-Text:"
+                        name="./bannerImgAlt"/>
+                    <hideLocationPopUp
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                        fieldDescription="Check this if the Location Pop Up to be hidden"
+                        name="./hideLocationPopUp"
+                        text="Hide Location Pop Up?"
+                        uncheckedValue="false"
+                        value="true"/>
+                </items>
+            </column>
+        </items>
+    </content>
+</jcr:root>

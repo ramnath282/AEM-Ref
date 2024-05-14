@@ -1,0 +1,192 @@
+.registerDolls{
+    &.aem-GridColumn{
+        padding: 0;
+    }
+}
+#dollRegistration {
+    fieldset {
+        float: none;
+        margin-top: 0;
+        padding: 0;
+
+        @media #{$small-up} {
+             max-width: em(294);
+        }
+
+        li {
+            padding: 0;
+
+            @media #{$small-down} {
+                display: block;
+                margin: 0 0 1.07143em;
+
+                &:last-child {
+                    margin-bottom: 0;
+                }
+
+                select {
+                    width: 100% !important;
+                    max-width: 33.6em;
+                }
+            }
+        }
+    }
+
+    select {
+        margin: 0;
+    }
+
+    input {
+        &.long-input {
+            &+.placeholder-label {
+                @media #{$xsmall-down} {
+                    font-size: em(14.3);
+                }
+            }
+
+            &:focus,
+            &.not-empty,
+            &:active {
+                &+.placeholder-label {
+                    @media #{$xsmall-down} {
+                        font-size: em(13.8);
+                    }
+                }
+            }
+        }
+    }
+    form{
+            .input-field {
+                .long-input{
+                    max-width: 40.75em;
+                }
+                  .small-input{
+                     max-width:100%;
+                     @media #{$small-up} {
+                        max-width:em(74);
+                     }
+                }
+            }     
+        }
+}
+
+.registered-dolls {
+    margin-top: 1em;
+
+    h2 {
+        font-weight: $fontLight;
+        margin: em(10) 0;
+        padding-top: em(15);
+        border-top: 1px solid;
+    }
+}
+
+#registered-dolls-data {
+    &.request-pending {
+        min-height: em(200);
+    }
+
+    .label-key {
+        background: $white-smoke;
+        padding: 5px 10px;
+
+        @media #{$medium-up} {
+            display: none;
+        }
+    }
+
+    .label-key,
+    .label-value,
+    .create-certificate-col,
+    .remove-col {
+        @extend .col-xs-6;
+        @media #{$medium-down} {
+         padding: em(5) em(10);
+        }
+        // @extend .col-lg-12;
+        @media #{$medium-up} {
+            width: auto;
+        }
+    }
+.create-certificate-col,
+    .remove-col {
+         @media #{$medium-down} {
+             padding: 0;
+        }
+    }
+    .create-certificate,
+    .remove-doll {
+        &:after {
+            content: none;
+        }
+        @media #{$medium-down} {
+            position: static;
+            display: inline-block;
+            height: auto;
+            padding: em(5) em(10);
+            text-align: left;
+         }
+    }
+
+    table {
+        thead {
+            background-color: rgb(238, 238, 238);
+
+            @media #{$medium-down} {
+                display: none;
+            }
+        }
+
+        tbody {
+            &>tr {
+                @media #{$medium-down} {
+                    overflow: hidden;
+                    padding-bottom: 10px;
+                    margin-bottom: 10px;
+                }
+                @media #{$medium-up}{
+                    border-bottom: 1px solid $light-grey;
+                }
+                td{
+                    line-height: normal;
+                    border: none;
+                    @media #{$medium-up}{
+                        float: none !important;
+                        display: inline-block;
+                        vertical-align: middle;
+                    }
+                    @media #{$medium-down} {
+                        padding: 3px 0;
+                    }
+                }
+            }
+        }
+
+        tr {
+            @media #{$medium-down} {
+                display: block;
+            }
+        }
+
+        td,
+        th {
+            @extend .col-sm-12;
+            @extend .col-md-2;
+
+            @media #{$medium-down} {
+                padding-left: 0;
+                padding-right: 0;
+                display: block;
+                overflow: hidden;
+            }
+
+            a {
+                position: static;
+
+                &:hover {
+                    color: #222 !important;
+                }
+            }
+        }
+    }
+}

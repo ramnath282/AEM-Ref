@@ -1,0 +1,131 @@
+<sly data-sly-test="${wcmmode.edit}">${'Recommended Products Component' @i18n}</sly>
+<sly data-sly-use.value="com.mattel.ecomm.core.models.RecommendedProducts">
+    <div class="mboxDefault">
+        <div class="recommended-products${value.componentId}"></div>
+    </div>
+
+    <sly data-sly-test = "${pageProperties.cq:template == '/conf/fisher-price/settings/wcm/templates/fp-homepage-template'}">
+	<input type="hidden" id="classNameforTarget${value.componentId}" value="fp-home-recs-mbox${value.componentId}" /> 
+    </sly>
+    <sly data-sly-test = "${pageProperties.cq:template == '/conf/fisher-price/settings/wcm/templates/fp-pdp-template'}">
+	<input type="hidden" id="classNameforTarget${value.componentId}" value="fp-pdp-recs-mbox${value.componentId}" /> 
+    </sly>
+    <sly data-sly-test = "${pageProperties.cq:template == '/conf/fisher-price/settings/wcm/templates/fisher-price-plp-template'}">
+	<input type="hidden" id="classNameforTarget${value.componentId}" value="fp-plp-recs-mbox${value.componentId}" /> 
+    </sly>
+    <sly data-sly-test = "${pageProperties.cq:template == '/conf/fisher-price/settings/wcm/templates/category-landing-page'}">
+	<input type="hidden" id="classNameforTarget${value.componentId}" value="fp-articlecategory-popular-recs-mbox" /> 
+    </sly>
+    <sly data-sly-test = "${pageProperties.cq:template == '/conf/fisher-price/settings/wcm/templates/article-details-page' && value.componentId=='0'}">
+	<input type="hidden" id="classNameforTarget${value.componentId}" value="fp-articledetail-product-recs-mbox0" /> 
+    </sly>
+    <sly data-sly-test = "${pageProperties.cq:template == '/conf/fisher-price/settings/wcm/templates/article-details-page' && value.componentId=='1'}">
+	<input type="hidden" id="classNameforTarget${value.componentId}" value="fp-articledetail-recent-recs-mbox0" /> 
+    </sly>
+    <sly data-sly-test = "${pageProperties.cq:template == '/conf/fisher-price/settings/wcm/templates/article-details-page' && value.componentId=='2'}">
+	<input type="hidden" id="classNameforTarget${value.componentId}" value="fp-articledetail-more-recs-mbox0" /> 
+    </sly>
+
+
+	
+    <script>
+        $(document).ready(function(){
+        var recommendedProdObject = JSON.parse(sessionStorage.getItem("recommendedProduct"));
+        adobe.target.getOffer({
+
+
+            "mbox":$('#classNameforTarget${value.componentId @ context='unsafe'}').val(),
+
+            "params": {
+             "entity.id": ${pageProperties.cq:template == '/conf/fisher-price/settings/wcm/templates/fp-pdp-template' @ context='unsafe'} ? recommendedProdObject["entity.id"] : "",
+             "entity.categoryId" : ${pageProperties.cq:template == '/conf/fisher-price/settings/wcm/templates/fisher-price-plp-template' @ context='unsafe'} ? "${properties.categroyNameforPLP @context='unsafe'}" : ${pageProperties.cq:template == '/conf/fisher-price/settings/wcm/templates/fp-pdp-template' @ context='unsafe'} ?recommendedProdObject["entity.categoryId"] : "",
+             "entity.inventory": ${pageProperties.cq:template == '/conf/fisher-price/settings/wcm/templates/fp-pdp-template' @ context='unsafe'} ? recommendedProdObject["entity.inventory"] : "",
+             "entity.value":${pageProperties.cq:template == '/conf/fisher-price/settings/wcm/templates/fp-pdp-template' @ context='unsafe'} ? recommendedProdObject["entity.value"] : "",
+             "entity.name": ${pageProperties.cq:template == '/conf/fisher-price/settings/wcm/templates/fp-pdp-template' @ context='unsafe'} ? recommendedProdObject["entity.name"] : "",
+             "entity.categoryL1": ${pageProperties.cq:template == '/conf/fisher-price/settings/wcm/templates/fp-pdp-template' @ context='unsafe'} ? recommendedProdObject["entity.categoryId"] : "",
+             "at_property":"${properties.atproperty @context='unsafe'}",
+             "entity.subcategory":recommendedProdObject["entity.subcategory"],
+             "entity.superCategory":recommendedProdObject["entity.superCategory"],
+             "entity.subBrand":recommendedProdObject["entity.subBrand"],
+             "entity.theme":recommendedProdObject["entity.theme"],
+             "entity.allBrands":recommendedProdObject["entity.allBrands"] 
+            },
+            "success": function (offer) {
+		var ajaxUrl = window.location.protocol + "//" + window.location.host + "/bin/getProductBadge" + "?currentPath=" + $('#currentPagePathForAnalytics').val() + "&isFull=true";		
+		$.ajax({url: ajaxUrl , success: function(response){
+                    $( ".recommended-products${value.componentId @ context='unsafe'} .recommended-products .aem-recommend-item" ).each(function() {
+                        var productBadges = $(this).find(".product-badges");
+			  productBadges.hide();
+                        var badgeText = productBadges.text();
+                        var badgeData = response.productBageList;
+                        $.each(badgeData,function(index,item){
+                            if(item.badge === badgeText) {
+                            	var icon = item.badgeIcon;
+                                productBadges.text(item.badgeDisplayValue);
+                                productBadges.css({"color":item.textColour,"background-color":item.badgeColour,"border":"1px solid "+item.badgeColour});
+                                productBadges.prepend("<img src="+icon+" alt='' />");
+				  productBadges.show();
+                            }
+                        });
+                    });
+                }});
+
+		
+                if (typeof offer != "undefined" && typeof offer != undefined) {
+                  $('.recommended-products${value.componentId @ context='unsafe'}').html(offer[0].content);
+                  $('.mboxDefault').css('visibility','visible');
+                  var owl = $('.fp-recommend-widget').each(function(){
+                        $(this).owlCarousel({
+                        loop:false,
+                        nav:true,
+                        responsiveClass:true,
+                        lazyLoad:true,
+                        touchDrag:true,
+                        pullDrag:true,
+                        autoplay:false,
+                        responsive:{
+                            0:{
+                                items: 2,
+                                margin: 20,
+                                slideBy: 2
+                            },
+                            600:{
+                                items: 3,
+                                margin: 40,
+                                slideBy: 2
+                            },
+                            992:{
+                                items: 4,
+                                margin: 40,
+                                slideBy: 5
+                            },
+                            1200:{
+                                items: 5,
+                                margin: 40,
+                                slideBy: 5
+                            }
+                        }
+                    });
+             });
+
+			// disable scroll
+            owl.on('drag.owl.carousel', function(event) {
+                document.ontouchmove = function (e) {
+                    e.preventDefault()
+                }
+            })
+
+            // enable scroll
+            owl.on('dragged.owl.carousel', function(event) {
+                document.ontouchmove = function (e) {
+                    return true
+                }
+            })
+                }
+            },
+            "error": function (status, error) {
+                console.log('Error', status, error);
+            }
+        });
+    })
+</script>

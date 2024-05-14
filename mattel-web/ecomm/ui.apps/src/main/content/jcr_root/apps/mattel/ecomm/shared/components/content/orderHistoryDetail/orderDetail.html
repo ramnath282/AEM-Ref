@@ -1,0 +1,137 @@
+        <div class="user-info-wrapper no-wrapper">
+            <div class="orderBrief">                    
+                        {{#orderInfo}}
+                            <p><span class=""><strong>${properties.orderDateLabel}:</strong></span> {{orderDate}}</p>
+                            <p><span class=""><strong>${properties.orderNumberLabel}:</strong></span> {{orderNumber}}</p>
+                            <p><span class=""><strong>${properties.orderStatusLabel}: </strong> {{orderStatusCodeText}}</span></p>
+                            <p><span class=""><strong>${properties.orderTotalLabel}: </strong> \${{orderTotal}}</span></p>                                                  
+                        {{/orderInfo}}                        
+            </div>
+        </div>
+        <div class="user-info-wrapper visible-xs sm-border"></div>     
+        <div id="orderDetailsData">
+            <table>
+                <caption class="sr-only">Order History</caption>
+                <thead class="hidden-xs">
+                    <tr>
+                        <th scope="col">${properties.productLabel}</th>
+                        <th scope="col">${properties.statusLabel}</th>
+                        <th scope="col">${properties.quantityLabel}</th>
+                        <th scope="col">${properties.eachLabel}</th>
+                        <th scope="col">${properties.totalLabel}</th>
+                    </tr>
+                </thead>
+                <tbody> 
+                       {{#OrderItems}} 
+                        <tr>
+                            <td>
+                                <div class="prod-item-desc">
+                                <div class="product-image pull-left">
+									{{#if imageURL}}
+										<img src="{{imageURL}}" alt="{{productName}}">
+									{{else}}
+										<img src="${properties.defaultProductThumbnail @context='html'}" alt="{{productName}}">
+									{{/if}}
+								</div>
+								 <div class="prodName">
+									<p class="prodSpec"><strong>{{productName}}</strong></p>
+									<p class="hidden-sm hidden-md hidden-lg hidden-xl value-label pull-right doll-price"><strong>\${{totalPrice}}</strong></p>
+                                </div>
+								<p class="hidden-xs sku">SKU: <strong>{{productSKU}}</strong></p>
+                                <p class="hidden-sm hidden-md hidden-lg hidden-xl short-details">
+                                    <span class="sku-sm">SKU: {{productSKU}}</span><br>
+                                    <span>QTY: {{quantity}}</span><br>
+                                    <span>STATUS: {{status}}</span><br>
+                                    <span>TRACKING: {{trackingNumber}}</span>
+                                </p>
+								{{#if trackingURL}}
+                                <a href="{{trackingURL}}" class="visible-xs order-tracking" onclick="window.open(this.href,'ECOMM','width=700, height=700');return false;"><strong>Track this item</strong></a>
+                                {{/if}}
+                                </div>
+                            </td>
+                            <td class="hidden-xs"><span>{{status}}</span><br>
+							{{#if trackingURL}}
+							<a href="{{trackingURL}}" class="order-tracking" onclick="window.open(this.href,'ECOMM','width=700, height=700');return false;">Track this item</a></td>
+							{{/if}}
+                            <td class="hidden-xs"><span>{{quantity}}</span></td>
+                            <td class="hidden-xs"><span>\${{listPrice}}</span></td>
+                            <td class="hidden-xs"><span>\${{totalPrice}}</span></td>
+                        </tr>
+                        {{/OrderItems}}                    
+                </tbody>
+            </table> 
+			<div class="gapFix remember-me pull-right">
+				<h2 class="header-label">Order Summary</h2>
+					{{#orderInfo}} 
+						<ul class="pull-left">
+							<li>Order subtotal:</li>
+							<li>Tax:</li>
+							<li>Shipping:</li>
+							<li><strong>Order total:</strong></li>                            
+						</ul>
+						<ul class="text-right">
+							<li>\${{orderSubTotal}}</li>
+							<li>\${{orderTax}}</li>
+							<li>\${{orderShipping}}</li>
+							<li><strong>\${{orderTotal}}</strong></li>
+						</ul>
+					{{/orderInfo}}                    
+			</div>
+			<div class="user-info-wrapper shippingInfo">
+                <div class="user-info-wrapper visible-xs"></div>
+                <div class="shipInfo">  
+                    <h2 class="header-label">Shipping Information</h2> 
+                    <section class="rightSpace pull-left">
+                        <p><strong>Shipping Address</strong></p>
+                            {{#shippingDetails}} 
+                                <p>
+                                    <span class="value-label">{{firstName}} {{lastName}}</span>
+                                    <span class="value-label">{{addressLine1}}</span>
+                                    <span class="value-label">{{addressLine2}}</span>
+                                    <span class="value-label">{{city}}, {{state}} {{postalCode}} </span>
+                                    <span class="value-label">{{country}}</span>
+                                </p>
+                    </section>
+                    <section class="shipMethod">
+                        <p><strong>Shipping Method</strong></p>
+                        <span class="value-label">{{shippingMethod}}</span>
+                    </section>
+                            {{/shippingDetails}} 
+                </div>
+            </div>
+            <div class="user-info-wrapper">
+                <div class="billingInfo">  
+                    <h2 class="header-label">Billing Information</h2> 
+                    <section class="rightSpace billAddress pull-left">
+                        <p><strong>Billing Address</strong></p>
+                            {{#billingDetails}} 
+                                <p>
+                                    <span class="value-label">{{firstName}} {{lastName}}</span>
+                                    <span class="value-label">{{addressLine1}}</span>
+                                    <span class="value-label">{{addressLine2}}</span>
+                                    <span class="value-label">{{city}}, {{state}} {{postalCode}} </span>
+                                    <span class="value-label">{{country}}</span>
+                                </p>
+                            {{/billingDetails}}                        
+                    </section>
+					 <section class="billMethod pull-left">
+					  {{#orderPayment}}
+						<div class="rightSpace pull-left">
+							<p><strong>Billing Method</strong></p>                        
+								
+								<p>
+								<span class="value-label">{{paymentType}}</span>
+								<span class="value-label">Account number : {{creditCardNumber}}</span>
+								<span class="value-label">Expires : {{creditCardExpiry}}</span>
+								</p>
+						</div>
+						<div class="bill-amount">
+							<p><strong>Amount</strong>
+							<span class="value-label">\${{paymentAmount}}</span>
+							</p>
+						</div>
+					  {{/orderPayment}} 
+					 </section>                        
+                </div>
+            </div>
+        </div>

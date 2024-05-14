@@ -1,0 +1,92 @@
+<sly data-sly-test.author="${wcmmode.edit}">
+   ${'Edit Quiz Component'  @i18n}
+   <sly data-sly-test.active="active"></sly>
+</sly>
+<sly data-sly-test.treatmentCardBackgroundColor="background-color: ${properties.treatmentCardBackgroundColor}"></sly>
+<sly data-sly-test.treatmentCardBorderConfig="background-image: linear-gradient( ${properties.treatmentCardBorderColor}, ${properties.treatmentCardBorderColor} 100%); 
+   border-color: ${properties.treatmentCardBorderColor};
+   border-width: ${properties.treatmentCardBorderWeight}px;"></sly>
+<sly data-sly-use.dhCategoryViewObj="com.mattel.ecomm.core.models.DHTreatmentViewModel"></sly>
+<input id="scene7url" type="hidden" value="${dhCategoryViewObj.scene7Url}">
+<!-- Doll Hospital starts -->
+<div class="dh-treatment-block">
+	<h1 class="sr-only">${currentPage.title}</h1>
+   <section class="${active}">
+   	  <div class="sub-brand-logo">
+          <picture>
+              <source srcset="${properties.mobileLogoImageForDollName}" media="(max-width:768px)" />
+              <img  alt="Doll Hospital logo" src="${properties.desktopLogoImageForDollName}" />
+          </picture>
+      </div>
+      <sly data-sly-test="${author}">
+		 <h2> ${properties.questionTreatment @ context='html'} </h2>
+      </sly>
+      <sly data-sly-test="${!author}">
+         <sly data-sly-use.ecommUtil="${'com.mattel.ecomm.core.utils.EcomUtil' @ template=properties.questionTreatment}">
+			<h2> ${ecommUtil.getDynamicTemplate @ context='html'} </h2>
+         </sly>
+      </sly>
+      <p class="helper-text" data-toggle="popover" data-position-lg="${properties.locationforTreatment}" data-position-sm="${properties.locationforTreatmentMobile}" data-img="${properties.helperPopoverCopyImageForDollName @ context='unsafe'}"><i class="fa fa-info-circle"><span class="sr-only">Info</span></i></p>  
+      <div data-sly-test="${properties.videoLinkText}" class="cta_model_video"><a href="javascript:void(0);">${properties.videoLinkText}<i aria-hidden="true" class="fa fa-chevron-right"></i></a></div>
+	  <div class="main-content-section">
+         <div class="main-inner-content">
+            <form class="treatmentsContainer data-loading">
+            
+            </form>
+         </div>
+      </div>
+      <div class="dh-btn-span"  style="background-color: ${properties.backgroundColor @ context='unsafe'}">
+         <a href="${properties.backButtonLink @ extension='html' }" role="${properties.backButtonLink @ extension='html' }"> 
+         	<button type="submit" role="presentation" class="dh-back-btn">${properties.backButtonText}</button>
+         </a>
+         <a class="next-disabled" href="${properties.nextButtonLink @ extension='html' }" role="${properties.nextButtonLink @ extension='html' }" > 
+         	<button type="submit" class="dh-next-btn disabled" aria-disabled="true">${properties.nextButtonText}</button>
+      	 </a>
+      </div>
+   </section>
+</div>
+<script type="application/json" id="treatmentDataSet">
+   ${dhCategoryViewObj.dhTreatmentServiceUIResponseList @ context='unsafe'}
+</script>
+<script id="treatmentsTemplate" type="text/x-handlebars-template">
+   {{#each this}}
+   	<div style="${treatmentCardBorderConfig @ context='unsafe'}" class="col-xs-12 col-sm-4 col-lg-3 sku-card" data-treatment-index={{@index}}>
+   	   <div style="${treatmentCardBackgroundColor @ context='unsafe'}" class="sku-container treatmentSelect" data-key="skuId" data-value="{{partNumber}}">
+   	     		<div class="sku-image" data-sku-image="sku-image">
+   					<img class="treatmentSelect"  data-key="skuImage" alt="{{name}}-Image" data-value="{{#if imageLink}}{{imageLink}}{{else}}//mattel.scene7.com/is/image/Mattel/ag_fallback_image{{/if}}" src="{{#if imageLink}}{{imageLink}}{{else}}//mattel.scene7.com/is/image/Mattel/ag_fallback_image{{/if}}">
+   		 	   </div>
+   	      	   <div class="info">
+   	          	 <input type="radio" name="refreshRenew" id="refreshRenew{{@index}}" aria-checked="false" value="{{{name}}}">
+   	         	  <label for="refreshRenew{{@index}}">{{{name}}} </label>
+   	         	  <h3 class="sku-name treatmentSelect"  data-key="skuName" data-value="{{name}}" aria-hidden="true">{{{name}}}</h3>
+   	         	  <span class="desc treatmentSelect" data-key="skuDesc" data-value="{{marketingDesc}}">{{{marketingDesc}}}</span>
+           	   </div>
+         </div>
+         <div class="item-price treatmentSelect" data-key="skuPrice" data-value="{{targetPrice}}">$<span class="treatment-price">{{targetPrice}}</span></div>
+   		 <span class="dh-offer-type hide">
+   			{{#each attributes.DHOfferType}}
+   				<span class="treatmentSelect" data-key="dhOfferType" data-value="{{value}}"> 
+					{{{value}}} 
+				</span>
+   			{{/each}}
+   		 </span>
+ 		 <span class="legal-age hide">
+   			{{#each attributes.LegalAge}}
+   				<span class="treatmentSelect" data-key="legalAge" data-value="{{value}}"> 
+					{{{value}}} 
+				</span>
+   			{{/each}}
+   		 </span>
+		 <span class="additional-details hide">
+   			{{#each attributes.AdditionalDetails}}
+   				<span class="treatmentSelect" data-key="additionalDetails" data-value="{{value}}"> 
+					{{{value}}} 
+				</span>
+   			{{/each}}
+   		 </span>
+         </div>
+   {{/each}}											
+</script>
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
+   <sly data-sly-call="${clientlib.js @ categories=['dollHospital.treatments']}"/>
+</sly>

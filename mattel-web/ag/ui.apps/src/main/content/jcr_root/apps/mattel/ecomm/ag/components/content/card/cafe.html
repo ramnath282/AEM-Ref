@@ -1,0 +1,24 @@
+<div>
+	<img src="${properties.cafeCardImagePath}" alt="" title="${properties.cafeImageAlt @i18n}"/>
+	<div class="tile-content">
+		<h3 class="tile-name" >${properties.cafecardHeading @i18n}</h3>
+		  <sly data-sly-test="${properties.cafeCardButtonHeading != null }">
+		<button class="btn theme-btn reservation-btn" title="${properties.cafeCardButtonHeading @i18n}" data-tracking-id="Click Event|click|${properties.cafecardHeading}" onclick="NEXTWIDGET.widget.show('${properties.cafeCardButtonLink @context='html'}',false);" >${properties.cafeCardButtonHeading @i18n} <span class="sr-only"> ${properties.cafecardHeading @i18n}</span></button>
+	    </sly>
+	</div>
+	<div class="tile-action">
+		<div>
+			<sly data-sly-test="${properties.cafeCardViewMoreLink != null }">
+				<sly data-sly-test="${properties.cafeCardOpenUrlIn =='sameWindow'}">
+					<a class="action-text" href="${properties.cafeCardViewMoreLink}" alt="${properties.cafeCardLinkAlt @i18n}" data-tracking-id="Click Event|click|${properties.cafecardHeading}" >${properties.cafecardViewMoreHeading @i18n} <span class="sr-only"> opens a PDF</span></a>
+				</sly>
+				<sly data-sly-test="${properties.cafeCardOpenUrlIn =='tabWindow'}">
+					<a class="action-text" href="${properties.cafeCardViewMoreLink}" target="_blank" alt="${properties.cafeCardLinkAlt @i18n}" data-tracking-id="Click Event|click|${properties.cafecardHeading}">${properties.cafecardViewMoreHeading @i18n} <span class="sr-only"> opens a PDF</span></a>
+				</sly>
+				<sly data-sly-test="${properties.cafeCardOpenUrlIn =='newWindow'}">
+					<a class="action-text" data-url="${properties.cafeCardViewMoreLink}" alt="${properties.cafeCardLinkAlt @i18n}" onclick="window.open(this.dataset.url,'AG','width=500, height=500');" data-tracking-id="Click Event|click|${properties.cafecardHeading}" >${properties.cafecardViewMoreHeading @i18n} <span class="sr-only"> opens a PDF</span></a>
+				</sly>
+			</sly>
+		</div>
+	</div>
+</div>

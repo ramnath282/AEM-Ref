@@ -1,0 +1,567 @@
+// Hamburger Styles
+.hamburger {
+  color: mapping($mainNav, hamburger, txtColor);
+  margin: mapping($mainNav, hamburger, margin);
+  float: mapping($mainNav, hamburger, floating);
+
+  @if mapping($layout, main, isMattelcom) ==true {
+    width: mapping($mainNav, hamburger, hamburgerWidth);
+    font-family: mapping($mainNav, hamburger, txtfontfamily);
+    font-size: mapping($mainNav, hamburger, txtFontSize);
+    min-height: mapping($mainNav, hamburger, minHeight);
+  }
+
+  @media #{$medium-up} {
+    display: mapping($mainNav, hamburger, tabLandscapeDisplay);
+    margin: 27px 10px 0 0 !important;
+  }
+
+  @media #{$small-down} {
+    margin: mapping($mainNav, hamburger, mobileMargin);
+    padding: mapping($mainNav, hamburger, mobilePadding);
+  }
+
+  @media #{$large-up} {
+    display: mapping($mainNav, hamburger, desktopDisplay);
+  }
+
+  &:after {
+    font-size: mapping($mainNav, hamburger, iconFontSize);
+
+    @if mapping($layout, main, isMattelcom) ==true {
+      content: mapping($mainNav, hamburger, closeStateIcon);
+      font-family: mapping($mainNav, hamburger, icnFontFamily);
+      margin: mapping($mainNav, hamburger, icnMargin);
+    }
+  }
+
+  &.open {
+    &:after {
+      content: mapping($mainNav, hamburger, openStateIcon);
+      font-size: 22px;
+
+      @media #{$medium-down} {
+        font-size: 34px;
+      }
+
+      @media #{$small-down} {
+        font-size: 34px;
+      }
+    }
+  }
+
+  &:focus {
+    color: mapping($mainNav, hamburger, focusColor);
+  }
+
+  &:hover {
+    color: mapping($mainNav, hamburger, hoverColor);
+  }
+
+  @if mapping($layout, main, isMattelcom) ==true {
+    @media #{$small-up} {
+      margin: mapping($mainNav, hamburger, mobileMarginTab);
+    }
+  }
+}
+
+// Primary Navigation Styles
+.primary-nav {
+  @media #{$small-down} {
+    max-height: 452px !important;
+  }
+
+  @media #{$medium-only} {
+    max-height: 600px !important;
+  }
+
+  @media #{$large-down} {
+    display: none;
+    position: absolute;
+    left: mapping($mainNav, primaryNav, mobPosLeft);
+    top: mapping($mainNav, primaryNav, mobPosTop);
+    width: mapping($mainNav, primaryNav, mobWidth);
+    height: mapping($mainNav, primaryNav, mobHeight);
+    background-color: mapping($mainNav, primaryNav, mobBgndColor);
+    box-shadow: 0 0.125em 0.125em rgba(0, 0, 0, 0.25);
+    max-height: mapping($mainNav, primaryNav, mobMaxHeight);
+    background-image: mapping($mainNav, primaryNav, deskDownBgImage);
+    background-size: if(mapping($mainNav, primaryNav, bgSize), mapping($mainNav, primaryNav, bgSize), 7em);
+    background-repeat: mapping($mainNav, primaryNav, bgRepeat);
+    background-position: mapping($mainNav, primaryNav, bgPosition);
+    border-bottom: mapping($mainNav, primaryNavUlLiUL, borderBottom);
+    overflow-y: if(mapping($mainNav, primaryNav, overflowscroll), mapping($mainNav, primaryNav, overflowscroll), scroll);
+
+    ul {
+      background-color: mapping($mainNav, primaryNavUL, mobBgndColor);
+      background-image: mapping($mainNav, primaryNavUL, deskDownBgImage);
+      background-position: 95% 90%;
+      background-size: if(mapping($mainNav, primaryNavUL, bgSize), mapping($mainNav, primaryNavUL, bgSize), 7em);
+      background-repeat: no-repeat;
+
+      @media #{$small-down} {
+        text-align: mapping($mainNav, primaryNavUL, textAlign);
+        background-image: mapping($mainNav, primaryNavUL, mobBgImage);
+      }
+
+      @media #{$medium-down} {
+        text-align: mapping($mainNav, primaryNavUL, textAlignTab);
+      }
+    }
+  }
+
+  @media #{$medium-down} {
+    top: mapping($mainNav, primaryNav, tabPosTop);
+    max-height: 539px !important;
+  }
+
+  @media #{$small-down} {
+    top: mapping($mainNav, primaryNav, mobPosTop);
+  }
+
+  @media #{$large-up} {
+    float: mapping($mainNav, primaryNav, floating);
+    display: mapping($mainNav, primaryNav, desktopDisplay);
+    //min-height: mapping($mainNav, primaryNav, minHeight);
+    background: mapping($mainNav, primaryNav, bgnd);
+    height: mapping($mainNav, primaryNav, height);
+    margin-top: 8px;
+  }
+
+  ul {
+    font-family: mapping($mainNav, primaryNavUL, fontFamily);
+    margin: mapping($mainNav, primaryNavUL, mobMargin);
+
+    @media #{$large-down} {
+      margin: mapping($mainNav, primaryNavUL, tabLandMargin);
+    }
+
+    @media #{$large-up} {
+      margin: mapping($mainNav, primaryNavUL, desktopMargin);
+      height: mapping($mainNav, primaryNavUL, desktopHeight);
+    }
+
+    li {
+      display: block;
+      position: relative;
+      vertical-align: middle;
+      padding: mapping($mainNav, primaryNavUlLi, mobPad);
+
+      &:first-child {
+        @media #{$large-down} {
+          margin-top: 26px;
+        }
+
+        @media #{$medium-down} {
+          margin-top: 26px;
+        }
+
+        @media #{$small-down} {
+          margin-top: 23px;
+        }
+      }
+
+      @media (min-width: 768px) and (max-width: 1199px) {
+        text-align: center;
+        margin-left: 0px;
+
+        ul {
+          display: none;
+        }
+      }
+
+      @media #{$small-up} {
+        padding: mapping($mainNav, primaryNavUlLi, mobTabPad);
+      }
+
+      @media #{$large-up} {
+        display: inline-table;
+        padding: mapping($mainNav, primaryNavUlLi, mobPad);
+
+        @if mapping($layout, main, isMattelcom) ==true {
+          padding: mapping($mainNav, primaryNavUlLi, deskPad);
+        }
+
+        height: mapping($mainNav, primaryNavUL, desktopHeight);
+
+        &:hover,
+        &:focus {
+          // &:focus-within  - not supported in IE
+          ul {
+            display: block;
+            visibility: visible;
+          }
+
+          > a {
+            color: mapping($mainNav, primaryNavUL, highlightParent);
+          }
+        }
+      }
+
+      a {
+        color: mapping($mainNav, primaryNavUlLiA, mobAnchorColor);
+        text-align: mapping($mainNav, primaryNavUlLiA, textAlign);
+        font-family: mapping($mainNav, primaryNavUlLiA, fontFamily);
+        letter-spacing: if(mapping($mainNav, primaryNavUlLiA, letterSpacing), mapping($mainNav, primaryNavUlLiA, letterSpacing), 1px);
+
+        @if mapping($layout, main, isLilglee) ==true {
+          line-height: 1em;
+        }
+
+        @if mapping($layout, main, isMattelcom) ==true {
+          line-height: mapping($mainNav, primaryNavUlLiA, lineHeight);
+
+          @media #{$large-down} {
+            font-size: 36px;
+            line-height: 60px;
+          }
+
+          @media #{$medium-down} {
+            font-size: mapping($mainNav, primaryNavUlLiA, tabFontSize);
+            line-height: mapping($mainNav, primaryNavUlLiA, tabLineHeight);
+          }
+
+          @media #{$small-down} {
+            font-size: mapping($mainNav, primaryNavUlLiA, mobFontSize);
+            line-height: mapping($mainNav, primaryNavUlLiA, mobLineHeight);
+          }
+        }
+
+        @media #{$large-up} {
+          color: mapping($mainNav, primaryNavUlLiA, desktopAnchorColor);
+          display: table-cell;
+          vertical-align: middle;
+          border-bottom: mapping($mainNav, primaryNavUlLiA, borderBottom);
+          padding: mapping($mainNav, primaryNavUlLiA, desktopPad);
+
+          &.active {
+            border-bottom: mapping($mainNav, primaryNavUlLiA, anchActiveBrdrBot);
+            color: mapping($mainNav, primaryNavUlLiA, anchorActiveColor);
+          }
+
+          &:hover {
+            color: mapping($mainNav, primaryNavUlLiA, desktopAnchorHoverColor);
+          }
+        }
+
+        display: block;
+        text-decoration: mapping($mainNav, primaryNavUlLiA, textDecoration);
+        font-size: mapping($mainNav, primaryNavUlLiA, fontSize);
+        font-weight: mapping($mainNav, primaryNavUlLiA, fontWeight);
+        text-transform: mapping($mainNav, primaryNavUlLiA, textTransform);
+        padding: mapping($mainNav, primaryNavUlLiA, mobPad);
+
+        @media #{$large-down} {
+          -webkit-text-stroke-width: mapping($mainNav, primaryNavUlLiA, strokeWidth);
+          -webkit-text-stroke-color: mapping($mainNav, primaryNavUlLiA, strokeColor);
+          /*@if mapping($mainNav,primaryNavUlLiA,istextShadow){
+						text-shadow: 2.5px 0 0 #001f3f, -2.5px 0 0 #343479, 0 2.5px 0 #343479, 0 -2.5px 0 #343479, 1.5px 1.5px 0 #343479, -1.5px -1.5px 0 #343479, 1.5px -1.5px 0 #343479, -1.5px 1.5px 0 #343479;
+					}*/
+        }
+
+        img {
+          width: mapping($mainNav, primaryNavUlLiA, linkImgWidthDesk);
+          margin: mapping($mainNav, primaryNavUlLiA, linkImgMargin);
+        }
+
+        @if mapping($layout, main, isfisherprice) ==true {
+          .fa-chevron-left {
+            margin-right: 5px;
+          }
+        }
+
+        @if mapping($layout, main, isMattelcom) ==true {
+          .fa-chevron-left {
+            display: none;
+          }
+        }
+
+        @if mapping($layout, main, isMattelcom) ==true {
+          @media #{$medium-down} {
+            font-size: mapping($mainNav, primaryNavUlLiA, fontSizeMob);
+          }
+        }
+
+        @media #{$large-only} {
+          font-size: 36px;
+          padding-top: 0;
+          padding-bottom: 0;
+          line-height: 60px;
+        }
+
+        @media #{$medium-only} {
+          font-size: 36px;
+          padding-top: 0;
+          padding-bottom: 0;
+          line-height: 60px;
+          padding-left: 60px;
+        }
+        
+
+        @media #{$small-down} {
+          font-size: 30px;
+          padding-top: 0;
+          line-height: 50px;
+          padding-bottom: 15px;
+        }
+      }
+
+      .show-sub-nav {
+        display: block !important;
+        position: absolute;
+        top: 50%;
+        right: 0;
+        transform: translateY(-50%);
+        line-height: 0;
+        border: 0;
+        width: 20px;
+        height: 20px;
+        padding: 0 0 0 20px;
+        overflow: hidden;
+        transform-origin: center center;
+        transition: all 0.3s ease-in-out;
+
+        @media #{$medium-down} {
+          top: 20px;
+          right: 15px;
+          transform: none;
+        }
+
+        &:before {
+          content: '\F078';
+          font-size: 20px;
+          line-height: 1;
+          font-family: 'Font Awesome', sans-serif;
+          color: #000000;
+          display: block;
+          width: 60px;
+          height: 28px;
+          transform: translate(-17px, 3px);
+
+          //Hiding ourstores arrow in Hamburger
+          @media #{$large-down} {
+            visibility: hidden;
+          }
+
+          @media #{$small-down} {
+            visibility: hidden;
+            transform: translate(-17px, -2px);
+          }
+        }
+      }
+
+      @media #{$large-down} {
+        .show-sub-nav ~ a {
+          font-size: 24px;
+          font-weight: 300;
+          padding-bottom: 0 !important;
+        }
+      }
+
+      @media #{$small-down} {
+        .show-sub-nav ~ a {
+          font-size: 24px;
+          font-weight: 300;
+          padding-bottom: 0 !important;
+        }
+      }
+
+      &:hover,
+      &:focus {
+        & > a.show-sub-nav {
+          transform: translateY(-25%) rotate(180deg);
+
+          @media #{$small-down} {
+            transform: translateY(-25%) rotate(180deg);
+            //transform: rotate(180deg);
+          }
+        }
+      }
+
+      .header-img {
+        width: mapping($mainNav, headerImage, width);
+        height: mapping($mainNav, headerImage, height);
+        margin-right: mapping($mainNav, headerImage, marRight);
+      }
+
+      ul {
+        display: none;
+        background-color: mapping($mainNav, primaryNavUlLiUL, bgndColor);
+        position: absolute;
+        top: mapping($mainNav, primaryNavUlLiUL, posTop);
+        left: mapping($mainNav, primaryNavUlLiUL, posLeft);
+        width: mapping($mainNav, primaryNavUlLiUL, width);
+        -webkit-transition: 250ms cubic-bezier(0.25, 0.75, 0.75, 1.25);
+        -o-transition: 250ms cubic-bezier(0.25, 0.75, 0.75, 1.25);
+        transition: 250ms cubic-bezier(0.25, 0.75, 0.75, 1.25);
+        height: auto;
+        padding: mapping($mainNav, primaryNavUlLiUL, paddingTopBottom);
+        border-bottom: mapping($mainNav, primaryNavUlLiUL, borderBottom);
+
+        li {
+          display: block;
+          font-size: mapping($mainNav, primaryNavUlLiUlLi, fontSize);
+          padding: mapping($mainNav, primaryNavUlLiUlLi, pad);
+
+          &:first-child {
+            @media #{$large-down} {
+              margin-top: 0px;
+            }
+
+            @media #{$medium-down} {
+              margin-top: 0px;
+            }
+
+            @media #{$small-down} {
+              margin-top: 0px;
+            }
+          }
+
+          a {
+            color: mapping($mainNav, primaryNavUlLiUlLiA, txtColor);
+            border-bottom: mapping($mainNav, primaryNavUlLiUlLiA, borderBottom);
+            font-family: mapping($mainNav, primaryNavUlLiUlLiA, navChildFont);
+            font-weight: mapping($mainNav, primaryNavUlLiUlLiA, fontWeight);
+            font-size: mapping($mainNav, primaryNavUlLiUlLiA, fontSize);
+            line-height: mapping($mainNav, primaryNavUlLiUlLiA, lineHeight);
+
+            &:hover {
+              text-decoration: mapping($mainNav, primaryNavUlLiUlLiA, textUnderline);
+            }
+
+            @media #{$large-down} {
+              font-size: mapping($mainNav, primaryNavUlLiUlLiA, mobileA);
+              font-weight: mapping($mainNav, primaryNavUlLiUlLiA, mobileFontWeight);
+              padding: 6px 28px;
+            }
+
+            @media #{$small-down} {
+              font-size: 30px;
+              font-weight: 500;
+              line-height: 50px !important;
+              padding-bottom: 15px !important;
+            }
+
+            @media #{$medium-only} {
+              font-size: 30px;
+              font-weight: 500;
+              line-height: 60px !important;
+              padding-bottom: 15px !important;
+              padding-left: 45px !important;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @media #{$large-down} {
+    ul {
+      li {
+        a {
+          &.show-sub-nav {
+            font-size: mapping($mainNav, primaryNavUlLiA, showSubNavFontSize);
+            color: mapping($mainNav, primaryNavUlLiA, showSubNavColor);
+            width: mapping($mainNav, primaryNavUlLiA, showSubNavWidth);
+            height: mapping($mainNav, primaryNavUlLiA, showSubNavHeight);
+            float: mapping($mainNav, primaryNavUlLiA, showSubNavFloat);
+            padding: mapping($mainNav, primaryNavUlLiA, showSubNavPad);
+            line-height: mapping($mainNav, primaryNavUlLiA, showSubNavLineHeight);
+            text-align: mapping($mainNav, primaryNavUlLiA, showSubNavTextAlign);
+            margin-top: mapping($mainNav, primaryNavUlLiA, showSubNavMarginTop);
+
+            @if mapping($mainNav, primaryNavUlLiA, isHideSubnav) ==true {
+              display: none;
+              position: absolute;
+              right: 15px;
+            }
+          }
+        }
+
+        ul {
+          display: block !important;
+          background-color: mapping($mainNav, primaryNavUlLiUL, deskDownBgndColor);
+          position: mapping($mainNav, primaryNavUlLiUL, deskDownPos);
+          top: mapping($mainNav, primaryNavUlLiUL, deskDownPosTop);
+          left: mapping($mainNav, primaryNavUlLiUL, deskDownPosLeft);
+          width: mapping($mainNav, primaryNavUlLiUL, deskDownWidth);
+          padding: mapping($mainNav, primaryNavUlLiUL, deskDownPadding);
+          border: mapping($mainNav, primaryNavUlLiUL, deskDownMargin);
+          @media #{$large-down} {
+            display: block !important;
+            top: mapping($mainNav, primaryNavUlLiUL, tabDownPosTop);
+          }
+          @media #{$medium-down} {
+            display: block !important;
+            top: mapping($mainNav, primaryNavUlLiUL, tabDownPosTop);
+          } 
+
+          li {
+            font-size: mapping($mainNav, primaryNavUlLiUlLi, deskDownFontSize);
+            padding: mapping($mainNav, primaryNavUlLiUlLi, deskDownPad);
+            border: mapping($mainNav, primaryNavUlLiUlLi, deskDownBrdr);
+            text-indent: mapping($mainNav, primaryNavUlLiUlLi, deskDownTxtIndent);
+
+            a {
+              padding: mapping($mainNav, primaryNavUlLiUlLi, deskDownTxtAPadding);
+              line-height: mapping($mainNav, primaryNavUlLiUlLi, deskDownTxtALineHeight);
+              padding-bottom: 0px !important;
+
+              @media #{$medium-down} {
+                font-size: 36px;
+                line-height: 60px;
+                padding-bottom: 0px !important;
+              }
+
+              @media #{$small-down} {
+                font-size: 30px;
+                line-height: 50px;
+              }
+            }
+          }
+        }
+        // &:last-child {
+        //     a {
+        //         font-size: 10px;
+        //     }
+        // }
+      }
+    }
+  }
+
+  @media #{$medium-only} {
+    ul{
+      li{
+        ul{
+          li{
+            a{
+              padding-bottom: 0px !important;
+            }
+          }
+
+        }
+      }
+    }
+  }
+}
+
+@if mapping($layout, main, isfisherprice) ==true {
+  @media #{$small-up} {
+    .hamburger {
+      display: none;
+    }
+
+    .primary-nav {
+      display: block;
+      top: 0;
+      text-align: right;
+      box-shadow: none;
+      height: auto;
+      float: right;
+
+      ul {
+        margin: 0;
+      }
+    }
+  }
+}

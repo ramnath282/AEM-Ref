@@ -1,0 +1,237 @@
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
+	<sly data-sly-call="${clientlib.all @ categories='play.parentfooter'}" />
+	<sly data-sly-test="${wcmmode.edit}">${'Parent Footer component' @ i18n}</sly>
+	<sly data-sly-test="${properties.backOption == 'color'}">
+		<sly data-sly-test="${properties.backgroundColor != null}">
+			<div class="footer-links-accordion" style="background-color:${properties.backgroundColor @ context='styleString'};">
+		</sly>
+		<sly data-sly-test="${properties.backgroundColor == null}">
+			<div class="footer-links-accordion">
+		</sly>
+	</sly>
+	<sly data-sly-test="${properties.backOption == 'image'}">
+		<sly data-sly-test="${properties.fileReferenceBgImg != null}">
+			<div class="footer-links-accordion" style="background-image: url('${properties.fileReferenceBgImg @ context='styleString'}');background-repeat:no-repeat;">
+		</sly>
+		<sly data-sly-test="${properties.fileReferenceBgImg == null}">
+			<div class="footer-links-accordion">
+		</sly>
+	</sly>
+	<sly data-sly-test="${properties.backOption==null}">
+		<div class="footer-links-accordion">
+	</sly>
+	<div class="footer-links">
+		<h4 class="accordion-action"><a href="javascript:void(0);" role="presentation">${properties.groupTitleOne}</a></h4>
+		<div class="accordion-container">
+			<ul data-sly-use.parentFooterDetail="com.mattel.play.core.model.ParentFooterModel">
+				<sly data-sly-list.groupOneList="${parentFooterDetail.footerTextGroupOne}">
+					<sly data-sly-test="${groupOneList.linkTarget =='sameWindow'}">
+						<li> <a class="track-link" href="${groupOneList.linkURL}" data-tracking-id="${properties.locationName!=null ? properties.locationName : 'parent-footer'}-click|${properties.groupTitleOne}|${groupOneList.alwaysEnglish}|${properties.locationName!=null ? properties.locationName : 'parent-footer'}" data-track-title="How can we help?">${groupOneList.linkText @ i18n}</a> 
+						</li>
+					</sly>
+					<sly data-sly-test="${groupOneList.linkTarget =='tabWindow'}">
+						<li><a class="track-link" href="${groupOneList.linkURL}" data-tracking-id="${properties.locationName!=null ? properties.locationName : 'parent-footer'}-click|${properties.groupTitleOne}|${groupOneList.alwaysEnglish}|${properties.locationName!=null ? properties.locationName : 'parent-footer'}" data-track-title="How can we help?" target="_blank">${groupOneList.linkText @ i18n}<span class="sr-only"> ${'Opens in a new tab' @ i18n}</span></a> 
+						</li>
+					</sly>
+					<sly data-sly-test="${groupOneList.linkTarget =='newWindow'}">
+						<li><a href="javascript:void(0);" data-url="${groupOneList.linkURL}" data-tracking-id="${properties.locationName!=null ? properties.locationName : 'parent-footer'}-click|${properties.groupTitleOne}|${groupOneList.alwaysEnglish}|${properties.locationName!=null ? properties.locationName : 'parent-footer'}" onclick="window.open(this.dataset.url,'PLAY','width=500, height=500');" data-track-title="How can we help?" data-tracking-id="footer-click|${properties.alwaysEnglish}|${footerList.alwaysEnglish}|footer-links">
+											${groupOneList.linkText @ i18n}<span class="sr-only"> ${'Opens in new window' @ i18n}</span></a> 
+						</li>
+					</sly>
+					<sly data-sly-test="${groupOneList.linkTarget =='interstitialLeaving'}">
+						<li> <a href="javascript:void(0);" data-tracking-id="${properties.locationName!=null ? properties.locationName : 'parent-footer'}-click|${properties.groupTitleOne}|${groupOneList.alwaysEnglish}|${properties.locationName!=null ? properties.locationName : 'parent-footer'}" class="btn-view-details" data-toggle="modal" data-url="${groupOneList.linkURL}" data-target="#interstitialModal">${groupOneList.linkText @ i18n}
+                       </a>
+						</li>
+					</sly>
+				</sly>				
+			</ul>
+		</div>
+	</div>
+	<div class="footer-links">
+		<h4 class="accordion-action"><a href="javascript:void(0);" role="presentation">${properties.groupTitleTwo}</a></h4>
+		<div class="accordion-container">
+			<ul data-sly-use.parentFooterDetailTwo="com.mattel.play.core.model.ParentFooterModel">
+				<sly data-sly-list.groupTwoList="${parentFooterDetailTwo.footerTextGroupTwo}">
+					<sly data-sly-test="${groupTwoList.linkTarget =='sameWindow'}">
+						<li> <a class="track-link" href="${groupTwoList.linkURL}" data-tracking-id="${properties.locationName!=null ? properties.locationName : 'parent-footer'}-click|${properties.groupTitleTwo}|${groupTwoList.alwaysEnglish}|${properties.locationName!=null ? properties.locationName : 'parent-footer'}" data-track-title="How can we help?">${groupTwoList.linkText @ i18n}</a> 
+						</li>
+					</sly>
+					<sly data-sly-test="${groupTwoList.linkTarget =='tabWindow'}">
+						<li><a class="track-link" href="${groupTwoList.linkURL}" data-tracking-id="${properties.locationName!=null ? properties.locationName : 'parent-footer'}-click|${properties.groupTitleTwo}|${groupTwoList.alwaysEnglish}|${properties.locationName!=null ? properties.locationName : 'parent-footer'}" data-track-title="How can we help?" target="_blank">${groupTwoList.linkText @ i18n}<span class="sr-only"> ${'Opens in a new tab' @ i18n}</span></a> 
+						</li>
+					</sly>
+					<sly data-sly-test="${groupTwoList.linkTarget =='newWindow'}">
+						<li><a href="javascript:void(0);" data-url="${groupTwoList.linkURL}" data-tracking-id="${properties.locationName!=null ? properties.locationName : 'parent-footer'}-click|${properties.groupTitleTwo}|${groupTwoList.alwaysEnglish}|${properties.locationName!=null ? properties.locationName : 'parent-footer'}" onclick="window.open(this.dataset.url,'PLAY','width=500, height=500');" data-track-title="How can we help?" data-tracking-id="footer-click|${properties.alwaysEnglish}|${footerList.alwaysEnglish}|footer-links">
+											${groupTwoList.linkText @ i18n}<span class="sr-only"> ${'Opens in new window' @ i18n}</span></a>
+						</li>
+					</sly>
+					<sly data-sly-test="${groupTwoList.linkTarget =='interstitialLeaving'}">
+						<li> <a href="javascript:void(0);" data-tracking-id="${properties.locationName!=null ? properties.locationName : 'parent-footer'}-click|${properties.groupTitleTwo}|${groupTwoList.alwaysEnglish}|${properties.locationName!=null ? properties.locationName : 'parent-footer'}" class="btn-view-details" data-toggle="modal" data-url="${groupTwoList.linkURL}" data-target="#interstitialModal">${groupTwoList.linkText @ i18n}
+                       </a>
+						</li>
+					</sly>
+				</sly>
+			</ul>
+		</div>
+	</div>
+	<sly data-sly-use.scriptUrl="com.mattel.play.core.model.PlayPageModel">
+		<sly data-sly-test=" ${scriptUrl.brandName != 'fisher-price' && scriptUrl.brandName != 'fisher-price-sit'}">
+			<div class="footer-links">
+             	<h4 class="accordion-action"><a href="javascript:void(0);" role="presentation">${properties.groupTitleThree}</a></h4>
+				<div class="accordion-container">
+					<ul data-sly-use.parentFooterDetailThree="com.mattel.play.core.model.ParentFooterModel">
+						<sly data-sly-list.groupThreeList="${parentFooterDetailThree.footerTextGroupThree}">
+							<sly data-sly-test="${groupThreeList.linkTarget =='sameWindow'}">
+								<li> <a class="track-link" href="${groupThreeList.linkURL}" data-tracking-id="${properties.locationName!=null ? properties.locationName : 'parent-footer'}-click|${properties.groupTitleThree}|${groupThreeList.alwaysEnglish}|${properties.locationName!=null ? properties.locationName : 'parent-footer'}" data-track-title="How can we help?">${groupThreeList.linkText @ i18n}</a> </li>
+							</sly>
+							<sly data-sly-test="${groupThreeList.linkTarget =='tabWindow'}">
+								<li><a class="track-link" href="${groupThreeList.linkURL}" data-tracking-id="${properties.locationName!=null ? properties.locationName : 'parent-footer'}-click|${properties.groupTitleThree}|${groupThreeList.alwaysEnglish}|${properties.locationName!=null ? properties.locationName : 'parent-footer'}" data-track-title="How can we help?" target="_blank">${groupThreeList.linkText @ i18n}<span class="sr-only"> ${'Opens in a new tab' @ i18n}</span></a> </li>
+							</sly>
+							<sly data-sly-test="${groupThreeList.linkTarget =='newWindow'}">
+								<li><a href="javascript:void(0);" data-url="${groupThreeList.linkURL}" data-tracking-id="${properties.locationName!=null ? properties.locationName : 'parent-footer'}-click|${properties.groupTitleThree}|${groupThreeList.alwaysEnglish}|${properties.locationName!=null ? properties.locationName : 'parent-footer'}" onclick="window.open(this.dataset.url,'PLAY','width=500, height=500');" data-track-title="How can we help?" data-tracking-id="footer-click|${properties.alwaysEnglish}|${footerList.alwaysEnglish}|footer-links">
+									${groupThreeList.linkText @ i18n}<span class="sr-only"> ${'Opens in new window' @ i18n}</span></a> </li>
+							</sly>
+							<sly data-sly-test="${groupThreeList.linkTarget =='interstitialLeaving'}">
+								<li> <a href="javascript:void(0);" data-tracking-id="${properties.locationName!=null ? properties.locationName : 'parent-footer'}-click|${properties.groupTitleThree}|${groupThreeList.alwaysEnglish}|${properties.locationName!=null ? properties.locationName : 'parent-footer'}" class="btn-view-details" data-toggle="modal" data-url="${groupThreeList.linkURL}" data-target="#interstitialModal">${groupThreeList.linkText @ i18n}
+								</a></li>
+							</sly>
+						</sly>
+						<li id="teconsent"></li>
+                        <li id="irmlink"></li>
+					</ul>
+				</div>
+			</div>
+		</sly>
+	</sly> 
+ <sly data-sly-test="${properties.groupTitleFour}">
+		<sly data-sly-test=" ${scriptUrl.brandName != 'fisher-price' && scriptUrl.brandName != 'fisher-price-sit'}">
+			<div class="footer-links">
+				<h4 class="accordion-action"><a href="javascript:void(0);" role="presentation">${properties.groupTitleFour @ i18n}</a></h4>
+				<div class="accordion-container">
+					<ul data-sly-use.parentFooterDetailFour="com.mattel.play.core.model.ParentFooterModel">
+						<sly data-sly-list.groupFourList="${parentFooterDetailFour.footerTextGroupFour}">
+							<sly data-sly-test="${groupFourList.linkTarget =='sameWindow'}">
+								<li> <a class="track-link" href="${groupFourList.linkURL}" data-tracking-id="${properties.locationName!=null ? properties.locationName : 'parent-footer'}-click|${properties.groupTitleFour}|${groupFourList.alwaysEnglish}|${properties.locationName!=null ? properties.locationName : 'parent-footer'}" data-track-title="How can we help?">${groupFourList.linkText @ i18n}</a> 
+								</li>
+							</sly>
+							<sly data-sly-test="${groupFourList.linkTarget =='tabWindow'}">
+								<li><a class="track-link" href="${groupFourList.linkURL}" data-tracking-id="${properties.locationName!=null ? properties.locationName : 'parent-footer'}-click|${properties.groupTitleFour}|${groupFourList.alwaysEnglish}|${properties.locationName!=null ? properties.locationName : 'parent-footer'}" data-track-title="How can we help?" target="_blank">${groupFourList.linkText @ i18n}<span class="sr-only"> ${'Opens in a new tab' @ i18n}</span></a> 
+								</li>
+							</sly>
+							<sly data-sly-test="${groupFourList.linkTarget =='newWindow'}">
+								<li><a href="javascript:void(0);" data-url="${groupFourList.linkURL}" data-tracking-id="${properties.locationName!=null ? properties.locationName : 'parent-footer'}-click|${properties.groupTitleFour}|${groupFourList.alwaysEnglish}|${properties.locationName!=null ? properties.locationName : 'parent-footer'}" onclick="window.open(this.dataset.url,'PLAY','width=500, height=500');" data-track-title="How can we help?" data-tracking-id="footer-click|${properties.alwaysEnglish}|${footerList.alwaysEnglish}|footer-links">
+												${groupFourList.linkText @ i18n}<span class="sr-only"> ${'Opens in new window' @ i18n}</span></a> 
+								</li>
+							</sly>
+							<sly data-sly-test="${groupFourList.linkTarget =='interstitialLeaving'}">
+								<li> <a href="javascript:void(0);" data-tracking-id="${properties.locationName!=null ? properties.locationName : 'parent-footer'}-click|${properties.groupTitleFour}|${groupFourList.alwaysEnglish}|${properties.locationName!=null ? properties.locationName : 'parent-footer'}" class="btn-view-details" data-toggle="modal" data-url="${groupFourList.linkURL}" data-target="#interstitialModal">${groupFourList.linkText @ i18n}
+						   </a> 
+								</li>
+							</sly>
+						</sly>
+					</ul>
+				</div>
+			</div>
+		</sly>
+	</sly>
+<sly data-sly-test="${properties.groupTitleFour}">
+		<sly data-sly-test=" ${scriptUrl.brandName == 'fisher-price' || scriptUrl.brandName == 'fisher-price-sit'}">
+			<div class="footer-links fp-legal-cookies">
+				<h4><a href="javascript:void(0);" role="presentation">${properties.groupTitleFour @ i18n}</a></h4>
+				<div class="accordion-container">
+					<ul data-sly-use.parentFooterDetailFour="com.mattel.play.core.model.ParentFooterModel">
+						<sly data-sly-list.groupFourList="${parentFooterDetailFour.footerTextGroupFour}">
+							<sly data-sly-test="${groupFourList.linkTarget =='sameWindow'}">
+								<li> <a class="track-link" href="${groupFourList.linkURL}" data-tracking-id="${properties.locationName!=null ? properties.locationName : 'parent-footer'}-click|${properties.groupTitleFour}|${groupFourList.alwaysEnglish}|${properties.locationName!=null ? properties.locationName : 'parent-footer'}" data-track-title="How can we help?">${groupFourList.linkText @ i18n}</a> 
+								</li>
+							</sly>
+							<sly data-sly-test="${groupFourList.linkTarget =='tabWindow'}">
+								<li><a class="track-link" href="${groupFourList.linkURL}" data-tracking-id="${properties.locationName!=null ? properties.locationName : 'parent-footer'}-click|${properties.groupTitleFour}|${groupFourList.alwaysEnglish}|${properties.locationName!=null ? properties.locationName : 'parent-footer'}" data-track-title="How can we help?" target="_blank">${groupFourList.linkText @ i18n}<span class="sr-only"> ${'Opens in a new tab' @ i18n}</span></a> 
+								</li>
+							</sly>
+							<sly data-sly-test="${groupFourList.linkTarget =='newWindow'}">
+								<li><a href="javascript:void(0);" data-url="${groupFourList.linkURL}" data-tracking-id="${properties.locationName!=null ? properties.locationName : 'parent-footer'}-click|${properties.groupTitleFour}|${groupFourList.alwaysEnglish}|${properties.locationName!=null ? properties.locationName : 'parent-footer'}" onclick="window.open(this.dataset.url,'PLAY','width=500, height=500');" data-track-title="How can we help?" data-tracking-id="footer-click|${properties.alwaysEnglish}|${footerList.alwaysEnglish}|footer-links">
+												${groupFourList.linkText @ i18n}<span class="sr-only"> ${'Opens in new window' @ i18n}</span></a> 
+								</li>
+							</sly>
+							<sly data-sly-test="${groupFourList.linkTarget =='interstitialLeaving'}">
+								<li> <a href="javascript:void(0);" data-tracking-id="${properties.locationName!=null ? properties.locationName : 'parent-footer'}-click|${properties.groupTitleFour}|${groupFourList.alwaysEnglish}|${properties.locationName!=null ? properties.locationName : 'parent-footer'}" class="btn-view-details" data-toggle="modal" data-url="${groupFourList.linkURL}" data-target="#interstitialModal">${groupFourList.linkText @ i18n}
+						   </a> 
+								</li>
+							</sly>
+						</sly>
+						<li id="teconsent"></li>
+                        <li id="irmlink"></li>
+					</ul>
+				</div>
+			</div>
+		</sly>
+	</sly>
+	 	
+	
+	<div class="footer-links footer-social">
+		<sly data-sly-test="${!footerObj.isCountryDropdownExcluded}">
+			<div data-sly-resource="${'dropdown' @ resourceType='wcm/foundation/components/parsys'}"></div>
+		</sly>
+		<h4><a href="javascript:void(0);" role="presentation">${properties.socialIconTitle @ i18n}</a></h4>
+		<ul data-sly-use.socialIconsDetail="com.mattel.play.core.model.ParentFooterModel">
+			<sly data-sly-list.socialIcons="${socialIconsDetail.socialIconsList}">
+				<sly data-sly-test="${socialIcons.linkTarget =='sameWindow'}">
+					<li>
+						<a href="${socialIcons.socialLinkURL}" data-tracking-id="${properties.locationName!=null ? properties.locationName : 'parent-footer'}-click|${properties.socialIconTitle}|${socialIcons.alwaysEnglish}|${properties.locationName!=null ? properties.locationName : 'parent-footer'}">
+							<img src="${socialIcons.icons}" alt="${socialIcons.linkText @ i18n}">
+						</a>
+					</li>
+				</sly>
+				<sly data-sly-test="${socialIcons.linkTarget =='tabWindow'}">
+					<li>
+						<a href="${socialIcons.socialLinkURL}" data-tracking-id="${properties.locationName!=null ? properties.locationName : 'parent-footer'}-click|${properties.socialIconTitle}|${socialIcons.alwaysEnglish}|${properties.locationName!=null ? properties.locationName : 'parent-footer'}" target="_blank">
+							<img src="${socialIcons.icons}" alt="${socialIcons.linkText @ i18n}"><span class="sr-only"> ${'Opens in a new tab' @ i18n}</span>
+						</a>
+					</li>
+				</sly>
+				<sly data-sly-test="${socialIcons.linkTarget =='newWindow'}">
+					<li>
+						<a href="javascript:void(0);" data-url="${socialIcons.socialLinkURL}" data-tracking-id="${properties.locationName!=null ? properties.locationName : 'parent-footer'}-click|${properties.socialIconTitle}|${socialIcons.alwaysEnglish}|${properties.locationName!=null ? properties.locationName : 'parent-footer'}" onclick="window.open(this.dataset.url,'PLAY','width=500, height=500');">
+							<img src="${socialIcons.icons}" alt="${socialIcons.linkText @ i18n}"><span class="sr-only"> ${'Opens in new window' @ i18n}</span>
+						</a>
+					</li>
+				</sly>
+				<sly data-sly-test="${socialIcons.linkTarget =='interstitialLeaving'}">
+					<li>
+						<a href="javascript:void(0);" data-tracking-id="${properties.locationName!=null ? properties.locationName : 'parent-footer'}-click|${properties.socialIconTitle}|${socialIcons.alwaysEnglish}|${properties.locationName!=null ? properties.locationName : 'parent-footer'}" class="btn-view-details" data-toggle="modal" data-url="${socialIcons.socialLinkURL}" data-target="#interstitialModal">
+							<img src="${socialIcons.icons}" alt="${socialIcons.linkText @ i18n}"><span class="sr-only"> ${'Opens a pop up' @ i18n}</span>
+						</a>
+					</li>
+				</sly>
+		</ul>
+		</sly>
+	</div>
+	<sly data-sly-test="${properties.fileReference1 != null}">
+		<div class="footer-links footer-esrblogo">
+			<sly data-sly-test="${properties.esrbTargetUrl =='sameWindow'}">
+				<a href="${properties.esrbLogoURL}" data-tracking-id="${properties.locationName!=null ? properties.locationName : 'footer'}-click|${properties.alwaysEnglish}|${properties.alwaysEnglishForEsrbLogo}|${properties.locationName!=null ? properties.locationName : 'footer'}">
+					<img src="${properties.fileReference1}" alt="${properties.esrbAltText @ i18n}">
+				</a>
+			</sly>
+			<sly data-sly-test="${properties.esrbTargetUrl =='tabWindow'}">
+				<a href="${properties.esrbLogoURL}" target="_blank"  data-tracking-id="${properties.locationName!=null ? properties.locationName : 'footer'}-click|${properties.alwaysEnglish}|${properties.alwaysEnglishForEsrbLogo}|${properties.locationName!=null ? properties.locationName : 'footer'}">
+					<img src="${properties.fileReference1}" alt="${properties.esrbAltText @ i18n}"><span class="sr-only"> ${'Opens in a new tab' @ i18n}</span>
+				</a>
+			</sly>
+			<sly data-sly-test="${properties.esrbTargetUrl =='newWindow'}">
+				<a data-url="${properties.esrbLogoURL}" onclick="window.open(this.dataset.url,'PLAY','width=500, height=500');" data-tracking-id="${properties.locationName!=null ? properties.locationName : 'footer'}-click|${properties.alwaysEnglish}|${properties.alwaysEnglishForEsrbLogo}|${properties.locationName!=null ? properties.locationName : 'footer'}">
+					<img src="${properties.fileReference1}" alt="${properties.esrbAltText @ i18n}"><span class="sr-only"> ${'Opens in new window' @ i18n}</span>
+				</a>
+			</sly>
+			<sly data-sly-test="${properties.esrbTargetUrl =='interstitial'}">
+				<a href="javascript:void(0);" data-tracking-id="${properties.locationName!=null ? properties.locationName : 'footer'}-click|${properties.alwaysEnglish}|${properties.alwaysEnglishForEsrbLogo}|${properties.locationName!=null ? properties.locationName : 'footer'}" class="btn-view-details" data-toggle="modal" data-url="${properties.esrbLogoURL}" data-target="#interstitialModal">
+					<img src="${properties.fileReference1}" alt="${properties.esrbAltText @ i18n}"><span class="sr-only"> ${'Opens in a pop up' @ i18n}</span>
+				</a>
+			</sly>
+		</div>
+	</sly>
+	</div>
+</sly>
+<sly data-sly-use.parentFooter="/libs/granite/sightly/templates/clientlib.html">
+<sly data-sly-call="${parentFooter.js @ categories='play.parentFooter'}" />

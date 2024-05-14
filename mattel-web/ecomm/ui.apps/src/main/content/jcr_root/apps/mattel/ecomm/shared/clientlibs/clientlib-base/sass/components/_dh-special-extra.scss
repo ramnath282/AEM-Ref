@@ -1,0 +1,178 @@
+.dh-specialExtra-block{
+    .instructions p{
+        font-size: 14px;
+        text-align: center;
+        color: #333333;
+        margin-top: 10px;
+        padding:0 2.2em;
+        font-weight: $fontRegular;
+        @media #{$small-up} {
+            font-size: 16px;
+        }
+    }
+    .main-content-section{
+        .main-inner-content{
+            .sku-card {
+                max-width: 290px;
+                box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+                cursor:pointer;
+                @media #{$small-up} {
+                    max-width: 210px;
+                    margin: em(29) em(17) 0;
+                    margin-bottom: 0;
+                }
+                @media #{$medium-up} {
+                    max-width: 260px;
+                }
+                &.active.not-hover{
+                    border-color:$DHPrimaryBlue!important;
+                    background-image: linear-gradient($DHPrimaryBlue, $DHPrimaryBlue 100%) !important;
+                    background-size: 100% 60px;
+                    background-repeat: no-repeat;
+                    background-position: center bottom;
+                }
+                &.not-hover{
+                    border-color:#ddd !important;
+                }
+                .sku-container {
+                    min-height: 260px;
+                    padding: em(13.5) 0;
+                    @media #{$small-up} {
+                        padding: em(11.5) 0 em(13.5) 0;
+                        min-height: 317px;
+                    }
+                    .sku-image {
+                        width: 70px;
+                        height: 70px;
+                        margin:0 auto;
+                        @media #{$small-up} {
+                            width: 71px;
+                            height: 71px;
+                        }
+                        img {
+                            border-radius: 100px;
+                        }
+                    }
+                    .info{
+                        padding: 0 20px;
+                        @media #{$small-up} {
+                            padding: 0 12.5px 0 10.5px;
+                        }
+                    }
+                    h3 {
+                        font-size: em(20);
+                        font-weight: $fontSemiBold;
+                        color: $headingColor;
+                        margin-top: 10px;
+                        @media #{$small-up} {
+                            font-size: em(18);
+                            font-weight: $fontRegular;
+                            margin-top: 13.5px;
+                        }
+                    }
+                    .desc {
+                        font-size: em(14);
+                        font-weight: $fontRegular;
+                        color: $headingColor;
+                        margin-top: 7px;
+                        @media #{$small-up} {
+                            margin-top: 24px;
+                            font-size: em(16);
+                        }
+                    }
+                }
+                .item-price{
+                    color:$white;  
+                    font-size: 24px; 
+                    line-height: 50px;
+                    max-height: 50px;
+                    span{
+                        font-size: 24px; 
+                        font-weight: $fontSemiBold;
+                    }
+                }            
+                fieldset {
+                    text-align: center;
+                    margin:em(10) 0 0 0;
+                    label {
+                        border: 1px solid #d5d5d5;
+                        @include border-radius(6px);
+                        color: $night-rider;
+                        font-size: em(14, 14);
+                        min-width: unset;
+                        position: static;
+                        min-height: 38px;
+                        line-height: 38px;
+                        text-indent:0;
+                        margin: 14px 0 0 0;
+                        padding: 0;
+                        @media #{$small-up} {
+                            font-size: em(16, 14);
+                            display: block;
+                            max-height:41px;
+                            line-height: 41px;
+                        }
+                        span {
+                            font: inherit;
+                        }
+                        &:before,
+                        &:after {
+                            content: none !important;
+                        }
+						&:hover{
+                            border-color: #58b6e7;
+                        }
+                    }
+                    input[type="radio"]:checked,
+                    input[type="checkbox"]:checked+label {
+                        border-color: #58b6e7;
+                        &:after {
+                            content: none;
+                        }
+                        &:checked+label {
+                            border: $DHPrimaryBlue 1.5px solid;
+                            &:after {
+                                width: 0;
+                                height: 0;
+                                border: none;
+                            }
+                            &.disabled {
+                                border: $borderColor 1px solid;
+                                span {
+                                    color: $headingColor;
+                                }
+                            }
+                        }
+                    }
+                    input[type="radio"]{
+                        &+label {
+                                &:hover{
+                                border: $DHPrimaryBlue 1.5px solid;
+                            }
+                        }
+                    }
+                }
+            }
+            .hearing-aid-card{
+                &:hover,
+                &.active {
+                    background: $cardBackgroundColor;
+                    color: #fff;
+                    border-color:#ddd!important;
+                }
+            }
+        }
+    }
+    .dh-btn-span{
+        .dh-back-btn{
+            @media #{$small-up} {
+                margin-top: 0;
+            }
+        }
+        .dh-next-btn{
+            @media #{$small-up} {
+                margin-top: 0;
+            }
+        }
+    }
+}

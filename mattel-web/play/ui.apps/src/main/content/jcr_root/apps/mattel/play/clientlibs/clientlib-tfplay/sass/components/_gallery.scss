@@ -1,0 +1,262 @@
+// global styles
+.play-tiles-gallery{
+    &#play-game{
+        .gallery-tile{
+            text-align: center;
+            h2{
+                @extend .tf-heading;
+                &:empty{
+                    display: none;
+                }
+            }
+        } 
+    }
+    .gallery-tile{
+        @extend .container;
+        @media #{$small-up}{
+            @media #{$medium-down}{
+                width: 100%;
+            }
+        }
+        ul{
+            padding: 0 !important;
+            li{
+                @extend .tf-list;
+                .gallery-image+span{
+                    @extend .tf-label;
+                }
+                img{
+                    -webkit-animation: fadeIn 2s;
+                    animation: fadeIn 2s;
+                }
+                @media #{$xsmall-up}{
+                    @media #{$small-down}{
+                        width:50%;
+                        margin: 0;
+                        float: left;
+                    }
+                }
+                @media #{$xsmall-down}{
+                    margin:0;
+                }
+                .playing-overlay{
+                    span{
+                      @extend .tf-description;
+                      font-size: 1rem;
+                      padding: 7px 15.5px !important;
+                      background-color: rgba($black,0.75) !important;
+                      color: $white !important;
+                      letter-spacing: .1px;
+                      top: 10px;
+                      left: 10px;
+                      height: 34px;
+                      line-height: 25px;
+                      &:empty{
+                          display: none;
+                      }
+                    }
+                  }
+            }
+        }
+    }
+    .gallery-title{
+        &:empty{
+            display: none;
+        }
+    }
+    .show-more{
+        padding-top: 1.125rem;
+        padding-bottom: 3.125rem;
+        @media #{$medium-up}{
+            padding-top: 1.6875rem;
+            padding-bottom: 3.75rem;
+        }
+        a{
+            @extend .tf-see-more-btn;
+            &:before{
+                content: none;
+            }
+        }
+    }
+    .view-all{
+        display: block;
+        text-align: center;
+    }
+    .view-all{
+        margin: 0;
+    }
+    .btn-view-all{
+        @extend .tf-btn;
+    }
+}
+
+// home page 
+#pagename-home{
+    .play-tiles-gallery{
+        &.play-games,&.play-characters{
+            position: relative;
+            padding: 2rem 0;
+            @media #{$small-up}{
+                padding: 4.3125rem 0 0 0;
+            }
+            @media #{$medium-up}{
+                padding: 6.3125rem 5rem 0 15px;
+            }
+            @media #{$large-up}{
+                padding:6.3125rem 15px 0 15px;
+            }
+            &:before, &:after{
+                content:"";
+                border: 4px solid $cobaltBlue;
+                width: auto;
+                border-left: 0;
+                border-bottom: 0;
+                border-right-width: 0;
+                position: absolute;
+                bottom: 0px;
+                pointer-events: none;
+                left: 0;
+                @media #{$small-up} {
+                    border-top-width: 8px;
+                }
+                @media #{$medium-up} {
+                    border-radius: 0 30px 0 0;
+                    border-right-width: 8px;
+                }
+            }
+            &:before{
+                border-color: $sorbusOrange;
+                top: 10px;
+                right: 20px;
+                @media #{$small-up} {
+                    top: 20px;
+                }
+            }
+            &:after{
+                top: 20px;
+                right: 0;
+                @media #{$small-up} {
+                    top: 36px;
+                }
+                @media #{$medium-up} {
+                    right: 36px;
+                }
+            }
+            .gallery-title{
+                padding: 0;
+                &:before{
+                    content:"";
+                    border-top: 4px solid $sorbusOrange;
+                    width: 100%;
+                    position: absolute;
+                    top: 10px;
+                    left: 0;
+                    pointer-events: none;
+                    @media #{$small-up} {
+                        border-top-width: 8px;
+                        top: 20px;
+                    }
+                }
+            }
+            .gallery-tile{
+                li{
+                    @media #{$small-down} {
+                        margin : 0;
+                    }
+                }
+            }
+        }
+        &.play-games{
+            padding-bottom: 3rem;
+            @media #{$xsmall-up}{
+                padding-bottom: 8rem;
+            }
+            @media #{$small-up}{
+                background: url(#{$imagePath}/Home_Game_T-artwork.png) no-repeat left center;
+            }
+            .gallery-tile{
+                ul > li:nth-of-type(1n+4){
+                    display: none;
+                }
+            }
+            .btn-view-all{
+                @media #{$small-down}{
+                    margin: 1rem 0 2.5625rem;
+                }
+            }
+        }
+        &.play-characters{
+            margin-top: 2.75rem !important;
+            padding-top: 2.9375rem;
+            padding-bottom: 0;
+            @media #{$small-up}{
+                margin-top: 4rem !important;
+                padding-top: 5.6875rem;
+                padding-bottom: .9375rem;
+            }
+            &:before{
+                content:'';
+                @include border-radius(0);
+                background: url(#{$imagePath}/Home_Map_Train_Desktop.png) no-repeat center bottom;
+                border: none;
+                height: 3.375rem;
+                top: -3.375rem;
+                width:100%;
+                @media #{$xsmall-down}{
+                    background: url(#{$imagePath}/Home_Map_Train_M.png) no-repeat center bottom;
+                    background-size: cover;
+                    height: 2.5rem;
+                    top: -2.5rem;
+                }
+            }
+            &:after{
+                border-color: #00a0dd;
+                right: 0px;
+                top: 29px;
+                @media #{$medium-up}{
+                    top: 38px;
+                    right: 20px;
+                }
+            }
+            .gallery-title:before{
+                border-color: $midnightBlue;
+                border-top-width: 12px;
+                top: 0;
+            }
+            .gallery-image+span{
+                background-color: $pacificBlue;
+            }
+        }
+        .show-more{
+            display: none !important;
+        }
+        .btn-view-all{
+            margin: 1rem 0 3.125rem;
+            @media #{$small-up}{
+                margin: 1.6875rem 0 2.8125rem;
+            }
+        }
+    }
+}
+
+// game landing page
+#play-game{
+    .play-list{
+        @media #{$small-up}{
+            @media #{$medium-down}{
+                padding: 0 10px !important;
+            }
+        }
+        li{
+            @media #{$medium-up}{
+                clear: none !important;
+                &:nth-child(3n+1){
+                    clear: both !important;
+                }
+                &:nth-child(even){
+    
+                }
+            }
+        }
+    }
+}

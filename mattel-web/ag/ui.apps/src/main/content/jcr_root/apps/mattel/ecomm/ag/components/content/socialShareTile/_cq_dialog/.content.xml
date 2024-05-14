@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Social Share Tiles"
+    sling:resourceType="cq/gui/components/authoring/dialog"
+    height="{Long}500"
+    width="{Long}600">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
+        <items jcr:primaryType="nt:unstructured">
+            <column
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/container">
+                <items jcr:primaryType="nt:unstructured">
+                    <image
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                        allowUpload="{Boolean}false"
+                        autoStart="{Boolean}false"
+                        class="cq-droptarget"
+                        fieldLabel="Social Share Tile Image"
+                        fileReferenceParameter="./socialShareTilePath"
+                        mimeTypes="[image/gif,image/jpeg,image/png,image/webp,image/tiff]"
+                        multiple="{Boolean}false"
+                        name="./socialShareTileImage"
+                        uploadUrl="${suffix.path}"
+                        useHTML5="{Boolean}true"/>
+                    <alt
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        fieldLabel="Alt Text"
+                        name="./alt"/>
+                    <text
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        fieldLabel="Text"
+                        name="./text"/>
+                    <hidePintrest
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                        name="./hidePintrest"
+                        text="Hide Pintrest Icon"
+                        uncheckedValue="false"
+                        value="true"/>
+                    <hidefacebook
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                        name="./hidefacebook"
+                        text="Hide Facebook Icon"
+                        uncheckedValue="false"
+                        value="true"/>
+                    <linkUrl
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                            fieldLabel="Link URL"
+                            fieldDescription="Link entered here will be navigation link on click of text coming below the tile"
+                            name="./url"/>
+                    <openUrlIn
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/foundation/form/select"
+                            fieldLabel="Open URL In"
+                            name="./openUrlIn">
+                        <items jcr:primaryType="nt:unstructured">
+                            <sameWindow
+                                    jcr:primaryType="nt:unstructured"
+                                    text="Same Window"
+                                    value="sameWindow"/>
+                            <newTab
+                                    jcr:primaryType="nt:unstructured"
+                                    text="New Tab"
+                                    value="tabWindow"/>
+                            <newWindow
+                                    jcr:primaryType="nt:unstructured"
+                                    text="New Window"
+                                    value="newWindow"/>
+                        </items>
+                    </openUrlIn>
+                </items>
+            </column>
+        </items>
+    </content>
+</jcr:root>

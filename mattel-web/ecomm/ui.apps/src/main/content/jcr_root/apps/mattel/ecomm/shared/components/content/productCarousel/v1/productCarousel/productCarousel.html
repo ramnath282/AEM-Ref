@@ -1,0 +1,128 @@
+<sly data-sly-test="${wcmmode.edit}">${'Product Carousel Component' @ i18n}</sly>
+<sly data-sly-use.prodCarousel="com.mattel.ecomm.core.models.ProductCarousel"/>
+
+<div class="grid-section product-carousel-wrapper">
+   <ul data-apply-stack="${properties.enableStack}" data-sly-attribute.data-section="${properties.carouselTrackingText ? properties.carouselTrackingText : ''}" data-component="product carousel" class="product-carousel-grid grid-sm-2 grid-md-3 grid-lg-4 grid-xl-5 data-loading" data-quickview-enabled="${properties.enableQuickView}" data-snp-query-param="${prodCarousel.snpQueryParam}">
+   		<sly data-sly-test="${properties.enableContentBlock && !wcmmode.edit}">
+            <li class="product-content-block">
+				<sly data-sly-include="/apps/mattel/global/master/components/core/content/v1/content/content.html"/>
+	        </li>
+        </sly>
+   	</ul>
+   	<sly data-sly-test="${wcmmode.edit}">
+		<sly data-sly-include="/apps/mattel/global/master/components/core/content/v1/content/content.html"/>
+    </sly>
+</div>
+
+
+<script id="productCarouselTemp" type="text/x-handlebars-template">
+    {{#each this.results}}
+    <li data-position="{{indexStartWith1 @key}}" data-product="{{title}}" data-cta="{{title}}" data-type="click" class="grid-content" data-partno="{{PartNumber}}" data-producttype="{{product_type}}">
+            <a href="{{@root.urlPrefix}}{{url}}" class="product-image image-loaded">
+                <img alt="{{title}}-Image" src="{{#if imageLink}}{{scene7Url}}{{thumbnail}} ?$ossmallindex$ {{else}}//mattel.scene7.com/is/image/Mattel/ag_fallback_image{{/if}}">
+            </a>
+            {{#if @root.quickView}}
+                {{#ifNotEquals disableQuickOption true}}
+                    <a href="javascript:void(0);" class="quick-view" ><span>Quick view</span></a>
+                {{/ifNotEquals}}
+            {{/if}}
+            <div class="product-info">
+                {{#if @root.rating}}
+                    <div class="product-reviews">
+                        <span class="rating-section rating-{{changeToHyphen ProductReviewRating}}">
+                            <span class="sr-only">{{ProductReviewRating}} stars</span>
+                        </span>
+                        <span class="total-reviews"><span class="sr-only">reviews</span>&#40;{{#if ProductReviewCount}} {{ProductReviewCount}} {{else}} 0 {{/if}}&#41;</span>
+                    </div>
+                {{/if}}
+                {{#if @root.promoLabel}}
+                    <div class="promo-text {{ReleaseDateWeb}} {{#isLessThanMonths ReleaseDateWeb 6}}lessthan6{{/isLessThanMonths}}">
+                        {{#if MarketingCallout}}
+                            {{#isLessThanMonths ReleaseDateWeb 6}}
+                            {{#ifNotEquals ../NewOverrideFlag 'Y'}}
+                                New -
+                            {{/ifNotEquals}}
+                            {{/isLessThanMonths}}
+                        {{MarketingCallout}}
+                        {{else}}
+                            {{#isLessThanMonths ReleaseDateWeb 6}}
+                                {{#ifNotEquals ../NewOverrideFlag 'Y'}}
+                                    New
+                                {{/ifNotEquals}}
+                            {{else}}
+                                {{#if ../prices.displayPrice}}
+                                    {{#ifNotEquals ../product_type 'BundleBean'}}
+                                        {{#if ../prices.displayPrice.0.price}}
+                                            {{#greaterThan ../prices.list_price.0.price ../prices.displayPrice.0.price}}
+                                                Sale
+                                            {{/greaterThan}}
+                                        {{/if}}
+                                    {{/ifNotEquals}}
+                                {{/if}}
+                            {{/isLessThanMonths}}
+                    {{/if}}
+                    </div>
+                {{/if}}
+                <div class="grid-title-wrapper">
+                    <a href="{{@root.urlPrefix}}{{url}}" tabindex="0" class="grid-title">{{title}}</a>
+                </div>
+                {{#if @root.inventoryStatus}}
+                    {{#if availability}}
+                        <div class="inventory-status" data-text="{{availability}}">
+                            {{#ifEquals availability 'Backorderable' }}
+                                <strong>Backordered</strong>
+                            {{else}}
+                                <strong>
+                                    {{#ifEquals ../availability 'noLongerAvailable'}}
+                                        Sold Out
+                                    {{else}}
+                                        {{#ifEquals ../availability 'Limited'}}
+                                            Limited Quantities
+                                        {{else}}
+                                            {{#ifEquals ../availability 'Unavailable'}}
+                                                Unavailable
+                                            {{else}}
+                                                {{#ifEquals ../availability 'PreOrderable'}}
+                                                    Preorder
+                                                {{/ifEquals}}
+                                            {{/ifEquals}}
+                                        {{/ifEquals}}
+                                    {{/ifEquals}}
+                                </strong>
+                            {{/ifEquals}}
+                        </div>
+                    {{/if}}
+                {{/if}}
+                {{#if @root.price}}
+                    <div class="product-price {{priceName}}">
+                        <span class="{{ProductReviewRating}}">
+                            {{#if prices.displayPrice}}
+                                {{#ifEquals product_type 'BundleBean'}}
+                                    {{#ifEqualsPrice ../prices.displayPrice.0.price ../prices.displayPrice.0.bundleMinPrice}}
+                                        <span class="price price-currency">$</span>{{parseFloat ../prices.displayPrice.0.price ''}}
+                                    {{else}}
+                                        <span class="price price-currency">$</span>{{parseFloat ../prices.displayPrice.0.bundleMinPrice ''}}
+                                        <span class="price price-currency"> - $</span>{{parseFloat ../prices.displayPrice.0.price ''}}
+                                    {{/ifEqualsPrice}}
+                                {{else}}
+                                    {{#if ../prices.displayPrice.0.price}}
+                                        <span class="price price-currency">$</span>{{parseFloat ../prices.displayPrice.0.price ''}}
+                                        <span class="actual-list-price">{{finalActualPrice ../prices.list_price.0.price ../prices.displayPrice.0.price}}</span>
+                                    {{else}}
+                                        {{#ifNotEquals ../product_type 'GiftCard'}}
+                                        <span class="price price-currency">$</span>{{parseFloat ../prices.list_price.0.price ''}}
+                                        {{/ifNotEquals}}
+                                    {{/if}}
+                                {{/ifEquals}}
+                            {{/if}}
+                        </span>
+                    </div>
+                {{/if}}
+            </div>
+        </li>
+    {{/each}}
+</script>
+
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
+	<sly data-sly-call="${clientlib.js @ categories=['ecomm.productcarousel']}"/>
+</sly> 

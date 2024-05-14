@@ -1,0 +1,25 @@
+<sly data-sly-test="${wcmmode.edit}">${' Configure Product Features Module' @ i18n}</sly>
+<sly data-sly-use.productFeatures="com.mattel.ecomm.core.models.ProductFeaturesModel">
+    <div class="product-features" id="CTAlink">
+        <div data-sly-test="${productFeatures.productFeaturesTitle}" class="product-title">
+                <h2>${productFeatures.productFeaturesTitle @i18n}</h2>
+        </div>
+        <sly data-sly-list.prodDesc="${productFeatures.productDescription}">
+            <div class="col-lg-9">
+                <div data-sly-test="${prodDesc.prodFeatureDescription}" class="product-desc">
+                    <p>${prodDesc.prodFeatureDescription @context='html',i18n}</p>
+                </div>
+                <div class="features-view">
+                    <h2 data-sly-test="${prodDesc.prodFeatureTitle}" class="featurelist-title">${prodDesc.prodFeatureTitle @i18n}</h2>
+                    <div class="featureslist-container">
+                        <ul class="features-list" data-sly-list="${prodDesc.prodFeatureBulletItems}">
+                            <li>${item @context='html',i18n}</li>
+                        </ul>
+                        <div data-sly-test="${productFeatures.region != 'GB'}" class="heiglight-text">${'SKU' @i18n} #: ${productFeatures.productSKUId}</div>
+                        <div data-sly-test="${productFeatures.region =='GB'}" class="heiglight-text">${'SKU' @i18n,locale='gb'} #: ${productFeatures.productSKUId}</div>
+                    </div>
+                </div>
+            </div>
+        </sly>
+    </div>
+</sly>

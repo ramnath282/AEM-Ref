@@ -1,0 +1,17 @@
+<sly data-sly-test="${wcmmode.edit}">${'Configure Social Links' @i18n}</sly>
+<sly data-sly-use.socialLinkModel="com.mattel.global.core.model.SocialLinkModel"/>
+<sly data-sly-use.socialModel="com.mattel.global.core.model.SocialModel"/>
+<sly data-sly-test="${socialLinkModel.tagList && socialLinkModel.isSocailLinkAuthored && socialLinkModel.socialLinkLabel}">${socialLinkModel.socialLinkLabel @ context="html"}</sly>
+<ul data-sly-test="${socialLinkModel.tagList && socialLinkModel.isSocailLinkAuthored}">
+    <sly data-sly-list.tag="${socialLinkModel.tagList}">
+        <sly data-sly-test="${socialModel.categoryConfiguration}" data-sly-list.categoryConfiguration="${socialModel.categoryConfiguration}">
+            <sly data-sly-test="${categoryConfiguration.categoryType==tag}">
+                <sly data-sly-test="${categoryConfiguration.socialConfiguration}" data-sly-list.social="${categoryConfiguration.socialConfiguration}">
+                    <li>
+                        ${social.linkLabel} : <a href="${social.linkUrl}"> ${social.linkName}</a>
+                    </li>
+                </sly>
+            </sly>
+        </sly>
+    </sly>
+<ul>

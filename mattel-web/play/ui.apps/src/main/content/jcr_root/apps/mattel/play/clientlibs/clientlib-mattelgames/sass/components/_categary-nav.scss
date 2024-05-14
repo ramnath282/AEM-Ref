@@ -1,0 +1,317 @@
+.nav-carousel-slides {
+    background-color: mapping($categarynav,main,bgndColor);
+    padding: 20px 50px;
+    margin: mapping($categarynav,main,margin);
+    li {
+        display: mapping($categarynav,categarynavList,display);
+        margin-right: mapping($categarynav,categarynavList,marginRight);
+        a {
+            display: mapping($categarynav,categarynavLink,display);
+            color: #000;
+            background-color: #fff;
+            font-weight: mapping($categarynav,categarynavLink,fntWeight);
+            padding: 10px 25px;
+            //text-transform: mapping($categarynav,categarynavLink,txtTransform);
+            text-align: mapping($categarynav,categarynavLink,txtAlign);
+            white-space: mapping($categarynav,categarynavLink,whitSpace);
+            width:  mapping($categarynav,categarynavLink,width);
+            min-width: mapping($categarynav,categarynavLink,minWidth);
+            @include border-radius(mapping($categarynav,categarynavLink,borderRadius));
+            border: mapping($categarynav,categarynavLink,borderColor);
+            @media #{$small-down} {
+                background: mapping($categarynav,categarynavLink,bgndColorMob);
+            }
+            &:hover,
+            &:focus,
+            &.active {
+                color: #fff;
+                background: #000;
+                border: mapping($categarynav,categarynavLink,hoverborderColor);
+            }
+             
+        }
+    }
+    .slick-track {
+        margin-left: mapping($categarynav,categaryslickTrack,marginLeft);
+    }
+    .slick-prev,
+    .slick-next {
+        &:before {
+            font-family: mapping($categarynav,categaryslickprevNext,fntFamily);
+            background-color: mapping($categarynav,categaryslickprevNext,bgndColor);
+            
+        }
+    }
+    .slick-prev {
+        &:before {
+            content: mapping($categarynav,categaryslickPrev,prevContent);
+        }
+    }
+    .slick-next {
+        &:before {
+            content: mapping($categarynav,categaryslickNext,nextContent);
+        }
+    }
+    &.char-tiles {
+        padding: mapping($categarynav,categarytile,pad);
+        @if mapping($categarynav,categarytile,isEnchantCharList) == true {
+            @extend .container;
+        }
+        li {
+            margin-right: mapping($categarynav,categarytileList,marginRight);
+            background-color: mapping($categarynav,categarytileList,bgndColor);
+            a {
+                position: mapping($categarynav,categarytileLink,pos);
+                border-radius: mapping($categarynav,categarytileLink,borderRadius);
+                border: mapping($categarynav,categarytileLink,borderColor);
+                padding: mapping($categarynav,categarytileLink,pad);
+                text-align: mapping($categarynav,categarytileLink,txtAlign);
+                background-color: mapping($categarynav,categarytileLink,bgndColor);
+                &:hover,
+                &:focus,
+                &.active {
+                    background: mapping($categarynav,categarytileLink,hoverBgnd);
+                    color: mapping($categarynav,categarytileLink,hovertxtColor);
+                    border:mapping($categarynav,categarytileLink,hoverborderColor);
+                    opacity: mapping($categarynav,categarytileLink,hoveropacity);
+                }
+                span {
+                    position: mapping($categarynav,categarytileSpan,pos);
+                    z-index: mapping($categarynav,categarytileSpan,z-index);
+                    left: mapping($categarynav,categarytileSpan,posLeft);
+                    bottom: mapping($categarynav,categarytileSpan,posBottom);
+                    display: mapping($categarynav,categarytileSpan,display);
+
+                    width: mapping($categarynav,categarytileSpan,width);
+                    padding: mapping($categarynav,categarytileSpan,pad);
+                    margin: mapping($categarynav,categarytileSpan,margin);
+
+                    background-color: mapping($categarynav,categarytileSpan,bgndColor);
+                    color: mapping($categarynav,categarytileSpan,txtColor);
+                    
+                    font-size: mapping($categarynav,categarytileSpan,fntSize);
+                    line-height: mapping($categarynav,categarytileSpan,lineHeight);
+                    letter-spacing: mapping($categarynav,categarytileSpan,letterSpacing);
+                    white-space: mapping($categarynav,categarytileSpan,whitSpace);
+                    text-align: mapping($categarynav,categarytileSpan,txtAlign);
+                    text-transform: mapping($categarynav,categarytileSpan,txtTransform);
+
+                    cursor: mapping($categarynav,categarytileSpan,cursor);
+                    
+                    @include transform(mapping($categarynav,categarytileSpan,transform));
+                    @include transition(mapping($categarynav,categarytileSpan,transition)); 
+                    @include border-radius(mapping($categarynav,categarytileSpan,borderRadius));
+ 
+                }
+            }
+        }
+    }
+}
+
+.enable-carousel-nav {
+    @media #{$small-down} {
+        padding: 15px 10px 0;
+    }
+    .category-drpdown-display {
+        display: mapping($categarynav,categarycarouseldropDown,display);
+    }
+    @media #{$small-down} {
+        .crm-container {
+            position: mapping($categarynav,carouselcrmContainer,mobPos);
+            width: 90%;
+            margin: auto;
+            max-width: 270px;
+        }
+        .category-drpdown-display {
+            display: mapping($categarynav,categarydropDown,display);
+            text-align: mapping($categarynav,categarydropDown,txtAlign);
+            width: mapping($categarynav,categarydropDown,width);
+            border: mapping($categarynav,categarydropDown,borderColor);
+            border-radius: 25px;
+            background: mapping($categarynav,categarydropDown,bgnd);
+            color: #000;
+            margin-bottom: mapping($categarynav,categarydropDown,marginBottom);
+            position: mapping($categarynav,categarydropDown,pos);
+            min-height: 40px;
+            font-family: $mattelGamesSecondaryFont;
+            font-size: 18px;
+            font-weight: 500;
+            line-height: 20px;
+            padding-top: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 36px 0 16px;
+            span {
+                position: mapping($categarynav,categarydropdownSpan,pos);
+                width: auto;
+                height: 100%;
+                right: 0px;
+                top: 0px;
+                &:before {
+                    // border-left: mapping($categarynav,categarydropdownspanBefore,posborderLeft);
+                    // border-right: mapping($categarynav,categarydropdownspanBefore,posborderRight);
+                    // border-top: mapping($categarynav,categarydropdownspanBefore,posborderTop);
+                    // margin: mapping($categarynav,categarydropdownspanBefore,margin);
+                    // content: mapping($categarynav,categarydropdownspanBefore,beforeContent);
+                    // display: mapping($categarynav,categarydropdownspanBefore,display);
+                    // width: mapping($categarynav,categarydropdownspanBefore,width);
+                    // margin-top: mapping($categarynav,categarydropdownspanBefore,marginTop);
+                    content: "\f078";
+                    font-family: 'Font Awesome';
+                    font-weight: 900;
+                    -webkit-font-smoothing: antialiased;
+                    display: inline-block;
+                    font-style: normal;
+                    font-variant: normal;
+                    text-rendering: auto;
+                    line-height: 1;
+                    vertical-align: middle;
+                    color: #EE0024;
+                    font-size: 21px;
+                    right: 17px;
+                    top: 50%;
+                    position: absolute;
+                    transform: translateY(-50%);
+                }
+            }
+            &.open{
+                span{
+                    &::before{
+                        transform: translateY(-10px) rotate(180deg);
+                    }
+                }
+            }
+        }
+        .nav-carousel-slides {
+             &.nav-categorylist{
+                @if mapping($layout, main, isfisherprice) == true {
+                    &::-webkit-scrollbar-thumb {
+                        @include box-shadow(mapping($categarynav,slidescategoryList,scrollBoxShadow));
+                        border-radius: mapping($categarynav,slidescategoryList,scrollRadius);
+                        -webkit-border-radius: mapping($categarynav,slidescategoryList,scrollRadius);
+                        background-color:mapping($categarynav,slidescategoryList,scrollColor);
+                        border: mapping($categarynav,slidescategoryList,scrollBorder);
+                        background-clip:mapping($categarynav,slidescategoryList,scrollBgClip);
+                        
+                    }
+                    &::-webkit-scrollbar {
+                        width: mapping($categarynav,slidescategoryList,scrollWidth);
+                        background-color: mapping($categarynav,slidescategoryList,scrollBgColor);
+                        height:  mapping($categarynav,slidescategoryList,scrollHeight);
+                    }
+                }
+                display: mapping($categarynav,slidescategoryList,display);
+                background: mapping($categarynav,slidescategoryList,bgnd);
+                padding: 10px;
+                position: mapping($categarynav,slidescategoryList,pos);
+                z-index: mapping($categarynav,slidescategoryList,zIndex);
+                top: 46px;
+                border: 1px solid #E8E8E8;
+                border-radius: 10px;
+                box-sizing: border-box;
+                width: 100%;
+                li {
+                    text-align: mapping($categarynav,slidescategoryListL,txtAlign);
+                    /*background: $white;*/
+                    border-bottom: mapping($categarynav,slidescategoryListL,borderBottom);
+                    border-top: mapping($categarynav,slidescategoryListL,borderTop);
+                    width: mapping($categarynav,slidescategoryListL,width);
+                    margin: mapping($categarynav,slidescategoryListL,margin);
+                    display: mapping($categarynav,slidescategoryListL,display);
+                    @media #{$small-down} {
+                        width: mapping($categarynav,slidescategoryListL,mobWidth);
+                        margin:mapping($categarynav,slidescategoryListL,mobMargin);
+                    	@if mapping($layout, main, isfisherprice) == true {
+                            &:hover,
+                            &:active {
+                                padding-left: mapping($categarynav,slidescategoryListL,hoverpaddingLeftMob);
+                            }
+                        }
+                    }
+                    &:hover,
+                    &:active {
+                        background: mapping($categarynav,slidescategoryListL,hoverbgnd);
+                        color: mapping($categarynav,slidescategoryListL,hovertxtColor);
+                        border: mapping($categarynav,slidescategoryListL,hoverborderColor);
+                        width: mapping($categarynav,slidescategoryListL,hoverWidth);                        
+                        outline: mapping($categarynav,slidescategoryListL,hoverOutline);
+                    }
+                    a {
+                        width: mapping($categarynav,slidescategoryListLink,width);
+                        min-width: mapping($categarynav,slidescategoryListLink,minWidth);
+						display: mapping($categarynav,slidescategoryListLink,displayBlock);
+                        margin: mapping($categarynav,slidescategoryListLink,margin);
+                        color: #000;
+                        border-radius: mapping($categarynav,slidescategoryListLink,borderRadius);
+                        border: mapping($categarynav,slidescategoryListLink,borderColor);
+                        text-align: mapping($categarynav,slidescategoryListLink,txtAlign);
+                        white-space: mapping($categarynav,slidescategoryListLink,whiteSpace);
+                        
+                        &:hover,
+                        &:active {
+                            background: mapping($categarynav,slidescategoryListLink,hoverBgnd);
+                            color: mapping($categarynav,slidescategoryListLink,hovertxtColor);
+                        }
+                        &.active {
+                            background: mapping($categarynav,slidescategoryListLink,hoverBgnd);
+                             @media #{$small-down} {
+                              //background: mapping($categarynav,slidescategoryListLink,mobBgnd);
+                              background: #E8E8E8;
+             				}
+                        }
+                        @media #{$small-down} {
+                             color: #000000;
+                             background: mapping($categarynav,slidescategoryListLink,bgnd);
+                             text-transform: mapping($categarynav,slidescategoryListLink,textTransformMob);
+             			}
+                    }
+                    &:last-child a {
+                        border-bottom: mapping($categarynav,slidescategoryListLink,borderBottom);
+                    }
+                    &:last-child {
+                        border-bottom: mapping($categarynav,slidescategoryListLink,borderBottom);
+                    }
+                   
+                }
+            }
+        }
+    } 
+}
+
+.fpSubHead{
+    margin-top:mapping($categarynav,fpSubNavHeader,marginTopDesk); //5em;
+    padding:mapping($categarynav,fpSubNavHeader,padDesk);
+    @media #{$medium-down} {
+        margin-top:mapping($categarynav,fpSubNavHeader,marginTopTab);
+        padding:mapping($categarynav,fpSubNavHeader,padTab);
+    }
+    @media #{$small-down} {
+        margin-top:mapping($categarynav,fpSubNavHeader,marginTopMob);
+        padding:mapping($categarynav,fpSubNavHeader,padMob);
+    }
+    .nav-carousel-slides {
+        .slick-track {
+            margin-left: mapping($categarynav,fpSubNavHeader,slickTrackMarginLeft);
+        }
+        &.char-tiles{
+            display: mapping($categarynav,fpSubNavHeader,charTilesDisp);
+        } 
+        &.slick-initialized{
+            display: mapping($categarynav,fpSubNavHeader,slickInitializedDisp);
+        }
+        @media #{$medium-down}{
+            .slick-next, .slick-prev{
+                display: mapping($categarynav,fpSubNavHeader,arrowDispTab);
+            }
+        }
+        @media (max-width: 1024px) {
+            .slick-next, .slick-prev{
+                display: mapping($categarynav,fpSubNavHeader,arrowDispTab);
+            }
+        }
+        .slick-disabled{
+            display:mapping($categarynav,fpSubNavHeader,disabledArrow);
+        }
+    }
+}

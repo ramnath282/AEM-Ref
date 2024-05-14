@@ -1,0 +1,66 @@
+// Rich Text Styles
+.rich-text {
+    background: mapping($richText, main, background);
+    overflow: mapping($richText, main, overflow);
+    padding: mapping($richText, main, padding);
+    margin-bottom: mapping($richText, main, marBottom);
+
+    @media #{$small-only} {
+        display: mapping($richText, main, displayFlexMob);
+        flex-direction: mapping($richText, main, flexDirMob);
+        padding: mapping($richText, main, paddingMob);
+    }
+
+    @media #{$medium-only} {
+        display: mapping($richText, main, displayFlexMob);
+        flex-direction: mapping($richText, main, flexDirMob);
+        padding: mapping($richText, main, paddingMob);
+        height: mapping($richText, main, heightMob);
+        justify-content: space-between;
+    }
+
+    p {
+        display: mapping($richText, richTxtP, Pdisplay);
+        overflow: mapping($richText, richTxtP, POverflow);
+        margin: mapping($richText, richTxtP, PMargin);
+
+        img {
+            float: mapping($richText, richTxtP, ImgDisplay);
+
+            @media #{$small-only} {
+                height: 68px;
+                width: 50px;
+            }
+
+            @media #{$medium-only} {
+                height: 77px;
+                width: 57px;
+            }
+        }
+    }
+
+    h2 {
+        margin: mapping($richText, richTxtHeading, HeadingMargin);
+        padding: mapping($richText, richTxtHeading, HeadingPadding);
+        font-size: mapping($richText, richTxtHeading, HeadingFontSize);
+        line-height: mapping($richText, richTxtHeading, HeadingLineHeight);
+        color: mapping($richText, richTxtHeading, HeadingColor);
+
+        @media #{$small-only} {
+            font-size: mapping($richText, richTxtHeading, HeadingFontSizeMob);
+            line-height: mapping($richText, richTxtHeading, HeadingLineHeightMob);
+            width: mapping($richText, richTxtHeading, widthMob);
+            text-align: mapping($richText, richTxtHeading, leftAlignMob);
+        }
+
+        @media #{$medium-only} {
+            font-size: mapping($richText, richTxtHeading, HeadingFontSizeMob);
+            line-height: mapping($richText, richTxtHeading, HeadingLineHeightMob);
+            width: mapping($richText, richTxtHeading, widthTab);
+            margin-top: mapping($richText, richTxtHeading, marginTopTab);
+            text-align: mapping($richText, richTxtHeading, leftAlignMob);
+            padding-left: mapping($richText, richTxtHeading, leftPaddingTab);
+        }
+
+    }
+}

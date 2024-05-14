@@ -1,0 +1,282 @@
+.play-category-details-component{
+    *:focus{
+        outline: none;
+    }
+    .enable-carousel-nav{
+        background: $whiteSmoke;
+        padding: .95rem 0;
+        @media #{$small-up} {
+            background:$very-dim-light;
+            @media #{$medium-down} {
+                padding: 1.625rem 0;
+            }
+        }
+        @media #{$medium-up}{
+            padding: 1.5625rem .95rem;
+        }
+        .nav-carousel-slides{
+            background-color:inherit !important;
+            li{
+                @extend .tf-list;
+                position: relative;
+                @media #{$small-down} {
+                    border-left-width: 0;
+                    border-right-width: 0;
+                    padding: 0.375rem !important;
+                }
+                @media #{$small-up}{
+                    border-left-width: 0;
+                    border-right-width: 0;
+                    margin-left: 15px;
+                    margin-right: 15px;
+                }
+                a{
+                    background-color: transparent;
+                    width:100%;
+                    &.active{
+                        opacity: 1;
+                        position: static;
+                        // pointer-events: none;
+                        cursor: default;
+                        &:after{
+                            content:'';
+                            position:absolute;
+                            left:0;
+                            top:0;
+                            width:100%;
+                            height:100%;
+                            background: rgba($GondolaGrey,.5);
+                            z-index: 11;
+                        }
+                    }
+                }
+                img+span{
+                    @extend .tf-label;
+                    background-color:$pacificBlue;
+                }
+            }
+            .slick-arrow:before{
+                @media #{$small-up} {
+                    @media #{$large-down} {
+                        padding: 0;
+                        font-size: 3.2rem;
+                    }
+                }
+            }
+            .slick-prev{
+                left: 0;
+                @media #{$small-up} {
+                    @media #{$large-down} {
+                        left: -8px;
+                    }
+                }
+                @media screen and (min-width: 1300px){
+                    left:-5%;
+                }
+                @media #{$xlarge-up}{
+                    left:-6%;
+                }
+            }
+            .slick-next{
+                right: 0;
+                @media #{$small-up} {
+                    @media #{$large-down} {
+                        right: -8px;
+                    }
+                }
+                @media screen and (min-width: 1300px){
+                    right:-5%;
+                }
+                @media #{$xlarge-up}{
+                    right:-6%;
+                }
+            }
+        }
+    }
+    .char-detials-comp{
+        padding:0;
+        background : $pacificBlue url("#{$imagePath}/Engine_detail_train_desktop_159x57px.png") right bottom no-repeat !important;
+        background-position: 98% 100% !important;
+        border-bottom: .75rem solid $midnightBlue;
+        @media #{$medium-up}{
+            border-bottom: none;
+            background-position: 98% 97.5% !important;
+        }
+        .container{
+            width: 100%;
+            background: inherit;
+        }
+        .char-detials-content{
+            @media #{$medium-up}{
+                @include flex();
+            }
+            .char-details-image{
+                z-index: 1;
+                display:inherit;
+                float: none !important;
+                width: auto;
+                flex-wrap: wrap;
+                flex-shrink: 1;
+                flex-flow: column;
+                // min-width: 34%;
+                @media #{$medium-up}{
+                    @media #{$large-down} {
+                        min-width: 53%;
+                    }
+                }
+                img{
+                    width: 100%;
+                }
+            }
+            .char-details-description{
+                float: none !important;
+                display:inherit;
+                width: auto;
+                flex-wrap: wrap;
+                flex-shrink: 1;
+                flex-flow: column;
+                padding: 1.25rem 1.25rem 3.1875rem;
+                margin-bottom: 5rem;
+                padding-bottom: 0;
+                height: auto;
+                max-height: 31.25rem;
+                padding-top: 0;
+                margin-top: 1.25rem;
+                @media #{$small-up}{
+                    @media #{$medium-down}{
+                        padding: 1rem 1.875rem;
+                        padding-top: 0;
+                        margin-top: 1rem;
+                    }
+                }
+                @media #{$medium-up}{
+                    padding: .8125rem 1.875rem;
+                    margin-bottom: 0;
+                    max-width: 60%;
+                    position: static;
+                    max-height: calc(31.25rem - 2rem);
+                    padding-top: 0;
+                    margin-top: 1.1875rem;
+                    margin-right: 10px;
+                    @media screen and (max-width:1400px){
+                        max-height: calc(31.25rem - 5rem);
+                    }
+                }
+                @media #{$xlarge-only}{
+                    @media screen and (max-width:2100px){
+                        padding-right: 5rem;
+                    }
+                    @media screen and (max-width:1400px){
+                        padding-right: 4rem;
+                    }
+                }
+                &::-webkit-scrollbar {
+                    width: 10px;
+                }
+                 
+                &::-webkit-scrollbar-track {
+                    display: none;
+                }
+                 
+                &::-webkit-scrollbar-thumb {
+                    @include border-radius(5px);
+                    width: 10px;
+                    background-color: rgba(0,0,0,0.5);
+                }
+                &:before{
+                    content:"";
+                    position:absolute;
+                    right: 0;
+                    top: 0;
+                    width:100%;
+                    height:100%;
+                    pointer-events: none;
+                    background :url("#{$imagePath}/Engine_detail_background_train-whistle_desktop_331x435px.png") right center no-repeat;
+                    background-size: contain;
+                    max-height: 400px;
+                    max-width: 50%;
+                    @media #{$small-up}{
+                        max-width: 20.6875rem;
+                    }
+                    @media #{$medium-up}{
+                        background-position: right top;
+                    }
+                }
+                &:after{
+                    @media #{$medium-up} {
+                        content: '';
+                        position: absolute;
+                        height: .75rem;
+                        background:$midnightBlue;
+                        width:100%;
+                        left:0;
+                        bottom:0;
+                    }
+                }
+                h1{
+                    @extend .tf-heading-without-bgnd;
+                    margin-bottom: 4px;
+                    &:empty{
+                        display: none;
+                    }
+                }
+                p{
+                    @extend .tf-description;
+                    margin-top: 0;
+                    margin-bottom: 1.875rem;
+                    strong{
+                        @extend .font-knapford-b;
+                        color:$black;
+                        font-size: 1.375rem;
+                        margin-bottom: 10px;
+                        display: inline-block;
+                    }
+                    @media #{$medium-down} {
+                        font-size: 1.125rem;
+                        line-height:1.5rem;
+                    }
+                    @media #{$medium-up}{
+                        @media screen and (max-width: 1600px){
+                            max-width: calc(100% - 35px);
+                        }
+                    }
+                    &:empty{
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.root.responsivegrid:not(.cq-Editable-dom){
+    .play-category-details-component{
+        .nav-carousel-slides{
+            @extend .container;
+            padding:0;
+            @media #{$small-down} {
+                margin-left: -5px;
+            }
+            &:not(.slick-initialized){
+                max-height: 0;
+                overflow: hidden;
+                margin: 1.5625rem 0;
+                @extend .tf-loading;
+            }
+            &:empty{
+                display: none;
+            }
+            li{
+                img+span{
+                    @extend .h6-tag;
+                    @media #{$small-up}{
+                        margin-top: .75rem;
+                    }
+                    @media #{$small-down} {
+                        margin-top: 0.375rem;
+                    }
+                }
+            }
+        }
+    }
+}

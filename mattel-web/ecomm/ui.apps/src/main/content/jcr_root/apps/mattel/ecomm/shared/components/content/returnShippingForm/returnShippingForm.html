@@ -1,0 +1,78 @@
+<sly data-sly-test="${wcmmode.edit}">
+<b>${'Configure Return Shipping Form Component' @i18n}</b></sly>
+<script id="state" type="text/x-handlebars-template">
+        {{#each this}}
+            <option value="{{code}}">{{displayName}}</option>
+        {{/each}}
+    </script>	
+<div class="return-info-body">
+	<input type="hidden" id="isGT" value="${properties.isGt}">  
+	<div class="return-form-body" id="returnsInfo">
+		<form id="returnForm" class="return-form" action="">
+				<input type="hidden"
+				value="" id="return_error_field"> <input type="hidden"
+				value="" id="return_error_code"> <input type="hidden"
+				value="" id="return_error_message">
+			<fieldset class="select-picker-wrapper">
+				<ul>
+					<li>
+						<div class="input-field required">
+							<input type="text" id="firstName" maxlength="40" name="firstName"
+								data-key="firstName" aria-describedby="addressFirstNameError"
+								class="form-input long-input " value="" autocomplete="off"
+								required /> <label class="placeholder-label" for="firstName">${properties.firstNameLabel}</label>
+							<div id="addressFirstNameError" class="help-block form-message"></div>
+						</div>
+					</li>
+					<li>
+						<div class="input-field required">
+							<input type="text" id="lastName" maxlength="40" name="lastName"
+								data-key="lastName" aria-describedby="addressLastNameError"
+								class="form-input long-input " value="" autocomplete="off"
+								required /> <label class="placeholder-label" for="lastName">${properties.lastNameLabel}</label>
+							<div id="addressLastNameError" class="help-block form-message"></div>
+						</div>
+					</li>
+
+				</ul>
+
+			</fieldset>
+
+			<fieldset class="select-picker-wrapper">
+				<ul>
+					<li>
+						<div class="input-field default-state required">
+							<select class="form-input long-input" name="stateProvince"
+								required data-key="state" aria-describedby="defaultStateError"
+								id="defaultState">
+							</select> <label class="placeholder-label input-state-label"
+								for="defaultState">${properties.stateLabel}</label>
+							<div id="defaultStateError" class="help-block form-message"></div>
+							<span class="bs-caret"></span>
+						</div>
+					</li>
+					<li>
+						<div class="input-field required">
+							<input type="text" maxlength="40" id="zipCode" name="zipCode"
+								aria-describedby="zipError" data-key="zipCode"
+								class="form-input long-input " value="" required /> <label
+								class="placeholder-label" for="zipCode">${properties.zipCodeLabel}</label>
+							<div id="zipError" class="help-block form-message"></div>
+						</div>
+					</li>
+				</ul>
+			</fieldset>
+			<div class="generate-lebel">
+               <input class="theme-btn form-submission add-add-Btn" type="submit" id="returnSubmit" role="button" value="${properties.ctaButtonLabel}">
+             </div>
+			<div class="hide return_analytics_success"></div>
+			<div class="hide return_analytics_service_failure"></div>
+			<div class="hide return_analytics_validation_failure"></div>
+		</form>
+	</div>
+</div>
+<sly
+	data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
+<sly
+	data-sly-call="${clientlib.js @ categories='ecomm.returnShippingForm'}" />
+</sly>

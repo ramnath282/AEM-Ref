@@ -1,0 +1,67 @@
+<template data-sly-template.productBeantemplate="${@ properties}">
+
+	<script id="hearingAidTemplate" type="text/x-handlebars-template">
+		{{#ifEquals KitDisplayable 'Y'}}
+		<div id="hearingAid" data-selection-id="addon{{../index}}"
+		data-association="{{../associationType}}"
+		data-sku-id="{{../partNumber}}"
+		class="option addon productBean disabled">
+			<div class="selected">
+				   <span class="name" id="change{{../name}}Acc">
+						   {{#if ../name}}
+							   {{../name}}
+						   {{else}}
+							   {{../optionalName}}
+						   {{/if}}
+				   </span>
+				   <span aria-describedby="change{{../name}}Acc" class="change" aria-expanded="false" role="link" tabindex="0">
+					   <span>
+						   ${properties.addonsChangeLabel @ context='unsafe'} <i class="fas fa-chevron-right"></i>
+					   </span>
+				   </span>
+			   </div>
+			   <div class="option-details">
+				   <h2>
+						   {{#if ../name}}
+							   {{../name}}
+						   {{else}}
+							   {{../optionalName}}
+						   {{/if}}
+				   </h2>
+				   <header>{{{../KitInstructions}}}</header>
+				   <div data-sku-id="{{../partNumber}}"  data-kitdisplayable="{{../KitDisplayable}}" data-kitoption="{{../KitOption}}" data-product-type="{{../product_type}}"  data-association="{{../associationType}}" class="choice" data-choice="{{#if ../name}}{{../name}}{{else}}{{../optionalName}}{{/if}}: Yes">
+					<div class="img-responsive"><img alt="addon thumbnail" src="{{../thumbnail}}" /></div>
+					<div class="trunk-desc">
+						<p><span class="trunk-heading">Include for <span class="gt-price stock-price"></span></span>
+						</p>
+						<form>
+							<div class="gt-hearaid-option-group" data-control-type="radio" data-binder-name="gt-hearing-aid" data-mandate="false">
+								{{#each ../childProducts}}
+								<div class="hearAidRadio" data-variantid="{{this.id}}">
+							  {{#if this.core}}
+											<input  class="formInputType" data-choice="{{#if ../../name}}{{../../name}}{{else}}{{../../optionalName}}{{/if}} :  {{this.core.variant_definingAttributes.Location}}" type="radio" name="hearingAidOption" data-sku-id="{{this.core.sku}}" id="{{this.core.sku}}" value="{{this.core.sku}}">
+											<span  class="formInputType" data-choice="{{#if ../../name}}{{../../name}}{{else}}{{../../optionalName}}{{/if}} :  {{this.core.variant_definingAttributes.Location}}" data-sku-id="{{this.core.sku}}" > {{this.core.variant_definingAttributes.Location}}</span>
+										{{/if}}
+									</div>
+								{{/each}}
+							 </div>
+						</form>
+					</div>
+				</div>
+				<div class="choice notInterestedAddon addons" data-choice="{{#if ../name}}{{../name}}{{else}}{{../optionalName}}{{/if}}: No">
+					<div class="trunk-desc">
+						<p><span class="trunk-heading" role="link" tabindex="0">${properties.addonsNotInterestedLabel @ context='unsafe'}</span><span class="arrow-toggle arrowLink"></span></p>
+
+					</div>
+				</div>
+			   </div>
+		   </div>
+	   {{/ifEquals}}
+	</script>
+
+</template>
+
+
+<template data-sly-template.productBeanEmptytemplate="${@ properties}">
+   <script id="hearingAidTemplate" type="text/x-handlebars-template"></script>
+</template>

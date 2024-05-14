@@ -1,0 +1,80 @@
+<sly data-sly-test="${wcmmode.edit}">${'Edit Search Result Component' @i18n}</sly>
+<sly data-sly-use.searchResultModel="com.mattel.global.core.model.SearchResultModel"/>
+<input type="hidden" id="snpEP" value="${searchResultModel.snpUrl}">
+<input type="hidden" id="searchResultType" value="${properties.searchType}">
+<input type="hidden" id="articleLoadCount" value="${properties.articleLoadCount ? properties.articleLoadCount : '12'}">
+<input type="hidden" id="webResultImg" value="${properties.webResultImgFileRef}">
+<input type="hidden" id="docResultImg" value="${properties.docResultImgFileRef}">
+
+<div class="search-outer-wrapper">
+	<div id="newsHeaderGrid"></div>
+	<div class="search-result">
+		<ul class="search-at-glance" >
+			<div id="searchGridInfo">
+			</div>
+		</ul>
+	</div>
+	<div class="cta-button solid cta-btn-column-1" hidden data-sly-test=${properties.seeMoreTitle}>
+		<a href="javascript:void(0);" role="button" class="btn-cta-item view-all-btn">${properties.seeMoreTitle @i18n}</a>
+	</div>
+
+</div>
+
+<div class="loader-outer">
+	<div class="listing-loader"></div>
+</div>
+
+<script type="text/x-handlebars-template" id="newsHeaderTemplate">
+{{#if searchResult}}
+	<h1 class="search-title">${properties.noSearchResultTitle ? properties.noSearchResultTitle : 'Oh no! No search Results for:' @ context = 'unsafe' , i18n} "{{searchText}}"</h1> 
+    <h3 class="search-desc">${properties.noSearchResultDescription ? properties.noSearchResultDescription : 'Please try searching for something else' @ context = 'unsafe' , i18n}</h3>    
+{{else}}
+    <h1 class="search-title">${properties.searchResultTitle ? properties.searchResultTitle : 'Search Results for:' @ context = 'unsafe' , i18n} "{{searchText}}"
+    <span class="total-search">
+        {{#unless searchResult}}
+            ({{total}} ${properties.resultsTitle ?  properties.resultsTitle : 'results' @ context = 'unsafe' , i18n})
+            {{/unless}}
+    </span>
+    </h1>
+	<div class="title-divider"></div>
+{{/if}}
+          
+
+</script>
+
+<script type="text/x-handlebars-template" id="newsSearchTemplate" >
+    {{#each this}}
+        <li class="individual-search">
+                {{#if documentType}}
+              {{#ifEquals documentType 'News Article'}}
+                <div class="icon-img document-icon"></div>
+               {{else}}
+               <div class="icon-img webpage-icon"></div>
+              {{/ifEquals}}
+             {{/if}}
+            	<h3 class="news-title">
+                	<a href="{{link}}">{{title}}</a>
+                </h3>
+            {{#if description}}
+            <div class="news-descrip"> {{description}} </div>
+            {{/if}}
+        </li>
+    {{/each}}
+</script>
+
+<sly data-sly-use.contentTab="com.mattel.global.master.core.model.ContentTab"/>
+<sly data-sly-test="${contentTab.items && contentTab.items.size> 0}">
+	<sly data-sly-test="${!wcmmode.edit}">
+    	<div class="show-noSearchResultsItems" hidden>
+    		<sly data-sly-repeat.item="${contentTab.items}" data-sly-resource="${item.name @ decorationTagName='div'}"></sly>
+        </div>
+    </sly>
+    <sly data-sly-test="${wcmmode.edit}">
+    	<sly data-sly-repeat.item="${contentTab.items}" data-sly-resource="${item.name @ decorationTagName='div'}"></sly>
+    </sly>
+</sly>
+<sly data-sly-resource="${resource.path @ resourceType='wcm/foundation/components/parsys/newpar', appendPath='/*', decorationTagName='div', cssClassName='grid-inner'}" data-sly-test="${(wcmmode.edit || wcmmode.preview) && contentTab.items.size < 1}">
+</sly>
+
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html"
+    data-sly-call="${clientlib.js @ categories='global.searchResult'}"/>

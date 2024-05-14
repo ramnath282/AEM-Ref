@@ -1,0 +1,341 @@
+.articlecomponent-outer-wrapper {
+  .articlecomponent-container {
+    @include content-spacing(map-get($articleComp, articlecomponent_container));
+    .articlecomponentInfo {
+      @include content-spacing(map-get($articleComp, articlecomponent_info));
+      display: mapping($articleComp, articlecomponent_info, display);
+      flex-wrap: mapping($articleComp, articlecomponent_info, flex_wrap);
+      &:before {
+        content: mapping($articleComp, articlecomponent_info, bfcontent);
+      }
+      &:after {
+        content: mapping($articleComp, articlecomponent_info, bfcontent);
+      }
+    }
+    .most-recent-article {
+      text-align: mapping($articleComp, most_recent_article, textalign);
+      font-size: mapping($articleComp, most_recent_article, fontSize);
+      line-height: mapping($articleComp, most_recent_article, line_height);
+      @media #{$small-up} {
+        font-size: mapping($articleComp, most_recent_article, fontSizemd);
+        line-height: mapping($articleComp, most_recent_article, line_heightmd);
+      }
+      @media #{$large-up} {
+        font-size: mapping($articleComp, most_recent_article, fontSizelg);
+        line-height: mapping($articleComp, most_recent_article, line_heightlg);
+      }
+      @include content-spacing(map-get($articleComp, most_recent_article));
+    }
+    li {
+      @include content-spacing(map-get($articleComp, articlecomponent_entity));
+      width: mapping($articleComp, articlecomponent_entity, width);
+      @media #{$small-up} {
+        width: mapping($articleComp, articlecomponent_entity_column_two, width);
+      }
+      @media #{$large-up} {
+        width: mapping($articleComp, articlecomponent_entity_column_three, width);
+      }
+      .articlecomponent-info {
+        @include content-spacing(map-get($articleComp, article_spacing));
+        display: mapping($articleComp, article_spacing, display);
+        flex-direction: mapping($articleComp, article_spacing, flex_direction);
+        height: mapping($articleComp, article_spacing, height);
+        justify-content: mapping($articleComp, article_spacing, justify_content);
+        position: mapping($articleComp, article_spacing, position);
+        .img-wrapper {
+          display: mapping($articleComp, img_wrapper, display);
+          @media #{$large-up} {
+            //height: mapping($articleComp, img_wrapper, height);
+          }
+          img {
+            width: mapping($articleComp, articlecomponent_image, width);
+            }
+          .default-img {
+            height: mapping($articleComp, default_img, height);
+          }
+        }
+
+        .articlecomponent-content {
+          height: mapping($articleComp, articlecomponent_content, height);
+          color: mapping($articleComp, articlecomponent_content, color);
+          .articlecomponent-headline {
+            @include content-spacing(map-get($articleComp, articlecomponent_headline));
+            font-size: mapping($articleComp, articlecomponent_headline, font_size);
+            line-height: mapping($articleComp, articlecomponent_headline, line_height);
+            height: mapping($articleComp, articlecomponent_headline, height);
+            max-height: mapping($articleComp, articlecomponent_headline, max_height);
+            display: mapping($articleComp, articlecomponent_headline, display);
+            -webkit-line-clamp: mapping($articleComp, articlecomponent_headline, webkit_line_clamp);
+            -webkit-box-orient: mapping($articleComp, articlecomponent_headline, webkit_box_orient);
+            overflow: mapping($articleComp, articlecomponent_headline, overflow);
+            font-weight: mapping($articleComp, articlecomponent_headline, font_weight);
+            @media #{$small-up} {
+              font-size: mapping($articleComp, articlecomponent_headline, font_size_tablet);
+              line-height: mapping($articleComp, articlecomponent_headline, line_height_tablet);
+              max-height: mapping($articleComp, articlecomponent_headline, max_height_tablet);
+              -webkit-line-clamp: mapping($articleComp, articlecomponent_headline, webkit_line_clamp_tablet);
+            }
+            @media #{$large-up} {
+              font-size: mapping($articleComp, articlecomponent_headline, font_size_desktop);
+              line-height: mapping($articleComp, articlecomponent_headline, line_height_desktop);
+              max-height: mapping($articleComp, articlecomponent_headline, max_height_desktop);
+              -webkit-line-clamp: mapping($articleComp, articlecomponent_headline, webkit_line_clamp_desktop);
+            }
+          }
+          .articlecomponent-category {
+            @include content-spacing(map-get($articleComp, articlecomponent_category));
+            font-size: mapping($articleComp, articlecomponent_category, font_size);
+            line-height: mapping($articleComp, articlecomponent_category, line_height);
+            height: mapping($articleComp, articlecomponent_category, height);
+            max-height: mapping($articleComp, articlecomponent_category, max_height);
+            display: mapping($articleComp, articlecomponent_category, display);
+            -webkit-line-clamp: mapping($articleComp, articlecomponent_category, webkit_line_clamp);
+            -webkit-box-orient: mapping($articleComp, articlecomponent_category, webkit_box_orient);
+            overflow: mapping($articleComp, articlecomponent_category, overflow);
+            text-transform: mapping($articleComp, articlecomponent_category, text_transform);
+            @media #{$small-up} {
+              font-size: mapping($articleComp, articlecomponent_category, font_size_tablet);
+              line-height: mapping($articleComp, articlecomponent_category, line_height_tablet);
+              max-height: mapping($articleComp, articlecomponent_category, max_height_tablet);
+              -webkit-line-clamp: mapping($articleComp, articlecomponent_category, webkit_line_clamp_tablet);
+            }
+            @media #{$large-up} {
+              font-size: mapping($articleComp, articlecomponent_category, font_size_desktop);
+              line-height: mapping($articleComp, articlecomponent_category, line_height_desktop);
+              max-height: mapping($articleComp, articlecomponent_category, max_height_desktop);
+              -webkit-line-clamp: mapping($articleComp, articlecomponent_category, webkit_line_clamp_desktop);
+            }
+            p {
+              @include content-spacing(map-get($articleComp, articlecomponent_category_p));
+              width: mapping($articleComp, articlecomponent_category_p, width);
+              position: mapping($articleComp, articlecomponent_category_p, position);
+              &:hover {
+                color: mapping($articleComp, articlecomponent_category, hover_color);
+                &:after {
+                  content: mapping($articleComp, articlecomponent_category_hover, content);
+                  position: mapping($articleComp, articlecomponent_category_hover, position);
+                  bottom: mapping($articleComp, articlecomponent_category_hover, bottom);
+                  left: mapping($articleComp, articlecomponent_category_hover, left);
+                  width: mapping($articleComp, articlecomponent_category_hover, width);
+                  height: mapping($articleComp, articlecomponent_category_hover, height);
+                  background: mapping($articleComp, articlecomponent_category_hover, background);
+                }
+              }
+            }
+            //$spriteImgPath
+          }
+          .articlecomponent-description {
+            @include content-spacing(map-get($articleComp, articlecomponent_description));
+            font-size: mapping($articleComp, articlecomponent_description, font_size);
+            line-height: mapping($articleComp, articlecomponent_description, line_height);
+            height: mapping($articleComp, articlecomponent_description, height);
+            max-height: mapping($articleComp, articlecomponent_description, max_height);
+            display: mapping($articleComp, articlecomponent_description, display);
+            -webkit-line-clamp: mapping($articleComp, articlecomponent_description, webkit_line_clamp);
+            -webkit-box-orient: mapping($articleComp, articlecomponent_description, webkit_box_orient);
+            overflow: mapping($articleComp, articlecomponent_description, overflow);
+            @media #{$small-up} {
+              font-size: mapping($articleComp, articlecomponent_description, font_size_tablet);
+              line-height: mapping($articleComp, articlecomponent_description, line_height_tablet);
+              max-height: mapping($articleComp, articlecomponent_description, max_height_tablet);
+              -webkit-line-clamp: mapping($articleComp, articlecomponent_description, webkit_line_clamp_tablet);
+            }
+            @media #{$large-up} {
+              font-size: mapping($articleComp, articlecomponent_description, font_size_desktop);
+              line-height: mapping($articleComp, articlecomponent_description, line_height_desktop);
+              max-height: mapping($articleComp, articlecomponent_description, max_height_desktop);
+              -webkit-line-clamp: mapping($articleComp, articlecomponent_description, webkit_line_clamp_desktop);
+            }
+          }
+        }
+
+        .articlecomponent-cta {
+          @include content-spacing(map-get($articleComp, articlecomponent_cta));
+          display: mapping($articleComp, articlecomponent_cta, display);
+          height: mapping($articleComp, articlecomponent_cta, height);
+          width: mapping($articleComp, articlecomponent_cta, width);
+          position: mapping($articleComp, articlecomponent_cta, position);
+          bottom: mapping($articleComp, articlecomponent_cta, bottom);
+          @media #{$small-up} {
+            bottom: mapping($articleComp, articlecomponent_cta, tablet_bottom);
+          }
+          @media #{$large-up} {
+            bottom: mapping($articleComp, articlecomponent_cta, desktop_bottom);
+          }
+          .learn-more {
+            color: mapping($articleComp, learnMore_label, color);
+            font-size: mapping($articleComp, learnMore_label, font_size);
+            font-weight: mapping($articleComp, learnMore_label, font_weight);
+            position: mapping($articleComp, learnMore_label, position);
+            @media #{$small-up} {
+              font-size: mapping($articleComp, learnMore_label, font_size_tablet);
+            }
+            @media #{$large-up} {
+              font-size: mapping($articleComp, learnMore_label, font_size_desktop);
+            }
+
+            .link_text {
+              position: mapping($articleComp, learnMore_before, position);
+              @include font-properties($maaxMedium,$localFontVerdana);
+              font-weight: 500;
+              &:before {
+                @include content-spacing(map-get($articleComp, learnMore_before));
+                content: mapping($articleComp, learnMore_before, content);
+                float: mapping($articleComp, learnMore_before, float);
+                cursor: mapping($articleComp, learnMore_before, cursor);
+                position: mapping($articleComp, learnMore_before, position);
+                top: mapping($articleComp, learnMore_before, top_pos);
+                right: mapping($articleComp, learnMore_before, right_pos);
+                background: mapping($articleComp, learnMore_before, background);
+                background-position: mapping($articleComp, learnMore_before, backgroundPosition);
+                height: mapping($articleComp, learnMore_before, height);
+                width: mapping($articleComp, learnMore_before, width);
+              }
+              &:hover {
+                color: mapping($articleComp, link_text_hover, color);
+                &:before {
+                  background-position: mapping($articleComp, learnMore_before, background_Position_Hover);
+                }
+                &:after {
+                  content: mapping($articleComp, learnMore_after, content);
+                  position: mapping($articleComp, learnMore_after, position);
+                  width: mapping($articleComp, learnMore_after, width);
+                  left: mapping($articleComp, learnMore_after, left);
+                  bottom: mapping($articleComp, learnMore_after, bottom);
+                  height: mapping($articleComp, learnMore_after, height);
+                  background: mapping($articleComp, learnMore_after, background);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .ctaItem {
+      display: block;
+      text-align: center;
+    }
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p {
+    padding: 0;
+    margin: 0;
+    line-height: inherit;
+    font-size: inherit;
+    color: inherit;
+    font-weight: inherit;
+  }
+  a {
+    margin: 0;
+    line-height: inherit;
+    font-size: inherit;
+    color: inherit;
+    font-weight: inherit;
+  }
+}
+
+.grid-column-one {
+  .articlecomponent-outer-wrapper {
+    li {
+      @media #{$large-up} {
+        width: mapping($articleComp, articlecomponent_entity, width);
+      }
+    }
+  }
+}
+.grid-column-two {
+  .articlecomponent-outer-wrapper {
+    li {
+      @media #{$large-up} {
+        width: mapping($articleComp, articlecomponent_entity_column_two, width);
+      }
+    }
+  }
+}
+.grid-column-three {
+  .articlecomponent-outer-wrapper {
+    li {
+      @media #{$large-up} {
+        width: mapping($articleComp, articlecomponent_entity_column_three, width);
+      }
+    }
+  }
+}
+.grid-column-four {
+  .articlecomponent-outer-wrapper {
+    li {
+      @media #{$large-up} {
+        width: mapping($articleComp, articlecomponent_entity_column_four, width);
+      }
+    }
+  }
+}
+.grid-column-five {
+  .articlecomponent-outer-wrapper {
+    li {
+      @media #{$large-up} {
+        width: mapping($articleComp, articlecomponent_entity_column_five, width);
+      }
+    }
+  }
+}
+.grid-column-six {
+  .articlecomponent-outer-wrapper {
+    li {
+      @media #{$large-up} {
+        width: mapping($articleComp, articlecomponent_entity_column_six, width);
+      }
+    }
+  }
+}
+
+.loader-outer {
+  display: mapping($articleComp, loader_outer, display);
+  position: mapping($articleComp, loader_outer, position);
+  top: mapping($articleComp, loader_outer, p_top);
+  bottom: mapping($articleComp, loader_outer, p_bottom);
+  left: mapping($articleComp, loader_outer, p_left);
+  right: mapping($articleComp, loader_outer, p_right);
+  z-index: mapping($articleComp, loader_outer, z_index);
+  .loader {
+    border: mapping($articleComp, loader, border);
+    border-radius: mapping($articleComp, loader, border_radius);
+    border-top: mapping($articleComp, loader, border_top);
+    width: mapping($articleComp, loader, width);
+    height: mapping($articleComp, loader, height);
+    -webkit-animation: mapping($articleComp, loader, webkit_animation);
+    animation: mapping($articleComp, loader, animation);
+    background: mapping($articleComp, loader, background);
+
+    &:before,
+    &:after {
+      display: mapping($articleComp, loader, d_none);
+    }
+  }
+
+  /* Safari */
+  @-webkit-keyframes spin {
+    0% {
+      -webkit-transform: mapping($articleComp, loader_spin, zero_deg);
+    }
+    100% {
+      -webkit-transform: mapping($articleComp, loader_spin, full_deg);
+    }
+  }
+
+  @keyframes spin {
+    0% {
+      transform: mapping($articleComp, loader_spin, zero_deg);
+    }
+    100% {
+      transform: mapping($articleComp, loader_spin, full_deg);
+    }
+  }
+}

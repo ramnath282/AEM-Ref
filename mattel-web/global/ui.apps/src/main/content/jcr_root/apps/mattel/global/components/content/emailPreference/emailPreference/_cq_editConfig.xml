@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="cq:EditConfig">
+    <cq:listeners
+        jcr:primaryType="cq:EditListenersConfig"
+        afterchilddelete="CQ.CoreComponents.panelcontainer.v1.AFTER_CHILD_DELETE"
+        afterchildinsert="CQ.CoreComponents.panelcontainer.v1.AFTER_CHILD_INSERT"
+        afterchildmove="CQ.CoreComponents.panelcontainer.v1.AFTER_CHILD_MOVE"
+        afterdelete="REFRESH_PAGE"
+        afteredit="REFRESH_PAGE"
+        afterinsert="REFRESH_PAGE"
+        aftermove="REFRESH_PAGE"/>
+    <cq:inplaceEditing
+        jcr:primaryType="cq:InplaceEditingConfig"
+        active="{Boolean}true"
+        editorType="hybrid">
+        <cq:childEditors jcr:primaryType="nt:unstructured">
+            <title
+                jcr:primaryType="cq:ChildEditorConfig"
+                title="Title"
+                type="text"/>
+            <description
+                jcr:primaryType="cq:ChildEditorConfig"
+                title="Description"
+                type="text"/>
+            <subTitle
+                jcr:primaryType="cq:ChildEditorConfig"
+                title="Sub title"
+                type="text"/>
+        </cq:childEditors>
+        <config jcr:primaryType="nt:unstructured">
+            <title
+                jcr:primaryType="nt:unstructured"
+                name="./title"
+                propertyName="./title">
+                <rtePlugins
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceSuperType="mattel/global/components/content/rtePlugins/rtePlugins"/>
+                <uiSettings
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceSuperType="mattel/global/components/content/rtePlugins/uiSettings"/>
+            </title>
+            <description
+                jcr:primaryType="nt:unstructured"
+                name="./description"
+                propertyName="./description">
+                <rtePlugins
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceSuperType="mattel/global/components/content/rtePlugins/rtePlugins"/>
+                <uiSettings
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceSuperType="mattel/global/components/content/rtePlugins/uiSettings"/>
+            </description>
+            <subTitle
+                jcr:primaryType="nt:unstructured"
+                name="./subTitle"
+                propertyName="./subTitle">
+                <rtePlugins
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceSuperType="mattel/global/components/content/rtePlugins/rtePlugins"/>
+                <uiSettings
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceSuperType="mattel/global/components/content/rtePlugins/uiSettings"/>
+            </subTitle>
+        </config>
+    </cq:inplaceEditing>
+    <cq:dropTargets jcr:primaryType="nt:unstructured">
+        <image
+            jcr:primaryType="cq:DropTargetConfig"
+            accept="[image/.*,video/*,Multipart/Related; type=application/x-SpinSet,Multipart/Related; type=application/x-ImageSet,Multipart/Related; type=application/x-MixedMediaSet]"
+            groups="[media,s7media]"
+            propertyName="./image">
+            <parameters
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="mattel/global/components/content/testComponent/v1/testComponent"/>
+        </image>
+    </cq:dropTargets>
+</jcr:root>

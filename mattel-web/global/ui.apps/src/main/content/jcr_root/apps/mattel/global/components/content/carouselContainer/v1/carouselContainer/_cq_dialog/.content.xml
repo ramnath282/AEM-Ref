@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Carousel"
+    sling:resourceType="cq/gui/components/authoring/dialog"
+    extraClientlibs="[core.wcm.components.commons.editor.dialog.childreneditor.v1,core.wcm.components.carousel.v1.editor]"
+    trackingFeature="core-components:carousel:v1">
+    <content
+        granite:class="cmp-carousel__editor"
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <general
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="General"
+                        sling:orderBefore="items"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <headline
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/well">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <title
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                        fieldDescription="Please enter title"
+                                                        fieldLabel="Title"
+                                                        name="./title"/>
+                                                    <description
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                        fieldDescription="Please enter description"
+                                                        fieldLabel="Description"
+                                                        name="./description"/>
+                                                    <position
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                        emptyOption="{Boolean}false"
+                                                        fieldDescription="Please select the position of Text"
+                                                        fieldLabel="Text Position"
+                                                        name="./textPosition">
+                                                        <items jcr:primaryType="nt:unstructured">
+                                                            <topleft
+                                                                jcr:primaryType="nt:unstructured"
+                                                                text="Text Center"
+                                                                value="text-center"/>
+                                                            <topcenter
+                                                                jcr:primaryType="nt:unstructured"
+                                                                text="Text Left"
+                                                                value="text-left"/>
+                                                            <topright
+                                                                jcr:primaryType="nt:unstructured"
+                                                                text="Text Right"
+                                                                value="text-right"/>
+                                                        </items>
+                                                    </position>
+                                                </items>
+                                            </headline>
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </general>
+					<backgroundStyle
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Background"
+                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <column
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+									<backgroundoption
+                                        granite:class="cq-dialog-dropdown-showhide"
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                        fieldLabel="Background Option"
+                                        name="./backOption">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <image
+                                                jcr:primaryType="nt:unstructured"
+                                                text="Image"
+                                                value="image"/>
+                                            <color
+                                                jcr:primaryType="nt:unstructured"
+                                                text="Color"
+                                                value="color"/>
+                                        </items>
+                                        <granite:data
+                                            jcr:primaryType="nt:unstructured"
+                                            cq-dialog-dropdown-showhide-target=".bg-option-showbg-target"/>
+                                    </backgroundoption>
+                                    <bgColor
+                                        granite:class="hide bg-option-showbg-target"
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <backgroundColor
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/colorfield"
+                                                fieldLabel="Background Color:"
+                                                name="./backgroundColor"/>
+                                        </items>
+                                        <granite:data
+                                            jcr:primaryType="nt:unstructured"
+                                            showhidetargetvalue="color"/>
+                                    </bgColor>
+                                    <bgImage
+                                        granite:class="hide bg-option-showbg-target"
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <backgroundImage
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                                allowUpload="{Boolean}false"
+                                                autoStart="{Boolean}false"
+                                                class="cq-droptarget"
+                                                fieldLabel="Upload Background Image:"
+                                                fileReferenceParameter="./fileReferenceBgImg"
+                                                mimeTypes="[image/gif,image/jpeg,image/png,image/webp,image/tiff]"
+                                                multiple="{Boolean}false"
+                                                name="./backgroundImage"
+                                                uploadUrl="${suffix.path}"
+                                                useHTML5="{Boolean}true"/>
+                                        </items>
+                                        <granite:data
+                                            jcr:primaryType="nt:unstructured"
+                                            showhidetargetvalue="image"/>
+                                    </bgImage>
+                                </items>
+                            </column>
+                        </items>
+                    </backgroundStyle>
+                    <properties
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Properties"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:hideChildren="[autoplay,autoplayGroup]">
+                                            <slidetoshow
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+                                                fieldLabel="Number of Slides to Show"
+                                                name="./slideToShow"/>
+                                            <slidetoscroll
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+                                                fieldLabel="Number of Slides to Scroll"
+                                                name="./slidetoscroll"/>
+											<slideRotationSpeed
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+												fieldDescription="Configure Frame Rotation Speed in milli seconds"
+                                                fieldLabel="Rotation Frame Timing (in ms)"
+												min="500"
+												step="500"
+                                                name="./slideRotationSpeed"/>
+                                            <centerMode
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/switch"
+                                                fieldLabel="Center Mode?"
+                                                name="./centerMode"
+                                                uncheckedValue="false"
+                                                value="true"/>
+                                            <arrows
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/switch"
+                                                fieldDescription="Select for Arrow Type Carousel"
+                                                fieldLabel="&#xa;&#xa;&#xa;&#xa;&#xa;&#xa;&#xa;&#xa;&#xa;&#xa;&#xa;&#xa;&#xa;&#xa;&#xa;&#xa;&#xa;&#xa;Arrow type ?"
+                                                name="./arrows"
+                                                uncheckedValue="false"
+                                                value="true"/>
+                                            <outerarrows
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/switch"
+                                                fieldDescription="Select for Outer Arrow Type"
+                                                fieldLabel="Outer Arrow ?"
+                                                name="./outerArrows"
+                                                uncheckedValue="false"
+                                                value="true"/>
+                                            <dots
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/switch"
+                                                fieldDescription="Select for Dots Type Carousel"
+                                                fieldLabel="Dot Type ?"
+                                                name="./dots"
+                                                text="Dots"
+                                                uncheckedValue="false"
+                                                value="true"/>
+                                            <autoPlay
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/switch"
+                                                fieldLabel="AutoPlay?"
+                                                name="./autoPlay"
+                                                uncheckedValue="false"
+                                                value="true"/>
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </properties>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>

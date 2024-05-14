@@ -1,0 +1,31 @@
+<sly data-sly-test="${wcmmode.edit}">Recipe Card</sly>
+<sly data-sly-use.socialShareTemplate="com.mattel.ag.explore.core.model.SocialShareTemplateModel">
+    <div class="recipe-card mb-30" style="background-color:#fff;">
+        <div class="container">
+            <div class="row">
+                <div class="card-content">
+                    <div class="card-content-share pull-right text-center">
+                        <sly data-sly-test="${properties.recipeImagePath}">
+                            <div class="card-content-image">
+                                <img src="${properties.recipeImagePath}" alt="${properties.recipeImageAlt}">
+                            </div></sly>
+                        <div class="social-icons">
+                            <a data-tracking-recipe-card="Recipe card|${properties.title}|Print" data-sly-test="${properties.hidePrint=='false'}" href="javascript:window.print()" class="hidden-xs-portrait print-me">
+                            </a>
+
+                            <a data-tracking-recipe-card="Recipe card|${properties.title}|Pinterest" data-sly-test="${properties.hidePintrest=='false'}" class="hidden-xs-portrait pinterest open-interstitial" aria-label="Pinterest" data-link-attr="Pinterest" href="javascript:void(0)"  data-toggle="modal" data-target="#exitPageModal" data-title="${properties.title}" data-description="${pageProperties.articleDescription}"data-media="${properties.recipeImagePath}" data-url="${currentPage.getPath}">
+                            </a></div>
+                    </div>
+                    <sly data-sly-test="${properties.title}">
+                        <h2>${properties.title}</h2></sly>
+                    <sly data-sly-test="${properties.subtitle}">
+                        <p><em>${properties.subtitle}</em></p></sly>
+                    ${properties.ingredients @context='html'}
+                    ${properties.description @context='html'}
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</sly>

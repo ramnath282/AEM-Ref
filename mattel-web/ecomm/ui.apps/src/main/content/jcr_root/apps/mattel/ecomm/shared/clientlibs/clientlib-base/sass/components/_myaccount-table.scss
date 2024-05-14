@@ -1,0 +1,52 @@
+table {
+    width: 100%;
+tr {
+    @media #{$xsmall-down} {
+        display: inline-block;
+        @include content-spacing(map-get($myacctable, ordertabletr));
+    }
+    th,td {
+        @extend .col-sm-3;
+        @include content-spacing(map-get($myacctable, ordertable));
+        font: mapping($myacctable,ordertable,font);
+        vertical-align:top;
+        background: mapping($myacctable,ordertable,background);
+        float: none;
+    }
+        td {
+            $borderProperty: mapping($myacctable, ordertable, border);
+            @if(map-get($borderProperty, enabled)) {
+                border-#{map-get($borderProperty,position)}: (map-get($borderProperty, size) solid map-get($borderProperty, color));
+            }
+            background: mapping($myacctable,ordertabletd,background);
+            font-weight: mapping($myacctable,ordertabletd,font);
+            line-height: em(29);
+            @media #{$xsmall-down} {
+                display: inline-block;
+                width: 100%;
+                line-height: 0;
+                padding: 0;
+            }
+            @media #{$xsmall-down} {
+                position: relative;
+                a {
+                    width: 100%;
+                    position: absolute;
+                    height: em(90);
+                    left: 0;
+                    z-index: 2;
+                    &:after {
+                        content: "\f054";
+                        @include font-awesome();
+                        margin-left: 5px;
+                        position: absolute;
+                        right: 0;
+                        font-size: em(20);
+                        top: 43%;
+                    }
+                }
+            }
+            
+        }
+    }
+}

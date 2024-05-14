@@ -1,0 +1,16 @@
+<!-- preloader content -->
+<sly data-sly-use.retailPageModel="com.mattel.ag.retail.core.model.RetailPageModel">
+    <div id="preloader" style="position:absolute; left:-2000%; visibility: none;" data-tealium="${retailPageModel.tealiumUrl}"></sly>
+<span id="preload1"></span>
+<span id="preload2"></span>
+</div>
+<script type="text/javascript">
+
+    (function(a,b,c,d){
+          var url = document.getElementById('preloader');
+
+    a=url.dataset.tealium;
+    b=document;c='script';d=b.createElement(c);d.src=a;d.type='text/java'+c;d.async=true;
+    a=b.getElementsByTagName(c)[0];a.parentNode.insertBefore(d,a);
+    })();
+</script>

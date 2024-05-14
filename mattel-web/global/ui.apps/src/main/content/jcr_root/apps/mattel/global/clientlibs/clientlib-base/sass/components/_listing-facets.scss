@@ -1,0 +1,145 @@
+.no-facets-container {
+    .listingFacetsContainer {
+        display: none;
+    }
+}
+
+.listingFacetsContainer {
+    @include print-css(
+        map-merge((
+            margin: (smallDown: auto),
+            min-width: (smallDown: 280px),
+            max-width: (smallDown: 500px),
+        ),
+        if(variable-exists(listFacets) and map-has-key($listFacets, container),
+            map-get($listFacets, container), ())));
+
+    .product-filter-section {
+        #filterComponentInfo {
+            @include print-css(
+                map-merge((
+                    font-size: 14px,
+                    margin: em(12) 0 em(15) 0,
+                ),
+                if(variable-exists(listFacets) and map-has-key($listFacets, compInfo),
+                    map-get($listFacets, compInfo), ())));
+
+            .btn-group {
+                .dropdown-toggle {
+                    @include print-css(
+                        map-merge((
+                            display: flex,
+                            align-items: center,
+                            position: relative,
+                            z-index: 111,
+                            margin-bottom: 0),
+                        if(variable-exists(listFacets) and map-has-key($listFacets, dropdownToggle),
+                            map-get($listFacets, dropdownToggle), ())));
+
+                    .caret {
+                        @include print-css(
+                            map-merge((
+                                background-repeat: no-repeat,
+                                width: 27px,
+                                height: 27px,
+                                background-position: -167px -277px,
+                                border: none,
+                                margin-left: auto),
+                            if(variable-exists(listFacets) and map-has-key($listFacets, dropdownCaret),
+                                map-get($listFacets, dropdownCaret), ())));
+                    }
+
+                    &[aria-expanded="true"] {
+                        .caret {
+                            @include print-css(
+                                map-merge((
+                                    background-position: -195px -277px),
+                                if(variable-exists(listFacets) and map-has-key($listFacets, dropdownCaretOpen),
+                                    map-get($listFacets, dropdownCaretOpen), ())));
+                        }
+                    }
+                }
+
+                .dropdown-menu {
+                    @include print-css(
+                        map-merge((
+                            margin: (
+                                defaultVal: -4px 0 0 11px,
+                                smallDown: -4px auto 0 auto
+                            ),
+                            width: (smallDown: 95%),
+                            right: (smallDown: 0)),
+                        if(variable-exists(listFacets) and map-has-key($listFacets, dropdownMenu),
+                            map-get($listFacets, dropdownMenu), ())));
+                }
+            }
+
+            .productTypes {
+                .products-list-item {
+                    @include print-css(
+                        map-merge((
+                            padding: (
+                                defaultVal: 0 0 16px 0,
+                                smallDown: 6.5px 0
+                            ),
+                            position: relative,
+                            max-width: (smallDown: 86%),
+                            margin: (smallDown: auto),
+                        ),
+                        if(variable-exists(listFacets) and map-has-key($listFacets, listItem),
+                            map-get($listFacets, listItem), ())));
+
+                    &:first-child {
+                        label {
+                            @include print-css(
+                                map-merge((
+                                    font-weight: bold !important
+                                ),
+                                if(variable-exists(listFacets) and map-has-key($listFacets, listItemFirstChild),
+                                    map-get($listFacets, listItemFirstChild), ())));
+                        }
+                    }
+
+                    &.list-item {
+                        input {
+                            &[type="radio"] {
+                                -moz-appearance: none;
+                                -webkit-appearance: none;
+                                appearance: none;
+                                @include print-css(
+                                    map-merge((
+                                        visibility: visible,
+                                        position: absolute,
+                                        width: 100%,
+                                        height: 24px,
+                                        top: (
+                                            defaultVal: 0,
+                                            xSmallUp: -5px
+                                        ),
+                                        left: -6px,
+                                        border: none,
+                                        background: none,
+                                    ),
+                                    if(variable-exists(listFacets) and map-has-key($listFacets, inputRadio),
+                                        map-get($listFacets, inputRadio), ())));
+                            }
+
+                            &:checked+label {
+                                @include print-css(
+                                    map-merge((
+                                        text-decoration: underline
+                                    ),
+                                    if(variable-exists(listFacets) and map-has-key($listFacets, inputRadioCheckedLabel),
+                                        map-get($listFacets, inputRadioCheckedLabel), ())));
+                            }
+                        }
+
+                        label {
+                            cursor: pointer;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

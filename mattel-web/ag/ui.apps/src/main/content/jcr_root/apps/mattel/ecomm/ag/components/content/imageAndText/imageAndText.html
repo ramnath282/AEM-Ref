@@ -1,0 +1,25 @@
+<sly data-sly-test="${wcmmode.edit}">${'Image and Text ' @ i18n}</sly>
+<div class="image-text-container ${properties.wrapTextAround}">
+    <sly data-sly-test="${properties.imageTextTitle}">
+        <div class="tile-heading text-${properties.headingAlignment}"> ${properties.imageTextTitle @context='html'}</div>
+    </sly>
+    <div class="flex-element flex-pull-${properties.imageSectionAlignment}">
+            <sly data-sly-test="${properties.imageTextReferenceMainImage}">
+                <img class="aticle-image pull-${properties.imageSectionAlignment}" src="${properties.imageTextReferenceMainImage}" data-aos="fade-up" alt="${properties.imageTextmainImageAlt}">
+            </sly>
+	<sly data-sly-test="${properties.textAlignment == 'left'}">
+        <div data-aos="fade-right">
+            <sly data-sly-test="${properties.imageTextDescription}">
+                ${properties.imageTextDescription @context='html'}
+            </sly>
+        </div>
+	</sly>
+	<sly data-sly-test="${properties.textAlignment == 'right'}">
+        <div data-aos="fade-left">
+            <sly data-sly-test="${properties.imageTextDescription}">
+                ${properties.imageTextDescription @context='html'}
+            </sly>
+        </div>
+	</sly>
+    </div>
+</div>

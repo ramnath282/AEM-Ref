@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Carousel"
+    sling:resourceType="cq/gui/components/authoring/dialog"
+    extraClientlibs="[global.customCTAChildreneditor,global.customContentChildreneditor,core.wcm.components.carousel.v1.editor,acs-commons.widgets.showhidedialogfields,carousel-fieldValidation]"
+    trackingFeature="core-components:carousel:v1">
+    <content
+        granite:class="cmp-carousel__editor"
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <configTab
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Config"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <viewer
+                                jcr:primaryType="nt:unstructured"
+                                jcr:title="Background Configuration"
+                                sling:resourceType="granite/ui/components/foundation/section">
+                                <config
+                                    jcr:primaryType="nt:unstructured"
+                                    jcr:title="Config"
+                                    sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                    margin="{Boolean}true"/>
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <freeform
+                                                granite:class="switcher-showhide-items-options"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/switch"
+                                                fieldDescription="Enabling this button will activate fields in which the user can author how many slides will display on desktop, tablet, and mobile."
+                                                fieldLabel="Manually Author Number of Slides to Display"
+                                                name="./freeform"
+                                                switcher-showhide-items-options-target=".switcherTextValue"
+                                                uncheckedValue="false"
+                                                value="true">
+                                                <granite:data
+                                                    jcr:primaryType="nt:unstructured"
+                                                    cqDialogCheckboxShowhideTarget=".switcherTextValue"/>
+                                            </freeform>
+                                            <freeformCarousel
+                                                granite:class="switcher-showhide-items-options"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/switch"
+                                                fieldDescription="Enabling this button will activate 'free form' mode in which the number of slides shown is dependent on the size of slides and the width of the screen."
+                                                fieldLabel="Free Form Display"
+                                                name="./freeFormCarousel"
+                                                uncheckedValue="false"
+                                                value="true"/>
+                                            <autoPlay
+                                                granite:class="cq-dialog-checkbox-showhide-items-options"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/switch"
+                                                cq-dialog-checkbox-showhide-items-options-target=".toggleTextOption"
+                                                fieldDescription="Enabling this button will result in the carousel automatically advancing slides rather than relying on visitors clicking to advance."
+                                                fieldLabel="Auto Play"
+                                                name="./autoPlay">
+                                                <granite:data
+                                                    jcr:primaryType="nt:unstructured"
+                                                    cqDialogCheckboxShowhideTarget=".toggleAutoPlay"/>
+                                            </autoPlay>
+                                            <infinte
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/switch"
+                                                fieldDescription="Enabling this button will allow the carousel to advance from the final slide back to the first."
+                                                fieldLabel="Infinite"
+                                                name="./infinte"
+                                                uncheckedValue="false"
+                                                value="true"/>
+                                            <timer
+                                                granite:class="toggleAutoPlay"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+                                                fieldDescription="Select the timer(speed)"
+                                                fieldLabel="Timer (In Seconds)"
+                                                min="{Long}1"
+                                                name="./timer"/>
+                                            <slidetoshow
+                                                granite:class="switcherTextValue"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+                                                fieldDescription="For use only when free form is disabled. Author the number of slides to show at one time."
+                                                fieldLabel="Number of Slides to Show"
+                                                min="{Long}1"
+                                                name="./slideToShow"/>
+                                            <slidetoscroll
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+                                                fieldDescription="Author the number of slides the carousel should advance upon user click."
+                                                fieldLabel="Number of Slides to Scroll"
+                                                min="{Long}1"
+                                                name="./slidetoscroll"/>
+                                            <freeFormMob
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+                                                fieldDescription="Author the number of slides to show at mobile width."
+                                                fieldLabel="Free form for mobile"
+                                                min="{Long}1"
+                                                name="./freeFormMob"/>
+                                            <freeFormTab
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+                                                fieldDescription="Author the number of slides to show at tablet width."
+                                                fieldLabel="Free form for tablet"
+                                                min="{Long}1"
+                                                name="./freeFormTab"/>
+                                            <highlightActiveSlide
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                fieldDescription="This is for Corporate site and only to be used there."
+                                                fieldLabel="Highlight Active Slide"
+                                                text="Highlight Active Slide"
+                                                uncheckedValue="false"
+                                                value="true"
+                                                name="./highlightActiveSlide"/>
+                                        </items>
+                                    </column>
+                                </items>
+                            </viewer>
+                        </items>
+                    </configTab>
+                    <background
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/foundation/include"
+                        path="mattel/global/master/components/core/background/v1/background/cq:dialog/content/items/tabs/items/backgroundInfo"/>
+                    <text
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/foundation/include"
+                        path="mattel/global/master/components/core/text/v1/text/cq:dialog/content/items/tabs/items/text"/>
+                    <content
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/foundation/include"
+                        path="mattel/global/master/components/core/content/v1/content/cq:dialog/content/items/tabs/items/items"/>
+                    <cta
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/foundation/include"
+                        path="mattel/global/master/components/core/cta/v1/cta/cq:dialog/content/items/tabs/items/cta"/>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>

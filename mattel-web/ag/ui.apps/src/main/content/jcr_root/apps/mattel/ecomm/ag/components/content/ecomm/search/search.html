@@ -1,0 +1,184 @@
+<sly data-sly-test="${wcmmode.edit}"><b>${'Search Component' @i18n}</b></sly>
+<sly data-sly-use.ecommPageModel="com.mattel.ecomm.core.models.EcommPageModel"></sly>
+<sly data-sly-use.sharedSearch="com.mattel.ag.ecomm.core.model.SharedSearchModel">
+<div class="search-container">
+	<button type="button" aria-expanded="false" class="expand-search-bar" data-toggle="searchFormInput" aria-label="Search"><i class="fa fa-search"></i></button>
+	<form data-sly-test.searchUrl="${sharedSearch.searchTarget}" data-sly-use.info="${'com.mattel.ecomm.core.helper.EcommHelper' @ text= searchUrl}" action="${info.pathURL}" class="hide" id="searchFormInput">
+		<input id="categoryId" class="categoryId" name="categoryId" type="hidden" autocomplete="off">
+        <input id="storeId"  class="storeId" name="storeId" value="${ecommPageModel.storeId ? ecommPageModel.storeId : '10651'}" type="hidden" autocomplete="off">
+        <input id="catalogId" class="catalogId" name="catalogId" value="${ecommPageModel.catalogId ? ecommPageModel.catalogId : '10601'}" type="hidden" autocomplete="off">
+        <input id="langId" class="langId" name="langId" value="${ecommPageModel.langId ? ecommPageModel.langId : '-1'}" type="hidden" autocomplete="off">
+        <input id="sType" class="sType" name="sType" value="SimpleSearch" type="hidden" autocomplete="off">
+        <input id="resultCatEntryType" class="resultCatEntryType" name="resultCatEntryType" value="2" type="hidden" autocomplete="off">
+        <input id="showResultsPage" class="showResultsPage" name="showResultsPage" value="true" type="hidden" autocomplete="off">
+        <input id="searchSource" class="searchSource" name="searchSource" value="Q" type="hidden" autocomplete="off">
+        <input id="pageView" class="pageView" name="pageView" value="" type="hidden" autocomplete="off">
+        <input id="beginIndex" class="beginIndex" name="beginIndex" value="0" type="hidden" autocomplete="off">
+        <input id="pageSize" class="pageSize" name="pageSize" value="36" type="hidden" autocomplete="off">
+        <input type="text" id="plpSearchTxt" placeholder="${properties.placeholderText}" name="search" role="search" aria-label="search" class="typeahead" aria-haspopup="true" aria-expanded="true">
+        <button class="search-clear-icon" aria-label="Reset" type="reset">
+        	<i class="fas fa-times-circle"></i>
+        </button>
+        <button type="submit" aria-label="Search submit" class=""><i class="fa fa-search"></i></button>
+    </form>
+</div>
+<sly data-sly-test.concatenated="${'{0}{1}' @ format=[sharedSearch.snpAccountUrl, sharedSearch.snpParams]}">
+	<input type="hidden" id="snpEP" value="${concatenated}">
+</sly>
+<input type="hidden" id="taEP" value="${sharedSearch.typeAheadAccountUrl}">
+<input type="hidden" id="targetSnpUrl" value="${sharedSearch.targetSnpUrl}">
+</sly>
+<input type="hidden" id="characterLimit" value="${sharedSearch.characterLimit}">
+<input type="hidden" id="suggestionLimit" value="${sharedSearch.suggestionLimit}">
+<script id="topProductTemp" type="text/x-handlebars-template">
+    {{#each this}}
+        <li class="search_result col-md-4">
+		{{#if PartNumber}}
+			<div class="sr_image">
+				<a href="{{urlFormatted}}{{url}}" title="{{title}}" class="product-image image-loaded">
+					{{#if imageLink}}
+                        <img alt="{{title}}" src="{{imageLink}}">
+					{{else}}
+						<img alt="{{title}}" src="{{fallbackImage}}">
+					{{/if}}
+				</a>
+			</div>
+			<p>{{../this.detailUrlPrefix}}</p>
+			<div class="sr_text">
+				<a href="{{urlFormatted}}{{url}}"  data-title="{{title}}">{{titleFormatted}}</a>
+			</div>
+			<div class="sr_price">
+			{{#if priceFormated}}
+				<span class="currency">$</span>{{priceFormated}}
+			{{/if}}
+			</div>
+		{{else}}
+			<div class="sr_image">
+				<a href="{{url}}" title="{{title}}" class="product-image image-loaded">
+					{{#if imageLink}}
+                        <img alt="{{title}}" src="{{#if isScene7Img}} {{imageLink}} {{else}} https://www.americangirl.com/{{imageLink}}{{/if}}">
+					{{else}}
+						<img alt="{{title}}" src="{{fallbackImage}}">
+					{{/if}}
+				</a>
+			</div>
+			<p>{{../this.detailUrlPrefix}}</p>
+			<div class="sr_text">
+				<a href="{{url}}"  data-title="{{title}}">{{titleFormatted}}</a>
+			</div>
+			<div class="sr_price">
+				<a href="{{url}}">Read More <i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+			</div>
+		{{/if}}            
+        </li>
+    {{/each}}
+</script>
+<script id="topsearchTemp" type="text/x-handlebars-template">
+    {{#if this}}
+        <span class="top-search-typeahed">${sharedSearch.topResult @ context="html" }: {{this}}</span>
+        {{else}}
+    {{/if}}
+</script>
+
+<script id="relatedHeaderTemp" type="text/x-handlebars-template">
+    {{#if this}}
+        ${sharedSearch.popular @ context="unsafe" }
+    {{/if}}
+</script>
+<script id="popularHeaderTemp" type="text/x-handlebars-template">
+    {{#if this}}
+        ${sharedSearch.related @ context="unsafe" }
+    {{/if}}
+</script>
+
+<script id="popularTemp" type="text/x-handlebars-template">
+    {{#if this}}
+        {{else}}
+        <li class="tt-popular"><a href="javascript:void(0);">Related product not found</a></li>
+    {{/if}}
+    {{#each this}}
+        <li class="tt-popular"><a href="javascript:void(0);" data-title="{{title}}">{{titleFormatted}}</a><span class="sr-only">Content will refresh</span></li>
+    {{/each}}
+</script>
+
+<script id="articalTemp" type="text/x-handlebars-template">
+    {{#if this}}
+        <div class="search-header static-artical">${sharedSearch.article @ context="html"}</div>
+        {{else}}
+    {{/if}}
+
+    {{#each this}}
+        <li class="tt-popular" data-index="{{id}}"><a href="{{url}}">{{titleFormatted}}</a><span class="sr-only">Content will refresh</span></li>
+    {{/each}}
+</script>
+
+
+
+<script id="articalProductTemp" type="text/x-handlebars-template">
+    {{#if this}}
+        <li class="search_result artical_result">
+                <div class="sr_image">
+                    <a role="presentation" tabindex="-1" href="{{url}}" class="product-image image-loaded">
+                        {{#if imageLink}}
+                        <img alt="" src="{{imageLink}}">
+                        {{else}}
+                        <img alt="" src="{{fallbackImage}}">
+                        {{/if}}
+                    </a>
+                </div>
+                <div class="sr_text">
+                    <p><a href="{{url}}"  data-title="{{title}}">{{title}}</a></p>
+                </div>
+                <div class="sr_price">
+                    <a class="single-read-more"  aria-label="Read more about {{title}}" href="{{url}}">Read More <i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+                </div>
+            </li>
+    {{/if}}
+</script>
+
+<div class="search-overlay"></div>
+<div class="search-dropdown">
+    <div class="search-dropdown-innerwrapper">
+        <input type="hidden" id="prodPageUrl"> 
+        <div class="left-tiles fpsearch">
+            <div class="loader-outer">
+                <div class="loader"></div>
+            </div>
+            <ul class="search-col-1" id="popularProducts">
+            </ul>
+        </div>
+        <div class="search-list fpsearch" id="rightSideContent">
+            <div class="top-result" id="topsearchTypeahed"></div>
+            <div id="searchListAg">
+                <div class="search-header" id="relatedHeader"></div>
+                <ul class="data-list tt-dataset tt-dataset-result" id="popularSearch">
+                </ul>
+
+                <ul class="data-list" id="staticCategory">
+                </ul>
+
+                <ul class="data-list" id="staticArtical">
+                </ul>
+            </div>
+
+            <div id="searchListExplore">
+                <ul class="data-list" id="staticArtical">
+                </ul>
+
+                <ul class="data-list" id="staticCategory">
+                </ul>
+
+                <div class="search-header" id="relatedHeader"></div>
+                <ul class="data-list tt-dataset tt-dataset-result" id="popularSearch">
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<sly data-sly-use.baseModel="com.mattel.ag.ecomm.core.model.BasePageModel">
+  <sly data-sly-test="${!baseModel.disableClientLibs}">
+    <sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
+       <sly data-sly-call="${clientlib.js @ categories='ecomm.typeahead,ecomm.ecomsearch'}"/>
+    </sly>
+  </sly>
+</sly>

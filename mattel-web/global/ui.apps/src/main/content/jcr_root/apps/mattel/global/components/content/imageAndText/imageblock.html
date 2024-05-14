@@ -1,0 +1,9 @@
+<div data-sly-test="${properties.imageFileReferenceMainImageDesktop}" data-sly-unwrap>
+    <img class="hidden-xs" src="${properties.imageFileReferenceMainImageDesktop}" alt="${properties.mainImageDesktopAlt}" />
+</div>
+<div data-sly-test="${properties.imageFileReferenceMainImageMobile != null}" data-sly-unwrap>
+    <img class="visible-xs" src="${properties.imageFileReferenceMainImageMobile}" alt="${properties.mainImageMobileAlt}" />
+</div>
+<div data-sly-test="${properties.imageFileReferenceMainImageMobile == null && properties.imageFileReferenceMainImageDesktop != null}" data-sly-unwrap>
+    <img class="visible-xs" src="${properties.imageFileReferenceMainImageDesktop}" alt="${properties.mainImageDesktopAlt}" />
+</div>

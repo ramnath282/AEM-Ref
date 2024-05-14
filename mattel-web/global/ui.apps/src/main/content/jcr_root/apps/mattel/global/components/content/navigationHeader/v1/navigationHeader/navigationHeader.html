@@ -1,0 +1,108 @@
+<sly data-sly-test="${wcmmode.edit}">${'Configure Navigation' @i18n}></sly>
+<input type="hidden" id="curResourcePagePath" value="${currentPage.path}" />
+<sly data-sly-use.navigationHeaderModel="com.mattel.global.core.model.NavigationHeaderModel" />
+<sly data-sly-test="${properties.backgroundColour != null && properties.bgImage==null}">
+    <header style="background-color:${properties.backgroundColour @ context='styleString'};">
+</sly>
+<sly data-sly-test="${properties.bgImage!=null && properties.backgroundColour == null}">
+    <header style="background-image: url('${properties.bgImage @ context='styleString'}');">
+</sly>
+<sly data-sly-test="${properties.bgImage!=null && properties.backgroundColour != null}">
+    <header style="background-image: url('${properties.bgImage @ context='styleString'}');">
+</sly>
+<sly data-sly-test="${properties.bgImage==null && properties.backgroundColour == null}">
+    <header>
+</sly>
+<div>
+    <div class="pull-left hidden-lg hidden-sm hidden-md" data-sly-test="${properties.brandNavUrl}">
+        <sly data-sly-test="${properties.brandTargetUrl =='sameWindow'}">
+            <a class="brand-logo" href="${navigationHeaderModel.brandNavUrl}" data-tracking-id="header-click|${properties.adobeTrackingNameforImgAltText @i18n}||Navigation Header">
+                <img src="${properties.brandMLogo||properties.brandLogo}" alt="${properties.brandAlt @i18n}" />
+            </a>
+        </sly>
+        <sly data-sly-test="${properties.brandTargetUrl =='tabWindow'}">
+            <a class="brand-logo" href="${navigationHeaderModel.brandNavUrl}" target="_blank" data-tracking-id="header-click|${properties.adobeTrackingNameforImgAltText @i18n}||Navigation Header">
+                <img src="${properties.brandMLogo||properties.brandLogo}" alt="${properties.brandAlt @i18n}" /><span class="sr-only">${'Opens in new tab' @ i18n}</span>
+            </a>
+        </sly>
+        <sly data-sly-test="${properties.brandTargetUrl =='newWindow'}">
+            <a class="brand-logo" data-url="${navigationHeaderModel.brandNavUrl}" data-tracking-id="header-click|${properties.adobeTrackingNameforImgAltText @i18n}||Navigation Header" onclick="window.open(this.dataset.url,'PLAY','width=500, height=500');">
+                <img src="${properties.brandMLogo||properties.brandLogo}" alt="${properties.brandAlt @i18n}" /><span class="sr-only"> ${'Opens in new window' @ i18n}</span>
+            </a>
+        </sly>
+    </div>
+    <div class="pull-left hidden-xs" data-sly-test="${properties.brandNavUrl}">
+        <sly data-sly-test="${properties.brandTargetUrl =='sameWindow'}">
+            <a class="brand-logo" href="${navigationHeaderModel.brandNavUrl}" data-tracking-id="header-click|${properties.adobeTrackingNameforImgAltText @i18n}||Navigation Header">
+                <img src="${properties.brandLogo}" alt="${properties.brandAlt @i18n}" />
+            </a>
+        </sly>
+        <sly data-sly-test="${properties.brandTargetUrl =='tabWindow'}">
+            <a class="brand-logo" href="${navigationHeaderModel.brandNavUrl}" target="_blank" data-tracking-id="header-click|${properties.adobeTrackingNameforImgAltText @i18n}||Navigation Header">
+                <img src="${properties.brandLogo}" alt="${properties.brandAlt @i18n}" /><span class="sr-only">${'Opens in new tab' @ i18n}</span>
+            </a>
+        </sly>
+        <sly data-sly-test="${properties.brandTargetUrl =='newWindow'}">
+            <a class="brand-logo" data-url="${navigationHeaderModel.brandNavUrl}" data-tracking-id="header-click|${properties.adobeTrackingNameforImgAltText @i18n}||Navigation Header" onclick="window.open(this.dataset.url,'PLAY','width=500, height=500');">
+                <img src="${properties.brandLogo}" alt="${properties.brandAlt @i18n}" /><span class="sr-only"> ${'Opens in new window' @ i18n}</span>
+            </a>
+        </sly>
+    </div>
+    <div>
+        <!-- hamburger button -->
+        <button class="hamburger" aria-label="menu" data-toggle="collapse" aria-expanded="true" aria-controls="primary-nav" data-target="#primary-nav"></button>
+        <!--main navigation starts -->
+        <nav data-sly-attribute.class="${! wcmmode.edit ? 'primary-nav' : ''}" role="navigation" aria-label="primary" id="primary-nav">
+            <sly data-sly-use.linksTemplate="navigationTemplate.html"></sly>
+            <ul>
+                <sly data-sly-test="${properties.pageUrl}">
+                    <sly data-sly-list.navItemsList="${navigationHeaderModel.navItemsList}">
+                        <li>
+                            <input type="hidden" id="siteSelection" value="${navItemsList.adobeTrackingNameForPage}" />
+                            <sly data-sly-call="${linksTemplate.navItemsList @ navItemsList=navItemsList}"/>
+                            <sly data-sly-test="${navItemsList.childPageList}">
+                                <ul data-sly-list.childLink="${navItemsList.childPageList}">
+                                    <li>
+                                        <sly data-sly-call="${linksTemplate.navItemsList @ navItemsList=childLink}"/>
+                                        <sly data-sly-test="${childLink.childPageList}">
+                                            <ul data-sly-list.thirdLevelChildLink="${childLink.childPageList}" class="submenu-level3-item">
+                                                <li>
+                                                    <sly data-sly-call="${linksTemplate.navItemsList @ navItemsList=thirdLevelChildLink}"/>
+                                                </li>
+                                            </ul>
+                                        </sly>
+                                    </li>
+                                </ul>
+                            </sly>
+                        </li>
+                    </sly>
+                </sly>
+                <div data-sly-attribute.class="${wcmmode.edit ? '' : 'pull-right'}">
+                    <sly data-sly-resource="${'content' @ resourceType='wcm/foundation/components/parsys'}" />
+                </div>
+                <sly data-sly-test="${properties.leftText || properties.linkImage || properties.rightText}">
+                    <li>
+                        <sly data-sly-test="${navigationHeaderModel.linkUrl}">
+                            <sly data-sly-test="${properties.targetUrl =='sameWindow'}"> <a href="${navigationHeaderModel.linkUrl}" data-tracking-id="header-click|${properties.leftText} ${properties.imgAltText} ${properties.rightText}||Navigation Header"><em class="fas fa-chevron-left"></em>${properties.leftText}<img src= "${properties.linkImage}" alt="${properties.imgAltText}">${properties.rightText}</a>
+                            </sly>
+                            <sly data-sly-test="${properties.targetUrl =='tabWindow'}"> <a href="${navigationHeaderModel.linkUrl}" data-tracking-id="header-click|${properties.leftText} ${properties.imgAltText} ${properties.rightText}||Navigation Header" target="_blank"><em class="fas fa-chevron-left"></em>${properties.leftText}<img src= "${properties.linkImage}" alt="${properties.imgAltText}">${properties.rightText}<span class="sr-only">${'Opens in new tab' @ i18n}</span></a>
+                            </sly>
+                            <sly data-sly-test="${properties.targetUrl =='newWindow'}"> <a data-url="${navigationHeaderModel.linkUrl}" data-tracking-id="header-click|${properties.leftText} ${properties.imgAltText} ${properties.rightText}||Navigation Header" onclick="window.open(this.dataset.url,'PLAY','width=500, height=500');"><em class="fas fa-chevron-left"></em>${properties.leftText}<img src= "${properties.linkImage}" alt="${properties.imgAltText}">${properties.rightText}<span class="sr-only"> ${'Opens in new window' @ i18n}</span></a>
+                            </sly>
+                            <sly data-sly-test="${properties.targetUrl =='interstitial'}"> <a href="javascript:void(0);" data-tracking-id="header-click|${properties.leftText} ${properties.imgAltText} ${properties.rightText}||Nagivation Header" data-toggle="modal" data-url="${navigationHeaderModel.linkUrl}" data-target="#interstitialModal"><em class="fas fa-chevron-left"></em>${properties.leftText}<img src= "${properties.linkImage}" alt="${properties.imgAltText}">${properties.rightText}<span class="sr-only"> ${'Opens a pop up' @ i18n}</span></a>
+                            </sly>
+                        </sly>
+                    </li>
+                </sly>
+            </ul>
+        </nav>
+    </div>
+</div>
+</header>
+<div class="clearfix"></div>
+<sly data-sly-use.isCloudConfg="${'/apps/mattel/global/clientlibs/global-utils/js/utils.js' @ uri=request.requestURI, text='nocloudconfigs'}" />
+<sly data-sly-test="${!isCloudConfg.disableClientLibs}">
+    <sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
+        <sly data-sly-call="${clientlib.js @ categories='global.navigationHeader'}"/>
+    </sly>
+</sly>

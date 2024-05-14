@@ -1,0 +1,28 @@
+.contact-preference-body {
+    .user-info-wrapper {
+        .details-list-item {
+            @include content-spacing(map-get($contactPreference, list));
+            .note-label{
+                @include content-spacing(map-get($contactPreference, infoText));
+                color:mapping($contactPreference,infoText,color);
+            }
+            h3 {
+                &.value-label {
+                    font : mapping($contactPreference,valueLabel,font);
+                }
+            }
+            .value-label {
+                padding-left: 0;
+            }            
+        }
+        fieldset {
+            margin-bottom: 0;
+        }
+    }    
+    .banner-outer {
+        margin-bottom: em(10);
+    }
+    .update-preferences-btn {
+        margin-top: em(10);
+    }
+}

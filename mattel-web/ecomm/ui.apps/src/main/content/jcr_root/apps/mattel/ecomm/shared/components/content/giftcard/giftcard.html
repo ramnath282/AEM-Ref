@@ -1,0 +1,189 @@
+<sly data-sly-test="${wcmmode.edit}">${'Gift Card' @i18n}</sly>
+<!-- Basic Sku Bundle Starts -->
+<div class="giftCard-container">
+<div class="logo-giftCard-wrapper">
+<sly data-sly-use.model = "com.mattel.ecomm.core.models.GiftCardInfoModel"> 
+<sly data-sly-test.product = "${model.giftCardUIResponse}">
+<sly data-sly-test="${product.components}">
+    <sly data-sly-list.component="${product.components}">
+        <input type="hidden" value="${component.product_partnumber}" data-partnumber="${component.product_partnumber}" data-variant-id="${component.variants && component.variants.size > 0 ? component.variants[0].id : ''}" data-product-type="${component.product_type}" data-association-type="COMPONENT" class="child-components"/>
+    </sly>
+</sly>
+<sly data-sly-test.core="${product.core}"></sly>
+     <sly data-sly-test="${product.partnumber}">
+    <div class="product-info-wrapper" data-partnumber="${product.partnumber}" id="productInfo-${product.partnumber}" data-producttype="${core.product_type}"></div>
+    <input type="hidden" id="giftPartNumber" value="${product.partnumber}">
+    <input type="hidden" id="giftCardAvailabilityStatus" value="${core.product_availabilityStatus}">
+    <input type="hidden" id="amountValidationMsg" value="${properties.gcAmountValidationMsg}">
+    <sly data-sly-resource="${'productdetailbreadcrumb'@resourceType='/apps/mattel/ecomm/shared/components/content/productdetailbreadcrumb'}"></sly>
+    <div class="logo-giftCard-container" aria-labeledby="logoGiftCard">
+        <div class="product-callout">
+            <span class="product-callout-attribute">${core.product_productcallout}</span>
+        </div>
+        <sly data-sly-test = "${core.title}">
+            <h1 class="product-name">${core.title @context='html'}</h1>
+        </sly>
+        <div class="grid-section">
+            <div class="product-reviews">
+                <span class="rating-section">
+                    <span class="sr-only">${core.product_reviewRating ? core.product_reviewRating : 0} stars</span>
+                </span>
+                <div class="review-status">
+                    <a id="bvReviewHeading" class="read-reviews" href="#BVRRContainer"><span class="read-review">${properties.readReviewLabel} (<span>${product.product_reviewCount}</span>)</span></a>
+                    <a id="scrollToBVDiv" class="write-review" href="#BVOSWriteReview">${properties.writeReviewLabel}</a>
+                </div>
+            </div>
+        </div>
+        <div class="inventory-status">
+            <span class="inventory-status-message" aria-live="polite"></span>
+            <span class="back-oderable-date"></span>
+        </div>
+        <form action="" autocomplete="off">
+            <div class="form-input-wrapper update-message">
+                <fieldset>
+                    <div class="input-field required">
+                        <input type="text" id="recipientName" data-add="gift_message_to" data-key="giftMsgTextTo" name="recipientName" aria-describedby="recipientNameError" class="form-input long-input" required="" maxlength="30" autocomplete="off">
+                        <label class="placeholder-label" for="recipientName">${properties.gcRecipientLabel}</label>
+                        <div id="recipientNameError" alt="Error." aria-live="polite" class="help-block form-message"><span class="sr-only">Error</span></div>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <div class="input-field required">
+                        <input type="text" id="senderName" data-add="gift_message_from" data-key="giftMsgTextFrom" name="senderName" aria-describedby="senderNameError" class="form-input long-input" required="" maxlength="29" autocomplete="off">
+                        <label class="placeholder-label" for="senderName">${properties.gcSenderLabel}</label>
+                        <div id="senderNameError" alt="Error." aria-live="polite" class="help-block form-message"><span class="sr-only">Error</span></div>
+                    </div>
+                </fieldset>
+                <fieldset>                        
+                    <div class="input-field required message-select-container">
+                        <select id="messageSelect" data-key="messageSelect" name="messageSelect" class="message-select" required="">
+                            <option value="">${properties.gcMessageLabel}</option>
+                            <sly data-sly-test = "${product.messages}">
+                                <sly data-sly-list = "${product.messages}">
+                                   <option seq="${item.sequence}" value="${item.messageTitle}" data-content="<label class='dropdown-title-text'>Select message</label><label class='dropdown-details-text'>${item.messageTitle}</label>">${item.messageTitle}</option>
+                                </sly>
+                            </sly>
+                            <option value="add" data-content='<label class="dropdown-title-text">Select message</label><label class="dropdown-details-text">${properties.gcWriteYourOwnMessageLabel}</label>'>${properties.gcWriteYourOwnMessageLabel}</option>
+                        </select>
+
+                        <div id="messageSelectError" alt="Error." aria-live="polite" class="help-block form-message"><span class="sr-only">Error</span></div>
+                        <div class="message-box-container hide">
+                            <sly data-sly-test = "${product.messages}">
+                                <sly data-sly-list = "${product.messages}">
+                                    <div data-seq="${item.sequence}" class="input-field hide">
+                                        <input type="text" id="messageLine1-${item.sequence}" data-add="gift_message_line1" data-key="giftMsgText1" name="messageLine1" class="message-box form-input long-input no-border-input not empty" value="${item.message1}" maxlength="30" autocomplete="off" readonly="">
+                                        <label class="placeholder-label" for="messageLine1-${item.sequence}"></label>
+                                    </div>
+                                    <div data-seq="${item.sequence}" class="input-field hide">
+                                        <input type="text" id="messageLine2-${item.sequence}" data-add="gift_message_line2" data-key="giftMsgText2" name="messageLine2" class="message-box form-input long-input no-border-input not empty" value="${item.message2}" maxlength="30" autocomplete="off" readonly="">
+                                        <label class="placeholder-label" for="messageLine2-${item.sequence}"></label>
+                                    </div>
+                                    <div data-seq="${item.sequence}" class="input-field hide">
+                                        <input type="text" id="messageLine3-${item.sequence}" data-add="gift_message_line3" data-key="giftMsgText3" name="messageLine3" class="message-box form-input long-input no-border-input not empty" value="${item.message3}" maxlength="30" autocomplete="off" readonly="">
+                                        <label class="placeholder-label" for="messageLine3-${item.sequence}"></label>
+                                    </div>
+                                </sly>
+                            </sly>
+                             <div data-seq="" class="input-field hide">
+                                <input type="text" id="messageLine1" data-add="gift_message_line1" data-key="giftMsgText1" name="messageLine1" class="message-box form-input long-input no-border-input" value="" maxlength="30" autocomplete="off" >
+                                <label class="placeholder-label" for="messageLine1">Message line 1</label>
+                            </div>
+                            <div data-seq="" class="input-field hide">
+                                <input type="text" id="messageLine2" data-add="gift_message_line2" data-key="giftMsgText2" name="messageLine2" class="message-box form-input long-input no-border-input" value="" maxlength="30" autocomplete="off" >
+                                <label class="placeholder-label" for="messageLine2">Message line 2</label>
+                            </div>
+                            <div data-seq="" class="input-field  hide">
+                                <input type="text" id="messageLine3" data-add="gift_message_line3" data-key="giftMsgText3" name="messageLine3" class="message-box form-input long-input no-border-input" value="" maxlength="30" autocomplete="off" >
+                                <label class="placeholder-label" for="messageLine3">Message line 3</label>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <div id="giftCardAmountSec">
+                    </div>
+                    <script id="giftCardAmountTmpl" type="text/x-handlebars-template">
+                       <div class="giftcard-amount-section input-field required">
+                          <div class="giftcard-amount-title">${properties.selectAmountLabel @context='html'}
+                          </div>
+                          <ul role="radiogroup" class="giftcard-amount-swatches" >
+                             {{#each this}}  
+                             <li class="innerCont" data-partnoswatch="{{this.core.sku}}" data-variant-id="{{this.id}}">
+                                <a href="#" role="radio" aria-checked="false" data-partnumber="{{this.core.sku}}">
+                                   <span>$</span><span>{{this.core.title}}</span>
+                               </a>
+                             </li>
+                             {{/each}}
+                          </ul>
+                          <div id="amountError" alt="Error." aria-live="polite" class="help-block form-message"><span class="sr-only">Error</span></div>
+                       </div>
+                    </script>
+                </fieldset>
+            </div>
+        </form>
+        <div class="button-wrapper">
+            <button type="submit" data-formname=".update-message" class="btn-add-to-bag add-update-message">${properties.gcAddToBagButtonLabel}</button>    
+            <sly data-sly-test = "${core.product_disclaimer}">
+                <div class="terms-conditions">        
+                    <div class="terms-conditions-details">
+                        <p>${core.product_disclaimer}</p>
+                    </div>
+                </div>
+            </sly>
+        </div>
+    </div>
+    </sly>
+    </sly>
+</sly>
+</div>
+</div>
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
+    <sly data-sly-call="${clientlib.js @ categories='ecomm.giftCard'}"/>
+</sly>
+<script id="recommendedProdTemp" type="application/ld+json">
+{
+  "entity.id" : "${product.partnumber @ context='unsafe'}",
+  "entity.categoryId" : "${product.attributes.AEMcanonical @ context='unsafe'}",
+  "entity.inventory" : "",
+  "entity.name" : "${core.title @ context='unsafe'}",
+  "at_property" : "${model.atPropertyTarget @context='unsafe'}"
+}
+</script>
+<script id="seoScript" type="application/ld+json">
+${model.giftCardSeoSchema @context='unsafe'}
+</script>
+<script type="text/javascript" >
+    $(document).ready(function(){
+        setRecomendedProduct();
+        getBVPriceSortValue();
+        if ($("link[rel='canonical']").length && (typeof $("link[rel='canonical']")
+            .attr("href") == "undefined" || $("link[rel='canonical']").attr("href")
+            .trim() == "")) {
+            $("link[rel='canonical']").attr("href", window.location.href);
+        }
+    });
+    function setRecomendedProduct() {
+        var recommendedProdJson = JSON.parse($("#recommendedProdTemp").html());
+        sessionStorage.setItem("recommendedProduct", JSON.stringify(recommendedProdJson));
+    }
+    function getBVPriceSortValue(){
+        var limit = 100,
+             passKey = $.trim($(".bazarvoice_key").html());
+             productId = $.trim($(".product_id").html());
+            $.getJSON("//api.bazaarvoice.com/data/reviews.json?apiversion=5.4&passkey="+passKey+"&Filter=ProductId:"+productId+"&Sort=SubmissionTime:desc&Include=Products&Stats=Reviews&Limit="+limit+"&Offset=0&callback=?",function(res){
+                var ratingDistArr = res.Includes.Products[productId].ReviewStatistics.RatingDistribution;
+                var sortedRatingDist = ratingDistArr.sort(function(a, b) {
+                    return b.RatingValue - a.RatingValue;
+                });
+                var arrayLength = sortedRatingDist.length;
+                var seoScriptJson = $("#seoScript").html();
+                var json = JSON.parse(seoScriptJson);
+
+                json.aggregateRating.bestRating = sortedRatingDist[0].RatingValue;
+                json.aggregateRating.worstRating = sortedRatingDist[arrayLength - 1].RatingValue;
+                $("#seoScript").html(json);
+            }).fail(function(error){
+                console.log(error);
+            });
+    }
+</script>

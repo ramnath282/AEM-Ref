@@ -1,0 +1,241 @@
+.char-detials-comp{
+    background: url("/content/dam/monster-high/monsterhigh-play/bg-images/HW_HP_4-Characters.png");
+    position: mapping($chardetailsslider,main,pos);
+    @media #{$medium-only}{
+        padding-bottom: 48px;
+        padding-top: 11px;
+    }
+    .container{
+         padding: mapping($chardetailsslider,container,pad);
+         @media #{$small-down}{
+             width: mapping($chardetailsslider,container,tabWidth);
+        }
+         @media #{$medium-only}{
+             max-width: calc(100% - 180px); 
+        }
+        @media #{$medium-up}{
+            width: 100%;
+            max-width: calc(100% - 228px);
+        }
+		@if mapping($chardetailsslider,container,isEnchanChar) == true {
+			@media #{$small-down}{
+				width: mapping($chardetailsslider,container,mobWidth);
+			}
+			 @media #{$medium-only}{
+				width:mapping($chardetailsslider,container,tabWidth);   
+			}
+		}
+    }
+    .char-detials-content{
+        @extend .row;
+        margin-left: mapping($chardetailsslider,chardetailContent,marginLeft);
+        margin-right: mapping($chardetailsslider,chardetailContent,marginRight);
+    }
+    .char-details-image{
+        @extend .col-xs-12;
+        @extend .col-sm-12;
+        @extend .col-md-6;
+        text-align: mapping($chardetailsslider,chardetailImage,txtAlign);
+        padding: mapping($chardetailsslider,chardetailImage,pad);
+        img{
+            max-height: 496px;
+            @media #{$small-only}{
+                max-height: 257px;
+            }
+        }
+        &.img-right{
+            float: mapping($chardetailsslider,chardetailImage,float);
+        }
+        @media #{$medium-only}{
+            img{
+                max-width: mapping($chardetailsslider,chardetailImage,tabmaxWidth);
+                padding-top: 0;
+            }
+        }
+    }
+    .char-details-description{
+        @extend .col-xs-12;
+        @extend .col-sm-12;
+        @extend .col-md-6;
+        padding: 28px 0 50px 0;
+         @media #{$medium-up} {
+        padding: 68px 0 48px 0;
+        }
+        @media #{$medium-down}{
+            padding: 0;
+        }
+        h1, h2{
+            color: $monsterblack;
+            font-family: $primaryFontRegular;
+            font-weight: 400;
+            margin-top: mapping($chardetailsslider,chardetaildescH1,marginTop);
+            font-size: 42px;
+            line-height: 52px;
+            small{
+                color: mapping($chardetailsslider,chardetaildescH1,smalltxtColor);                
+            }
+            @media #{$small-only}{
+                font-size: 33px;
+                line-height: 38px;
+                text-align: center;
+            }    
+        }
+        p{
+            color: $monsterblack;
+            font-family: $primaryFontRegular;
+            font-weight: mapping($chardetailsslider,chardetaildescP,fntWeight);
+            font-size: 24px;
+            line-height: 29px;
+            span {
+                font-family: mapping($chardetailsslider,chardetaildescP,fntFamily)  , Sans-serif;
+            }
+            @media #{$small-only}{
+                font-size: 20px;
+                line-height: 24px;
+                text-align: center;
+            }   
+            &:empty{
+                display: none;
+            }
+        }
+        .Monster_Title{
+            display: none;
+        }
+        &> h1,.Monster_Title h1{
+            background: url("/content/dam/monster-high/monsterhigh-play/bg-images/Character_Detail_Name_BG.png");
+            padding: 37px 59px 25px 56px;
+            margin-bottom: 0;
+            z-index: 1;
+            position: relative;
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            @media #{$medium-only}{
+                text-align: center;
+                padding: 37px 43px 25px 41px;
+                margin-left: auto;
+                margin-right: auto;
+           }
+           @media #{$small-only}{
+                padding: 20px;
+                background-position: -125px 0px;
+                background-size: 180% 100%;
+            } 
+            @media #{$small-up}{
+                max-width: 504px;
+            } 
+        }
+        .Monster_Description{
+            padding: 43px 42px 28px 54px;
+            background: url("/content/dam/monster-high/monsterhigh-play/bg-images/Character_Detail_Age_BG.png");
+            margin-top: -20px;
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            font-weight: 400;
+            @media #{$medium-only}{
+                padding: 37px 43px 25px 41px;
+                margin-left: auto;
+                margin-right: auto;
+           }
+           @media #{$small-only}{
+                padding: 40px 20px 20px;
+                background-position: -100px 0px;
+                background-size: 150% 100%;
+            } 
+            @media #{$small-up}{
+                max-width: 513px;
+            } 
+            p{
+                margin: 0 0 20px 0;
+                &:last-of-type{
+                    margin-bottom: 0;
+                }
+                @media #{$medium-only}{
+                    text-align: center;
+               }
+            }
+        }
+
+    }
+     .cd-prev { 
+        @extend .slick-prev;
+        left: mapping($chardetailsslider,cdPrev,posLeft);
+        @media (max-width: 1024px){
+            left: mapping($chardetailsslider,cdPrev,posLeft);
+        }
+        @media #{$medium-only}{
+            left: mapping($chardetailsslider,cdPrev,tabposLeft);
+        }
+        @media #{$medium-up}{
+            left:mapping($chardetailsslider,cdPrev,posLeft);
+        }
+        @media  #{$small-down}{
+            left: 0;
+        }
+        &:before {
+            content: "\f060";
+            margin:mapping($chardetailsslider,cdPrev,prevContentMargin);
+        }
+    }
+    .cd-next { 
+        @extend .slick-next;
+        right: mapping($chardetailsslider,cdNext,posRight);
+        @media (max-width: 1024px){
+            right: mapping($chardetailsslider,cdNext,posRight);
+        }
+        @media #{$medium-only}{
+            right: mapping($chardetailsslider,cdNext,tabposRight);
+        }
+        @media #{$medium-up}{
+            right:mapping($chardetailsslider,cdNext,posRight);              
+        }
+            @media  #{$small-down}{
+            right:0;
+        }
+        &:before {
+            content: "\f061";
+            margin:mapping($chardetailsslider,cdNext,nextContentMargin);
+        }
+    }
+
+    .cd-prev,
+    .cd-next{
+        top: mapping($chardetailsslider,cdprevNext,posTop);
+        width: 60px;
+        height: 60px;
+        border-radius: mapping($chardetailsslider,cdprevNext,borderRadius);
+        padding: mapping($chardetailsslider,cdprevNext,pad);
+        background: $pink;
+        transform: translate(0,-50%);
+        &:hover, &:focus, &:active{
+            background: mapping($chardetailsslider,cdprevNext,hoverBgnd);
+        }    
+        @media #{$small-down}{
+            background: none;
+            color:$enchangreen;
+            top:20%;
+        }
+        @media #{$medium-only}{
+            top: mapping($chardetailsslider,cdprevNext,tabposTop);
+        }
+        &:before {
+            font-family: mapping($chardetailsslider,cdprevnextBefore,fntFamily);
+            background-color: mapping($chardetailsslider,cdprevnextBefore,bgndColor);
+            border-radius: mapping($chardetailsslider,cdprevnextBefore,borderRadius);
+            padding: mapping($chardetailsslider,cdprevnextBefore,pad);
+            font-size: 36px;
+            opacity: 1;
+            background: mapping($chardetailsslider,cdprevnextBefore,bgnd);
+            color:$white;
+            margin: 0;
+                @media #{$small-down}{
+                color:$enchangreen;
+                background: mapping($chardetailsslider,cdprevnextBefore,bgndtrns);
+            }
+        }
+        &:focus {
+                @media #{$small-down}{
+                    background: mapping($chardetailsslider,cdprevNext,bgndtrns);
+            }
+        }
+    }
+}

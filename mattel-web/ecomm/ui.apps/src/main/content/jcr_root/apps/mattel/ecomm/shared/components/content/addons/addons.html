@@ -1,0 +1,355 @@
+<sly data-sly-test="${wcmmode.edit}">${'Mini Cart Component Configuration' @i18n}</sly>
+<sly data-sly-use.model="com.mattel.ecomm.core.models.MiniCartAddonsModel"/>
+<input type="hidden" id="freeShippingLimit" value="${properties.freeShippingLimit}">
+<div class="hide minicart_analytics_service"></div>
+<input type="hidden" value="" id="addons_available_field">
+<input type="hidden" value="" id="selected_addons_field"> 
+<div class="product-addOn-wrapper">
+    <div class="modal product-addOn-modal" id="productAddOnModal" tabindex="-1">
+        <div class="modal-dialog">
+           
+            <div class="modal-content">
+                <form>
+                    <div id="addOnsModal"></div>
+                </form>
+                <script id="addOnsTmpl" type="text/x-handlebars-template">
+                    <div class="add-to-bag-content">
+                        <div class="modal-header">
+                            <h2>${properties.addOnModalTitle @context='unsafe'}</h2>
+                            <button type="button" id="addons-modal-close" class="close" data-dismiss="modal" aria-label="Close"><em class="fa fa-times fa-lg"></em></button>
+                        </div>
+                        <div class="modal-body">
+                            <h2>${properties.addOnModalSubTitle @context='unsafe'}</h2>
+                            {{#each this}}  
+                                {{#if this.singleNochild}}
+                                    <div class="addon-option row" data-addOnPartnumber={{this.product.partnumber}} data-variant-id="{{this.product.variants.0.id}}">
+                                    <div class="addon-item addon-item-single">
+                                        <img src="{{{this.product.core.product_imagelink}}}?$ossmallindex$" alt="{{this.product.core.title}}">
+                                    </div>
+                                    <div class="addon-info addon-info-single">
+                                        <span id="addOnSingle1">{{{this.product.core.title}}}</span>
+                                    </div>
+                                    {{#each product.variants}}
+                                    {{#if @first}}
+                                    <div class="addon-price addon-price-single">
+                                        <div class="product-price">
+                                            <span class="price-value"><span class="price-currency ">$</span><span class="current_price price-value">{{this.pricing.price}}</span></span>
+                                            {{#if this.pricing.strikePrice}}
+                                                <span class="price-strike"> <span class="sr-only price-value">Actual Price Strikes</span> $<span class="offer_price">{{this.pricing.strikePrice}}</span></span>
+                                            {{/if}}
+                                        </div>
+                                    </div>
+                                    {{/if}}
+                                    {{/each}}
+                                    <div class="addon-details">
+                                        <div class="details-icon">
+                                            <a href="#" class="show-details" aria-describedby="addOnSingle1" aria-expanded="false"><span class="see-details">See details</span></a>
+                                            <a href="#" class="hide-details hide"><span class="see-less" aria-expanded="false">See less</span></a>
+                                        </div>
+                                        <div class="details-container hide">
+                                            <p>{{{this.product.attributes.MarketingDescription}}}</p>
+                                        </div>
+                                    </div>
+                                    </div>
+                                {{/if}} 
+                                {{#if this.singleWithchild}}
+                                    <div class="addon-option row">
+                                        <div class="addon-option-container">
+                                        <div class="addon-header">
+                                            <span id="addOnBundle1">{{{this.product.core.title}}}</span>
+                                        </div>
+                                        {{#each product.variants}}
+                                        {{#if @first}}
+                                        <div class="addon-price">
+                                            <div class="product-price">
+                                                <span class="price-value"><span class="price-currency ">$</span><span class="current_price price-value">{{this.pricing.price}}</span></span>
+                                                {{#if this.pricing.strikePrice}}
+                                                    <span class="price-strike"> <span class="sr-only price-value">Actual Price Strikes</span> $<span class="offer_price">{{this.pricing.strikePrice}}</span></span>
+                                                {{/if}}
+                                            </div>
+                                        </div>
+                                        {{/if}}
+                                        {{/each}}
+                                        {{#each product.variants}}
+                                        {{#if this.notBothSku}}
+                                        <div class="addon-option-wrapper">
+                                            <div class="addon-image">
+                                                {{#if this.singleEntry}}
+                                                <input class="custom-checkbox" data-addOnPartnumber={{this.core.sku}} data-variant-id="{{this.id}}" type="checkbox" id="addOnImage{{@key}}" aria-describedby="addOnImageError">
+                                                <label class="child-prod-label" for="addOnImage{{@key}}"><span class="sr-only">bundle-image</span></label>
+                                                {{else}}
+                                                <input data-addOnPartnumber={{this.core.sku}} data-variant-id="{{this.id}}"  name="radioAddons" type="checkbox" id="addOnImage{{@key}}" aria-describedby="addOnImageError">
+                                                <label for="addOnImage{{@key}}"><span class="sr-only" data-bothsku="{{this.bothSku}}" data-variant-id="{{this.bothVariantId}}" >bundle-image</span></label>
+                                                {{/if}}
+                                                <img src="{{{this.core.variant_imageLink}}}?$ossmallindex$" alt="{{{this.core.title}}}">
+                                            </div>
+                                            <div class="addon-title">
+                                                <span>{{{this.core.title}}}</span>
+                                            </div>
+                                        </div>
+                                        {{/if}}
+                                        {{/each}}
+                                        <div class="inline-message hide">
+                                            <span class="inline-icon" aria-live="polite" id="addOnImageError"><span class="sr-only">error</span>Please select an option</span>
+                                        </div>
+                                        <div class="addon-details">
+                                            <div class="details-icon">
+                                                <a href="#" class="show-details" aria-describedby="addOnBundle1" aria-expanded="false"><span class="see-details">See details</span></a>
+                                                <a href="#" class="hide-details hide"><span class="see-less" aria-expanded="false">See less</span></a>
+                                            </div>
+                                            <div class="details-container hide">
+                                                <p>{{{this.product.attributes.MarketingDescription}}}</p>
+                                            </div>
+                                        </div>
+                                        </div>
+                                    </div>
+                                {{/if}} 
+                                
+                                {{#if this.hasMultiItems}}
+                                    {{#if this.mutipleVarientItem}}
+                                        <div class="addon-option row">
+                                            <div class="addon-option-container">
+                                            <div class="addon-header">
+                                                <span id="addOnBundle1">{{{this.product.core.title}}}</span>
+                                            </div>
+                                            {{#each product.variants}}
+                                            {{#if @first}}
+                                            <div class="addon-price">
+                                                <div class="product-price">
+                                                    <span class="price-value"><span class="price-currency ">$</span><span class="current_price price-value">{{this.pricing.price}}</span></span>
+                                                    {{#if this.pricing.strikePrice}}
+                                                        <span class="price-strike"> <span class="sr-only price-value">Actual Price Strikes</span> $<span class="offer_price">{{this.pricing.strikePrice}}</span></span>
+                                                    {{/if}}
+                                                </div>
+                                            </div>
+                                            {{/if}}
+                                            {{/each}}
+                                            {{#each product.variants}}
+                                            {{#if this.notBothSku}}
+                                            <div class="addon-option-wrapper">
+                                                <div class="addon-image">
+                                                    {{#if this.singleEntry}}
+                                                    <input class="custom-checkbox" data-addOnPartnumber={{this.core.sku}} data-variant-id="{{this.id}}" type="checkbox" id="addOnImageChild{{@key}}" aria-describedby="addOnImageChildError">
+                                                    <label class="child-prod-label" for="addOnImageChild{{@key}}"><span class="sr-only">bundle-image</span></label>
+                                                    {{else}}
+                                                    <input data-addOnPartnumber={{this.core.sku}} data-variant-id="{{this.id}}"  name="radioAddons" type="checkbox" id="addOnImageChild{{@key}}" aria-describedby="addOnImageChildError">
+                                                    <label for="addOnImageChild{{@key}}"><span class="sr-only">bundle-image</span></label>
+                                                    <span class="src both-sku-span" data-bothsku="{{this.bothSku}}" data-variant-id="{{this.bothVariantId}}"></span>
+                                                    {{/if}}
+                                                    <img src="{{{this.core.variant_imageLink}}}?$ossmallindex$" alt="{{{this.core.title}}}">
+                                                </div>
+                                                <div class="addon-title">
+                                                    <span>{{{this.core.title}}}</span>
+                                                </div>
+                                            </div>
+                                            {{/if}}
+                                            {{/each}}
+                                            <div class="inline-message hide">
+                                                <span class="inline-icon" aria-live="polite" id="addOnImageChildError"><span class="sr-only">error</span>Please select an option</span>
+                                            </div>
+                                            <div class="addon-details">
+                                                <div class="details-icon">
+                                                    <a href="#" class="show-details" aria-describedby="addOnBundle1" aria-expanded="false"><span class="see-details">See details</span></a>
+                                                    <a href="#" class="hide-details hide"><span class="see-less" aria-expanded="false">See less</span></a>
+                                                </div>
+                                                <div class="details-container hide">
+                                                    <p>{{{this.product.attributes.MarketingDescription}}}</p>
+                                                </div>
+                                            </div>
+                                            </div>
+                                        </div>
+                                    {{else}}
+                                        <div class="addon-option row">
+                                            <div class="addon-item">                            
+                                            <input data-addOnPartnumber={{this.product.variants.0.core.sku}} data-variant-id="{{this.product.variants.0.id}}" class="custom-checkbox" type="checkbox" id="addOnImage{{@key}}" aria-describedby="addOnImageError{{@key}}" checked="">
+                                            <label for="addOnImage{{@key}}"><span class="sr-only">bundle-image</span></label>
+                                            <img src="{{{this.product.core.product_imagelink}}}?$ossmallindex$" alt="{{{this.product.core.title}}}">
+                                            </div>
+                                            <div class="addon-info">
+                                            <span id="addOn{{@key}}">{{{this.product.core.title}}}</span>
+                                            </div>
+                                            {{#each product.variants}}
+                                            {{#if @first}}
+                                            <div class="addon-price">
+                                            <div class="product-price">
+                                                <span class="price-value"><span class="price-currency ">$</span><span class="current_price price-value">{{this.pricing.price}}</span></span>
+                                                {{#if this.pricing.strikePrice}}
+                                                    <span class="price-strike"> <span class="sr-only price-value">Actual Price Strikes</span> $<span class="offer_price">{{this.pricing.strikePrice}}</span></span>
+                                                {{/if}}
+                                            </div>
+                                            </div>
+                                            {{/if}}
+                                            {{/each}}
+                                            <div class="inline-message hide">
+                                            <span class="inline-icon" aria-live="polite" id="addOnImageError{{@key}}"><span class="sr-only">error</span>Please select an option</span>
+                                            </div>
+                                            <div class="addon-details">
+                                            <div class="details-icon">
+                                                <a href="#" class="show-details" aria-describedby="addOn{{@key}}" aria-expanded="false"><span class="see-details">See details</span></a>
+                                                <a href="#" class="hide-details hide"><span class="see-less" aria-expanded="false">See less</span></a>
+                                            </div>
+                                            <div class="details-container hide">
+                                                <p>{{{this.product.attributes.MarketingDescription}}}</p>
+                                            </div>
+                                            </div>
+                                        </div>
+                                    {{/if}} 
+                                    
+                                {{/if}} 
+                            {{/each}}  
+                            <div class="addon-button-container">
+                                <button type="submit" id="addProductAddOn" data-formname=".add-product-addOns" class="btn-add-to-bag theme-btn">${properties.addOnModalAddToBagButtonLabel @context='unsafe'}</button>
+                                <button type="submit" id="closeProductAddOn" class="theme-btn transparent-btn close-product-addOns">${properties.addOnModalNoThanksLabel @context='unsafe'} <i class="fas fa-angle-right"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </script>
+      			<script id="productTmpl" type="text/x-handlebars-template">
+                    {{#if this}}
+                    <div class="add-to-bag-content">
+                        <div class="modal-header">
+                                <h2>{{totaladdedproduct}} ${properties.numberOfProductAddedToCartLabel @context='unsafe'}</h2>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="sr-only">Close</span><em class="fa fa-times fa-lg"></em></button>
+                        </div>
+                        <div class="modal-body bag-details-modal">
+                            
+							<ul class="product-ul">
+                            {{#each newproductData}}
+                                    <li class="cart-added-product">
+                                        <div class="cart-added-image">
+                                            <img class="product-img" src="{{imageLink}}" >
+                                        </div>
+                                        <div class="cart-added-details">
+                                            <h2 class="product-name">{{{productName}}}</h2>
+
+                                            {{#if ages}}
+                                                <div class="age-category">
+                                                    <span class="ages-title">Ages:</span>
+                                                    <span class="ages-limit">{{ages}}</span>
+                                                </div>
+                                            {{/if}}
+
+                                            {{#if size}}
+                                                <div class="age-category">
+                                                    <span class="ages-title">Size:</span>
+                                                    <span class="ages-limit">{{size}}</span>
+                                                </div>
+                                            {{/if}}
+
+                                            {{#if color}}
+                                                <div class="age-category">
+                                                    <span class="ages-title">Color:</span>
+                                                    <span class="ages-limit">{{color}}</span>
+                                                </div>
+                                            {{/if}}
+
+                                            <div class="price">
+                                                {{#if salePrice}}
+                                                    <span class="offer-price"><span class="currency">$</span>{{salePrice}}</span>
+                                                {{/if}}
+                                                {{#if listPrice}}
+                                                    <span class="original-price"><span class="currency">$</span>{{listPrice}}</span>
+                                                {{/if}}
+                                                {{#if discountPrice}}
+                                                    <span class="you-save"><span class="yousave-title">You save</span> <span class="currency">$</span>{{discountPrice}}</span>
+                                                {{/if}}
+                                            </div>
+
+                                            <div class="availability">
+                                                {{#if inventoryStatus}}
+                                                    <span class="not-available">{{inventoryStatus}}</span>
+                                                {{/if}}
+                                                {{#if inventoryStatus}}
+                                                    <span class="available-until">{{backorderdate}}</span>
+                                                {{/if}}
+                                            </div>
+                                            {{#if isParentData}}
+                                                 {{#if @root.newaddonData}}
+                                                    <div class="added-services">
+                                                            <h3 class="added-services-title">Added services</h3>
+                                                            {{#each @root.newaddonData}}
+                                                                <div class="services">
+                                                                    <div class="services-name">{{name}}</div>
+                                                                    <div class="services-price">
+                                                                        <span class="currency">$</span>{{viewprice}}
+                                                                        {{#if strikePrice}}
+                                                                            <span class="price-strike"> <span class="sr-only price-value">Actual Price Strikes</span> $<span class="offer_price">{{strikePrice}}</span></span>
+                                                                        {{/if}}
+                                                                    </div>
+                                                                </div>
+                                                            {{/each}}
+                                                    </div>
+                                                {{/if}}
+                                            {{/if}}
+                                        </div>
+                                    </li>
+                            {{/each}}
+                            </ul>
+                            <div class="shipping-wrapper">
+                                {{#if this.newminiCartData.freeshipping}}
+                                    <div class="free-shipping">Add <span class="currency">$</span>{{newminiCartData.freeshippingAmount}} to qualify for free shipping</div>
+                                {{else}}    
+                                   <div class="free-shipping">Congratulations, your order qualifies for free shipping</div>
+                                {{/if}}
+                            </div>
+
+                            <div class="sub-total-wrapper">
+                                <span class="sub-total-items">Subtotal ({{newminiCartData.cartQuantity}} items)</span>
+                                <span class="sub-total-price"><span class="currency">$</span>{{newminiCartData.orderTotal}}</span>
+                            </div>
+                              <div class="add-on-button-container">
+                                <a href="${model.shoppingButtonlink @ context='unsafe'}" class="btn-shopping-bag theme-btn shopping-bag shoppingBagAnalytics">${properties.shoppingBagLabel @ context='html'}</a>
+                                <a href="{{pageReferal}}" class="theme-btn transparent-btn close-product-addOns shopping-bag">${properties.keepShoppingLabel @ context='html'}</a>
+                            </div>   
+                        </div>
+                    </div>
+                    {{/if}}
+                </script>
+                <script id="giftCardTmpl" type="text/x-handlebars-template">
+                    {{#if this}}
+                    <div class="add-to-bag-content">
+                        <div class="modal-header">
+                                <h2>{{this.totaladdedproduct}} ${properties.numberOfProductAddedToCartLabel @context='unsafe'}</h2>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="sr-only">Close</span><em class="fa fa-times fa-lg"></em></button>
+                        </div>
+                        <div class="modal-body bag-details-modal">
+							<ul class="product-ul">
+                                    <li class="cart-added-product">
+                                        <div class="cart-added-image">
+                                            <img class="product-img" src="{{this.imageLink}}" >
+                                        </div>
+                                        <div class="cart-added-details">
+                                            <h2 class="product-name">{{this.productName}}</h2>
+                                            <div class="price">
+                                                {{#if this.salePrice}}
+                                                    <span class="offer-price"><span class="currency">$</span>{{this.salePrice}}</span>
+                                                {{/if}}
+                                             </div>
+                                        </div>
+                                    </li>
+                            </ul>
+
+                            <div class="shipping-wrapper">
+                                {{#if this.newminiCartData.freeshipping}}
+                                    <div class="free-shipping">Add <span class="currency">$</span>{{newminiCartData.freeshippingAmount}} to qualify for free shipping</div>
+                                {{else}}    
+                                   <div class="free-shipping">Congratulations, your order qualifies for free shipping</div>
+                                {{/if}}
+                            </div>
+
+                            <div class="sub-total-wrapper">
+                                <span class="sub-total-items">Subtotal ({{newminiCartData.cartQuantity}} items)</span>
+                                <span class="sub-total-price"><span class="currency">$</span>{{newminiCartData.orderTotal}}</span>
+                            </div>
+                              <div class="add-on-button-container">
+                                <a href="${properties.shoppingButtonlink @ context='html'}" class="btn-shopping-bag theme-btn shopping-bag shoppingBagAnalytics">${properties.shoppingBagLabel @ context='html'}</a>
+                                <a href="{{pageReferal}}" class="theme-btn transparent-btn close-product-addOns shopping-bag">${properties.keepShoppingLabel @ context='html'}</a>
+                            </div>   
+                        </div>
+                    </div>
+                    {{/if}}
+                </script>
+            </div>            
+        </div>
+    </div>
+</div>

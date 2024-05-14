@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ |  Copyright 2015 Adobe Systems Incorporated
+ |
+ |  Licensed under the Apache License, Version 2.0 (the "License");
+ |  you may not use this file except in compliance with the License.
+ |  You may obtain a copy of the License at
+ |
+ |      http://www.apache.org/licenses/LICENSE-2.0
+ |
+ |  Unless required by applicable law or agreed to in writing, software
+ |  distributed under the License is distributed on an "AS IS" BASIS,
+ |  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ |  See the License for the specific language governing permissions and
+ |  limitations under the License.
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- ====================================================================== -->
+    <!-- P A R E N T  P R O J E C T  D E S C R I P T I O N                      -->
+    <!-- ====================================================================== -->
+    <parent>
+        <groupId>com.mattel.play</groupId>
+        <artifactId>play</artifactId>
+        <version>1.0.19-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+    <!-- ====================================================================== -->
+    <!-- P R O J E C T  D E S C R I P T I O N                                   -->
+    <!-- ====================================================================== -->
+    <artifactId>play.ui.apps</artifactId>
+    <packaging>content-package</packaging>
+    <name>play - UI apps</name>
+    <description>UI apps package for play</description>
+
+    <!-- <scm>
+        <connection></connection>
+        <developerConnection></developerConnection>
+        <url></url>
+        <tag>HEAD</tag>
+    </scm-->
+
+    <!-- ====================================================================== -->
+    <!-- B U I L D   D E F I N I T I O N                                        -->
+    <!-- ====================================================================== -->
+    <build>
+        <sourceDirectory>src/main/content/jcr_root</sourceDirectory>
+        <resources>
+            <!-- define the resources that will go into the package -->
+            <resource>
+                <directory>${basedir}/src/main/content/jcr_root</directory>
+                <excludes>
+                    <!-- exclude .vlt control files in the package -->
+                    <exclude>**/.vlt</exclude>
+                    <exclude>**/.vltignore</exclude>
+                    <exclude>**/.gitignore</exclude>
+                    <exclude>**/*.iml</exclude>
+                    <exclude>**/.classpath</exclude>
+                    <exclude>**/.project</exclude>
+                    <exclude>**/.settings</exclude>
+                    <exclude>**/.DS_Store</exclude>
+                    <exclude>**/target/**</exclude>
+                    <exclude>**/pom.xml</exclude>
+					<!-- exclude files generated from the frontend-maven-plugin and applied because of Babel integration -->
+					<exclude>**/gulpfile.js</exclude>
+					<exclude>**/package-lock.json</exclude>
+					<exclude>**/package.json</exclude>
+					<exclude>**/node/**</exclude>
+					<exclude>**/node_modules/**</exclude>
+					<exclude>**/babel/**</exclude>
+					<!-- end of update for Babel integration -->
+					<!-- exclude files generated from the frontend-maven-plugin and applied because of scss integration -->
+					<exclude>**/sass/**</exclude>
+                </excludes>
+            </resource>
+        </resources>
+        <plugins>
+            <!--
+                we want to keep some of the META-INF files and not configure
+                everything in the plugin (mainly the filters).
+
+                copy the resource explicitly instead of attaching it to the default resources
+            -->
+            <plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+                <!-- ensure that the empty directories are copied -->
+                <configuration>
+                    <includeEmptyDirs>true</includeEmptyDirs>
+                </configuration>
+            </plugin>
+			   <plugin>
+                <groupId>com.learningobjects</groupId>
+                <artifactId>sass-maven-plugin</artifactId>
+                <version>1.1</version>
+                <executions>
+                    <execution>
+                        <id>compile-sass</id>
+                        <configuration>
+                            <sassSourceDirectory>${basedir}/src/main/content/jcr_root/apps/mattel/play/</sassSourceDirectory>
+                            <cssTargetDirectory>${basedir}/target/classes/apps/mattel/play/</cssTargetDirectory>
+                        </configuration>
+                        <goals>
+                            <goal>compile</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- ====================================================================== -->
+            <!-- V A U L T   P A C K A G E   P L U G I N                                -->
+            <!-- ====================================================================== -->
+            <plugin>
+                <groupId>com.day.jcr.vault</groupId>
+                <artifactId>content-package-maven-plugin</artifactId>
+                <extensions>true</extensions>
+                <configuration>
+                    <filterSource>src/main/content/META-INF/vault/filter.xml</filterSource>
+                    <verbose>true</verbose>
+                    <failOnError>true</failOnError>
+                    <group>play</group>
+                    <embeddeds>
+                        <embedded>
+                            <groupId>com.mattel.play</groupId>
+                            <artifactId>play.core</artifactId>
+                            <target>/apps/mattel/play/install</target>
+                        </embedded>
+                    </embeddeds>
+                    <subPackages>
+                        <subPackage>
+                            <groupId>com.adobe.cq</groupId>
+                            <artifactId>core.wcm.components.all</artifactId>
+                            <filter>true</filter>
+                        </subPackage>
+                    </subPackages>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.sling</groupId>
+                <artifactId>htl-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>com.samaxes.maven</groupId>
+                <artifactId>minify-maven-plugin</artifactId>
+                <version>1.7.6</version>
+                <executions>
+                    <execution>
+                        <id>default-minify</id>
+                        <configuration>
+                            <webappSourceDir>${basedir}/target/classes/apps/mattel</webappSourceDir>
+                            <cssSourceDir>play</cssSourceDir>
+                            <jsSourceDir>play</jsSourceDir>
+                            <webappTargetDir>${basedir}/target/classes/apps/mattel</webappTargetDir>
+                            <cssTargetDir>play</cssTargetDir>
+                            <jsTargetDir>play</jsTargetDir>
+                            <skipMerge>true</skipMerge>
+                            <cssSourceFiles>
+                                <cssSourceFile>clientlibs/clientlib-pollypocket/css/mecard.css</cssSourceFile>
+                                <cssSourceFile>clientlibs/clientlib-pollypocket/css/poly.css</cssSourceFile>
+			        <cssSourceFile>clientlibs/clientlib-agplay/css/ag-play.css</cssSourceFile>
+                            </cssSourceFiles>
+                            <jsSourceFiles>
+                                <jsSourceFile>clientlibs/clientlib-analytics/analytics.js</jsSourceFile>
+                                <jsSourceFile>clientlibs/clientlib-base/js/accordion.js</jsSourceFile>
+                                <jsSourceFile>clientlibs/clientlib-base/js/brand-lists.js</jsSourceFile>
+                                <jsSourceFile>clientlibs/clientlib-base/js/cdnavbtn.js</jsSourceFile>
+                                <jsSourceFile>clientlibs/clientlib-base/js/country-drop-down.js</jsSourceFile>
+                                <jsSourceFile>clientlibs/clientlib-base/js/enable-carousel.js</jsSourceFile>
+                                <jsSourceFile>clientlibs/clientlib-base/js/enable-caurosel-nav.js</jsSourceFile>
+                                <jsSourceFile>clientlibs/clientlib-base/js/enable-caurosel-nav-titles.js</jsSourceFile>
+                                <jsSourceFile>clientlibs/clientlib-base/js/footer.js</jsSourceFile>
+                                <jsSourceFile>clientlibs/clientlib-base/js/gallery.js</jsSourceFile>
+                                <jsSourceFile>clientlibs/clientlib-base/js/reusability-gallery.js</jsSourceFile>
+                                <jsSourceFile>clientlibs/clientlib-base/js/game-component.js</jsSourceFile>
+                                <jsSourceFile>clientlibs/clientlib-base/js/global-header.js</jsSourceFile>
+                                <jsSourceFile>clientlibs/clientlib-base/js/go-to-top.js</jsSourceFile>
+                                <jsSourceFile>clientlibs/clientlib-base/js/header.js</jsSourceFile>
+                                <jsSourceFile>clientlibs/clientlib-base/js/interstitial.js</jsSourceFile>
+                                <jsSourceFile>clientlibs/clientlib-base/js/newsletter-cookie.js</jsSourceFile>
+                                <jsSourceFile>clientlibs/clientlib-base/js/ooyala-init.js</jsSourceFile>
+                                <jsSourceFile>clientlibs/clientlib-base/js/play-landing-lazyload.js</jsSourceFile>
+                                <jsSourceFile>clientlibs/clientlib-base/js/products-landing.js</jsSourceFile>
+				<jsSourceFile>clientlibs/clientlib-agplay/js/ag-play.js</jsSourceFile>
+                                <jsSourceFile>clientlibs/clientlib-base/js/social-share.js</jsSourceFile>
+                                <jsSourceFile>clientlibs/clientlib-initialize/initialize.js</jsSourceFile>
+                                <jsSourceFile>components/content/articleDetail/clientlib/js/tagValidationPrimary.js</jsSourceFile>
+                                <jsSourceFile>components/content/countryDropDown/clientlibs-countrydropdown/country-dropdown.js</jsSourceFile>
+                                <jsSourceFile>components/content/downloadImageGallery/clientlibs-downloadGallery/interstialApp.js</jsSourceFile>
+                                <jsSourceFile>components/content/emailSubscription/emailSubscription/js/cookie.js</jsSourceFile>
+                                <jsSourceFile>components/content/emailSubscription/emailSubscription/js/crypto-algorithm.js</jsSourceFile>
+                                <jsSourceFile>components/content/emailSubscription/emailSubscription/js/email-form.js</jsSourceFile>
+                                <jsSourceFile>components/content/emailSubscription/emailSubscription/js/initialize.js</jsSourceFile>
+                                <jsSourceFile>components/content/footer/footer/footer.js</jsSourceFile>
+                                <jsSourceFile>components/content/globalHeader/clientlibs/js/global-header.js</jsSourceFile>
+                                <jsSourceFile>components/content/imageAndText/clientlibs-imageAndText/imageAndText-video.js</jsSourceFile>
+                                <jsSourceFile>components/content/productDetail/clientlibs-productdetail/ooyala-init.js</jsSourceFile>
+                                <jsSourceFile>components/content/productDetail/clientlibs-productdetail/product-gallery.js</jsSourceFile>
+                                <jsSourceFile>components/content/promoCarousel/clientlibs_promo/js/limitPromoCarousel.js</jsSourceFile>
+                                <jsSourceFile>components/content/retailer/clientlibs_retailer/js/limitRetailer.js</jsSourceFile>
+                            </jsSourceFiles>
+                        </configuration>
+                        <goals>
+                            <goal>minify</goal>
+                        </goals>
+                    </execution>
+					<execution>
+                        <id>mattelcom-minify</id>
+                        <configuration>
+                            <webappSourceDir>${basedir}/target/classes/apps/mattel</webappSourceDir>
+                            <cssSourceDir>play/clientlibs/clientlib-mattelcom/css</cssSourceDir>
+                            <jsSourceDir>play</jsSourceDir>
+                            <webappTargetDir>${basedir}/target/classes/apps/mattel</webappTargetDir>
+                            <cssTargetDir>play/clientlibs/clientlib-mattelcom/css</cssTargetDir>
+                            <jsTargetDir>play</jsTargetDir>
+                            <skipMerge>true</skipMerge>
+                            <cssSourceFiles>
+                                <cssSourceFile>mattelcom.css</cssSourceFile>                                
+                            </cssSourceFiles>                           
+                        </configuration>
+                        <goals>
+                            <goal>minify</goal>
+                        </goals>
+                    </execution>
+					<execution>
+                        <id>canvas-minify</id>
+                        <configuration>
+                            <webappSourceDir>${basedir}/target/classes/apps/mattel</webappSourceDir>
+                            <cssSourceDir>play/clientlibs/clientlib-canvas/css</cssSourceDir>
+                            <jsSourceDir>play</jsSourceDir>
+                            <webappTargetDir>${basedir}/target/classes/apps/mattel</webappTargetDir>
+                            <cssTargetDir>play/clientlibs/clientlib-canvas/css</cssTargetDir>
+                            <jsTargetDir>play</jsTargetDir>
+                            <skipMerge>true</skipMerge>
+                            <cssSourceFiles>
+                                <cssSourceFile>canvas.css</cssSourceFile>                                
+                            </cssSourceFiles>                           
+                        </configuration>
+                        <goals>
+                            <goal>minify</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>mattelgames-minify</id>
+                        <configuration>
+                            <webappSourceDir>${basedir}/target/classes/apps/mattel</webappSourceDir>
+                            <cssSourceDir>play/clientlibs/clientlib-mattelgames/css</cssSourceDir>
+                            <jsSourceDir>play</jsSourceDir>
+                            <webappTargetDir>${basedir}/target/classes/apps/mattel</webappTargetDir>
+                            <cssTargetDir>play/clientlibs/clientlib-mattelgames/css</cssTargetDir>
+                            <jsTargetDir>play</jsTargetDir>
+                            <skipMerge>true</skipMerge>
+                            <cssSourceFiles>
+                                <cssSourceFile>mattelgames.css</cssSourceFile>
+                            </cssSourceFiles>
+                        </configuration>
+                        <goals>
+                            <goal>minify</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>monsterhigh-minify</id>
+                        <configuration>
+                            <webappSourceDir>${basedir}/target/classes/apps/mattel</webappSourceDir>
+                            <cssSourceDir>play/clientlibs/clientlib-monsterhigh/css</cssSourceDir>
+                            <jsSourceDir>play</jsSourceDir>
+                            <webappTargetDir>${basedir}/target/classes/apps/mattel</webappTargetDir>
+                            <cssTargetDir>play/clientlibs/clientlib-monsterhigh/css</cssTargetDir>
+                            <jsTargetDir>play</jsTargetDir>
+                            <skipMerge>true</skipMerge>
+                            <cssSourceFiles>
+                                <cssSourceFile>monsterhigh.css</cssSourceFile>
+                            </cssSourceFiles>
+                        </configuration>
+                        <goals>
+                            <goal>minify</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>playbarbie-minify</id>
+                        <configuration>
+                            <webappSourceDir>${basedir}/target/classes/apps/mattel</webappSourceDir>
+                            <cssSourceDir>play/clientlibs/clientlib-playbarbie/css</cssSourceDir>
+                            <jsSourceDir>play</jsSourceDir>
+                            <webappTargetDir>${basedir}/target/classes/apps/mattel</webappTargetDir>
+                            <cssTargetDir>play/clientlibs/clientlib-playbarbie/css</cssTargetDir>
+                            <jsTargetDir>play</jsTargetDir>
+                            <skipMerge>true</skipMerge>
+                            <cssSourceFiles>
+                                <cssSourceFile>playbarbie.css</cssSourceFile>
+                            </cssSourceFiles>
+                        </configuration>
+                        <goals>
+                            <goal>minify</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <!-- ====================================================================== -->
+    <!-- D E P E N D E N C I E S                                                -->
+    <!-- ====================================================================== -->
+    <dependencies>
+        <dependency>
+            <groupId>com.mattel.play</groupId>
+            <artifactId>play.core</artifactId>
+            <version>1.0.19-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.adobe.aem</groupId>
+            <artifactId>uber-jar</artifactId>
+            <classifier>apis</classifier>
+        </dependency>
+
+        <dependency>
+            <groupId>com.adobe.cq</groupId>
+            <artifactId>core.wcm.components.all</artifactId>
+            <type>zip</type>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.jcr</groupId>
+            <artifactId>jcr</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.day.cq.wcm</groupId>
+            <artifactId>cq-wcm-taglib</artifactId>
+        </dependency>
+    </dependencies>
+</project>

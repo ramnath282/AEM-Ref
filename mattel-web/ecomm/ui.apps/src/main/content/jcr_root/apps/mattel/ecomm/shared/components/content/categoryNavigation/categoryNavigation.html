@@ -1,0 +1,47 @@
+<sly data-sly-test="${wcmmode.edit}">${'Configure Multi Category Navigation' @ i18n}
+	<sly data-sly-use.shopByCategory="${'com.mattel.ecomm.core.models.CategoryNavigationModel' @ url=currentPage.Path}">
+		<sly data-sly-list.categoryTitle="${shopByCategory.categoryNavLinks}">
+			<li><a href="${categoryTitle.pageUrl}">${categoryTitle.pageName @i18n}</a> 
+				<ul class="subMenu-container">
+					<li>
+						<section class="sub-nav shop-by-category">
+							<div>
+								<div class="featured-list">
+									<ul data-sly-list.featured="${shopByCategory.featuredLinksList}">
+										<li><a href="${featured.pageUrl}">${featured.pageName @i18n}</a>
+										</li>
+									</ul>
+								</div>
+								<div class="link-list">
+									<ul>
+										<sly data-sly-list.category="${categoryTitle.childPageList}">
+											<li class="column-3"> 
+												<a class="listTitle" href="${category.pageUrl}">${category.pageName @i18n}</a>
+												<ul data-sly-list.subCategory="${category.childPageList}">
+													<li>
+														<a href="${subCategory.pageUrl}">${subCategory.pageName @i18n}</a>
+													</li>
+												</ul>
+											</li>
+										</sly>
+									</ul>
+								</div>
+								<sly data-sly-list.image="${shopByCategory.imageSectionList}">
+									<div class="img-list">
+										<ul>
+											<li>
+												<a href="${image.promoUrl @i18n}">
+													<img src="${image.promoImagePath}" alt="${image.promoImageAltText @i18n}"> <span class="label">${image.promoHeader @i18n}</span>
+												</a>
+											</li>
+										</ul>
+									</div>
+								</sly>
+							</div>
+						</section>
+					</li>
+				</ul>
+			</li>
+		</sly>
+	</sly>
+</sly>

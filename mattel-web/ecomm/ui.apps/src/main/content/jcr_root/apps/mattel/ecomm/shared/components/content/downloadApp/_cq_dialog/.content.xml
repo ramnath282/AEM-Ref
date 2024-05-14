@@ -1,0 +1,484 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="App Gallery"
+    sling:resourceType="cq/gui/components/authoring/dialog"
+    height="{Long}500">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <downloadImageGallery
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Download App Gallery "
+                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <column
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <title
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Title of Download Gallery"
+                                        fieldLabel="Title of Download Gallery"
+                                        name="./title"
+                                        required="{Boolean}true"/>
+                                    <description
+                                        cq:xfVariantType="web"
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+                                        fieldDescription="Description"
+                                        fieldLabel="description"
+                                        height="20"
+                                        name="./description"
+                                        useFixedInlineToolbar="{Boolean}true">
+                                        <htmlRules
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceSuperType="mattel/play/components/content/playRtePlugins/htmlRules"/>
+                                        <rtePlugins
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceSuperType="mattel/play/components/content/playRtePlugins/rtePlugins"/>
+                                        <uiSettings
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceSuperType="mattel/play/components/content/playRtePlugins/uiSettings"/>
+                                    </description>
+                                    <showmoretitle
+                                        cq:xfVariantType="web"
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Show More Text"
+                                        fieldLabel="Show More Text"
+                                        name="./showMoreText"
+                                        required="{Boolean}true"
+                                        useFixedInlineToolbar="{Boolean}true"/>
+                                    <showlesstitle
+                                        cq:xfVariantType="web"
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Show Less Text"
+                                        fieldLabel="Show Less Text"
+                                        name="./showLessText"
+                                        required="{Boolean}true"
+                                        useFixedInlineToolbar="{Boolean}true"/>
+                                    <enableDownload
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                        fieldDescription="Check this if CTA button needs to show"
+                                        name="./enabledownload"
+                                        text="Enable CTA"
+                                        uncheckedValue="false"
+                                        value="true"/>
+                                    <enableViewAll
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                        fieldDescription="Check this if Show More CTA needs to show"
+                                        name="./enableviewall"
+                                        text="Enable Show More CTA?"
+                                        uncheckedValue="false"
+                                        value="true"/>
+                                    <enableopacity
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                        fieldDescription="Check this if image hovering needs to show"
+                                        name="./enablehovering"
+                                        text="Enable Image Hovering?"
+                                        uncheckedValue="false"
+                                        value="true"/>
+                                    <columnLayout
+                                        granite:class="cq-dialog-dropdown-showhide"
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                        fieldDescription="Display Gallery in Default/ 3 Column/ 4 Column Layout"
+                                        fieldLabel="Display Gallery in"
+                                        name="./columnLayout">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <default
+                                                jcr:primaryType="nt:unstructured"
+                                                selected="{Boolean}true"
+                                                text="Default"
+                                                value="default"/>
+                                            <twoColumn
+                                                jcr:primaryType="nt:unstructured"
+                                                selected="{Boolean}true"
+                                                text="Two Column Layout"
+                                                value="column-2"/>
+                                            <threeColumn
+                                                jcr:primaryType="nt:unstructured"
+                                                selected="{Boolean}true"
+                                                text="Three Column Layout"
+                                                value="column-3"/>
+                                            <fourColumn
+                                                jcr:primaryType="nt:unstructured"
+                                                text="Four Column Layout"
+                                                value="column-4"/>
+                                        </items>
+                                    </columnLayout>
+                                    <viewAllLabel
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="View All Label"
+                                        fieldLabel="View All Label"
+                                        name="./viewAll"/>
+                                    <viewAllLink
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                        fieldDescription="View All Link"
+                                        fieldLabel="View All Link"
+                                        name="./viewAllLink"
+                                        rootPath="/content/mattel-play"/>
+                                    <viewAllOpenCtaLinks
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                        fieldDescription="View All Open CTA Link"
+                                        fieldLabel="View All Open CTA Link"
+                                        name="./viewAllOpenCtaLinksIn">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <sameWindow
+                                                jcr:primaryType="nt:unstructured"
+                                                text="Same Window"
+                                                value="samewindow"/>
+                                            <newTab
+                                                jcr:primaryType="nt:unstructured"
+                                                text="New Tab"
+                                                value="newtab"/>
+                                            <newWindow
+                                                jcr:primaryType="nt:unstructured"
+                                                text="New Window"
+                                                value="newwindow"/>
+                                            <interstitial
+                                                jcr:primaryType="nt:unstructured"
+                                                text="Interstitial"
+                                                value="interstitial"/>
+                                        </items>
+                                    </viewAllOpenCtaLinks>
+                                    <analyticslocationname
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Analytics Location Name"
+                                        fieldLabel="Analytics Location Name"
+                                        name="./analyticslocationname"/>
+                                    <backgroundoption
+                                        granite:class="cq-dialog-dropdown-showhide"
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                        fieldLabel="Download Section Background Option"
+                                        name="./downloadBackOption">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <image
+                                                jcr:primaryType="nt:unstructured"
+                                                text="Image"
+                                                value="image"/>
+                                            <color
+                                                jcr:primaryType="nt:unstructured"
+                                                text="Color"
+                                                value="color"/>
+                                        </items>
+                                    </backgroundoption>
+                                    <backgroundColour
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/colorfield"
+                                        fieldLabel="Download Section Background Color"
+                                        name="./downloadBgColor"/>
+                                    <backgroundImage
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                        allowUpload="{Boolean}false"
+                                        autoStart="{Boolean}false"
+                                        class="cq-droptarget"
+                                        fieldLabel="Download Section Background Image"
+                                        fileReferenceParameter="./downloadBgImage"
+                                        mimeTypes="[image/gif,image/jpeg,image/png,image/webp,image/tiff]"
+                                        multiple="{Boolean}false"
+                                        name="./downloadBgImage1"
+                                        rootPath="/content/dam"
+                                        uploadUrl="${suffix.path}"
+                                        useHTML5="{Boolean}true"/>
+                                </items>
+                            </column>
+                        </items>
+                    </downloadImageGallery>
+                    <tileConfiguration
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Tiles Configuration"
+                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <downloadImageGallery
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                composite="{Boolean}true"
+                                fieldDescription="Tile Configuration"
+                                fieldLabel="Tile Configuration">
+                                <field
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/fieldset"
+                                    name="./downloadImage">
+                                    <items jcr:primaryType="nt:unstructured">
+                                        <column
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                                            <items jcr:primaryType="nt:unstructured">
+                                                <thumbnailTitle
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldDescription="Title of tile"
+                                                    fieldLabel="tile Title"
+                                                    name="./thumbnailTitle"
+                                                    required="{Boolean}true"/>
+                                                <thumbnailDescription
+                                                    cq:xfVariantType="web"
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+                                                    fieldDescription="Tile Description"
+                                                    fieldLabel="Tile Description"
+                                                    height="20"
+                                                    name="./thumbnailDescription"
+                                                    useFixedInlineToolbar="{Boolean}true">
+                                                    <htmlRules
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceSuperType="mattel/play/components/content/playRtePlugins/htmlRules"/>
+                                                    <rtePlugins
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceSuperType="mattel/play/components/content/playRtePlugins/rtePlugins"/>
+                                                    <uiSettings
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceSuperType="mattel/play/components/content/playRtePlugins/uiSettings"/>
+                                                </thumbnailDescription>
+                                                <thumbnailImage
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+                                                    allowUpload="{Boolean}false"
+                                                    autoStart="{Boolean}false"
+                                                    class="cq-droptarget"
+                                                    fieldLabel="Tile Image"
+                                                    fileReferenceParameter="./thumbImage"
+                                                    mimeTypes="[image/gif,image/jpeg,image/png,image/webp,image/tiff,video/mp4,video/webm,video/ogg]"
+                                                    multiple="{Boolean}false"
+                                                    name="./thumbnailImage"
+                                                    required="{Boolean}true"
+                                                    rootPath="/content/dam"
+                                                    uploadUrl="${suffix.path}"
+                                                    useHTML5="{Boolean}true"/>
+                                                <altTextThumbnail
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldDescription="Alt text of tile image"
+                                                    fieldLabel="Alternative Text Tile Image"
+                                                    name="./altTexTthumbnail"
+                                                    required="true"/>
+                                                <downloadctaLabel
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldDescription="CTA Label for Carousel"
+                                                    fieldLabel="Download CTA Label"
+                                                    name="./downloadCtaLabel"/>
+                                                <interstitialAndroidLink
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="/libs/granite/ui/components/coral/foundation/form/pathfield"
+                                                    fieldDescription="Interstitial Website URL"
+                                                    fieldLabel="Andorid URL for CTA"
+                                                    name="./interstitialAndroidUrl"
+                                                    rootPath="/content/mattel-play"/>
+                                                <interstitialIosLink
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="/libs/granite/ui/components/coral/foundation/form/pathfield"
+                                                    fieldDescription="Interstitial Website URL"
+                                                    fieldLabel="IOS URL for CTA"
+                                                    name="./interstitialIosUrl"
+                                                    rootPath="/content/mattel-play"/>
+                                                <awalysEnglish
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldDescription="Awalys English dealing with multi-lingual site tagging"
+                                                    fieldLabel="Adobe Tracking Name"
+                                                    name="./alwaysEnglish"
+                                                    required="{Boolean}true"/>
+                                            </items>
+                                        </column>
+                                    </items>
+                                </field>
+                                <granite:data
+                                    jcr:primaryType="nt:unstructured"
+                                    maxRetailersAllowed="12"/>
+                            </downloadImageGallery>
+                        </items>
+                    </tileConfiguration>
+                    <linkToNavigation
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Link To Navigation"
+                        sling:resourceType="granite/ui/components/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <linkToNavigation
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/foundation/form/checkbox"
+                                fieldDescription="Is this section to be linked to Navigation"
+                                name="./linkNavigationCheck"
+                                text="Link To Navigation?"
+                                uncheckedValue="{Boolean}false"
+                                value="{Boolean}true"/>
+                            <NavigationOptions
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                fieldLabel="Navigation Mapping"
+                                name="./linkNavOption">
+                                <datasource
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="/bin/homepagedropdown"/>
+                            </NavigationOptions>
+                        </items>
+                    </linkToNavigation>
+                    <interstitialBackgroundConfig
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Interstitial Configuration"
+                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <interstitialBgImage
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                                allowUpload="{Boolean}false"
+                                                autoStart="{Boolean}false"
+                                                class="cq-droptarget"
+                                                fieldLabel="Background Image"
+                                                fileReferenceParameter="./interstitialBgImage"
+                                                mimeTypes="[image/gif,image/jpeg,image/png,image/webp,image/tiff]"
+                                                multiple="{Boolean}false"
+                                                name="./interstitialBackgroundImage"
+                                                uploadUrl="${suffix.path}"
+                                                useHTML5="{Boolean}true"/>
+                                            <interstitialBgColor
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="/libs/granite/ui/components/coral/foundation/form/colorfield"
+                                                fieldLabel="Background Color"
+                                                name="./interstitialBgColor"/>
+                                            <interstitialBgOption
+                                                granite:class="cq-dialog-dropdown-showhide"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                fieldLabel="Background Option"
+                                                name="./interstitialBackOption">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <image
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Image"
+                                                        value="image"/>
+                                                    <color
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Color"
+                                                        value="color"/>
+                                                </items>
+                                            </interstitialBgOption>
+                                            <interstitialTitle
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Interstitial Title"
+                                                fieldLabel="Title"
+                                                name="./interstitialTitle"
+                                                required="{Boolean}true"/>
+                                            <interstitialDescription
+                                                cq:xfVariantType="web"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+                                                fieldDescription="Interstitial Description"
+                                                fieldLabel="Description"
+                                                height="20"
+                                                name="./interstitialDescription"
+                                                useFixedInlineToolbar="{Boolean}true">
+                                                <htmlRules
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceSuperType="mattel/play/components/content/playRtePlugins/htmlRules"/>
+                                                <rtePlugins
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceSuperType="mattel/play/components/content/playRtePlugins/rtePlugins"/>
+                                                <uiSettings
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceSuperType="mattel/play/components/content/playRtePlugins/uiSettings"/>
+                                            </interstitialDescription>
+                                            <andoridAppStoreLogo
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                                allowUpload="{Boolean}false"
+                                                autoStart="{Boolean}false"
+                                                class="cq-droptarget"
+                                                fieldLabel="Android App Store Logo"
+                                                fileReferenceParameter="./interstitialAndroidLogo"
+                                                mimeTypes="[image/gif,image/jpeg,image/png,image/webp,image/tiff]"
+                                                multiple="{Boolean}false"
+                                                name="./interstitilaAndroidImage"
+                                                rootPath="/content/dam"
+                                                uploadUrl="${suffix.path}"
+                                                useHTML5="{Boolean}true"/>
+                                            <altTextForAndroidLogo
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Alt text for Android Logo"
+                                                fieldLabel="Alt text for Android Logo"
+                                                name="./altTexForAndroidLogo"
+                                                required="true"/>
+                                            <iosAppStoreLogo
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                                allowUpload="{Boolean}false"
+                                                autoStart="{Boolean}false"
+                                                class="cq-droptarget"
+                                                fieldLabel="IOS App Store Logo"
+                                                fileReferenceParameter="./interstitialIosLogo"
+                                                mimeTypes="[image/gif,image/jpeg,image/png,image/webp,image/tiff]"
+                                                multiple="{Boolean}false"
+                                                name="./interstitialIosImage"
+                                                rootPath="/content/dam"
+                                                uploadUrl="${suffix.path}"
+                                                useHTML5="{Boolean}true"/>
+                                            <altTextForIOSLogo
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Alt text for IOS Logo"
+                                                fieldLabel="Alt text for IOS Logo"
+                                                name="./altTexForIOSLogo"
+                                                required="true"/>
+                                            <openLinksIn
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                fieldLabel="Open URL In"
+                                                name="./openURLIn">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <sameWindow
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Same Window"
+                                                        value="sameWindow"/>
+                                                    <newTab
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="New Tab"
+                                                        value="tabWindow"/>
+                                                    <newWindow
+                                                        granite:hide="${cqDesign.disableSearch}"
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="New Window"
+                                                        value="newWindow"/>
+                                                </items>
+                                            </openLinksIn>
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </interstitialBackgroundConfig>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>

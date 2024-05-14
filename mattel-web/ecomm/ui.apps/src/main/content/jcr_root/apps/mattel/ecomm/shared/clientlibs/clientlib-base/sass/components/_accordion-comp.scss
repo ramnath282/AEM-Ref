@@ -1,0 +1,125 @@
+.accordion-comp{ 
+    @include content-spacing(map-get($accord-comp, accordionMain)); 
+    padding: 0;
+    float: left;
+    .accordion-section { 
+        &.active {
+            .accordion-title {
+                a{
+                    &:before{
+                        -webkit-transform: rotate(180deg);
+                        -moz-transform: rotate(180deg);
+                        transform: rotate(180deg);
+                    }
+                }
+            }
+        }    
+            position: relative;
+            color: mapping($accord-comp,accordColor,color);  
+            $borderProperty: mapping($accord-comp,accordWrapper,border); 
+            //@include content-spacing(map-get($accord-comp, accordWrapperMargin));
+            @if(map-get($borderProperty, enabled)) {
+                border-#{map-get($borderProperty,position)}: (map-get($borderProperty, size) solid map-get($borderProperty, color));
+            }
+            .accordion-title { 
+                &:hover,
+                &:focus {
+                    background-color: mapping($accord-comp,accordWrapper,background-color) !important;
+                    cursor: pointer;
+                }                
+                @include content-spacing(map-get($accord-comp, accordWrapper));
+                margin: 0; 
+                background-color: mapping($accord-comp,accordColor,background-color);              
+                width: 100%;
+                text-align: left;
+                cursor:default;
+                border:none;            
+                a {
+                    font: mapping($accord-comp,accordFont,font);
+                    color: mapping($accord-comp,accordColor,color) !important; 
+                    text-decoration: none;
+                    &:before {
+                        @include font-awesome();
+                        @include content-spacing(map-get($accord-comp, accordIcon));
+                        font-size: 18px;                        
+                        content: "\f078";
+                        float: right;
+                    }
+                    h3{
+                        padding: 0;
+                    }
+                }           
+            }
+            .dropmenu {
+                @include content-spacing(map-get($accord-comp, accordText));                
+                p{
+                    @include content-spacing(map-get($accord-comp, accordTextGap));
+                    font: mapping($accord-comp,accordText,font);
+                    a {
+                        color:$theme-color;
+                    }
+                }
+                ul {
+                    list-style: none;
+                    li {
+                        color:$primary-color;
+                        font: mapping($accord-comp,accordText,font);
+                        margin: 0 0 8px 1em;
+                        list-style: initial;
+                        list-style-position: outside;
+                    }
+                }
+                .sku {
+                    font-size: em(14)
+                }
+
+            }
+        .doll-vid {
+            @include content-spacing(map-get($accord-comp, videoWrapper));
+            font: mapping($accord-comp,accordFont,font);
+        }
+        #s7viewer1 {
+            @media #{$large-up}{
+                margin-left: em(30);
+            }
+            @media #{$small-down}{
+                .s7container {
+                    width: 100%;
+                }
+            }
+        }
+        p:empty{
+            display: none;
+        }                
+    }
+    .accordion-video-container{
+        width:95%;
+        height:auto;        
+    }    
+}
+.ecomm-wrapper{
+    .accordion.aem-GridColumn {
+        padding:0;
+        max-width: 1600px;
+        @media #{$medium-up}{
+            position: absolute;	
+            top: 850px;
+            opacity: 0;
+            z-index: 10;
+        }
+        @media #{$medium-down}{
+            opacity: 1 !important;
+            z-index: 1 !important;
+        }
+        .accordion-comp {
+            @extend .col-md-7;
+            @media #{$small-down}{
+                padding: 0 em(15);
+            }
+            margin: 1.07143em 0 0 0;
+        }
+        .s7videoviewer{
+            width: 95%
+        }
+    }
+}

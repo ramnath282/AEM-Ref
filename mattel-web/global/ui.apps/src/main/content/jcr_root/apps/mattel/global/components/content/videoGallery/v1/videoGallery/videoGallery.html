@@ -1,0 +1,175 @@
+<sly data-sly-include="/apps/mattel/global/components/content/globalVideoConfig/globalVideoConfig.html"/>
+<sly data-sly-use.lib="mattel/global/components/content/dynamicMedia/v1/dynamicMedia/imageblock.html" />
+<sly data-sly-use.videoGalleryModel="com.mattel.global.master.core.model.VideoGalleryModel"/>
+<sly data-sly-use.ctaItem="com.mattel.global.core.model.v1.CtaItemModel" />
+<sly data-sly-test="${wcmmode.edit}">${'Configure Video Gallery v1' @ i18n}</sly>
+
+<div class="${properties.image || properties.mobileImage ? 'bg_wrapperImg dynamic-media-wrapper' : 'bg_color'}">
+    <sly data-sly-test="${properties.backgroundOption == 'color'}">
+        <div class="play-video" data-height-sync=".gallery-image" id="" data-link-attribute="" style="background-color:${properties.backgroundColor @ context='styleString'}">
+    </sly>
+    <sly data-sly-test="${properties.backgroundOption != 'color'}">
+        <div class="play-video ${properties.tileOption} ${properties.image || properties.mobileImage ? 'dynamic-media-container' : ''}" data-height-sync=".gallery-image" id="" data-link-attribute="" style="background-image:url(${properties.tileImage ? properties.image : '' @ context='html' }); ">
+    </sly>
+    <sly data-sly-test="${properties.backgroundOption!='color' && !properties.tileImage}">
+        <div class="dynamicMedia" data-sly-test="${properties.image || properties.mobileImage}">
+            <div class="desktop-bg" data-sly-test="${properties.image && properties.backgroundOption != 'color'}" data-sly-call="${lib.imageVideoSection @ imageDetail='image'}"></div>
+            <div class="mobile-bg" data-sly-test="${properties.mobileImage && properties.backgroundOption != 'color'}" data-sly-call="${lib.imageVideoSection @ imageDetail='mobileImage'}">
+            </div>
+        </div>
+    </sly>
+    <div class="reusability-video-component" id="video-gallery-player-component">
+            <div class="reusability-video-page-title">
+            <div class="main-title" data-sly-test="${properties.title}">
+                <h2>${properties.title @context='html',i18n}</h2>
+            </div>
+			<div class="sub-title" data-sly-test="${properties.subTitle}">
+				${properties.subTitle @context='html',i18n}
+			</div>
+            <div class="text-para" data-sly-test="${properties.description}">
+                <p>${properties.description @context='html',i18n}</p>
+            </div>
+        </div>
+        <div class="reusability-video-player-container" data-sly-test="${!properties.hidePlayer}">
+            <div class="reusability-video-player-in">
+                <div class="reusability-video-player-wrapper">
+                    <sly data-sly-test="${properties.videoOrder == 'date'}">
+                        <a data-sly-test="${videoGalleryModel.videoByDateList.size>1}" href="javascript:void(0)" class="slide-btn cd-prev" data-action="prev"></a>
+                    </sly>
+                    <sly data-sly-test="${properties.videoOrder == 'category'}">
+                        <a data-sly-test="${videoGalleryModel.videoByCategoryList.size>1}" href="javascript:void(0)" class="slide-btn cd-prev" data-action="prev"></a>
+                    </sly>
+                    <sly data-sly-test="${properties.videoOrder == 'manual'}">
+                        <a data-sly-test="${videoGalleryModel.videoManualList.size>1}" href="javascript:void(0)" class="slide-btn cd-prev" data-action="prev"></a>
+                    </sly>
+                    <sly data-sly-test="${properties.autoPlay == null}">
+                        <div id="main-player-container" class="featured-promo video-player" data-autoplay="true"></div>
+                    </sly>
+                    <sly data-sly-test="${properties.autoPlay != null}">
+                        <div id="main-player-container" class="featured-promo video-player" data-autoplay="${properties.autoPlay}"></div>
+                    </sly>
+                    <sly data-sly-test="${properties.videoOrder == 'date'}">
+                        <a data-sly-test="${videoGalleryModel.videoByDateList.size>1}" href="javascript:void(0)" class="slide-btn cd-next" data-action="next"></a>
+                    </sly>
+                    <sly data-sly-test="${properties.videoOrder == 'category'}">
+                        <a data-sly-test="${videoGalleryModel.videoByCategoryList.size>1}" href="javascript:void(0)" class="slide-btn cd-next" data-action="next"></a>
+                    </sly>
+                    <sly data-sly-test="${properties.videoOrder == 'manual'}">
+                        <a data-sly-test="${videoGalleryModel.videoManualList.size>1}" href="javascript:void(0)" class="slide-btn cd-next" data-action="next"></a>
+                    </sly>
+                </div>
+                <div class="reusability-video-player-label col-md-12">
+                    <h2 id="video-player-title">${'Video' @i18n}</h2>
+                    <p id="video-player-desc">${'Description Goes Here' @i18n}</p>
+                </div>
+            </div>
+        </div>
+        <div id="videos-gallery" class="reusability-videos-gallery-playlist">
+                <div class="reusability-play-tiles-gallery default">
+                    <div class="reusability-gallery-tile" data-player-available="${properties.hidePlayer == 'false' ? 'true' : 'false'}">
+                        <sly data-sly-test="${properties.videoOrder == 'manual'}">
+                                <sly data-sly-test.checkLength="${videoGalleryModel.videoManualList.size<=1}" />
+                                <ul class="reusability-play-list" id="player-gallery-thumbnail-datas" data-empty="No Records Found." data-sly-list.video="${videoGalleryModel.videoManualList}">
+                                    <sly data-sly-test.concatenated="${'{0}{1}' @ format=[video.videoUrl, video.videoName]}">
+										<li data-sly-test="${video.videoThumbnail}" data-index="${videoList.index}" class="${checkLength?'hidden':''} ${properties.columnLayout}" data-video-id="${video.videoId}">
+                                            <a href="${concatenated}" data-detail-link="${concatenated}" target="_self" data-tracking-id="Video Gallery Section|${video.alwaysEnglish}|${video.alwaysEnglish}|Videos" data-gallery="">
+                                                <div class="reusability-gallery-image">
+                                                    <img src="${video.videoThumbnail}" alt="${video.thumbnailAltTxt}" />
+                                                    <div class="reusability-playing-overlay">
+														<span class="play-icon"><em class="fas fa-play"></em></span>
+                                                        <span class="play-text" data-sly-test="${properties.nowPlayingText}">${properties.nowPlayingText @context='html',i18n}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="reusability-video-title-section">
+                                                    <span class="center txt-truncate" data-sly-test="${video.videoTitle}">${video.videoTitle @i18n}</span>
+                                                    <span class="tile-content center" style="display:none" data-sly-test="${video.videoTitle}">${video.videoTitle @i18n}</span>
+                                                    <span class="tile-desc hidden" data-sly-test="${video.videoDesc}">${video.videoDesc @context='html',i18n}</span>
+                                                </div>
+                                            </a>
+										</li>
+                                    </sly>
+                                </ul>
+                        </sly>
+                        <sly data-sly-test="${properties.videoOrder == 'date'}">
+                                <sly data-sly-test.checkLength="${videoGalleryModel.videoByDateList.size<=1}" />
+                                <ul class="reusability-play-list" id="player-gallery-thumbnail-datas" data-empty="No Records Found." data-sly-list.video="${videoGalleryModel.videoByDateList}">
+                                   	<sly data-sly-test.concatenated="${'{0}{1}' @ format=[video.videoUrl, video.videoName]}">
+										<li data-sly-test="${video.videoThumbnail}" data-index="${videoList.index}" class="${checkLength?'hidden':''} ${properties.columnLayout}" data-video-id="${video.videoId}">
+                                             <a href="${concatenated}" data-detail-link="${concatenated}" target="_self" data-tracking-id="Video Gallery Section|${video.alwaysEnglish}|${video.alwaysEnglish}|Videos" data-gallery="">
+                                                <div class="reusability-gallery-image">
+                                                    <img src="${video.videoThumbnail}" alt="${video.thumbnailAltTxt}" />
+                                                    <div class="reusability-playing-overlay">
+														<span class="play-icon"><em class="fas fa-play"></em></span>
+                                                        <span class="play-text" data-sly-test="${properties.nowPlayingText}">${properties.nowPlayingText @context='html',i18n}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="reusability-video-title-section">
+													<span class="center txt-truncate" data-sly-test="${video.videoTitle}">${video.videoTitle @i18n}</span>
+                                                    <span class="tile-content center" style="display:none" data-sly-test="${video.videoTitle}">${video.videoTitle @i18n}</span>
+                                                    <span class="tile-desc hidden" data-sly-test="${video.videoDesc}">${video.videoDesc @context='html',i18n}</span>
+                                                </div>
+                                            </a>
+										</li>
+                                    </sly>
+                                </ul>
+                        </sly>
+                        <sly data-sly-test="${properties.videoOrder == 'category'}">
+                                <sly data-sly-test.checkLength="${videoGalleryModel.videoByCategoryList.size<=1}" />
+                                <ul class="reusability-play-list" id="player-gallery-thumbnail-datas" data-empty="No Records Found." data-sly-list.video="${videoGalleryModel.videoByCategoryList}">
+                                   	<sly data-sly-test.concatenated="${'{0}{1}' @ format=[video.videoUrl, video.videoName]}">
+										<li data-sly-test="${video.videoThumbnail}" data-index="${videoList.index}" class="${checkLength?'hidden':''} ${properties.columnLayout}" data-video-id="${video.videoId}">
+                                            <a href="${concatenated}" data-detail-link="${concatenated}" target="_self" data-tracking-id="Video Gallery Section|${video.alwaysEnglish}|${video.alwaysEnglish}|Videos" data-gallery="">
+                                                <div class="reusability-gallery-image">
+                                                    <img src="${video.videoThumbnail}" alt="${video.thumbnailAltTxt}" />
+                                                    <div class="reusability-playing-overlay">
+														<span class="play-icon"><em class="fas fa-play"></em></span>
+                                                        <span class="play-text" data-sly-test="${properties.nowPlayingText}">${properties.nowPlayingText @context='html',i18n}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="reusability-video-title-section">
+													<span class="center txt-truncate" data-sly-test="${video.videoTitle}">${video.videoTitle @i18n}</span>
+                                                    <span class="tile-content center" style="display:none" data-sly-test="${video.videoTitle}">${video.videoTitle @i18n}</span>
+                                                    <span class="tile-desc hidden" data-sly-test="${video.videoDesc}">${video.videoDesc @context='html',i18n}</span>
+                                                </div>
+                                            </a>
+										</li>
+                                    </sly>
+                                </ul>
+                        </sly>
+						<sly data-sly-test="${! ctaItem.useInterstitial}">
+							<div class="view-all" data-sly-test="${properties.linkText && properties.linkURL}">
+								<sly data-sly-test="${ctaItem.linkOptions == 'newTab' || ctaItem.linkOptions == 'self'}" >
+									<a class="btn btn-view-all cta_button_tracking" aria-label="View all videos ${properties.title}" data-sly-attribute.data-interstitial-window="${ctaItem.linkOptions == 'newTab' ? 'newTab' : 'sameWindow'}" href="${ctaItem.url @ context = 'attribute'}" data-sly-attribute.data-tracking-id="Video Gallery Section|${properties.trackThisCTA ? properties.trackingText : ''}|viewAll"  style="background-color : ${ctaItem.fillColor @ context = 'styleToken'}" data-sly-attribute.target="${ctaItem.linkOptions == 'newTab' ? '_blank' : '' }" role="button">${ctaItem.linkText @ context = 'html'}</a>
+								</sly>
+								<sly data-sly-test="${ctaItem.linkOptions == 'download'}" >
+									<a class="btn btn-view-all cta_button_tracking" aria-label="View all videos ${properties.title}" href="${ctaItem.url @ context = 'attribute'}" data-sly-attribute.data-tracking-id="Video Gallery Section|${properties.trackThisCTA ? properties.trackingText : ''}|viewAll" style="background-color : ${ctaItem.fillColor @ context = 'styleToken'}" download role="button">${ctaItem.linkText @ context = 'html'}</a>
+								</sly>
+								<sly data-sly-test="${ctaItem.linkOptions == 'blank'}" >
+									<a class="btn btn-view-all cta_button_tracking" aria-label="View all videos ${properties.title}" data-sly-attribute.data-interstitial-window="newWindow" data-sly-attribute.data-tracking-id="Video Gallery Section|${properties.trackThisCTA ? properties.trackingText : ''}|viewAll" style="background-color : ${ctaItem.fillColor @ context = 'styleToken'}" onclick="window.open('${ctaItem.url @ context = 'attribute'}','FP','width=500, height=500');" role="button">${ctaItem.linkText @ context = 'html'}</a>
+								</sly>
+							</div>
+						</sly>
+						<sly data-sly-test="${ctaItem.useInterstitial}">
+							<div class="view-all" data-sly-test="${properties.linkText && properties.linkURL}">
+								<a class="btn btn-view-all cta_useInterstitial_tracking" aria-label="View all videos ${properties.title}" href="javascript:void(0);" data-sly-attribute.data-tracking-id="Video Gallery Section|${properties.trackThisCTA ? properties.trackingText : ''}|viewAll"  data-sly-attribute.data-url="${ctaItem.url}" data-toggle="modal" data-sly-attribute.data-target="#${ctaItem.isFirstCTA ? ctaItem.interstitialType : ''}" style="background-color : ${ctaItem.fillColor @ context = 'styleToken'}" role="button">${ctaItem.linkText @ context = 'html'}</a>
+								<sly data-sly-test="${ctaItem.isFirstCTA && ctaItem.interstitialPath}">
+									<div data-sly-resource = "${ @ path= ctaItem.interstitialPath}">
+									</div>
+								</sly>
+							</div>
+						</sly>
+                    </div>
+                    <div class="show-more ctaItem showMoreBtn solid ${checkLength?'hidden':''}">
+                        <div class="cta-item show-more-accordian"> <a href="javascript:void(0);" class="btn-cta-item accordion" data-text-collapse="${videoGalleryModel.showMoreText @i18n}" data-text-expand="${videoGalleryModel.showLessText @i18n}" aria-expanded="false">
+                            ${videoGalleryModel.showMoreText @i18n}
+                        </a>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+</div>
+<sly data-sly-use.clientlibVideogallery="/libs/granite/sightly/templates/clientlib.html">
+    <sly data-sly-call="${clientlibVideogallery.js @ categories='global.mattelVideoPlayer'}" />
+</sly>

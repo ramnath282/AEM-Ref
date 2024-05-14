@@ -1,0 +1,47 @@
+.page-view[id^='pagename-sodor-'],
+.page-view[id*=' pagename-sodor-'] {
+    .play-category-details-component .enable-carousel-nav .nav-carousel-slides li img + span{
+        background-color: $ChateauGreen;
+    }
+    .play-character-landing-block .play-list{
+        @media screen and (max-width:568px){
+            padding: 0 10px;
+            .column-4,.column-3{
+                width: 50%;
+                section{
+                    border-left-width: 5px;
+                    border-right-width: 5px;
+                    padding: 0.379375rem !important;
+                }
+            }
+        }
+        .column-4,.column-3{
+            .charTitle{
+                background-color: $pacificBlue;
+            }
+        }
+    }
+    .char-detials-comp{
+        background-image :url("#{$imagePath}/Sodor_detail_train_desktop_578x51px.png") !important;
+        @media #{$medium-up}{
+            @media #{$large-down}{
+                background-size: 42% !important;
+            }
+        }
+        @media #{$xsmall-down} {
+            background-size: contain !important;
+        }
+        .char-details-description{
+            &:before{
+                background-image :url("#{$imagePath}/Sodor_detail_background_engine_desktop_396x441px.png");
+                max-width: 50%;
+                @media #{$small-up}{
+                    max-width: 24.75rem;
+                }
+            }
+            @media #{$large-up}{
+                max-height: calc(31.25rem - 3rem);
+            }
+        }
+    }
+}

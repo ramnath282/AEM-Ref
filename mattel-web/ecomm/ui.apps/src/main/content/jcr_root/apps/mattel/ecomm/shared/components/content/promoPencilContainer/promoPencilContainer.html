@@ -1,0 +1,16 @@
+<sly data-sly-test="${wcmmode.edit}">${'Edit Promo Pencil Container Component' @i18n}</sly>
+<div class="${wcmmode.edit ? 'promo-pencil-container-edit' : 'promo-pencil-container'}">
+	<div class="promo-guest-user">
+    	<sly data-sly-test="${properties.guestNonAgrUserPromo}" data-sly-resource="${@path=properties.guestNonAgrUserPromo, selectors='content', wcmmode='disabled'}"></sly>
+    </div>
+    <div class="promo-signed-in-user">
+    	<sly data-sly-test="${properties.signedInAgrUserPromo}" data-sly-resource="${@path=properties.signedInAgrUserPromo, selectors='content', wcmmode='disabled'}"></sly>
+    </div>
+</div>
+<sly data-sly-use.isCloudConfg="${'/apps/mattel/global/clientlibs/global-utils/js/utils.js' @ uri=request.requestURI, text='nocloudconfigs'}" />
+<sly data-sly-test="${!isCloudConfg.isCloudConf}">
+    <sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
+        <sly data-sly-call="${clientlib.js @ categories='ecomm.promoPencilContainer'}"/>
+    </sly>
+</sly>
+</sly>

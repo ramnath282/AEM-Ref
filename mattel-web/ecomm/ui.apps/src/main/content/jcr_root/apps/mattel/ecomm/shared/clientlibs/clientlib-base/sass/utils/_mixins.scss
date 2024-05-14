@@ -1,0 +1,84 @@
+
+// @include content-spacing(map-get($layout, description));
+@mixin content-spacing($spacing) {
+  $isMarginValue: type-of(map-get($spacing, margin))==map;
+  $isPaddingValue: type-of(map-get($spacing, padding))==map;
+
+  margin: $isMarginValue and map-get(map-get($spacing, margin), sm) or null;
+  padding: $isPaddingValue and map-get(map-get($spacing, padding), sm) or null;
+
+  @media #{$medium-up} {
+    margin: $isMarginValue and map-get(map-get($spacing, margin), md) or null;
+    padding: $isPaddingValue and map-get(map-get($spacing, padding), md) or null;
+  }
+
+  @media #{$large-up} {
+    margin: $isMarginValue and map-get(map-get($spacing, margin), lg) or null;
+    padding: $isPaddingValue and map-get(map-get($spacing, padding), lg) or null;
+  }
+
+}
+
+// @include read-all-content(map-get($previewPlaceholder,image));
+@mixin read-all-content($obj){
+  @each $key, $val in $obj {
+    @if (type-of(map-get($obj, #{$key})) ==map){
+      @include content-responsive($obj, #{$key});
+    }@else{
+     #{$key}: $val;
+    }
+ }
+}
+
+// @include content-responsive(map-get($layout, description), height);
+@mixin content-responsive($spacing,$variableName, $propertyName: $variableName) {
+  $isValue: type-of(map-get($spacing, $variableName))==map;
+
+  #{$propertyName}: $isValue and map-get(map-get($spacing, $variableName), sm) or null;
+  @media #{$medium-up} {
+    #{$propertyName}: $isValue and map-get(map-get($spacing, $variableName), md) or null;
+  }
+  @media #{$large-up} {
+    #{$propertyName}: $isValue and map-get(map-get($spacing, $variableName), lg) or null;
+  }
+
+}
+
+
+// @include button-style(map-get($layout, button));
+@mixin button-style($buttonConfig : null) {
+  @if ($buttonConfig !=null) {
+    color: map-get($buttonConfig, color);
+    background-color: map-get($buttonConfig, background);
+    border-color: map-get($buttonConfig, border);
+    font: map-get($buttonConfig, font);
+    line-height: map-get($buttonConfig, lineHeight);
+    @include border-radius(map-get($buttonConfig, borderRadius));
+
+    @if (map-get($buttonConfig, hover)) {
+      &:hover {
+        color: map-get(map-get($buttonConfig, hover), color);
+        background-color: map-get(map-get($buttonConfig, hover), background);
+      }
+    }
+
+    &.active {
+      @if(map-get($buttonConfig, hover) and map-get(map-get($buttonConfig, hover), sameForActive)) {
+        color: map-get(map-get($buttonConfig, hover), color);
+        background-color: map-get(map-get($buttonConfig, hover), background);
+      }
+
+      @else if(map-get($buttonConfig, active)) {
+        color: map-get(map-get($buttonConfig, active), color);
+        background-color: map-get(map-get($buttonConfig, active), background);
+      }
+    }
+
+    &.disabled,
+    &[disabled] {
+      // in progress
+    }
+
+    @include content-spacing($buttonConfig);
+  }
+}

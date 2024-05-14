@@ -1,0 +1,13 @@
+<sly data-sly-test="${wcmmode.edit}">${'Configure Mattel Brands List' @ i18n}</sly>
+<sly data-sly-use.primaryPreferencesMattelBrandsModel="com.mattel.global.core.model.PrimaryPreferencesMattelBrandsModel">
+    <sly data-sly-list.brandsList="${primaryPreferencesMattelBrandsModel.mattelBrandsList}">
+        <li class="checkbox">
+            <label class="emailpref-checkbox">
+                <input type="checkbox" name="mattle brand" class="mattlebrands" data-id="${brandsList.preferenceID}">
+                <span class="checkmark"></span>
+                <span class="checkval">${brandsList.title @i18n}</span>
+                <p data-sly-test="${brandsList.description}">${brandsList.description @i18n}</p>
+            </label>
+        </li>
+    </sly>
+</sly>

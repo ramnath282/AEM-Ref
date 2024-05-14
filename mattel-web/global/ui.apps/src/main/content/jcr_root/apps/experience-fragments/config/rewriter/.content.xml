@@ -1,0 +1,20 @@
+<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0"
+          xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+          xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+          jcr:primaryType="sling:Folder">
+    <adobe-target-offer
+        jcr:primaryType="nt:unstructured"
+        contentTypes="[text/html]"
+        enabled="{Boolean}true"
+        generatorType="jsoup-html-generator"
+        serializerType="htmlwriter"
+        transformerTypes="[adobe-target-offer,xf-target-offer-extension]"
+        resourceTypes="[cq/experience-fragments/components/xfpage]"
+        selectors="[atoffer]"
+        order="1000">
+        <transformer-adobe-target-offer
+            jcr:primaryType="nt:unstructured"/>
+        <transformer-xf-target-offer-extension
+            jcr:primaryType="nt:unstructured"/>
+    </adobe-target-offer>
+</jcr:root>

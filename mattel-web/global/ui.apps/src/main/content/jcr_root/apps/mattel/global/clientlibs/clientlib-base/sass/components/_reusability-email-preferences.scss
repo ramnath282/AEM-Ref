@@ -1,0 +1,728 @@
+.reusability-email-preferences {
+    .email-preferences-component {
+        @extend .row;
+        @include print-css(
+            map-merge((
+                margin-left:0,
+                margin-right: 0
+            ), 
+            if(variable-exists(emailprefrence) and map-has-key($emailprefrence, accordionItem), 
+                map-get($emailprefrence,accordionItem), ()
+            )
+        ));
+        .xf-content-height {
+            margin: 0;
+        }
+    }
+    
+    .email-preferences-image-block {
+        @extend .col-sm-12;
+        @extend .col-md-12;
+        @extend .col-lg-4;
+        @include print-css(
+            map-merge((
+                padding:0,
+                display: (
+                    defaultVal:block,
+                    mediumDown:none
+                ),
+            ), 
+            if(variable-exists(emailprefrence) and map-has-key($emailprefrence, emailprefrenceImgBlk), 
+                map-get($emailprefrence,emailprefrenceImgBlk), ()
+            )
+        ));
+    }
+    
+    .email-preferences-image-block-mobile {
+        @extend .col-sm-12;
+        @extend .col-md-12;
+        @extend .col-lg-4;
+        @include print-css(
+            map-merge((
+                padding:0,
+                display: (
+                    defaultVal:none,
+                    mediumDown:block
+                ),
+            ), 
+            if(variable-exists(emailprefrence) and map-has-key($emailprefrence, emailprefrenceImgBlockMob), 
+                map-get($emailprefrence,emailprefrenceImgBlockMob), ()
+            )
+        ));
+        img {
+            @media #{$medium-down} {
+                width: 100%
+            }
+        }
+    }
+    
+    .email-preferences-content-block {
+        @extend .col-sm-12;
+        @extend .col-md-12;
+        @extend .col-lg-8;
+        @include print-css(
+            map-merge((
+                margin: 0 auto,
+                float: inherit,
+                padding-right: 0,
+                padding-left: 0
+            ), 
+            if(variable-exists(emailprefrence) and map-has-key($emailprefrence, emailprefrencecontBlock), 
+                map-get($emailprefrence,emailprefrencecontBlock), ()
+            )
+        ));
+        .title-block {
+            @include print-css(
+            map-merge((
+                padding: (
+                    defaultVal:35px 30px 20px 30px,
+                    mediumDown:20px 19px 14px,
+                ),
+                margin-top: (
+                    mediumDown:0
+                )
+            ), 
+            if(variable-exists(emailprefrence) and map-has-key($emailprefrence, emailprefrencetitleBlock), 
+                map-get($emailprefrence,emailprefrencetitleBlock), ()
+            )
+        ));
+            h2 {
+                @include print-css(
+                    map-merge((
+                        font-family:$letsBeGlyphs,
+                        color: $black,
+                        font-size: (
+                            defaultVal:20px,
+                            smallUp:32px,
+                            smallDown:22px
+                        ),
+                        font-weight: 400,
+                        line-height: (
+                            defaultVal:24px,
+                            smallUp:36px
+                        ),
+                        text-align:left,
+                        margin-bottom:(
+                            defaultVal:23px,
+                            smallDown:19px
+                        )
+                    ), 
+                    if(variable-exists(emailprefrence) and map-has-key($emailprefrence, emailprefrencetitleH2), 
+                        map-get($emailprefrence,emailprefrencetitleH2), ()
+                    )
+                ));
+            }
+            .label {
+                @include print-css(
+                    map-merge((
+                        margin-bottom: (
+                            defaultVal: 20px,
+                            mediumDown:10px
+                        ),
+                        padding:  0,
+                        display: block,
+                        text-align: left,
+                    ), 
+                    if(variable-exists(emailprefrence) and map-has-key($emailprefrence, emailprefrenceLabel), 
+                        map-get($emailprefrence,emailprefrenceLabel), ()
+                    )
+                ));
+                .title {
+                    @include print-css(
+                        map-merge((
+                            color: $black,
+                            font-family: $maaxMedium,
+                            font-size: (
+                                defaultVal:18px,
+                                mediumDown:16px
+                            ),
+                            font-weight: 500,
+                            line-height: 26px,
+                            margin-bottom:(
+                                mediumDown:2px
+                            )
+                        ), 
+                        if(variable-exists(emailprefrence) and map-has-key($emailprefrence, emailprefrenceTitle), 
+                            map-get($emailprefrence,emailprefrenceTitle), ()
+                        )
+                    ));
+                }
+                .desc {
+                    @include print-css(
+                        map-merge((
+                            color: (
+                                defaultVal: #484848,
+                                mediumDown:$black
+                            ),
+                            font-family: $maax,
+                            font-size: (
+                                defaultVal:18px,
+                                mediumDown:16px
+                            ),
+                            line-height: (
+                                defaultVal:26px,
+                                mediumDown:26px
+                            ),
+                            display:(
+                                mediumDown:block
+                            )
+                        ), 
+                        if(variable-exists(emailprefrence) and map-has-key($emailprefrence, emailprefrenceDesc), 
+                            map-get($emailprefrence,emailprefrenceDesc), ()
+                        )
+                    ));
+                }
+            }
+            p {
+                @include print-css(
+                    map-merge((
+                        color: $black,
+                        font-family: $maax,
+                        font-size: (
+                            defaultVal:18px,
+                            mediumDown:16px
+                        ),
+                        line-height: 26px,
+                        margin: 0
+                    ), 
+                    if(variable-exists(emailprefrence) and map-has-key($emailprefrence, emailprefrenceDescription), 
+                        map-get($emailprefrence,emailprefrenceDescription), ()
+                    )
+                ));
+            }
+        }
+        .subscription-opt {
+            @include print-css(
+                map-merge((
+                    padding-left:(
+                        defaultVal:30px,
+                        mediumDown:19px
+                    ),
+                    padding-right:(
+                        defaultVal:em(33),
+                        mediumDown:21px
+                    )
+                ), 
+                if(variable-exists(emailprefrence) and map-has-key($emailprefrence, emailprefrenceSubscrptionOpt), 
+                    map-get($emailprefrence,emailprefrenceSubscrptionOpt), ()
+                )
+            ));
+            ul {
+                @include print-css(
+                    map-merge((
+                        margin-bottom: 0,
+                        overflow: hidden
+                    ), 
+                    if(variable-exists(emailprefrence) and map-has-key($emailprefrence, subscriptionUl), 
+                        map-get($emailprefrence,subscriptionUl), ()
+                    )
+                ));
+                li {
+                    @include print-css(
+                        map-merge((
+                            padding:(
+                                defaultVal: 21px 0 0 0,
+                                mediumDown: 13px 0 0 0
+                            ),
+                            border-top: 2px solid #E5E0DC,
+                        ), 
+                        if(variable-exists(emailprefrence) and map-has-key($emailprefrence, subscriptionLi), 
+                            map-get($emailprefrence,subscriptionLi), ()
+                        )
+                    ));
+                    &:last-child {
+                        @include print-css(
+                            map-merge((
+                                border-bottom: 0,
+                            ), 
+                            if(variable-exists(emailprefrence) and map-has-key($emailprefrence, subscriptionLiLastChild), 
+                                map-get($emailprefrence,subscriptionLiLastChild), ()
+                            )
+                        ));
+                       
+                    }
+                    ul {
+                        &>li {
+                            @include print-css(
+                                map-merge((
+                                    border-bottom: 0
+                                ), 
+                                if(variable-exists(emailprefrence) and map-has-key($emailprefrence, emailsubscriptionLiLastChild), 
+                                    map-get($emailprefrence,emailsubscriptionLiLastChild), ()
+                                )
+                            ));
+                        }
+                    }
+                    p {
+                        @include print-css(
+                            map-merge((
+                                margin: 0 0 20px 0,
+                                font-size: (
+                                    defaultVal: 16px,
+                                    mediumDown:14px
+                                ),
+                                line-height:(
+                                    mediumDown:22px
+                                ),
+                                margin-bottom:(
+                                    mediumDown:13px
+                                )
+                            ), 
+                            if(variable-exists(emailprefrence) and map-has-key($emailprefrence, subscriptionLiText), 
+                                map-get($emailprefrence,subscriptionLiText), ()
+                            )
+                        ));
+                    }
+                }
+            }
+            .change-email-pref-opt {
+                display: none;
+                ul {
+                    li {
+                        @include print-css(
+                            map-merge((
+                                border-bottom: 0,
+                                border-top: 0,
+                                padding:(
+                                    mediumDown:20px 0 10px 0
+                                )
+                            ), 
+                            if(variable-exists(emailprefrence) and map-has-key($emailprefrence, changeEmailPrefLi), 
+                                map-get($emailprefrence,changeEmailPrefLi), ()
+                            )
+                        ));
+                        .mattelBrandsList {
+                            li {
+                                @include print-css(
+                                    map-merge((
+                                        padding: (
+                                            defaultVal:12px 15px,
+                                            mediumDown:11px
+                                        ),
+                                        background: #F8F6F5,
+                                        width: (
+                                            defaultVal:48%,
+                                            mediumDown:100%
+                                        ),
+                                        margin-bottom: (
+                                            defaultVal: 20px,
+                                            mediumDown:10px
+                                        ),
+                                        float: left
+                                    ), 
+                                    if(variable-exists(emailprefrence) and map-has-key($emailprefrence, mattelBrandsList), 
+                                        map-get($emailprefrence,mattelBrandsList), ()
+                                    )
+                                ));
+                                &:nth-child(odd) {
+                                    @include print-css(
+                                        map-merge((
+                                            margin-right:(
+                                                defaultVal:30px,
+                                                mediumDown:0
+                                            )
+                                        ), 
+                                        if(variable-exists(emailprefrence) and map-has-key($emailprefrence, mattelBrandsOddList), 
+                                            map-get($emailprefrence,mattelBrandsOddList), ()
+                                        )
+                                    ));
+                                }
+                             &.check-active {
+                                @include print-css(
+                                    map-merge((
+                                        background: #6AD1E3,
+                                    ), 
+                                    if(variable-exists(emailprefrence) and map-has-key($emailprefrence, emailprefrenceCheckActive), 
+                                        map-get($emailprefrence,emailprefrenceCheckActive), ()
+                                    )
+                                ));
+                                 
+                             }
+                            }
+                        }
+                    }
+                }
+            }
+            .checkbox,
+            .radio {
+                @include print-css(
+                    map-merge((
+                        margin:0
+                    ), 
+                    if(variable-exists(emailprefrence) and map-has-key($emailprefrence, emailprefrencecheckboxMargin), 
+                        map-get($emailprefrence,emailprefrencecheckboxMargin), ()
+                    )
+                ));
+                label {
+                    @include print-css(
+                        map-merge((
+                            color: $black,
+                            font-family: $maax,
+                            font-size: 18px,
+                            font-weight: 500,
+                            line-height: 26px
+                        ), 
+                        if(variable-exists(emailprefrence) and map-has-key($emailprefrence, emailprefrencecheckboxLabel), 
+                            map-get($emailprefrence,emailprefrencecheckboxLabel), ()
+                        )
+                    ));
+                    &.emailpref-checkbox {
+                        @include print-css(
+                            map-merge((
+                                padding: 0,
+                                padding-left: 32px
+                            ), 
+                            if(variable-exists(emailprefrence) and map-has-key($emailprefrence, emailPrefCheckbox), 
+                                map-get($emailprefrence,emailPrefCheckbox), ()
+                            )
+                        ));
+                        
+                        p {
+                            @include print-css(
+                                map-merge((
+                                    line-height: 22px,
+                                    margin: 0,
+                                    font-size: 16px !important
+                                ), 
+                                if(variable-exists(emailprefrence) and map-has-key($emailprefrence, emailPrefCheckboxText), 
+                                    map-get($emailprefrence,emailPrefCheckboxText), ()
+                                )
+                            ));
+                        }
+                    }
+                    .checkval {
+                        @include print-css(
+                                map-merge((
+                                    color: (
+                                        defaultVal:$black,
+                                        mediumDown:$black
+                                    ),
+                                    font-size: (
+                                        defaultVal:18px,
+                                        mediumDown:16px
+                                    ),
+                                    font-weight: 500,
+                                    font-family: $maaxMedium,
+                                    line-height: 26px
+                                ), 
+                                if(variable-exists(emailprefrence) and map-has-key($emailprefrence, emailPrefcheckval), 
+                                    map-get($emailprefrence,emailPrefcheckval), ()
+                                )
+                        ));
+                    }
+                    p {
+                        @include print-css(
+                                map-merge((
+                                    color: $black,
+                                    font-family: $maax,
+                                    font-size: 18px,
+                                    line-height: 26px
+                                ), 
+                                if(variable-exists(emailprefrence) and map-has-key($emailprefrence, emailPrefcheckvalText), 
+                                    map-get($emailprefrence,emailPrefcheckvalText), ()
+                                )
+                        ));
+                    }
+                }
+                &.with-accordion {
+                    @include print-css(
+                        map-merge((
+                            padding: 0,
+                            padding-top: 15px
+                        ), 
+                        if(variable-exists(emailprefrence) and map-has-key($emailprefrence, emailPrefcheckwithPadding), 
+                            map-get($emailprefrence,emailPrefcheckwithPadding), ()
+                        )
+                    ));
+                   
+                }
+                .accordion-component {
+                    .accordion {
+                        @include print-css(
+                            map-merge((
+                            padding: 0,
+                            margin: 0,
+                            float: none,
+                            border-top: 2px solid #E5E0DC,
+                            border-bottom: 0px solid #E5E0DC
+                            ), 
+                            if(variable-exists(emailprefrence) and map-has-key($emailprefrence, emailPrefaccordion), 
+                                map-get($emailprefrence,emailPrefaccordion), ()
+                            )
+                        ));
+                        .accordion-title {
+                            @include print-css(
+                                map-merge((
+                                    margin-bottom: 0,
+                                    padding: 15px 20px 15px 0px,
+                                    border-bottom: 2px solid #E5E0DC,
+                                    border-top: 0px solid #E5E0DC
+                                ), 
+                                if(variable-exists(emailprefrence) and map-has-key($emailprefrence, emailPrefaccordionTitle), 
+                                    map-get($emailprefrence,emailPrefaccordionTitle), ()
+                                )
+                            ));
+                            p {
+                                @include print-css(
+                                    map-merge((
+                                        color: $black,
+                                        font-family: $maax,
+                                        font-size: 16px,
+                                        line-height: 26px,
+                                        margin: 0,
+                                        padding: 0 30px
+                                    ), 
+                                    if(variable-exists(emailprefrence) and map-has-key($emailprefrence, emailPrefaccordionText), 
+                                        map-get($emailprefrence,emailPrefaccordionText), ()
+                                    )
+                                ));
+                            }
+                        }
+                        .arrow {
+                            @include print-css(
+                                    map-merge((
+                                        width: 24px,
+                                        height: 24px,
+                                        top: (
+                                            defaultVal:8%,
+                                            mediumDown:18%,
+                                            smallDown:12%,
+                                        ),
+                                        right:0
+                                    ), 
+                                    if(variable-exists(emailprefrence) and map-has-key($emailprefrence, emailPrefaccordionArrow), 
+                                        map-get($emailprefrence,emailPrefaccordionArrow), ()
+                                    )
+                            ));
+                            &.arrowDown:after {
+                                @include print-css(
+                                    map-merge((
+                                        background: none !important
+                                    ), 
+                                    if(variable-exists(emailprefrence) and map-has-key($emailprefrence, emailPrefaccordionArrowAfter), 
+                                        map-get($emailprefrence,emailPrefaccordionArrowDown), ()
+                                    )
+                                ));
+                                
+                            }
+                            &.arrowUp:after {
+                                @include print-css(
+                                    map-merge((
+                                        background: none !important
+                                    ), 
+                                    if(variable-exists(emailprefrence) and map-has-key($emailprefrence, emailPrefaccordionArrow), 
+                                        map-get($emailprefrence,emailPrefaccordionArrowUp), ()
+                                    )
+                                ));
+                            }
+                        }
+                        .accordion-content {
+                            @include print-css(
+                                    map-merge((
+                                        padding:  5px 30px 20px,
+                                        border-bottom: 2px solid #E5E0DC
+                                    ), 
+                                    if(variable-exists(emailprefrence) and map-has-key($emailprefrence, emailPrefaccordionContent), 
+                                        map-get($emailprefrence,emailPrefaccordionContent), ()
+                                    )
+                            ));
+                            p {
+                                @include print-css(
+                                    map-merge((
+                                        font-weight: normal,
+                                        font-size: em(14),
+                                        padding: 0,
+                                        font-family: $maax
+                                    ), 
+                                    if(variable-exists(emailprefrence) and map-has-key($emailprefrence, emailPrefaccordionContentTxt), 
+                                        map-get($emailprefrence,emailPrefaccordionContentTxt), ()
+                                    )
+                                ));
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        /* The emailpref-checkbox  <label class="emailpref-checkbox"> */
+        .emailpref-checkbox {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            @include print-css(
+                map-merge((
+                    display: block,
+                    position: relative,
+                    padding-left: 35px,
+                    cursor: pointer,
+                    font-size: 22px,
+                ), 
+                if(variable-exists(emailprefrence) and map-has-key($emailprefrence, emailPreCheckBox), 
+                    map-get($emailprefrence,emailPreCheckBox), ()
+                )
+            ));
+            
+            input {
+                @include print-css(
+                    map-merge((
+                        position: absolute,
+                        opacity: 0,
+                        cursor: pointer,
+                        height: 0,
+                        width: 0
+                    ), 
+                    if(variable-exists(emailprefrence) and map-has-key($emailprefrence, emailPreCheckBoxInput), 
+                        map-get($emailprefrence,emailPreCheckBoxInput), ()
+                    )
+                ));
+                &:checked~.checkmark {
+                    &:after {
+                        @include print-css(
+                            map-merge((
+                                display: block
+                            ), 
+                            if(variable-exists(emailprefrence) and map-has-key($emailprefrence, emailPreCheckMarkChecked), 
+                                map-get($emailprefrence,emailPreCheckMarkChecked), ()
+                            )
+                        ));
+                    }
+                }
+            }
+            .checkmark {
+                @include print-css(
+                    map-merge((
+                        position: absolute,
+                        background: url($spriteImgPath) no-repeat -194px -48px,
+                        left: 0,
+                        height: 24px,
+                        width: 24px,
+                        background-color: $white
+                    ), 
+                    if(variable-exists(emailprefrence) and map-has-key($emailprefrence, emailPrefCheckmark), 
+                        map-get($emailprefrence,emailPrefCheckmark), ()
+                    )
+                ));
+                &:after {
+                    @include print-css(
+                        map-merge((
+                            display: none,
+                            position: absolute,
+                            content: " ",
+                            background: url($spriteImgPath) no-repeat -218px -48px,
+                            text-align: center,
+                            width: 24px,
+                            height: 24px,
+                        ), 
+                        if(variable-exists(emailprefrence) and map-has-key($emailprefrence, emailPrefCheckmarkAfter), 
+                            map-get($emailprefrence,emailPrefCheckmarkAfter), ()
+                        )
+                    ));
+                }
+            }
+        }
+        .emailpref-radio {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            @include print-css(
+                map-merge((
+                    display: block,
+                    position: relative,
+                    padding-left:(
+                        defaultVal: 35px,
+                        mediumDown: 28px
+                    ),
+                    cursor: pointer,
+                    font-size: 22px,
+                ), 
+                if(variable-exists(emailprefrence) and map-has-key($emailPrefRadio, emailPrefCheckmarkAfter), 
+                    map-get($emailprefrence,emailPrefRadio), ()
+                )
+            ));
+            input {
+                @include print-css(
+                    map-merge((
+                        position: absolute,
+                        opacity: 0,
+                        cursor: pointer
+                    ), 
+                    if(variable-exists(emailprefrence) and map-has-key($emailPrefRadio, emailPrefRadioInput), 
+                        map-get($emailprefrence,emailPrefRadioInput), ()
+                    )
+                ));
+                &:checked~.checkmark:after {
+                    display: block
+                }
+            }
+            .checkmark {
+                @include print-css(
+                    map-merge((
+                        position: absolute,
+                        top: 1px,
+                        left: 0,
+                        height: 24px,
+                        width: 24px,
+                        background: url($spriteImgPath) no-repeat -66px -48px
+                    ), 
+                    if(variable-exists(emailprefrence) and map-has-key($emailPrefRadio, emailPrefRadioCheckMark), 
+                        map-get($emailprefrence,emailPrefRadioCheckMark), ()
+                    )
+                ));
+                &:after {
+                    @include print-css(
+                        map-merge((
+                            content: " ",
+                            position: absolute,
+                            display: none,
+                            width: 24px,
+                            height: 24px,
+                            background: url($spriteImgPath) no-repeat -90px -48px
+                        ), 
+                        if(variable-exists(emailprefrence) and map-has-key($emailPrefRadio, emailPrefRadioCheckMarkAfter), 
+                            map-get($emailprefrence,emailPrefRadioCheckMarkAfter), ()
+                        )
+                    ));
+                }
+            }
+        }
+        .btn-primary {
+            @include print-css(
+                map-merge((
+                    margin:(
+                        defaultVal:0 15px 30px 30px,
+                        mediumDown: 0px 0 0px 20px,
+                        smallDown:0px 0 0px 20px
+                    ),
+                    min-width:(
+                        mediumDown:inherit,
+                    ),
+                    background-color: #1377C9,
+                    font-family: $maaxMedium,
+                    font-size: 16px,
+                    line-height: 19px,
+                    padding: (
+                        defaultVal: 17px 49px 18px 50px,
+                        mediumDown:  11px 49px 12px 50px
+                    ),
+                    font-weight: 500,
+                    border: 0
+                ), 
+                if(variable-exists(emailprefrence) and map-has-key($emailPrefRadio, emailPrefRadiobtnPrimary), 
+                    map-get($emailprefrence,emailPrefRadiobtnPrimary), ()
+                )
+            ));           
+            &:hover {
+                @include print-css(
+                        map-merge((
+                            background-color: #e51c06 !important,
+                        ), 
+                        if(variable-exists(emailprefrence) and map-has-key($emailPrefRadio, emailPrefRadiobtnPrimaryHovr), 
+                            map-get($emailprefrence,emailPrefRadiobtnPrimaryHovr), ()
+                        )
+                ));
+            }
+        }
+    }
+}

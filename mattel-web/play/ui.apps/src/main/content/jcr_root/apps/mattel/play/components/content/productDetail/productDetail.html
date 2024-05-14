@@ -1,0 +1,174 @@
+<sly data-sly-test="${wcmmode.edit}">${'Configure Product Details Module' @ i18n}</sly>
+<sly data-sly-use.product="com.mattel.play.core.model.ProductDetail">
+    <input type="hidden" id="categoryID" value="${product.analyticsCategories}" />
+    <sly data-sly-test="${properties.productBackOption}">
+        <sly data-sly-test="${properties.productBackOption == 'color'}">
+            <sly data-sly-test="${properties.productBgColor != null}">
+                <div class="product-gallery-module" id="${properties.linkNavigationCheck?properties['linkNavOption']:''}" data-link-attribute="${properties.linkNavigationCheck?properties['linkNavOption']:''}" style="background-color:${properties.productBgColor @ context='styleString'}">
+            </sly>
+            <sly data-sly-test="${properties.productBgColor == null}">
+                <div class="product-gallery-module" id="${properties.linkNavigationCheck?properties['linkNavOption']:''}" data-link-attribute="${properties.linkNavigationCheck?properties['linkNavOption']:''}" >
+            </sly>
+        </sly>
+
+        <sly data-sly-test="${properties.productBackOption == 'image'}">
+            <sly data-sly-test="${properties.productBgImg != null}">
+                <div class="product-gallery-module" id="${properties.linkNavigationCheck?properties['linkNavOption']:''}" data-link-attribute="${properties.linkNavigationCheck?properties['linkNavOption']:''}" style="background: transparent url('${properties.productBgImg @ context='styleString'}')">
+            </sly>
+            <sly data-sly-test="${properties.productBgImg == null}">
+                <div class="product-gallery-module" id="${properties.linkNavigationCheck?properties['linkNavOption']:''}" data-link-attribute="${properties.linkNavigationCheck?properties['linkNavOption']:''}" >
+            </sly>
+        </sly>
+    </sly>
+    <sly data-sly-test="${properties.productBackOption == null}">
+        <div class="product-gallery-module"  id="${properties.linkNavigationCheck?properties['linkNavOption']:''}" data-link-attribute="${properties.linkNavigationCheck?properties['linkNavOption']:''}" >
+    </sly>
+
+    <div class="product-content-wrapper top-heading">
+        <div class="product-heading">
+            <h2>${product.productDetails.productTitle @ i18n }</h2>
+        </div>
+    </div>
+    <div class="product-gallery col-md-6">
+
+        <div class="close-gallery-modal"></div>
+        <div class="larger-product-images">
+            <ul class="carousel-slides" data-sly-list.assets="${product.productDetails.productImages}">
+                <li data-sly-test="${!assets.isVideo}">
+                    <div class="zoom-image">
+                        <a>
+                            <img id="${'{0}{1}' @ format=['zoom', assetsList.index]}" class="cloudzoom" data-image-zoom="${assets.productImage}" src="${assets.productImage}" alt="${assets.ProductAltText}">
+                        </a>
+                    </div>
+                </li>
+                <li class="video-player-product" data-sly-test="${assets.isVideo}">
+                    <a>
+                        <div class="product-player-container" id="product-video-player" data-video-id="${assets.ooyalaId}">
+
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="small-product-images" data-slide-show="5">
+            <ul class="carousel-slides" data-sly-list.assets="${product.productDetails.productImages}">
+                <li data-sly-test="${!assets.isVideo}">
+                    <a>
+                        <img src="${assets.productImage}" alt="${assets.ProductAltText}">
+                    </a>
+                </li>
+                <li class="video-player-tile" data-sly-test="${assets.isVideo}">
+                    <a>
+                        <img src="${assets.productImage}" alt="${assets.ProductAltText}">
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <sly data-sly-test="${properties.productdetailBackOption}">
+        <sly data-sly-test="${properties.productdetailBackOption == 'color'}">
+            <sly data-sly-test="${properties.productDetailBgColour != null}">
+                <div class="product-content-wrapper col-md-6" style="background-color:${properties.productDetailBgColour @ context='styleString'}">
+            </sly>
+            <sly data-sly-test="${properties.productDetailBgColour == null}">
+                <div class="product-content-wrapper col-md-6">
+            </sly>
+        </sly>
+
+        <sly data-sly-test="${properties.productdetailBackOption == 'image'}">
+            <sly data-sly-test="${properties.productdetailBgImg != null}">
+                <div class="product-content-wrapper col-md-6" style="background: transparent url('${properties.productdetailBgImg @ context='styleString'}')">
+            </sly>
+            <sly data-sly-test="${properties.productdetailBgImg == null}">
+                <div class="product-content-wrapper col-md-6">
+            </sly>
+        </sly>
+    </sly>
+    <sly data-sly-test="${properties.productdetailBackOption == null}">
+        <div class="product-content-wrapper col-md-6">
+    </sly>
+
+    <div class="product-heading">
+        <h2>${product.productDetails.productTitle @ i18n}</h2>
+    </div>
+    <div class="product-description">
+        <p>${product.productDetails.description @ context='html',i18n}</p>
+        <sly data-sly-test="${product.productDetails.productId}">
+       		<p class="product-profile" data-sly-test="${!product.isEnglishLocale}">${'SKU' @i18n}: <strong>${product.productDetails.productId}</strong></p>
+        	<p class="product-profile" data-sly-test="${product.isEnglishLocale}">${'SKU' @i18n,locale='en'}: <strong>${product.productDetails.productId}</strong></p>
+       </sly>
+        <sly data-sly-test="${product.productDetails.age}">
+        	<p class="product-profile" data-sly-test="${!product.isEnglishLocale}">${'Ages' @i18n}: <strong>${product.productDetails.age}</strong></p>
+       		<p class="product-profile" data-sly-test="${product.isEnglishLocale}">${'Ages' @i18n,locale='en'}: <strong>${product.productDetails.age}</strong></p>
+        </sly>
+        <input type="hidden" id="productSkuid" value="${product.productDetails.productId}" />
+        <input type="hidden" id="productAges" value="${product.productDetails.age}+" />
+        <input type="hidden" id="productId" value="${product.productDetails.productId}" />
+        <input type="hidden" id="alwaysEnglishPC" value="${properties.alwaysEnglish}" />
+        <input type="hidden" id="productNameText" value="${product.productDetails.productTitle}" />
+
+<sly data-sly-use.scriptUrl="com.mattel.play.core.model.PlayPageModel">
+       <sly data-sly-test="${scriptUrl.rescueBrandName =='rescue-heroes'}">  
+
+        <div data-sly-test="${properties.whereToBuyCtaLinksIn  =='samewindow'}">
+            <sly data-sly-test.myVar="${properties.whereToBuyLink}" data-sly-use.info="${'com.mattel.play.core.helper.PlayHelper' @ text= myVar}">
+                <a class="btn theme-btn" data-sly-test="${!product.isEnglishLocale}" data-tracking-id="Product Gallery Section|${properties.alwaysEnglish}|${'Rescue-Heroes-Shop' @i18n}|Product Thumbnail" href="${info.pathURL}" target="_self" role="button">${'Rescue-Heroes-Shop' @i18n}</a>
+                <a class="btn theme-btn" data-sly-test="${product.isEnglishLocale}" data-tracking-id="Product Gallery Section|${properties.alwaysEnglish}|${'Rescue-Heroes-Shop' @i18n,locale='en'}|Product Thumbnail" href="${info.pathURL}" target="_self" role="button">${'Rescue-Heroes-Shop' @i18n,locale='en'}</a>
+            </sly>
+        </div>
+        <div data-sly-test="${properties.whereToBuyCtaLinksIn  =='newtab'}">
+            <sly data-sly-test.myVar="${properties.whereToBuyLink}" data-sly-use.info="${'com.mattel.play.core.helper.PlayHelper' @ text= myVar}">
+                <a class="btn theme-btn" data-sly-test="${!product.isEnglishLocale}" data-tracking-id="Product Gallery Section|${properties.alwaysEnglish}|${'Rescue-Heroes-Shop' @i18n}|Product Thumbnail" href="${info.pathURL}" target="_blank" role="button">${'Rescue-Heroes-Shop' @i18n}<span class="sr-only"> ${'Opens in a new tab' @ i18n}</span></a>
+                <a class="btn theme-btn" data-sly-test="${product.isEnglishLocale}" data-tracking-id="Product Gallery Section|${properties.alwaysEnglish}|${'Rescue-Heroes-Shop' @i18n,locale='en'}|Product Thumbnail" href="${info.pathURL}" target="_blank" role="button">${'Rescue-Heroes-Shop' @i18n,locale='en'}<span class="sr-only"> ${'Opens in a new tab' @ i18n}</span></a>
+            </sly>
+        </div>
+        <div data-sly-test="${properties.whereToBuyCtaLinksIn  =='newwindow'}">
+            <sly data-sly-test.myVar="${properties.whereToBuyLink}" data-sly-use.info="${'com.mattel.play.core.helper.PlayHelper' @ text= myVar}">
+                <a class="btn theme-btn" data-sly-test="${!product.isEnglishLocale}" data-tracking-id="Product Gallery Section|${properties.alwaysEnglish}|${'Rescue-Heroes-Shop' @i18n}|Product Thumbnail" data-url="${info.pathURL}" onclick="window.open(this.dataset.url,'PLAY','width=500, height=500');" role="button">${'Rescue-Heroes-Shop' @i18n}<span class="sr-only"> ${'Opens in new window' @ i18n}</span></a>
+                <a class="btn theme-btn" data-sly-test="${product.isEnglishLocale}" data-tracking-id="Product Gallery Section|${properties.alwaysEnglish}|${'Rescue-Heroes-Shop' @i18n,locale='en'}|Product Thumbnail" data-url="${info.pathURL}" onclick="window.open(this.dataset.url,'PLAY','width=500, height=500');" role="button">${'Rescue-Heroes-Shop' @i18n,locale='en'}<span class="sr-only"> ${'Opens in new window' @ i18n}</span></a>
+            </sly>
+        </div>
+        <div data-sly-test="${properties.whereToBuyCtaLinksIn  =='interstitial'}">
+            <a class="btn theme-btn retailers-list" href="javascript:void(0);" data-path="${currentPage.path}" data-sly-test="${!product.isEnglishLocale}" data-toggle="modal" data-tracking-id="Product Gallery Section|${properties.alwaysEnglish}|${'Rescue-Heroes-Shop' @i18n}|Product Thumbnail" data-target="#interstitialRetailerModal">
+			${'Rescue-Heroes-Shop' @i18n} <span class="sr-only"> ${'Opens a pop up' @ i18n}</span></a>
+            <a class="btn theme-btn retailers-list" href="javascript:void(0);" data-path="${currentPage.path}" data-sly-test="${product.isEnglishLocale}" data-toggle="modal" data-tracking-id="Product Gallery Section|${properties.alwaysEnglish}|${'Rescue-Heroes-Shop' @i18n,locale='en'}|Product Thumbnail" data-target="#interstitialRetailerModal">
+			${'Rescue-Heroes-Shop' @i18n,locale='en'} <span class="sr-only"> ${'Opens a pop up' @ i18n}</span></a>
+        </div>
+       </sly> 
+        
+        <sly data-sly-test="${scriptUrl.rescueBrandName !='rescue-heroes'}">  
+
+        <div data-sly-test="${properties.whereToBuyCtaLinksIn  =='samewindow'}">
+            <sly data-sly-test.myVar="${properties.whereToBuyLink}" data-sly-use.info="${'com.mattel.play.core.helper.PlayHelper' @ text= myVar}">
+                <a class="btn theme-btn" data-sly-test="${!product.isEnglishLocale}" data-tracking-id="Product Gallery Section|${properties.alwaysEnglish}|${'Where To Buy' @i18n}|Product Thumbnail" href="${info.pathURL}" target="_self" role="button">${'Where To Buy' @i18n}</a>
+                <a class="btn theme-btn" data-sly-test="${product.isEnglishLocale}" data-tracking-id="Product Gallery Section|${properties.alwaysEnglish}|${'Where To Buy' @i18n,locale='en'}|Product Thumbnail" href="${info.pathURL}" target="_self" role="button">${'Where To Buy' @i18n,locale='en'}</a>
+            </sly>
+        </div>
+        <div data-sly-test="${properties.whereToBuyCtaLinksIn  =='newtab'}">
+            <sly data-sly-test.myVar="${properties.whereToBuyLink}" data-sly-use.info="${'com.mattel.play.core.helper.PlayHelper' @ text= myVar}">
+                <a class="btn theme-btn" data-sly-test="${!product.isEnglishLocale}" data-tracking-id="Product Gallery Section|${properties.alwaysEnglish}|${'Where To Buy' @i18n}|Product Thumbnail" href="${info.pathURL}" target="_blank" role="button">${'Where To Buy' @i18n}<span class="sr-only"> ${'Opens in a new tab' @ i18n}</span></a>
+                <a class="btn theme-btn" data-sly-test="${product.isEnglishLocale}" data-tracking-id="Product Gallery Section|${properties.alwaysEnglish}|${'Where To Buy' @i18n,locale='en'}|Product Thumbnail" href="${info.pathURL}" target="_blank" role="button">${'Where To Buy' @i18n,locale='en'}<span class="sr-only"> ${'Opens in a new tab' @ i18n}</span></a>
+            </sly>
+        </div>
+        <div data-sly-test="${properties.whereToBuyCtaLinksIn  =='newwindow'}">
+            <sly data-sly-test.myVar="${properties.whereToBuyLink}" data-sly-use.info="${'com.mattel.play.core.helper.PlayHelper' @ text= myVar}">
+                <a class="btn theme-btn" data-sly-test="${!product.isEnglishLocale}" data-tracking-id="Product Gallery Section|${properties.alwaysEnglish}|${'Where To Buy' @i18n}|Product Thumbnail" data-url="${info.pathURL}" onclick="window.open(this.dataset.url,'PLAY','width=500, height=500');" role="button">${'Where To Buy' @i18n}<span class="sr-only"> ${'Opens in new window' @ i18n}</span></a>
+                <a class="btn theme-btn" data-sly-test="${product.isEnglishLocale}" data-tracking-id="Product Gallery Section|${properties.alwaysEnglish}|${'Where To Buy' @i18n,locale='en'}|Product Thumbnail" data-url="${info.pathURL}" onclick="window.open(this.dataset.url,'PLAY','width=500, height=500');" role="button">${'Where To Buy' @i18n,locale='en'}<span class="sr-only"> ${'Opens in new window' @ i18n}</span></a>
+            </sly>
+        </div>
+        <div data-sly-test="${properties.whereToBuyCtaLinksIn  =='interstitial'}">
+            <a class="btn theme-btn retailers-list" href="javascript:void(0);" data-path="${currentPage.path}" data-sly-test="${!product.isEnglishLocale}" data-toggle="modal" data-tracking-id="Product Gallery Section|${properties.alwaysEnglish}|${'Where To Buy' @i18n}|Product Thumbnail" data-target="#interstitialRetailerModal">
+			${'Where To Buy' @i18n} <span class="sr-only"> ${'Opens a pop up' @ i18n}</span></a>
+            <a class="btn theme-btn retailers-list" href="javascript:void(0);" data-path="${currentPage.path}" data-sly-test="${product.isEnglishLocale}" data-toggle="modal" data-tracking-id="Product Gallery Section|${properties.alwaysEnglish}|${'Where To Buy' @i18n,locale='en'}|Product Thumbnail" data-target="#interstitialRetailerModal">
+			${'Where To Buy' @i18n,locale='en'} <span class="sr-only"> ${'Opens a pop up' @ i18n}</span></a>
+        </div>
+       </sly> 
+        </sly>
+    </div>
+    </div>
+    </div>
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
+    <sly data-sly-call="${clientlib.js @ categories='play.productdetail'}" /> 
+</sly>
+</sly>

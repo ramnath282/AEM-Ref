@@ -1,0 +1,18 @@
+<sly data-sly-test="${wcmmode.edit}">
+	${'Edit card text image Component' @i18n}
+</sly>
+<div class="addons-module">
+	<div class="container">
+		<div class="module-description">${properties.nailHeading @context='html'}</div>
+		<section class="col-lg-offset-1">
+			<sly data-sly-test="${properties.alt != null}">
+				<img src="${properties.nailImage}" alt="${properties.alt @i18n}" ></sly>
+			<sly data-sly-test="${properties.alt == null}">
+				<img src="${properties.nailImage}" alt="" ></sly>
+			<div class="title-name">${properties.nailTitle @i18n}</div>
+			<div class="addons-module-description">
+				${properties.nailDescription @context='html'}
+			</div>
+		</section>
+	</div>
+</div>

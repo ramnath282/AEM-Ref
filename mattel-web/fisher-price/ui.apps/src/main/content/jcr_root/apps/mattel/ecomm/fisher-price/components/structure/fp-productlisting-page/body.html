@@ -1,0 +1,80 @@
+<!--/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  ~ Copyright 2016 Adobe Systems Incorporated
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/-->
+<sly data-sly-include="/apps/mattel/ecomm/fisher-price/components/structure/fp-homepage-page/generalConfig.html"></sly>
+<!-- skip main content link-->
+<a class="skip-main" href="#page-content">Skip to content</a>
+<sly data-sly-include="header.html"></sly>
+<!-- including breadcrumb component 
+<article data-sly-resource="${'/apps/mattel/ecomm/fisher-price/components/content/breadcrumbs' @ wcmmode='disabled'}"
+	data-sly-unwrap></article> -->
+<!-- preloader content -->
+<div id="preloader" style="position:absolute; left:-2000%; visibility: none;">
+    <span id="preload1"></span>
+    <span id="preload2"></span>
+</div>
+<div class="outer-wrapper">
+    <div class="inner-wrapper">
+        <sly data-sly-test="${(properties.pageBgImg == null && properties.pageBgColor == null )||(properties.backOption=='image'&& properties.pageBgImg ==null)||(properties.backOption=='color'&& properties.pageBgColor ==null)}">
+            <div class="page-view" role="main" id="pagename-home">
+                <div class="mask"></div>
+        </sly>
+        <sly data-sly-test="${properties.backOption=='color' && properties.pageBgColor !=null}">
+            <div class="page-view" role="main" id="pagename-home" style="background-color:${properties.pageBgColor @ context='styleString'}">
+                <div class="mask"></div>
+        </sly>
+        <sly data-sly-test="${properties.backOption=='image'&& properties.pageBgImg !=null}">
+            <div class="page-view" role="main" id="pagename-home" style="background: url('${properties.pageBgImg @ context='styleString'}') no-repeat;background-size: contain;">
+                <div class="mask"></div>
+                <style data-sly-test="${properties.pageBgImgMble}">
+                     	@media screen and (max-width:767px){
+                     		.page-view{
+                     			background-image: url('${properties.pageBgImgMble @ context='styleString'}') no-repeat !important;
+                     			background-size: 100% auto !important;
+                     		}
+                     	}
+                     </style>
+        </sly>
+        <!-- including BreadCrumb component -->
+        <div data-sly-test="${currentPage.name !='search-results'}">
+            <article data-sly-resource="${'breadCrumb' @ resourceType='/apps/mattel/ecomm/fisher-price/components/content/breadcrumbs'}" data-sly-unwrap></article>
+        </div>
+        <!-- displaying Category title -->
+        <div class="${currentPage.name=='search-results'?'bc-title searchResultTitle':'bc-title'}">
+            <div data-sly-test="${currentPage.name=='search-results'}" class="nosearchResult hide">${'noSearchResult' @i18n}:</div>
+            <div data-sly-test="${currentPage.name=='search-results'}" class="search-result">${currentPage.title}:</div>
+            <sly data-sly-test="${currentPage.name!='search-results'}">${currentPage.title}</sly></div>
+        <h1 data-sly-test ="${currentPage.title}"  id="product-main-heading"><span class="sr-only">${currentPage.title}</span></h1>
+        <sly data-sly-test.checkSearch="${currentPage.name=='search-results'}">
+            <input type="hidden" id="isSearchMode" value="${checkSearch @context='text'}">
+        </sly>
+        <sly data-sly-use.templatedContainer="com.day.cq.wcm.foundation.TemplatedContainer" data-sly-repeat.child="${templatedContainer.structureResources}" data-sly-resource="${child.path @ resourceType=child.resourceType, decorationTagName='div'}"></sly>
+        <!-- <sly data-sly-use.fpPage="com.mattel.fisherprice.core.models.FisherPricePageModel">
+            <sly data-sly-test.leavingInterstitialPath="${fpPage.leavingInterstitialPath}">
+                <article data-sly-resource="${leavingInterstitialPath @ wcmmode='disabled'}" data-sly-unwrap></article>
+            </sly>
+            <sly data-sly-test.interstitialApp="${fpPage.interstitialApp}">
+                <article data-sly-resource="${interstitialApp @ wcmmode='disabled'}" data-sly-unwrap></article>
+            </sly>
+            <sly data-sly-test.retailerInterstitialPath="${fpPage.retailerInterstitialPath}">
+                <article data-sly-resource="${retailerInterstitialPath @ wcmmode='disabled'}" data-sly-unwrap></article>
+            </sly>
+        </sly> -->
+        <sly data-sly-use.clientlibecomm="/libs/granite/sightly/templates/clientlib.html" >
+            <sly data-sly-call="${clientlibecomm.js @ categories='play.initialize,ecomm.plpLayout'}"/>
+        </sly>
+    </div>
+</div>
+</div>

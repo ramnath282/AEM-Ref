@@ -1,0 +1,120 @@
+@include keyframes(shimmer) {
+    0%,
+    to {
+        opacity: .8
+    }
+    50% {
+        opacity: .5
+    }
+}
+
+.grid-lists {
+    .rich-grid-skeleton {
+        -webkit-flex-direction: column;
+        flex-direction: column;
+        @include print-css(
+            map-merge((
+                margin: 3.57em 0 0 0,
+                animation: shimmer 1.2s ease-in-out infinite
+            ),
+            if(variable-exists(skeletonGrid) and map-has-key($skeletonGrid, grid),
+                map-get($skeletonGrid, grid), ())));
+
+        @include flex();
+        .grid-details {
+            @include print-css(
+                map-merge((
+                    border-bottom: solid 2px
+                ),
+                if(variable-exists(skeletonGrid) and map-has-key($skeletonGrid, gridDetails),
+                    map-get($skeletonGrid, gridDetails), ())));
+        }
+        .skeleton-bg-color {
+            @include print-css(
+                map-merge((
+                    background-color: hsl(0, 0%, 89%)
+                ),
+                if(variable-exists(skeletonGrid) and map-has-key($skeletonGrid, gridBgColor),
+                    map-get($skeletonGrid, gridBgColor), ())));
+        }
+        .rich-thumbnail {
+            @include print-css(
+                map-merge((
+                    position: relative,
+                    width: 100%,
+                    min-height: 243px,
+                    margin-bottom: 20px,
+                ),
+                if(variable-exists(skeletonGrid) and map-has-key($skeletonGrid, gridThumbnail),
+                    map-get($skeletonGrid, gridThumbnail), ())));
+            &:before {
+                @include print-css(
+                map-merge((
+                    display: block,
+                    content: "",
+                    width: 100%,
+                    padding-top: 56.25%,
+                    background-color: #EBEBEB,
+                ),
+                if(variable-exists(skeletonGrid) and map-has-key($skeletonGrid, gridThumbnailBefore),
+                    map-get($skeletonGrid, gridThumbnailBefore), ())));
+            }
+        }
+        .details {
+            @include print-css(
+                map-merge((
+                    display: flex
+                ),
+                if(variable-exists(skeletonGrid) and map-has-key($skeletonGrid, gridSubDetails),
+                    map-get($skeletonGrid, gridSubDetails), ())));
+            .sub-title {
+                @include print-css(
+                    map-merge((
+                        width: 30%,
+                        height: 20px,
+                        margin: 10px 0,
+                    ),
+                    if(variable-exists(skeletonGrid) and map-has-key($skeletonGrid, subTitle),
+                        map-get($skeletonGrid, subTitle), ())));
+            }
+            .details-text-shell {
+                @include print-css(
+                    map-merge((
+                        flex: 1 1 auto
+                    ),
+                    if(variable-exists(skeletonGrid) and map-has-key($skeletonGrid, textShell),
+                        map-get($skeletonGrid, textShell), ())));
+                .rich-title {
+                    @include print-css(
+                        map-merge((
+                            width: 100%,
+                            height: 20px,
+                            margin: 20px 0,
+                        ),
+                        if(variable-exists(skeletonGrid) and map-has-key($skeletonGrid, richTitle),
+                            map-get($skeletonGrid, richTitle), ())));
+                }
+                .rich-date{
+                    @include print-css(
+                        map-merge((
+                            width: 80%,
+                            height: 20px,
+                            margin: 10px 0,
+                        ),
+                        if(variable-exists(skeletonGrid) and map-has-key($skeletonGrid, richDate),
+                            map-get($skeletonGrid, richDate), ())));
+                }
+                .rich-link {
+                    @include print-css(
+                        map-merge((
+                            width: 60%,
+                            height: 20px,
+                            margin: 20px 0,
+                        ),
+                        if(variable-exists(skeletonGrid) and map-has-key($skeletonGrid, richLink),
+                            map-get($skeletonGrid, richLink), ())));
+                }
+            }
+        }
+    }
+}

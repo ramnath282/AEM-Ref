@@ -1,0 +1,561 @@
+#esrb-modal {
+    padding: mapping($esrbmodal, main, pad);
+
+    .modal-dialog {
+        width: mapping($esrbmodal, modalDialog, width);
+        top: mapping($esrbmodal, modalDialog, posTop);
+
+        @media #{$large-down} {
+            width: mapping($esrbmodal, modalDialog, proWidth);
+            top: mapping($esrbmodal, modalDialog, proTop);
+        }
+
+        @media #{$medium-down} {
+            width: mapping($esrbmodal, modalDialog, tabWidth);
+            top: mapping($esrbmodal, modalDialog, tabTop);
+        }
+
+        @media #{$small-down} {
+            width: mapping($esrbmodal, modalDialog, mobWidth);
+            top: mapping($esrbmodal, modalDialog, mobTop);
+        }
+
+        margin: mapping($esrbmodal, modalDialog, margin);
+    }
+
+    .modal-content {
+        @include box-shadow(mapping($esrbmodal, modalContent, boxShadow));
+        @include border-radius(mapping($esrbmodal, modalContent, borderRadius));
+        padding: mapping($esrbmodal, modalContent, pad);
+        border-radius: mapping($esrbmodal, modalContent, borderRadius);
+        background-color: mapping($esrbmodal, modalContent, bgndColor);
+        background-image: mapping($esrbmodal, modalContent, bgndImage);
+        background-size: mapping($esrbmodal, modalContent, bgndSize);
+        background-repeat: mapping($esrbmodal, modalContent, bgndRepeat);
+        background-position: mapping($esrbmodal, modalContent, bgndPosition);
+        min-height: if(mapping($esrbmodal, modalContent, minHeight), mapping($esrbmodal, modalContent, minHeight), 'auto');
+        border: mapping($esrbmodal, modalContent, bordorNone);
+
+        @media #{$small-only} {
+            background-image: mapping($esrbmodal, modalContent, mobbgndImage);
+            padding: mapping($esrbmodal, modalContent, modelPaddingMob);
+        }
+
+        @media #{$medium-only} {
+            background-image: mapping($esrbmodal, modalContent, mobbgndImage);
+            padding: mapping($esrbmodal, modalContent, modelPaddingTab);
+        }
+
+        @if mapping($esrbmodal, modalContent, hasBorder)==true {
+            border-width: mapping($esrbmodal, modalContent, borderWidth);
+            border-style: mapping($esrbmodal, modalContent, borderStyle);
+            border-color: mapping($esrbmodal, modalContent, borderColor);
+        }
+    }
+
+    .modal-header {
+        @include border-radius(mapping($esrbmodal, modalHeader, borderRadius));
+        border-bottom: mapping($esrbmodal, modalHeader, borderBottom);
+        height: if(mapping($esrbmodal, modalHeader, height), mapping($esrbmodal, modalHeader, height), 'auto');
+        @include background-clip(mapping($esrbmodal, modalHeader, bgndClip));
+        background-color: mapping($esrbmodal, modalHeader, bgColor);
+        padding: if(mapping($esrbmodal, modalHeader, pad), mapping($esrbmodal, modalHeader, pad), 0);
+
+        @if mapping($esrbmodal, modalHeaderImg, isHeadingImg)==true {
+            background: mapping($esrbmodal, modalHeaderImg, bgImg);
+            background-size: mapping($esrbmodal, modalHeaderImg, bgSize);
+        }
+
+        @media #{$small-up} {
+            padding: mapping($esrbmodal, modalHeader, tabmobpad);
+
+            @if mapping($esrbmodal, modalHeaderImg, isHeadingImg)==true {
+                padding: mapping($esrbmodal, modalHeaderImg, padding);
+            }
+        }
+
+        h2 {
+            color: mapping($esrbmodal, heading, txtColor);
+            text-align: mapping($esrbmodal, heading, txtAlign);
+            font-size: mapping($esrbmodal, heading, fntSize);
+
+            @if mapping($esrbmodal, modalHeaderImg, isHeadingImg)==true {
+                padding: mapping($esrbmodal, modalHeaderImg, H2padding);
+            }
+        }
+
+        .close {
+            opacity: mapping($esrbmodal, modalheaderClose, opacity);
+            color: mapping($esrbmodal, modalheaderClose, txtColor);
+            //width: 32px;
+            height: 32px;
+            position: relative;
+            transform: translate(20px, 5px);
+
+            @media #{$medium-down} {
+                transform: translate(35px, 5px);
+            }
+
+            @media #{$small-down} {
+                transform: translate(5px, 5px);
+            }
+
+            @if mapping($layout, main, isMattelcom)==true {
+                position: mapping($esrbmodal, modalheaderClose, closePos);
+                top: mapping($esrbmodal, modalheaderClose, closePosTop);
+                right: mapping($esrbmodal, modalheaderClose, closePosRight);
+                z-index: mapping($esrbmodal, modalheaderClose, closeIndxVal);
+            }
+
+            &:after {
+                content: mapping($esrbmodal, modalheaderClose, closeContent);
+                top: mapping($esrbmodal, modalheaderClose, posTop);
+                @include font-awesome();
+                color: mapping($esrbmodal, modalheaderClose, closetxtColor);
+                float: mapping($esrbmodal, modalheaderClose, float);
+                font-size: mapping($esrbmodal, modalheaderClose, fntSize);
+                font-weight: mapping($esrbmodal, modalheaderClose, fntWeight);
+                line-height: mapping($esrbmodal, modalheaderClose, lineHeight);
+                text-shadow: mapping($esrbmodal, modalheaderClose, textShadow);
+                opacity: mapping($esrbmodal, modalheaderClose, closeOpacity);
+
+                @if mapping($esrbmodal, modalheaderClose, isPosApplied)==true {
+                    position: mapping($esrbmodal, modalheaderClose, posVal);
+                    right: mapping($esrbmodal, modalheaderClose, posRight);
+                }
+            }
+
+            &:hover,
+            &:focus {
+                color: mapping($esrbmodal, modalheaderClose, hovertxtColor);
+                opacity: mapping($esrbmodal, modalheaderClose, closeOpacity);
+            }
+        }
+    }
+
+    .modal-body {
+        padding: if(mapping($esrbmodal, modalbody, pad), mapping($esrbmodal, modalbody, pad), 0);
+
+        h2 {
+            text-align: mapping($esrbmodal, modalbodyH2, txtAlign);
+            color: mapping($esrbmodal, modalbodyH2, txtColor);
+            font-size: mapping($esrbmodal, modalbodyH2, fntSize);
+            margin: mapping($esrbmodal, modalbodyH2, margin);
+            font-family: mapping($esrbmodal, modalbodyH2, fntFamily);
+            font-weight: mapping($esrbmodal, modalbodyH2, fntWeight);
+
+            @if mapping($layout, main, isMattelcom)==true {
+                line-height: mapping($esrbmodal, modalbodyH2, lineHeight);
+                padding: mapping($esrbmodal, modalbodyH2, headingPad);
+                font-size: 48px;
+                font-weight: 400;
+                margin: .5em 0 .7em 0;
+            }
+
+            @media #{$small-down} {
+                margin: 1.5em 0 .7em 0;
+                font-size: mapping($esrbmodal, modalbodyH2, mobFntSize);
+            }
+        }
+
+        @media #{$small-up} {
+            padding: mapping($esrbmodal, modalbody, mobPadding);
+        }
+
+        .play-retailers {
+            background: mapping($esrbmodal, playRetailer, bgndColor);
+
+            ul {
+                li {
+                    background: mapping($esrbmodal, playretailerulList, bgnd);
+                    @include border-radius(mapping($esrbmodal, playretailerulList, borderRadius));
+
+                    &:nth-of-type(1n+5) {
+                        display: mapping($esrbmodal, playretailerulList, display);
+                    }
+                }
+            }
+
+            .gallery-tile {
+                ul {
+                    display: mapping($esrbmodal, gallerytileUl, display);
+                    text-align: mapping($esrbmodal, gallerytileUl, txtAlign);
+                    margin: mapping($esrbmodal, gallerytileUl, margin);
+                    padding: mapping($esrbmodal, gallerytileUl, pad);
+                    width: mapping($esrbmodal, gallerytileUl, width);
+
+                    @media #{$small-down} {
+                        margin: mapping($esrbmodal, gallerytileUl, mobmargin);
+                    }
+
+                    @media #{$small-only} {
+                        width: mapping($esrbmodal, gallerytileUl, mobWidth);
+                    }
+
+                    li {
+                        display: mapping($esrbmodal, gallerytileulList, display);
+                        float: mapping($esrbmodal, gallerytileulList, float);
+                        margin: mapping($esrbmodal, gallerytileulList, margin);
+                        padding: mapping($esrbmodal, gallerytileulList, pad);
+                        overflow: mapping($esrbmodal, gallerytileulList, overflow);
+                        width: mapping($esrbmodal, gallerytileulList, width);
+
+                        @media #{$small-down} {
+                            width: mapping($esrbmodal, gallerytileulList, mobWidth);
+                            margin: mapping($esrbmodal, gallerytileulList, mobMargin);
+                        }
+
+                        &:nth-of-type(1n+5) {
+                            display: mapping($esrbmodal, gallerytileulList, typeDisplay);
+                        }
+
+                        &:nth-child(1) {
+                            margin-left: mapping($esrbmodal, gallerytileulList, marginLeft);
+                        }
+
+                        &:last-child {
+                            margin-right: mapping($esrbmodal, gallerytileulList, marginLeft);
+                        }
+
+                        @if mapping($layout, main, isMattelcomNav)==true {
+                            a {
+                                &:focus {
+                                    //outline: mapping($esrbmodal, gallerytileulList, outline);
+
+                                    img {
+                                        opacity: mapping($esrbmodal, gallerytileulList, imgOpacity);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        a {
+            text-decoration: mapping($esrbmodal, modalbodyLink, txtDecoration);
+
+            img {
+                width: mapping($esrbmodal, modalbodyLink, imgWidth);
+                height: mapping($esrbmodal, modalbodyLink, imgHeight);
+            }
+        }
+
+        .modal-btn-wrap {
+            background-image: mapping($esrbmodal, bodyBgImg, bgImg);
+            background-size: mapping($esrbmodal, bodyBgImg, bgSize);
+            background-position: mapping($esrbmodal, bodyBgImg, bgPosition);
+            background-repeat: mapping($esrbmodal, bodyBgImg, bgRepeat);
+            padding-bottom: mapping($esrbmodal, bodyBgImg, padd);
+
+            @media #{$small-down} {
+                padding-bottom: mapping($esrbmodal, bodyBgImg, mobPadd);
+                background-position: mapping($esrbmodal, bodyBgImg, mobbgPosition);
+            }
+
+            width: mapping($esrbmodal, modalbtnWrap, width);
+            display: mapping($esrbmodal, modalbtnWrap, display);
+            text-align: mapping($esrbmodal, modalbtnWrap, txtAlign);
+
+            .go-back-btn{
+                margin-top: 150px;
+
+                @media #{$xsmall-down} {
+                    margin-top: 100px;
+                }
+
+            }
+
+        }
+
+        .continue-btn,
+        .go-back-btn {
+            @if mapping($esrbmodal, modalbodycontinueBtn, sameasSecondaryBtn)==true {
+                @extend .secondary-btn;
+
+                @if mapping($esrbmodal, modalbodycontinueBtn, isArrowWithBtn)==false {
+                    &:after {
+                        content: none;
+                    }
+
+                    padding: mapping($esrbmodal, modalbodycontinueBtn, secondaryPadding);
+                }
+
+                @if mapping($esrbmodal, modalbodycontinueBtn, isSingleRowInMob)==true {
+                    @media #{$xsmall-down} {
+                        display: mapping($esrbmodal, modalbodycontinueBtn, secondaryDisplayMob);
+                        width: mapping($esrbmodal, modalbodycontinueBtn, secondaryWidthMob);
+                        max-width: mapping($esrbmodal, modalbodycontinueBtn, secondaryMaxWidthMob);
+                        margin-left: mapping($esrbmodal, modalbodycontinueBtn, secondaryMarLeftMob);
+                        margin-right: mapping($esrbmodal, modalbodycontinueBtn, secondaryMarRightMob);
+                    }
+                }
+            }
+
+            @else if mapping($esrbmodal, modalbodycontinueBtn, sameasPrimaryBtn)==true {
+                @extend .secondary-btn;
+
+                @if mapping($esrbmodal, modalbodycontinueBtn, isArrowWithBtn)==false {
+                    &:after {
+                        content: mapping($esrbmodal, modalbodycontinueBtn, contentNone);
+                    }
+
+                    padding: mapping($esrbmodal, modalbodycontinueBtn, secondaryPadding);
+                }
+
+                @if mapping($esrbmodal, modalbodycontinueBtn, isSingleRowInMob)==true {
+                    @media #{$xsmall-down} {
+                        display: mapping($esrbmodal, modalbodycontinueBtn, secondaryDisplayMob);
+                        width: mapping($esrbmodal, modalbodycontinueBtn, secondaryWidthMob);
+                        max-width: mapping($esrbmodal, modalbodycontinueBtn, secondaryMaxWidthMob);
+                        margin-left: mapping($esrbmodal, modalbodycontinueBtn, secondaryMarLeftMob);
+                        margin-right: mapping($esrbmodal, modalbodycontinueBtn, secondaryMarRightMob);
+                    }
+                }
+            }
+
+            @else {
+                text-align: mapping($esrbmodal, modalbodygobackcontinueBtn, txtAlign);
+                padding: mapping($esrbmodal, modalbodygobackcontinueBtn, pad);
+                display: mapping($esrbmodal, modalbodygobackcontinueBtn, display);
+                border: mapping($esrbmodal, modalbodygobackcontinueBtn, borderColor);
+                @include border-radius(mapping($esrbmodal, modalbodygobackcontinueBtn, borderRadius));
+                font-size: mapping($esrbmodal, modalbodygobackcontinueBtn, fntSize);
+                font-family: mapping($esrbmodal, modalbodygobackcontinueBtn, fntFamily), Sans-serif;
+                font-weight: mapping($esrbmodal, modalbodygobackcontinueBtn, fntWeight);
+                @include transition(mapping($esrbmodal, modalbodygobackcontinueBtn, transition));
+
+                @if mapping($layout, main, isMattelcom)==true {
+                    text-transform: mapping($esrbmodal, modalbodygobackcontinueBtn, txtCase);
+                }
+            }
+        }
+
+        @if (mapping($layout, main, isMattelcom)==true) or (mapping($layout, main, isMattelcomNav)==true) {
+            .esrb-CTA-icon {
+                font-size: mapping($esrbmodal, goBackcontinueBtnBefore, icnSize);
+                font-family: mapping($esrbmodal, goBackcontinueBtnBefore, icnFont);
+                color: mapping($esrbmodal, goBackcontinueBtnBefore, icnColor);
+                position: mapping($esrbmodal, goBackcontinueBtnBefore, icnPos);
+                top: mapping($esrbmodal, goBackcontinueBtnBefore, icnPosTop);
+            }
+        }
+
+        .continue-btn {
+            margin: mapping($esrbmodal, modalbodycontinueBtn, margin);
+            margin-right: 100px;
+            font-weight: 300;
+
+            @media #{$small-down} {
+                margin: mapping($esrbmodal, modalbodycontinueBtn, mobMargin);
+                min-width: 65px;
+            }
+
+            @if mapping($esrbmodal, modalbodycontinueBtn, sameasSecondaryBtn)==true {
+                font-family: inherit;
+            }
+
+            @else {
+                color: mapping($esrbmodal, modalbodycontinueBtn, txtColor);
+                background: mapping($esrbmodal, modalbodycontinueBtn, bgnd);
+                min-width: 100px;
+                padding: 6px 12px;
+
+                &:hover,
+                &:focus,
+                &:active {
+                    background: mapping($esrbmodal, modalbodycontinueBtn, hoverBgnd);
+                    color: mapping($esrbmodal, modalbodycontinueBtn, hovertxtColor);
+                    border: mapping($esrbmodal, modalbodycontinueBtn, hoverborderColor);
+                }
+            }
+
+            &:after {
+                @if mapping($layout, main, isMattelcom)==true {
+                    @extend .esrb-CTA-icon;
+                    content: mapping($esrbmodal, goBackcontinueBtnBefore, continueContent);
+                    margin-left: mapping($esrbmodal, goBackcontinueBtnBefore, marginLeft);
+                    display: none;
+                }
+            }
+        }
+
+        .go-back-btn {
+            margin: mapping($esrbmodal, modalbodygobackBtn, margin);
+            color: #674b93 !important;
+            font-weight: 200;
+            font-size: 24px;
+            margin-top: 20px;
+            float: left;
+
+            @media #{$large-down} {
+                margin: mapping($esrbmodal, modalbodygobackBtn, proMargin);
+            }
+
+            @media #{$medium-down} {
+                margin: mapping($esrbmodal, modalbodygobackBtn, tabMargin);
+            }
+
+            @media #{$small-down} {
+                font-size: 18px;
+                margin: mapping($esrbmodal, modalbodygobackBtn, mobMargin);
+            }
+
+            @if mapping($esrbmodal, modalbodycontinueBtn, sameasSecondaryBtn)==true {
+                font-family: inherit;
+            }
+
+            @else {
+                display: mapping($esrbmodal, modalbodygobackBtn, display);
+                color: mapping($esrbmodal, modalbodygobackBtn, txtColor);
+                background: mapping($esrbmodal, modalbodygobackBtn, bgnd);
+
+                &:hover,
+                &:focus,
+                &:active {
+                    background: mapping($esrbmodal, modalbodygobackBtn, hoverBgnd);
+                    border: mapping($esrbmodal, modalbodygobackBtn, hoverborderColor);
+                }
+            }
+
+            &:before {
+                color: #674b93 !important;
+                font-size: 30px;
+
+                @media #{$small-down} {
+                    font-size: 24px;
+                }
+
+                @if (mapping($layout, main, isMattelcom)==true) or (mapping($layout, main, isMattelcomNav)==true) {
+                    @extend .esrb-CTA-icon;
+                    content: mapping($esrbmodal, goBackcontinueBtnBefore, goBackcontent);
+                    margin-right: mapping($esrbmodal, goBackcontinueBtnBefore, marginRight);
+                }
+            }
+        }
+
+        @media(max-width:$screen-xs-max) {
+            padding: mapping($esrbmodal, modalbody, tabPadding);
+            width: mapping($esrbmodal, modalbody, tabWidth);
+            float: mapping($esrbmodal, modalbody, tabFloat);
+            margin: mapping($esrbmodal, modalbody, tabMargin);
+            background-size: mapping($esrbmodal, modalbody, tabbgndSize);
+            top: -25px;
+        }
+
+
+        p {
+            span {
+                &:before {
+                    content: mapping($esrbmodal, modalbodyP, spanContent);
+                }
+            }
+
+            @media #{$small-up} {
+                font-size: mapping($esrbmodal, modalbodyP, mobfntSize);
+            }
+
+            text-align: mapping($esrbmodal, modalbodyP, txtAlign);
+            color: mapping($esrbmodal, modalbodyP, txtColor);
+            font-size: mapping($esrbmodal, modalbodyP, fntSize);
+            margin: mapping($esrbmodal, modalbodyP, margin);
+            font-weight: mapping($esrbmodal, modalbodyP, fntWeight);
+            padding-bottom: mapping($esrbmodal, modalbodyP, paddingBottom);
+
+            @media #{$large-down} {
+                padding: mapping($esrbmodal, modalbodyP, tabPadding);
+            }
+
+            @media #{$small-only} {
+                margin: 0 0 30px;
+            }
+
+            @media #{$medium-only} {
+                margin: 0 0 10px;
+            }
+
+            font-family: mapping($esrbmodal, modalbodyP, fntFamily);
+            line-height: mapping($esrbmodal, modalbodyP, lineHeight);
+        }
+
+        .close-btn {
+            margin-right: mapping($esrbmodal, modalheaderClose, marginRight);
+        }
+    }
+
+    .modal-footer {
+        border-top: mapping($esrbmodal, modalFooter, borderTop);
+        background: mapping($esrbmodal, modalFooter, bgnd);
+    }
+}
+
+.interstitial-modal {
+    @extend #esrb-modal;
+
+    .modal-title {
+        text-align: if(mapping($esrbmodal, heading, txtAlign), mapping($esrbmodal, heading, txtAlign), center);
+        color: if(mapping($esrbmodal, heading, txtColor), mapping($esrbmodal, heading, txtColor), $white);
+        font-size: if(mapping($esrbmodal, heading, fntSize), mapping($esrbmodal, heading, fntSize), em(38));
+        font-family: mapping($esrbmodal, heading, fntFamily);
+        font-weight: mapping($esrbmodal, heading, fntWeight);
+
+        * {
+            font-family: mapping($esrbmodal, heading, fontInherit);
+            font-weight: mapping($esrbmodal, heading, fontInherit);
+        }
+    }
+
+    &#interstitialGameRetailerModal {
+        .modal-title {
+            text-align: mapping($esrbmodal, heading, textAlign);
+            line-height: mapping($esrbmodal, heading, marginlineHeight);
+
+            @media #{$medium-down} {
+                font-size: mapping($esrbmodal, heading, mobTitleFontSize);
+                line-height: mapping($esrbmodal, heading, mobTitleLineHeight);
+            }
+        }
+    }
+
+    .modal-body {
+        .play-retailers .gallery-tile ul li {
+            @media #{$small-up} {
+                margin: 0 1.4%;
+
+                &:first-child {
+                    margin: 0 1.4%;
+                }
+
+                &:nth-child(3n+3) {
+                    margin-right: 0;
+                    margin-top: 15px;
+                }
+
+                &:nth-child(n+4) {
+                    float: left;
+                    margin-top: 10px;
+                }
+            }
+
+            @media #{$small-only} {
+                padding: 0 !important;
+                margin: 0 0 30px 0;
+                width: 100%;
+            }
+
+            @media #{$medium-only} {
+                padding: 0 !important;
+                width: 34%;
+            }
+        }
+
+        a img {
+            width: 100% !important;
+        }
+    }
+
+    .close {
+        font-size: mapping($esrbmodal, close, fntsize);
+    }
+}

@@ -1,0 +1,50 @@
+body:not(.basepage-ecomm) #return-to-top{
+    position: fixed;
+    bottom: 8%;
+    text-align: center;
+    text-decoration: none;
+    @include transition(all,.5s, linear);
+    margin-left: 92%;
+    margin-left: calc(100% - 100px);
+    color: $white;
+    background: #333333 !important;
+    margin-bottom: 0.83333em;
+    font: 400 1.71429em "Source Sans Pro", sans-serif;
+    line-height: 1;
+    width: 1.95833em;
+    height: 1.95833em;
+    border-radius: 50%;
+    padding: 0.375em;
+    right: 4.7%;
+    z-index: 111;
+    @include border-radius(50px);
+    &.active{
+        opacity: 1;
+        bottom: 20px;
+        &:hover{
+            background: rgba($light-pink,1);
+        }
+    }
+    &:after {
+        content: "\f077";
+        color: $white;
+        @include font-awesome();
+    }
+    span{
+        border: 0;
+        clip: rect(0, 0, 0, 0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+    }
+}
+body{
+    &.article-page{
+        #return-to-top:not(.active){
+            display:none;
+        }
+    }
+}

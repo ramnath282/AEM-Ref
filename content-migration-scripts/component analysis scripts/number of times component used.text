@@ -1,0 +1,70 @@
+componentPath = "/apps/mattel/ecomm/shared/components/content";
+contentPath = "/content/ag/en/shop";
+experienceFrgPath = "/content/experience-fragments/mattel/mattel-corporate";
+printableString = "/content/experience-fragments/ag/shop"
+startCouniting();
+
+def startCouniting(){
+    def predicates = [path: componentPath, type: "cq:Component",  "orderby.index": "true", "orderby.sort": "desc"]
+    def query = createQuery(predicates)
+    query.hitsPerPage = 1000
+    def result = query.result
+    println "${result.totalMatches} hits, execution time = ${result.executionTime}s\n--"
+     
+    result.hits.each { hit ->
+        def path=hit.node.path
+        Resource res = resourceResolver.getResource(path)
+        if(res!=null){
+            componentNode = res.adaptTo(javax.jcr.Node.class);
+            if(componentNode != null){
+    			if(componentNode.hasProperty('componentGroup') && !componentNode.getProperty('componentGroup').getString().equals('.hidden')){
+    				path = path.substring(6,path.length())
+    				def str = componentNode.getProperty('jcr:title').getString() + "," + componentNode.getProperty('componentGroup').getString();
+    				getAllContentReferences(path, str);
+    			}
+            }
+        }
+    }
+}
+
+def getAllContentReferences(assetpath, componentdetail) {
+    //println assetpath;
+    def predicates = [path: contentPath, "property": "sling:resourceType",  "property.value": assetpath]
+    def query = createQuery(predicates)
+    query.hitsPerPage = 1000
+    def result = query.result
+    def printableString = componentdetail + ",";
+    def rows = result.getNodes();
+    numrows = rows.size();
+    //println rows.size();
+    if(numrows > 0){
+        printableString = printableString + "In Content," + numrows;
+        getallExpFragmentReference(assetpath, componentdetail, true, numrows);
+    } else{
+        getallExpFragmentReference(assetpath, componentdetail, false, 0);
+    }
+}
+
+def getallExpFragmentReference(assetpath, componentdetail, presentInContenFlag, presentInContenCount) {
+    def printableString = componentdetail + ",";
+   
+   
+    def predicates = [path: experienceFrgPath, "property": "sling:resourceType",  "property.value": assetpath]
+    def query = createQuery(predicates)
+    query.hitsPerPage = 1000
+    def result = query.result
+    def rows = result.getNodes();
+    
+    def numrows = rows.size();
+    
+    if(presentInContenFlag == true && numrows > 0){
+        printableString = printableString +  presentInContenCount + "," +numrows;
+    }else if(presentInContenFlag == true && numrows <= 0){
+        printableString = printableString +  presentInContenCount + "," +numrows;
+    }else if(presentInContenFlag == false && numrows > 0){
+        printableString = printableString +  presentInContenCount + "," +numrows;
+    }else{
+        printableString = printableString +  presentInContenCount + "," +numrows;
+    }
+    println printableString;
+}

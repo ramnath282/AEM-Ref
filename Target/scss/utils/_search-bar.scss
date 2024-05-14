@@ -1,0 +1,77 @@
+.search-container {
+  button[aria-controls="searchFormInput"]{
+    &[aria-expanded="true"]{
+      display: none;
+    }
+  }
+  form {
+    width: 100%;
+    max-width: em(208, 16);
+    font: $fontRegular em(16) "Source Sans Pro";
+    background-color: $color-light-grey;
+    position: relative;
+    input[type="text"] {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      color: $color-medium-grey;
+      font: $fontLight em(13, 16) "Source Sans Pro";
+    }
+    button[type="submit"] {
+      position: absolute;
+      right: em(15, 13);
+      top: 0;
+      bottom: em(5, 13);
+      margin: auto 0;
+      width: em(12, 13);
+      height: em(12, 13);
+      color: $color-medium-grey;
+      font: $fontLight em(13, 16) "Source Sans Pro";
+    }
+  }
+}
+.search-results-dropdown {
+  .search-grid {
+    ul {
+      li {
+        margin-bottom: em(14);
+        .product-image,
+        .product-info {
+          width: em(136, 14);
+          margin: auto;
+          font: $fontRegular em(14) "Source Sans Pro";
+        }
+        .product-info {
+          min-height: em(100);
+          .grid-title-wrapper a {
+            font: $fontRegular em(14) "Source Sans Pro";
+          }
+        }
+      }
+    }
+  }
+  > .col-xs-4 {
+    border-left: 1px solid $very-light-grey;
+  }
+}
+.search-categories {
+  color: $night-rider;
+  font: $fontRegular em(16) "Source Sans Pro";
+  h2 {
+    font: $fontLight em(20, 16) "Source Sans Pro";
+  }
+  .categories-section {
+    margin-top: em(24,16);
+    h3 {
+      font: $fontSemiBold em(16,16) "Source Sans Pro";
+    }
+    ul {
+      li {
+        font: $fontRegular em(16,16) "Source Sans Pro";
+        margin: em(10, 16) 0;
+        span {
+        }
+      }
+    }
+  }
+}

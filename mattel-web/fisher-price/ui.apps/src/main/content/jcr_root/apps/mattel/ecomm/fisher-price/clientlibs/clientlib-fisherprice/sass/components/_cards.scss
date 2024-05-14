@@ -1,0 +1,30 @@
+.grid-default{
+    &.grid-xs-3, &.grid-xs-4{
+        .card{
+            &.text-center{
+                .card-component {
+                    .text-container {
+                        @media #{$small-down}{
+                            display: flex;
+                            justify-content: center;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+.card-component, .cta-button-container {
+    &:not(.cta-block){
+        .ctaItem + .ctaItem{
+            @media #{$medium-up}{
+                margin-left: -5px;
+            }
+            @media #{$sm-only}{
+                margin-left: -4px;
+            }
+        }
+    }
+}
+  
+

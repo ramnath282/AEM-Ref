@@ -1,0 +1,80 @@
+<sly data-sly-test="${wcmmode.edit}">${'AG Target Recommendations Component' @i18n}</sly>
+<sly data-sly-use.targetRecommendationModel="com.mattel.ecomm.core.models.TargetRecommendationModel">
+<div class="targetRecommendations">
+    <div class="target-recommendations" id="recommended-products-${targetRecommendationModel.componentId}"></div>
+</div>
+<sly data-sly-list.entityList="${targetRecommendationModel.entityParametersList}"/>
+    <input type="hidden" id="entityParameters${targetRecommendationModel.componentId}" value="{${targetRecommendationModel.paramsString}}" data-list-size= "${targetRecommendationModel.entityParametersList.size}"/>
+
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
+    <sly data-sly-call="${clientlib.js @ categories='mattel.global.slick'}"/>
+</sly>
+<script>
+function renderProductTypes(ele,partNumber,obj){
+    var $item = $(ele).filter('[data-partno='+partNumber+']')
+    var res = obj[partNumber];
+    if(res && $item.length){
+        $item.attr("data-producttype", res.product_type);
+        if(res.product_type == "BundleBean" || res.product_type == "GiftCard" || (res.product_type=="PackageBean" && res.itemType == "GIFT_CARD") || (res.DisableQuickView && (res.product_type=="PackageBean" || res.product_type=="ItemBean" || res.product_type=="ProductBean"))){
+            $item.find(".quick-view").addClass('hide');
+        }
+    }
+}
+function recommendedCB(res) {
+    var storeName = document.getElementById("siteKey") != null ? document.getElementById("siteKey").value : "ag_en";
+    var domainName = document.getElementById("siteKey") != null ? document.getElementById("siteKey").value : "ag_en";
+    var availablePartNumbers = JSON.parse(sessionStorage.getItem("recommendedProductTypes")) || {};
+    var $targetEle = $("#recommended-products .owl-loaded").length ? $("#recommended-products .active .aem-recommend-item") : $("#recommended-products .aem-recommend-item");
+    var targetPartNumbers = [];
+    _.each($targetEle,function(item) {var itemPartNumer = $(item).data("partno");targetPartNumbers.indexOf(itemPartNumer) == -1 &&targetPartNumbers.push(itemPartNumer);});
+    var targetPartCount = targetPartNumbers.length;var isLastItem = false;var cnt = 0;
+    var missingPartNumbers = targetPartNumbers.filter(function(value,index) {
+        if (availablePartNumbers[value]) {
+        	renderProductTypes($targetEle,value, availablePartNumbers);
+        } else if (value.indexOf("BUN") != -1) {
+            availablePartNumbers[value] = {product_type: "BundleBean"};
+            cnt++;
+            renderProductTypes($targetEle,value, availablePartNumbers);
+        } else {
+            setTimeout(function(){
+            $.ajax({
+                url: "//".concat(window.location.host, "/bin/requesthandler.web.compositeproductquickviewservice.json?storeId=").concat(storeName, "&domainId=").concat(domainName, "&partnumber=").concat(value),
+                success: function(res) {
+                    var product = res.productDetails || {};
+                    availablePartNumbers[value] = {product_type: product.product_type,itemType: product.itemType || false,DisableQuickView: product.DisableQuickView || false};
+                    cnt++;
+                    renderProductTypes($targetEle,value, availablePartNumbers);
+                }
+            });
+            },50);
+        }
+    });
+}
+$(document).ready(function(){
+	var parameter;
+    var listSize = $('#entityParameters${targetRecommendationModel.componentId @ context='unsafe'}').attr('data-list-size');
+	if(listSize > 1){
+    	var tempParameters =   $('#entityParameters${targetRecommendationModel.componentId @ context='unsafe'}').val();
+        parameter = JSON.parse(tempParameters.split("'").join('"'));
+    } else {
+		parameter = {"at_property":"${targetRecommendationModel.atProperty @ context='unsafe'}"}
+	}
+    
+	adobe.target.getOffer({
+		"mbox": "${targetRecommendationModel.mboxValue @ context='unsafe'}",
+		"params": parameter,
+		"success": function (offer) {
+			if (typeof offer != "undefined" && typeof offer != undefined) {
+			var compId = ${targetRecommendationModel.componentId @ context='unsafe'};
+			$('#recommended-products-'+compId).html(offer[0].content);
+			$('.targetRecommendations').css('visibility','visible');
+			}
+		},
+		"error": function (status, error) {
+			console.log('Error', status, error);
+		}
+	});
+   
+})
+</script>
+</sly>

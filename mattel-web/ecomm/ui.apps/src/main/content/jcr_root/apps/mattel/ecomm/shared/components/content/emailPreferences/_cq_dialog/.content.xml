@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Email Preferences"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <emailPreferences
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Email Preferences"
+                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <emailPrefTitle
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Please enter Title"
+                                                fieldLabel="Title"
+                                                name="./emailPrefTitle"/>
+                                            <emailAddressLabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Please enter Email Address Label"
+                                                fieldLabel="Email Address Label"
+                                                name="./emailAddressLabel"/>
+                                            <optionText
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Please enter Label for Option Selection Text"
+                                                fieldLabel="Label for Option Selection Text"
+                                                name="./optionText"/>
+                                            <unsubscribeTitle
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Please enter Title for Unsubscribe"
+                                                fieldLabel="Title for Unsubscribe"
+                                                name="./unsubscribeTitle"/>
+                                            <unsubscribeDescr
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Please enter Description for Unsubscribe"
+                                                fieldLabel="Description for Unsubscribe"
+                                                name="./unsubscribeDescr"/>
+                                            <changePrefTitle
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Please enter Title for Email Preference Change"
+                                                fieldLabel="Title for Email Preference Change"
+                                                name="./changePrefTitle"/>
+                                            <changePrefDescr
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Please enter Description for Mattel Brands List"
+                                                fieldLabel="Description for Email Preference Change"
+                                                name="./changePrefDescr"/>
+                                            <primaryPreferencesList
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                                composite="{Boolean}true"
+                                                fieldLabel="Primary Preferences List">
+                                                <field
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/fieldset"
+                                                    name="./primaryPreferencesList">
+                                                    <items jcr:primaryType="nt:unstructured">
+                                                        <column
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                            <items jcr:primaryType="nt:unstructured">
+                                                                <primaryPrefTitle
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                    fieldDescription="Please enter the Primary Preference Title"
+                                                                    fieldLabel="Primary Preference Title"
+                                                                    name="./primaryPrefTitle"
+                                                                    required="{Boolean}true"/>
+                                                                <primaryPrefDescription
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                    fieldDescription="Please enter Description for Primary Preference"
+                                                                    fieldLabel="Primary Preference Description"
+                                                                    name="./primaryPrefDescription"/>
+                                                                <primaryPrefID
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+                                                                    fieldDescription="Please enter Primary Preference ID"
+                                                                    fieldLabel="Primary Preference ID"
+                                                                    name="./primaryPrefID"
+                                                                    required="{Boolean}true"/>
+                                                                <alwaysEnglish
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                    fieldDescription="Always English check for Multi-Lingual  Site Tagging"
+                                                                    fieldLabel="Adobe Tracking Name"
+                                                                    name="./alwaysEnglish"
+                                                                    required="{Boolean}true"/>
+                                                            </items>
+                                                        </column>
+                                                    </items>
+                                                </field>
+                                            </primaryPreferencesList>
+                                            <mattelBrandsTitle
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Please enter Title for Mattel Brands List"
+                                                fieldLabel="Title for Mattel Brands List"
+                                                name="./mattelBrandsTitle"/>
+                                            <mattelBrandsDescr
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Please enter Description for Mattel Brands List"
+                                                fieldLabel="Description for Mattel Brands List"
+                                                name="./mattelBrandsDescr"/>
+                                            <updateCTALabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Please enter CTA Label for Update"
+                                                fieldLabel="CTA Label for Update"
+                                                name="./updateCTALabel"
+                                                required="{Boolean}true"/>
+                                            <selectAllLabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Please enter Label for Select All"
+                                                fieldLabel="CTA Label for Select All"
+                                                name="./selectAllLabel"/>
+                                            <desktopImage
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                                allowUpload="{Boolean}false"
+                                                autoStart="{Boolean}false"
+                                                class="cq-droptarget"
+                                                fieldLabel="Brand Logo For Desktop"
+                                                fileReferenceParameter="./dsktpImgFileRef"
+                                                mimeTypes="[image/gif,image/jpeg,image/png,image/webp,image/tiff]"
+                                                multiple="{Boolean}false"
+                                                name="./desktopImage"
+                                                uploadUrl="${suffix.path}"
+                                                useHTML5="{Boolean}true"/>
+                                            <mobileImage
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                                allowUpload="{Boolean}false"
+                                                autoStart="{Boolean}false"
+                                                class="cq-droptarget"
+                                                fieldLabel="Brand Logo For Mobile"
+                                                fileReferenceParameter="./mblImgFileRef"
+                                                mimeTypes="[image/gif,image/jpeg,image/png,image/webp,image/tiff]"
+                                                multiple="{Boolean}false"
+                                                name="./mobileImage"
+                                                uploadUrl="${suffix.path}"
+                                                useHTML5="{Boolean}true"/>
+                                            <alwaysEnglish
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Always English check for Multi-Lingual  Site Tagging"
+                                                fieldLabel="Adobe Tracking Name"
+                                                name="./alwaysEnglish"
+                                                required="{Boolean}true"/>
+                                            <altText
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Textual alternative of the meaning or function of the image, for visually impaired readers."
+                                                fieldLabel="Alternative Text"
+                                                name="./altText"
+                                                wrapperClass="cmp-image--editor-alt"/>
+                                            <unsubscribeCTALink
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+                                                fieldDescription="Please enter the link to Thank You page for UnSubscribe"
+                                                fieldLabel="Link to Thank You page for UnSubscribe"
+                                                name="./unsubscribeCTALink"/>
+                                            <changePrefCTALink
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+                                                fieldDescription="Please enter the link to Thank You page for Change Preferences"
+                                                fieldLabel="Link to Thank You page for Change Preferences"
+                                                name="./changePrefCTALink"/>
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </emailPreferences>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>

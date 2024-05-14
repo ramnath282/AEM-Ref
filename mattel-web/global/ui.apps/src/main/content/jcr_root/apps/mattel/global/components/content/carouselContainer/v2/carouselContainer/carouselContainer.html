@@ -1,0 +1,78 @@
+<sly data-sly-use.responsiveTabModel="com.mattel.global.master.core.model.ResponsiveTabModel" />
+<sly data-sly-use.backgroundTabModel="com.mattel.global.master.core.model.BackgroundTabModel" />
+<sly data-sly-use.lib="mattel/global/components/content/dynamicMedia/v1/dynamicMedia/imageblock.html" />
+<sly data-sly-use.model="com.mattel.global.master.core.model.CommonCarouselContainerModel" />
+<sly data-sly-use.base="com.mattel.global.master.core.model.BaseAccordionModel" />
+<sly data-sly-test="${wcmmode.edit}">${'Edit Carousel Container Component' @i18n}</sly>
+<div class="${wcmmode.edit ? 'edit-carousel' : ''} ${properties.highlightActiveSlide ? 'highlight-active-slide invisible' : ''} ${properties.image || properties.mobileImage ? 'bg_wrapperImg dynamic-media-wrapper' : 'bg_color'} ${properties.tileOption} ${properties.entrCompClickable ? 'link-element' : ''}" data-element-link="${model.ctaurl}" data-open-window= "${model.carouselLinkOption}" style="background-image:url(${properties.tileImage ? model.backgroundImagePath : '' @ context='html'});">
+
+    <sly data-sly-test="${properties.backgroundOption == 'color'}">
+        <div data-component="carousel" data-sly-attribute.data-section="${base.sectionTitleAnalytics ? base.sectionTitleAnalytics : ''}" class="${wcmmode.edit ? ' ' : 'flexible-carousel-component'}" data-free-form-mob="${model.freeFormMob}" data-free-form-tab="${model.freeFormTab}" data-infinite="${model.infinte}"  data-center-mode="false" data-auto-play="${model.autoPlay}" data-free-form="${properties.freeFormCarousel}" data-auto-width="${properties.freeform}" data-arrows="true" data-dots="true" data-speed="${model.timer}" data-slide-to-show="${model.slideToShow}" data-slide-to-scroll="${model.slidetoscroll}" data-rewind="true" style='background-color:${properties.backgroundColor @ context="html"}'>
+    </sly>
+    <sly data-sly-test="${properties.backgroundOption != 'color'}">
+        <div data-component="carousel" data-sly-attribute.data-section="${base.sectionTitleAnalytics ? base.sectionTitleAnalytics : ''}" class="${wcmmode.edit ? ' ' : 'flexible-carousel-component'} ${properties.image || properties.mobileImage ? 'dynamic-media-container' : ''}" data-free-form-mob="${model.freeFormMob}" data-free-form-tab="${model.freeFormTab}" data-infinite="${model.infinte}"  data-center-mode="false" data-auto-play="${model.autoPlay}" data-free-form="${properties.freeFormCarousel}" data-auto-width="${properties.freeform}" data-arrows="true" data-dots="true" data-speed="${model.timer}" data-slide-to-show="${model.slideToShow}" data-slide-to-scroll="${model.slidetoscroll}" data-rewind="true">
+    </sly>
+    <sly data-sly-test="${!properties.tileImage}">
+	    <div class="dynamicMedia" data-sly-test="${properties.image || properties.mobileImage}">
+	        <div class="desktop-bg" data-sly-test="${properties.image && properties.backgroundOption != 'color'}" data-sly-call="${lib.imageVideoSection @ imageDetail='image'}"></div>
+	        <div class="mobile-bg" data-sly-test="${properties.mobileImage && properties.backgroundOption != 'color'}" data-sly-call="${lib.imageVideoSection @ imageDetail='mobileImage'}">
+	        </div>
+	    </div>
+    </sly>
+    <div class="inner-section ">
+
+        <div class="carousel-text-container">
+            <div class="main-title" data-sly-test="${base.title}">${base.title @context='html',i18n}</div>
+            <div class="sub-title" data-sly-test="${base.subTitle}">${base.subTitle @context='html',i18n}</div>
+            <div class="text-para" data-sly-test="${base.description}">${base.description @context='html',i18n}</div>
+            <div class="cta-button-container">
+                <sly data-sly-use.ctaTab="com.mattel.global.master.core.model.CTATab">
+
+                    <sly data-sly-test="${ctaTab.items && ctaTab.items.size > 0}">
+                        <sly data-sly-test="${properties.entrCompClickable}">
+                            <sly data-sly-list.item="${ctaTab.items}">
+                                <sly data-sly-test="${!wcmmode.edit}">
+                                    <sly data-sly-test="${itemList.index < 1}">
+                                        <sly data-sly-resource="${item.name @ decorationTagName='div'}" />
+                                    </sly>
+                                </sly>
+                                <sly data-sly-test="${!wcmmode.edit}">
+                                    <sly data-sly-test="${itemList.index >= 1}">
+                                        <div data-sly-test="${item.path}" class="hidden-cta" hidden>
+                                            <sly data-sly-resource="${item.path @ decorationTagName='div'}" />
+                                        </div>
+                                    </sly>
+                                </sly>
+                                <sly data-sly-test="${wcmmode.edit}">
+                                    <sly data-sly-resource="${item.name @ decorationTagName='div'}" />
+                                </sly>
+                            </sly>
+                        </sly>
+                        <sly data-sly-test="${!properties.entrCompClickable}">
+                            <sly data-sly-list.item="${ctaTab.items}">
+                                <sly data-sly-resource="${item.name @ decorationTagName='div'}" />
+                            </sly>
+                        </sly>
+                    </sly>
+                </sly>
+            </div>
+            <sly data-sly-use.content="com.mattel.global.master.core.model.ContentTab">
+                <sly data-sly-test="${content.items && content.items.size > 0}">
+                    <div class="outer-carousel-sec">
+                        <ul class="slider-content outer-arrows ">
+                            <li data-sly-repeat.item="${content.items}" data-sly-resource="${item.name @ decorationTagName='div',cssClassName='flexible-grid-component carousel-container-tracking'}"></li>
+                        </ul>
+                    </div>
+                </sly>
+                <sly data-sly-resource="${resource.path @ resourceType='wcm/foundation/components/parsys/newpar', appendPath='/*', decorationTagName='div', cssClassName='grid-inner'}" data-sly-test="${(wcmmode.edit || wcmmode.preview) && content.items.size < 1}">
+                </sly>
+            </sly>
+
+        </div>
+    </div>
+</div>
+</div>
+
+<sly data-sly-test="${!wcmmode.edit}" data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
+        <sly data-sly-call="${clientlib.js @ categories=['global.carouselContainer.v2','global.clickableComponent']}" />
+</sly>

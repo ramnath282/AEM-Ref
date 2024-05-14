@@ -1,0 +1,255 @@
+.heroImageBanner {
+  .cda-banner {
+    img {
+      width: 100%;
+    }
+  }
+}
+.recipe-grid {
+  background-color: $white;
+  div {
+    background-color: inherit;
+  }
+  .module-header {
+    // padding-left: em(15);
+    @media #{$small-up} {
+      padding-left: em(25);
+    }
+    h2 {
+      font-weight: $fontBold;
+    }
+    & + div {
+      @extend .row;
+    }
+  }
+  ul.col-3 {
+    background-color: inherit;
+    position: relative;
+    overflow: hidden;
+    &:before,
+    &:after {
+      background-color: inherit;
+      position: absolute;
+      display: block;
+    }
+    &:before {
+      width: 100%;
+      height: 1px;
+    }
+    &:after {
+      height: 100%;
+      width: 1px;
+      right: 0;
+    }
+    li {
+      border-right: 1px solid #d0d0d0;
+      border-top: 1px solid #d0d0d0;
+      transition: all 200ms ease-out;
+      -webkit-transition: all 200ms ease-out;
+      cursor: pointer;
+      &.empty-block {
+        display: none;
+      }
+      &:hover {
+        background: #f7f7f7;
+        h3 {
+          text-decoration: underline;
+        }
+      }
+      a {
+        display: block;
+        color: inherit;
+        padding: em(15);
+        @media #{$small-up} {
+          padding: em(40);
+        }
+      }
+      .tile-content {
+        padding: 0;
+        h3,
+        h3.tile-name {
+          font-weight: $fontRegular;
+          margin-top: 8px;
+          margin-bottom: 4px;
+          line-height: 1.1;
+        }
+        .tile-description {
+          font-size: em(14);
+          margin-bottom: 0;
+          p {
+            font-weight: $fontRegular;
+            margin-top: 0;
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+  }
+}
+.recipe-card {
+  .common-spacing {
+    font-weight: $fontRegular;
+    padding: 20px 0;
+    margin: 0;
+  }
+  .card-content {
+    overflow: hidden;
+    @extend .col-md-8;
+    @extend .col-md-offset-2;
+    padding: em(40);
+    @include box-shadow(0px 0px 15px 2px $silver-grey);
+    color: $night-rider;
+    @media #{$medium-up} {
+      width: 76.5%;
+      margin: 0 auto;
+      float: none;
+    }
+    @media #{$small-down} {
+      width: 95%;
+      padding: 1.15em;
+      margin: 0 auto;
+    }
+    h2 {
+      font-size: em(44);
+      padding: 0px;
+      letter-spacing: 2px;
+      font-weight: $fontBold;
+      margin: 0;
+    }
+    p {
+      font-size: em(20);
+      line-height: 1.6em;
+      margin: 0 0 15px 0;
+      padding: 0;
+      @extend .common-spacing;
+      &:empty {
+        display: none;
+      }
+      em {
+        font-size: em(24, 20);
+      }
+    }
+    ul,
+    ol {
+      margin: 0;
+      padding: 0;
+      @extend .common-spacing;
+      li {
+        font-size: em(17.6);
+        padding-bottom: 5px;        
+        p {
+          &:first-child {
+            font-size: em(24, 17.6);
+            padding: 20px 0 15px 0;
+          }
+        }
+      }
+      p:first-child {
+        font-size: em(24);
+      }
+    }
+    ol {
+      li {
+        list-style-type: decimal;
+        list-style-position: outside;
+         margin-left: 1em;
+      }
+    }
+    .card-content-share {
+      @media #{$xsmall-down} {
+        width: 100%;
+        margin-bottom: 20px;
+      }
+      .card-content-image {
+        @media #{$xsmall-up} {
+          width: 160px;
+        }
+        @media #{$large-up} {
+          width: 200px;
+        }
+        img {
+          width: 100%;
+        }
+      }
+     .print-me {
+         cursor: pointer;
+         position: relative;
+         img {
+           display: none;
+         }
+         &:after{
+           display: inline-block;
+           @include font-awesome;
+           content: "\f02f";
+           vertical-align: middle;
+           font-size: 2.3em;
+           color:$light-black;
+         }
+        }
+
+
+      a.hidden-xs-portrait {
+        @media #{$xsmall-down} {
+          display: none;
+        }
+      }
+      .pinterest {
+        font-size: em(40);
+        vertical-align: middle;
+        margin-left: 5px;
+        position: relative;
+      }
+    }
+  }
+}
+
+
+@media print {  
+  .recipe-card-page {
+    #header,
+    div.header,
+    footer,
+    .social-nav,
+    .social-nav div,
+    #mainWidgetSection,
+    div.header,
+    .grid-module,
+    .heroImageBanner,
+    #return-to-top,
+    .print-me,
+    .print-hide,
+    .rich-text,
+    .back-to-top,
+    .grid-social-share,
+    .article-heading,
+    .full-width-container,
+    .separator,
+    .image-text-container,
+    .card-content-share .pinterest {
+     display: none !important;
+    }
+    .root {
+      margin-top: 0 !important;
+    }
+    .card-content-image {
+      width: 150px !important;
+      position: absolute;
+      top: 50px;
+      right: 50px;
+    }
+    .card-content {
+      width: 100% !important;
+      margin-left: 0 !important;
+      .separator {
+        display: block !important;
+      }
+    }
+    .container {
+      width: 100%;
+      margin: 0 !important;
+    }
+    .overlapped-content {
+      margin-top: 0 !important;
+    }
+  }  
+} 

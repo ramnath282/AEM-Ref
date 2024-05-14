@@ -1,0 +1,139 @@
+<template data-sly-template.template>
+    <sly data-sly-test.author="${wcmmode.edit}"></sly>
+    <script id="dollrecommend-template1" type="text/x-handlebars-template">
+                         {{#each this}}
+    
+                             {{#lessThan @index 2}}   
+    
+                             {{#ifNotEquals ../availability 'noLongerAvailable'}}
+                            {{#ifNotEquals ../this.availability 'Unavailable'}}
+                            <div class="col-xs-12 col-sm-4 product-tile">
+                                <div class="product-card-wrapper">
+                                <div class="product-image" data-binder-name="gt-product-doll-image"><img alt="" src="{{#if ../this.imageLink}}{{../this.scene7Url}}{{../this.thumbnail}}?wid=800&fmt=png&qlt=85,0&resMode=sharp2&op_usm=0.9,1.0,8,0{{/if}}"></div>
+                                <div class="mobile-view">
+                                <span class="product-id" data-binder-name="gt-product-doll-id">{{../this.PartNumber}}</span>
+                                <span class="product-TrunkPlaypacks" data-binder-name="gt-product-TrunkPlaypacks">{{../this.TrunkPlaypacks}}</span>
+                                <span class="product-character" data-binder-name="gt-product-doll-character">{{../this.Character}}</span>
+                                <span class="product-pricing" data-binder-name="gt-product-doll-pricing">{{../this.targetPricing}}</span>
+                                <span class="product-safetyMsg" data-binder-name="gt-product-doll-safetyMsg">{{../this.SafetyMessage}}</span>
+                                <h3 class="product-title" data-binder-name="gt-product-doll-name"  id="{{{../this.PartNumber}}}">{{{../this.auxDesc1}}}</h3>
+                                {{#if ../this.TrunkDescription}}
+                                    <p class = "product-desc">{{{../this.TrunkDescription}}}</p>
+                                {{else}}
+                                    <p class = "product-desc">{{{../this.seo_metaDescription}}}</p>
+                                {{/if}}	
+                                <span class="product-small-price" data-binder-name="trunk-pricerange">{{../this.SmallTrunkLowPrice}}</span>
+                                <span class="product-large-price" data-binder-name="trunk-large-pricerange">{{../this.LargeTrunkLowPrice}}</span>
+                                <div class="product-bottom-status">
+                                <p class="product-age-range" data-binder-name="gt-product-age">Age {{../this.LegalAge}}</p>
+                                <p class="product-status">
+                                {{#ifEquals ../this.availability 'Backorderable' }}
+                                    <span class="status-detail">Backordered</span> until 
+                                    <span class="backorder-date" data-binder-name="gt-product-doll-backorder-date">{{getMMDDYYYY ../this.backorder_date}}</span>
+                                {{/ifEquals}}
+                                </p>
+                                <a class="gt-btn" aria-describedby="{{{../this.PartNumber}}}" href="${properties.summaryPageLink @context='unsafe'}.html">${properties.productCTAText @context='scriptString'}</a>
+                                </div>
+                                </div>
+                                </div>
+                            </div>
+                            {{/ifNotEquals}} 
+                            {{/ifNotEquals}}
+                        {{/lessThan}}
+                        {{/each}}
+                        <div class="col-xs-12 col-sm-4 product-truly-me product-tile hide">
+                                <div class="product-card-wrapper">
+                                <div class="product-image"><img alt="" src="${properties.trulyMeProductImage @ context='unsafe'}"></div>
+                                <div class="mobile-view">
+                                <h3 class="product-title" id="trulyMe">
+                                ${properties.trulyMeProductTitle @ context='html'}
+                                </h3>
+                                <div class="product-desc">
+                                ${properties.trulyMeProductDesc @ context='html'}
+                                </div>
+                                <div class="product-bottom-status">
+                                <p class="product-age-range">
+                                ${properties.trulyMeProductAgeRange @ context='html'}
+                                </p>
+                                
+                                <p class="product-status">
+                                    <span class="status-detail"></span>
+                                    <span class="status-date"></span></p>
+                                <a class="gt-btn" aria-describedby="trulyMe" href="${properties.trulyMePageLink @ context='unsafe'}.html">${properties.trulyMeProductCTAText @ context='unsafe'}</a>
+                                </div>
+                                </div>
+                                </div>
+                            </div>
+                         </script>
+                         <script id="dollrecommend-template2" type="text/x-handlebars-template">
+                         {{#each this}}
+    
+                             {{#greaterThan @index 1}} 
+                            {{#ifNotEquals ../availability 'noLongerAvailable'}}
+                            {{#ifNotEquals ../this.availability 'Unavailable'}}
+                            <div class="col-xs-12 col-sm-4 product-tile">
+                                <div class="product-card-wrapper">
+                                <div class="product-image" data-binder-name="gt-product-doll-image"><img src="{{#if ../this.imageLink}}{{../this.scene7Url}}{{../this.thumbnail}}{{../this.layerCompParams}}{{/if}}"></div>
+                                <div class="mobile-view">
+                                <span class="product-id" data-binder-name="gt-product-doll-id">{{../this.PartNumber}}</span>
+                                <span class="product-TrunkPlaypacks" data-binder-name="gt-product-TrunkPlaypacks">{{../this.TrunkPlaypacks}}</span>
+                                <span class="product-character" data-binder-name="gt-product-doll-character">{{../this.Character}}</span>
+                                <span class="product-pricing" data-binder-name="gt-product-doll-pricing">{{../this.targetPricing}}</span>
+                                 <span class="product-safetyMsg" data-binder-name="gt-product-doll-safetyMsg">{{../this.SafetyMessage}}</span>
+                                <h3 class="product-title" data-binder-name="gt-product-doll-name" id="{{{../this.PartNumber}}}">{{{../this.auxDesc1}}}</h3>
+                                {{#if ../this.TrunkDescription}}
+                                    <p class = "product-desc">{{{../this.TrunkDescription}}}</p>
+                                {{else}}
+                                    <p class = "product-desc">{{{../this.seo_metaDescription}}}</p>
+                                {{/if}}	
+                                <span class="product-small-price" data-binder-name="trunk-pricerange">{{../this.SmallTrunkLowPrice}}</span>
+                                <span class="product-large-price" data-binder-name="trunk-large-pricerange">{{../this.LargeTrunkLowPrice}}</span>
+                                <div class="product-bottom-status">
+                                <p class="product-age-range" data-binder-name="gt-product-age">Age {{../this.LegalAge}}</p>
+                                <p class="product-status">
+                                {{#ifEquals ../this.availability 'Backorderable' }}
+                                    <span class="status-detail">Backordered</span> until 
+                                    <span class="backorder-date" data-binder-name="gt-product-doll-backorder-date">{{getMMDDYYYY ../this.backorder_date}}</span>
+                                {{/ifEquals}}
+                                </p>
+                                <a class="gt-btn"  aria-describedby="{{{../this.PartNumber}}}"  href="${properties.summaryPageLink @context='unsafe'}.html">${properties.productCTAText @context='scriptString'}
+                                  
+                                </a>
+                                </div>
+                                </div>
+                                </div>
+                            </div>
+                            {{/ifNotEquals}} 
+                            {{/ifNotEquals}}
+                            {{/greaterThan}}
+                        {{/each}}
+    
+                         </script>
+    <div id="gt-product-recommend-wrapper" class="gt-common-holder gt-product-recommend-wrapper" data_noOfProducts="${properties.numberofProducts}" data_categoryTypeRecommend="${properties.categoryTypeRecommend}" data_ctaText="${properties.productCTAText}" data_ctaLink="${properties.summaryPageLink}">
+                        <h1 class="sr-only">Doll recommendation</h1>
+                        <sly data-sly-test="${author}">
+                                 <h2 data-sly-test="${properties.headline}">${properties.headline}</h2>
+                             </sly>
+                             <sly data-sly-test="${!author}">
+                                <sly data-sly-use.ecommUtil="${'com.mattel.ecomm.core.utils.EcomUtil' @ template=properties.headline}">
+                                            <h2> ${ecommUtil.getDynamicTemplate @ context='html'} </h2>			      	
+                                 </sly>
+                             </sly>
+                         <div class="product-tileWrap">
+                             <div id="dollrecommendList"></div>
+    
+                            <div id="dollrecommendList-remaining"></div>
+                         </div>                            
+                         <div class="toggle-products">
+                          <div class="view-all-products hide">
+                            <a tabindex="0" role="link">${properties.viewAllProductsText} <i class="fas fa-chevron-down"></i></a>
+                          </div>
+                          <div class="show-less-products hide">
+                            <a href="#" tabindex="0" role="link">${properties.showRecommendProductsText} <i class="fas fa-chevron-up"></i></a>
+                          </div>
+                        </div> 
+                        </div> 
+    <sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
+        <sly data-sly-call="${clientlib.js @ categories=['ecomm.dollSelection']}"/>
+    </sly>          
+    </template>

@@ -1,0 +1,237 @@
+/*
+**_error-page.scss
+*/
+.page-error-component {
+    @extend .row;
+    margin: 0;
+    background: if(mapping($errorpagecomponent, main, bgImage), mapping($errorpagecomponent, main, bgImage), none);
+    background-size: mapping($errorpagecomponent, main, bgSize);
+    padding-top: if(mapping($errorpagecomponent, main, topPad), mapping($errorpagecomponent, main, topPad), em(40));
+    background-repeat: mapping($errorpagecomponent, main, bgRepeat);
+    position: relative;
+    border-bottom: mapping($errorpagecomponent, main, brdBottom);
+    margin-bottom: mapping($errorpagecomponent, main, btmMargin);
+
+    @media #{$medium-down} {
+        padding-top: if(mapping($errorpagecomponent, main, tabPortraitTopPad), mapping($errorpagecomponent, main, tabPortraitTopPad), em(80));
+    }
+
+
+    .image-block {
+        @extend .col-md-6;
+        @extend .col-sm-12;
+        @extend .col-xs-12;
+        padding: if(mapping($errorpagecomponent, imgBlock, pad), mapping($errorpagecomponent, imgBlock, pad), 0);
+
+        @media #{$medium-down} {
+            padding: if(mapping($errorpagecomponent, imgBlock, tabPortraitPad), mapping($errorpagecomponent, imgBlock, tabPortraitPad), 0 em(50));
+        }
+
+        @media #{$small-down} {
+            padding: if(mapping($errorpagecomponent, imgBlock, mobPad), mapping($errorpagecomponent, imgBlock, mobPad), 0 em(20));
+        }
+
+        img {
+            @media #{$medium-down} {
+                width: mapping($errorpagecomponent, imgBlock, imgWidth);
+            }
+        }
+    }
+
+    .text-block {
+        @extend .col-md-6;
+        @extend .col-sm-12;
+        @extend .col-xs-12;
+
+        @media #{$medium-up} {
+            padding: if(mapping($errorpagecomponent, txtBlock, pad), mapping($errorpagecomponent, txtBlock, pad), em(55));
+            @include transform(translateY(-50%));
+            position: absolute;
+            top: 50%;
+            right: 0;
+        }
+
+        @media #{$medium-down} {
+            padding: if(mapping($errorpagecomponent, txtBlock, tabPortraitPad), mapping($errorpagecomponent, txtBlock, tabPortraitPad), em(50));
+        }
+
+        @media #{$small-down} {
+            padding: if(mapping($errorpagecomponent, txtBlock, mobPad), mapping($errorpagecomponent, txtBlock, mobPad), em(20));
+        }
+
+        h2 {
+            color: if(mapping($errorpagecomponent, txtBlockH2, fntColor), mapping($errorpagecomponent, txtBlockH2, fntColor), $violet);
+            font-size: if(mapping($errorpagecomponent, txtBlockH2, fntSize), mapping($errorpagecomponent, txtBlockH2, fntSize), em(38.95));
+            margin: if(mapping($errorpagecomponent, txtBlockH2, margin), mapping($errorpagecomponent, txtBlockH2, margin), 0);
+            line-height: mapping($errorpagecomponent, txtBlockH2, lineHeight);
+            letter-spacing: mapping($errorpagecomponent, txtBlockH2, letterSpacing);
+
+            @media #{$medium-down} {
+                font-size: mapping($errorpagecomponent, txtBlockH2, tabfntSize);
+            }
+
+            @media #{$medium-down} {
+                font-size: mapping($errorpagecomponent, txtBlockH2, mobfntSize);
+            }
+        }
+
+        p {
+            color: if(mapping($errorpagecomponent, txtBlockP, fntColor), mapping($errorpagecomponent, txtBlockP, fntColor), $pink);
+            @include font-properties($maax,$localFontVerdana);
+            margin-top: mapping($errorpagecomponent, txtBlockP, marginTop);
+            line-height: mapping($errorpagecomponent, txtBlockP, lineHeight);
+            font-size: mapping($errorpagecomponent, txtBlockP, fntSize);
+            margin-bottom: mapping($errorpagecomponent, txtBlockP, marginBottom);
+
+            @media #{$medium-down} {
+                font-size: mapping($errorpagecomponent, txtBlockP, fntSizeTab);
+                margin-bottom: mapping($errorpagecomponent, txtBlockP, tabMarginBottom);
+                margin-top: mapping($errorpagecomponent, txtBlockP, mobMarginTop);
+
+            }
+
+            @media #{$small-down} {
+                font-size: mapping($errorpagecomponent, txtBlockP, fntSizeMob);
+                line-height: mapping($errorpagecomponent, txtBlockP, lineHeightMob);
+                //margin-bottom: mapping($errorpagecomponent, txtBlockP, mobMarginBottom);
+            }
+
+            span {
+                color: if(mapping($errorpagecomponent, txtBlockP, fntColor), mapping($errorpagecomponent, txtBlockP, fntColor), $pink);
+                @include font-properties($maax,$localFontVerdana);
+                margin-top: mapping($errorpagecomponent, txtBlockP, marginTop);
+                line-height: 0.79em;
+
+                @media #{$small-down} {
+                    font-size: mapping($errorpagecomponent, txtBlockP, fntSizeMob);
+                    line-height: 0.79em;
+                }
+            }
+        }
+
+        .error-cta {
+            margin-top: if(mapping($errorpagecomponent, errorCTA, marginTop), mapping($errorpagecomponent, errorCTA, marginTop), em(16));
+            display: if(mapping($errorpagecomponent, errorCTA, display), mapping($errorpagecomponent, errorCTA, display), block);
+
+            a {
+                &.btn-cta {
+                    @if (mapping($layout, main, isFisherPriceNav)==true) {
+                        background: mapping($errorpagecomponent, errorCTA, btnBg);
+                        @include font-properties($maax,$localFontVerdana);
+                        color: mapping($errorpagecomponent, errorCTA, CTAcolor);
+                        font-size: mapping($errorpagecomponent, errorCTA, CTAfontsize);
+                        letter-spacing: mapping($errorpagecomponent, errorCTA, CTAletterspacing);
+                        text-transform: mapping($errorpagecomponent, errorCTA, CTAtexttransform);
+                        font-weight: mapping($errorpagecomponent, errorCTA, CTAfontweight);
+                        text-align: mapping($errorpagecomponent, errorCTA, CTAtextalign);
+                        padding: mapping($errorpagecomponent, errorCTA, CTApadding);
+                        min-width: mapping($errorpagecomponent, errorCTA, CTAminwidth);
+
+
+                        &:hover {
+                            background: #E51C06 !important;
+                            color: #fff !important;
+                        }
+
+                        @media #{$small-down} {
+                            padding: mapping($errorpagecomponent, errorCTA, CTApaddingMob);
+                            min-width: mapping($errorpagecomponent, errorCTA, CTAminwidthMob);
+
+                        }
+                    }
+
+                    @if mapping($errorpagecomponent, errorCTA, sameasPrimaryBtn)==true {
+                        @extend .btn;
+                        @extend .theme-btn;
+
+                    }
+
+                    @else if mapping($errorpagecomponent, errorCTA, sameasSecondaryBtn)==true {
+                        @extend .btn;
+                        @extend .secondary-btn;
+                    }
+
+                    @else {
+                        display: if(mapping($errorpagecomponent, errorCTAAnchor, display), mapping($errorpagecomponent, errorCTAAnchor, display), inline-block);
+                        color: if(mapping($errorpagecomponent, errorCTAAnchor, fntColor), mapping($errorpagecomponent, errorCTAAnchor, fntColor), $white);
+
+                    }
+
+                    @if mapping($errorpagecomponent, errorCTA, isArrowWithBtn)==false {
+                        &:after {
+                            content: none;
+                        }
+
+                        padding: mapping($errorpagecomponent, errorCTA, padding);
+                    }
+
+                    @if (mapping($layout, main, isFisherPriceNav)==true) {
+                        margin: mapping($errorpagecomponent, errorCTA, margin);
+                    }
+                }
+            }
+        }
+
+        .error-cta {
+            width: auto;
+        }
+
+        .error-cta {
+            a {
+                width: 100%;
+            }
+        }
+
+        &.full-width {
+            @extend .col-md-12;
+            @extend .col-sm-12;
+            @extend .col-xs-12;
+
+            @media #{$medium-up} {
+                padding: if(mapping($errorpagecomponent, fullWidth, pad), mapping($errorpagecomponent, fullWidth, pad), em(60));
+                padding-top: if(mapping($errorpagecomponent, fullWidth, topPad), mapping($errorpagecomponent, fullWidth, topPad), em(40));
+                @include transform(translateY(0));
+            }
+        }
+    }
+
+
+    //whyplay
+    @if mapping($layout, main, isWhyPlay)==true {
+        background: unset;
+        background-color: mapping($errorpagecomponent, main, bgColor);
+        background-image: mapping($errorpagecomponent, main, bgImage);
+        background-repeat: mapping($errorpagecomponent, main, bgRepeat);
+        background-position: mapping($errorpagecomponent, main, bgPos);
+        background-size: mapping($errorpagecomponent, main, bgSize);
+
+        &.no-image {
+            min-height: 500px;
+
+            .image-block {
+                display: none;
+            }
+
+            .text-block {
+                width: 100%;
+                padding: 50px;
+            }
+
+        }
+    }
+
+    .text-block {
+        @media #{$medium-up} {
+            padding-left: 0px;
+        }
+
+        h2 {
+            @media #{$medium-down} {
+                font-size: mapping($errorpagecomponent, txtBlockH2, mobfontSize);
+                line-height: mapping($errorpagecomponent, txtBlockH2, mobTabLineHeight);
+            }
+        }
+    }
+
+
+}

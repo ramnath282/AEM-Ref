@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Footer Links"
+    sling:resourceType="cq/gui/components/authoring/dialog"
+    height="{Long}500"
+    width="{Long}600">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <howCanWeHelp
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="How can we help"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <column
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <helpTitle
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please enter the title."
+                                        fieldLabel="Title:"
+                                        name="./helpTitle"/>
+                                    <helpFooterLinks
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                        composite="{Boolean}true"
+                                        fieldLabel="Footer Links:">
+                                        <field
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/fieldset"
+                                            name="./helpFooterLinks">
+                                            <items jcr:primaryType="nt:unstructured">
+                                                <column
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                    <items jcr:primaryType="nt:unstructured">
+                                                        <helpLinkText
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                            fieldLabel="Link Text:"
+                                                            name="./helpLinkText"/>
+                                                        <helpLinkUrl
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+                                                            fieldLabel="Link URL:"
+                                                            name="./helpLinkUrl"/>
+                                                        <renderoption
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/foundation/form/select"
+                                                            fieldLabel="Open Site in"
+                                                            name="./helpRenderOption">
+                                                            <items jcr:primaryType="nt:unstructured">
+                                                                <sameWindow
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    text="Same Window"
+                                                                    value="sameWindow"/>
+                                                                <newTab
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    text="New Tab"
+                                                                    value="tabWindow"/>
+                                                                <newWindow
+                                                                    granite:hide="${cqDesign.disableSearch}"
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    text="New Window"
+                                                                    value="newWindow"/>
+                                                            </items>
+                                                        </renderoption>
+                                                    </items>
+                                                </column>
+                                            </items>
+                                        </field>
+                                    </helpFooterLinks>
+                                </items>
+                            </column>
+                        </items>
+                    </howCanWeHelp>
+                    <hearFromUs
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Hear from Us"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <column
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <hearTitle
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please enter the title."
+                                        fieldLabel="Title:"
+                                        name="./hearTitle"/>
+                                    <hearFooterLinks
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                        composite="{Boolean}true"
+                                        fieldLabel="Footer Links:">
+                                        <field
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/fieldset"
+                                            name="./hearFooterLinks">
+                                            <items jcr:primaryType="nt:unstructured">
+                                                <column
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                    <items jcr:primaryType="nt:unstructured">
+                                                        <hearLinkText
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                            fieldLabel="Link Text:"
+                                                            name="./hearLinkText"/>
+                                                        <hearLinkUrl
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+                                                            fieldLabel="Link URL:"
+                                                            name="./hearLinkUrl"/>
+                                                        <renderoption
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/foundation/form/select"
+                                                            fieldLabel="Open Site in"
+                                                            name="./hearRenderOption">
+                                                            <items jcr:primaryType="nt:unstructured">
+                                                                <sameWindow
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    text="Same Window"
+                                                                    value="sameWindow"/>
+                                                                <newTab
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    text="New Tab"
+                                                                    value="tabWindow"/>
+                                                                <newWindow
+                                                                    granite:hide="${cqDesign.disableSearch}"
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    text="New Window"
+                                                                    value="newWindow"/>
+                                                            </items>
+                                                        </renderoption>
+                                                    </items>
+                                                </column>
+                                            </items>
+                                        </field>
+                                    </hearFooterLinks>
+                                </items>
+                            </column>
+                        </items>
+                    </hearFromUs>
+                    <readyForVisit
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Ready For Visit"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <column
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <visitTitle
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please enter the title."
+                                        fieldLabel="Title:"
+                                        name="./visitTitle"/>
+                                    <visitFooterLinks
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                        composite="{Boolean}true"
+                                        fieldLabel="Footer Links:">
+                                        <field
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/fieldset"
+                                            name="./visitFooterLinks">
+                                            <items jcr:primaryType="nt:unstructured">
+                                                <column
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                    <items jcr:primaryType="nt:unstructured">
+                                                        <visitLinkText
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                            fieldLabel="Link Text:"
+                                                            name="./visitLinkText"/>
+                                                        <visitLinkUrl
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+                                                            fieldLabel="Link URL:"
+                                                            name="./visitLinkUrl"/>
+                                                        <renderoption
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/foundation/form/select"
+                                                            fieldLabel="Open Site in"
+                                                            name="./visitRenderOption">
+                                                            <items jcr:primaryType="nt:unstructured">
+                                                                <sameWindow
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    text="Same Window"
+                                                                    value="sameWindow"/>
+                                                                <newTab
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    text="New Tab"
+                                                                    value="tabWindow"/>
+                                                                <newWindow
+                                                                    granite:hide="${cqDesign.disableSearch}"
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    text="New Window"
+                                                                    value="newWindow"/>
+                                                            </items>
+                                                        </renderoption>
+                                                    </items>
+                                                </column>
+                                            </items>
+                                        </field>
+                                    </visitFooterLinks>
+                                </items>
+                            </column>
+                        </items>
+                    </readyForVisit>
+                    <cantFind
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Can't Find It"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <column
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <cantFindTitle
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please enter the title."
+                                        fieldLabel="Title:"
+                                        name="./cantFindTitle"/>
+                                    <cantFindFooterLinks
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                        composite="{Boolean}true"
+                                        fieldLabel="Footer Links:">
+                                        <field
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/fieldset"
+                                            name="./cantFindFooterLinks">
+                                            <items jcr:primaryType="nt:unstructured">
+                                                <column
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                    <items jcr:primaryType="nt:unstructured">
+                                                        <cantFindLinkText
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                            fieldLabel="Link Text:"
+                                                            name="./cantFindLinkText"/>
+                                                        <cantFindLinkUrl
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+                                                            fieldLabel="Link URL:"
+                                                            name="./cantFindLinkUrl"/>
+                                                        <renderoption
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/foundation/form/select"
+                                                            fieldLabel="Open Site in"
+                                                            name="./findRenderOption">
+                                                            <items jcr:primaryType="nt:unstructured">
+                                                                <sameWindow
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    text="Same Window"
+                                                                    value="sameWindow"/>
+                                                                <newTab
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    text="New Tab"
+                                                                    value="tabWindow"/>
+                                                                <newWindow
+                                                                    granite:hide="${cqDesign.disableSearch}"
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    text="New Window"
+                                                                    value="newWindow"/>
+                                                            </items>
+                                                        </renderoption>
+                                                    </items>
+                                                </column>
+                                            </items>
+                                        </field>
+                                    </cantFindFooterLinks>
+                                </items>
+                            </column>
+                        </items>
+                    </cantFind>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>

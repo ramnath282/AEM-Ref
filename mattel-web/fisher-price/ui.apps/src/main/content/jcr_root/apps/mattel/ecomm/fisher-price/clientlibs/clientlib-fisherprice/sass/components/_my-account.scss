@@ -1,0 +1,966 @@
+.aside-section {
+    padding: mapping($myAccountProp, leftNavProp, mainSectionPad);
+
+    #myAccountNav {
+        a.submenu {
+            color: mapping($myAccountProp, globalTxtColor, textClr);
+        }
+    }
+
+    h2 {
+        font-size: mapping($myAccountProp, leftNavProp, HeaderFont);
+        color: mapping($myAccountProp, globalTxtColor, textClr);
+        border-bottom: mapping($myAccountProp, leftNavProp, HeaderBorder);
+        margin: mapping($myAccountProp, leftNavProp, HeaderMar);
+        padding: mapping($myAccountProp, leftNavProp, HeaderPad);
+    }
+
+    .nav-header {
+        color: mapping($myAccountProp, globalTxtColor, textClr);
+
+        button {
+            width: mapping($myAccountProp, leftNavProp, buttonWidth);
+            text-align: mapping($myAccountProp, leftNavProp, buttonAlign);
+            cursor: default;
+            color: mapping($myAccountProp, globalTxtColor, textClr);
+            background-color: mapping($myAccountProp, leftNavProp, buttonBG);
+            padding: mapping($myAccountProp, leftNavProp, buttonPad);
+            border: none;
+
+            &:hover {
+                background-color: mapping($myAccountProp, leftNavProp, buttonHover);
+            }
+
+            span {
+                display: mapping($myAccountProp, leftNavProp, spanDis);
+                float: mapping($myAccountProp, leftNavProp, spanFloat);
+                padding: mapping($myAccountProp, leftNavProp, spanPad);
+            }
+        }
+    }
+
+    nav {
+        h3 {
+            text-transform: mapping($myAccountProp, navList, navListText);
+            color: mapping($myAccountProp, globalTxtColor, textClr);
+            font: mapping($myAccountProp, navList, navListFont);
+            margin: mapping($myAccountProp, navList, navListMar);
+            padding: mapping($myAccountProp, navList, navListPad);
+
+            &:first-child {
+                border: none;
+            }
+
+            .arrow-icon {
+                display: mapping($myAccountProp, navList, Mobdisplay);
+            }
+        }
+
+        ul {
+            border-bottom: mapping($myAccountProp, navList, navBorbot);
+            padding: mapping($myAccountProp, navList, ulPad);
+
+            li {
+                margin: mapping($myAccountProp, navList, liMargin);
+
+                a {
+                    color: mapping($myAccountProp, globalTxtColor, textClr);
+                    font: mapping($myAccountProp, navList, aTagFont);
+                }
+
+                a.active {
+                    color: mapping($myAccountProp, navList, activeColor);
+                    font-family: mapping($myAccountProp, navList, activeFont);
+                    font-weight: mapping($myAccountProp, navList, activeWeight);
+                }
+            }
+        }
+    }
+}
+
+.address-info-body {
+    input.add-new-address {
+        width: mapping($myAccountProp, addressBook, buttonWidth);
+        padding: mapping($myAccountProp, addressBook, buttonPad);
+    }
+
+    .user-info-wrapper {
+        .theme-btn {
+            margin: mapping($myAccountProp, addressBook, buttonMar);
+        }
+
+        .add-new-address-can {
+            margin: mapping($myAccountProp, addressBook, containMar);
+            border: mapping($myAccountProp, addressBook, containBor);
+            color: mapping($myAccountProp, globalTxtColor, textClr);
+        }
+
+        form {
+            fieldset {
+                .optionCheck {
+                    ~ {
+                        label {
+                            color: mapping($myAccountProp, globalTxtColor, textClr);
+                            font-size: mapping($myAccountProp, addressBook, lableSize);
+                        }
+                    }
+                }
+
+                ul {
+                    li {
+                        display: mapping($myAccountProp, addressBook, ulListDis);
+                        margin: mapping($myAccountProp, addressBook, ulListMar);
+
+                        .input-field {
+                            .form-input.small-input {
+                                width: mapping($myAccountProp, addressBook, inputWidth);
+                                margin: mapping($myAccountProp, addressBook, inputMar);
+                            }
+
+                            .form-input.long-input {
+                                width: mapping($myAccountProp, addressBook, inputWidth);
+                            }
+                        }
+                    }
+                }
+
+                .input-field {
+                    .form-input.long-input {
+                        max-width: mapping($myAccountProp, addressBook, inputMaxWidth);
+                        width: mapping($myAccountProp, addressBook, inputFullWidth);
+                    }
+                }
+            }
+
+            .theme-btn {
+                padding: mapping($myAccountProp, addressBook, buttonThemePad);
+            }
+        }
+
+        .details-list {
+            .details-list-item {
+                vertical-align: top;
+
+                .shipping-method {
+                    ul {
+                        li {
+                            width: mapping($myAccountProp, addressBook, ulListWidth);
+
+                            label {
+                                margin: mapping($myAccountProp, addressBook, labelMar);
+                                color: mapping($myAccountProp, globalTxtColor, textClr);
+                                font-size: mapping($myAccountProp, addressBook, lableSize);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+#addressStdModal {
+    .modal-dialog {
+        span {
+            font-size: mapping($myAccountProp, addressModal, modalFont);
+        }
+
+        .modal-header {
+            border: mapping($myAccountProp, addressModal, headerBor);
+            padding-bottom: mapping($myAccountProp, addressModal, headerPadBot);
+
+            .header-label {
+                font-weight: 600;
+            }
+        }
+
+        .close {
+            opacity: mapping($myAccountProp, addressModal, closeOpacity);
+            color: mapping($myAccountProp, addressModal, closeTxtcolor);
+        }
+
+        .user-info-wrapper {
+            border: mapping($myAccountProp, addressModal, wrapperBor);
+            padding: mapping($myAccountProp, addressModal, wrapperPad);
+
+            .details-list {
+                .details-list-item {
+                    vertical-align: top;
+                    padding: mapping($myAccountProp, addressModal, itemPad);
+
+                    .address-details {
+                        border: mapping($myAccountProp, addressModal, detailsBor);
+                        padding: mapping($myAccountProp, addressModal, detailsPad);
+                        min-height: mapping($myAccountProp, addressModal, detailsHeight);
+                        position: relative;
+
+                        .address-link {
+                            position: mapping($myAccountProp, addressModal, linkPos);
+                            bottom: mapping($myAccountProp, addressModal, linkBot);
+                            font-size: mapping($myAccountProp, addressModal, linkSize);
+                            font-weight: mapping($myAccountProp, addressModal, linkWeight);
+                        }
+
+                        .address-link.use-this-address {
+                            right: mapping($myAccountProp, addressModal, linkRight);
+                        }
+
+                        .value-label {
+                            margin-bottom: mapping($myAccountProp, addressModal, linkRight);
+
+                            .highlight {
+                                color: mapping($myAccountProp, addressModal, hightColor);
+
+                            }
+                        }
+                    }
+
+                    #user-input {
+                        .use-usps-address {
+                            display: mapping($myAccountProp, addressModal, disNone);
+                        }
+                    }
+
+                    #usps-input {
+                        .in-care-of {
+                            display: mapping($myAccountProp, addressModal, disNone);
+                        }
+
+                        .correct-address {
+                            display: mapping($myAccountProp, addressModal, disNone);
+                        }
+
+                        .use-this-address {
+                            display: mapping($myAccountProp, addressModal, disNone);
+                        }
+                    }
+
+                    .error-tip {
+                        margin-bottom: mapping($myAccountProp, addressModal, linkMar);
+                    }
+                }
+            }
+        }
+    }
+}
+
+.payment-info-body {
+    .user-info-wrapper {
+        h2 {
+            margin: mapping($myAccountProp, paymentInfoProp, payheaderMar);
+        }
+
+        fieldset {
+            ul {
+                li {
+                    display: mapping($myAccountProp, paymentInfoProp, payListDis);
+                    margin: mapping($myAccountProp, paymentInfoProp, payListMar);
+
+                    .add-new-address {
+                        &:focus {
+                            text-decoration: mapping($myAccountProp, paymentInfoProp, payTextUnderline);
+                        }
+                    }
+
+                    .payment-select-label {
+                        margin: mapping($myAccountProp, paymentInfoProp, payLableMar);
+                        font-size: mapping($myAccountProp, paymentInfoProp, payLableSize);
+                        font-weight: mapping($myAccountProp, paymentInfoProp, payLableWeight);
+                    }
+
+                    p.billing_add {
+                        color: mapping($myAccountProp, globalTxtColor, textClr);
+
+                        a {
+                            &:focus {
+                                text-decoration: mapping($myAccountProp, paymentInfoProp, payTextUnderline);
+                            }
+
+                            .add-new-address {
+                                font: mapping($myAccountProp, paymentInfoProp, payLableFont);
+                            }
+                        }
+                    }
+                }
+            }
+
+            .form-input.long-input {
+                max-width: mapping($myAccountProp, paymentInfoProp, payInputMax);
+            }
+
+            .form-input.medium-input {
+                max-width: mapping($myAccountProp, paymentInfoProp, payInputMaxTwo);
+            }
+
+            .form-input.small-input {
+                width: mapping($myAccountProp, paymentInfoProp, payInputMaxThree);
+            }
+
+            .address-details {
+                select {
+                    margin: mapping($myAccountProp, paymentInfoProp, payLableMarZero);
+                }
+            }
+
+        }
+
+        .details-list {
+            .details-list-item {
+                float: left;
+
+                &:nth-child(1) {
+                    margin: mapping($myAccountProp, paymentInfoProp, payLableMarZero);
+                }
+
+                a {
+                    margin: mapping($myAccountProp, paymentInfoProp, payDetailMar);
+                }
+            }
+
+            .billing-addressLi {
+                p {
+                    color: mapping($myAccountProp, globalTxtColor, textClr);
+                }
+            }
+        }
+
+        .details-list.billing-address-ul {
+            margin: mapping($myAccountProp, paymentInfoProp, ulDetailsList);
+        }
+
+        input.theme-btn.add-new-card {
+            margin: mapping($myAccountProp, paymentInfoProp, paycardMar);
+            padding: mapping($myAccountProp, paymentInfoProp, paycardPad);
+        }
+
+        input.theme-btn.add-new-card.transparent-btn-border {
+            padding: mapping($myAccountProp, paymentInfoProp, payNewCardPad);
+        }
+
+        input.theme-btn.cancel-card {
+            color: mapping($myAccountProp, globalTxtColor, textClr);
+            font: mapping($myAccountProp, paymentInfoProp, payNewCardFont);
+        }
+
+        input.theme-btn.update-payment-info {
+            margin: mapping($myAccountProp, paymentInfoProp, payNewCardMar);
+            padding: mapping($myAccountProp, paymentInfoProp, payNewCardpadding);
+        }
+    }
+}
+
+.contact-preference-body {
+    .user-info-wrapper {
+        .details-list-item {
+            margin: mapping($myAccountProp, contactPreProp, itemPreMar);
+
+            .note-label {
+                margin: mapping($myAccountProp, contactPreProp, itemPremargin);
+                color: mapping($myAccountProp, globalTxtColor, textClr);
+            }
+
+            h3.value-label {
+                font: mapping($myAccountProp, contactPreProp, itemPreFont);
+            }
+
+            .value-label {
+                padding-left: mapping($myAccountProp, contactPreProp, itemPrePad);
+            }
+        }
+
+        fieldset {
+            margin-bottom: mapping($myAccountProp, contactPreProp, itemPremarBot);
+        }
+    }
+
+    .banner-outer {
+        margin-bottom: mapping($myAccountProp, contactPreProp, itemPreBanBot);
+    }
+
+    .update-preferences-btn {
+        margin-top: mapping($myAccountProp, contactPreProp, itemPreBtnMT);
+    }
+}
+
+.transparent-btn {
+    color: mapping($myAccountProp, globalTxtColor, textClr);
+    background-color: mapping($myAccountProp, transParenBTN, transparentBtn);
+    border: mapping($myAccountProp, transParenBTN, transparentBor);
+
+    &:hover {
+        color: mapping($myAccountProp, globalTxtColor, textClr);
+        background-color: mapping($myAccountProp, transParenBTN, transparentBtn);
+    }
+}
+
+.transparent-btn-border {
+    color: mapping($myAccountProp, globalTxtColor, textClr);
+    background-color: mapping($myAccountProp, transParenBTN, colorBtnBG);
+    border: mapping($myAccountProp, transParenBTN, colorBtnBor);
+
+    &:hover {
+        color: mapping($myAccountProp, globalTxtColor, textClr);
+    }
+}
+
+.main-section form fieldset,
+.form fieldset {
+    margin: mapping($myAccountProp, globalFormProp, globalFormMar);
+}
+
+.main-section {
+    padding: mapping($myAccountProp, globalFormProp, formPad);
+
+    @media #{$medium-down} {
+        padding: mapping($myAccountProp, globalFormProp, mobContainerpadding);
+    }
+
+    .user-info-wrapper {
+        .details-list {
+            .details-list-item {
+                a {
+                    margin: mapping($myAccountProp, deskTopProp, dskMar);
+                    display: mapping($myAccountProp, deskTopProp, dskDis);
+                    color: mapping($myAccountProp, deskTopProp, dskColor);
+                    font: mapping($myAccountProp, deskTopProp, dskFont);
+                }
+
+                margin:mapping($myAccountProp, deskTopProp, userWrapMar);
+                padding:mapping($myAccountProp, deskTopProp, userWrapPad);
+
+                label {
+                    font: mapping($myAccountProp, deskTopProp, userWrapFont);
+                }
+            }
+
+            display:mapping($myAccountProp, deskTopProp, detailDisplay);
+            width: mapping($myAccountProp, deskTopProp, detailWidth);
+            margin:mapping($myAccountProp, deskTopProp, detailMargin);
+            padding:mapping($myAccountProp, deskTopProp, detailPadding);
+        }
+
+        display:mapping($myAccountProp, deskTopProp, detailDisplay);
+        width: mapping($myAccountProp, deskTopProp, detailWidth);
+        padding:mapping($myAccountProp, deskTopProp, detailLabelPad);
+        border-top: mapping($myAccountProp, deskTopProp, detailLabelBor);
+
+        .my-order-summary {
+            padding: mapping($myAccountProp, deskTopProp, summaryPad);
+        }
+
+        select {
+            margin: mapping($myAccountProp, deskTopProp, selectboxMar);
+        }
+    }
+
+    h1 {
+        font: mapping($myAccountProp, deskTopProp, dskHeaderFont);
+        margin: mapping($myAccountProp, deskTopProp, dskHeaderMar);
+        padding: mapping($myAccountProp, deskTopProp, dskHeaderPad);
+        color: mapping($myAccountProp, globalTxtColor, textClr);
+    }
+
+    h2 {
+        font: mapping($myAccountProp, deskTopProp, dskHeader2Font);
+        color: mapping($myAccountProp, globalTxtColor, textClr);
+        margin: mapping($myAccountProp, deskTopProp, dskHeader2Mar);
+        padding: mapping($myAccountProp, deskTopProp, dskHeader2Pad);
+
+        em {
+            font: mapping($myAccountProp, deskTopProp, dskHeader2Font);
+            font-style: mapping($myAccountProp, deskTopProp, italicFont);
+        }
+    }
+
+    .add-float {
+        float: mapping($myAccountProp, headreLable, addfloat);
+        margin-right: mapping($myAccountProp, headreLable, addmargin);
+    }
+
+    .view-recent-order {
+        position: mapping($myAccountProp, orderContainer, orderContainerPos);
+        top: mapping($myAccountProp, orderContainer, orderContainerTop);
+    }
+
+    .header-label {
+        font: mapping($myAccountProp, deskTopProp, dskHeader2Font);
+        display: mapping($myAccountProp, deskTopProp, headerLabelDis);
+        margin: mapping($myAccountProp, deskTopProp, headerLabelMar);
+        color: mapping($myAccountProp, globalTxtColor, textClr);
+    }
+
+    .header-label.store-interest {
+        padding: mapping($myAccountProp, deskTopProp, headerLabelPad);
+    }
+
+    .value-label {
+        font: mapping($myAccountProp, deskTopProp, userWrapFont);
+        color: mapping($myAccountProp, globalTxtColor, textClr);
+        display: mapping($myAccountProp, deskTopProp, headerLabelDis);
+    }
+
+
+    // .user-info-wrapper.col-4-set {
+    // 	.details-list {
+    // 		.details-list-item {
+    // 			margin: 0;
+    // 			padding: 0;
+    // 			label {
+    // 				font: 400 1.07143em "Noto Sans", sans-serif;
+    // 				color:mapping($myAccountProp, globalTxtColor, textClr);
+    // 				margin: 0.64286em 0;
+    // 			}
+    // 		}
+    // 	}
+    // }
+    .username {
+        margin: mapping($myAccountProp, userContainer, userConMar);
+        padding: mapping($myAccountProp, userContainer, userConPad);
+
+        span {
+            color: mapping($myAccountProp, deskTopProp, userSpanColor);
+            font: mapping($myAccountProp, userContainer, userSpanFont);
+            padding: mapping($myAccountProp, userContainer, userSpanPad);
+            border-bottom: mapping($myAccountProp, userContainer, userSpanBor);
+            display: mapping($myAccountProp, userContainer, userSpanDis);
+        }
+    }
+
+    .user-note {
+        color: mapping($myAccountProp, globalTxtColor, textClr);
+        margin: mapping($myAccountProp, userContainer, userNoteMar);
+    }
+
+    .user-info-wrapper.product-interest {
+        margin: mapping($myAccountProp, userContainer, userBtnMar);
+        border: mapping($myAccountProp, userContainer, userBtnBor);
+    }
+
+    .product-interest {
+        border: mapping($myAccountProp, userContainer, userBtnBor);
+
+        form {
+            .input-field {
+                position: mapping($myAccountProp, userContainer, formPosition);
+                margin: mapping($myAccountProp, userContainer, formMargin);
+
+                select {
+                    max-width: mapping($myAccountProp, userContainer, formSelectMax);
+                    padding: mapping($myAccountProp, userContainer, formSelectPad);
+                    width: mapping($myAccountProp, userContainer, formSelectWidth);
+                }
+            }
+        }
+    }
+
+    #rewardDetails {
+        .modal-dialog {
+            .modal-content {
+                box-shadow: mapping($myAccountProp, rewardModal, rewardShadow);
+                padding: mapping($myAccountProp, rewardModal, rewardPad);
+                @include border-radius(0);
+
+                .modal-header {
+                    border-bottom: mapping($myAccountProp, rewardModal, rewardHeaderBor);
+                    padding: mapping($myAccountProp, rewardModal, rewardHeaderPad);
+
+                    .close {
+                        background: mapping($myAccountProp, rewardModal, closeIcnBg);
+                        width: mapping($myAccountProp, rewardModal, closeWidth);
+                        height: mapping($myAccountProp, rewardModal, closeHeight);
+                        opacity: mapping($myAccountProp, rewardModal, closeOpacity);
+                        margin: mapping($myAccountProp, rewardModal, closeMargin);
+                    }
+
+                    .modal-title {
+                        font: mapping($myAccountProp, rewardModal, modalTitle);
+                        color: mapping($myAccountProp, globalTxtColor, textClr);
+                        padding: mapping($myAccountProp, rewardModal, modalTitlePad);
+                    }
+                }
+
+                .modal-body {
+                    padding: mapping($myAccountProp, modalBody, modalBodyPad);
+
+                    .reward-logo {
+                        max-width: mapping($myAccountProp, modalBody, modalBodyMax);
+                        width: mapping($myAccountProp, modalBody, modalBodyWidth);
+                        float: mapping($myAccountProp, modalBody, modalBodyFloat);
+                        height: mapping($myAccountProp, modalBody, modalBodyHeight);
+                    }
+
+                    .join-rewards {
+                        float: mapping($myAccountProp, modalBody, modalrewardFloat);
+                        padding: mapping($myAccountProp, modalBody, modalrewardPad);
+
+                        p {
+                            max-width: mapping($myAccountProp, modalBody, modalrewardMax);
+                            margin: mapping($myAccountProp, modalBody, modalrewardMar);
+                            font: mapping($myAccountProp, modalBody, modalrewardFont);
+                            line-height: mapping($myAccountProp, modalBody, modalrewardLH);
+                        }
+
+                        form {
+                            max-width: mapping($myAccountProp, modalBody, modalFormMax);
+
+                            fieldset {
+                                margin: mapping($myAccountProp, modalBody, modalFieldMar);
+
+                                .input-field {
+                                    .placeholder-label {
+                                        font: mapping($myAccountProp, modalBody, modalFormFont);
+                                        margin: mapping($myAccountProp, modalBody, modalFormMar);
+                                        padding: mapping($myAccountProp, modalBody, modalFormPad);
+                                    }
+
+                                    input {
+                                        &:focus {
+                                            ~ {
+                                                .placeholder-label {
+                                                    transform: mapping($myAccountProp, modalBody, modalFormTrans);
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+
+                            .theme-btn {
+                                padding: mapping($myAccountProp, modalBody, modalFormBtnPad);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+@media (min-width: 992px) {
+    .aside-section {
+        padding: mapping($myAccountProp, deskTopHeaderSection, headerpadding);
+
+        #myAccountNav.collapse {
+            display: mapping($myAccountProp, deskTopHeaderSection, headerdisplay);
+        }
+
+        h2 {
+            margin: mapping($myAccountProp, deskTopHeaderSection, h2margin);
+        }
+
+        nav {
+            h3 {
+                margin: mapping($myAccountProp, deskTopHeaderSection, h3margin);
+            }
+
+            ul {
+                padding: mapping($myAccountProp, deskTopHeaderSection, ulLipadding);
+            }
+        }
+    }
+
+    #addressStdModal {
+        .modal-dialog {
+            width: mapping($myAccountProp, deskTopHeaderSection, ulLiWidth);
+        }
+    }
+
+    .payment-info-body {
+        .user-info-wrapper {
+            h2 {
+                margin: mapping($myAccountProp, paymentInfoProp, payH2margin);
+            }
+
+            .details-list {
+                .details-list-item {
+                    a {
+                        margin: mapping($myAccountProp, paymentInfoProp, payLiatmargin);
+                    }
+                }
+            }
+
+            input.theme-btn.add-new-card {
+                margin: mapping($myAccountProp, paymentInfoProp, paythemeBtnMar);
+            }
+        }
+    }
+
+    .main-section {
+        padding: mapping($myAccountProp, mainSection, h1SectionPad);
+        border-left: mapping($myAccountProp, mainSection, h1SectionBor);
+
+        h1 {
+            font-size: mapping($myAccountProp, mainSection, h1SectionBor);
+            margin: mapping($myAccountProp, mainSection, h1SectionMar);
+            padding: mapping($myAccountProp, mainSection, h1SectionMar);
+        }
+
+        h2 {
+            padding: mapping($myAccountProp, mainSection, h2SectionPad);
+        }
+
+        .user-info-wrapper {
+            .details-list {
+                .details-list-item {
+                    width: mapping($myAccountProp, mainSection, detailsWidth);
+                    float: mapping($myAccountProp, mainSection, detailsFloat);
+                    display: mapping($myAccountProp, mainSection, detailsDisplay);
+                }
+            }
+        }
+
+        .username {
+            float: mapping($myAccountProp, mainSection, userConFloat);
+            border-right: mapping($myAccountProp, mainSection, userConBorder);
+            margin: mapping($myAccountProp, mainSection, userConMargin);
+        }
+
+        .user-note {
+            top: mapping($myAccountProp, mainSection, userNotetop);
+            position: mapping($myAccountProp, mainSection, userNotePos);
+        }
+
+        #rewardDetails {
+            .modal-dialog {
+                width: mapping($myAccountProp, mainSection, rewardsWidth);
+
+                .modal-content {
+                    .modal-body {
+                        .join-rewards {
+                            padding: mapping($myAccountProp, mainSection, rewardsPadding);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 991px) {
+    .aside-section {
+        #myAccountNav {
+            position: mapping($myAccountProp, tabSummary, accountNavPos);
+            left: mapping($myAccountProp, tabSummary, accountNavLeft);
+            width: mapping($myAccountProp, tabSummary, accountNavWidth);
+        }
+
+        .nav-header {
+            cursor: mapping($myAccountProp, tabSummary, navHeadercursor);
+            background-color: mapping($myAccountProp, tabSummary, navHeaderBG);
+            color: mapping($myAccountProp, tabSummary, navHeaderColor);
+            width: mapping($myAccountProp, tabSummary, navHeaderWidth);
+            position: mapping($myAccountProp, tabSummary, navHeaderPos);
+            left: mapping($myAccountProp, tabSummary, navHeaderLeft);
+            margin: mapping($myAccountProp, tabSummary, navHeaderMar);
+            padding: mapping($myAccountProp, tabSummary, navHeaderPad);
+            border-bottom: mapping($myAccountProp, tabSummary, navHeaderBorBot);
+
+            button {
+                &:focus {
+                    outline: 0;
+                }
+
+                color:mapping($myAccountProp, globalTxtColor, textClr);
+                font:mapping($myAccountProp, tabSummary, navButtonFont);
+            }
+        }
+
+        nav {
+            position: mapping($myAccountProp, tabSummary, navposition);
+            left: mapping($myAccountProp, tabSummary, navleft);
+            width: mapping($myAccountProp, tabSummary, navwidth);
+            border-bottom: mapping($myAccountProp, tabSummary, navborderBottom);
+
+            h3.submenu {
+                cursor: pointer;
+            }
+
+            h3 {
+                color: mapping($myAccountProp, globalTxtColor, textClr);
+                font: mapping($myAccountProp, tabSummary, h3font);
+                padding: mapping($myAccountProp, tabSummary, h3padding);
+                background: mapping($myAccountProp, tabSummary, h3background);
+                border-top: mapping($myAccountProp, tabSummary, h3bordeTop);
+
+                .arrow-icon {
+                    float: mapping($myAccountProp, tabSummary, iconFloat);
+                }
+            }
+
+            h3.active {
+                border-left: mapping($myAccountProp, tabSummary, activeborderLetf);
+                background: mapping($myAccountProp, tabSummary, activeBackground);
+            }
+
+            ul {
+                display: mapping($myAccountProp, tabSummary, uldisplay);
+                border: mapping($myAccountProp, tabSummary, ulborder);
+                margin: mapping($myAccountProp, tabSummary, ulmargin);
+                padding: mapping($myAccountProp, tabSummary, ulpadding);
+
+                li {
+                    border-top: mapping($myAccountProp, tabSummary, liborderTop);
+
+                    a {
+                        display: mapping($myAccountProp, tabSummary, aTagdisplay);
+                        padding: mapping($myAccountProp, tabSummary, aTagpadding);
+                        font: mapping($myAccountProp, tabSummary, aTagfont);
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+@media (max-width: 767px) {
+    .aside-section {
+        nav {
+            h3 {
+                text-transform: mapping($myAccountProp, MobSummaryProp, headerTextTrans);
+            }
+        }
+    }
+
+    .address-info-body {
+        .user-info-wrapper {
+            form {
+                fieldset {
+                    ul {
+                        li {
+                            width: mapping($myAccountProp, MobSummaryProp, liwidth);
+
+                            .input-field {
+                                .form-input.small-input {
+                                    width: mapping($myAccountProp, MobSummaryProp, inputWidth);
+                                }
+
+                                .form-input.long-input {
+                                    width: mapping($myAccountProp, MobSummaryProp, inputWidth);
+                                }
+                            }
+                        }
+                    }
+
+                    .input-field {
+                        .form-input.long-input {
+                            max-width: mapping($myAccountProp, MobSummaryProp, inputMaxWidth);
+                            width: mapping($myAccountProp, MobSummaryProp, inputWidth);
+                        }
+                    }
+                }
+
+                fieldset.select-picker-wrapper {
+                    ul {
+                        li {
+                            &:last-child {
+                                margin-top: mapping($myAccountProp, MobSummaryProp, liMarginTop);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .payment-info-body {
+        .user-info-wrapper {
+            fieldset {
+                .form-input.small-input {
+                    width: mapping($myAccountProp, MobSummaryProp, payInputWidth);
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 641px) and (max-width: 767px) {
+    .address-info-body {
+        .user-info-wrapper {
+            form {
+                fieldset {
+                    ul {
+                        li {
+                            .default-state {
+                                select {
+                                    max-width: mapping($myAccountProp, MobSummaryProp, selectMaxSidth);
+                                }
+                            }
+
+                            .select-country {
+                                select {
+                                    max-width: mapping($myAccountProp, MobSummaryProp, selectMaxSidth);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    .address-info-body {
+        .user-info-wrapper {
+            form {
+                fieldset.select-picker-wrapper {
+                    ul {
+                        li {
+                            &:last-child {
+                                width: mapping($myAccountProp, MobSummaryProp, MobliWidth);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 543px) {
+    #addressStdModal {
+        .address-link {
+            position: static;
+        }
+    }
+
+    .main-section {
+        .user-info-wrapper.product-interest {
+            li {
+                display: mapping($myAccountProp, MobSummaryProp, mobSectionDis);
+                width: mapping($myAccountProp, MobSummaryProp, mobSectionWidth);
+            }
+        }
+    }
+}
+
+@media (min-width: 1200px) {
+    .payment-info-body {
+        .user-info-wrapper {
+            h2 {
+                margin: mapping($myAccountProp, MobSummaryProp, paymentH2Mar);
+            }
+
+            .details-list {
+                .details-list-item {
+                    a {
+                        margin: mapping($myAccountProp, MobSummaryProp, paymentaTagMar);
+                    }
+                }
+            }
+        }
+    }
+
+    .main-section {
+        h1 {
+            font-size: mapping($myAccountProp, MobSummaryProp, mainH2Size);
+            margin: mapping($myAccountProp, MobSummaryProp, mainH2Mar);
+        }
+
+        h2 {
+            padding: mapping($myAccountProp, MobSummaryProp, mainH2Pad);
+        }
+    }
+}

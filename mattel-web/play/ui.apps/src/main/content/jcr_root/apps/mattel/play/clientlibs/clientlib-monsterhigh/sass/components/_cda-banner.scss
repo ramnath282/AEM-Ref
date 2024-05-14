@@ -1,0 +1,497 @@
+.arrow-styles{
+    .slick-prev,.cd-prev {
+        margin-left: mapping($cdabanner, playcontainerslickPrev, marginLeft);
+    }
+
+    .slick-next,.cd-next {
+        margin-right: mapping($cdabanner, playcontainerslickNext, marginRight);
+    }
+
+    .slick-next,
+    .cd-next,
+    .slick-prev,
+    .cd-prev {
+        background: mapping($cdabanner, playcontainerslickprevNext, bgnd);
+        border-radius: mapping($cdabanner, playcontainerslickprevNext, borderRadius);
+
+        &:before {
+            font-family: mapping($cdabanner, playcontainerslickprevNext, fntFamily);
+            padding: mapping($cdabanner, playcontainerslickprevNext, pad);
+            color: mapping($cdabanner, playcontainerslickprevNext, txtColor);
+            font-size: mapping($cdabanner, playcontainerslickprevNext, fntSize);
+            background: mapping($cdabanner, playcontainerslickprevNext, beforeBgnd);
+        }
+
+        @media #{$medium-down} {
+            top: mapping($cdabanner, playcontainerslickprevNext, tabposTop);
+        }
+    }
+
+    .slick-next:before,
+    .cd-next:before {
+        content: mapping($cdabanner, slicknextBefore, nextContent);
+        margin-left: mapping($cdabanner, slicknextBefore, marginLeft);
+        opacity: mapping($cdabanner, slicknextBefore, opacity);
+    }
+
+    .slick-prev:before,
+    .cd-prev:before {
+        content: mapping($cdabanner, slickprevBefore, prevContent);
+        margin-right: mapping($cdabanner, slickprevBefore, marginRight);
+        opacity: mapping($cdabanner, slickprevBefore, opacity);
+    }
+
+    .slick-dots li.slick-active button {
+        background: mapping($cdabanner, slickdotsActive, bgnd);
+    }
+
+    .slick-dots li button {
+        background-color: mapping($cdabanner, slickdotsButton, bgndColor);
+        width: mapping($cdabanner, slickdotsButton, width);
+        height: mapping($cdabanner, slickdotsButton, height);
+        opacity: mapping($cdabanner, slickdotsButton, opacity);
+
+        @media #{$small-down} {
+            background-color: mapping($cdabanner, slickdotsButton, tabbgndColor);
+        }
+    }
+
+    @media #{$small-down} {
+        .slick-next,
+        .slick-prev,
+        .cd-next,
+        .cd-prev {
+            display: mapping($cdabanner, playcontainerslickprevNext, tabDisplay);
+        }
+    }
+}
+.cda-banner {
+    position: mapping($cdabanner, main, pos);
+    background: mapping($cdabanner, main, bgnd);
+
+    .carousel-slides {
+        padding-bottom: mapping($cdabanner, carouselSlides, paddingBottom);
+        padding-top: mapping($cdabanner, carouselSlides, paddingTop);
+        border-bottom: mapping($cdabanner, carouselSlides, borderBottom);
+
+        @media #{$medium-up} {
+            padding-bottom: mapping($cdabanner, carouselSlides, tabpaddingBottom);
+            border-bottom: mapping($cdabanner, carouselSlides, tabborderBottom);
+        }
+
+        li {
+            position: mapping($cdabanner, carouselslidesList, pos);
+            margin: mapping($cdabanner, carouselslidesList, margin);
+        }
+    }
+
+    .banner-copy {
+        // padding: mapping($cdabanner, bannerCopy, pad);
+        width: 50%;
+        word-break: mapping($cdabanner, bannerCopy, wordBreak);
+        text-align: mapping($cdabanner, bannerCopy, txtAlign);
+        background: mapping($cdabanner, bannerCopy, bgnd);
+		@media #{$medium-down}{
+			background-image: mapping($cdabanner, bannerCopy, deviceBgImg);
+            width: 100%;
+		}
+        @media #{$medium-only}{
+            @if mapping($cdabanner, main, isMobileDesignForiPadPortrait) == true {
+                position: static !important;
+                // @include transform(none !important);
+            }
+        }
+        @media #{$medium-up} {
+            // width: mapping($cdabanner, bannerCopy, tabWidth);
+        }
+
+        @media #{$small-up} {
+            @include position-center();
+
+            h2 {
+                margin: mapping($cdabanner, bannercopyH2, margin);
+            }
+        }
+    }
+
+    img {
+        display: mapping($cdabanner, cdabannerImage, display);
+        margin: mapping($cdabanner, cdabannerImage, margin);
+    }
+
+    //play site
+    .play-container {
+        @extend .arrow-styles;
+
+        .banner-copy {
+            @media #{$small-down} {
+                text-align: if(mapping($cdabanner, bannerCopyPromo, mobTxtAlign),mapping($cdabanner, bannerCopyPromo, mobTxtAlign),left);
+            }
+            a,
+            span {
+                background-color: mapping($cdabanner, bannercopySpan, bgndColor);
+                border: mapping($cdabanner, bannercopySpan, borderColor);
+                color: mapping($cdabanner, bannercopySpan, txtColor);
+                font-size: mapping($cdabanner, bannercopySpan, fntSize);
+            }
+
+            a:hover,
+            span:hover {
+                background: mapping($cdabanner, bannercopySpan, hoverBgnd);
+                border: mapping($cdabanner, bannercopySpan, hoverborderColor);
+            }
+
+            .module-description {
+                margin: 0;
+                // @if mapping($cdabanner, bannercopymoduleDesc, isDefaultDesFont) == true {
+                //     @extend .page-description-font;
+                // } @else{
+                //     font-family: mapping($cdabanner, bannercopymoduleDesc, fntFamily);
+                // }
+                font-weight: mapping($cdabanner, bannercopymoduleDesc, fntWeight);
+				&:lang(tr-TR) {
+					font-weight: mapping($cdabanner, bannercopymoduleDesc, fntWeightTR);
+				}
+                color: mapping($cdabanner, bannercopymoduleDesc, txtColor);
+                font-size: mapping($cdabanner, bannercopymoduleDesc, fntSize);
+                // color: pink;
+                // font-size: 20px;
+                letter-spacing: mapping($cdabanner, bannercopymoduleDesc, letterSpacing);
+                // margin: mapping($cdabanner, bannercopymoduleDesc, margin);
+
+                @media #{$medium-down} {
+                    // color: mapping($cdabanner, bannercopymoduleDesc, tabtxtColor);
+                    color: #000 !important;
+                }
+                @media #{$small-down} {
+                     color: #000;
+                     font-size:18px;
+                }
+                h1 {
+                    margin: 0;
+                span {
+                    display: mapping($cdabanner, bannercopymoduleSpan, display);
+                    // color: mapping($cdabanner, bannercopymoduleSpan, txtColor);
+                    font-family: "YellowBalloon";
+                    font-weight: 400;
+                    // font-weight: mapping($cdabanner, bannercopymoduleSpan, fntWeight);
+                    font-size: 42px !important;
+                    line-height: 52px;
+                    // color: #FFFDFD;
+                    @media #{$small-only} {
+                        font-size: 33px !important;
+                        line-height: 38px;
+                        text-align: center;
+                    }
+                }
+                }
+                p {
+                    margin-top: 17px;
+                    margin-bottom: 0;
+                    line-height: 27px;
+                    @media #{$medium-only} {
+                        margin-top: 15px;
+                    }
+                    @media #{$small-only} {
+                        margin-top: 10px;
+                        line-height: 22px;
+                    }
+                    span {
+                        // color: #FFFFFF;
+                    	font-family: "ff-duper-web-pro";
+                        font-weight: 400;	
+                        font-size: 24px !important;	
+                        line-height: 27px;
+                    @media #{$small-only} {
+                        padding-left: 12px;
+                        padding-right: 5px;
+                        font-size: 18px !important;
+                        line-height: 22px;
+                    }
+                    }
+                }
+            }
+
+            .module-title {
+                color: if(mapping($cdabanner, bannercopymoduleTitle, mobTxtColor), mapping($cdabanner, bannercopymoduleTitle, mobTxtColor), mapping($cdabanner, bannercopymoduleTitle, txtColor));
+                @media #{$small-up}{
+                    color: mapping($cdabanner, bannercopymoduleTitle, tabTxtColor);
+                }
+                @media #{$medium-up}{
+                    color: mapping($cdabanner, bannercopymoduleTitle, txtColor);
+                }
+
+                font-size: mapping($cdabanner, bannercopymoduleTitle, fntSize);
+                @media #{$medium-up}{
+                    max-width: mapping($cdabanner, bannercopymoduleTitle, maxWidth);
+                }
+                @media #{$medium-down}{
+                    color:#000;
+                }
+                @media #{$small-down} {
+                    color:#000;
+                    font-size: mapping($cdabanner, bannercopymoduleTitle, mobfntSize);
+                    max-width: if(mapping($cdabanner, bannercopymoduleTitle, tabMaxWidth), mapping($cdabanner, bannercopymoduleTitle, tabMaxWidth), initial);
+                    text-align: if(mapping($cdabanner, bannercopymoduleTitle, mobTxtAlign), mapping($cdabanner, bannercopymoduleTitle, mobTxtAlign), center);
+                }
+            }
+
+            // @media #{$medium-down} {
+            //     padding: mapping($cdabanner, bannerCopy, tabpadding);
+            //     position: mapping($cdabanner, bannerCopy, pos);
+            //     top: mapping($cdabanner, bannerCopy, tabposTop);
+            //     left: mapping($cdabanner, bannerCopy, tabposLeft);
+            //     right: mapping($cdabanner, bannerCopy, tabposRight);
+            //     bottom: mapping($cdabanner, bannerCopy, tabposBottom);
+            //     text-align: mapping($cdabanner, bannerCopy, tabtxtAlign);
+            //     background: mapping($cdabanner, bannerCopy, tabBgnd);
+
+            //     .module-description {
+            //         // color: if(mapping($cdabanner, bannerCopy, mobModuledestxtColor), mapping($cdabanner, bannerCopy, mobModuledestxtColor), mapping($cdabanner, bannerCopy, moduledestxtColor));
+            //         @media #{$small-up}{
+            //             color: mapping($cdabanner, bannerCopy, tabModuledestxtColor);
+            //         }
+            //         @media #{$medium-up}{
+            //             color: mapping($cdabanner, bannerCopy, moduledestxtColor);
+            //         }
+            //         @media #{$small-down} {
+            //             text-align: if(mapping($cdabanner, bannerCopy, mobTxtAlign), mapping($cdabanner, bannerCopy, mobTxtAlign), center);
+            //         }
+            //     }
+            // }
+
+            @media #{$small-down} {
+                // padding: mapping($cdabanner, bannerCopy, mobPadding);
+            }
+        }
+    }
+}
+
+.banner-copy {
+
+    &[class*='top-'],
+    &[class*='bottom-'],
+    &[class*='middle-'] {
+        transform: mapping($cdabanner, bannercopyPos, posTransform);
+        -webkit-transform: mapping($cdabanner, bannercopyPos, posTransform);
+        -ms-transform: mapping($cdabanner, bannercopyPos, posTransform);
+        top: mapping($cdabanner, bannercopyPos, posTop);
+        left: mapping($cdabanner, bannercopyPos, posLeft);
+    }
+
+    &.top-left {
+        left: mapping($cdabanner, bannercopypostopLeft, posLeft);
+        top: mapping($cdabanner, bannercopypostopLeft, posTop);
+    }
+
+    &.top-right {
+        right: mapping($cdabanner, bannercopypostopRight, posRight);
+        top: mapping($cdabanner, bannercopypostopRight, posTop);
+    }
+
+    &.bottom-left {
+        left: mapping($cdabanner, bannercopyposbottomLeft, posLeft);
+        bottom: mapping($cdabanner, bannercopyposbottomLeft, posBottom);
+    }
+
+    &.bottom-right {
+        right: mapping($cdabanner, bannercopyposbottomRight, posRight);
+        bottom: mapping($cdabanner, bannercopyposbottomRight, posBottom);
+    }
+
+    //polly Styles
+    &.middle-left {
+        left: 0;
+        top: 0;
+        padding-top: 88px;
+        padding-left: 81px;
+        padding-bottom: 46px;
+        padding-right: 0;
+        @media #{$large-only}{
+            font-size: mapping($cdabanner, bannercopyposmiddleLeft, tabFontSize);
+        }
+        @media #{$medium-only} {
+            padding: 20px 20px 30px 20px;
+        }
+        @media #{$small-only} {
+            padding: 15px 10px 15px 10px;
+        }
+        @media #{$medium-up} {
+            position: static;
+            position: relative;
+            z-index: 1;
+            padding-bottom: 82px;
+        }
+    }
+
+    &.middle-right {
+        right: mapping($cdabanner, bannercopyposmiddleRight, posRight);
+        top: mapping($cdabanner, bannercopyposmiddleRight, posTop);
+        @media #{$large-only}{
+            font-size: mapping($cdabanner, bannercopyposmiddleRight, tabFontSize);
+        }
+    }
+
+    &.top-center {
+        @media #{$small-up} {
+            left: mapping($cdabanner, bannercopypostopCenter, mobposLeft);
+            top: mapping($cdabanner, bannercopypostopCenter, mobposTop);
+            transform: mapping($cdabanner, bannercopypostopCenter, mobposTransform);
+            -webkit-transform: mapping($cdabanner, bannercopypostopCenter, mobposTransform);
+            -ms-transform: mapping($cdabanner, bannercopypostopCenter, mobposTransform);
+        }
+    }
+
+    @media #{$small-up} {
+        .banner-copy {
+            &.bottom-center {
+                left: mapping($cdabanner, bannercopyposbottomCenter, mobposLeft);
+                bottom: mapping($cdabanner, bannercopyposbottomCenter, mobposBottom);
+                transform: mapping($cdabanner, bannercopyposbottomCenter, mobposTransform);
+            }
+
+            &.v-center {
+                left: mapping($cdabanner, bannercopyposVcenter, mobposLeft);
+                top: mapping($cdabanner, bannercopyposVcenter, mobposTop);
+                transform: mapping($cdabanner, bannercopyposVcenter, mobposTransform);
+            }
+        }
+    }
+
+    &.no-bg {
+        @media #{$small-up} {
+            background: mapping($cdabanner, bannercopyBg, mobBgnd);
+        }
+    }
+
+    .module-title {
+        @media #{$small-only} {
+            margin: mapping($cdabanner, bannercopymodTitle, mobMargin);
+        }
+
+        font-size: mapping($cdabanner, bannercopymodTitle, fntSize);
+
+        @media #{$small-up} {
+            font-size: mapping($cdabanner, bannercopymodTitle, mobfntSize);
+        }
+
+        @media #{$medium-up} {
+            font-size: mapping($cdabanner, bannercopymodTitle, tabfntSize);
+        }
+    }
+
+    .module-sub-title {
+        @media #{$small-up} {
+            font-size: mapping($cdabanner, bannercopymodSubtitle, mobfntSize);
+        }
+
+        @media #{$medium-up} {
+            font-size: mapping($cdabanner, bannercopymodSubtitle, tabfntSize);
+        }
+    }
+
+    @media #{$small-only} {
+        text-align: mapping($cdabanner, bannercopymodSubtitle, mobtxtAlign);
+    }
+
+    a,
+    span {
+        display: mapping($cdabanner, bannercopySpan, display);
+    }
+}
+
+.heroImageBanner {
+    .cda-banner {
+        text-align: mapping($cdabanner, heroimageBanner, txtAlign);
+
+        .crm-container {
+            display: mapping($cdabanner, heroimageCrm, display);
+            position: mapping($cdabanner, heroimageCrm, pos);
+            text-align: mapping($cdabanner, heroimageCrm, txtAlign);
+        }
+    }
+}
+
+.promoCarousel {
+    @media #{$small-down} {
+        background: if(mapping($cdabanner, promoCarousel, promoBgMob),mapping($cdabanner, promoCarousel, promoBgMob),transparent);
+        padding: if(mapping($cdabanner, promoCarousel, padMob),mapping($cdabanner, promoCarousel, padMob),0);
+    }
+	 @media #{$medium-down} {
+		background: mapping($cdabanner, promoCarousel, promoBgMob);
+	 }
+
+    .cda-banner {
+        ul {
+            margin-bottom: 0;
+
+            li {
+                margin: 0;
+                @media #{$medium-up} {
+                    min-height: 580px;
+                }
+                img {
+                    width: 100%;
+                    @media #{$medium-up} {
+                        min-height: 580px;
+                        height: 100%;
+                        width: 100%;
+                        left: 0;
+                        top: 0;
+                        position: absolute;
+                    } 
+                    max-width: if(mapping($cdabanner, promoCarousel, maxWidth),mapping($cdabanner, promoCarousel, maxWidth),1600px);
+                    padding: 0;
+                }
+            }
+        }
+    }
+
+    .slick-dots {
+        @media #{$small-up} {
+            width: auto;
+            transform: translateX(-50%);
+            -webkit-transform: translateX(-50%);
+            -moz-transform: translateX(-50%);
+            -ms-transform: translateX(-50%);
+            left: 50%;
+            right: auto;
+        }
+    }
+}
+
+.has-video-carousel:not(.only-video-slider) {
+    li.video-player-container {
+        .oo-player-container {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 100%;
+
+            .oo-player {
+                padding: 0 !important;
+                width: 100%;
+                height: 100% !important;
+            }
+        }
+    }
+}
+ @media #{$medium-only} {
+.promoCarousel {
+    .cda-banner {
+        .play-container {
+            ul {
+                li {
+                    .hidden-xs{
+                        display: none;
+                    }
+                    .hidden-sm{
+                        display: block !important;
+                    }
+                }
+            }
+        }
+    }
+}
+ }

@@ -1,0 +1,126 @@
+<sly data-sly-test="${wcmmode.edit}">${' Configure Title and Text Module' @ i18n}</sly>
+<sly data-sly-use.PlayPage="com.mattel.play.core.model.PlayPageModel">
+	<sly data-sly-test="${properties.titleImage  != null}">
+		<div id="${properties.linkNavigationCheck?properties['linkNavOption']:''}" data-link-attribute="${properties.linkNavigationCheck?properties['linkNavOption']:''}">
+			<sly data-sly-test="${properties.backOption == 'color'}">
+				<div class="play-page-title ${properties.titleSectionFor == 'emailConfirmationPage'?'cm-email-conf':''} ${PlayPage.brandName == 'fisher-price'?'full-width':''} text-${properties.alignmentOption}"   style="background-color:${properties.backgroundColor @ context='styleString'};">
+			</sly>
+			<sly data-sly-test="${properties.backOption == 'image'}">
+				<sly data-sly-test.isMaxsteel="${PlayPage.brandName == 'maxsteel' || PlayPage.brandName == 'fisher-price'}">
+					<div class="play-page-title ${properties.titleSectionFor == 'emailConfirmationPage'?'cm-email-conf':''} ${PlayPage.brandName == 'fisher-price'?'full-width':''} text-${properties.alignmentOption} "   style="background-image: url('${properties.fileReferenceBgImg @ context='styleString'}');background-repeat:repeat-x;background-size:inherit;"> 
+				</sly>
+				<sly data-sly-test="${!isMaxsteel}">
+					<div class="play-page-title ${properties.titleSectionFor == 'emailConfirmationPage'?'cm-email-conf':''} ${PlayPage.brandName == 'fisher-price'?'full-width':''} text-${properties.alignmentOption} "   style="background-image: url('${properties.fileReferenceBgImg @ context='styleString'}');background-repeat:no-repeat;background-size:cover;"> 
+				</sly>
+			</sly>
+			<sly data-sly-test="${properties.backOption==null}">
+				<div class="play-page-title ${properties.titleSectionFor == 'emailConfirmationPage'?'cm-email-conf':''} ${PlayPage.brandName == 'fisher-price'?'full-width':''} text-${properties.alignmentOption}"  >
+			</sly>
+			<sly data-sly-test.isFisherPrice="${PlayPage.brandName == 'fisher-price'}">
+				<div>
+					<img src="${properties.titleImage}" alt="${properties.titleImageAlt}">
+					<h1> <span data-sly-test="${properties.title}">${properties.title @ i18n}</span></h1>
+				</div>
+			</sly>
+			<sly data-sly-test="${!isFisherPrice}">
+				<div>
+					<sly data-sly-test="${properties.title}">
+						<h1 style="color:${properties.titleColor @ context='styleString'};">${properties.title @ i18n}</h1>
+					</sly>
+					<p data-sly-test="${properties.description}">${properties.description @ context='html',i18n}</p>
+					<sly data-sly-test="${properties.titleTextCtaButtonText}">
+				    <div class="cta-btn">
+                 	<sly data-sly-test.myVar="${properties.titleTextCtaButtonLink}" data-sly-use.info="${'com.mattel.play.core.helper.PlayHelper' @ text= myVar}">
+                        <sly data-sly-test="${properties.titleTextCtaOption =='samewindow'}">
+                            <a class="btn btn-view-all" href="${info.pathURL}" data-tracking-id="Text Module|${properties.alwaysEnglishForTitle}|${properties.titleTextAnalyticsText}|${properties.alwaysEnglishForTitle}" role="button">${properties.titleTextCtaButtonText}</a>
+                        </sly>
+                        <sly data-sly-test="${properties.titleTextCtaOption =='newtab'}">
+                            <a class="btn btn-view-all" href="${info.pathURL}" data-tracking-id="Text Module|${properties.alwaysEnglishForTitle}|${properties.titleTextAnalyticsText}|${properties.alwaysEnglishForTitle}" role="button"  target="_blank">${properties.titleTextCtaButtonText}<span class="sr-only">${'Opens in new tab' @ i18n}</span></a>
+                        </sly>
+                        <sly data-sly-test="${properties.titleTextCtaOption =='newwindow'}">
+                            <a class="btn btn-view-all" data-url="${info.pathURL}" data-tracking-id="Text Module|${properties.alwaysEnglishForTitle}|${properties.titleTextAnalyticsText}|${properties.alwaysEnglishForTitle}" role="button"  onclick="window.open(this.dataset.url,'PLAY','width=500, height=500');">${properties.titleTextCtaButtonText}<span class="sr-only"> ${'Opens in new window' @ i18n}</span></a>
+                        </sly>
+                    </sly>
+				</div>
+			</sly>
+				</div>
+				<div>
+					<img src="${properties.titleImage}" alt="${properties.titleImageAlt @i18n}">
+				</div>
+			</sly>
+			</div>
+		</div>
+	</sly>
+	 
+	<sly data-sly-test="${properties.titleImage  == null}">
+		<div id="${properties.linkNavigationCheck?properties['linkNavOption']:''}" data-link-attribute="${properties.linkNavigationCheck?properties['linkNavOption']:''}">
+			<sly data-sly-test="${properties.backOption == 'color'}">
+				<div class="play-page-title ${properties.titleSectionFor == 'emailConfirmationPage'?'cm-email-conf':''} no-image text-${properties.alignmentOption}"   style="background-color:${properties.backgroundColor @ context='styleString'};">
+			</sly>
+			<sly data-sly-test="${properties.backOption == 'image'}">
+				<sly data-sly-test.isMaxsteel="${PlayPage.brandName == 'maxsteel'}">
+					<div class="play-page-title ${properties.titleSectionFor == 'emailConfirmationPage'?'cm-email-conf':''} no-image hidden-lg hidden-sm hidden-md text-${properties.alignmentOption}"   style="background-image: url('${properties.fileReferenceBgImg @ context='styleString'}');background-repeat:repeat-x;background-size:inherit;">
+				</sly>
+				<sly data-sly-test="${!isMaxsteel}">
+					<div class="play-page-title ${properties.titleSectionFor == 'emailConfirmationPage'?'cm-email-conf':''} no-image hidden-lg hidden-sm hidden-md text-${properties.alignmentOption}"   style="background-image: url('${properties.fileReferenceBgImg @ context='styleString'}');background-repeat:no-repeat;background-size:cover;">
+				</sly>	
+			</sly>
+			<sly data-sly-test="${properties.backOption==null}">
+				<div class="play-page-title ${properties.titleSectionFor == 'emailConfirmationPage'?'cm-email-conf':''} no-image text-${properties.alignmentOption}"  >
+			</sly>
+			<div>
+				<sly data-sly-test="${properties.title}">
+					<h1 style="color:${properties.titleColor @ context='styleString'};">${properties.title @ i18n}</h1>
+				</sly>
+				<p data-sly-test="${properties.description}">${properties.description @ context='html',i18n}</p>
+				<sly data-sly-test="${properties.titleTextCtaButtonText}">
+				<div class="cta-btn">
+                 	<sly data-sly-test.myVar="${properties.titleTextCtaButtonLink}" data-sly-use.info="${'com.mattel.play.core.helper.PlayHelper' @ text= myVar}">
+                        <sly data-sly-test="${properties.titleTextCtaOption =='samewindow'}">
+                            <a class="btn btn-view-all" href="${info.pathURL}" data-tracking-id="Text Module|${properties.alwaysEnglishForTitle}|${properties.titleTextAnalyticsText}|${properties.alwaysEnglishForTitle}" role="button">${properties.titleTextCtaButtonText @i18n}</a>
+                        </sly>
+                        <sly data-sly-test="${properties.titleTextCtaOption =='newtab'}">
+                            <a class="btn btn-view-all" href="${info.pathURL}" data-tracking-id="Text Module|${properties.alwaysEnglishForTitle}|${properties.titleTextAnalyticsText}|${properties.alwaysEnglishForTitle}" role="button"  target="_blank">${properties.titleTextCtaButtonText @i18n}<span class="sr-only">${'Opens in new tab' @ i18n}</span></a>
+                        </sly>
+                        <sly data-sly-test="${properties.titleTextCtaOption =='newwindow'}">
+                            <a class="btn btn-view-all" data-url="${info.pathURL}" data-tracking-id="Text Module|${properties.alwaysEnglishForTitle}|${properties.titleTextAnalyticsText}|${properties.alwaysEnglishForTitle}" role="button"  onclick="window.open(this.dataset.url,'PLAY','width=500, height=500');">${properties.titleTextCtaButtonText @i18n}<span class="sr-only"> ${'Opens in new window' @ i18n}</span></a>
+                        </sly>
+                    </sly>
+				</div>
+			</sly>
+			</div>
+			</div>
+			<sly data-sly-test="${properties.backOption == 'image'}">
+				<sly data-sly-test.isMaxsteel="${PlayPage.brandName == 'maxsteel' || PlayPage.brandName == 'fisher-price'}">
+					<div class="play-page-title ${properties.titleSectionFor == 'emailConfirmationPage'?'cm-email-conf':''} no-image hidden-xs text-${properties.alignmentOption}"   style="background-image: url('${properties.fileReferenceBgImg @ context='styleString'}');background-repeat:repeat-x;background-size:inherit;">
+				</sly>
+				<sly data-sly-test="${!isMaxsteel}">
+					<div class="play-page-title ${properties.titleSectionFor == 'emailConfirmationPage'?'cm-email-conf':''} no-image hidden-xs text-${properties.alignmentOption}"   style="background-image: url('${properties.fileReferenceBgImg @ context='styleString'}');background-repeat:no-repeat;background-size:cover;">
+				</sly>
+				
+					<div>
+						<sly data-sly-test="${properties.title}">
+							<h1 style="color:${properties.titleColor @ context='styleString'};">${properties.title @ i18n}</h1>
+						</sly>
+						<p data-sly-test="${properties.description}">${properties.description @ context='html',i18n}</p>
+						<sly data-sly-test="${properties.titleTextCtaButtonText}">
+				<div class="cta-btn">
+                 	<sly data-sly-test.myVar="${properties.titleTextCtaButtonLink}" data-sly-use.info="${'com.mattel.play.core.helper.PlayHelper' @ text= myVar}">
+                        <sly data-sly-test="${properties.titleTextCtaOption =='samewindow'}">
+                            <a class="btn btn-view-all" href="${info.pathURL}" data-tracking-id="Text Module|${properties.alwaysEnglishForTitle}|${properties.titleTextAnalyticsText}|${properties.alwaysEnglishForTitle}" role="button">${properties.titleTextCtaButtonText @i18n}</a>
+                        </sly>
+                        <sly data-sly-test="${properties.titleTextCtaOption =='newtab'}">
+                            <a class="btn btn-view-all" href="${info.pathURL}" data-tracking-id="Text Module|${properties.alwaysEnglishForTitle}|${properties.titleTextAnalyticsText}|${properties.alwaysEnglishForTitle}" role="button"  target="_blank">${properties.titleTextCtaButtonText @i18n}<span class="sr-only">${'Opens in new tab' @ i18n}</span></a>
+                        </sly>
+                        <sly data-sly-test="${properties.titleTextCtaOption =='newwindow'}">
+                            <a class="btn btn-view-all" data-url="${info.pathURL}" data-tracking-id="Text Module|${properties.alwaysEnglishForTitle}|${properties.titleTextAnalyticsText}|${properties.alwaysEnglishForTitle}" role="button"  onclick="window.open(this.dataset.url,'PLAY','width=500, height=500');">${properties.titleTextCtaButtonText @i18n}<span class="sr-only"> ${'Opens in new window' @ i18n}</span></a>
+                        </sly>
+                    </sly>
+				</div>
+			</sly>
+					</div>
+				</div>
+			</sly>
+		</div>
+	</sly>
+</sly>

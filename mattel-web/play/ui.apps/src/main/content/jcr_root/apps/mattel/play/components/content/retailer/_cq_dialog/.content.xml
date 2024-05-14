@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Retailer Detail Config"
+    sling:resourceType="cq/gui/components/authoring/dialog"
+    height="{Long}500"
+    width="{Long}650">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <sectionTitle
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Section Title"
+                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <title
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Leave empty to use the Section title."
+                                                fieldLabel="Section Title"
+                                                name="./sectionTitle"
+                                                required="{Boolean}true"/>
+                                            <titleAlignOption
+                                                granite:class="cq-dialog-dropdown-showhide"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                fieldLabel="Align Title to"
+                                                name="./titleAlignOpt"
+                                                required="{Boolean}true">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <left
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Left"
+                                                        value="left"/>
+                                                    <right
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Right"
+                                                        value="right"/>
+                                                    <center
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Center"
+                                                        value="center"/>
+                                                </items>
+                                            </titleAlignOption>
+                                            <titleBackgroundImage
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                                allowUpload="{Boolean}false"
+                                                autoStart="{Boolean}false"
+                                                fieldLabel="Title Background Image"
+                                                fileReferenceParameter="./titleBgImg"
+                                                mimeTypes="[image/gif,image/jpeg,image/png,image/webp,image/tiff]"
+                                                multiple="{Boolean}false"
+                                                name="./titleBgImage"
+                                                uploadUrl="${suffix.path}"
+                                                useHTML5="{Boolean}true"/>
+                                            <alwaysEnglish
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Always English check for Multi-Lingual  Site Tagging"
+                                                fieldLabel="Adobe Tracking Name"
+                                                name="./alwaysEnglish"
+                                                required="{Boolean}true"/>
+                                            <aeLocationName
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Location Name for Analytics (Always English )"
+                                                fieldLabel="Location Name for Adobe Tracking"
+                                                name="./locationName"/>
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </sectionTitle>
+                    <retailerBackgroundStyle
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Retailer Background Config"
+                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <retailerBackgroundcolor
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="/libs/granite/ui/components/coral/foundation/form/colorfield"
+                                                fieldLabel="Background Color"
+                                                name="./retBgColor"/>
+                                            <retailerBackgroundpattern
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                                allowUpload="{Boolean}false"
+                                                autoStart="{Boolean}false"
+                                                fieldLabel="Background Image"
+                                                fileReferenceParameter="./retBgPattern"
+                                                mimeTypes="[image/gif,image/jpeg,image/png,image/webp,image/tiff]"
+                                                multiple="{Boolean}false"
+                                                name="./retBgImage"
+                                                uploadUrl="${suffix.path}"
+                                                useHTML5="{Boolean}true"/>
+                                            <retailerBackroundoption
+                                                granite:class="cq-dialog-dropdown-showhide"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                fieldLabel="Background Option"
+                                                name="./retBackOption">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <image
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Image"
+                                                        value="image"/>
+                                                    <color
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Color"
+                                                        value="color"/>
+                                                </items>
+                                            </retailerBackroundoption>
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </retailerBackgroundStyle>
+                    <retailerDetailConfig
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Retailer Details Config"
+                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <retailerDetailList
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                class="full-width"
+                                composite="{Boolean}true"
+                                fieldLabel="Retailer Details"
+                                id="retailer-multi">
+                                <field
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/fieldset"
+                                    acs-commons-nested="JSON_STORE"
+                                    name="./retailerDetailList">
+                                    <items jcr:primaryType="nt:unstructured">
+                                        <column
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                                            <items jcr:primaryType="nt:unstructured">
+                                                <retailerLink
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                    allowUpload="{Boolean}false"
+                                                    autoStart="{Boolean}false"
+                                                    class="cq-droptarget"
+                                                    fieldDescription="Retailer Website URL"
+                                                    fieldLabel="Retailer Link"
+                                                    fileReferenceParameter="./retailerUrlSrc"
+                                                    mimeTypes="[image/gif,image/jpeg,image/png,image/webp,image/tiff]"
+                                                    multiple="{Boolean}false"
+                                                    name="./retailerUrl"
+                                                    rootPath="/content/"
+                                                    uploadUrl="${suffix.path}"
+                                                    useHTML5="{Boolean}true"/>
+                                                <retailerLogo
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="/libs/granite/ui/components/coral/foundation/form/pathbrowser"
+                                                    fieldDescription="Browse Logo/Image"
+                                                    fieldLabel="Retailer Logo"
+                                                    name="./retailerLogo"
+                                                    rootPath="/content/dam"/>
+                                                <retailerAltText
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldDescription="Textual alternative of the meaning or function of the image, for visually impaired readers."
+                                                    fieldLabel="Alternative Text"
+                                                    name="./retailLogoAlt"
+                                                    wrapperClass="cmp-image--editor-alt"/>
+                                                <targetUrl
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                    fieldLabel="Open URL In"
+                                                    name="./retailerTarget">
+                                                    <items jcr:primaryType="nt:unstructured">
+                                                        <sameWindow
+                                                            jcr:primaryType="nt:unstructured"
+                                                            text="Same Window"
+                                                            value="sameWindow"/>
+                                                        <newTab
+                                                            jcr:primaryType="nt:unstructured"
+                                                            text="New Tab"
+                                                            value="tabWindow"/>
+                                                        <newWindow
+                                                            granite:hide="${cqDesign.disableSearch}"
+                                                            jcr:primaryType="nt:unstructured"
+                                                            text="New Window"
+                                                            value="newWindow"/>
+                                                        <interstitial
+                                                            jcr:primaryType="nt:unstructured"
+                                                            text="Interstitial - Leaving the Site"
+                                                            value="interstitial"/>
+                                                    </items>
+                                                </targetUrl>
+                                            </items>
+                                        </column>
+                                    </items>
+                                </field>
+                                <granite:data
+                                    jcr:primaryType="nt:unstructured"
+                                    maxRetailersAllowed="8"/>
+                            </retailerDetailList>
+                        </items>
+                    </retailerDetailConfig>
+                    <linkToNavigation
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Link To Navigation"
+                        sling:resourceType="granite/ui/components/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <linkToNavigation
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/foundation/form/checkbox"
+                                fieldDescription="Is this section to be linked to Navigation"
+                                name="./linkNavigationCheck"
+                                text="Link To Navigation?"
+                                uncheckedValue="{Boolean}false"
+                                value="{Boolean}true"/>
+                            <NavigationOptions
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                fieldLabel="Navigation Mapping"
+                                name="./linkNavOption">
+                                <datasource
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="/bin/homepagedropdown"/>
+                            </NavigationOptions>
+                        </items>
+                    </linkToNavigation>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>

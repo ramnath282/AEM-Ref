@@ -1,0 +1,50 @@
+<div class="plp-banner-sec plp-banner-sec-expand ${(properties.isShowMobileBanner == 'checked' && !wcmmode.edit) ? 'hidden-sm hidden-md hidden-lg' : ''}" data-analytics-text ="${properties.bannerContentAnalyticsText}" id="plpbanner"  style="background-color: ${properties.bannerBackgroundColor @context='html'}; background-image: url(${properties.bannerBackgroundImage @context='html'});">
+<sly data-sly-use.parsys="${resource.path}">
+ <sly data-sly-test="${resource.listChildren}" >
+  	<sly data-sly-list.resourceChild="${resource.listChildren}">
+        <sly data-sly-test="${resourceChild.name == 'staticBanner'}" >
+            <sly data-sly-use.static="${resourceChild.path}"></sly>
+        </sly>
+        <sly data-sly-test="${resourceChild.name == 'expBanner'}" >
+             <sly data-sly-use.exp="${resourceChild.path}"></sly>
+        </sly>
+   	</sly>
+ </sly>
+ <sly data-sly-test="${parsys.listChildren && (static.listChildren || exp.listChildren)}">
+    <div class="hidden-xs hidden-sm">
+        <a class="arrow-btn" tabindex="0" href="#" aria-expanded="false" role="button">
+            <i aria-hidden="true" class="fa fa-chevron-up hide bounce"></i>
+            <i aria-hidden="true" class="fa fa-chevron-down bounce"></i>
+            <span class="sr-only">hide content</span>
+        </a>        
+    </div>
+ </sly>
+</sly>
+
+    <sly data-sly-resource="${'staticBanner' @ resourceType='wcm/foundation/components/responsivegrid'}"/>
+    <div class="${wcmmode.edit ? '' : 'user-info-wrapper plp-banner-extend col-3-set'}" data-analytics-text ="${properties.drawerContentAnalyticsText}">
+        <sly data-sly-resource="${'expBanner' @ resourceType='wcm/foundation/components/responsivegrid'}"/>
+		<sly data-sly-test="${properties.ctaButtonText && properties.ctaButtonLink}">
+			<sly data-sly-test="${properties.ctaBackOption == 'image'}">
+				<div class="banner-cta-desktop" style="background-image: url('${properties.ctaFileReferenceBgImg @ context='styleString'}');">
+					<sly data-sly-include="ctablock.html"/>
+				</div>
+			</sly>
+			<sly data-sly-test="${properties.ctaBackOption == 'color'}">
+				<div class="banner-cta-desktop" style="background-color:${properties.ctaBackgroundColor @ context='styleString'}">
+					<sly data-sly-include="ctablock.html"/>
+				</div>
+			</sly>
+			<sly data-sly-test="${properties.ctaBackOption == null}">
+				<div class="banner-cta-desktop">
+					<sly data-sly-include="ctablock.html"/>
+			    </div>
+			</sly>
+		</sly>
+    </div>
+	<sly data-sly-test="${properties.ctaButtonText && properties.ctaButtonLink}">
+		<div class="banner-cta-mobile visible-xs visible-sm">
+			<sly data-sly-include="ctablock.html"/>
+		</div> 
+	</sly>
+</div>

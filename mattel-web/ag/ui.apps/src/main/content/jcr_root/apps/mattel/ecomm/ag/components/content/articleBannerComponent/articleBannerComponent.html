@@ -1,0 +1,48 @@
+<sly data-sly-test="${wcmmode.edit}">${'Article Banner Component' @i18n}</sly>
+<sly data-sly-use.articleBanner = "com.mattel.ag.explore.core.model.ArticleBannerModel">
+
+    <!-- article starts -->
+    <div class="grid-article-module">
+        <div class="container-fluid">
+            <sly data-sly-test="${properties.articleHeroMobileImagePath}">
+                <img class="hidden-xs" src="${properties.articleHeroImagePath}" id="article-hero-img" alt="">
+                <img class="visible-xs" src="${properties.articleHeroMobileImagePath}" id="article-hero-mobile-img" alt="">
+            </sly>
+            <sly data-sly-test="${!properties.articleHeroMobileImagePath}">
+                <img src="${properties.articleHeroImagePath}" id="article-hero-img" alt="">
+            </sly>
+        </div>
+
+        <div  class="${pageProperties.overlappedLayout ? 'article-container overlapped-content' : 'article-container' }">
+
+
+            <div class="article-content">
+                <div class="article-heading">
+                    <h1 class="tile-name">${articleBanner.pageTitle @i18n}</h1>
+                    <span class="tile-category">${articleBanner.primaryTagTitle @i18n}</span>
+                    <sly data-sly-test="${pageProperties.socialMediaEnabled == 'true'}">
+                        <sly data-sly-use.templ="/apps/mattel/ecomm/ag/components/content/socialSharetemplate/socialSharetemplate.html" data-sly-call="${templ.socialShare @ title=articleBanner.pageTitle, description=pageProperties.articleDescription, mediaUrl=properties.articleHeroImagePath,pageUrl=currentPage.getPath, componentname='Article' }"></sly>
+                    </sly>
+                    <div class="article-tags"><p>
+                        <sly data-sly-list.secondarytag="${articleBanner.secondaryTagTitle}">
+                            <sly data-sly-test="${!secondarytagList.last}">
+                                ${secondarytag},&nbsp </sly>
+                            <sly data-sly-test="${secondarytagList.last}">
+                                ${secondarytag}</sly>
+                        </sly></p>
+                    </div>
+                    <div class="article-date"><p>
+                        <sly data-sly-test="${articleBanner.hideDate != true}">
+                            ${articleBanner.date @i18n}
+                        </sly>
+                    </p></div>
+                </div>
+                <div class="article-content-wrapper">
+                    <sly data-sly-resource="${'articleContainer' @ resourceType='wcm/foundation/components/responsivegrid'}"></sly>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</sly>
+<!-- article ends -->

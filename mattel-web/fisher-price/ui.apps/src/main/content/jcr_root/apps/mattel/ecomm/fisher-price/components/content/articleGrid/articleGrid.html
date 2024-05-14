@@ -1,0 +1,67 @@
+<sly data-sly-test="${wcmmode.edit}">${'Edit Article Grid Component' @i18n}</sly>
+<sly data-sly-use.articleGrid="com.mattel.fisherprice.core.models.ArticleGridModel"/>
+<input type="hidden" id="DefaultLoad" value="${articleGrid.initialLoadCount}">
+<input type="hidden" id="ProductLimit" value="${articleGrid.productLimit}">
+<input type="hidden" id="q1" value="${articleGrid.categoryTagTitle}">
+<input type="hidden" id="defaultImage" value="${articleGrid.defaultImage}">
+<input type="hidden" id="x1" value="article_category">
+<input type="hidden" id="sortByDate" value="${properties.sortbyDate == 'true' ? 'article_date' : ''}">
+<div class="articlecomponent-outer-wrapper">
+    <div class="articlecomponent-container">
+        <div class="most-recent-article" data-sly-test="${articleGrid.heading}">${articleGrid.heading @ context="html",i18n}</div>
+        <ul class="row articlecomponentInfo" id="articlecomponentInfo">  
+        </ul>
+        <div class="ctaItem showMoreBtn solid">
+            <div class="cta-item"> 
+                    <a class="btn-cta-item" href="javascript:void(0);">${articleGrid.viewAllLabel @i18n}</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="loader-outer">
+    <div class="loader">Loading</div>
+</div>
+
+
+
+<script type="text/x-handlebars-template" id="articlecomponentTemplate" >
+    {{#each this}}
+        <li>
+            <div class="articlecomponent-info">
+                    <div class="img-wrapper">
+                        <a href="{{url}}" class="total-content">
+                            <img alt="" src="{{imageLink}}">
+                        </a>
+                    </div>
+                    <div class="articlecomponent-content">
+                        <div class="articlecomponent-category">
+                            <a href="{{categoryPageUrl}}" class="">
+                                <p>{{category}}</p>
+                            </a>
+                        </div>
+                        <div class="articlecomponent-headline">
+                            <a href="{{url}}" class="">
+                                <h3>{{title}}</h3>
+                            </a>
+                        </div>
+                        <div class="articlecomponent-description"><p>{{desc}}</p></div>
+                    </div>
+                    {{#if dataEnd}}
+                        {{else}}
+                        <div class="articlecomponent-cta">
+                            <div class="learn-more">
+                                <a href="{{url}}" class="">
+                                    <span class="link_text">${articleGrid.seeMoreLabel @ context="unsafe",i18n}</span>
+                                </a>
+                                <span class="sr-only">opens details Page</span>
+                            </div>
+                        </div>
+                    {{/if}}
+            </div>
+        </li>
+    {{/each}}
+</script>
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
+    <sly data-sly-call="${clientlib.js @ categories='fp.articleGrid'}"/>
+</sly>

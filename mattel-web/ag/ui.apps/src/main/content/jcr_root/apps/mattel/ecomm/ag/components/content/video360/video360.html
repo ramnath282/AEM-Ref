@@ -1,0 +1,39 @@
+<sly data-sly-test="${wcmmode.edit}">${'Video 360 Degree Component' @i18n}</sly>
+<div class="nyc-360 mb-30">
+	<div class="">
+		<sly data-sly-test="${properties.videoImageReference}">
+			<a class="nyc-360-video" data-toggle="modal" data-target="#VRModal">
+				<img class="" src="${properties.videoImageReference}" alt="${properties.videoImageAlt}">
+			</a>
+		</sly>
+		<div class="content">
+			<sly data-sly-test="${properties.videoHeadingText}">
+				<h2>${properties.videoHeadingText}</h2>
+			</sly>
+			<sly data-sly-test="${properties.videoLinkText}">
+				<p>
+					<a class="link-text-color" data-toggle="modal" data-target="#VRModal">${properties.videoLinkText}</a>
+				</p>
+			</sly>
+		</div>
+	</div>
+</div>
+
+<div class="modal video-360-modal" id="VRModal" tabindex="-1" role="dialog" aria-labelledby="VRModalLabel" data-video-type="${properties.videoType == 'deluxe' ? 'deluxe' :''}">
+	<div class="modal-dialog modal-lg" role="document">
+		<div class="modal-content">
+			<div class="modal-body">
+				<div class="embed-responsive embed-responsive-16by9">
+					<button type="button" class="close video-360-close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<sly data-sly-test.isDeluxe="${properties.videoType == 'deluxe' && properties.videoUrl}">
+						<div class="aem-video-player"  data-video-id="${properties.videoUrl}" data-autoplay="false"></div>
+					</sly>
+					<sly data-sly-test="${!isDeluxe && properties.videoUrl}">
+						<iframe class="vr-iframe embed-responsive-item" id="VRModalLabel" data-src="${properties.videoUrl}" src="" scrolling="no"></iframe>
+					</sly>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

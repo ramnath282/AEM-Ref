@@ -1,0 +1,19 @@
+<sly data-sly-test="${wcmmode.edit}">${'Configure Product Accordian Feed Module' @ i18n}</sly>
+<div class="accordion-component withbg" data-sly-use.productInfo="com.mattel.ecomm.core.models.ProductAccordionFeedModel" data-sly-test="${productInfo.productPropertiesList}">
+    <div class="col-xs-12 col-md-12 col-lg-9">
+        <div class="accordion">
+			<sly data-sly-list.productList="${productInfo.productPropertiesList}">
+			    <sly data-sly-test="${productList.prodFeatureTitle}">
+			        <div>
+			            <h2 class="accordion-title">${productList.prodFeatureTitle @i18n}<a href="JavaScript:Void(0);" class="arrow arrowDown"  aria-label="accordian" aria-expanded="false"></a></h2>
+			            <div class="accordion-content">
+			                <ol data-sly-list="${productList.prodFeatureBulletItems}">
+			                    <li>${item}</li>
+			                </ol>
+			            </div>
+			        </div>
+			    </sly>
+			</sly>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,192 @@
+<sly data-sly-test="${wcmmode.edit}">${'Edit Create An ccount Component' @i18n}</sly>
+<div class="register" data-sly-use.logInPageModelRef="com.mattel.ecomm.core.models.LogInPageModel" >
+    <sly data-sly-test="${properties.title @i18n}">
+        <h2 class="signInHeading">${properties.title @i18n}</h2>
+    </sly>
+    <div class="create-benefits">
+        <p>
+            <sly data-sly-test="${properties.descriptionHeading @i18n}">
+                <strong>${properties.descriptionHeading @i18n}</strong>
+            </sly>
+        </p>
+        <ul data-sly-list.descriptionList="${logInPageModelRef.descriptionPointsList}">
+            <li>${descriptionList.descriptionPointStr}</li>
+        </ul>
+    </div>
+
+    <div data-sly-resource="${'agRewardsRegistration'@resourceType='/apps/mattel/ecomm/shared/components/content/agRewardsRegistration'}"></div>
+    <button data-sly-test="${properties.createAccountButtonLabel}" class="theme-btn expand-form" data-toggle="collapse" data-target="#expand-create-form" aria-expanded="false" aria-controls="expand-create-form">${properties.createAccountButtonLabel @i18n}
+    </button>
+    <div id="expand-create-form" class="collapse">
+        <form action="${properties.successPath @extension='html'}" class="register-form" data-redirect="${properties.redirectPathForErrorModal}">
+            <div class="input-field required">
+                <input class="form-input long-input" type="text" name="firstName" value="" id="reg-first-name" aria-describedby="reg-first-name-error" maxlength="" autocomplete="on" aria-required="true" />
+                <label data-sly-test="${properties.firstNameLabel}" class="placeholder-label" for="reg-first-name">${properties.firstNameLabel @i18n}</label>
+                <div id="reg-first-name-error"class="help-block form-message"></div>
+            </div>
+            <div class="input-field required">
+                <input class="form-input long-input" type="text" name="lastName" value="" id="reg-last-name" aria-describedby="reg-last-name-error" maxlength="" autocomplete="on" aria-required="true" />
+                <label data-sly-test="${properties.lastNameLabel}" class="placeholder-label" for="reg-last-name">${properties.lastNameLabel @i18n}</label>
+                <div id="reg-last-name-error" class="help-block form-message"></div>
+            </div>
+            <div class="input-field required">
+                <input class="form-input long-input" type="email" name="emailId" value="" id="reg-email-id" aria-describedby="reg-email-id-error" maxlength="" autocomplete="on" aria-required="true" />
+                <label data-sly-test="${properties.emailAddressLabel}" class="placeholder-label" for="reg-email-id">${properties.emailAddressLabel @i18n}</label>
+                <div id="reg-email-id-error" class="help-block form-message"></div>
+            </div>
+            <div class="input-field required">
+                <input class="form-input long-input" type="email" name="verifyEmail" value="" id="reg-verify-email" aria-describedby="reg-verify-email-error" maxlength="" autocomplete="on" aria-required="true" />
+                <label data-sly-test="${properties.verifyEmailAddressLabel}" class="placeholder-label" for="reg-verify-email">${properties.verifyEmailAddressLabel @i18n}</label>
+                <div id="reg-verify-email-error" class="help-block form-message"></div>
+            </div>
+            <div class="input-field required">
+                <input class="form-input long-input" type="password" name="password" value="" id="reg-password" aria-describedby="reg-password-error"maxlength="" autocomplete="on" aria-required="true" />
+                <label data-sly-test="${properties.passwordLabel}" class="placeholder-label" for="reg-password">${properties.passwordLabel @i18n}</label>
+                <div id="reg-password-error"class="help-block form-message"></div>
+            </div>
+            <div class="input-field required">
+                <input class="form-input long-input" type="password" name="verifyPassword" value="" id="reg-verify-password" aria-describedby="reg-verify-password-error" maxlength="" autocomplete="on" aria-required="true" />
+                <label data-sly-test="${properties.verifyPasswordLabel}" class="placeholder-label" for="reg-verify-password">${properties.verifyPasswordLabel @i18n}</label>
+                <div id="reg-verify-password-error"class="help-block form-message"></div>
+            </div>
+            <div class="input-field">
+                <input class="form-input long-input" type="text" name="PhoneNumber" value="" id="reg-phone-number" aria-describedby="reg-phone-number-error" maxlength="" autocomplete="on" aria-required="false" />
+                <label data-sly-test="${properties.phoneNumberLabel}" class="placeholder-label" for="reg-phone-number">${properties.phoneNumberLabel @i18n}</label>
+                <div id="reg-phone-number-error"class="help-block form-message"></div>
+            </div>
+            <fieldset class="col-sm-8 col-lg-6">
+                <legend data-sly-test="${properties.dobTitle}">${properties.dobTitle @i18n}</legend>
+                <ul>
+                    <li class="col-sm-3">
+                        <div class="input-field required">
+                            <select name="childBirthMonth" class="form-input small-input dob-select child-input-val" aria-required="true" id="childBirthMonth" aria-describedby="childBirthMonth-error">
+                                <option value="">MM</option>
+                                <option value="01">01</option>
+                                <option value="02">02</option>
+                                <option value="03">03</option>
+                                <option value="04">04</option>
+                                <option value="05">05</option>
+                                <option value="06">06</option>
+                                <option value="07">07</option>
+                                <option value="08">08</option>
+                                <option value="09">09</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                            </select>
+                            <label data-sly-test="${properties.dobMonthLabel}" class="placeholder-label" for="childBirthMonth">${properties.dobMonthLabel @i18n}</label>
+                            <div id="childBirthMonth-error"class="help-block form-message"></div>
+                        </div>
+                    </li>
+                    <li class="col-sm-3">
+                        <div class="input-field required">
+                            <select name="childBirthDay" class="form-input small-input dob-select child-input-val" aria-required="true" id="childBirthDay" aria-describedby="childBirthDay-error">
+                                <option value="">DD</option>
+                                <option value="01">01</option>
+                                <option value="02">02</option>
+                                <option value="03">03</option>
+                                <option value="04">04</option>
+                                <option value="05">05</option>
+                                <option value="06">06</option>
+                                <option value="07">07</option>
+                                <option value="08">08</option>
+                                <option value="09">09</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                                <option value="13">13</option>
+                                <option value="14">14</option>
+                                <option value="15">15</option>
+                                <option value="16">16</option>
+                                <option value="17">17</option>
+                                <option value="18">18</option>
+                                <option value="19">19</option>
+                                <option value="20">20</option>
+                                <option value="21">21</option>
+                                <option value="22">22</option>
+                                <option value="23">23</option>
+                                <option value="24">24</option>
+                                <option value="25">25</option>
+                                <option value="26">26</option>
+                                <option value="27">27</option>
+                                <option value="28">28</option>
+                                <option value="29">29</option>
+                                <option value="30">30</option>
+                                <option value="31">31</option>
+                            </select>
+                            <label data-sly-test="${properties.dobDateLabel}" class="placeholder-label" for="childBirthDay">${properties.dobDateLabel @i18n}</label>
+                            <div id="childBirthDay-error"class="help-block form-message"></div>
+                        </div>
+                    </li>
+                    <li class="col-sm-4">
+                        <div class="input-field required">
+                            <select name="childBirthYear" class="form-input small-input dob-select child-input-val" aria-required="true" id="childBirthYear" aria-describedby="childBirthYear-error">
+                                <option value="">YYYY</option>
+                            </select>
+                            <label data-sly-test="${properties.dobYearLabel}" class="placeholder-label" for="childBirthYear">${properties.dobYearLabel @i18n}</label>
+                            <div id="childBirthYear-error"class="help-block form-message"></div>
+                        </div>
+                    </li>
+                </ul>
+                <div class="help-block form-message"></div>
+            </fieldset>
+            <div data-sly-test="${properties.rewardsText}" class="input-field">
+                <input type="checkbox" id="enroll-rewards" name="termConditions">
+                <label for="enroll-rewards">${properties.rewardsText @i18n}
+                    <sly data-sly-test="${properties.tcLinkURL} && ${properties.tcLinkText}">
+                        <a href="${properties.tcLinkURL}" target="_blank">${properties.tcLinkText @i18n}<span class="sr-only">Opens in a PDF Format</span></a>
+                    </sly>
+                </label>
+            </div>
+            <div data-sly-test="${properties.promotionsText @i18n}" class="input-field">
+                <input type="checkbox" id="receive-promotion-email" name="emailOptin">
+                <label for="receive-promotion-email">${properties.promotionsText}
+                    <sly data-sly-test="${properties.priavacyLinkURL} && ${properties.privacyLinkText}">
+                        <a href="${properties.priavacyLinkURL}" target="_blank">${properties.privacyLinkText @i18n}<span class="sr-only">Links opens in new window</span></a>
+                    </sly>
+                </label>
+            </div>
+
+            <input data-sly-test="${properties.createAccountButtonLabel}" class="theme-btn" type="submit" value="${properties.createAccountButtonLabel @i18n}">
+            <button data-sly-test="${properties.cancelButtonLabel}" type="button" class="theme-btn transparent-btn" data-toggle="collapse" data-target="#expand-create-form" aria-expanded="false" aria-controls="expand-create-form">${properties.cancelButtonLabel @i18n}</button>
+
+        </form>
+    </div>
+</div>
+<div class="modal" tabindex="-1" role="dialog" id="rewards-modal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 data-sly-test="${properties.usCustomersOnlyText}" class="modal-title">${properties.usCustomersOnlyText @i18}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p data-sly-test="${properties.usBillingAddressOnlyText}">${properties.usBillingAddressOnlyText @i18}</p>
+                <p data-sly-test="${properties.websiteUseTcLinkURL && properties.websiteUseTcLinkText}"><a href="${properties.websiteUseTcLinkURL}" target="_blank"  aria-label="TERMS AND CONDITIONS OF WEBSITE USE , Opens in new window" >
+                    ${properties.websiteUseTcLinkText @i18}
+                </a></p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal confirm -->
+<div class="modal ecomm-modal" role="alert" aria-atomic="true" id="confirmRegisterModal" tabindex="-1">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><em class="fa fa-times fa-lg"><span class="sr-only">close</span></em></button>
+            </div>
+            <div class="modal-body">
+                ${properties.modalText @context='html'}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="theme-btn pull-left" id="confirmRegOk">${properties.okButtonText}</button>
+            </div>
+        </div>
+    </div>
+</div>
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
+    <sly data-sly-call="${clientlib.js @ categories='ecomm.createAccount'}"/>
+</sly>

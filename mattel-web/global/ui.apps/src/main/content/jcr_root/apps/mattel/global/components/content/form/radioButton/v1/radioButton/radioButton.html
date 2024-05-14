@@ -1,0 +1,23 @@
+<sly data-sly-test="${wcmmode.edit}">${'Edit Radio Button Component' @i18n}</sly>
+<sly data-sly-use.model="com.mattel.global.core.model.CrmRadioButtonModel" />
+<div class="input-field radio-field ${properties.required ? 'required' : ''} ${properties.elementName}">
+    <fieldset>
+        <legend data-sly-test="${properties.title}">${properties.title @i18n}</legend>
+		<sly data-sly-test="${properties.tooltipMessage}">
+			<button type="button" class="fp-tooltip" data-toggle="popover" data-trigger="hover" data-placement="top" title="${properties.tooltipMessage}"> </button>
+		</sly>
+        <p data-sly-test="${properties.description}" class="input-description">${properties.description @i18n}</p>
+        <div class="flexible-radio-btn">
+            <sly data-sly-test.radioList="${model.keyList}">
+                <sly data-sly-list.radioItem="${radioList}">
+                    <div class="sub-input-field">
+                        <input id="${properties.elementName}${radioItemList.count}" type="radio" name="${properties.elementName}" value="${radioItem.radioKey}" aria-required="${properties.required ? 'true' : ''}">
+                        <label for="${properties.elementName}${radioItemList.count}">${radioItem.radioValue @i18n}</label>
+                    </div>
+                </sly>
+            </sly>
+        </div>
+        <span data-sly-test="${properties.requiredMessage}" class="form-message err-msg custom-message">${properties.requiredMessage @i18n}</span>
+        <span class="application-message err-msg"></span>
+    </fieldset>
+</div>

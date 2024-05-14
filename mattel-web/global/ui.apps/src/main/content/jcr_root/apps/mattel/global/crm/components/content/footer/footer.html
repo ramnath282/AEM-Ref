@@ -1,0 +1,120 @@
+<sly data-sly-test="${wcmmode.edit}">${'Footer Component' @i18n}</sly>
+<!-- footer starts -->
+<sly data-sly-use.multiItems="com.mattel.global.core.model.FooterLinkModel">
+	<footer role="contentinfo" data-sly-test="${properties.header || properties.brandLabel || properties.legalText || properties.fbPath || properties.twitterPath || properties.youtubePath || properties.pinterestPath}" style="background-color: ${properties.backgroundColor @context='html'}; background-image: url(${properties.backgroundImage @context='html'});">
+		<div class="crm-mega-footer">
+			<!-- Logo -->
+			<div class="footer-logo">
+				<sly data-sly-test="${properties.imagePath}">
+					<sly data-sly-test="${'properties.imgUrl'}" >
+						<sly data-sly-test="${properties.renderoption =='sameWindow'}">
+							<a href="${multiItems.external ? multiItems.imgUrl : multiItems.imgUrl @extension='html'}">
+						</sly>
+						<sly data-sly-test="${properties.renderoption =='tabWindow'}">
+							<a href="${multiItems.external ? multiItems.imgUrl : multiItems.imgUrl @extension='html'}" target="_blank">
+						</sly>
+						<sly data-sly-test="${properties.renderoption =='newWindow'}">
+							<a data-url="${multiItems.external ? multiItems.imgUrl : multiItems.imgUrl @extension='html'}" style="cursor:pointer;" onclick="window.open(this.dataset.url,'AG','width=500, height=500');" style="cursor: pointer;" >
+						</sly>
+					</sly>
+							<img src="${properties.imagePath}" alt="${properties.imageAlttext}">
+					<sly data-sly-test="${'properties.imgUrl'}">
+							</a>
+					</sly>
+				</sly>
+			</div>
+						<!-- navigation -->
+						<div class="footer-links">
+						${properties.brandLabel @context='html'}
+							<ul>
+								<sly data-sly-test="${multiItems.footerLinkItemsList}">
+									<sly data-sly-list.head="${multiItems.footerLinkItemsList}">
+										<sly data-sly-test="${head.targetUrl =='sameWindow'}">
+											<li>
+												<a href="${head.url}" alt="${head.alt}" class="hvr-underline-from-left" data-tracking-id="footer-click|footer-links|${head.alt}">${head.label}</a>
+											</li>
+										</sly>
+										<sly data-sly-test="${head.targetUrl =='tabWindow'}">
+											<li>
+												<a href="${head.url}" alt="${head.alt}" target="_blank" class="hvr-underline-from-left" data-tracking-id="footer-click|footer-links|${head.alt}">${head.label}</a>
+											</li>
+										</sly>
+										<sly data-sly-test="${head.targetUrl =='newWindow'}">
+											<li>
+												<a data-url="${head.url}" class="hvr-underline-from-left" style="cursor:pointer;" alt="${head.alt @i18n}" onclick="window.open(this.dataset.url,'AG','width=500, height=500');" data-tracking-id="footer-click|footer-links|${head.alt}">${head.label @i18n}</a>
+											</li>
+										</sly>
+									</sly>
+								</sly>
+								<li>
+									<div id="teconsent"></div>
+								</li>
+							</ul>
+                                                                                                                                ${properties.legalText @context='html'}           
+                                
+						</div>
+						<!-- social links and contact number -->
+						<div class="crm-socials" data-sly-test="${properties.fbPath || properties.header || properties.twitterPath || properties.youtubePath || properties.pinterestPath}">
+							<div class="stay-in-touch">${properties.header}</div>
+                            <sly data-sly-test="${properties.socialMediaTarget =='sameWindow'}">
+                                 <ul>
+                                    <li data-sly-test="${properties.enableFb=='true'}">
+                                        <a aria-label="facebook opens a new window" href="${properties.fbPath}" class="hvr-float-shadow facebook" data-tracking-id="footer-click|social-share|Facebook"></a>
+                                    </li>
+                                    <li data-sly-test="${properties.enableTwitter=='true'}">
+                                        <a aria-label="twitter opens a new window" href="${properties.twitterPath}" class="hvr-float-shadow twitter" data-tracking-id="footer-click|social-share|Twitter"></a>
+                                    </li>
+                                    <li data-sly-test="${properties.enableYoutube=='true'}">
+                                        <a aria-label="youtube opens a new window" href="${properties.youtubePath}" class="hvr-float-shadow youtube" data-tracking-id="footer-click|social-share|Youtube"></a>
+                                    </li>
+                                    <li data-sly-test="${properties.enableInsta=='true'}">
+                                        <a aria-label="insta opens a new window" href="${properties.instaPath}" class="hvr-float-shadow instagram" data-tracking-id="footer-click|social-share|Instagram"></a>
+                                    </li>
+                                    <li data-sly-test="${properties.enablePinterest=='true'}">
+                                        <a aria-label="pintrest opens a new window" href="${properties.pinterestPath}" class="hvr-float-shadow pinterest" data-tracking-id="footer-click|social-share|Pintrest"></a>
+                                    </li>
+                                </ul>
+                            </sly>
+                            <sly data-sly-test="${properties.socialMediaTarget=='tabWindow'}">
+                                <ul>
+                                    <li data-sly-test="${properties.enableFb=='true'}">
+                                        <a aria-label="facebook opens a new window" href="${properties.fbPath}" class="hvr-float-shadow facebook" data-tracking-id="footer-click|social-share|Facebook" target="_blank"></a>
+                                    </li>
+                                    <li data-sly-test="${properties.enableTwitter=='true'}">
+                                        <a aria-label="twitter opens a new window" href="${properties.twitterPath}" class="hvr-float-shadow twitter" data-tracking-id="footer-click|social-share|Twitter" target="_blank"></a>
+                                    </li>
+                                    <li data-sly-test="${properties.enableYoutube=='true'}">
+                                        <a aria-label="youtube opens a new window" href="${properties.youtubePath}" class="hvr-float-shadow youtube" data-tracking-id="footer-click|social-share|Youtube" target="_blank"></a>
+                                    </li>
+                                    <li data-sly-test="${properties.enableInsta=='true'}">
+                                        <a aria-label="insta opens a new window" href="${properties.instaPath}" class="hvr-float-shadow instagram" data-tracking-id="footer-click|social-share|Instagram" target="_blank"></a>
+                                    </li>
+                                    <li data-sly-test="${properties.enablePinterest=='true'}">
+                                        <a aria-label="pintrest opens a new window" href="${properties.pinterestPath}" class="hvr-float-shadow pinterest" data-tracking-id="footer-click|social-share|Pintrest" target="_blank"></a>
+                                    </li>
+                                </ul>
+                            </sly>
+                            <sly data-sly-test="${properties.socialMediaTarget =='newWindow'}">
+                            
+                                <ul>
+                                    <li data-sly-test="${properties.enableFb=='true'}">
+                                        <a aria-label="facebook opens a new window" data-url="${properties.fbPath}" class="hvr-float-shadow facebook" data-tracking-id="footer-click|social-share|Facebook" onclick="window.open(this.dataset.url,'_blank','location=yes, width=500, height=500');"></a>
+                                    </li>
+                                    <li data-sly-test="${properties.enableTwitter=='true'}">
+                                        <a aria-label="twitter opens a new window" data-url="${properties.twitterPath}" class="hvr-float-shadow twitter" data-tracking-id="footer-click|social-share|Twitter" onclick="window.open(this.dataset.url,'_blank','location=yes, width=500, height=500');"></a>
+                                    </li>
+                                    <li data-sly-test="${properties.enableYoutube=='true'}">
+                                        <a aria-label="youtube opens a new window" data-url="${properties.youtubePath}" class="hvr-float-shadow youtube" data-tracking-id="footer-click|social-share|Youtube" onclick="window.open(this.dataset.url,'_blank','location=yes, width=500, height=500');"></a>
+                                    </li>
+                                    <li data-sly-test="${properties.enableInsta=='true'}">
+                                        <a aria-label="insta opens a new window" data-url="${properties.instaPath}" class="hvr-float-shadow instagram" data-tracking-id="footer-click|social-share|Instagram" onclick="window.open(this.dataset.url,'_blank','location=yes, width=500, height=500');"></a>
+                                    </li>
+                                    <li data-sly-test="${properties.enablePinterest=='true'}">
+                                        <a aria-label="pintrest opens a new window" data-url="${properties.pinterestPath}" class="hvr-float-shadow pinterest" data-tracking-id="footer-click|social-share|Pintrest" onclick="window.open(this.dataset.url,'_blank','location=yes, width=500, height=500');"></a>
+                                    </li>
+                                </ul>
+                            </sly>
+                            </div>
+					</div>
+				</footer>
+			</sly>

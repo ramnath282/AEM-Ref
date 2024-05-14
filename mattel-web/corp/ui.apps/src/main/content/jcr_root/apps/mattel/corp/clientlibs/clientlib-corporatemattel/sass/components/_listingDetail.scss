@@ -1,0 +1,209 @@
+.article-component-outerWrapper{
+    .banner-wrapper{
+        .banner-inner-wrapper{
+            @include content-spacing(map-get($articleComponent, banner_inner_wrapper));
+            background: mapping($articleComponent, banner_inner_wrapper, background);
+            .banner-title{
+                color: mapping($articleComponent, banner_title, color);
+                font: mapping($articleComponent, banner_title, font);
+                letter-spacing: mapping($articleComponent, banner_title, letter_spacing);
+                line-height: mapping($articleComponent, banner_title, line_height);
+            }
+        }
+    }
+    .content-wrapper{
+        .content-inner-wrapper{
+            @include content-spacing(map-get($articleComponent, content_inner_wrapper));
+            @media #{$small-up} {
+                display: mapping($articleComponent, content_inner_wrapper, display);
+            }
+            .left-wrapper{
+                width: mapping($articleComponent, left_wrapper, width_sm);
+                @media #{$small-up} {
+                    width: mapping($articleComponent, left_wrapper, width_md);
+                }
+                .media-image{
+                    width: mapping($articleComponent, media_image, width); 
+                }
+                p{
+                    color: mapping($articleComponent, left_wrapper_content_p, color);
+                    font: mapping($articleComponent, left_wrapper_content_p, font);
+                    letter-spacing: mapping($articleComponent, left_wrapper_content_p, letter_spacing);
+                    line-height: mapping($articleComponent, left_wrapper_content_p, line_height);
+                    a{
+                        color: mapping($articleComponent, left_wrapper_content_p, color);
+                    }
+                }
+                a{
+                    color: mapping($articleComponent, left_wrapper_content_p, color);
+                }
+                .socialLinks{
+                    a{
+                        color: mapping($articleComponent, left_wrapper_content_p, color);
+                    }
+                }
+            }
+            .right-wrapper{
+                width: mapping($articleComponent, right_wrapper, width_sm);
+                @media #{$medium-up} {
+                    @include content-spacing(map-get($articleComponent, right_wrapper));
+                    width: mapping($articleComponent, right_wrapper, width_md);
+                }
+                @media #{$medium-only} {
+                    @include content-spacing(map-get($articleComponent, right_wrapper_md));
+                    width: mapping($articleComponent, right_wrapper, width_md);
+                }
+                .contact-media{
+                    border: mapping($articleComponent, contact_media, border);
+                     @include content-spacing(map-get($articleComponent, contact_media));
+                    .contact-media-header{
+                        @include content-spacing(map-get($articleComponent, contact_media_header));
+                        position: mapping($articleComponent, contact_media_header, position);
+
+                        font: mapping($articleComponent, contact_media_header, font);
+                        letter-spacing: mapping($articleComponent, contact_media_header, letter_spacing);
+                        line-height: mapping($articleComponent, contact_media_header, line_height);
+
+                        @media #{$medium-up} {
+                            font: mapping($articleComponent, contact_media_header, font_lg);
+                            letter-spacing: mapping($articleComponent, contact_media_header, letter_spacing_lg);
+                            line-height: mapping($articleComponent, contact_media_header, line_height_lg);
+                        }
+                        @media #{$medium-only} {
+                            font: mapping($articleComponent, contact_media_header, font_md);
+                            letter-spacing: mapping($articleComponent, contact_media_header, letter_spacing_md);
+                            line-height: mapping($articleComponent, contact_media_header, line_height_md);
+                        }
+
+                        &:after{
+                            height: mapping($articleComponent, contact_media_header_after, height);
+                            width: mapping($articleComponent, contact_media_header_after, width);
+                            background-color: mapping($articleComponent, contact_media_header_after, background_color);
+                            content: mapping($articleComponent, contact_media_header_after, content);
+                            position: mapping($articleComponent, contact_media_header_after, position);
+                            bottom: mapping($articleComponent, contact_media_header_after, p_bottom);
+                            left: mapping($articleComponent, contact_media_header_after, p_left);
+                        }
+                    }
+                    .contact-media-content{
+                         @include content-spacing(map-get($articleComponent, contact_media_content));
+                        p{
+                            @include content-spacing(map-get($articleComponent, contact_media_para));
+                            font: mapping($articleComponent, contact_media_para, font);
+                            letter-spacing: mapping($articleComponent, contact_media_para, letter_spacing);
+                            line-height: mapping($articleComponent, contact_media_para, line_height);
+                            a{
+                                color: mapping($articleComponent, contact_media_para_anchor, color);
+                                font: mapping($articleComponent, contact_media_para_anchor, font);
+                                &:hover{
+                                    text-decoration: mapping($articleComponent, contact_media_para_anchor, text_decoration);
+                                }
+                            }
+                        }
+                    }
+                    
+                }
+                .download-media{
+                    @include content-spacing(map-get($articleComponent, download_media));
+                    .download-media-header{
+                        @include content-spacing(map-get($articleComponent, download_media_header));
+                        color: mapping($articleComponent, download_media_header, color);
+                        position: mapping($articleComponent, download_media_header, position);
+                        font: mapping($articleComponent, download_media_header, font);
+                        letter-spacing: mapping($articleComponent, download_media_header, letter_spacing);
+                        line-height: mapping($articleComponent, download_media_header, line_height);
+                        @media #{$medium-up} {
+                            font: mapping($articleComponent, download_media_header, font_lg);
+                            letter-spacing: mapping($articleComponent, download_media_header, letter_spacing_lg);
+                            line-height: mapping($articleComponent, download_media_header, line_height_lg);
+                        }
+                        @media #{$medium-only} {
+                            font: mapping($articleComponent, download_media_header, font_md);
+                            letter-spacing: mapping($articleComponent, download_media_header, letter_spacing_md);
+                            line-height: mapping($articleComponent, download_media_header, line_height_md);
+                        }
+                        &:after{
+                            height: mapping($articleComponent, download_media_header_after, height);
+                            width: mapping($articleComponent, download_media_header_after, width);
+                            background-color: mapping($articleComponent, download_media_header_after, background_color);
+                            content: mapping($articleComponent, download_media_header_after, content);
+                            position: mapping($articleComponent, download_media_header_after, position);
+                            bottom: mapping($articleComponent, download_media_header_after, p_bottom);
+                            left: mapping($articleComponent, download_media_header_after, p_left);
+                        }
+                    }
+                    .media-details{
+                        margin-bottom: 31px;
+                        .media-content{
+                            .media-title{
+                                color: mapping($articleComponent, media_title, color);
+                                font: mapping($articleComponent, media_title, font);
+                                letter-spacing: mapping($articleComponent, media_title, letter_spacing);
+                                line-height: mapping($articleComponent, media_title, line_height);
+                            }
+                            .media-description{
+                                color: mapping($articleComponent, media_description, color);
+                                font: mapping($articleComponent, media_description, font);
+                                letter-spacing: mapping($articleComponent, media_description, letter_spacing);
+                                line-height: mapping($articleComponent, media_description, line_height);
+                                @media #{$medium-up} {
+                                    line-height: mapping($articleComponent, media_description, line_height_md);
+                                }
+                            }
+                            .media-button{
+                                ul{
+                                    display:flex;
+                                    li{
+                                        a{
+                                            color: mapping($articleComponent, media_button, color);
+                                            font: mapping($articleComponent, media_button, font);
+                                            letter-spacing: mapping($articleComponent, media_button, letter_spacing);
+                                            line-height: mapping($articleComponent, media_button, line_height);
+                                            @media #{$medium-up} {
+                                                line-height: mapping($articleComponent, media_button, line_height_md);
+                                            }
+                                            position: mapping($articleComponent, media_button, position);
+                                            &:hover{
+                                                text-decoration: mapping($articleComponent, media_button, text_decoration);
+                                            }
+                                        }
+                                    }
+                                }
+                                
+                                &.view-and-download{
+                                    ul{
+                                        li{
+                                            a{
+                                                @include content-spacing(map-get($articleComponent, view_and_download));
+                                                &:after{
+                                                    height: mapping($articleComponent, view_and_download_after, height);
+                                                    width: mapping($articleComponent, view_and_download_after, width);
+                                                    background-color: mapping($articleComponent, view_and_download_after, background_color);
+                                                    content: mapping($articleComponent, view_and_download_after, content);
+                                                    position: mapping($articleComponent, view_and_download_after, position);
+                                                    left: mapping($articleComponent, view_and_download_after, p_left);
+                                                    bottom: mapping($articleComponent, view_and_download_after, p_bottom);
+                                                    top:mapping($articleComponent, view_and_download_after, p_top);
+                                                }
+                                            }
+                                            &:first-child{
+                                                a{
+                                                     @include content-spacing(map-get($articleComponent, view_and_download_first_child));
+                                                    &:after{
+                                                        width: mapping($articleComponent, view_and_download_first_child, width);
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                    
+                                }
+                            }
+                        }
+                    }
+                    
+                }
+            }
+        }
+    }
+}

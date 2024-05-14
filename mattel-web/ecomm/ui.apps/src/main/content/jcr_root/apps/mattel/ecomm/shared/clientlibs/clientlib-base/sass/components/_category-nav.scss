@@ -1,0 +1,191 @@
+.category-aside-section{
+    @extend .col-md-3;
+    @include content-spacing(map-get($categorynav, myaccnavWrapper));    
+    #categoryNav {
+        &.collapse {
+            @media #{$medium-up} {
+               display:block
+            }
+            @media #{$medium-down} {
+                position: absolute;
+                z-index: 2;
+                background: rgb(255, 255, 255);                
+            }
+        }
+    }   
+    h2 {
+        font: mapping($categorynav,h2,font);
+        color: mapping($categorynav,h2,color);
+        padding: 0;
+        border: none;
+        margin: 0 0 0.5em 0;
+    }
+    .nav-header {
+        color: mapping($categorynav,navheader,color);
+        @media #{$medium-down} {
+            cursor:pointer;
+            background-color: mapping($categorynav,navheader,background);
+            color: mapping($categorynav,navheaderMobile,color);
+            width:100vw;
+            position:relative;
+            left:calc((100% - 100vw) / 2);
+            @include content-spacing(map-get($categorynav, navheader));     
+            font: mapping($categorynav,navheader,fontweight);
+            $borderProperty: mapping($categorynav, navheader, border);
+            @if(map-get($borderProperty, enabled)) {
+                border-#{map-get($borderProperty,position)}: (map-get($borderProperty, size) solid map-get($borderProperty, color));
+            }
+        }
+        button {                
+            width: 100%;
+            text-align: left;
+            cursor:default;
+            @include button-style(map-get($categorynav, navheaderbtn));
+            border:none;//over ride the bootsrap border otherwise use border:null
+             @media #{$medium-down} {
+                color: mapping($categorynav,navheaderbtnDevice,color);
+                font: mapping($categorynav,navheaderbtnDevice,font);
+            }
+            span{
+                display: inline-block;
+                @include content-spacing(map-get($categorynav, navheaderbtn));
+            }
+        }
+    }
+    nav {
+        margin-bottom: 20px;
+        @media #{$medium-down} {
+            position:relative;
+            left:calc((100% - 100vw) / 2);
+            width:100vw;
+            padding-bottom: 25px;
+            $borderProperty: mapping($categorynav, navheader, border);
+            @if(map-get($borderProperty, enabled)) {
+                border-#{map-get($borderProperty,position)}: (map-get($borderProperty, size) solid map-get($borderProperty, color));
+            }
+        }
+        .submenu{
+            cursor: pointer;
+            color: $theme-color;
+            margin-left: -18px;
+            @media #{$small-down}{
+                &:before {
+                    display: none;
+                }
+            }
+             &:before {
+                content: "\f053";
+                color: $theme-color;
+                font-family: $iconFontFamily;
+                font-size: 75%;
+                cursor:pointer;
+                margin-left: 8px;
+            }
+            // li {
+                font-weight: 700;
+                display: inline-block;
+                margin-bottom: 0.35714em;
+            // }
+            a{
+                color: inherit !important;
+                font: inherit;
+            }
+        }
+        
+        font: mapping($categorynav,h3,font);
+        @include content-spacing(map-get($categorynav, h3));
+        .arrow-icon{
+            display: inline-block;
+        } 
+        @media #{$medium-down} {
+            &:before {
+                display: none;
+            }
+            // padding: 1.07143em 1.28571em 0.92857em 3em;
+            color: mapping($categorynav,h3Mscreen,color);
+            font: mapping($categorynav,h3Mscreen,font);
+            @include content-spacing(map-get($categorynav, h3Mscreen));
+            $borderProperty: mapping($categorynav, h3Mscreen, border);
+            .arrow-icon{
+                float: right;
+            }
+            &.active{
+                $borderProperty: mapping($categorynav, h3active, border);
+                @if(map-get($borderProperty, enabled)) {
+                    border-#{map-get($borderProperty,position)}: (map-get($borderProperty, size) solid map-get($borderProperty, color));
+                }
+                background: mapping($categorynav,h3active,background);
+            }
+        }
+        ul {
+            border: none;
+            @include content-spacing(map-get($categorynav, anchor)); 
+            @media #{$medium-down} {
+                border:none;
+                @include content-spacing(map-get($categorynav, dropmenu)); 
+            }  
+            li {
+                padding: 2px;
+                margin-left: 18px;
+                     
+                @media #{$medium-down} {   
+                        
+                    @include content-spacing(map-get($categorynav, dropmenuli));
+                }
+                @include content-spacing(map-get($categorynav, anchorli));  
+                &.submenu{
+                    span{
+                        color: mapping($categorynav,submenu,color) !important;
+                        cursor:default;
+                    }
+                }
+                a,>span {
+                    color: #333333 !important;
+                    font: mapping($categorynav,anchor,font);
+                    @media #{$medium-down} {
+                        font: mapping($categorynav,anchor,fontMedium);
+                    }
+                    &.active {
+                        color:#333333 !important;
+                        font-weight: 700;
+                    }
+                }
+            }
+  
+
+        }
+        .see-options , .see-less{
+            height: 20px;
+            width: 187px;
+            color: #333333 !important;
+            font-family: $primaryFontFamily;
+            font-size: 16px;
+            line-height: 20px;
+            cursor: pointer;
+            margin-left: 25px;
+            @media #{$medium-down} {
+                margin: 0;
+                padding: 1em 0 0.92857em 3.35714em;
+            }
+        }
+        .see-options {
+            &:before{
+                content: "\f067";
+                color: #666666;
+                font-family: $iconFontFamily;
+                font-size: 72%;
+                margin-right: 5px;                
+            }
+        }
+        .see-less {
+            &:before{
+                content: "\f068";
+                color: #666666;
+                font-family: $iconFontFamily;
+                font-size: 72%;
+                margin-right: 5px;
+            }
+        }
+    }
+}
+

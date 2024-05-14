@@ -1,0 +1,72 @@
+<script id="subtreatment-dynamic" type="text/x-handlebars-template">
+   <div class="page-title-section">
+      <h2>{{DHQuestion}}</h2>
+      {{#if TreatmentHelperText}} 
+      <p class="helper-text" data-toggle="popover" data-position-lg="${properties.locationforSubtreatment @ context='html'}" data-position-sm="${properties.locationforSubtreatmentMobile @ context='html'}"
+         data-content="{{{TreatmentInfoText}}}">
+         {{TreatmentHelperText}}<i class="fa fa-info-circle"><span class="sr-only">Info</span></i>
+      </p>
+      {{/if}}
+  </div>
+   <div class="main-content-section">
+   <div class="main-inner-content">
+      <form action="${properties.nextButtonLink @ context='html'}.html">
+         <div class="sku-card-wrapper">
+            <div class="sku-card" style="background-color: ${properties.treatmentCardBgColor @ context='unsafe'}">
+               <div class="sku-container">
+                  <div class="sku-image"><img alt="" src="{{{TreatmentImage}}}" /></div>
+                  <div class="info">
+                     <p class="name"></p>
+                     <h3>{{{TreatmentTitle}}}</h3>
+                     <p class="choose-opt"><strong>{{TreatmentInstructions}}</strong></p>
+                     <p class="additional-desc">
+                     </p>
+                  </div>
+               </div>
+               <div class="item-price"><span>$</span>{{Treatmentprice}}</div>
+            </div>
+         </div>
+         <div class="dh-st-option-group" data-control-type="checkbox" data-min="{{{MinSubtreatments}}}" data-max="{{{MaxSubtreatments}}}" data-binder-name="dh-display-subTreatment" data-mandate="true">
+            <fieldset>
+               <legend class="sr-only">Subtreatment Options:</legend>
+               {{#each this.inputData}}
+                  {{#if this.singleSelectionFlag}} 
+                      <input type="radio" sku-status={{this.isChildSku}} name="st-selection" id="subtreatment{{{@index}}}" value={{this.sku}} >
+                      <label for="subtreatment{{{@index}}}"><span>{{this.LOVLabel}}</span></label>
+                  {{else}}
+                      <input type="checkbox" sku-status={{this.isChildSku}} name="st-selection" id="subtreatment{{{@index}}}" value={{this.sku}}>
+                      <label for="subtreatment{{{@index}}}"><span>{{this.LOVLabel}}</span></label>
+                  {{/if}} 
+               {{/each}}
+            </fieldset>
+         </div>
+         <span class="err-msg maxlimit-message">${properties.selectionTypeErrForSubTreatment @context='html'}</span>
+         <div class="dh-btn-span" style="background-color: ${properties.backgroundColor @ context='unsafe'}">
+            <a href="${properties.backButtonLink @ context='html'}.html" role="${properties.backButtonLink @ context='html'}.html"><button role="presentation" type="button" class="dh-back-btn">${properties.backButtonText @context='html'}</button></a>
+            <button type="submit" href="${properties.nextButtonLink @ context='html'}.html" role="${properties.nextButtonLink @ context='html'}.html" class="dh-next-btn disabled" aria-disabled="true">${properties.nextButtonText @context='html'}</button>
+         </div>
+      </form>
+   </div>
+</script>
+     <div class="dh-sub-treatment-block"> 
+      <a class="hide next-page-link" href="${properties.nextButtonLink @ extension='html'}"></a> 
+	  <a class="hide prev-page-link" href="${properties.backButtonLink @ extension='html'}"></a>	  
+         <section class="active" data-page="1">
+               <h1 class="sr-only">${currentPage.title}</h1>
+              <div class="sub-brand-logo">
+          <picture>
+             <sly data-sly-test="${properties.subBrandLogoImageParameterMobileForDollName @ context='unsafe'}">
+             <source srcset="${properties.subBrandLogoImageParameterMobileForDollName @ context='unsafe'}" media="(max-width:768px)" />
+             </sly>
+             <img  alt="Doll Hospital logo" src="${properties.subBrandLogoImageParameterForDollName @ context='unsafe'}" />
+          </picture>
+      </div>
+                 <div class="dynamic-data-load">
+                 </div> 
+         </section>
+		 </div>
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
+       <sly data-sly-call="${clientlib.js @ categories=['dollHospital.subTreatments']}"/>
+</sly> 		 
+
+ 

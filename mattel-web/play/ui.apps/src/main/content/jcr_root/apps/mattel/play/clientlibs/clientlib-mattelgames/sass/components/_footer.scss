@@ -1,0 +1,379 @@
+footer {
+    background-color: mapping($footer,main,bgndColor);
+    border-top: mapping($footer,main,borderTop);
+    background-size: mapping($footer,main,bgndSize);
+    padding: mapping($footer,main,pad);
+    position: mapping($footer,main,pos);
+    >div {
+        @extend .container;
+        @media #{$medium-down} {
+            padding-top: mapping($footer,mainDiv,tabpaddingTop);
+        }
+        >div {
+            @extend .row;
+            .play-footer-mattel-logo {
+                @extend .col-md-1;
+                @extend .col-sm-6;
+                @extend .col-xs-6;
+                @media #{$medium-down} {
+                    text-align: mapping($footer,playmattelLogo,tabtxtAlign);
+		    	padding:if(mapping($footer,playmattelLogo,tabPad),mapping($footer,playmattelLogo,tabPad),0);
+                    img {
+                        margin-right: mapping($footer,playmattelLogo,tabmarginRight);
+                        @if mapping($layout,main,isfisherprice) == true {
+                            margin-top: mapping($footer,playmattelLogo,tabMarginTop);
+                            max-width:mapping($footer,playmattelLogo,tabMaxWidth);
+                        }
+                    }
+                }
+                @if mapping($layout,main,isfisherprice) == true {
+                    @extend .col-md-2;
+                    @extend .col-sm-6;
+                    @extend .col-xs-6;
+                    
+                    @media #{$small-down} {
+                        img {
+                            margin-top: mapping($footer,playmattelLogo,mobMarginTop);
+                            max-width:mapping($footer,playmattelLogo,mobMaxWidth);
+                        }
+                    }
+                }
+            }
+            .play-esrb-logo {
+                @extend .col-md-1;
+                @extend .col-sm-6;
+                @extend .col-xs-6;
+                @extend .pull-right;
+                @media #{$large-only} {
+                    right: mapping($footer,playesrbLogo,labposRight);
+                    bottom: mapping($footer,playesrbLogo,labposBottom);
+                    z-index: mapping($footer,playesrbLogo,labposzindex);
+                }
+                @media #{$medium-down} {
+                    text-align: mapping($footer,playesrbLogo,tabtxtAlign);
+                    img {
+                        margin-left: mapping($footer,playesrbLogo,tabmarginLeft);
+                    }
+                }
+                a {
+                    img {
+                        height: mapping($footer,playesrblogoLink,height);
+                    }
+                }
+                @if mapping($layout,main,isfisherprice) == true {
+                    @extend .col-md-1;
+                    @extend .col-sm-6;
+                    @extend .col-xs-6;
+                }
+            }
+            .play-footer-link {
+                @extend .col-md-9;
+                @if mapping($layout,main,isfisherprice) == true {
+                    @extend .col-md-7;
+                }
+                padding-top: mapping($footer,playfooterLink,paddingTop);
+                text-align: mapping($footer,playfooterLink,txtAlign);
+                @media #{$medium-down} {
+                    clear: mapping($footer,playfooterLink,tabClear);
+                    padding-left: mapping($footer,playfooterLink,tabpaddingLeft);
+                    padding-right: mapping($footer,playfooterLink,tabpaddingRight);
+                }
+                ul {
+                    text-align: mapping($footer,playfooterUL,txtAlign);
+                    display: mapping($footer,playfooterUL,display);
+                    @media #{$medium-down} {
+                        margin-bottom: mapping($footer,playfooterUL,tabmarginBottom);
+                    }
+                    li {
+                        display: mapping($footer,playfooterulList,display);
+                        font-size: mapping($footer,playfooterulList,fntSize);
+                        padding: mapping($footer,playfooterulList,pad);
+                        @media #{$small-up} {
+                            padding: mapping($footer,playfooterulList,mobPadding);
+                            display: mapping($footer,playfooterulList,mobDisplay);
+                        }
+                        a {
+                            color: mapping($footer,playfooterulLink,txtColor);
+                            font-family: mapping($footer,playfooterulLink,fntFamily) , Sans-serif;
+                            font-weight: mapping($footer,playfooterulLink,fntWeight);
+                        }
+                    }
+                }
+                span {
+                    font-family: mapping($footer,playfooterSpan,fntFamily), Sans-serif;
+                    font-weight: mapping($footer,playfooterSpan,fntWeight);
+                    font-size: mapping($footer,playfooterSpan,fntSize);
+                    padding: mapping($footer,playfooterSpan,pad);
+                    display: mapping($footer,playfooterSpan,display);
+                    padding-top: mapping($footer,playfooterSpan,paddingTop);
+                    @media #{$medium-up} {
+                        display: mapping($footer,playfooterSpan,tabDisplay);
+                        padding-top: mapping($footer,playfooterSpan,tabpaddingTop);
+                    }
+                }
+            }
+        }
+    }	
+}
+
+.footer.aem-GridColumn{
+    padding:0;
+} 
+
+
+	// why play footer
+	
+	@if mapping($layout, main, isWhyPlay) == true {
+		.footer {
+			margin-top:0px !important;
+		}
+	
+	}
+	// why play footer and FisherPrice New
+	.footer-links-accordion{
+            background-color:  mapping($footer,footerLinkAccordion,bgColor); 
+            background-size: mapping($footer,footerLinkAccordion,bgSize); 
+            padding: mapping($footer,footerLinkAccordion,padding); 
+            text-align: mapping($footer,footerLinkAccordion,textAlign); 
+			 @media #{$medium-down} {
+				 padding: mapping($footer,footerLinkAccordion,tabPadding); 
+			 }
+			
+			h4 {
+				margin: mapping($footer,footerLinkAccordionH4,margin);
+			}
+			.footer-links {
+				width: mapping($footer,footerLinks,width); 
+				display: mapping($footer,footerLinks,display); 
+				text-align: mapping($footer,footerLinks,textAlign); 
+				vertical-align: mapping($footer,footerLinks,verticalAlign);
+				 @media #{$medium-down} {
+					width: mapping($footer,footerLinks,tabWidth); 
+				 }
+				 h4 {
+                        letter-spacing: mapping($footer, footerActionLink, letterSpacing);
+                        line-height:mapping($footer, footerActionLink, lineHeight);
+                        font-size: mapping($footer,footerActionLink,fontSize);
+                        color: white;
+                        font-weight: 500;
+                        font-family: $mattelGamesPrimaryFontMedium;
+						 @media #{$medium-down} {
+							padding-bottom: mapping($footer,footerLinksH4,tabpaddBottom);
+						 }
+
+                         a {
+                        
+                        color: mapping($footer,footerActionLink,txt1color);
+                        letter-spacing: mapping($footer, footerActionLink, letterSpacing);
+                        line-height:mapping($footer, footerActionLink, lineHeight);
+                        font-size: mapping($footer,footerActionLink,fontSize);
+                        font-family: $mattelGamesPrimaryFontMedium;
+                         }
+					}
+				&.footer-social {
+					width: mapping($footer,footerSocial,width);
+					vertical-align: mapping($footer,footerSocial,verticalAlign);
+					@media #{$large-down} {
+						width: mapping($footer,footerSocial,deviceWidth);
+					}
+					@media #{$medium-down} {
+						width: mapping($footer,footerSocial,tabWidth);
+						text-align: mapping($footer,footerSocial,tabTextAlign);
+					}
+					
+					a {                        
+                        font-weight:  mapping($footer,footerSocialLink,fontWeight);
+                        color: mapping($footer,footerActionLink,txt1color);
+                        letter-spacing: mapping($footer, footerActionLink, letterSpacing);
+                        line-height:mapping($footer, footerActionLink, lineHeight);
+                        font-size: mapping($footer,footerActionLink,fontSize);
+                    }
+                    img{
+                        width: mapping($footer,footerSocialImg,tabWidth);
+						height: mapping($footer,footerSocialImg,tabHeight);
+                        // width:43px;
+                        // height: 43px;
+                    }
+					li {
+						float: mapping($footer,footerSocialLi,float);
+						margin-right: mapping($footer,footerSocialLi,marginRight);
+						@media #{$medium-down} {
+							float: mapping($footer,footerSocialLi,tabFloat);
+							display: mapping($footer,footerSocialLi,tabDisplay);
+						}
+                    }
+                    h4{
+                        @media #{$medium-down} {
+							border: 0;
+                            padding-bottom: 0;
+                            text-align: left;
+                        }
+                        &::after{
+                            @media #{$medium-down} {
+                               display: none;
+                            } 
+                        }
+                    }
+                    .country-drop-down{
+                        .bootstrap-select{
+                            .dropdown-menu li a{
+                                font-family: $mattelGamesSecondaryFont;
+                                font-size: 18px;
+                                font-weight: 500;
+                                &:hover{
+                                    color: black;
+                                    background: #E8E8E8;
+                                }
+                            }
+                            button{
+                                &.dropdown-toggle{
+                                    &[aria-expanded="true"]{
+                                        .bs-caret{
+                                            .caret{
+                                                &::after{
+                                                    transform: translateY(-50%) rotate(180deg);
+                                                }
+                                            }
+                                        }
+                                      }
+                                    .filter-option{
+                                        display: flex;
+                                        flex-direction: column;
+                                        justify-content: center;
+                                        .filter-option-inner-inner{
+                                            color: #000000;
+                                            font-family: $mattelGamesSecondaryFont;
+                                            font-size: 18px;
+                                            font-weight: 500;
+                                            line-height: 20px;
+                                        }
+                                    }
+                                    .bs-caret{
+                                        background: transparent;
+                                        .caret{
+                                            position: static;
+                                            &::after{
+                                                top: 50%;
+                                                right: 15px;
+                                                transform: translateY(-50%);
+                                                transition: all .3s ease-in-out;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        @media #{$medium-down} {
+                            max-width: 270px;
+                            margin-left: 0;
+                            margin-right: auto;
+                         } 
+                    }
+                }
+                &.footer-esrblogo{
+                    @media #{$large-up} {
+                        text-align: center;
+                     }    
+                }
+			}
+			
+			.accordion-action {
+				pointer-events: mapping($footer,footerAccordionAction,pointerEvents);
+				@media #{$medium-down} {
+					cursor: mapping($footer,footerAccordionAction,tabcursor);
+					pointer-events: mapping($footer,footerAccordionAction,tabpointerEvents);
+					font-size: mapping($footer,footerAccordionAction,tabfontSize);
+					border-bottom: mapping($footer,footerAccordionAction,tabborderBottom); 
+					margin-bottom: mapping($footer,footerAccordionAction,tabmarginBottom);
+					padding-bottom: mapping($footer,footerAccordionAction,tabpaddBottom);
+					&:after {
+						content: mapping($footer,footerActionAfter,content); 
+						font-family: mapping($footer,footerActionAfter,fontFamily); 
+						font-weight: mapping($footer,footerActionAfter,fontWeight); 
+						-webkit-font-smoothing: mapping($footer,footerActionAfter,webkit); 
+						display: mapping($footer,footerActionAfter,display); 
+						font-style: mapping($footer,footerActionAfter,fontStyle); 
+						font-variant: mapping($footer,footerActionAfter,fontVariant); 
+						text-rendering: mapping($footer,footerActionAfter,textRendering); 
+						line-height: mapping($footer,footerActionAfter,lineHeight); 
+						vertical-align: mapping($footer,footerActionAfter,vericalAlign); 
+						color: mapping($footer,footerActionAfter,color); 
+						float: mapping($footer,footerActionAfter,float);                               
+					}
+					&.expand-in {
+						&:after {
+							 content: mapping($footer,footerActionAfter,expandContent); 
+						}
+					 }
+				}
+				a {
+					font-size: mapping($footer,footerActionLink,fontSize);
+					font-weight: mapping($footer,footerActionLink,fontWeight);
+                    padding-bottom: mapping($footer,footerActionLink,paddBottom);
+                    color: mapping($footer,footerActionLink,txt1color);
+                    letter-spacing: mapping($footer, footerActionLink, letterSpacing);
+                    line-height:mapping($footer, footerActionLink, lineHeight);
+				}
+				
+			}
+			.accordion-container {
+			      @media #{$large-only} {
+					display: mapping($footer,footerAccordionContainer,display); 
+				  }
+				 @media #{$medium-down} {
+					display: mapping($footer,footerAccordionContainer,tabDisplay);
+				 }
+				 ul {
+					padding: mapping($footer,footerActionLinkul,padding); 
+					li {
+						 margin-top: 0 ;
+							a {
+                                font-weight: mapping($footer,footerActionliLink,fontWeight); 
+                                font-size: mapping($footer,footerActionliLink,fontSize);
+                                line-height: mapping($footer,footerActionliLink,lineHeight);
+                                letter-spacing: mapping($footer,footerActionliLink,letterSpacing);
+                                color: mapping($footer,footerActionLink,txt1color);
+								@media #{$medium-down} {
+                                    padding: mapping($footer,footerActionliLink,tabPadding);
+                                    font-family: $mattelGamesSecondaryFont;
+                                    line-height: 27px;
+                                    margin-bottom: 17px;
+                                    display: block;
+								}
+							  }
+							  &:first-child {
+								 margin-top: mapping($footer,footerActionLinkli,marginTopfirstchild); 
+                              }
+                              &:last-of-type {
+                                a{
+                                    @media #{$medium-down} {
+                                        margin-bottom: 10px;
+                                    }
+                                }
+                             }
+					}
+				}
+			}
+			
+
+        }
+
+        .footer-wrapper
+        {
+         .title{
+                .play-page-title{
+                                div{
+                                    p {
+                                        font-size: 12px;
+                                        color: #000;
+                                        text-align: center;
+                                        margin: 0;
+                                        line-height: 14px;
+                                        background-color: #FBD635;
+                                    }
+                                }
+                }
+         }
+        }
+   
+

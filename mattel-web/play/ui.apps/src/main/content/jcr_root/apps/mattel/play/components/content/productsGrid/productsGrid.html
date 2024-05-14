@@ -1,0 +1,26 @@
+<input type="hidden" id="currentPagePath" value="${currentPage.path}" />
+<div class="products-gallery-list">
+    <sly data-sly-use.productGrid="${'com.mattel.play.core.model.ProductGridModel'  @ url=currentPage.Path}">
+        <sly data-sly-test="${(productGrid.landingBgReference == null && productGrid.landingBgColor == null )|| (productGrid.landingBackOption =='image' && productGrid.landingBgReference == null ) || (productGrid.landingBackOption =='color' && productGrid.landingBgColor == null )}">
+            <div id="play-products" class="play-tiles-gallery play-products" data-height-sync=".gallery-image">
+        </sly>
+        <sly data-sly-test="${productGrid.landingBackOption =='image' && productGrid.landingBgReference != null }">
+            <div id="play-products" class="play-tiles-gallery play-products" data-height-sync=".gallery-image" style="background-image:url('${productGrid.landingBgReference @ context='styleString'}') ;">
+        </sly>
+        <sly data-sly-test="${productGrid.landingBackOption =='color' && productGrid.landingBgColor != null }">
+            <div id="play-products" class="play-tiles-gallery play-products" data-height-sync=".gallery-image" style="background-color:${productGrid.landingBgColor @ context='styleString'};">
+        </sly>
+    </sly>
+	<sly data-sly-test.templateCheck="${pageProperties.cq:template != '/conf/play/settings/wcm/templates/productdetailpage-template'}">
+        <div class="category-title filtered-heading-name">
+          <h2 style="display:none;"></h2>
+        </div>
+    </sly>
+    <div class="gallery-tile">
+        <ul class="product-list">
+
+        </ul>
+    </div>
+
+    </div>
+    </div>

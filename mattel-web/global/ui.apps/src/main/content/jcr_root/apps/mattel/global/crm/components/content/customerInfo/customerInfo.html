@@ -1,0 +1,859 @@
+<sly data-sly-test="${wcmmode.edit}">${'Customer Info Component' @i18n}</sly>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.0/css/bootstrap-datepicker.css">
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
+      <sly data-sly-call="${clientlib.css @ categories='crm.customerInfo'}"></sly>
+</sly>
+
+<div class="form-component" style="background-color: ${properties.backgroundColor @context='html'}; background-image: url(${properties.backgroundImage @context='html'});">
+    <div class="loading-wrapper">
+        <span class="loader-content">Loading...</span>
+    </div>
+    <sly data-sly-test="${properties.header}">
+        <h2>${properties.header @i18n}</h2>
+    </sly>
+    <form id="crm-form">
+
+        <sly data-sly-test="${properties.emailIdLabel!=null}">
+            <div class="col-sm-6 col-md-4 form-group required">
+                <label class="input_label" for="emailId">${properties.emailIdLabel @i18n}</label>
+                <input class="input_field" type="email" id="emailId" placeholder="${properties.emailIdFillText @i18n}" autocomplete="off" required maxlength="320">
+                <div class="help-block form-error">${properties.emailIdValidationMsg ? properties.emailIdValidationMsg : 'Please Enter a valid email.' @i18n}</div>
+                <div class="help-block api-error"></div>
+            </div>
+        </sly>
+        <sly data-sly-test="${properties.firstNameLabel!=null}">
+            <div class="col-sm-6 col-md-4 form-group">
+                <label class="input_label" for="parentFirstName">${properties.firstNameLabel @i18n}</label>
+                <input class="input_field" type="text" id="parentFirstName" placeholder="${properties.firstNameFillText @i18n}" autocomplete="off" maxlength="256">
+                <div class="help-block form-error">${properties.fNameValidationMsg ? properties.fNameValidationMsg : 'Please Enter a valid first name.' @i18n}</div>
+                <div class="help-block api-error"></div>
+            </div>
+        </sly>
+        <sly data-sly-test="${properties.lastNameLabel!=null}">
+            <div class="col-sm-6 col-md-4 form-group">
+                <!-- new change --Parent's Last Name(Optional) -->
+                <label class="input_label" for="parentLastName">${properties.lastNameLabel @i18n}</label>
+                <input class="input_field" type="text" id="parentLastName" placeholder="${properties.lastNameFillText @i18n}" autocomplete="off" maxlength="256">
+
+                <div class="help-block api-error"></div>
+            </div>
+        </sly>
+        <div class="form-row" data-child = "1" id="child-details-wrapper" data-max-children="${properties.maxNoOfChildren}">
+            <fieldset class="child-details-fieldset">
+                <legend>${properties.childDetailsLabel @i18n}</legend>
+
+                <div class="clear-both"></div>
+                <sly data-sly-test="${properties.childSectionDescription}">
+                <div class="title-info">${properties.childSectionDescription @context='html'}</div>
+                </sly>
+                <sly data-sly-test="${properties.swapChildDobToLeft=='false'  || properties.swapChildDobToLeft==null}">
+                    <sly data-sly-test="${properties.childGenderLabel !=null}">
+                        <div class="form-group col-sm-4">
+                            <fieldset class="sub-fieldset">
+                                <legend class="input_label">${properties.childGenderLabel @i18n}</legend>
+
+                                <div class="child-data child-gender">
+                                    <sly data-sly-test="${properties.boyGender !=null}">
+                                        <div class="item-list">
+                                            <input type="radio" name="gender1" id="boy1" value="M" class="">
+                                            <label for="boy1"><span>${properties.boyGender @i18n}</span></label>
+                                        </div>
+                                    </sly>
+                                    <sly data-sly-test="${properties.girlGender !=null}">
+                                        <div class="item-list">
+                                            <input type="radio" name="gender1" id="girl1" value="F">
+                                            <label for="girl1"><span>${properties.girlGender @i18n}</span></label>
+                                        </div>
+                                    </sly>
+                                    <sly data-sly-test="${properties.expectingGender !=null}">
+                                        <div class="item-list">
+                                            <input type="radio" name="gender1" id="x1" value="U">
+                                            <label for="x1"><span>${properties.expectingGender @i18n}</span></label>
+                                        </div>
+                                    </sly>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </sly>
+
+                    <sly data-sly-test="${properties.relationshipLabel !=null}">
+                        <div class="form-group col-sm-4">
+                            <fieldset class="sub-fieldset">
+                                <legend class="input_label">${properties.relationshipLabel @i18n}</legend>
+                                <div class="child-data child-relation">
+                                    <sly data-sly-test="${properties.relationMom !=null}">
+                                        <div class="item-list">
+                                            <input type="radio" name="relation1" id="mom1" value="mom">
+                                            <label for="mom1" class="errorRadio"><span>${properties.relationMom @i18n}</span></label>
+                                        </div>
+                                    </sly>
+                                    <sly data-sly-test="${properties.relationDad !=null}">
+                                        <div class="item-list">
+                                            <input type="radio" name="relation1" id="dad1" value="dad">
+                                            <label for="dad1"><span>${properties.relationDad @i18n}</span></label>
+                                        </div>
+                                    </sly>
+                                    <sly data-sly-test="${properties.relationGrandParent !=null}">
+                                        <div class="item-list">
+                                            <input type="radio" name="relation1" id="grandparent1" value="grandparent">
+                                            <label for="grandparent1"><span>${properties.relationGrandParent @i18n}</span></label>
+                                        </div>
+                                    </sly>
+                                    <sly data-sly-test="${properties.relationFriend !=null}">
+                                        <div class="item-list">
+                                            <input type="radio" name="relation1" id="other1" value="other">
+                                            <label for="other1"><span>${properties.relationFriend @i18n}</span></label>
+                                        </div>
+                                    </sly>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </sly>
+                    <sly data-sly-test="${properties.dobLabel !=null}">
+
+
+                        <div class="${properties.makeChildDobMandatory ? 'form-group col-sm-4 required' : 'form-group col-sm-4'}">
+
+                            <div class="sub-fieldset">
+                                <label for="child_due" class="input_label">${properties.dobLabel @i18n}<span class="sr-only">in MM/DD/YYYY format</span></label>
+                                <!-- new change -- Child Date of Birth or Due Date (MM/DD/YYYY)-->
+                                <div class="input-group child-data child-dob date date-picker">
+                                    <!--data-date-format="${properties.dobFormat}"-->
+                                    <label>
+                                        <sly data-sly-test="${properties.makeChildDobMandatory == 'false'}">
+                                            <input id="child_due" class="input_field form-control mobi-picker" type="text" name="month1" placeholder="${properties.dobFormat=='mm/dd/yyyy'?'MM/DD/YYYY':'DD/MM/YYYY' @i18n}" data-date-format="${properties.dobFormat}">
+                                        </sly>
+                                        <sly data-sly-test="${properties.makeChildDobMandatory == 'true'}">
+                                            <input id="child_due" class="input_field form-control mobi-picker" type="text" name="month1" placeholder="${properties.dobFormat=='mm/dd/yyyy'?'MM/DD/YYYY':'DD/MM/YYYY' @i18n}" required="required" data-date-format="${properties.dobFormat}">
+                                        </sly>
+                                        <div class="input-group-addon" >
+                                            <i class="fa fa-calendar" aria-hidden="true"></i>
+                                        </div>
+                                    </label>
+                                </div>
+                                <div class="help-block form-error empty-field">${properties.dobEmptyValidationMsg || 'DOB value should not be empty' @i18n}</div>
+                                <div class="help-block form-error">${properties.dobValidationMsg @i18n}</div>
+                                <div class="help-block api-error"></div>
+                            </div>
+                        </div>
+                    </sly>
+                </sly>
+                <sly data-sly-test="${properties.swapChildDobToLeft=='true'}">
+                    <sly data-sly-test="${properties.dobLabel !=null}">
+
+
+                        <div class="${properties.makeChildDobMandatory ? 'form-group col-sm-4 required' : 'form-group col-sm-4'}">
+
+                            <div class="sub-fieldset">
+                                <label for="child_due" class="input_label">${properties.dobLabel @i18n}<span class="sr-only">in MM/DD/YYYY format</span></label>
+                                <!-- new change -- Child Date of Birth or Due Date (MM/DD/YYYY)-->
+                                <div class="input-group child-data child-dob date date-picker">
+                                    <!--data-date-format="${properties.dobFormat}"-->
+                                    <label>
+                                        <sly data-sly-test="${properties.makeChildDobMandatory == 'false'}">
+                                            <input id="child_due" class="input_field form-control mobi-picker" type="text" name="month1" placeholder="${properties.dobFormat=='mm/dd/yyyy'?'MM/DD/YYYY':'DD/MM/YYYY' @i18n}" data-date-format="${properties.dobFormat}">
+                                        </sly>
+                                        <sly data-sly-test="${properties.makeChildDobMandatory == 'true'}">
+                                            <input id="child_due" class="input_field form-control mobi-picker" type="text" name="month1" placeholder="${properties.dobFormat=='mm/dd/yyyy'?'MM/DD/YYYY':'DD/MM/YYYY' @i18n}" required="required" data-date-format="${properties.dobFormat}">
+                                        </sly>
+                                        <div class="input-group-addon" >
+                                            <i class="fa fa-calendar" aria-hidden="true"></i>
+                                        </div>
+                                    </label>
+                                </div>
+                                <div class="help-block form-error empty-field">${properties.dobEmptyValidationMsg || 'DOB value should not be empty' @i18n}</div>
+                                <div class="help-block form-error">${properties.dobValidationMsg @i18n}</div>
+                                <div class="help-block api-error"></div>
+                            </div>
+                        </div>
+                    </sly>
+                    <sly data-sly-test="${properties.childGenderLabel !=null}">
+                        <div class="form-group col-sm-4">
+                            <fieldset class="sub-fieldset">
+                                <legend class="input_label">${properties.childGenderLabel @i18n}</legend>
+
+                                <div class="child-data child-gender">
+                                    <sly data-sly-test="${properties.boyGender !=null}">
+                                        <div class="item-list">
+                                            <input type="radio" name="gender1" id="boy1" value="M" class="">
+                                            <label for="boy1"><span>${properties.boyGender @i18n}</span></label>
+                                        </div>
+                                    </sly>
+                                    <sly data-sly-test="${properties.girlGender !=null}">
+                                        <div class="item-list">
+                                            <input type="radio" name="gender1" id="girl1" value="F">
+                                            <label for="girl1"><span>${properties.girlGender @i18n}</span></label>
+                                        </div>
+                                    </sly>
+                                    <sly data-sly-test="${properties.expectingGender !=null}">
+                                        <div class="item-list">
+                                            <input type="radio" name="gender1" id="x1" value="U">
+                                            <label for="x1"><span>${properties.expectingGender @i18n}</span></label>
+                                        </div>
+                                    </sly>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </sly>
+
+                    <sly data-sly-test="${properties.relationshipLabel !=null}">
+                        <div class="form-group col-sm-4">
+                            <fieldset class="sub-fieldset">
+                                <legend class="input_label">${properties.relationshipLabel @i18n}</legend>
+                                <div class="child-data child-relation">
+                                    <sly data-sly-test="${properties.relationMom !=null}">
+                                        <div class="item-list">
+                                            <input type="radio" name="relation1" id="mom1" value="mom">
+                                            <label for="mom1" class="errorRadio"><span>${properties.relationMom @i18n}</span></label>
+                                        </div>
+                                    </sly>
+                                    <sly data-sly-test="${properties.relationDad !=null}">
+                                        <div class="item-list">
+                                            <input type="radio" name="relation1" id="dad1" value="dad">
+                                            <label for="dad1"><span>${properties.relationDad @i18n}</span></label>
+                                        </div>
+                                    </sly>
+                                    <sly data-sly-test="${properties.relationGrandParent !=null}">
+                                        <div class="item-list">
+                                            <input type="radio" name="relation1" id="grandparent1" value="grandparent">
+                                            <label for="grandparent1"><span>${properties.relationGrandParent @i18n}</span></label>
+                                        </div>
+                                    </sly>
+                                    <sly data-sly-test="${properties.relationFriend !=null}">
+                                        <div class="item-list">
+                                            <input type="radio" name="relation1" id="other1" value="other">
+                                            <label for="other1"><span>${properties.relationFriend @i18n}</span></label>
+                                        </div>
+                                    </sly>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </sly>
+
+                </sly>
+                <sly data-sly-test="${properties.enableAddChildFunctionality == 'true'}">
+                    <div class="edit-and-delete-wrapper">
+                        <a href="#" class="edit-child-option" style="color : ${properties.removeChildTxtColor @context='html'}"><span>${properties.removeChildLabel}</span></a>
+                    </div>
+                </sly>
+            </fieldset>
+            <sly data-sly-test="${properties.enableAddChildFunctionality == 'true'}">
+                <div class="add-child-option">
+                    <a href="#" id="addChild" style="color : ${properties.addChildTxtColor @context='html'}"><span>${properties.addChildLabel}</span></a>
+                </div>
+            </sly>
+            <sly data-sly-test="${properties.termsAndConditionsDescription}">
+             <div class="title-description">${properties.termsAndConditionsDescription @context='html'}</div>
+            </sly>  
+        </div>
+        <sly data-sly-test="${properties.labelForAddress!=null}">
+            <div class="form-row">
+                <fieldset>
+                    <legend>${properties.labelForAddress @i18n}</legend>
+                    <sly data-sly-test="${properties.labelForCountry != null}">
+                        <div class="form-group col-sm-6 col-md-4">
+                            <label class="input_label" for="countryDropdown">${properties.labelForCountry @i18n}</label>
+                            <select name="" id="countryDropdown">
+                                <option value="0" selected>${'Select a Country' @i18n}</option>
+                                <option value="US">${'UNITED STATES' @i18n}</option>
+                                <option value="CA">${'CANADA' @i18n}</option>
+                                <option value="AF">${'Afghanistan' @i18n}</option>
+                                <option value="AL">${'Albania' @i18n}</option>
+                                <option value="DZ">${'Algeria' @i18n}</option>
+                                <option value="AD">${'Andorra' @i18n}</option>
+                                <option value="AO">${'Angola' @i18n}</option>
+                                <option value="AI">${'Anguilla' @i18n}</option>
+                                <option value="AG">${'Antigua and Barbuda' @i18n}</option>
+                                <option value="AM">${'Armenia' @i18n}</option>
+                                <option value="AW">${'Aruba' @i18n}</option>
+                                <option value="AU">${'Australia' @i18n}</option>
+                                <option value="AT">${'Austria' @i18n}</option>
+                                <option value="AZ">${'Azerbaijan' @i18n}</option>
+                                <option value="BS">${'Bahamas' @i18n}</option>
+                                <option value="BH">${'Bahrain' @i18n}</option>
+                                <option value="BD">${'Bangladesh' @i18n}</option>
+                                <option value="BB">${'Barbados' @i18n}</option>
+                                <option value="BY">${'Belarus' @i18n}</option>
+                                <option value="BE">${'Belgium' @i18n}</option>
+                                <option value="BZ">${'Belize' @i18n}</option>
+                                <option value="BJ">${'Benin' @i18n}</option>
+                                <option value="BM">${'Bermuda' @i18n}</option>
+                                <option value="BT">${'Bhutan' @i18n}</option>
+                                <option value="BQ">${'Bonaire' @i18n}</option>
+                                <option value="BA">${'Bosnia and Herzegovina' @i18n}</option>
+                                <option value="BW">${'Botswana' @i18n}</option>
+                                <option value="VG">${'British Indian Ocean Territory' @i18n}</option>
+                                <option value="BN">${'Brunei' @i18n}</option>
+                                <option value="BG">${'Bulgaria' @i18n}</option>
+                                <option value="BF">${'Burkina Faso' @i18n}</option>
+                                <option value="BI">${'Burundi' @i18n}</option>
+                                <option value="KH">${'Cambodia' @i18n}</option>
+                                <option value="CM">${'Cameroon' @i18n}</option>
+                                <option value="CV">${'Cape Verde' @i18n}</option>
+                                <option value="KY">${'Cayman Islands' @i18n}</option>
+                                <option value="CF">${'Central African Republic' @i18n}</option>
+                                <option value="TD">${'Chad' @i18n}</option>
+                                <option value="CL">${'Chile' @i18n}</option>
+                                <option value="CN">${'China' @i18n}</option>
+                                <option value="KM">${'Comoros' @i18n}</option>
+                                <option value="CG">${'Congo' @i18n}</option>
+                                <option value="CD">${'Congo, Democratic Republic of the' @i18n}</option>
+                                <option value="NZ">${'Cook Islands' @i18n}</option>
+                                <option value="CR">${'Costa Rica' @i18n}</option>
+                                <option value="CI">${'Cote d&#8217;Ivoire' @i18n,context='html'}</option>
+                                <option value="HR">${'Croatia' @i18n}</option>
+                                <option value="CW">${'Curacao' @i18n}</option>
+                                <option value="CY">${'Cyprus' @i18n}</option>
+                                <option value="CZ">${'Czech Republic' @i18n}</option>
+                                <option value="DK">${'Denmark' @i18n}</option>
+                                <option value="DJ">${'Djibouti' @i18n}</option>
+                                <option value="DM">${'Dominica' @i18n}</option>
+                                <option value="TL">${'East Timor' @i18n}</option>
+                                <option value="EG">${'Egypt' @i18n}</option>
+                                <option value="SV">${'El Salvador' @i18n}</option>
+                                <option value="GQ">${'Equatorial Guinea' @i18n}</option>
+                                <option value="ER">${'Eritria' @i18n}</option>
+                                <option value="EE">${'Estonia' @i18n}</option>
+                                <option value="ET">${'Ethiopia' @i18n}</option>
+                                <option value="FK">${'Falkland Islands' @i18n}</option>
+                                <option value="FO">${'Faroe Islands' @i18n}</option>
+                                <option value="FJ">${'Fiji' @i18n}</option>
+                                <option value="FI">${'Finland' @i18n}</option>
+                                <option value="FR">${'France' @i18n}</option>
+                                <option value="GF">${'French Guiana' @i18n}</option>
+                                <option value="PF">${'French Polynesia' @i18n}</option>
+                                <option value="GA">${'Gabon' @i18n}</option>
+                                <option value="GM">${'Gambia' @i18n}</option>
+                                <option value="GE">${'Georgia' @i18n}</option>
+                                <option value="DE">${'Germany' @i18n}</option>
+                                <option value="GH">${'Ghana' @i18n}</option>
+                                <option value="GI">${'Gibralter' @i18n}</option>
+                                <option value="GR">${'Greece' @i18n}</option>
+                                <option value="GL">${'Greenland' @i18n}</option>
+                                <option value="GD">${'Grenada' @i18n}</option>
+                                <option value="GP">${'Guadeloupe' @i18n}</option>
+                                <option value="GT">${'Guatemala' @i18n}</option>
+                                <option value="GN">${'Guinea' @i18n}</option>
+                                <option value="GW">${'Guinea Bissau' @i18n}</option>
+                                <option value="GY">${'Guyana' @i18n}</option>
+                                <option value="HT">${'Haiti' @i18n}</option>
+                                <option value="HK">${'Hong Kong' @i18n}</option>
+                                <option value="HU">${'Hungary' @i18n}</option>
+                                <option value="IS">${'Iceland' @i18n}</option>
+                                <option value="IN">${'India' @i18n}</option>
+                                <option value="ID">${'Indonesia' @i18n}</option>
+                                <option value="IQ">${'Iraq' @i18n}</option>
+                                <option value="IE">${'Ireland' @i18n}</option>
+                                <option value="IL">${'Israel' @i18n}</option>
+                                <option value="IT">${'Italy' @i18n}</option>
+                                <option value="JM">${'Jamaica' @i18n}</option>
+                                <option value="JP">${'Japan' @i18n}</option>
+                                <option value="JO">${'Jordan' @i18n}</option>
+                                <option value="KZ">${'Kazakhstan' @i18n}</option>
+                                <option value="KE">${'Kenya' @i18n}</option>
+                                <option value="KI">${'Kiribati' @i18n}</option>
+                                <option value="KW">${'Kuwait' @i18n}</option>
+                                <option value="KG">${'Kyrgyzstan' @i18n}</option>
+                                <option value="LA">${'Laos' @i18n}</option>
+                                <option value="LV">${'Latvia' @i18n}</option>
+                                <option value="LS">${'Lesotho' @i18n}</option>
+                                <option value="LR">${'Liberia' @i18n}</option>
+                                <option value="LY">${'Libya' @i18n}</option>
+                                <option value="LI">${'Liechtenstein' @i18n}</option>
+                                <option value="LT">${'Lithuania' @i18n}</option>
+                                <option value="LU">${'Luxembourg' @i18n}</option>
+                                <option value="MO">${'Macau' @i18n}</option>
+                                <option value="MK">${'Macedonia' @i18n}</option>
+                                <option value="MG">${'Madagascar' @i18n}</option>
+                                <option value="MW">${'Malawi' @i18n}</option>
+                                <option value="MY">${'Malaysia' @i18n}</option>
+                                <option value="MV">${'Maldives' @i18n}</option>
+                                <option value="ML">${'Mali' @i18n}</option>
+                                <option value="MT">${'Malta' @i18n}</option>
+                                <option value="MQ">${'Martinique' @i18n}</option>
+                                <option value="MR">${'Mauritania' @i18n}</option>
+                                <option value="MU">${'Mauritius' @i18n}</option>
+                                <option value="MD">${'Moldova' @i18n}</option>
+                                <option value="FR">${'Monaco' @i18n}</option>
+                                <option value="MN">${'Mongolia' @i18n}</option>
+                                <option value="MS">${'Montserrat' @i18n}</option>
+                                <option value="MA">${'Morocco' @i18n}</option>
+                                <option value="MZ">${'Mozambique' @i18n}</option>
+                                <option value="MM">${'Myanmar' @i18n}</option>
+                                <option value="NA">${'Namibia' @i18n}</option>
+                                <option value="NR">${'Nauru' @i18n}</option>
+                                <option value="NP">${'Nepal' @i18n}</option>
+                                <option value="NL">${'Netherlands' @i18n}</option>
+                                <option value="NC">${'New Caledonia' @i18n}</option>
+                                <option value="NZ">${'New Zealand' @i18n}</option>
+                                <option value="NI">${'Nicaragua' @i18n}</option>
+                                <option value="NE">${'Niger' @i18n}</option>
+                                <option value="NG">${'Nigeria' @i18n}</option>
+                                <option value="NO">${'Norway' @i18n}</option>
+                                <option value="OM">${'Oman' @i18n}</option>
+                                <option value="PK">${'Pakistan' @i18n}</option>
+                                <option value="PG">${'Papua New Guinea' @i18n}</option>
+                                <option value="PY">${'Paraguay' @i18n}</option>
+                                <option value="PH">${'Philippines' @i18n}</option>
+                                <option value="PN">${'Pitcairn' @i18n}</option>
+                                <option value="PL">${'Poland' @i18n}</option>
+                                <option value="PT">${'Portugal' @i18n}</option>
+                                <option value="QA">${'Qatar' @i18n}</option>
+                                <option value="RE">${'Reunion' @i18n}</option>
+                                <option value="RO">${'Romania' @i18n}</option>
+                                <option value="RW">${'Rwanda' @i18n}</option>
+                                <option value="BQ">${'Saba' @i18n}</option>
+                                <option value="SH">${'Saint Helena' @i18n}</option>
+                                <option value="KN">${'Saint Kitts and Nevis' @i18n}</option>
+                                <option value="LC">${'Saint Lucia' @i18n}</option>
+                                <option value="VC">${'Saint Vincent and the Grenadines' @i18n}</option>
+                                <option value="WS">${'Samoa' @i18n}</option>
+                                <option value="SM">${'San Marino' @i18n}</option>
+                                <option value="ST">${'Sao Tome and Principe' @i18n}</option>
+                                <option value="SA">${'Saudi Arabia' @i18n}</option>
+                                <option value="SN">${'Senegal' @i18n}</option>
+                                <option value="SC">${'Seychelles' @i18n}</option>
+                                <option value="SL">${'Sierra Leone' @i18n}</option>
+                                <option value="SG">${'Singapore' @i18n}</option>
+                                <option value="SK">${'Slovakia' @i18n}</option>
+                                <option value="SI">${'Slovenia' @i18n}</option>
+                                <option value="SB">${'Solomon Islands' @i18n}</option>
+                                <option value="ZA">${'South Africa' @i18n}</option>
+                                <option value="ES">${'Spain' @i18n}</option>
+                                <option value="LK">${'Sri Lanka' @i18n}</option>
+                                <option value="BQ">${'St Eustatius' @i18n}</option>
+                                <option value="SX">${'St Maarten' @i18n}</option>
+                                <option value="SR">${'Suriname' @i18n}</option>
+                                <option value="SZ">${'Swaziland' @i18n}</option>
+                                <option value="SE">${'Sweden' @i18n}</option>
+                                <option value="CH">${'Switzerland' @i18n}</option>
+                                <option value="TW">${'Taiwan' @i18n}</option>
+                                <option value="TJ">${'Tajikistan' @i18n}</option>
+                                <option value="TZ">${'Tanzania' @i18n}</option>
+                                <option value="TG">${'Togo' @i18n}</option>
+                                <option value="TO">${'Tonga' @i18n}</option>
+                                <option value="TT">${'Trinidad and Tobago' @i18n}</option>
+                                <option value="TN">${'Tunisia' @i18n}</option>
+                                <option value="TR">${'Turkey' @i18n}</option>
+                                <option value="TM">${'Turkmenistan' @i18n}</option>
+                                <option value="TC">${'Turks and Caicos Islands' @i18n}</option>
+                                <option value="TV">${'Tuvalu' @i18n}</option>
+                                <option value="UG">${'Uganda' @i18n}</option>
+                                <option value="UA">${'Ukraine' @i18n}</option>
+                                <option value="AE">${'United Arab Emirates' @i18n}</option>
+                                <option value="GB">${'United Kingdom' @i18n}</option>
+                                <option value="UY">${'Uruguay' @i18n}</option>
+                                <option value="UZ">${'Uzbekistan' @i18n}</option>
+                                <option value="VU">${'Vanuatu' @i18n}</option>
+                                <option value="VA">${'Vatican City' @i18n}</option>
+                                <option value="VN">${'Vietnam' @i18n}</option>
+                                <option value="WF">${'Wallis and Futuna' @i18n}</option>
+                                <option value="MA">${'Western Sahara' @i18n}</option>
+                                <option value="YE">${'Yemen ' @i18n}</option>
+                                <option value="ZM">${'Zambia' @i18n}</option>
+                                <option value="ZW">${'Zimbabwe' @i18n}</option>
+                            </select>
+                        </div>
+
+
+                        <div class="form-group col-sm-6 col-md-4">
+                            <label class="input_label" for="stateField">${properties.labelForState @i18n}</label>
+                            <div id="stateField" data-country-selected="">
+                                <select id="CA-states" name="state" class="" aria-labelledby="stateDropdown">
+                                    <option value="0">${'Select State/Province' @i18n}</option>
+                                    <option value="AB">${'Alberta' @i18n}</option>
+                                    <option value="BC">${'British Columbia' @i18n}</option>
+                                    <option value="MB">${'Manitoba' @i18n}</option>
+                                    <option value="NB">${'New Brunswick' @i18n}</option>
+                                    <option value="NL">${'Newfoundland' @i18n}</option>
+                                    <option value="NT">${'Northwest Territory' @i18n}</option>
+                                    <option value="NS">${'Nova Scotia' @i18n}</option>
+                                    <option value="NU">${'Nunavut' @i18n}</option>
+                                    <option value="ON">${'Ontario' @i18n}</option>
+                                    <option value="PE">${'Prince Edward Island' @i18n}</option>
+                                    <option value="QC">${'Quebec' @i18n}</option>
+                                    <option value="SK">${'Saskatchewan' @i18n}</option>
+                                    <option value="YT">${'Yukon' @i18n}</option>
+                                </select>
+                                <select id="US-states" name="state" class="" aria-labelledby="stateDropdown">
+                                    <option value="0">${'Select State/Province' @i18n}</option><option value="AL">${'Alabama' @i18n}</option><option value="AK">${'Alaska' @i18n}</option><option value="AS">${'American Samoa' @i18n}</option><option value="AZ">${'Arizona' @i18n}</option><option value="AR">${'Arkansas' @i18n}</option><option value="AA">${'Armed Forces Americas' @i18n}</option><option value="AE">${'Armed Forces Europe' @i18n}</option><option value="AP">${'Armed Forces Pacific' @i18n}</option><option value="CA">${'California' @i18n}</option><option value="CO">${'Colorado' @i18n}</option><option value="CT">${'Connecticut' @i18n}</option><option value="DE">${'Delaware' @i18n}</option><option value="DC">${'District of Columbia' @i18n}</option><option value="FL">${'Florida' @i18n}</option><option value="GA">${'Georgia' @i18n}</option><option value="GU">${'Guam' @i18n}</option><option value="HI">${'Hawaii' @i18n}</option><option value="ID">${'Idaho' @i18n}</option><option value="IL">${'Illinois' @i18n}</option><option value="IN">${'Indiana' @i18n}</option><option value="IA">${'Iowa' @i18n}</option><option value="KS">${'Kansas' @i18n}</option><option value="KY">${'Kentucky' @i18n}</option><option value="LA">${'Louisiana' @i18n}</option><option value="ME">${'Maine' @i18n}</option><option value="MH">${'Marshall Islands' @i18n}</option><option value="MD">${'Maryland' @i18n}</option><option value="MA">${'Massachusetts' @i18n}</option><option value="MI">${'Michigan' @i18n}</option><option value="FM">${'Micronesia' @i18n}</option><option value="MN">${'Minnesota' @i18n}</option><option value="MS">${'Mississippi' @i18n}</option><option value="MO">${'Missouri' @i18n}</option><option value="MT">${'Montana' @i18n}</option><option value="NE">${'Nebraska' @i18n}</option><option value="NV">${'Nevada' @i18n}</option><option value="NH">${'New Hampshire' @i18n}</option><option value="NJ">${'New Jersey' @i18n}</option><option value="NM">${'New Mexico' @i18n}</option><option value="NY">${'New York' @i18n}</option><option value="NC">${'North Carolina' @i18n}</option><option value="ND">${'North Dakota' @i18n}</option><option value="MP">${'Northern Mariana Islands' @i18n}</option><option value="OH">${'Ohio' @i18n}</option><option value="OK">${'Oklahoma' @i18n}</option><option value="OR">${'Oregon' @i18n}</option><option value="PW">${'Palau' @i18n}</option><option value="PA">${'Pennsylvania' @i18n}</option><option value="PR">${'Puerto Rico' @i18n}</option><option value="RI">${'Rhode Island' @i18n}</option><option value="SC">${'South Carolina' @i18n}</option><option value="SD">${'South Dakota' @i18n}</option><option value="TN">${'Tennessee' @i18n}</option><option value="TX">${'Texas' @i18n}</option><option value="VI">${'U.S. Virgin Islands' @i18n}</option><option value="UT">${'Utah' @i18n}</option><option value="VT">${'Vermont' @i18n}</option><option value="VA">${'Virginia' @i18n}</option><option value="WA">${'Washington' @i18n}</option><option value="WV">${'West Virginia' @i18n}</option><option value="WI">${'Wisconsin' @i18n}</option><option value="WY">${'Wyoming' @i18n}</option>
+                                </select>
+                                <input id="others-states" name="state" class="input_field" type="text" placeholder="${properties.placeholderForState @i18n}" maxlength="100" aria-labelledby="stateDropdown">
+                            </div>
+                        </div>
+                    </sly>
+                    <sly data-sly-test="${properties.labelForCity != null}">
+                        <div class="form-group col-sm-6 col-md-4">
+                            <label class="input_label" for="cityField">${properties.labelForCity @i18n}</label>
+                            <input class="input_field" name="" id="cityField" type="text" placeholder="${properties.placeholderForCity @i18n}" maxlength="128"/>
+                            <!-- The state/province field cannot be empty. -->
+                        </div>
+                    </sly>
+                    <sly data-sly-test="${properties.labelForStreet != null}">
+                        <div class="form-group col-sm-6 col-md-4">
+                            <label class="input_label" for="streetText">${properties.labelForStreet @i18n}</label>
+                            <input class="input_field" id="streetText" type="text" placeholder="${properties.placeholderTextForStreet @i18n}">
+                        </div>
+                        <sly data-sly-test="${properties.placeholderTextForBuilding != null}">
+                            <div class="form-group col-sm-6 col-md-4">
+                                <label class="input_label invisible" for="streetText1">${properties.labelForStreet @i18n}</label>
+                                <input class="input_field" id="streetText1" type="text" placeholder="${properties.placeholderTextForBuilding @i18n}">
+                            </div>
+                        </sly>
+                    </sly>
+                    <sly data-sly-test="${properties.labelForPostalCode != null}">
+                        <div class="form-group col-sm-6 col-md-4">
+                            <label class="input_label" for="postalCode">${properties.labelForPostalCode @i18n}</label>
+                            <input class="input_field" id="postalCode" type="text" placeholder="${properties.placeholderForPostalCode @i18n}" maxlength="15">
+                            <div class="help-block form-error">${properties.postalCodeValidationMsg ? properties.postalCodeValidationMsg : 'Please enter a valid ZIP or postal code.' @i18n}</div>
+
+                        </div>
+                    </sly>
+                </fieldset>
+            </div>
+        </sly>
+
+        <sly data-sly-test="${properties.contactNumberLabel!=null}">
+            <div class="form-row">
+                <fieldset>
+                    <legend>${properties.contactNumberLabel @i18n}</legend>
+                    <sly data-sly-test="${properties.countryCodeLabel!=null}">
+                        <div class="form-group country-code-dropdown col-xs-2">
+                            <label class="input_label" for="shortCountryCode">${properties.countryCodeLabel @i18n}</label>
+                            <div class="relative-dropdown-container">
+                                <div class="selected-country-code" id="relative-country-code">+1</div>
+                                <div class="arrow"></div>
+                                <select type="select" name="shortCountryCode" aria-required="true" role="combobox" id="shortCountryCode" tabindex="0">
+                                    <option role="option" data-code="+93" value="AF" >${'Afghanistan' @i18n} &#x202A;(+93)&#x202C;</option>
+                                    <option role="option" data-code="+355" value="AL" >${'Albania' @i18n} &#x202A;(+355)&#x202C;</option>
+                                    <option role="option" data-code="+213" value="DZ" >${'Algeria' @i18n} &#x202A;(+213)&#x202C;</option>
+                                    <option role="option" data-code="+1" value="AS" >${'American Samoa' @i18n} &#x202A;(+1)&#x202C;</option>
+                                    <option role="option" data-code="+376" value="AD" >${'Andorra' @i18n} &#x202A;(+376)&#x202C;</option>
+                                    <option role="option" data-code="+244" value="AO" >${'Angola' @i18n} &#x202A;(+244)&#x202C;</option>
+                                    <option role="option" data-code="+1" value="AI" >${'Anguilla' @i18n} &#x202A;(+1)&#x202C;</option>
+                                    <option role="option" data-code="+1" value="AG" >${'Antigua and Barbuda' @i18n} &#x202A;(+1)&#x202C;</option>
+                                    <option role="option" data-code="+54" value="AR" >${'Argentina' @i18n} &#x202A;(+54)&#x202C;</option>
+                                    <option role="option" data-code="+374" value="AM" >${'Armenia' @i18n} &#x202A;(+374)&#x202C;</option>
+                                    <option role="option" data-code="+297" value="AW" >${'Aruba' @i18n} &#x202A;(+297)&#x202C;</option>
+                                    <option role="option" data-code="+247" value="AC" >${'Ascension' @i18n} &#x202A;(+247)&#x202C;</option>
+                                    <option role="option" data-code="+61" value="AU" >${'Australia' @i18n} &#x202A;(+61)&#x202C;</option>
+                                    <option role="option" data-code="+672" value="AX" >${'Australian External Territories' @i18n} &#x202A;(+672)&#x202C;</option>
+                                    <option role="option" data-code="+43" value="AT" >${'Austria' @i18n} &#x202A;(+43)&#x202C;</option>
+                                    <option role="option" data-code="+994" value="AZ" >${'Azerbaijan' @i18n} &#x202A;(+994)&#x202C;</option>
+                                    <option role="option" data-code="+1" value="BS" >${'Bahamas' @i18n} &#x202A;(+1)&#x202C;</option>
+                                    <option role="option" data-code="+973" value="BH" >${'Bahrain' @i18n} &#x202A;(+973)&#x202C;</option>
+                                    <option role="option" data-code="+880" value="BD" >${'Bangladesh' @i18n} &#x202A;(+880)&#x202C;</option>
+                                    <option role="option" data-code="+1" value="BB" >${'Barbados' @i18n} &#x202A;(+1)&#x202C;</option>
+                                    <option role="option" data-code="+375" value="BY" >${'Belarus' @i18n} &#x202A;(+375)&#x202C;</option>
+                                    <option role="option" data-code="+32" value="BE" >${'Belgium' @i18n} &#x202A;(+32)&#x202C;</option>
+                                    <option role="option" data-code="+501" value="BZ" >${'Belize' @i18n} &#x202A;(+501)&#x202C;</option>
+                                    <option role="option" data-code="+229" value="BJ" >${'Benin' @i18n} &#x202A;(+229)&#x202C;</option>
+                                    <option role="option" data-code="+1" value="BM" >${'Bermuda' @i18n} &#x202A;(+1)&#x202C;</option>
+                                    <option role="option" data-code="+975" value="BT" >${'Bhutan' @i18n} &#x202A;(+975)&#x202C;</option>
+                                    <option role="option" data-code="+591" value="BO" >${'Bolivia' @i18n} &#x202A;(+591)&#x202C;</option>
+                                    <option role="option" data-code="+387" value="BA" >${'Bosnia and Herzegovina' @i18n} &#x202A;(+387)&#x202C;</option>
+                                    <option role="option" data-code="+267" value="BW" >${'Botswana' @i18n} &#x202A;(+267)&#x202C;</option>
+                                    <option role="option" data-code="+55" value="BR" >${'Brazil' @i18n} &#x202A;(+55)&#x202C;</option>
+                                    <option role="option" data-code="+1" value="VG" >${'British Virgin Islands' @i18n} &#x202A;(+1)&#x202C;</option>
+                                    <option role="option" data-code="+673" value="BN" >${'Brunei Darussalam' @i18n} &#x202A;(+673)&#x202C;</option>
+                                    <option role="option" data-code="+359" value="BG" >${'Bulgaria' @i18n} &#x202A;(+359)&#x202C;</option>
+                                    <option role="option" data-code="+226" value="BF" >${'Burkina Faso' @i18n} &#x202A;(+226)&#x202C;</option>
+                                    <option role="option" data-code="+257" value="BI" >${'Burundi' @i18n} &#x202A;(+257)&#x202C;</option>
+                                    <option role="option" data-code="+855" value="KH" >${'Cambodia' @i18n} &#x202A;(+855)&#x202C;</option>
+                                    <option role="option" data-code="+237" value="CM" >${'Cameroon' @i18n} &#x202A;(+237)&#x202C;</option>
+                                    <option role="option" data-code="+1" value="CA" >${'Canada' @i18n} &#x202A;(+1)&#x202C;</option>
+                                    <option role="option" data-code="+238" value="CV" >${'Cape Verde' @i18n} &#x202A;(+238)&#x202C;</option>
+                                    <option role="option" data-code="+1" value="KY" >${'Cayman Islands' @i18n} &#x202A;(+1)&#x202C;</option>
+                                    <option role="option" data-code="+236" value="CF" >${'Central African Republic' @i18n} &#x202A;(+236)&#x202C;</option>
+                                    <option role="option" data-code="+235" value="TD" >${'Chad' @i18n} &#x202A;(+235)&#x202C;</option>
+                                    <option role="option" data-code="+56" value="CL" >${'Chile' @i18n} &#x202A;(+56)&#x202C;</option>
+                                    <option role="option" data-code="+86" value="CN" >${'China' @i18n} &#x202A;(+86)&#x202C;</option>
+                                    <option role="option" data-code="+57" value="CO" >${'Colombia' @i18n} &#x202A;(+57)&#x202C;</option>
+                                    <option role="option" data-code="+269" value="KM" >${'Comoros' @i18n} &#x202A;(+269)&#x202C;</option>
+                                    <option role="option" data-code="+242" value="CG" >${'Congo' @i18n} &#x202A;(+242)&#x202C;</option>
+                                    <option role="option" data-code="+682" value="CK" >${'Cook Islands' @i18n} &#x202A;(+682)&#x202C;</option>
+                                    <option role="option" data-code="+506" value="CR" >${'Costa Rica' @i18n} &#x202A;(+506)&#x202C;</option>
+                                    <option role="option" data-code="+225" value="CI" >${'C?te' @i18n} d&#x27;Ivoire &#x202A;(+225)&#x202C;</option>
+                                    <option role="option" data-code="+385" value="HR" >${'Croatia' @i18n} &#x202A;(+385)&#x202C;</option>
+                                    <option role="option" data-code="+53" value="CU" >${'Cuba' @i18n} &#x202A;(+53)&#x202C;</option>
+                                    <option role="option" data-code="+357" value="CY" >${'Cyprus' @i18n} &#x202A;(+357)&#x202C;</option>
+                                    <option role="option" data-code="+420" value="CZ" >${'Czech Republic' @i18n} &#x202A;(+420)&#x202C;</option>
+                                    <option role="option" data-code="+243" value="CD" >${'Democratic Republic of the Congo' @i18n} &#x202A;(+243)&#x202C;</option>
+                                    <option role="option" data-code="+45" value="DK" >${'Denmark' @i18n} &#x202A;(+45)&#x202C;</option>
+                                    <option role="option" data-code="+246" value="DG" >${'Diego Garcia' @i18n} &#x202A;(+246)&#x202C;</option>
+                                    <option role="option" data-code="+253" value="DJ" >${'Djibouti' @i18n} &#x202A;(+253)&#x202C;</option>
+                                    <option role="option" data-code="+1" value="DM" >${'Dominica' @i18n} &#x202A;(+1)&#x202C;</option>
+                                    <option role="option" data-code="+1" value="DO" >${'Dominican Republic' @i18n} &#x202A;(+1)&#x202C;</option>
+                                    <option role="option" data-code="+670" value="TL" >${'East Timor' @i18n} &#x202A;(+670)&#x202C;</option>
+                                    <option role="option" data-code="+593" value="EC" >${'Ecuador' @i18n} &#x202A;(+593)&#x202C;</option>
+                                    <option role="option" data-code="+20" value="EG" >${'Egypt' @i18n} &#x202A;(+20)&#x202C;</option>
+                                    <option role="option" data-code="+503" value="SV" >${'El Salvador' @i18n} &#x202A;(+503)&#x202C;</option>
+                                    <option role="option" data-code="+240" value="GQ" >${'Equatorial Guinea' @i18n} &#x202A;(+240)&#x202C;</option>
+                                    <option role="option" data-code="+291" value="ER" >${'Eritrea' @i18n} &#x202A;(+291)&#x202C;</option>
+                                    <option role="option" data-code="+372" value="EE" >${'Estonia' @i18n} &#x202A;(+372)&#x202C;</option>
+                                    <option role="option" data-code="+251" value="ET" >${'Ethiopia' @i18n} &#x202A;(+251)&#x202C;</option>
+                                    <option role="option" data-code="+500" value="FK" >${'Falkland Islands' @i18n} &#x202A;(+500)&#x202C;</option>
+                                    <option role="option" data-code="+298" value="FO" >${'Faroe Islands' @i18n} &#x202A;(+298)&#x202C;</option>
+                                    <option role="option" data-code="+679" value="FJ" >${'Fiji' @i18n} &#x202A;(+679)&#x202C;</option>
+                                    <option role="option" data-code="+358" value="FI" >${'Finland' @i18n} &#x202A;(+358)&#x202C;</option>
+                                    <option role="option" data-code="+33" value="FR" >${'France' @i18n} &#x202A;(+33)&#x202C;</option>
+                                    <option role="option" data-code="+594" value="GF" >${'French Guiana' @i18n} &#x202A;(+594)&#x202C;</option>
+                                    <option role="option" data-code="+689" value="PF" >${'French Polynesia' @i18n} &#x202A;(+689)&#x202C;</option>
+                                    <option role="option" data-code="+241" value="GA" >${'Gabon' @i18n} &#x202A;(+241)&#x202C;</option>
+                                    <option role="option" data-code="+220" value="GM" >${'Gambia' @i18n} &#x202A;(+220)&#x202C;</option>
+                                    <option role="option" data-code="+995" value="GE" >${'Georgia' @i18n} &#x202A;(+995)&#x202C;</option>
+                                    <option role="option" data-code="+49" value="DE" >${'Germany' @i18n} &#x202A;(+49)&#x202C;</option>
+                                    <option role="option" data-code="+233" value="GH" >${'Ghana' @i18n} &#x202A;(+233)&#x202C;</option>
+                                    <option role="option" data-code="+350" value="GI" >${'Gibraltar' @i18n} &#x202A;(+350)&#x202C;</option>
+                                    <option role="option" data-code="+30" value="GR" >${'Greece' @i18n} &#x202A;(+30)&#x202C;</option>
+                                    <option role="option" data-code="+299" value="GL" >${'Greenland' @i18n} &#x202A;(+299)&#x202C;</option>
+                                    <option role="option" data-code="+1" value="GD" >${'Grenada' @i18n} &#x202A;(+1)&#x202C;</option>
+                                    <option role="option" data-code="+590" value="GP" >${'Guadeloupe' @i18n} &#x202A;(+590)&#x202C;</option>
+                                    <option role="option" data-code="+1" value="GU" >${'Guam' @i18n} &#x202A;(+1)&#x202C;</option>
+                                    <option role="option" data-code="+502" value="GT" >${'Guatemala' @i18n} &#x202A;(+502)&#x202C;</option>
+                                    <option role="option" data-code="+224" value="GN" >${'Guinea' @i18n} &#x202A;(+224)&#x202C;</option>
+                                    <option role="option" data-code="+245" value="GW" >${'Guinea-Bissau' @i18n}&#x202A;(+245)&#x202C;</option>
+                                    <option role="option" data-code="+592" value="GY" >${'Guyana' @i18n} &#x202A;(+592)&#x202C;</option>
+                                    <option role="option" data-code="+509" value="HT" >${'Haiti' @i18n} &#x202A;(+509)&#x202C;</option>
+                                    <option role="option" data-code="+504" value="HN" >${'Honduras' @i18n} &#x202A;(+504)&#x202C;</option>
+                                    <option role="option" data-code="+852" value="HK" >${'Hong Kong' @i18n} &#x202A;(+852)&#x202C;</option>
+                                    <option role="option" data-code="+36" value="HU" >${'Hungary' @i18n} &#x202A;(+36)&#x202C;</option>
+                                    <option role="option" data-code="+354" value="IS" >${'Iceland' @i18n} &#x202A;(+354)&#x202C;</option>
+                                    <option role="option" data-code="+91" value="IN" >${'India' @i18n} &#x202A;(+91)&#x202C;</option>
+                                    <option role="option" data-code="+62" value="ID" >${'Indonesia ' @i18n}&#x202A;(+62)&#x202C;</option>
+                                    <option role="option" data-code="+98" value="IR" >${'Iran' @i18n} &#x202A;(+98)&#x202C;</option>
+                                    <option role="option" data-code="+964" value="IQ" >${'Iraq' @i18n} &#x202A;(+964)&#x202C;</option>
+                                    <option role="option" data-code="+353" value="IE" >${'Ireland' @i18n} &#x202A;(+353)&#x202C;</option>
+                                    <option role="option" data-code="+972" value="IL" >${'Israel' @i18n} &#x202A;(+972)&#x202C;</option>
+                                    <option role="option" data-code="+39" value="IT" >${'Italy' @i18n} &#x202A;(+39)&#x202C;</option>
+                                    <option role="option" data-code="+1" value="JM" >${'Jamaica' @i18n} &#x202A;(+1)&#x202C;</option>
+                                    <option role="option" data-code="+81" value="JP" >${'Japan' @i18n} &#x202A;(+81)&#x202C;</option>
+                                    <option role="option" data-code="+962" value="JO" >${'Jordan' @i18n} &#x202A;(+962)&#x202C;</option>
+                                    <option role="option" data-code="+7" value="KZ" >${'Kazakhstan' @i18n} &#x202A;(+7)&#x202C;</option>
+                                    <option role="option" data-code="+254" value="KE" >${'Kenya' @i18n} &#x202A;(+254)&#x202C;</option>
+                                    <option role="option" data-code="+686" value="KI" >${'Kiribati' @i18n} &#x202A;(+686)&#x202C;</option>
+                                    <option role="option" data-code="+965" value="KW" >${'Kuwait' @i18n} &#x202A;(+965)&#x202C;</option>
+                                    <option role="option" data-code="+996" value="KG" >${'Kyrgyzstan' @i18n} &#x202A;(+996)&#x202C;</option>
+                                    <option role="option" data-code="+856" value="LA" >${'Laos' @i18n} &#x202A;(+856)&#x202C;</option>
+                                    <option role="option" data-code="+371" value="LV" >${'Latvia' @i18n} &#x202A;(+371)&#x202C;</option>
+                                    <option role="option" data-code="+961" value="LB" >${'Lebanon' @i18n} &#x202A;(+961)&#x202C;</option>
+                                    <option role="option" data-code="+266" value="LS" >${'Lesotho' @i18n} &#x202A;(+266)&#x202C;</option>
+                                    <option role="option" data-code="+231" value="LR" >${'Liberia' @i18n} &#x202A;(+231)&#x202C;</option>
+                                    <option role="option" data-code="+218" value="LY" >${'Libya' @i18n} &#x202A;(+218)&#x202C;</option>
+                                    <option role="option" data-code="+423" value="LI" >${'Liechtenstein' @i18n} &#x202A;(+423)&#x202C;</option>
+                                    <option role="option" data-code="+370" value="LT" >${'Lithuania' @i18n} &#x202A;(+370)&#x202C;</option>
+                                    <option role="option" data-code="+352" value="LU" >${'Luxembourg' @i18n} &#x202A;(+352)&#x202C;</option>
+                                    <option role="option" data-code="+853" value="MO" >${'Macao' @i18n} &#x202A;(+853)&#x202C;</option>
+                                    <option role="option" data-code="+389" value="MK" >${'Macedonia' @i18n} &#x202A;(+389)&#x202C;</option>
+                                    <option role="option" data-code="+261" value="MG" >${'Madagascar' @i18n} &#x202A;(+261)&#x202C;</option>
+                                    <option role="option" data-code="+265" value="MW" >${'Malawi' @i18n} &#x202A;(+265)&#x202C;</option>
+                                    <option role="option" data-code="+60" value="MY" >${'Malaysia' @i18n} &#x202A;(+60)&#x202C;</option>
+                                    <option role="option" data-code="+960" value="MV" >${'Maldives' @i18n} &#x202A;(+960)&#x202C;</option>
+                                    <option role="option" data-code="+223" value="ML" >${'Mali' @i18n} &#x202A;(+223)&#x202C;</option>
+                                    <option role="option" data-code="+356" value="MT" >${'Malta' @i18n} &#x202A;(+356)&#x202C;</option>
+                                    <option role="option" data-code="+692" value="MH" >${'Marshall Islands' @i18n} &#x202A;(+692)&#x202C;</option>
+                                    <option role="option" data-code="+596" value="MQ" >${'Martinique' @i18n} &#x202A;(+596)&#x202C;</option>
+                                    <option role="option" data-code="+222" value="MR" >${'Mauritania' @i18n} &#x202A;(+222)&#x202C;</option>
+                                    <option role="option" data-code="+230" value="MU" >${'Mauritius' @i18n} &#x202A;(+230)&#x202C;</option>
+                                    <option role="option" data-code="+52" value="MX" >${'Mexico' @i18n} &#x202A;(+52)&#x202C;</option>
+                                    <option role="option" data-code="+691" value="FM" >${'Micronesia' @i18n} &#x202A;(+691)&#x202C;</option>
+                                    <option role="option" data-code="+373" value="MD" >${'Moldova' @i18n} &#x202A;(+373)&#x202C;</option>
+                                    <option role="option" data-code="+377" value="MC" >${'Monaco' @i18n} &#x202A;(+377)&#x202C;</option>
+                                    <option role="option" data-code="+976" value="MN" >${'Mongolia' @i18n} &#x202A;(+976)&#x202C;</option>
+                                    <option role="option" data-code="+382" value="ME" >${'Montenegro' @i18n} &#x202A;(+382)&#x202C;</option>
+                                    <option role="option" data-code="+1" value="MS" >${'Montserrat' @i18n} &#x202A;(+1)&#x202C;</option>
+                                    <option role="option" data-code="+212" value="MA" >${'Morocco' @i18n} &#x202A;(+212)&#x202C;</option>
+                                    <option role="option" data-code="+258" value="MZ" >${'Mozambique' @i18n} &#x202A;(+258)&#x202C;</option>
+                                    <option role="option" data-code="+95" value="MM" >${'Myanmar' @i18n} &#x202A;(+95)&#x202C;</option>
+                                    <option role="option" data-code="+264" value="NA" >${'Namibia' @i18n} &#x202A;(+264)&#x202C;</option>
+                                    <option role="option" data-code="+674" value="NR" >${'Nauru' @i18n} &#x202A;(+674)&#x202C;</option>
+                                    <option role="option" data-code="+977" value="NP" >${'Nepal' @i18n} &#x202A;(+977)&#x202C;</option>
+                                    <option role="option" data-code="+31" value="NL" >${'Netherlands' @i18n} &#x202A;(+31)&#x202C;</option>
+                                    <option role="option" data-code="+599" value="AN" > &#x202A;(+599)&#x202C;</option>
+                                    <option role="option" data-code="+687" value="NC" >${'New Caledonia' @i18n} &#x202A;(+687)&#x202C;</option>
+                                    <option role="option" data-code="+64" value="NZ" >${'New Zealand' @i18n} &#x202A;(+64)&#x202C;</option>
+                                    <option role="option" data-code="+505" value="NI" >${'Nicaragua' @i18n} &#x202A;(+505)&#x202C;</option>
+                                    <option role="option" data-code="+227" value="NE" >${'Niger' @i18n} &#x202A;(+227)&#x202C;</option>
+                                    <option role="option" data-code="+234" value="NG" >${'Nigeria' @i18n} &#x202A;(+234)&#x202C;</option>
+                                    <option role="option" data-code="+683" value="NU" >${'Niue' @i18n} &#x202A;(+683)&#x202C;</option>
+                                    <option role="option" data-code="+850" value="KP" >${'North Korea' @i18n} &#x202A;(+850)&#x202C;</option>
+                                    <option role="option" data-code="+1" value="MP" >${'Northern Mariana Islands' @i18n} &#x202A;(+1)&#x202C;</option>
+                                    <option role="option" data-code="+47" value="NO" >${'Norway' @i18n} &#x202A;(+47)&#x202C;</option>
+                                    <option role="option" data-code="+968" value="OM" >${'Oman' @i18n} &#x202A;(+968)&#x202C;</option>
+                                    <option role="option" data-code="+92" value="PK" >${'Pakistan' @i18n} &#x202A;(+92)&#x202C;</option>
+                                    <option role="option" data-code="+680" value="PW" >${'Palau' @i18n} &#x202A;(+680)&#x202C;</option>
+                                    <option role="option" data-code="+970" value="PS" >${'Palestine' @i18n} &#x202A;(+970)&#x202C;</option>
+                                    <option role="option" data-code="+507" value="PA" >${'Panama' @i18n} &#x202A;(+507)&#x202C;</option>
+                                    <option role="option" data-code="+675" value="PG" >${'Papua New Guinea' @i18n} &#x202A;(+675)&#x202C;</option>
+                                    <option role="option" data-code="+595" value="PY" >${'Paraguay' @i18n} &#x202A;(+595)&#x202C;</option>
+                                    <option role="option" data-code="+51" value="PE" >${'Peru' @i18n} &#x202A;(+51)&#x202C;</option>
+                                    <option role="option" data-code="+63" value="PH" >${'Philippines' @i18n} &#x202A;(+63)&#x202C;</option>
+                                    <option role="option" data-code="+48" value="PL" >${'Poland' @i18n} &#x202A;(+48)&#x202C;</option>
+                                    <option role="option" data-code="+351" value="PT" >${'Portugal' @i18n} &#x202A;(+351)&#x202C;</option>
+                                    <option role="option" data-code="+1" value="PR" >${'Puerto Rico' @i18n} &#x202A;(+1)&#x202C;</option>
+                                    <option role="option" data-code="+974" value="QA" >${'Qatar' @i18n} &#x202A;(+974)&#x202C;</option>
+                                    <option role="option" data-code="+262" value="RE" >${'Reunion' @i18n} &#x202A;(+262)&#x202C;</option>
+                                    <option role="option" data-code="+40" value="RO" >${'Romania' @i18n} &#x202A;(+40)&#x202C;</option>
+                                    <option role="option" data-code="+7" value="RU" >${'Russia' @i18n} &#x202A;(+7)&#x202C;</option>
+                                    <option role="option" data-code="+250" value="RW" >${'Rwanda' @i18n} &#x202A;(+250)&#x202C;</option>
+                                    <option role="option" data-code="+290" value="SH" >${'Saint Helena' @i18n} &#x202A;(+290)&#x202C;</option>
+                                    <option role="option" data-code="+1" value="KN" >${'Saint Kitts and Nevis' @i18n} &#x202A;(+1)&#x202C;</option>
+                                    <option role="option" data-code="+1" value="LC" >${'Saint Lucia' @i18n} &#x202A;(+1)&#x202C;</option>
+                                    <option role="option" data-code="+508" value="PM" >${'Saint Pierre and Miquelon' @i18n} &#x202A;(+508)&#x202C;</option>
+                                    <option role="option" data-code="+1" value="VC" >${'Saint Vincent and Grenadines' @i18n} &#x202A;(+1)&#x202C;</option>
+                                    <option role="option" data-code="+685" value="WS" >${'Samoa' @i18n} &#x202A;(+685)&#x202C;</option>
+                                    <option role="option" data-code="+378" value="SM" >${'San Marino' @i18n} &#x202A;(+378)&#x202C;</option>
+                                    <option role="option" data-code="+239" value="ST" >${'Sao Tome and Principe' @i18n} &#x202A;(+239)&#x202C;</option>
+                                    <option role="option" data-code="+966" value="SA" >${'Saudi Arabia' @i18n} &#x202A;(+966)&#x202C;</option>
+                                    <option role="option" data-code="+221" value="SN" >${'Senegal' @i18n} &#x202A;(+221)&#x202C;</option>
+                                    <option role="option" data-code="+381" value="RS" >${'Serbia' @i18n} &#x202A;(+381)&#x202C;</option>
+                                    <option role="option" data-code="+248" value="SC" >${'Seychelles' @i18n} &#x202A;(+248)&#x202C;</option>
+                                    <option role="option" data-code="+232" value="SL" >${'Sierra Leone' @i18n} &#x202A;(+232)&#x202C;</option>
+                                    <option role="option" data-code="+65" value="SG" >${'Singapore' @i18n} &#x202A;(+65)&#x202C;</option>
+                                    <option role="option" data-code="+421" value="SK" >${'Slovakia' @i18n} &#x202A;(+421)&#x202C;</option>
+                                    <option role="option" data-code="+386" value="SI" >${'Slovenia' @i18n} &#x202A;(+386)&#x202C;</option>
+                                    <option role="option" data-code="+677" value="SB" >${'Solomon Islands' @i18n} &#x202A;(+677)&#x202C;</option>
+                                    <option role="option" data-code="+252" value="SO" >${'Somalia' @i18n} &#x202A;(+252)&#x202C;</option>
+                                    <option role="option" data-code="+27" value="ZA" >${'South Africa' @i18n} &#x202A;(+27)&#x202C;</option>
+                                    <option role="option" data-code="+82" value="KR" >${'South Korea' @i18n} &#x202A;(+82)&#x202C;</option>
+                                    <option role="option" data-code="+34" value="ES" >${'Spain' @i18n} &#x202A;(+34)&#x202C;</option>
+                                    <option role="option" data-code="+94" value="LK" >${'Sri Lanka' @i18n} &#x202A;(+94)&#x202C;</option>
+                                    <option role="option" data-code="+249" value="SD" >${'Sudan' @i18n} &#x202A;(+249)&#x202C;</option>
+                                    <option role="option" data-code="+597" value="SR" >${'Suriname' @i18n} &#x202A;(+597)&#x202C;</option>
+                                    <option role="option" data-code="+268" value="SZ" >${'Swaziland' @i18n} &#x202A;(+268)&#x202C;</option>
+                                    <option role="option" data-code="+46" value="SE" >${'Sweden' @i18n} &#x202A;(+46)&#x202C;</option>
+                                    <option role="option" data-code="+41" value="CH" >${'Switzerland' @i18n} &#x202A;(+41)&#x202C;</option>
+                                    <option role="option" data-code="+963" value="SY" >${'Syria' @i18n} &#x202A;(+963)&#x202C;</option>
+                                    <option role="option" data-code="+886" value="TW" >${'Taiwan' @i18n} &#x202A;(+886)&#x202C;</option>
+                                    <option role="option" data-code="+992" value="TJ" >${'Tajikistan' @i18n} &#x202A;(+992)&#x202C;</option>
+                                    <option role="option" data-code="+255" value="TZ" >${'Tanzania' @i18n} &#x202A;(+255)&#x202C;</option>
+                                    <option role="option" data-code="+66" value="TH" >${'Thailand' @i18n} &#x202A;(+66)&#x202C;</option>
+                                    <option role="option" data-code="+228" value="TG" >${'Togo' @i18n} &#x202A;(+228)&#x202C;</option>
+                                    <option role="option" data-code="+690" value="TK" >${'Tokelau' @i18n} &#x202A;(+690)&#x202C;</option>
+                                    <option role="option" data-code="+676" value="TO" >${'Tonga' @i18n} &#x202A;(+676)&#x202C;</option>
+                                    <option role="option" data-code="+1" value="TT" >${'Trinidad and Tobago' @i18n} &#x202A;(+1)&#x202C;</option>
+                                    <option role="option" data-code="+216" value="TN" >${'Tunisia' @i18n} &#x202A;(+216)&#x202C;</option>
+                                    <option role="option" data-code="+90" value="TR" >${'Turkey' @i18n} &#x202A;(+90)&#x202C;</option>
+                                    <option role="option" data-code="+993" value="TM" >${'Turkmenistan' @i18n} &#x202A;(+993)&#x202C;</option>
+                                    <option role="option" data-code="+1" value="TC" >${'Turks and Caicos Islands' @i18n} &#x202A;(+1)&#x202C;</option>
+                                    <option role="option" data-code="+688" value="TV" >${'Tuvalu' @i18n} &#x202A;(+688)&#x202C;</option>
+                                    <option role="option" data-code="+1" value="VI" >${'US Virgin Islands' @i18n} &#x202A;(+1)&#x202C;</option>
+                                    <option role="option" data-code="+256" value="UG" >${'Uganda' @i18n} &#x202A;(+256)&#x202C;</option>
+                                    <option role="option" data-code="+380" value="UA" >${'Ukraine' @i18n} &#x202A;(+380)&#x202C;</option>
+                                    <option role="option" data-code="+971" value="AE" >${'United Arab Emirates' @i18n} &#x202A;(+971)&#x202C;</option>
+                                    <option role="option" data-code="+44" value="GB" >${'United Kingdom' @i18n} &#x202A;(+44)&#x202C;</option>
+                                    <option  selected role="option" data-code="+1" value="US" data-format="(XXX) XXX-XXXX" >${'United States' @i18n} &#x202A;(+1)&#x202C;</option>
+                                    <option role="option" data-code="+598" value="UY" >${'Uruguay' @i18n} &#x202A;(+598)&#x202C;</option>
+                                    <option role="option" data-code="+998" value="UZ" >${'Uzbekistan' @i18n} &#x202A;(+998)&#x202C;</option>
+                                    <option role="option" data-code="+678" value="VU" >${'Vanuatu' @i18n} &#x202A;(+678)&#x202C;</option>
+                                    <option role="option" data-code="+379" value="VA" >${'Vatican City' @i18n} &#x202A;(+379)&#x202C;</option>
+                                    <option role="option" data-code="+58" value="VE" >${'Venezuela' @i18n} &#x202A;(+58)&#x202C;</option>
+                                    <option role="option" data-code="+84" value="VN" >${'Vietnam' @i18n} &#x202A;(+84)&#x202C;</option>
+                                    <option role="option" data-code="+681" value="WF" >${'Wallis and Futuna' @i18n} &#x202A;(+681)&#x202C;</option>
+                                    <option role="option" data-code="+967" value="YE" >${'Yemen' @i18n} &#x202A;(+967)&#x202C;</option>
+                                    <option role="option" data-code="+260" value="ZM" >${'Zambia' @i18n} &#x202A;(+260)&#x202C;</option>
+                                    <option role="option" data-code="+263" value="ZW" >${'Zimbabwe' @i18n} &#x202A;(+263)&#x202C;</option>
+                                </select>
+                            </div>
+                            <div class="help-block api-error"></div>
+                        </div>
+                    </sly>
+                    <sly data-sly-test="${properties.phoneNumberLabel!=null}">
+                        <div class="form-group col-md-4">
+                            <label class="input_label" for="contactNumber">${properties.phoneNumberLabel @i18n}</label>
+                            <input class="input_field" type="tel" id="contactNumber" placeholder="${properties.phoneNumberFillText}" name="phone" maxlength="10"/>
+                            <div class="help-block form-error">${properties.contactNumValidationMsg @i18n}</div>
+                        </div>
+                    </sly>
+                </fieldset>
+            </div>
+        </sly>
+
+        <sly data-sly-test="${properties.commentsLabel!=null}">
+            <div class="form-group col-xs-12">
+                <label class="input_label" for="comment">${properties.commentsLabel @i18n}</label>
+                <textarea class="form-control" rows="5" id="${properties.passCommentToApi ? 'comment':''}" maxlength="500"></textarea>
+                <p class="small_txt1 text-right">${'Max characters (500)' @i18n}</p>
+            </div>
+        </sly>
+        <p class="sr-only" id="email_note">Email notifications</p>
+        <sly data-sly-test="${properties.termandconditionsTextMandatory == 'true'}">
+            <sly data-sly-test="${properties.termsConditionsText!=null}">
+                <div aria-labelledby="email_note" role="group" class="form-row checkbox terms">
+                    <label>
+                        <input required type="checkbox" value="" id="termsandconditions">
+                        <span class="cr"></span>
+                        <!-- <span class="sr-only"> opens a new window</span> -->
+                        <span class="terms" data-href-target="opens a new window">${properties.termsConditionsText @i18n, context='html'}</span>
+                    </label>
+                    <div class="help-block form-error empty-field">${properties.termsandconditionsEmptyValidationMsg || 'Please check this box if you want to proceed' @i18n}</div>
+                    <div class="help-block api-error"></div>
+                </div>
+            </sly>
+        </sly>
+        <sly data-sly-test="${properties.checkBoxText!=null}">
+            <div aria-labelledby="email_note" role="group" class="form-row checkbox terms">
+                <label>
+                    <sly data-sly-test="${properties.makeNoticeTextMandatory == 'false'}">
+                        <input type="checkbox" value="" id="agreeTerms" data-subscription-id="${properties.primarySubscriptionId}"></sly>
+                    <sly data-sly-test="${properties.makeNoticeTextMandatory == 'true'}">
+                        <input required type="checkbox" value="" id="agreeTerms" data-subscription-id="${properties.primarySubscriptionId}"></sly>
+                    <span class="cr"></span>
+                    <!-- <span class="sr-only"> opens a new window</span> -->
+                    <span class="terms" data-href-target="opens a new window">${properties.checkBoxText @i18n, context='html'}</span>
+                </label>
+                <div class="help-block form-error empty-field">${properties.noticeTextEmptyValidationMsg || 'Please check this box if you want to proceed' @i18n}</div>
+                <div class="help-block api-error"></div>
+            </div>
+        </sly>
+        <sly data-sly-test="${properties.checkBoxForSecondTerm!=null}">
+            <div aria-labelledby="email_note" role="group" class="form-row checkbox terms">
+                <label>
+                    <sly data-sly-use.customerInfo="com.mattel.global.core.model.CustomerInfoModel">
+                        <sly data-sly-test="${properties.secondTermTextMandatory == 'false'}">
+                            <input type="checkbox" value="" id="agreeEmailNotifcation" data-subscription-id="${customerInfo.secondarySubscriptionId}">
+                        </sly>
+                        <sly data-sly-test="${properties.secondTermTextMandatory == 'true'}">
+                            <input required type="checkbox" value="" id="agreeEmailNotifcation" data-subscription-id="${customerInfo.secondarySubscriptionId}">
+                        </sly>
+                        <sly data-sly-test="${properties.secondTermTextMandatory == null}">
+                            <input required type="checkbox" value="" id="agreeEmailNotifcation" data-subscription-id="${customerInfo.secondarySubscriptionId}">
+                        </sly>
+                    </sly>
+                    <span class="cr"></span>
+                    <span class="terms" data-href-target="opens a new window">
+                           ${properties.checkBoxForSecondTerm @i18n, context='html'}
+                    </span>
+                </label>
+                <div class="help-block form-error empty-field">${properties.secondTermTextEmptyValidationMsg || 'Please check this box if you want to proceed' @i18n}</div>
+                <div class="help-block api-error"></div>
+            </div>
+        </sly>
+
+        <div class="form-row form-action-btn" data-content="Please try again.">
+            <sly data-sly-test="${properties.signUpButton != null}">
+                <div class="form-submit">
+                    <input type="submit" class="btn theme-btn" value="${properties.signUpButton @i18n}" id="crm-form-submit" data-action="${properties.successMsgPath}">
+                </div>
+            </sly>
+            <sly data-sly-test="${properties.cancelButton != null}">
+                <div class="form-reset">
+                    <input type="reset" class="btn" value="${properties.cancelButton @i18n}" id="crm-form-reset">
+                </div>
+            </sly>
+        </div>
+    </form>
+
+    <input type="hidden" value="${properties.nosubscriptionId}" id="nosubscriptionId">
+    <input type="hidden" value="${properties.sourceId}" id="formSourceId">
+    <input type="hidden" value="${properties.countryCode}" id="formCountryCode">
+    <input type="hidden" value="${properties.locale}" id="formLocale">
+    <input type="hidden" value="${currentPage.getLanguage.getLanguage}" id="pageLocale">
+    <sly data-sly-use.apiBaseUrlObj="com.mattel.global.core.model.CustomerInfoModel">
+        <input type="hidden" id="formApiBaseUrl" class="cm-api-config" data-api-url="${apiBaseUrlObj.APIBaseURL}" data-api-key="${apiBaseUrlObj.CrmformApiKey}"/>
+    </sly>
+    <sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
+		<sly data-sly-call="${clientlib.js @ categories='crm.customerInfo'}"/>
+    </sly>
+</div>

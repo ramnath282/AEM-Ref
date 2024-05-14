@@ -1,0 +1,29 @@
+<sly data-sly-test="${wcmmode.edit}">${'Social Share Tile' @i18n}</sly>
+<sly data-sly-use.socialShareTemplate="com.mattel.ag.explore.core.model.SocialShareTemplateModel">
+    <img src="${properties.socialShareTilePath}" alt="${properties.alt}">
+    <div class="tile-content">
+        <sly data-sly-test="${properties.url != null && properties.text != null}">
+            <sly data-sly-test="${properties.openUrlIn =='sameWindow'}">
+                <a href="${properties.url}"><blockquote class="tile-name tile-anchor">${properties.text @i18n}</blockquote></a>
+            </sly>
+            <sly data-sly-test=" ${properties.openUrlIn=='tabWindow' } ">
+                <a target="_blank" href="${properties.url}"><blockquote class="tile-name tile-anchor">${properties.text @i18n}</blockquote></a>
+            </sly>
+            <sly data-sly-test="${properties.openUrlIn =='newWindow'}">
+                <a class="cursor-pointer" data-url="${properties.url}" onclick="window.open(this.dataset.url,'AG','width=500, height=500');"><blockquote class="tile-name tile-anchor">${properties.text @i18n}</blockquote></a>
+            </sly>
+        </sly>
+        <sly data-sly-test="${properties.url == null}">
+            <blockquote class="tile-name tile-anchor">${properties.text @i18n}</blockquote>
+        </sly>
+
+        <ul class="social-icons">
+            <li>
+                <a data-sly-test="${properties.hidefacebook=='false'}" class="facebook" aria-label="facebook opens a new window" target="_blank" href="javascript:void(0)" data-title="${currentPage.title}" data-description="${pageProperties.articleDescription}" data-media="${properties.socialShareTilePath}" data-url="${currentPage.getPath @extension='html'}" data-link-attr="facebook"></a>
+            </li>
+            <li>
+                <a data-sly-test="${properties.hidePintrest=='false'}" class="pinterest" data-tracking-social="pinterest" data-link-attr="Pinterest"  aria-label="pinterest opens a new window" data-toggle="modal" data-target="#exitPageModal" href="https://www.pinterest.com/agofficial" data-url="${currentPage.getPath}" data-title="${currentPage.getTitle}" data-description="${pageProperties.articleDescription} " data-media="${properties.socialShareTilePath}"> </a>
+            </li>
+        </ul>
+    </div>
+</sly>

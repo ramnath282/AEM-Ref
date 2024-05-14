@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Image/Video and Text with CTA button"
+    sling:resourceType="cq/gui/components/authoring/dialog"
+    height="{Long}500"
+    width="{Long}700">
+    <content
+        granite:class="play-cmp-list--editor"
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <mainsection
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Module Background Image"
+                        sling:resourceType="granite/ui/components/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <backgroundoption
+                                granite:class="cq-dialog-dropdown-showhide"
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                fieldLabel="Main Section Background Option"
+                                name="./imageTextBackOption">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <image
+                                        jcr:primaryType="nt:unstructured"
+                                        text="Image"
+                                        value="image"/>
+                                    <color
+                                        jcr:primaryType="nt:unstructured"
+                                        text="Color"
+                                        value="color"/>
+                                </items>
+                            </backgroundoption>
+                            <backgroundColour
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/colorfield"
+                                fieldLabel="Main Section Background Color"
+                                name="./imageTextBackgroundColor"/>
+                            <backgroundImage
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                allowUpload="{Boolean}false"
+                                autoStart="{Boolean}false"
+                                class="cq-droptarget"
+                                fieldLabel="Main Section Background Image"
+                                fileReferenceParameter="./imageTextFileReferenceBgImg"
+                                mimeTypes="[image/gif,image/jpeg,image/png,image/webp,image/tiff]"
+                                multiple="{Boolean}false"
+                                name="./imageTextBackgroundImage"
+                                uploadUrl="${suffix.path}"
+                                useHTML5="{Boolean}true"/>
+                            <backgroundAlt
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Textual alternative of the meaning or function of the image, for visually impaired readers."
+                                fieldLabel="Main Section BG Image Alternative Text"
+                                name="./imageTextBackgroundAlt"
+                                wrapperClass="cmp-image--editor-alt"/>
+                            <sectionTitle
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Main Section Title"
+                                name="./mainSectionTitle"
+                                useFixedInlineToolbar="{Boolean}true"/>
+                        </items>
+                    </mainsection>
+                    <imagesection
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Image Section"
+                        sling:resourceType="granite/ui/components/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <backgroundoption
+                                granite:class="cq-dialog-dropdown-showhide"
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                fieldLabel="Image Section Background Option"
+                                name="./imageBackOption">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <image
+                                        jcr:primaryType="nt:unstructured"
+                                        text="Image"
+                                        value="image"/>
+                                    <color
+                                        jcr:primaryType="nt:unstructured"
+                                        text="Color"
+                                        value="color"/>
+                                </items>
+                            </backgroundoption>
+                            <backgroundColour
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/colorfield"
+                                fieldLabel="Image Section Background Color"
+                                name="./imageBackgroundColor"/>
+                            <backgroundImage
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                allowUpload="{Boolean}false"
+                                autoStart="{Boolean}false"
+                                class="cq-droptarget"
+                                fieldLabel="Image Section Background Image"
+                                fileReferenceParameter="./imageFileReferenceBgImg"
+                                mimeTypes="[image/gif,image/jpeg,image/png,image/webp,image/tiff]"
+                                multiple="{Boolean}false"
+                                name="./imageBackgroundImage"
+                                uploadUrl="${suffix.path}"
+                                useHTML5="{Boolean}true"/>
+                            <backgroundAlt
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Textual alternative of the meaning or function of the image, for visually impaired readers."
+                                fieldLabel="Image Section BG Image Alternative Text"
+                                name="./imageBackgroundAlt"
+                                wrapperClass="cmp-image--editor-alt"/>
+                            <mainImageDesktop
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                allowUpload="{Boolean}false"
+                                autoStart="{Boolean}false"
+                                class="cq-droptarget"
+                                fieldLabel="Main Image for Desktop"
+                                fileReferenceParameter="./imageFileReferenceMainImageDesktop"
+                                mimeTypes="[image/gif,image/jpeg,image/png,image/webp,image/tiff]"
+                                multiple="{Boolean}false"
+                                name="./mainImageDesktop"
+                                uploadUrl="${suffix.path}"
+                                useHTML5="{Boolean}true"/>
+                            <mainImageMobile
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                allowUpload="{Boolean}false"
+                                autoStart="{Boolean}false"
+                                class="cq-droptarget"
+                                fieldLabel="Main Image for Mobile"
+                                fileReferenceParameter="./imageFileReferenceMainImageMobile"
+                                mimeTypes="[image/gif,image/jpeg,image/png,image/webp,image/tiff]"
+                                multiple="{Boolean}false"
+                                name="./mainImageMobile"
+                                uploadUrl="${suffix.path}"
+                                useHTML5="{Boolean}true"/>
+                            <mainImageDesktopAltText
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Alternative Text for Main Image - Desktop"
+                                name="./mainImageDesktopAlt"
+                                wrapperClass="cmp-image--editor-alt"/>
+                            <mainImageMobileAltText
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Alternative Text for Main Image - Mobile"
+                                name="./mainImageMobileAlt"
+                                wrapperClass="cmp-image--editor-alt"/>
+                            <imageSectionAlignment
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                fieldLabel="Image Section Alignment"
+                                name="./imageSectionAlignment">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <left
+                                        jcr:primaryType="nt:unstructured"
+                                        text="left"
+                                        value="left"/>
+                                    <right
+                                        jcr:primaryType="nt:unstructured"
+                                        text="right"
+                                        value="right"/>
+                                </items>
+                            </imageSectionAlignment>
+                            <imageTextWidthRatio
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                fieldLabel="Image and Text Width Ratio"
+                                name="./imageTextWidthRatio">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <media-70-30
+                                        jcr:primaryType="nt:unstructured"
+                                        text="media-70-30"
+                                        value="media-70-30"/>
+                                    <media-50-50
+                                        jcr:primaryType="nt:unstructured"
+                                        text="media-50-50"
+                                        value="media-50-50"/>
+                                </items>
+                            </imageTextWidthRatio>
+                        </items>
+                    </imagesection>
+                    <textsection
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Text Section"
+                        sling:resourceType="granite/ui/components/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <backgroundoption
+                                granite:class="cq-dialog-dropdown-showhide"
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                fieldLabel="Text Section Background Option"
+                                name="./textBackOption">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <image
+                                        jcr:primaryType="nt:unstructured"
+                                        text="Image"
+                                        value="image"/>
+                                    <color
+                                        jcr:primaryType="nt:unstructured"
+                                        text="Color"
+                                        value="color"/>
+                                </items>
+                            </backgroundoption>
+                            <backgroundColour
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/colorfield"
+                                fieldLabel="Text Section Background Color"
+                                name="./textBackgroundColor"/>
+                            <backgroundImage
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                allowUpload="{Boolean}false"
+                                autoStart="{Boolean}false"
+                                class="cq-droptarget"
+                                fieldLabel="Text Section Background Image"
+                                fileReferenceParameter="./textFileReferenceBgImg"
+                                mimeTypes="[image/gif,image/jpeg,image/png,image/webp,image/tiff]"
+                                multiple="{Boolean}false"
+                                name="./textBackgroundImage"
+                                uploadUrl="${suffix.path}"
+                                useHTML5="{Boolean}true"/>
+                            <backgroundAlt
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Textual alternative of the meaning or function of the image, for visually impaired readers."
+                                fieldLabel="Text Section BG Image Alternative Text"
+                                name="./textBackgroundAlt"
+                                wrapperClass="cmp-image--editor-alt"/>
+                            <alwaysEnglishForTitle
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription=" Analytics Field to track title in English Lang"
+                                fieldLabel="Adobe Tracking Name"
+                                name="./alwaysEnglishForTitle"/>
+                            <title
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Title"
+                                name="./textSectionTitle"
+                                useFixedInlineToolbar="{Boolean}true"/>
+                            <brandLogo
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                allowUpload="{Boolean}false"
+                                autoStart="{Boolean}false"
+                                class="cq-droptarget"
+                                fieldLabel="Brand Logo"
+                                fileReferenceParameter="./brandLogoImg"
+                                mimeTypes="[image/gif,image/jpeg,image/png,image/webp,image/tiff]"
+                                multiple="{Boolean}false"
+                                name="./brandLogoImage"
+                                uploadUrl="${suffix.path}"
+                                useHTML5="{Boolean}true"/>
+                            <brandLogoAlt
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Textual alternative of the meaning or function of the image, for visually impaired readers."
+                                fieldLabel="Text Section BrandLogo Image Alternative Text"
+                                name="./brandLogoAlt"
+                                wrapperClass="cmp-image--editor-alt"/>
+                            <description
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+                                fieldLabel="Description"
+                                name="./textSectionDescription"
+                                useFixedInlineToolbar="{Boolean}true">
+                                <htmlRules
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceSuperType="mattel/play/components/content/playRtePlugins/htmlRules"/>
+                                <rtePlugins
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceSuperType="mattel/play/components/content/playRtePlugins/rtePlugins"/>
+                                <uiSettings
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceSuperType="mattel/play/components/content/playRtePlugins/uiSettings"/>
+                            </description>
+                        </items>
+                    </textsection>
+                    <otherconfigurations
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="CTA"
+                        sling:resourceType="granite/ui/components/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <englishfield
+                                cq:xfVariantType="web"
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Analytics filed for english to track CTA lable in English"
+                                fieldLabel="Adobe Tracking Name"
+                                name="./imageTextAnalticsText"
+                                required="{Boolean}true"
+                                useFixedInlineToolbar="{Boolean}true"/>
+                            <aeLocationName
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Location Name for Analytics (Always English )"
+                                fieldLabel="Location Name for Adobe Tracking"
+                                name="./locationName"/>
+                            <ctabuttontext
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="CTA button Text"
+                                fieldLabel="CTA Button Text"
+                                name="./imageTextCtaButtonText"/>
+                            <scrollToProductGrid
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/foundation/form/checkbox"
+                                fieldDescription="Button will scroll to product grid(Applicalble only on FP PLPs)"
+                                name="./enableScroll"
+                                text="Enable Scroll to Product Grid on CTA"
+                                uncheckedValue="{Boolean}false"
+                                value="{Boolean}true"/>
+                            <catbuttonlink
+                                cq:showOnCreate="{Boolean}true"
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="/libs/granite/ui/components/coral/foundation/form/pathbrowser"
+                                fieldLabel="CTA Button Link"
+                                name="./imageTextCtaButtonLink"
+                                rootPath="/content"/>
+                            <backgroundoption
+                                granite:class="cq-dialog-dropdown-showhide"
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                fieldLabel="CTA opening option"
+                                name="./imageTextCtaOption">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <samewindow
+                                        jcr:primaryType="nt:unstructured"
+                                        text="same window"
+                                        value="samewindow"/>
+                                    <newtab
+                                        jcr:primaryType="nt:unstructured"
+                                        text="new tab"
+                                        value="newtab"/>
+                                    <newwindow
+                                        jcr:primaryType="nt:unstructured"
+                                        text="new window"
+                                        value="newwindow"/>
+                                </items>
+                            </backgroundoption>
+                        </items>
+                    </otherconfigurations>
+                    <linkToNavigation
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Link To Navigation"
+                        sling:resourceType="granite/ui/components/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <linkToNavigation
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/foundation/form/checkbox"
+                                fieldDescription="Is this section to be linked to Navigation"
+                                name="./linkNavigationCheck"
+                                text="Link To Navigation?"
+                                uncheckedValue="{Boolean}false"
+                                value="{Boolean}true"/>
+                            <NavigationOptions
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                fieldLabel="Navigation Mapping"
+                                name="./linkNavOption">
+                                <datasource
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="/bin/homepagedropdown"/>
+                            </NavigationOptions>
+                        </items>
+                    </linkToNavigation>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>

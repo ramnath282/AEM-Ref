@@ -1,0 +1,893 @@
+.fp-cm-emailsubscription-page {
+    @include font-properties($maax,$localFontVerdana);
+    font-weight: 400;
+
+    .aem-GridColumn {
+        padding: 0px;
+    }
+
+    .cmEmailSubscription {
+        #crm-form {
+            >.col-md-4 {
+                width: 50%;
+
+                @media #{$small-down} {
+                    width: 100%;
+                }
+
+            }
+        }
+    }
+
+    .form-group.required {
+        label {
+            &:after {
+                font-family: $fontAwesome !important;
+                color: #000000;
+                content: "\f069" !important;
+                font-size: .57143em !important;
+                vertical-align: top;
+                padding-left: 2px;
+
+                @media #{$small-down} {
+                    font-size: .37143em !important;
+                }
+            }
+        }
+    }
+
+    .btn-view-all {
+        background-color: #147bd1 !important;
+        height: 54px;
+        min-width: 187px;
+        line-height: 26px;
+        font-size: 16px;
+        @include font-properties($maaxMedium,$localFontVerdana);
+        font-weight: 500;
+
+
+        @media #{$medium-down} {
+            height: 46px;
+            min-width: 157px;
+            line-height: inherit;
+            margin: 24px 0 0;
+            font-size: 16px;
+
+        }
+
+        &:hover {
+            background-color: #e51c06 !important;
+        }
+    }
+
+    .page-view {
+        background-size: cover !important;
+    }
+
+    .play-page-title {
+        &.cm-email-conf {
+            min-height: 831px;
+
+            @media #{$medium-down} {
+                min-height: auto;
+            }
+
+            .cta-btn {
+                text-align: left;
+            }
+        }
+
+        &.text-center {
+            .cta-btn {
+                text-align: center;
+            }
+        }
+
+        &.text-right {
+            .cta-btn {
+                text-align: right;
+            }
+        }
+
+        width: 750px;
+        margin: 0 auto;
+        background: $white;
+        border:0;
+        padding:17px 50px 0 30px;
+
+        @media #{$medium-down} {
+            padding: 0 20px 20px 20px;
+            width: inherit;
+        }
+
+        div {
+            h1 {
+                text-align: left;
+                font-size: 36px;
+                margin: 0 0 20px 0;
+                line-height: 36px;
+                font-weight: normal;
+                letter-spacing: .5px;
+                @include font-properties($letsBeGlyphs,$localFontInfo);
+                color: $black;
+
+                @media #{$medium-down} {
+                    font-size: 22px;
+                    margin-top: 20px;
+                    padding-top: 0;
+                    line-height: 26px;
+                }
+
+                @media #{$small-down} {
+                    font-size: 22px;
+                    margin: 26px 0 10px 0;
+
+                }
+            }
+
+            p {
+                @include font-properties($maax,$localFontVerdana);
+                font-size: 18px;
+                color: #000;
+                text-align: left;
+                margin: 0;
+                line-height: 26px;
+
+                @media #{$medium-down} {
+                    font-size: 16px;
+                    line-height: 26px;
+                }
+
+                @media #{$small-down} {
+                    font-size: 16px;
+                    line-height: 26px;
+                }
+            }
+        }
+
+        ul {
+            text-align: left;
+            margin-left: 11px;
+
+            li {
+                list-style-type: none;
+                font-size: 18px;
+                @include font-properties($maax,$localFontVerdana);
+                font-weight: 400;
+                margin-top: 5px;
+                line-height: 32px;
+                position: relative;
+                color: $black;
+
+                @media #{$medium-down} {
+                    font-size: 16px;
+                    line-height: 26px;
+                }
+
+                @media #{$small-down} {
+                    font-size: 16px;
+                    line-height: 26px;
+                }
+
+                &::before {
+                    position: absolute;
+                    content: "";
+                    width: 5px;
+                    height: 5px;
+                    background: #000;
+                    border-radius: 50%;
+                    left: -10px;
+                    top: 11px;
+                }
+
+            }
+        }
+    }
+
+    .form-component {
+        width: 750px;
+        padding: 20px 50px 23px 30px;
+
+        @media #{$medium-down} {
+            padding: 0 20px;
+            width: 100%;
+        }
+
+        @media #{$small-down} {
+            padding: 0 20px;
+            width: 100%;
+        }
+
+        margin: 0 auto;
+
+        h2 {
+            color: #0078c8;
+            font-size: em(28);
+            padding: em(2) 0;
+        }
+
+        #crm-form {
+            .has-error {
+
+                .form-error,
+                .api-error {
+                    color: #E51C06;
+                    @include font-properties($maaxMedium,$localFontVerdana);
+                    font-size: 14px;
+                    font-weight: 500;
+                    font-style: italic;
+                    margin-top: 4px;
+                    clear: both;
+					float: left;
+					width: 100%;
+                    &:before {
+                        content: '';
+                        background: url($spriteImgPath) no-repeat -129px -48px;
+                        width: 18px;
+                        height: 20px;
+                        font-size: 14px;
+                        font-style: normal;
+                        line-height: 14px;
+                        display: block;
+                        margin-top: 4px;
+                        margin-right: 5px;
+                        float: left;
+
+                    @media #{$medium-down} {
+                                        margin-top: 0px;
+                                    }
+                    }
+                }
+
+                .input_field {
+                    border: 1px solid #e62605 !important;
+
+                    &::-webkit-input-placeholder {
+                        @include font-properties($maax,$localFontVerdana);
+                        font-size: 14px;
+                        color: #6A6A6A;
+
+                    }
+                }
+
+            }
+
+            [class*="col-"] {
+                @media #{$small-down} {
+                    padding: 0 !important;
+                }
+            }
+
+            fieldset:not(.sub-fieldset) {
+                legend {
+                    margin-bottom: 10px !important;
+                    margin-left: 0 !important;
+
+                    @media #{$medium-down} {
+                        margin-bottom: 10px !important;
+                    }
+                }
+            }
+
+            fieldset:not(:first-child) {
+
+                legend:not(.input_label),
+                .title-info {
+                    display: none;
+                }
+            }
+
+            label {
+                &.input_label {
+                    @include font-properties($maaxMedium,$localFontVerdana);
+                    color: $black;
+                    font-size: 14px;
+                    line-height: 22px;
+                    margin-bottom: 0.3em;
+                    width: 100%;
+                    font-weight: 500;
+
+                    @media #{$medium-down} {
+                        min-height: inherit;
+                        font-size: 16px;
+                        line-height: 22px;
+                    }
+                }
+            }
+
+            .input_field {
+                background: transparent;
+                border: 1px solid #bfbfbf;
+                box-shadow: none;
+                font-size: 14px;
+                color: #000000;
+                width: 100% !important;
+
+                @media #{$small-down} {
+                    width: 100% !important;
+                }
+
+                &:focus,
+                &:active {
+                    /*outline: 1px solid #0078C8 !important;*/
+                    outline: none !important;
+                    border: 1px solid #0078c8 !important;
+                }
+            }
+
+            .child-dob {
+                .input_field {
+
+                    // width: 82.5% !important;
+                    @media #{$small-down} {
+                        width: 100% !important;
+                    }
+                }
+            }
+
+            .form-control[readonly] {
+                background: transparent;
+                border: 1px solid #bfbfbf;
+            }
+
+            .form-row {
+                &#child-details-wrapper {
+                    border-top: 2px solid #E5E0DC;
+                    padding: 19px 0;
+
+                    .form-group {
+                        margin-bottom: 1.3em !important;
+                        padding: 0 0 0 30px;
+			@media #{$small-down} {
+                            margin-bottom: 2.3em !important;
+                        }
+
+                        &.required {
+                            padding: 0;
+                        }
+
+                        .input-group {
+                            display: block;
+
+                            @media #{$small-down} {
+                                display: table;
+                                width: 100%;
+                            }
+                        }
+                    }
+
+                    fieldset:not(.sub-fieldset)>legend {
+                        @include font-properties($maaxMedium,$localFontVerdana);
+                        color: $black;
+                        font-size: 20px;
+                        line-height: 36px;
+                        font-weight: 500;
+
+                        @media #{$medium-down} {
+                            font-size: 18px;
+                            line-height: 32px;
+                        }
+
+                        @media #{$small-down} {
+                            font-size: 18px;
+                            line-height: 32px;
+                        }
+                    }
+                }
+            }
+
+            .title-description {
+                padding: 20px 0 0 0;
+
+                p {
+                    margin: 0;
+                    font-size: 12px;
+                    @include font-properties($maax,$localFontVerdana);
+                    color: rgb(0, 0, 0);
+                    letter-spacing: 0.14px;
+
+                    a {
+                        @include font-properties($maax,$localFontVerdana);
+                        text-decoration: underline;
+                        color: $black;
+
+                        &:hover {
+                            color: $lbk-red !important;
+                            text-decoration: none;
+                            border-bottom: 3px solid #E51C06;
+                        }
+
+                        span {
+                            @include font-properties($maax,$localFontVerdana);
+                        }
+
+                        span,
+                        u {
+                            @include font-properties($maax,$localFontVerdana);
+                            text-decoration: none;
+                        }
+                    }
+                }
+            }
+
+            .title-info {
+                p {
+                    margin-top: 0;
+                    font-size: 18px;
+                    line-height: 26px;
+                    @include font-properties($maax,$localFontVerdana);
+                    margin-bottom: 20px;
+
+                    @media #{$medium-down} {
+                        font-size: 16px;
+                        margin-bottom: 20px;
+                    }
+
+                    @media #{$small-down} {
+                        font-size: 16px;
+                        margin-bottom: 20px;
+                    }
+                }
+
+                span {
+                    @include font-properties($maax ,$localFontVerdana);
+                }
+            }
+
+            .form-group {
+                margin-bottom: 1.3em !important;
+                padding: 0 0 0 30px;
+
+                &.required {
+                    padding: 0;
+                }
+
+                .child-dob {
+                    @media #{$small-down} {
+                        display: block;
+                    }
+
+                    .close-icon {
+                        display: none;
+                    }
+
+                    label {
+                        margin-bottom: 0;
+                        display: block;
+                        position: relative;
+
+                        @media #{$small-down} {
+                            width: 100%;
+                        }
+
+                        &:after {
+                            display: none;
+                        }
+
+                        .input-group-addon {
+                            /*padding: 0.9em em(12);*/
+                            font-size: 14px;
+                            font-weight: 400;
+                            line-height: 1;
+                            color: #fff;
+                            text-align: center;
+                            background: url($spriteImgPath) no-repeat -184px -24px;
+                            width: 24px;
+                            height: 24px;
+                            border: none;
+                            border-radius: 0;
+                            position: absolute;
+                            top: 7px;
+                            right: 8px;
+
+                            @media #{$small-down} {
+                                padding: 0.85em em(12);
+                                display: inline-block;
+                                //width: 14%;
+                            }
+
+                            .fa-calendar {
+                                display: none
+                            }
+                        }
+
+                        .input-group {
+                            display: block;
+
+                        }
+
+                        .form-control {
+                            height: 38px;
+                            font-size: 14px;
+                            line-height: 19px;
+                            font-weight: 400;
+                        }
+
+                        .input_field {
+                            @media #{$small-down} {
+                                width: 100% !important;
+                            }
+                        }
+                    }
+                }
+
+                .sub-fieldset {
+                    legend {
+                        margin-bottom: 0.3em !important;
+
+                        &.input_label {
+                            @include font-properties($maaxMedium,$localFontVerdana);
+                            color: $black;
+                            font-size: 14px;
+                            font-weight: 500;
+                            line-height: 22px;
+
+                            @media #{$medium-down} {
+                                min-height: inherit;
+                                font-size: 16px;
+                                line-height: 22px;
+                            }
+
+                            @media #{$small-down} {
+                                min-height: inherit;
+                                font-size: 16px;
+                                line-height: 22px;
+                            }
+                        }
+                    }
+                }
+
+                .child-data {
+                    &.child-gender {
+
+                        //margin-top:22px;
+                        @media #{$small-down} {
+                            margin-top: 0px;
+                        }
+
+                    }
+
+                    label {
+                        span {
+                            line-height: 20px;
+                            padding-left: 7px;
+                            @include font-properties($maax,$localFontVerdana);
+                        }
+                    }
+                }
+            }
+
+            .add-child-option {
+                border-top: 2px solid #E5E0DC;
+
+                border-bottom: 2px solid #E5E0DC;
+                padding: 17px 0; //0.28571em 0;
+                margin: 0;
+
+                a {
+                    color: $black !important;
+                    font-size: 14px;
+                    font-weight: 700;
+
+                    &:before {
+                        background: url($spriteImgPath) no-repeat -52px -24px;
+                        content: "";
+                        width: 24px;
+                        height: 24px;
+                        margin-right: 0;
+                    }
+
+                    span {
+                        @include font-properties($maaxMedium,$localFontVerdana);
+                        color: #000000;
+                        font-size: 18px;
+                        line-height: 22px;
+                        margin-left: 7px;
+                        font-weight: 500;
+
+                        @media #{$medium-down} {
+                            font-size: 16px
+                        }
+
+                        @media #{$small-down} {
+                            font-size: 16px
+                        }
+                    }
+                }
+
+
+            }
+
+            input[type="radio"]+label {
+                background: #F8F6F5;
+                border: none;
+                padding: 7px 10px 5px 10px;
+                max-width: 203px;
+                width: 100%;
+                min-height: 40px;
+                font-size: 14px;
+                position: relative;
+
+                @media #{$small-down} {
+                    max-width: 100% !important;
+                }
+            }
+
+            input[type="radio"]+label:before {
+                background: url($spriteImgPath) no-repeat -66px -48px;
+                content: "";
+                width: 24px;
+                height: 24px;
+                margin-right: 12px !important;
+                left: 10px;
+                top: 9px;
+            }
+
+            input[type="radio"]:checked+label:before {
+                background: url($spriteImgPath) no-repeat -90px -48px;
+                content: "";
+                width: 24px;
+                height: 24px;
+            }
+
+
+            .checkbox {
+                &.terms {
+                    margin-top: 0;
+                    margin-bottom: 0;
+
+                    label {
+                        span {
+                            display: block;
+                            margin-top: 5px;
+
+                            @media #{$medium-down} {
+                                float: right;
+                                display: inline-block;
+                            }
+
+                            p {
+                                padding-left: 14px;
+                                font-size: 14px;
+                                @include font-properties($maax,$localFontVerdana);
+                                color: #000000;
+                                line-height: 22px;
+
+                                @media #{$medium-down} {
+                                    padding-left: 12px;
+                                }
+                            }
+                        }
+
+                        padding-left:0 !important;
+
+                        input[type="checkbox"] {
+                            opacity: 0;
+                            margin: 0 !important;
+                            width: 0 !important;
+                            height: 0 !important;
+                        }
+
+                        input[type="checkbox"]+span:after {
+                            position: absolute;
+                            content: '';
+                            width: 24px;
+                            height: 24px;
+                            background: url($spriteImgPath) no-repeat -194px -48px;
+                            left: 0;
+                            top: 4px;
+                        }
+
+                        input[type="checkbox"]:checked+span:before {
+                            position: absolute;
+                            content: "";
+                            text-align: center;
+                            background: url($spriteImgPath) no-repeat -218px -48px;
+                            width: 24px;
+                            height: 24px;
+                            left: 0;
+                            top: 4px;
+                        }
+                    }
+                }
+            }
+
+            .form-action-btn {
+                text-align: right;
+                padding: 0 !important;
+
+                @media #{$small-down} {
+                    text-align: left;
+                }
+
+                .form-submit {
+                    margin-top: 11px;
+                    margin-bottom: 0;
+
+                    @media #{$medium-down} {
+                        margin-top: 10px;
+                        margin-bottom: 10px;
+                    }
+
+                    .theme-btn {
+                        &#crm-form-submit {
+                            border-radius: 0 !important;
+                            margin: 0;
+                            min-width: 187px;
+                            height: 54px;
+                            font-size: 16px;
+                            @include font-properties($maaxMedium,$localFontVerdana);
+                            letter-spacing: 0.5px;
+                            padding: 0 !important;
+                            font-weight: 500;
+                            border: none;
+                            text-transform: inherit;
+                            background: #147BD1 !important;
+                            /*  @media #{$small-down}{
+                                margin-top: 0.65em !important;
+                             }*/
+
+                            &:hover {
+                                background-color: #e51c06 !important;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        &.data-loading {
+            float: none;
+        }
+    }
+
+    .edit-child-option {
+        margin: 0 0 24px 0 !important;
+
+        span {
+            display: inline-block;
+            @include font-properties($maax,$localFontVerdana);
+            font-size: 18px;
+            font-weight: 500;
+            color: #000006;
+            text-decoration: underline;
+
+            @media #{$medium-down} {
+                font-size: 16px;
+                line-height: 26px;
+            }
+
+            @media #{$small-down} {
+                font-size: 16px;
+                line-height: 26px;
+            }
+        }
+    }
+
+    #edit-child-option {
+        display: block;
+        margin: 0 0 24px 1em;
+
+        span {
+            display: inline-block;
+            @include font-properties($maax,$localFontVerdana);
+            font-size: 14px;
+            font-weight: 700;
+            color: #000006;
+            text-decoration: underline;
+        }
+    }
+
+    .email-bg-image {
+        img {
+            width: 100%;
+        }
+    }
+
+    a#edit-child-option:before {
+        padding-right: 10px;
+        vertical-align: middle;
+        color: #1a70d3 !important;
+        content: '\f068';
+        font-family: $fontAwesome;
+        font-size: 24px;
+        line-height: 24px;
+    }
+
+    .api-error {
+        color: #ea0129;
+        @include font-properties($maaxMedium,$localFontVerdana);
+        font-size: 14px;
+        font-weight: 700;
+        font-style: italic;
+    }
+
+    fieldset.child-details-fieldset {
+        border-top: 2px solid #E5E0DC;
+        padding-top: 25px;
+
+        &:first-child {
+            border-top: none;
+            padding-top: 0;
+        }
+    }
+	.form-component #crm-form .checkbox.terms .help-block {
+    padding-left: 11px !important;
+  }
+}
+
+.footer-wrapper {
+    .play-page-title {
+        width: 100% !important;
+        padding: 26px 0 12px 0;
+        border-top: 0px solid #e6e7e8;
+        border-bottom: 0px solid #e6e7e8;
+        background-color: rgba(247, 247, 247, 0);
+
+        @media #{$small-down} {
+            padding: 47px 28px 41px 28px;
+        }
+
+        div {
+            p {
+                text-align: center;
+                @include font-properties($maax,$localFontVerdana);
+                font-size: 12px;
+                line-height: 17px
+            }
+        }
+    }
+}
+
+.fp-cm-emailsubscription-page {
+    .form-group.non-required {
+        padding: 0px !important;
+    }
+
+    .error-mesg {
+
+        float: left;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        border: 1px solid #F93822;
+        margin-bottom: 28px;
+
+        .er-icon {
+            width: 60px;
+            height: 60px;
+            background: #F93822;
+            float: left;
+            display: inline-block;
+
+        }
+
+        .msg-container {
+            @include font-properties($maaxMedium,$localFontVerdana);
+            font-weight: 500;
+            font-style: italic;
+            margin-left: 20px;
+            color: #F93822;
+            font-size: 14px;
+            text-align: left;
+
+        }
+
+    }
+
+    .play-backtotop {
+        font-size: 12px;
+    }
+}
+
+
+.fp-cm-emailsubscription-page .input_field {
+    @include font-properties($maax,$localFontVerdana);
+
+    &::-webkit-input-placeholder {
+        @include font-properties($maax,$localFontVerdana);
+        font-size: 14px;
+        color: #6A6A6A;
+
+    }
+}

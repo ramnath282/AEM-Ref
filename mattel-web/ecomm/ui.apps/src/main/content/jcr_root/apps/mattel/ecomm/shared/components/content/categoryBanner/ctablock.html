@@ -1,0 +1,17 @@
+<sly data-sly-use.info="${'com.mattel.ecomm.core.utils.EcomUtil' @ url= properties.ctaButtonLink}">
+	<div data-sly-test="${properties.ctaOption =='samewindow'}" data-sly-unwrap>
+		<a style="color:${properties.ctaTextColor @ context='styleString'}" href="${info.pageUrl}" target="_self">${properties.ctaButtonText}
+			<i aria-hidden="true" class="fa fa-chevron-right"></i>
+		</a>	
+	</div>
+	<div data-sly-test="${properties.ctaOption =='newtab'}" data-sly-unwrap>
+		<a style="color:${properties.ctaTextColor @ context='styleString'}" href="${info.pageUrl}" target="_blank">${properties.ctaButtonText}
+			<i aria-hidden="true" class="fa fa-chevron-right"></i>
+		</a>
+	</div>
+	<div data-sly-test="${properties.ctaOption =='newwindow'}" data-sly-unwrap>
+		<a style="color:${properties.ctaTextColor @ context='styleString'}" href="javascript:void(0);" data-url="${info.pageUrl}" onclick="window.open(this.dataset.url,'AG','width=500, height=500');">${properties.ctaButtonText}
+			<i aria-hidden="true" class="fa fa-chevron-right"></i>
+		</a>
+	</div>
+</sly>

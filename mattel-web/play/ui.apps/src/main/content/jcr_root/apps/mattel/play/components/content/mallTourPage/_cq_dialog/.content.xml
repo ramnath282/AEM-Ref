@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Mall Tour Page Configuration"
+    sling:resourceType="cq/gui/components/authoring/dialog"
+    height="{Long}500"
+    width="{Long}650">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <mallTourPageDetails
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Mall Tour Details Config"
+                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <mallDetailList
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                class="full-width"
+                                composite="{Boolean}true"
+                                fieldLabel="Mall Tour Details">
+                                <field
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/fieldset"
+                                    name="./mallDetailList">
+                                    <items jcr:primaryType="nt:unstructured">
+                                        <column
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                                            <items jcr:primaryType="nt:unstructured">
+                                                <dateDetails
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldDescription="provide same date format October 13 &amp; 14, 2018"
+                                                    fieldLabel="Date Details"
+                                                    name="./dateDetails"/>
+                                                <locationDetails
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldDescription="provide location details"
+                                                    fieldLabel="Location Details"
+                                                    name="./locationDetails"
+                                                    required="{Boolean}true"
+                                                    wrapperClass="cmp-image--editor-alt"/>
+                                                <ctaButtonText
+                                                    cq:xfVariantType="web"
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldLabel="CTA Button Text"
+                                                    height="20"
+                                                    name="./ctaButtonTex"
+                                                    useFixedInlineToolbar="{Boolean}true"/>
+                                                <ctaButtonLink
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="/libs/granite/ui/components/coral/foundation/form/pathbrowser"
+                                                    fieldDescription="Mall URL"
+                                                    fieldLabel="CTA Button Link"
+                                                    name="./ctaUrl"
+                                                    rootPath="/content/"/>
+                                                <targetUrl
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                    fieldLabel="Open URL In"
+                                                    name="./mallTarget">
+                                                    <items jcr:primaryType="nt:unstructured">
+                                                        <sameWindow
+                                                            jcr:primaryType="nt:unstructured"
+                                                            text="Same Window"
+                                                            value="sameWindow"/>
+                                                        <newTab
+                                                            jcr:primaryType="nt:unstructured"
+                                                            text="New Tab"
+                                                            value="tabWindow"/>
+                                                        <newWindow
+                                                            granite:hide="${cqDesign.disableSearch}"
+                                                            jcr:primaryType="nt:unstructured"
+                                                            selected="{Boolean}true"
+                                                            text="New Window"
+                                                            value="newWindow"/>
+                                                        <interstitial
+                                                            jcr:primaryType="nt:unstructured"
+                                                            text="Interstitial - Leaving the Site"
+                                                            value="interstitial"/>
+                                                    </items>
+                                                </targetUrl>
+                                                <alwaysEnglish
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldDescription="Always English check for Multi-Lingual  Site Tagging"
+                                                    fieldLabel="Adobe Tracking Name"
+                                                    name="./alwaysEnglish"
+                                                    required="{Boolean}true"/>
+                                            </items>
+                                        </column>
+                                    </items>
+                                </field>
+                            </mallDetailList>
+                        </items>
+                    </mallTourPageDetails>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>

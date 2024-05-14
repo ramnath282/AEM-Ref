@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Loyalty &amp; Rewards Drawer Config"
+    sling:resourceType="cq/gui/components/authoring/dialog"
+    helpPath="https://www.adobe.com/go/aem_cmp_text_v2">
+    <content
+        granite:class="cq-dialog-ag-productgrid"
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+					<loyaltyConfig
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Loyalty Drawer Config"
+                        sling:resourceType="granite/ui/components/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+							<pointsLabel
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Points Label"
+                                name="./pointsLabel"/>
+                            <tierLabel
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="TIER Label"
+                                name="./tierLabel"/>
+                            <pointsToNextLabel
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Points To Next Label"
+                                name="./pointsToNextLabel"/>
+                            <rewardLabel
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Reward Label"
+                                name="./rewardLabel"/>
+							<toReachLabel
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="To Reach Label"
+                                name="./toReachLabel"/>
+                        </items>
+                    </loyaltyConfig>
+					<rewardConfig
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Rewards Section Config"
+                        sling:resourceType="granite/ui/components/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+							<redeemTooltip
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Redeem Tooltip Message"
+								fieldDescription="Enter tooltip message which should be shown when there no item in shopping bag"
+                                name="./redeemTooltip"/>
+                            <maxPromoCodes
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+                                fieldLabel="Maximum Promo Codes"
+                                fieldDescription="Select maximum number of promo codes which can be applied"
+								min="1"
+								max="10"
+								step="1"
+                                name="./maxPromoCodes"/>
+                            <showRewardsLabel
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Show Rewards Label"
+                                name="./showRewardsLabel"/>
+                            <hideRewardsLabel
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Hide Rewards Label"
+                                name="./hideRewardsLabel"/>
+							<redeemLabel
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Redeem Label"
+                                name="./redeemLabel"/>
+							<appliedLabel
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Applied Label"
+                                name="./appliedLabel"/>
+                        </items>
+                    </rewardConfig>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>

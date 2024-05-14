@@ -1,0 +1,119 @@
+.breadcrumb-container {
+  .navBreadcrumb {
+    display: mapping($breadCrumb, breadCrumbProp, disPlay);
+    white-space: mapping($breadCrumb, breadCrumbProp, whiteSpaceDiv);
+    overflow: mapping($breadCrumb, breadCrumbProp, overFlow);
+    -webkit-overflow-scrolling: mapping($breadCrumb, breadCrumbProp, overflowSrl);
+  }
+
+  .mobile-breadcrumb {
+    @media #{$small-down} {
+      text-align: mapping($breadCrumb, mobileBreadCrumb, textAlign);
+      padding: mapping($breadCrumb, mobileBreadCrumb, padding);
+    }
+
+    a {
+      @media #{$small-down} {
+        color: mapping($breadCrumb, mobileBreadCrumb, color);
+        font-size: mapping($breadCrumb, mobileBreadCrumb, fontSize);
+        line-height: mapping($breadCrumb, mobileBreadCrumb, lineHeight);
+        text-decoration: mapping($breadCrumb, mobileBreadCrumb, textDecoration);
+        @include font-properties($maax,$localFontVerdana);
+        font-weight: mapping($breadCrumb, mobileBreadCrumb, fontWeight);
+      }
+
+      &:hover {
+        @media #{$small-down} {
+          color: mapping($breadCrumb, mobileBreadCrumb, hoverColor);
+        }
+      }
+
+      &:before {
+        @media #{$small-down} {
+          content: mapping($breadCrumb, mobileBreadCrumb, content);
+          @include font-awesome;
+          color: mapping($breadCrumb, mobileBreadCrumb, color);
+          font-size: mapping($breadCrumb, mobileBreadCrumb, iconFontSize);
+          margin-right: mapping($breadCrumb, mobileBreadCrumb, marginRight);
+          position: mapping($breadCrumb, mobileBreadCrumb, position);
+          margin-top: mapping($breadCrumb, mobileBreadCrumb, marginTop);
+        }
+      }
+      sup{
+        @media #{$small-down} {
+          text-decoration: none;
+          display: inline-block;
+        }
+      }
+    }
+  }
+
+  .breadcrumb {
+    padding: mapping($breadCrumb, breadCrumbProp, listPadding);
+    margin: mapping($breadCrumb, breadCrumbProp, listMargin);
+    list-style: none;
+    background: mapping($breadCrumb, breadCrumbProp, breadCrumbBG);
+
+    @media #{$medium-down} {
+      padding: mapping($breadCrumb, breadCrumbProp, listPaddingMob);
+      //margin-top:mapping($breadCrumb, breadCrumbProp, mobileTop);
+
+    }
+
+    li {
+      display: inline-block;
+
+      &:last-child a {
+        color: mapping($breadCrumb, breadCrumbProp, activeColor);
+        text-decoration: mapping($breadCrumb, breadCrumbProp, textDec);
+        border-bottom: mapping($breadCrumb, breadCrumbProp, borderNone);
+
+        &:hover {
+          color: mapping($breadCrumb, breadCrumbProp, activeColor);
+          text-decoration: mapping($breadCrumb, breadCrumbProp, textDec);
+          border-bottom: mapping($breadCrumb, breadCrumbProp, borderNone);
+        }
+      }
+
+      +li:before {
+        padding: mapping($breadCrumb, breadCrumbProp, contentPadding);
+        color: mapping($breadCrumb, breadCrumbProp, fontColor);
+        content: mapping($breadCrumb, breadCrumbProp, contentSymbol);
+        top: mapping($breadCrumb, breadCrumbProp, SymbolPosition);
+        position: mapping($breadCrumb, breadCrumbProp, elementPosition);
+        font-size: mapping($breadCrumb, breadCrumbProp, contentSymbolSize);
+      }
+
+      a {
+        color: mapping($breadCrumb, breadCrumbProp, fontColor);
+        font-size: mapping($breadCrumb, breadCrumbProp, fontSize);
+        text-decoration: mapping($breadCrumb, breadCrumbProp, textLine);
+        border-bottom: mapping($breadCrumb, breadCrumbProp, defaultBorder);
+        @include font-properties($maax,$localFontVerdana);
+        font-weight: mapping($breadCrumb, breadCrumbProp, fontWeight);
+        line-height: mapping($breadCrumb, breadCrumbProp, lineHeightLI);
+        height: mapping($breadCrumb, breadCrumbProp, listLIHeight);
+
+        &:hover {
+          color: mapping($breadCrumb, breadCrumbProp, hoverColor);
+          text-decoration: mapping($breadCrumb, breadCrumbProp, hoverTextLine);
+          border-bottom: mapping($breadCrumb, breadCrumbProp, hoverBorder);
+        }       
+      }
+    }
+  }
+
+  &.breadcrumb-center {
+    max-width: 100%;
+    text-align: mapping($breadCrumb, breadCrumbProp, centerAlign);
+
+    .breadcrumb {
+      padding: mapping($breadCrumb, breadCrumbCenter, padding);
+
+      @media #{$small-down} {
+        padding: mapping($breadCrumb, breadCrumbCenter, mobPadding);
+        margin-top: mapping($breadCrumb, breadCrumbCenter, mobMarginTop);
+      }
+    }
+  }
+}

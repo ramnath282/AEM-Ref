@@ -1,0 +1,163 @@
+.user-order-history{
+    .my-order-summary{
+   // @include content-spacing(map-get($sortingFilter, order));
+   @media #{$medium-down} {
+    display:none;
+}
+    .user-info-wrapper {
+        .details-list {
+            .details-list-item {
+                position: relative;
+                width:mapping($sortingFilter,detailSort,width);
+                text-align:mapping($sortingFilter,gridSortAlign,text-align);
+                clear:mapping($sortingFilter,detailSort,clear);
+
+                label {
+                    font-weight: mapping($sortingFilter,orderhislabel,font);
+                    @include content-spacing(map-get($sortingFilter, orderhislabel));
+                }
+                input{
+                     @include content-spacing(map-get($sortingFilter, input));
+                }
+                fieldset {
+                    a {
+                        position: mapping($sortingFilter,link,position);
+                        top: mapping($sortingFilter,link,top);
+                        right: mapping($sortingFilter,link,right);
+                        color: mapping($sortingFilter,link,color) !important
+                    }
+                }
+
+               
+                .btn-default.dropdown-toggle{
+                    background-color: mapping($sortingFilter,gridBtnToggle,background-color);
+                    border:mapping($sortingFilter,gridBtnToggle,border);
+                    padding:mapping($sortingFilter,gridBtnSpace,padding);
+                    
+ 
+                &:focus{
+                    box-shadow: mapping($sortingFilter,gridBtnToggle,box-shadow);
+                    outline: mapping($sortingFilter,gridBtnToggle,outline) !important;
+                    background-color: mapping($sortingFilter,gridBtnToggle,background-color);
+                }
+                .caret{
+                    display:mapping($sortingFilter,gridCaret,display);
+                }
+            }
+                  
+                .dropdown-menu{
+                    background-color:mapping($sortingFilter,gridMenu,background-color);
+                    box-shadow:mapping($sortingFilter,gridMenu,box-shadow);
+                    overflow: mapping($sortingFilter,gridMenu,overflow);
+                    @include content-spacing(map-get($sortingFilter, gridMenuSpacing)); 
+                    right:mapping($sortingFilter,gridMenu,right);
+                    left:mapping($sortingFilter,gridMenu,left);
+                    top:mapping($sortingFilter,gridMenu,top);
+                    border:mapping($sortingFilter,gridMenu,border);
+                    margin:mapping($sortingFilter,gridMenuSpacing,margin);
+                    padding:mapping($sortingFilter,gridMenuSpacing,padding);
+                    border-radius:mapping($sortingFilter,gridMenu,border-radius);
+                    :active{
+                        background-color:mapping($sortingFilter,gridMenu,background-color);
+                      
+                     }
+                 ul{
+                     padding:mapping($sortingFilter,gridPaddingUl,padding);
+               
+                 li{
+                    width:mapping($sortingFilter,gridSortFont,width);
+                    font:mapping($sortingFilter,gridSortFont,font) !important;
+                   
+
+                    a{
+                        font:mapping($sortingFilter,gridSortFont,font);
+                        padding:mapping($sortingFilter,gridSortSpanSpace,padding);
+                        margin:mapping($sortingFilter,gridMenuSpacing,margin);
+                        line-height:mapping($sortingFilter,gridSortFont,line-height);
+                        outline: mapping($sortingFilter,gridSortFont,outline);
+                        background-color: mapping($sortingFilter,gridBtnToggle,background-color) !important;
+                      
+                        span.text{
+                        font-weight:mapping($sortingFilter,gridFont,font-weight);
+                        font-size:mapping($sortingFilter,gridFont,font-size);
+                        color:mapping($sortingFilter,gridFont,color);
+                        }
+                      
+                        }
+                        
+                }
+                li.selected.active .text{
+                    color: mapping($sortingFilter,gridCaret,color); 
+                }
+            }
+        }
+            .dropdown-toggle.bs-placeholder{
+                color: mapping($sortingFilter,gridSortFont,color);
+                font:mapping($sortingFilter,gridSortFont,font);
+                font-weight: mapping($sortingFilter,gridSortBtn,font-weight);
+                line-height:mapping($sortingFilter,gridSortFont,line-height);
+                border:mapping($sortingFilter,gridSortBtn,border);
+                background-color:mapping($sortingFilter,gridSortBtn,background-color);
+            }
+                 .filter-option{
+                    color: mapping($sortingFilter,gridSortFont,color);
+                    font:mapping($sortingFilter,gridSortFont,font);
+                    text-align:mapping($sortingFilter,gridSortAlign,text-align);
+                    font-weight:mapping($sortingFilter,gridSortFont,font-weight);
+                    display:mapping($sortingFilter,gridSortSpan,display);
+                    left:mapping($sortingFilter,detailSort,left);
+                    right:mapping($sortingFilter,detailSort,right);
+                    max-width:mapping($sortingFilter,detailSort,max-width);
+                    position:mapping($sortingFilter,detailSort,position);
+                    padding-left:mapping($sortingFilter,detailSort,padding-left);
+                    &:focus{
+                        outline: mapping($sortingFilter,gridSortFont,outline);
+                    }
+                    .filter-option-inner{
+                        padding-right:mapping($sortingFilter,gridSortBtn,padding-right);
+                    .filter-option-inner-inner{
+                        overflow:mapping($sortingFilter,gridSortSpan,overflow);
+                        font-weight:mapping($sortingFilter,gridSortSpan,font-weight);
+                        font-size:mapping($sortingFilter,gridSortSpan,font-size);
+                        display:mapping($sortingFilter,gridSortSpan,display);
+                       
+                        &:after{
+                             content: mapping($sortingFilter,gridCaret,content); 
+                             color: mapping($sortingFilter,gridCaret,color); 
+                             font-family:mapping($sortingFilter,gridCaret,font-family);
+                             font-size:mapping($sortingFilter,gridCaret,font-size);
+                             margin-left:mapping($sortingFilter,gridCaret,margin-left);
+                             position:mapping($sortingFilter,gridCaret,position);
+                             top:mapping($sortingFilter,gridCaret,top);
+
+                        }
+
+                    }
+                }
+                   }
+               
+            }
+            .details-list-item.grid-sort{
+                .grid-option-btn{
+                    outline: mapping($sortingFilter,gridSortFont,outline);
+                    width:mapping($sortingFilter,gridBtSpc,width);
+                    position:mapping($sortingFilter,gridBtSpc,position);
+                }
+                >span{
+                    font:mapping($sortingFilter,gridSortFont,font);
+                    // z-index:mapping($sortingFilter,gridSortSpan,z-index);
+                    position:mapping($sortingFilter,gridSortSpan,position);
+                    // left: mapping($sortingFilter,gridSortSpan,left);
+                    // vertical-align: mapping($sortingFilter,gridSortSpan,vertical-align);
+                    display:mapping($sortingFilter,gridSortSpan,display);
+                    @include content-spacing(map-get($sortingFilter,gridSortSpanSpace)); 
+                 }
+            }
+        }
+        
+    }
+}
+}
+
+
+

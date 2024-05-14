@@ -1,0 +1,50 @@
+<sly data-sly-test="${wcmmode.edit}">${'Edit Quiz Container Component' @i18n}</sly>
+<sly data-sly-use.backgroundTabModel="com.mattel.global.master.core.model.BackgroundTabModel" />
+<sly data-sly-use.content="com.mattel.global.master.core.model.ContentTab"/>
+<sly data-sly-use.lib="mattel/global/components/content/dynamicMedia/v1/dynamicMedia/imageblock.html" />
+<div class="mq-wrapper" data-question-bg-color="${properties.backgroundOption =='color' ? properties.backgroundColor : ''}" 
+ data-result-bg-color="${properties.backgroundOnLastScreen =='backgroundcolor' ? properties.backgroundColorOnLastScreen : ''}" 
+ data-result-tile-option="${properties.tileOptionOnLastScreen}" 
+ data-question-tile-option="${properties.tileOption}" 
+ data-question-tile= "${properties.tileImage ? properties.image : ''}" 
+ data-result-tile="${properties.tileImageOnLastScreen ? properties.imageOnLastScreen : ''}"
+ data-question-background-option="${properties.backgroundOption == 'color' ? 'color' : (properties.tileImage ? 'tileImage' : 'image')}"
+ data-result-background-option="${properties.backgroundOnLastScreen == 'backgroundcolor' ? 'color' : (properties.tileImageOnLastScreen ? 'tileImage' : 'image')}"
+ >
+  <!-- mq dynamic media holder starts -->
+<sly data-sly-test="{!properties.tileImage || !properties.tileImageOnLastScreen}"> 
+    <div class="mq-dynamic-media-imageholder">        
+        <!-- mq dynamic media holder for quiz starts -->
+        <div class="mq-dyn-bg-quiz">             
+             <div class="mobile-bg visible-xs hidden-sm hidden-md hidden-lg" data-sly-test="${properties.mobileImage && properties.customMobile}" data-sly-call="${lib.imageVideoSection @ imageDetail='mobileImage'}">
+             </div>
+			 <div class="desktop-bg hidden-xs visible-sm visible-md visible-lg ${!properties.customMobile || !properties.mobileImage ? 'customMobileoff' : ' '}" data-sly-test="${properties.image}" data-sly-call="${lib.imageVideoSection @ imageDetail='image'}">
+             </div>
+        </div>
+        <div class="mq-dyn-bg-result">
+		     <div class="mobile-bg visible-xs hidden-sm hidden-md hidden-lg" data-sly-test="${properties.mobileImageOnLastScreen && properties.customMobileOnLastScreen}" data-sly-call="${lib.imageVideoSection @ imageDetail='mobileImageOnLastScreen'}">
+             </div>
+             <div class="desktop-bg hidden-xs visible-sm visible-md visible-lg ${!properties.customMobileOnLastScreen || !properties.mobileImageOnLastScreen ? 'customMobileoff' : ' '}" data-sly-test="${properties.imageOnLastScreen}" data-sly-call="${lib.imageVideoSection @ imageDetail='imageOnLastScreen'}">
+             </div>             
+        </div>
+    </div> 
+</sly>
+     <div class="row">
+         <sly data-sly-resource="${'path' @ resourceType='wcm/foundation/components/parsys'}" />
+		    <div data-sly-attribute.class="${!wcmmode.edit ? 'mq-thankyou animated fadeIn' : ''}">  
+		        <sly data-sly-test="${properties.displayOnLastScreen == 'thankyouScreen'}">		          
+			       <div data-sly-attribute.class="${!wcmmode.edit ? 'mq-thanks-txt-msg' : ''}">
+                     <sly data-sly-test="${content.items && content.items.size > 0}">
+                         <sly data-sly-repeat.item="${content.items}" data-sly-resource="${item.name @ decorationTagName='div'}"></sly>
+                     </sly>
+                     <sly data-sly-resource="${resource.path @ resourceType='wcm/foundation/components/parsys/newpar', appendPath='/*', decorationTagName='div', cssClassName=''}" data-sly-test="${(wcmmode.edit || wcmmode.preview) && content.items.size < 1}"></sly>
+				   </div>   
+		        </sly>
+		        <sly data-sly-test="${properties.displayOnLastScreen == 'recommendedProducts'}" data-sly-include="product-recommendation.html"/>     
+		    </div>
+     </div>     
+</div>
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
+    <sly data-sly-call="${clientlib.js @ categories='quiz.container'}"/>
+</sly>
+

@@ -1,0 +1,79 @@
+
+.imageblock-txt-wrapper{
+    &:not(.rounded-img){
+        background: mapping($imageText,main,bgndColor);
+        .module-header h3{
+            color: mapping($imageText,heading,color);
+            font-size: mapping($imageText,heading,fontSize);
+            font-weight: mapping($imageText,heading,fontWeight);
+        }
+        .module-header p{
+            color: mapping($imageText,subHeading,color);
+            font-size: mapping($imageText,subHeading,fontSize);
+            font-weight: mapping($imageText,subHeading,fontWeight);
+            font-family: mapping($imageText,subHeading,font);
+        }
+        .imgtxt-list{
+            .tile-content {
+                h4 {
+                  color: mapping($imageText,tileHeading,color);
+                  font-size: mapping($imageText,tileHeading,fontSize);
+                  font-weight: mapping($imageText,tileHeading,fontWeight);
+                   font-family: mapping($imageText,roundedtileHeading,font);
+                }
+                p {
+                  color: mapping($imageText,tileDescription,color);
+                  font-size: mapping($imageText,tileDescription,fontSize);
+                  font-weight: mapping($imageText,tileDescription,fontWeight);
+                }
+            }
+            li{
+                background:$white;
+                color: $black;
+                @include border-radius(5px);
+                 .tile-content{
+                    padding:0.5em;
+                }
+            }
+        }
+    }
+    &.rounded-img{
+        background: mapping($imageText,main,roundedBgndColor);
+        h3{
+            color: mapping($imageText,roundedHeading,color);
+            font-size: mapping($imageText,roundedHeading,fontSize);
+            font-weight: mapping($imageText,roundedHeading,fontWeight);
+        }
+        p {
+            color: mapping($imageText,roundedSubHeading,color);
+            font-size: mapping($imageText,roundedSubHeading,fontSize);
+            font-weight: mapping($imageText,roundedSubHeading,fontWeight);
+             font-family: mapping($imageText,subHeading,font);
+        }
+        .imgtxt-list{
+            .tile-content {
+                h4 {
+                  color: mapping($imageText,roundedtileHeading,color);
+                  font-size: mapping($imageText,roundedtileHeading,fontSize);
+                  font-weight: mapping($imageText,roundedtileHeading,fontWeight);
+                  font-family: mapping($imageText,roundedtileHeading,font);
+                }
+                p {
+                  color: mapping($imageText,roundedtileDescription,color);
+                  font-size: mapping($imageText,roundedtileDescription,fontSize);
+                  font-weight: mapping($imageText,roundedtileDescription,fontWeight);
+                   font-family: mapping($imageText,roundedtileDescription,font);
+                }
+            }
+            li{
+                background:transparent;
+                color: $white;
+                @include border-radius(5px);
+                 .tile-content{
+                    padding:0.5em;
+                }
+            }
+
+        } 
+    }
+}

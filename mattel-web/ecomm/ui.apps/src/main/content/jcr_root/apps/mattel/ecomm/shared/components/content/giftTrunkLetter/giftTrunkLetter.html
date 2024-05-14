@@ -1,0 +1,105 @@
+<sly data-sly-test.author="${wcmmode.edit}">${'Gift Trunk - Letter' @i18n}</sly>
+<sly data-sly-use.checkComponentPage="${'validatePage.js' @ currentPagePath=currentPage.path, currentNodePath= currentNode.path}"></sly>
+<sly data-sly-test="${properties.letterTemplate}">
+                    <!-- letter starts -->
+
+                    <div class="gt-ltr-left">
+                      <div class="gt-default-ltr-holder">  
+<div class="messageContent"><sly data-sly-test="${!author}"><sly data-sly-use.ecommUtil="${'com.mattel.ecomm.core.utils.EcomUtil' @ template=properties.letterTemplate}">${ecommUtil.getDynamicTemplate @ context='html'}</sly></sly><sly data-sly-test="${author}"><sly data-sly-test="${properties.letterTemplate}">${properties.letterTemplate @ context='html'}</sly></sly></div>
+                      </div>
+                    </div>
+					<div class="gt-ltr-authored hide">
+						<!--// <sly data-sly-test="${!author}"><sly data-sly-use.ecommUtil="${'com.mattel.ecomm.core.utils.EcomUtil' @ template=properties.letterTemplate}">${ecommUtil.getDynamicTemplate @ context='html'}</sly></sly>
+                         <sly data-sly-test="${author}">
+	                     	<sly data-sly-test="${properties.letterTemplate}">${properties.letterTemplate @ context='html'}</sly>
+	                     </sly> //-->
+	                    	<sly data-sly-test="${!author}"><sly data-sly-use.ecommUtil="${'com.mattel.ecomm.core.utils.EcomUtil' @ template=properties.letterTemplate}">${ecommUtil.getDynamicTemplate @ context='html'}</sly></sly><sly data-sly-test="${author}"><sly data-sly-test="${properties.letterTemplate}">${properties.letterTemplate @ context='html'}</sly></sly>
+                    </div>
+                    <div class="gt-ltr-right">
+                      <div class="gt-ltr-personalize">
+                        <sly data-sly-test="${author && checkComponentPage}">
+	                     	<h3 data-sly-test="${properties.sectionTitle}">${properties.sectionTitle}</h3>
+	                     </sly>
+	                     <sly data-sly-test="${!author && checkComponentPage}">
+                        	<sly data-sly-use.ecommUtil="${'com.mattel.ecomm.core.utils.EcomUtil' @ template=properties.sectionTitle}">
+						       	 	<h3> ${ecommUtil.getDynamicTemplate @ context='html'} </h3>			      	
+						     </sly>
+                         </sly>
+                         <p class="message"><sly data-sly-test="${properties.copyText}">${properties.copyText}</sly></p>
+                        
+                        <!-- clone version of default letter starts -->
+                        <div class="gt-default-ltr-holder">
+<div class="messageContent"><sly data-sly-test="${!author}"><sly data-sly-use.ecommUtil="${'com.mattel.ecomm.core.utils.EcomUtil' @ template=properties.letterTemplate}">${ecommUtil.getDynamicTemplate @ context='html'}</sly></sly>
+                         <sly data-sly-test="${author}">
+	                     	<sly data-sly-test="${properties.letterTemplate}">${properties.letterTemplate @ context='html'}</sly>
+	                     </sly>
+</div>
+                        </div>
+                        <!-- clone version of default letter ends -->
+
+                        <div class="ltr-btn-wrapper">
+                          <button id="openModal" classs="gt-btn" data-toggle="modal" data-target="#editLetter"><sly data-sly-test="${properties.editButtonLabel}">${properties.editButtonLabel} </sly></button>
+                          <button id="submitLetter" classs="gt-btn"><sly data-sly-test="${properties.acceptButtonLabel}">${properties.acceptButtonLabel}</sly></button>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- edit letter modal starts -->
+                    <div class="modal" id="editLetter" data-keyboard="false" data-backdrop="true">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <!-- Modal Header -->
+                          <div class="modal-header">
+						  <h2 class="sr-only">Edit Letter Content</h2>
+                          	<a href="#" id="modalClose" class="sr-only">Close</a>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="close"><i class="fa fa-times" aria-hidden="true"></i></button>
+                          </div>
+                          <!-- Modal body -->
+                          <div class="modal-body">
+                            <div class="messageContainer"> 
+                              <textarea id="messageBox" rows="12" cols="50"   data-charLength="${properties.noOfCharacters ? properties.noOfCharacters : 1000}" data-lineLength="${properties.noOfLines ? properties.noOfLines : 25}" data-max="10"></textarea>
+							
+                            </div>
+                          </div>
+                          <!-- Modal footer -->
+                          <div class="modal-footer hidden-xs">
+                            <div class="row">
+                              <div class="col-xs-8">
+                              	<div class="theCount"><p id="charcount">1000</p> characters <p id="linesUsed">0</p>lines remaining</div>
+                                 <span><sly data-sly-test="${properties.exceedsCountError}">${properties.exceedsCountError}</sly></span>
+                                <span><sly data-sly-test="${properties.characterMismatchError}">${properties.characterMismatchError}</sly></span>
+                                <span><sly data-sly-test="${properties.profanityError}">${properties.profanityError}</sly></span>
+                              </div>
+                              <div class="col-xs-4">
+                                <button class="gt-btn" id="acceptBtn"><sly data-sly-test="${properties.acceptButtonLabel}">${properties.acceptButtonLabel}</sly></button>
+                              </div>
+                            </div>
+                          </div>
+                          
+                        </div>
+                      </div>
+                      <div class="dialog-modal-footer visible-xs">
+                        <div class="row">
+                          <div class="col-xs-6">
+                            <div class="theCount"><p id="charcount-xs">1000</p> characters <p id="linesUsed-xs">0</p>lines remaining</div>
+                            <span><sly data-sly-test="${properties.exceedsCountError}">${properties.exceedsCountError}</sly></span>
+                                <span><sly data-sly-test="${properties.characterMismatchError}">${properties.characterMismatchError}</sly></span>
+                                <span><sly data-sly-test="${properties.profanityError}">${properties.profanityError}</sly></span>
+                          </div>
+                          <div class="col-xs-6">
+                            <button class="gt-btn" id="acceptBtn-xs"><sly data-sly-test="${properties.acceptButtonLabel}">${properties.acceptButtonLabel}</sly></button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- edit letter modal ends -->
+
+
+                    <!-- edit letter modal ends -->
+                  </sly>
+		
+		  <sly data-sly-test="${checkComponentPage}">	
+			<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
+				<sly data-sly-call="${clientlib.js @ categories='ecomm.giftTrunkLetter'}" />
+			</sly>
+		   </sly>

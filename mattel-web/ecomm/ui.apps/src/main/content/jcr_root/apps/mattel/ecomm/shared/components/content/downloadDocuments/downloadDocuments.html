@@ -1,0 +1,9 @@
+<sly data-sly-test="${wcmmode.edit}">${' Download Documents Module' @ i18n}</sly>
+<div class="download-img-text" data-sly-use.downloadLinks="com.mattel.ecomm.core.models.DownloadDocumentsModel">
+    <h2>${properties.sectionTitle @ i18n}</h2>
+	<ul data-sly-list.downloadList="${downloadLinks.downloadDocumentList}">
+	    <li> 
+	        <a href="${downloadList.documentLink}" target="_blank">${downloadList.documentTitle @ i18n}</a> <span>(${downloadList.documentType @ i18n}, ${downloadList.documentSize})</span>
+	    </li>
+	</ul>
+</div> 

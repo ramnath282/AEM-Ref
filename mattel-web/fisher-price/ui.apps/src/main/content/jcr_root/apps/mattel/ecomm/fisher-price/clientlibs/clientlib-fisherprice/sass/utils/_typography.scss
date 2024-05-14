@@ -1,0 +1,135 @@
+//
+// Typography Specific to Lets Be Kids
+// --------------------------------------------------
+
+
+// Headings
+// -------------------------
+
+h1,
+.h1 {
+  font-size: 36px;
+  font-weight: 400;
+  @include font-properties($letsBeGlyphs,$localFontInfo);
+  line-height: 40px;
+
+  @media #{$small-down} {
+    font-size: 22px;
+    line-height: 26px;
+  }
+}
+
+h2,
+.h2 {
+  font-size: 32px;
+  font-weight: 400;
+  @include font-properties($letsBeGlyphs,$localFontInfo);
+  line-height: 36px;
+
+  @media #{$small-down} {
+    font-size: 22px;
+    line-height: 26px;
+  }
+}
+
+h3,
+.h3 {
+  font-size: 24px;
+  @include font-properties($maaxMedium,$localFontVerdana);
+  font-weight: 500;
+  line-height: 28px;
+
+  @media #{$small-down} {
+    font-size: 18px;
+    line-height: 26px;
+  }
+}
+
+h4,
+.h4 {
+  font-size: 20px;
+  @include font-properties($maaxMedium,$localFontVerdana);
+  font-weight: 500;
+  line-height: 28px;
+
+  @media #{$small-down} {
+    font-size: 18px;
+    line-height: 26px;
+  }
+}
+
+body {
+  @include font-properties($maax,$localFontVerdana);
+  color: $black;
+  font-weight: 400;
+
+  @media #{$large-up} {
+    font-size: 18px;
+    line-height: 28px;
+  }
+
+  @media #{$medium-up} {
+    font-size: 18px;
+    line-height: 28px;
+  }
+
+  @media #{$medium-only} {
+    font-size: 16px;
+  }
+
+  @media #{$small-only} {
+    font-size: 14px;
+  }
+  p {
+    font-size: 16px;
+    line-height: 26px;
+    @include font-properties($maax,$localFontVerdana);
+    @media #{$small-up} {
+      font-size: 18px;
+      line-height: 28px;
+    }
+  }
+  .body-lg{
+    font-size: 16px !important;
+    line-height: 26px !important;
+    @include font-properties($maax,$localFontVerdana);
+    @media #{$small-up} {
+      font-size: 18px !important;
+      line-height: 28px !important;
+    }
+  }
+  .body-md{
+    font-size: 16px !important;
+    line-height: 22px !important;
+    @include font-properties($maax,$localFontVerdana);
+    @media #{$small-up} {
+      font-size: 16px !important;
+      line-height: 18px !important;
+    }
+  }
+  .body-sm{
+    font-size: 14px !important;
+    line-height: 18px !important;
+    @include font-properties($maax,$localFontVerdana);
+  }
+  .primaryfont{
+    @include font-properties($letsBeGlyphs,$localFontInfo);
+    h1,h2,h3,h4,h5,h6,p,span,div,b,i{
+      font-family: inherit;
+    }
+  }
+  .secondaryfont {
+    @include font-properties($maax,$localFontVerdana);
+    h1,h2,h3,h4,h5,h6,p,span,div,b,i{
+      font-family: inherit;
+    }
+  }
+  .tertiaryfont {
+    @include font-properties($maaxMedium,$localFontVerdana);
+    font-weight: 500;
+    h1,h2,h3,h4,h5,h6,p,span,div,b,i{
+      font-family: inherit;
+      font-weight: inherit;
+    }
+  }
+}

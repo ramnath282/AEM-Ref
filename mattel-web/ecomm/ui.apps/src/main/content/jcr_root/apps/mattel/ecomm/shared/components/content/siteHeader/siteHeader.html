@@ -1,0 +1,358 @@
+<sly data-sly-test="${wcmmode.edit}">${'Configure Site Header' @ i18n}</sly>
+<header role="banner">
+    <input type="hidden" id="headerNodePath" value="${currentNode.path}" />
+    <input type="hidden" id="aeLname" value="${properties.locationName}"/>
+    <input type="hidden" id="shopByValue" value="${properties.shopByValue}"/>
+    <div>
+        <div class="mobile-viewMenu">
+            <button class="hamburger-menu" aria-label="menu" data-toggle="toggle" data-target="#primary-nav-bar">${properties.mobileMenuTitle || Menu @i18n}</button>
+            <div class="pull-left hidden-lg hidden-sm hidden-md">
+                <sly data-sly-test.myVar="${properties.brandNavUrl}" data-sly-use.info="${'com.mattel.ecomm.core.helper.EcommHelper' @ text= myVar}">
+                    <sly data-sly-test="${properties.brandTargetUrl =='sameWindow'}">
+                        <a class="brand-logo" href="${info.pathURL}" data-tracking-id="${properties.locationName}-click|${properties.alwaysEnglish @i18n}|no-value|${properties.locationName}">
+                            <img src="${properties.brandMLogo||properties.brandLogo}" alt="${properties.brandAlt @i18n}" />
+                        </a>
+                    </sly>
+                    <sly data-sly-test="${properties.brandTargetUrl =='tabWindow'}">
+                        <a class="brand-logo" href="${info.pathURL}" target="_blank" data-tracking-id="${properties.locationName}-click|${properties.alwaysEnglish @i18n}|no-value|${properties.locationName}">
+                            <img src="${properties.brandMLogo||properties.brandLogo}" alt="${properties.brandAlt @i18n}" />
+                        </a>
+                    </sly>
+                    <sly data-sly-test="${properties.brandTargetUrl =='newWindow'}">
+                        <a class="brand-logo" data-url="${info.pathURL}" data-tracking-id="${properties.locationName}-click|${properties.alwaysEnglish @i18n}|no-value|${properties.locationName}" onclick="window.open(this.dataset.url,'PLAY','width=500, height=500');">
+                            <img src="${properties.brandMLogo||properties.brandLogo}" alt="${properties.brandAlt @i18n}" />
+                        </a>
+                    </sly>
+                </sly>
+            </div>
+            <div class="pull-left hidden-xs">
+                <sly data-sly-test.myVar="${properties.brandNavUrl}" data-sly-use.info="${'com.mattel.ecomm.core.helper.EcommHelper' @ text= myVar}">
+                    <sly data-sly-test="${properties.brandTargetUrl =='sameWindow'}">
+                        <a class="brand-logo" href="${info.pathURL}" data-tracking-id="${properties.locationName}-click|${properties.alwaysEnglish @i18n}|no-value|${properties.locationName}">
+                            <img src="${properties.brandLogo}" alt="${properties.brandAlt @i18n}" />
+                        </a>
+                    </sly>
+                    <sly data-sly-test="${properties.brandTargetUrl =='tabWindow'}">
+                        <a class="brand-logo" href="${info.pathURL}" target="_blank" data-tracking-id="${properties.locationName}-click|${properties.alwaysEnglish @i18n}|no-value|${properties.locationName}">
+                            <img src="${properties.brandLogo}" alt="${properties.brandAlt @i18n}" />
+                        </a>
+                    </sly>
+                    <sly data-sly-test="${properties.brandTargetUrl =='newWindow'}">
+                        <a class="brand-logo" data-url="${info.pathURL}" data-tracking-id="${properties.locationName}-click|${properties.alwaysEnglish @i18n}|no-value|${properties.locationName}" onclick="window.open(this.dataset.url,'PLAY','width=500, height=500');">
+                            <img src="${properties.brandLogo}" alt="${properties.brandAlt @i18n}" />
+                        </a>
+                    </sly>
+                </sly>
+            </div>
+
+            <button class="search-menu" aria-label="search" ><i class="fas fa-search"></i></button>
+        </div>
+        <sly data-sly-resource="${'prodStickyNav' @ resourceType='/apps/mattel/ecomm/shared/components/content/prouctStickyNav'}"></sly>
+        <div class="sub-header-wrapper" id="primary-nav-bar">
+            <div class="sub-header-content">
+                <!-- hamburger button -->
+                <!--main navigation starts -->
+                <nav class="primary-nav loader" role="navigation" aria-label="primary" id="primary-nav">
+                    <ul id="primary-category-data"></ul>
+                    <script type="text/template" id="primary-category-template">
+                        <% var englishLocationName = $("#aeLname").val() || '' %>
+                        <% var shopByValue = $("#shopByValue").val() %>
+                        <% checkParentName = false %>
+                        <% _.each(menuNames,function(item,indx){ %>
+                        <% if(primaryNav[item]['linkHeaderText'] && !checkParentName && shopByValue) { %>
+
+                        <li class="visible-xs visible-sm visible-md">
+                            <a class="parent-category-name">${properties.shopByValue @context='html'}</a>
+                        </li>
+                        <% checkParentName = true %>
+                        <% } %>
+                        <li>
+                            <% if(primaryNav[item]['linkHeaderText']){ %>
+                            <% if(primaryNav[item]['categoryNavLinks'][0]['urlTarget'] == "newWindow" ){ %>
+                            <a class="visible-lg <%= primaryNav[item]['linkHeaderText'] == false ? 'downArrow':'' %>" data-url="<%= primaryNav[item]['categoryNavLinks'][0]['pageUrl'] %>" onclick=window.open(this.dataset.url,'PLAY',width=500,height=500)>
+                                <%= item %>
+                            </a>
+                            <% } else if(primaryNav[item]['categoryNavLinks'][0]['urlTarget'] == "interstitialLeaving") { %>
+                            <a class="visible-lg <%= primaryNav[item]['linkHeaderText'] == false ? 'downArrow':'' %>" href="javascript:void(0);" data-target="#interstitialModal">
+                                <%= item %>
+                            </a>
+
+                            <%} else { %>
+                            <a class="visible-lg <%= primaryNav[item]['linkHeaderText'] == false ? 'downArrow':'' %>" href="<%=  primaryNav[item]['categoryNavLinks'][0]['pageUrl'] %>" target="<%= primaryNav[item]['categoryNavLinks'][0]['urlTarget'] %>">
+                                <%= item %>
+                            </a>
+                            <% }  %>
+                            <a class="visible-xs visible-sm visible-md" data-toggle="collapse" href="#menuNav<%= indx %>">
+                                <%= item %>
+                            </a>
+                            <ul class="subMenu-container" id="menuNav<%= indx %>">
+                                <% } else{ %>
+                                <% if(primaryNav[item]['categoryNavLinks'][0]['urlTarget'] == "newWindow" ){ %>
+                                <a class="visible-lg <%= primaryNav[item]['linkHeaderText'] == false ? 'downArrow':'' %>" data-url="<%= primaryNav[item]['categoryNavLinks'][0]['pageUrl'] %>" onclick=window.open(this.dataset.url,'PLAY',width=500,height=500)>
+                                    <%= item %>
+                                </a>
+                                <% } else if(primaryNav[item]['categoryNavLinks'][0]['urlTarget'] == "interstitialLeaving") { %>
+                                <a class="visible-lg <%= primaryNav[item]['linkHeaderText'] == false ? 'downArrow':'' %>" href="javascript:void(0);" data-target="#interstitialModal">
+                                    <%= item %>
+                                </a>
+
+                                <%} else { %>
+                                <a class="visible-lg <%= primaryNav[item]['linkHeaderText'] == false ? 'downArrow':'' %>" href="<%=  primaryNav[item]['categoryNavLinks'][0]['pageUrl'] %>" target="<%= primaryNav[item]['categoryNavLinks'][0]['urlTarget'] %>">
+                                    <%= item %>
+                                </a>
+                                <% }  %>
+                                <a class="visible-xs visible-sm visible-md parent-category-name bgExploreColor">
+                                    <%= item %>
+                                </a>
+                                <ul class="subMenu-container collapse in">
+                                    <% } %>
+
+                                    <li>
+                                        <section class="sub-nav <%= primaryNav[item]['className'] %>">
+                                            <div class="<% if((primaryNav[item]['columnLayout']) === "column-4" ){  %>sub-nav-column-4<% } %>">
+                                            <% if(!_.isEmpty(primaryNav[item]['featured']) && deviceName=='desktop'){ %>
+
+                                            <div class="featured-list">
+                                                <a class="visible-xs visible-sm visible-md" data-toggle="collapse" href="#featured-section<%= indx %>">
+                                                    <%= primaryNav[item]['featuredTitle'] %>
+                                                </a>
+                                                <ul id="featured-section<%= indx %>" class="collapse">
+                                                    <% _.each(primaryNav[item]['featured'], function(subMenu){ %>
+                                                    <li class="<% if(subMenu.confettiEffect){ %> animation-on <%} %>">
+                                                        <% if(subMenu.urlTarget == "newWindow" ){ %>
+                                                        <a data-url="<%= subMenu.pageUrl %>" onclick=window.open(this.dataset.url,'PLAY',width=500,height=500) data-analytics-tracking-id="<%= englishLocationName %>-click|<%= item %>|<%= subMenu.pageName %>||<%= englishLocationName %>">
+                                                            <%= subMenu.pageName %>
+                                                        </a>
+                                                        <% } else if(subMenu.urlTarget == "interstitialLeaving") { %>
+                                                        <a href="javascript:void(0);" data-target="#interstitialModal" data-analytics-tracking-id="<%= englishLocationName %>-click|<%= item %>|<%= subMenu.pageName %>||<%= englishLocationName %>">
+                                                            <%= subMenu.pageName %>
+                                                        </a>
+                                                        <%} else { %>
+                                                        <a href="<%= subMenu.pageUrl == '' ? '#' : subMenu.pageUrl %>" target="<%= subMenu.urlTarget %>" data-analytics-tracking-id="<%= englishLocationName %>-click|<%= item %>|<%= subMenu.pageName %>||<%= englishLocationName %>">
+                                                            <%= subMenu.pageName %>
+                                                        </a>
+                                                        <% }  %>
+                                                    </li>
+                                                    <% }) %>
+                                                </ul>
+                                            </div>
+                                            <% } %>
+                                            <div class="link-list <% if((primaryNav[item]['columnLayout']) === "column-4" ){  %> link-list-column-4  <% } %> <% if((primaryNav[item]['columnLayout']) === "age-grid" ){  %> link-list-age-grid  <% } %>">
+                                            <ul>
+                                                <% _.each(primaryNav[item]['categoryNavLinks'][0]['childPageList'], function(subMenu,subIndx){ %>
+                                                <li class="<%= primaryNav[item]['className'] === 'shop-by-category' ?  primaryNav[item]['columnLayout'] : '' %>">
+                                                    <% if(!_.isEmpty(subMenu.pageName)){ %>
+
+                                                    <% if(subMenu.urlTarget == "newWindow" ){ %>
+                                                    <a class="listTitle visible-lg <%= subMenu.pageName == '' ? 'no-data':'' %>" data-url="<%= subMenu.pageUrl %>" onclick=window.open(this.dataset.url,'PLAY',width=500,height=500) data-analytics-tracking-id="<%= englishLocationName %>-click|<%= item %>|<%= subMenu.pageName %>||<%= englishLocationName %> ">
+                                                        <%= subMenu.pageName %>
+                                                    </a>
+                                                    <% } else if(subMenu.urlTarget == "interstitialLeaving") { %>
+                                                    <a class="listTitle visible-lg <%= subMenu.pageName == '' ? 'no-data':'' %>" href="javascript:void(0);" data-target="#interstitialModal" data-analytics-tracking-id="<%= englishLocationName %>-click|<%= item %>|<%= subMenu.pageName %>||<%= englishLocationName %> ">
+                                                        <%= subMenu.pageName %>
+                                                    </a>
+                                                    <%} else { %>
+                                                    <a class="listTitle visible-lg <%= subMenu.pageName == '' ? 'no-data':'' %>" href="<%= subMenu.pageUrl %>" data-analytics-tracking-id="<%= englishLocationName %>-click|<%= item %>|<%= subMenu.pageName %>||<%= englishLocationName %> ">
+                                                        <%= subMenu.pageName %>
+                                                    </a>
+                                                    <% }  %>
+
+                                                    <% } %>
+                                                    <% if(!_.isEmpty(subMenu.pageName)){ %>
+                                                    <a class="listTitle visible-xs visible-sm visible-md" data-toggle="collapse" href="#menuSubNav<%= indx %><%= subIndx %>" data-analytics-tracking-id="<%= englishLocationName %>-click|<%= item %>|<%= subMenu.pageName %>||<%= englishLocationName %> ">
+                                                        <%= subMenu.pageName %>
+                                                    </a>
+                                                    <ul id="menuSubNav<%= indx %><%= subIndx %>" class="collapse">
+                                                        <% } else{ %>
+                                                        <ul class="no-sub-heading">
+                                                            <% } %>
+                                                            <% _.each(subMenu['childPageList'],function(subMenuChild){ %>
+                                                            <li class="<%= primaryNav[item]['className'] === 'shop-by-category' ? '' : primaryNav[item]['columnLayout'] %> <%= !subMenuChild.promoHoverImagePath ? 'no-effect' : '' %>">
+                                                                <a href="<%= subMenuChild.pageUrl == '' ? '#' : subMenuChild.pageUrl %>" target="<%= subMenu.urlTarget %>" data-analytics-tracking-id="<%= englishLocationName %>-click|<%= item %>|<%= subMenu.pageName %>|<%= subMenuChild.pageName %>|<%= englishLocationName %> ">
+                                                                    <% if(!_.isEmpty(subMenuChild.thumbnailImg)) { %>
+                                                                        <div class="list-image">
+                                                                            <img src="<%= subMenuChild.thumbnailImg %>"
+                                                                                alt="<%= subMenuChild.thumbnailAltText %>" />
+                                                                            <% if(!_.isEmpty(subMenuChild.promoHoverImagePath)) { %>
+                                                                                <div class="overlay-block overlay-image-1">
+                                                                                    <img src="<%= subMenuChild.promoHoverImagePath %>"
+                                                                                    alt="<%= subMenuChild.promoImageAltText %>"
+                                                                                    title="<%= subMenuChild.promoHeader %>" class="image top-bottom-effect">
+                                                                                    <div class="overlay-text visible-lg">
+                                                                                        <%= subMenuChild.pageName %>
+                                                                                    </div>
+                                                                                </div>
+                                                                            <% } %>
+                                                                        </div>
+                                                                    <% } %>
+                                                                    <div class="heading <% if((subMenuChild.specialLink) === "spl-link" ){ %>heading-bold spl-link-underline<% } %>">
+                                                                    <%= subMenuChild.pageName %>
+                                                                    </div>
+                                                                </a>
+                                                            </li>
+                                                            <% }) %>
+                                                        </ul>
+                                                        </li>
+                                                        <% }) %>
+                                                    </ul>
+                                                    </div>
+                                                    <% if(!_.isEmpty(primaryNav[item]['featured']) && deviceName=='mobile'){ %>
+                                                    <div class="featured-list">
+                                                        <a class="visible-xs visible-sm visible-md" data-toggle="collapse" href="#featured-section<%= indx %>">
+                                                            <%= primaryNav[item]['featuredTitle'] %>
+                                                        </a>
+                                                        <ul id="featured-section<%= indx %>" class="collapse">
+                                                            <% _.each(primaryNav[item]['featured'], function(subMenu){ %>
+                                                            <li>
+                                                                <% if(subMenu.urlTarget == "newWindow" ){ %>
+                                                                <a data-url="<%= subMenu.pageUrl %>" onclick=window.open(this.dataset.url,'PLAY',width=500,height=500)>
+                                                                    <%= subMenu.pageName %>
+                                                                </a>
+                                                                <% } else if(subMenu.urlTarget == "interstitialLeaving") { %>
+                                                                <a href="javascript:void(0);" data-target="#interstitialModal">
+                                                                    <%= subMenu.pageName %>
+                                                                </a>
+                                                                <%} else { %>
+                                                                <a href="<%= subMenu.pageUrl == '' ? '#' : subMenu.pageUrl %>" target="<%= subMenu.urlTarget %>">
+                                                                    <%= subMenu.pageName %>
+                                                                </a>
+                                                                <% }  %>
+                                                            </li>
+                                                            <% }) %>
+                                                        </ul>
+                                                    </div>
+                                                    <% } %>
+                                                    <div class="img-list <% if((primaryNav[item]['columnLayout']) === "column-4" ){  %> img-list-column-4  <% } %> <% if((primaryNav[item]['columnLayout']) === "age-grid" ){  %> img-list-age-grid  <% } %>">
+                                                    <ul>
+                                                        <% _.each(primaryNav[item]['ImageSection'], function(subMenu){ %>
+                                                            <li class="col-md-<%= subMenu.gridNum %>">
+                                                            <% if(subMenu.promoTarget == "newWindow" ){ %>
+                                                            <a data-url="<%= subMenu.promoUrl %>" onclick=window.open(this.dataset.url,'PLAY',width=500,height=500); data-analytics-tracking-id="<%= englishLocationName %>-click|<%= item %>||<%= subMenu.alwaysEnglish %>|<%= englishLocationName %> ">
+                                                                <% } else if(subMenu.promoTarget == "interstitialLeaving") { %>
+                                                                <a href="javascript:void(0);" data-target="#interstitialModal" data-analytics-tracking-id="<%= englishLocationName %>-click|<%= item %>||<%= subMenu.alwaysEnglish %>|<%= englishLocationName %> ">
+                                                                    <%} else { %>
+                                                                    <a href="<%= subMenu.promoUrl == '' ? '#' : subMenu.promoUrl %>" target="<%= subMenu.promoTarget %>" data-analytics-tracking-id="<%= englishLocationName %>-click|<%= item %>||<%= subMenu.alwaysEnglish %>|<%= englishLocationName %> ">
+                                                                        <% }  %>
+                                                                        <div class="list-image">
+                                                                            <img src="<%= subMenu.promoImagePath %>"
+                                                                               alt="<%= subMenu.promoImageAltText %>"
+                                                                               title="<%= subMenu.promoHeader %>">
+                                                                            <% if((primaryNav[item]['className']) === "explore" && subMenu.awningImageOption === "multipleAwningImages"  ){ %>
+                                                                            <div class="overlay-block overlay-image-3">
+                                                                               <img src="<%= subMenu.promoHoverTopImagePath %>" alt="Avatar" class="image top-bottom-effect">
+                                                                               <img src="<%= subMenu.promoHoverBottomImagePath %>" alt="Avatar" class="image bottom-center-effect">
+                                                                               <img src="<%= subMenu.promoHoverMiddleImagePath %>" alt="Avatar" class="image only-center-effect">
+                                                                            </div>
+                                                                            <% } else if(!_.isEmpty(subMenu.promoHoverImagePath)){ %>
+                                                                            <div class="overlay-block overlay-image-1">
+                                                                               <img src="<%= subMenu.promoHoverImagePath %>"
+                                                                                  alt="<%= subMenu.promoImageAltText %>"
+                                                                                  title="<%= subMenu.promoHeader %>" class="image top-bottom-effect">
+                                                                               <div class="overlay-text visible-lg">
+                                                                                  <%= subMenu.promoHeader || subMenu.alwaysEnglish || subMenu.promoImageAltText %>
+                                                                               </div>
+                                                                            </div>
+                                                                            <% } %>
+                                                                         </div>
+                                                                        <% if((primaryNav[item]['className']) === "explore" ){ %>
+                                                                        <% if(subMenu.checkBoxLink == true ){ %>
+                                                                        <div class="title-wrap">
+                                                                            <div class="title-content">
+                                                                                <% if(!_.isEmpty(subMenu.promoHeader)) { %>
+                                                                                <h4 class="title"> <%= subMenu.promoHeader %> </h4>
+                                                                                <% } %>
+                                                                                <% if(!_.isEmpty(subMenu.promoDescription)) { %>
+                                                                                <p class="description">
+                                                                                    <%= subMenu.promoDescription %>
+                                                                                </p>
+                                                                                <% } %>
+                                                                            </div>
+                                                                            <% if(!_.isEmpty(subMenu.promoCTAText)) { %>
+                                                                            <button href="" class="signup-btn">
+                                                                                <%= subMenu.promoCTAText %>
+                                                                            </button>
+                                                                            <% } %>
+                                                                        </div>
+                                                                        <% } else if(subMenu.checkBoxLink == false ) { %>
+                                                                        <div class="title-wrap no-box">
+                                                                            <div class="<%= !_.isEmpty(subMenu.promoDescription) ? 'title-content' : '' %> <%= !_.isEmpty(subMenu.promoCTAText) ? '' : 'no-button' %>">
+                                                                                <% if(!_.isEmpty(subMenu.promoHeader)) { %>
+                                                                                <h3 class="title" style="color:#<%= subMenu.titleColourType %>"> <%= subMenu.promoHeader %> </h3>
+                                                                                <% } %>
+                                                                                <% if(!_.isEmpty(subMenu.promoDescription)) { %>
+                                                                                <p class="description">
+                                                                                    <%= subMenu.promoDescription %>
+                                                                                </p>
+                                                                                <% } %>
+                                                                                <% if(!_.isEmpty(subMenu.promoCTAText)) { %>
+                                                                                <button href="" class="signup-btn">
+                                                                                    <%= subMenu.promoCTAText %>
+                                                                                </button>
+                                                                                <% } %>
+                                                                            </div>
+
+                                                                        </div>
+
+                                                                        <% } %>
+                                                                        <% } else {%>
+                                                                        <div class="title">
+                                                                            <%= subMenu.promoHeader %>
+                                                                        </div>
+                                                                        <% } %>
+                                                                    </a>
+                                                        </li>
+                                                        <% }) %>
+                                                    </ul>
+                                                    </div>
+                                                    </div>
+                                        </section>
+                                    </li>
+                                </ul>
+                                </li>
+                                <% }) %>
+                    </script>
+                </nav>
+
+                <div class="nav-kids pull-right col-md-1 ${properties.headerIcon || properties.iconText ? 'bgNavKids' : ''}">
+                    <sly data-sly-test.myVar="${properties.iconLinkUrl}" data-sly-use.info="${'com.mattel.ecomm.core.helper.EcommHelper' @ text= myVar}">
+                        <sly data-sly-test="${properties.targetUrl =='sameWindow'}">
+                            <a href="${info.pathURL}" data-tracking-id="${properties.locationName}-click|${properties.alwaysEnglishValForIcon @i18n}|no-value|${properties.locationName}">
+                                   <span class="nav-kids-icon">
+                                       <img src="${properties.headerIcon}" alt="${properties.iconAltText @i18n}" />
+                                   </span>
+                                <span class="nav-kids-label" data-sly-test="${properties.iconText}">${properties.iconText}</span>
+                            </a>
+                        </sly>
+                        <sly data-sly-test="${properties.targetUrl =='tabWindow'}">
+                            <a href="${info.pathURL}" target="_blank" data-tracking-id="${properties.locationName}-click|${properties.alwaysEnglishValForIcon @i18n}|no-value|${properties.locationName}">
+                                   <span class="nav-kids-icon">
+                                       <img src="${properties.headerIcon}" alt="${properties.iconAltText @i18n}" />
+                                   </span>
+                                <span class="nav-kids-label" data-sly-test="${properties.iconText}">${properties.iconText}</span>
+                            </a>
+                        </sly>
+                        <sly data-sly-test="${properties.targetUrl =='newWindow'}">
+                            <a data-url="${info.pathURL}" data-tracking-id="${properties.locationName}-click|${properties.alwaysEnglishValForIcon @i18n}|no-value|${properties.locationName}" onclick="window.open(this.dataset.url,'PLAY','width=500, height=500');">
+                                   <span class="nav-kids-icon">
+                                       <img src="${properties.headerIcon}" alt="${properties.iconAltText @i18n}" />
+                                   </span>
+                                <span class="nav-kids-label" data-sly-test="${properties.iconText}">${properties.iconText}</span>
+                            </a>
+                        </sly>
+                    </sly>
+                </div>
+                <div class="nav-search pull-right col-md-3">
+                    <article data-sly-resource="${'search' @ resourceType='/apps/mattel/ecomm/shared/components/content/search'}"></article>
+                </div>
+            </div>
+            <div class="close-icon" data-target="#primary-nav-bar">
+                <span class="sr-only">close</span>
+            </div>
+        </div>
+        <div class="menu-sliding-div-mask"></div>
+        <div class="header-close-menu" data-target="#primary-nav-bar">
+            <span class="sr-only">close</span>
+        </div>
+    </div>
+</header>
+<sly data-sly-test="${wcmmode.edit}" data-sly-resource="${'navLinks' @ resourceType='/libs/wcm/foundation/components/responsivegrid'}"></sly>

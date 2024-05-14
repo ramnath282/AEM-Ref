@@ -1,0 +1,502 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Product Grid Promo Banner"
+    sling:resourceType="cq/gui/components/authoring/dialog"
+    height="{Long}500"
+    width="{Long}600">
+    <content
+        jcr:primaryType="nt:unstructured"
+		granite:class="ag-cmp-banner-editor"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <desktopMediaSection
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Desktop Promo Content Section"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <column
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+									<indexSection
+                                        jcr:primaryType="nt:unstructured"
+                                        jcr:title="Desktop Banner Index Configuration"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/fieldset">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <desktop
+												jcr:primaryType="nt:unstructured"
+												jcr:title="Desktop Settings"
+												sling:resourceType="granite/ui/components/coral/foundation/container">
+												<items jcr:primaryType="nt:unstructured">
+													<rowNo
+														jcr:primaryType="nt:unstructured"
+														sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+														fieldDescription="Please enter Row number in which you need to show Promo Banner in Desktop"
+														fieldLabel="Row number for Promo Banner in Desktop"
+														min="{Long}1"
+														name="./desktopRowNo"/>
+													<columnNo
+														jcr:primaryType="nt:unstructured"
+														sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+														fieldDescription="Please enter Column number/starting point for Promo Banner in Desktop"
+														fieldLabel="Column number for Promo Banner in Desktop"
+														min="{Long}1"
+														name="./desktopColumnNo"/>
+													<spanLength
+														jcr:primaryType="nt:unstructured"
+														sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+														fieldDescription="Please Banner span length in no. of Product Slots for Desktop"
+														fieldLabel="Banner span length in no. of Product Slots for Desktop"
+														max="{Long}4"
+														min="{Long}1"
+														name="./desktopSpanLenth"/>
+												</items>
+											</desktop>
+                                        </items>
+                                    </indexSection>
+									<displaySection
+                                        jcr:primaryType="nt:unstructured"
+                                        jcr:title="Desktop Banner Display Configuration"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/fieldset">
+                                        <items jcr:primaryType="nt:unstructured">
+											<mediaType
+												granite:class="promoMediaType"
+												jcr:primaryType="nt:unstructured"
+												sling:resourceType="granite/ui/components/coral/foundation/form/select"
+												fieldLabel="Media Type"
+												name="./desktopMediaType">
+												<items jcr:primaryType="nt:unstructured">
+													<image
+														jcr:primaryType="nt:unstructured"
+														text="Image"
+														value="image"/>
+													<video
+														jcr:primaryType="nt:unstructured"
+														text="Video"
+														value="video"/>
+												</items>
+											</mediaType>
+											<imageSection
+												granite:class="desktop-promo-image-section"
+												jcr:primaryType="nt:unstructured"
+												sling:resourceType="granite/ui/components/coral/foundation/container">
+												<items jcr:primaryType="nt:unstructured">
+													<promoImage
+														granite:class="promoImageField"
+														jcr:primaryType="nt:unstructured"
+														sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+														allowUpload="{Boolean}false"
+														autoStart="{Boolean}false"
+														class="cq-droptarget"
+														fieldLabel="Promotional / Poster Image"
+														fileReferenceParameter="./desktopPromoImage"
+														mimeTypes="[image/gif,image/jpeg,image/png,image/webp,image/tiff]"
+														fieldDescription="For media type Image this field will act as promo image and for media type Video, this field will act as thumbnail/poster image."
+														multiple="{Boolean}false"
+														name="./desktopPromotionalImage"
+														uploadUrl="${suffix.path}"
+														useHTML5="{Boolean}true"/>
+													<imageAltText
+														granite:class="promoImageAlt"
+														jcr:primaryType="nt:unstructured"
+														sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+														fieldDescription="Please Enter Promo Image Alt Text"
+														fieldLabel="Promo Image Alt Text"
+														name="./desktopImageAltText"/>
+													<desktopPromoImageUrl
+														jcr:primaryType="nt:unstructured"
+														sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+														fieldLabel="Desktop Promo Image Link"
+														name="./desktopPromoImageUrl"/>
+												</items>
+											</imageSection>
+											<videoSection
+												granite:class="desktop-promo-video-section"
+												jcr:primaryType="nt:unstructured"
+												sling:resourceType="granite/ui/components/coral/foundation/container">
+												<items jcr:primaryType="nt:unstructured">
+													<videoType
+														granite:class="promoVideoType"
+														jcr:primaryType="nt:unstructured"
+														sling:resourceType="granite/ui/components/coral/foundation/form/select"
+														fieldLabel="Video Type"
+														name="./desktopVideoType">
+														<items jcr:primaryType="nt:unstructured">
+															<youtube
+																jcr:primaryType="nt:unstructured"
+																text="Youtube"
+																value="youtube"/>
+															<scene7
+																jcr:primaryType="nt:unstructured"
+																text="Scene7"
+																value="scene7"/>
+															<deluxe
+																jcr:primaryType="nt:unstructured"
+																text="Deluxe"
+																value="deluxe"/>
+														</items>
+													</videoType>
+													<videoUrl
+														granite:class="promoVideoUrlField"
+														jcr:primaryType="nt:unstructured"
+														sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+														fieldDescription="Please enter Promo Video URL"
+														fieldLabel="Promo Video URL"
+														name="./desktopVideoUrl"
+														rootPath="/content"/>
+												</items>
+											</videoSection>
+                                            <playVidInModalDesktop
+                                                granite:class="cq-dialog-switch-image-field"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/switch"
+                                                fieldLabel="Play Video In Modal ?"
+                                                name="./playVidInModalDesktop">
+                                                <granite:data
+                                                    jcr:primaryType="nt:unstructured"
+                                                    cq-dialog-switch-img-field-target=".imagefield-mandatory"/>
+                                            </playVidInModalDesktop>
+                                            <autoPlayVideoDesktop
+                                                granite:class="cq-dialog-switch-showhide"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/switch"
+                                                fieldLabel="Auto Play Video ?"
+                                                name="./autoPlayVideoDesktop"/>
+										</items>
+									</displaySection>
+                                </items>
+                            </column>
+                        </items>
+                    </desktopMediaSection>
+					<tabletMediaSection
+						jcr:primaryType="nt:unstructured"
+						jcr:title="Tablet Promo Content Section"
+						sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+						margin="{Boolean}true">
+						<items jcr:primaryType="nt:unstructured">
+							<column
+								jcr:primaryType="nt:unstructured"
+								sling:resourceType="granite/ui/components/coral/foundation/container">
+								<items jcr:primaryType="nt:unstructured">
+									<indexSection
+										jcr:primaryType="nt:unstructured"
+										jcr:title="Tablet Banner Index Configuration"
+										sling:resourceType="granite/ui/components/coral/foundation/form/fieldset">
+										<items jcr:primaryType="nt:unstructured">
+											<tablet
+												jcr:primaryType="nt:unstructured"
+												jcr:title="Tablet Settings"
+												sling:resourceType="granite/ui/components/coral/foundation/container">
+												<items jcr:primaryType="nt:unstructured">
+													<rowNo
+														jcr:primaryType="nt:unstructured"
+														sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+														fieldDescription="Please enter Row number in which you need to show Promo Banner in Tablet"
+														fieldLabel="Row number for Promo Banner in Tablet"
+														min="{Long}1"
+														name="./tabletRowNo"/>
+													<columnNo
+														jcr:primaryType="nt:unstructured"
+														sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+														fieldDescription="Please enter Column number/starting point for Promo Banner in Tablet"
+														fieldLabel="Column number for Promo Banner in Tablet"
+														min="{Long}1"
+														name="./tabletColumnNo"/>
+													<spanLength
+														jcr:primaryType="nt:unstructured"
+														sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+														fieldDescription="Please Banner span length in no. of Product Slots for Tablet"
+														fieldLabel="Banner span length in no. of Product Slots for Tablet"
+														max="{Long}3"
+														min="{Long}1"
+														name="./tabletSpanLenth"/>
+												</items>
+											</tablet>
+										</items>
+									</indexSection>
+									<displaySection
+										jcr:primaryType="nt:unstructured"
+										jcr:title="Tablet Banner Display Configuration"
+										sling:resourceType="granite/ui/components/coral/foundation/form/fieldset">
+										<items jcr:primaryType="nt:unstructured">
+											<mediaType
+												granite:class="tabletPromoMediaType"
+												jcr:primaryType="nt:unstructured"
+												sling:resourceType="granite/ui/components/coral/foundation/form/select"
+												fieldLabel="Media Type"
+												name="./tabletMediaType">
+												<items jcr:primaryType="nt:unstructured">
+													<image
+														jcr:primaryType="nt:unstructured"
+														text="Image"
+														value="image"/>
+													<video
+														jcr:primaryType="nt:unstructured"
+														text="Video"
+														value="video"/>
+												</items>
+											</mediaType>
+											<imageSection
+												granite:class="tablet-promo-image-section"
+												jcr:primaryType="nt:unstructured"
+												sling:resourceType="granite/ui/components/coral/foundation/container">
+												<items jcr:primaryType="nt:unstructured">
+													<promoImage
+														granite:class="tabletPromoImageField"
+														jcr:primaryType="nt:unstructured"
+														sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+														fieldDescription="For media type Image this field will act as promo image and for media type Video, this field will act as thumbnail/poster image."
+														allowUpload="{Boolean}false"
+														autoStart="{Boolean}false"
+														class="cq-droptarget"
+														fieldLabel="Promotional / Poster Image"
+														fileReferenceParameter="./tabletPromoImage"
+														mimeTypes="[image/gif,image/jpeg,image/png,image/webp,image/tiff]"
+														multiple="{Boolean}false"
+														name="./tabletPromotionalImage"
+														uploadUrl="${suffix.path}"
+														useHTML5="{Boolean}true"/>
+													<imageAltText
+														granite:class="tabletPromoImageAlt"
+														jcr:primaryType="nt:unstructured"
+														sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+														fieldDescription="Please Enter Promo Image Alt Text"
+														fieldLabel="Promo Image Alt Text"
+														name="./tabletImageAltText"/>
+													<tabletPromoImageUrl
+														jcr:primaryType="nt:unstructured"
+														sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+														fieldLabel="Tablet Promo Image Link"
+														name="./tabletPromoImageUrl"/>
+												</items>
+											</imageSection>
+											<videoSection
+												granite:class="tablet-promo-video-section"
+												jcr:primaryType="nt:unstructured"
+												sling:resourceType="granite/ui/components/coral/foundation/container">
+												<items jcr:primaryType="nt:unstructured">
+													<videoType
+														granite:class="tabletPromoVideoType"
+														jcr:primaryType="nt:unstructured"
+														sling:resourceType="granite/ui/components/coral/foundation/form/select"
+														fieldLabel="Video Type"
+														name="./tabletVideoType">
+														<items jcr:primaryType="nt:unstructured">
+															<youtube
+																jcr:primaryType="nt:unstructured"
+																text="Youtube"
+																value="youtube"/>
+															<scene7
+																jcr:primaryType="nt:unstructured"
+																text="Scene7"
+																value="scene7"/>
+															<deluxe
+																jcr:primaryType="nt:unstructured"
+																text="Deluxe"
+																value="deluxe"/>
+														</items>
+													</videoType>
+													<videoUrl
+														granite:class="tabletPromoVideoUrlField"
+														jcr:primaryType="nt:unstructured"
+														sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+														fieldDescription="Please enter Promo Video URL"
+														fieldLabel="Promo Video URL"
+														name="./tabletVideoUrl"
+														rootPath="/content"/>
+												</items>
+											</videoSection>
+                                            <playVidInModalTablet
+                                                granite:class="cq-dialog-switch-image-field"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/switch"
+                                                fieldLabel="Play Video In Modal ?"
+                                                name="./playVidInModalTablet">
+                                                <granite:data
+                                                    jcr:primaryType="nt:unstructured"
+                                                    cq-dialog-switch-img-field-target=".imagefield-mandatory"/>
+                                            </playVidInModalTablet>
+                                            <autoPlayVideoTablet
+                                                granite:class="cq-dialog-switch-showhide"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/switch"
+                                                fieldLabel="Auto Play Video ?"
+                                                name="./autoPlayVideoTablet"/>
+										</items>
+									</displaySection>
+								</items>
+							</column>
+						</items>
+					</tabletMediaSection>
+					<mobileMediaSection
+						jcr:primaryType="nt:unstructured"
+						jcr:title="Mobile Promo Content Section"
+						sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+						margin="{Boolean}true">
+						<items jcr:primaryType="nt:unstructured">
+							<column
+								jcr:primaryType="nt:unstructured"
+								sling:resourceType="granite/ui/components/coral/foundation/container">
+								<items jcr:primaryType="nt:unstructured">
+									<indexSection
+										jcr:primaryType="nt:unstructured"
+										jcr:title="Mobile Banner Index Configuration"
+										sling:resourceType="granite/ui/components/coral/foundation/form/fieldset">
+										<items jcr:primaryType="nt:unstructured">
+											<mobile
+												jcr:primaryType="nt:unstructured"
+												jcr:title="Mobile Settings"
+												sling:resourceType="granite/ui/components/coral/foundation/container">
+												<items jcr:primaryType="nt:unstructured">
+													<rowNo
+														jcr:primaryType="nt:unstructured"
+														sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+														fieldDescription="Please enter Row number in which you need to show Promo Banner in Mobile"
+														fieldLabel="Row number for Promo Banner in Mobile"
+														min="{Long}1"
+														name="./mobileRowNo"/>
+													<columnNo
+														jcr:primaryType="nt:unstructured"
+														sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+														fieldDescription="Please enter Column number/starting point for Promo Banner in Mobile"
+														fieldLabel="Column number for Promo Banner in Mobile"
+														min="{Long}1"
+														name="./mobileColumnNo"/>
+													<spanLength
+														jcr:primaryType="nt:unstructured"
+														sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+														fieldDescription="Please Banner span length in no. of Product Slots for Mobile"
+														fieldLabel="Banner span length in no. of Product Slots for Mobile"
+														max="{Long}2"
+														min="{Long}1"
+														name="./mobileSpanLength"/>
+												</items>
+											</mobile>
+										</items>
+									</indexSection>
+									<displaySection
+										jcr:primaryType="nt:unstructured"
+										jcr:title="Mobile Banner Display Configuration"
+										sling:resourceType="granite/ui/components/coral/foundation/form/fieldset">
+										<items jcr:primaryType="nt:unstructured">
+											<mediaType
+												granite:class="mobilePromoMediaType"
+												jcr:primaryType="nt:unstructured"
+												sling:resourceType="granite/ui/components/coral/foundation/form/select"
+												fieldLabel="Media Type"
+												name="./mobileMediaType">
+												<items jcr:primaryType="nt:unstructured">
+													<image
+														jcr:primaryType="nt:unstructured"
+														text="Image"
+														value="image"/>
+													<video
+														jcr:primaryType="nt:unstructured"
+														text="Video"
+														value="video"/>
+												</items>
+											</mediaType>
+											<imageSection
+												granite:class="mobile-promo-image-section"
+												jcr:primaryType="nt:unstructured"
+												sling:resourceType="granite/ui/components/coral/foundation/container">
+												<items jcr:primaryType="nt:unstructured">
+													<promoImage
+														granite:class="mobilePromoImageField"
+														fieldDescription="For media type Image this field will act as promo image and for media type Video, this field will act as thumbnail/poster image."
+														jcr:primaryType="nt:unstructured"
+														sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+														allowUpload="{Boolean}false"
+														autoStart="{Boolean}false"
+														class="cq-droptarget"
+														fieldLabel="Promotional / Poster Image"
+														fileReferenceParameter="./mobilePromoImage"
+														mimeTypes="[image/gif,image/jpeg,image/png,image/webp,image/tiff]"
+														multiple="{Boolean}false"
+														name="./mobilePromotionalImage"
+														uploadUrl="${suffix.path}"
+														useHTML5="{Boolean}true"/>
+													<imageAltText
+														granite:class="mobilePromoImageAlt"
+														jcr:primaryType="nt:unstructured"
+														sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+														fieldDescription="Please Enter Promo Image Alt Text"
+														fieldLabel="Promo Image Alt Text"
+														name="./mobileImageAltText"/>
+													<mobilePromoImageUrl
+														jcr:primaryType="nt:unstructured"
+														sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+														fieldLabel="Mobile Promo Image Link"
+														name="./mobilePromoImageUrl"/>
+												</items>
+											</imageSection>
+											<videoSection
+												granite:class="mobile-promo-video-section"
+												jcr:primaryType="nt:unstructured"
+												sling:resourceType="granite/ui/components/coral/foundation/container">
+												<items jcr:primaryType="nt:unstructured">
+													<videoType
+														granite:class="mobilePromoVideoType"
+														jcr:primaryType="nt:unstructured"
+														sling:resourceType="granite/ui/components/coral/foundation/form/select"
+														fieldLabel="Video Type"
+														name="./mobileVideoType">
+														<items jcr:primaryType="nt:unstructured">
+															<youtube
+																jcr:primaryType="nt:unstructured"
+																text="Youtube"
+																value="youtube"/>
+															<scene7
+																jcr:primaryType="nt:unstructured"
+																text="Scene7"
+																value="scene7"/>
+															<deluxe
+																jcr:primaryType="nt:unstructured"
+																text="Deluxe"
+																value="deluxe"/>
+														</items>
+													</videoType>
+													<videoUrl
+														granite:class="tabletPromoVideoUrlField"
+														jcr:primaryType="nt:unstructured"
+														sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+														fieldDescription="Please enter Promo Video URL"
+														fieldLabel="Promo Video URL"
+														name="./mobileVideoUrl"
+														rootPath="/content"/>
+												</items>
+											</videoSection>
+                                            <playVidInModalMobile
+                                                granite:class="cq-dialog-switch-image-field"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/switch"
+                                                fieldLabel="Play Video In Modal ?"
+                                                name="./playVidInModalMobile">
+                                                <granite:data
+                                                    jcr:primaryType="nt:unstructured"
+                                                    cq-dialog-switch-img-field-target=".imagefield-mandatory"/>
+                                            </playVidInModalMobile>
+                                            <autoPlayVideoMobile
+                                                granite:class="cq-dialog-switch-showhide"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/switch"
+                                                fieldLabel="Auto Play Video ?"
+                                                name="./autoPlayVideoMobile"/>
+										</items>
+									</displaySection>
+								</items>
+							</column>
+						</items>
+					</mobileMediaSection>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>

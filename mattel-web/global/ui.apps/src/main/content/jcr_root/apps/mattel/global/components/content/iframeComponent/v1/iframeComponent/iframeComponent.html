@@ -1,0 +1,31 @@
+<sly data-sly-test="${wcmmode.edit}">${'Configure Iframe Component' @i18n}</sly>
+<sly data-sly-use.iframeModel="com.mattel.global.core.model.IframeModel" />
+
+<div class="iframe-global-comp" style="background-color: ${iframeModel.backgroundColor @context='html'}; background-image: url(${iframeModel.backgroundImage @context='html'}); background-size:cover;">
+    <div class="iframe-global-content ${iframeModel.dynamicDimentions ? '' : 'with-dynamic-height'}"
+         data-lg-dimension="${iframeModel.desktopWidth}*${iframeModel.desktopHeight}"
+         data-xsm-dimension="${iframeModel.mobilePortraitWidth}%*${iframeModel.mobilePortraitHeight}"
+         data-sm-dimension="${iframeModel.mobileLandscapeWidth}%*${iframeModel.mobileLandscapeHeight}"
+         data-xsm-spacing="${iframeModel.mobilePortraitSpacing}" data-sm-spacing="${iframeModel.mobileLandscapeSpacing}">
+         <sly data-sly-test="${iframeModel.linkUrl && iframeModel.linkUrl}">
+             <div class="back-to-parent-page">
+                <sly data-sly-test="${iframeModel.linkOptions =='sameWindow'}">
+                    <a href="${iframeModel.linkUrl}" alt="${iframeModel.linkAltText @i18n}">${iframeModel.linkText @context='html'}</a>
+                </sly>
+                <sly data-sly-test="${iframeModel.linkOptions =='tabWindow'}">
+                    <a href="${iframeModel.linkUrl}" alt="${iframeModel.linkAltText @i18n}" target="_blank">${iframeModel.linkText @context='html'}</a>
+                </sly>
+                <sly data-sly-test="${iframeModel.linkOptions =='newWindow'}">
+                    <a data-urlset="${iframeModel.linkUrl}" alt="${iframeModel.linkAltText @i18n}" onclick="window.open(this.dataset.urlset,'AG','width=500, height=500');">${iframeModel.linkText @context='html'}</a>
+                </sly>
+            </div>
+        </sly>
+        <div class="iframe-section">
+            <iframe src="${iframeModel.sourceUrl}" frameborder="0" width="100%" height="100%"></iframe>
+        </div>
+    </div>
+</div>
+
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
+    <sly data-sly-call="${clientlib.js @ categories=['global.iframe']}"/>
+</sly>

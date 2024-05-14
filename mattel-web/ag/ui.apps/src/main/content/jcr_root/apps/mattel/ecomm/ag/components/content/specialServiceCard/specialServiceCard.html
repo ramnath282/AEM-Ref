@@ -1,0 +1,15 @@
+<sly data-sly-test="${wcmmode.edit}">${'Special Service' @i18n}</sly>
+    <section>
+	<div>
+		<div class="title-content">
+			<img src="${properties.specialmagePath}" alt="" title="${properties.salonCardAlt @i18n}">
+				<h3 class="title-name">${properties.title @i18n}</h3>
+			</div>
+			 ${properties.description @context='html'}
+          
+				<sly data-sly-test="${properties.popover != null }">
+					<button class="fas fa-info-circle" tabindex="0" aria-label="${'more information opens a tooltip' @i18n}" data-toggle="popover" data-placement="bottom" data-content=" ${properties.popover @context='html'}" data-original-title="" title=""></button>
+				</sly>
+
+		</div>
+        </section>

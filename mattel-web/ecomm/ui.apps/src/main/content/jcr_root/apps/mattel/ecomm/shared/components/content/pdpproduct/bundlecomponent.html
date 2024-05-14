@@ -1,0 +1,112 @@
+<template data-sly-template.bundleComponentInfo="${@ componentObj,productObj}">
+<sly data-sly-test="${componentObj.product_buyable && componentObj.product_buyable != '0'}">
+    <div class="product-info-wrapper child-product ${componentObj.product_hasSwatches ? 'swatch-available' : ''}" data-partnumber="${componentObj.product_partnumber}" id="productInfo-${componentObj.product_partnumber}" data-affirmineligible="${componentObj.product_affirmInEligibleFlag ? componentObj.product_affirmInEligibleFlag : 'N'}" data-producttype="${componentObj.product_type}">
+        <div class="product-bundle-component">
+            <div class="bundle-check-item">
+                    <sly data-sly-test.variants="${componentObj.variants}">
+                       <sly data-sly-test="${componentObj.product_type == 'ItemBean'}" data-sly-list="${variants}">
+                         <sly data-sly-test.itemvariantid="${item.id}"/>
+                       </sly>
+                    </sly>
+                 <sly data-sly-test="${!productObj.core['product_isDynamicKit']}">
+                    <input class="custom-checkbox" checked="" type="checkbox" data-partnumber=${componentObj.product_partnumber} data-variant-id="${itemvariantid}" id="BUNDLE_TYPE_${componentObj.product_partnumber}" data-hasaddon="${componentObj.product_hasAddOns ? componentObj.product_hasAddOns : false}" />
+                 </sly>
+                 <sly data-sly-test="${productObj.core['product_isDynamicKit']}">
+                    <input class="custom-checkbox" type="checkbox" data-partnumber=${componentObj.product_partnumber} id="BUNDLE_TYPE_${componentObj.product_partnumber}" data-variant-id="${itemvariantid}" data-hasaddon="${componentObj.product_hasAddOns ? componentObj.product_hasAddOns : false}" 
+                      data-hasquicksell="${componentObj.product_hasQuickSell}"  data-isdynamickitprimarysku="${productObj.core['product_isDynamicKit'] && componentObj.product_isDynamicKit && componentObj.product_isDynamicKit == 'true' ? 'true' : 'false'}" />
+                 </sly>
+                <label for="BUNDLE_TYPE_${componentObj.product_partnumber}">
+                    <span class="sr-only">Bundle Image</span>
+                    <a href="/shop/p/${componentObj.handle}"><img src="${componentObj.product_imagelink}" alt="${componentObj.product_thumnail}" /></a>
+                </label>
+            </div>
+            <div class="bundle-info">
+                <sly data-sly-test="${componentObj.title}">
+                    <a href="/shop/p/${componentObj.handle}"><h3>${componentObj.title @context='html'}</h3></a>
+                </sly>
+                <img class="socialimage hide" src="" />
+                <div class=" product-price" data-partnumber="${componentObj.product_partnumber}" data-variant-id="${itemvariantid}" data-association-type="COMPONENT">
+                    <span class="hide"><span class="price-currency "></span><span class="current_price"></span></span>
+                    <span class="price-strike" data-pricestrick-message="${properties.pricestrickMessage @i18n}"> <span class="sr-only"></span> <span class="offer_price"></span></span>
+                    <span class="price-saved" data-yousave-message="${properties.yousaveMessage @i18n}"><span class="discount_price"></span> <span class="discount_percentage"></span></span>
+                </div>
+                <div class="inventory-status ${componentObj.product_hasSwatches ? 'hide-inventory' : 'show-inventory'}">
+                    <span class="inventory-status-message" aria-live="polite"></span>
+                    <span class="back-oderable-date"></span>
+                </div>
+                <sly data-sly-test="${componentObj.associations}" data-sly-list.association="${componentObj.associations}">
+                    <sly data-sly-test="${association.association_type == 'QUICK'  && association.product}">
+                       <sly data-sly-test.coreassoc="${association.product.core}" data-sly-test.variantsassoc="${association.product.variants}">
+		                        <div class="addon-option addon-box hide">
+		                            <input class="custom-checkbox " type="checkbox" data-partnumber="${association.product.partnumber}" data-variant-id="${variantsassoc[0].id}" data-imgUrl="${coreassoc.product_imagelink}" id="addon-${componentObj.product_partnumber}-${association.product.partnumber}" data-association-type="QUICK">
+		                            <label for="addon-${componentObj.product_partnumber}-${association.product.partnumber}" data-partnumber="${association.product.partnumber}" data-variant-id="${variantsassoc[0].id}" class="addon-desc">${coreassoc.title}</label>
+		                            <span class="addon-price " data-partnumber="${association.product.partnumber}" data-variant-id="${variantsassoc[0].id}"></span>
+		                        </div>
+		                   </sly>
+                    </sly>
+                </sly>
+                <sly data-sly-test.hasSwatches="${componentObj.variants && componentObj.variants.size > 0}">
+                    <sly data-sly-test.isSize="${componentObj.options && componentObj.options.size > 0 && componentObj.options[0].name == 'Clothing Size'}">
+                        <div class="select-size-wrapper sku-size-select marketing-savings-cont" data-type="child">
+                            <div class="size-header-wrap filter_cont">
+                                <span class="size-label">${properties.sizeLabel @i18n}:</span>
+                                <div class="size-selection-preference">
+                                    <ul role="radiogroup" aria-label="size" class="text-swatches size_category filter_list_cont">
+                                        <sly data-sly-list.variant="${componentObj.variants}">
+                                            <li class="innerCont" data-partnoswatch="${variant.core['sku']}" data-variant-id="${variant.id}">
+                                                <a href="#" role="radio" aria-setsize="${componentObj.variants.size}" aria-posinset="${variants.count}" aria-label="${variant.core['option1']}" aria-checked="false" alt="${variant.core[option1]}" data-partnumber="${variant.core['sku']}" data-variant-id="${variant.id}">
+                                                    <span>${variant.core['option1']}</span>
+                                                </a>
+                                            </li>
+                                        </sly>
+                                        <sly data-sly-test="${componentObj.product_sizeChartLink}">
+                                            <li class="size-chart-text">
+                                                <a href="javascript:void(0);" data-url="${componentObj.product_sizeChartLink}" onclick="window.open(this.dataset.url,'AG','width=800, height=800');" class="size-chart size-modal-chart">${properties.sizeChartLabel}<span class="sr-only">Opens in a new window</span></a>
+                                            </li>
+                                        </sly>
+                                    </ul>
+                                    <div class="inline-message childErrMsg">
+                                        <span class="inline-icon">${properties.selectSwatchErrorMessage @i18n}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </sly>
+                    <sly data-sly-test="${!isSize && componentObj.options && componentObj.options.size > 0 && (componentObj.options[0].name == 'Color' || componentObj.options[0].name == 'Clothing Color')}">
+                        <div class="select-size-wrapper sku-cloth-select marketing-savings-cont" data-type="child">
+                            <div class="size-header-wrap filter_cont">
+                                <div class="product-specification cloth-product-specification">
+                                    <div class="product-label">
+                                        ${properties.colorLabel @i18n}:
+                                    </div>
+                                    <div class="product-value">
+                                    </div>
+                                </div>
+                                <div class="size-selection-preference">
+                                    <ul role="radiogroup" data-id="color-selection" aria-label="size" data-sly-list.variant="${componentObj.variants}" class="text-swatches color_category filter_list_cont cloth_list">
+                                        <li class="innerCont" data-partnoswatch="${variant.core['sku']}" data-variant-id="${variant.id}">
+                                            <a href="#" role="radio" aria-setsize="${componentObj.variants.size}" aria-posinset="${variants.count}" aria-checked="false" data-partnumber="${variant.core['sku']}" data-variant-id="${variant.id}">
+                                                <img alt="${variant.core['option1']}" src="${variant.core['variant_swatch']}" />
+                                                <span></span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <div class="inline-message childErrMsg">
+                                        <span class="inline-icon">${properties.selectSwatchErrorMessage @i18n}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </sly>
+                </sly>
+                <sly data-sly-test="${componentObj.product_isretailinventorycheckenabled == 'true'}">
+                    <sly data-sly-use.tmpl="retailStoreDropdown.html" data-sly-call="${tmpl.retailStore @ productObj=productObj}"></sly>
+                </sly>
+                    <div class="inline-message checkErrMsg childErrMsg">
+                        <span class="inline-icon">${properties.checkboxErrorMessage @i18n}</span>
+                    </div>
+            </div>
+        </div>
+    </div>
+</sly>
+</template>

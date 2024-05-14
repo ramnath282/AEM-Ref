@@ -1,0 +1,135 @@
+{
+    "schema": {
+        "ag_en": {
+            "rootPath": "/content/ag/en",
+            "excludePagesOfTemplateType": [],
+            "includeLastModified": true,
+            "useTreeAlgorithm": true,
+            "defaultpriority": "1.0",
+            "defaultFrequency": "daily",
+            "externalizerDomain": "agdomainprod",
+            "pageExcludeProperty": "hideInSitemap",
+            "pageSkipProperty": "skipInSitemap",
+            "pageStopProperty": "stopInSitemap",
+            "priorityProperties":["priority.properties"],
+            "changeFreqProperties":["changefreq.properties"],
+            "includeInheritance": false,
+            "extensionlessUrls": false,
+            "dynamicPageConfigs": [{
+                    "dataSourceType": "REPO",
+                    "repoPath": "/var/commerce/products/{site_name}/{locale}",
+                    "excludeNodes": [],
+                    "includeHtmlSuffix": false,
+                    "defaultpriority": "1.0",
+                    "defaultFrequency": "daily",
+                    "startsWith": "/shop/p",
+                    "nodePrimaryId": "pdpLink",
+                    "includeLastModified": true,
+                    "isActiveProperty": "active",
+                    "lastModifiedProperty": "cq:lastReplicated"
+                }
+            ],
+            "rewriteVanityRules": [{
+                    "forPageHierarchy": "/content/{site_name}/{locale}/shop/categories",
+                    "startsWith": "/shop/c",
+                    "includeLastModified": true,
+                    "endsWith": null,
+                    "newVanityUrl": null
+                }
+            ]
+        },
+		"fisher-price_en-us": {
+		  "rootPath": "/content/fisher-price/us/en-us/home",
+		  "excludePagesOfTemplateType": [
+			
+		  ],
+		  "additionalSkipProperty": "cq:redirectTarget",
+		  "includeLastModified": true,
+		  "useTreeAlgorithm": true,
+		  "defaultpriority": "1.0",
+		  "defaultFrequency": "daily",
+		  "priorityProperties": [
+			"cq:priority"
+		  ],
+		  "changeFreqProperties": [
+			"cq:frequency"
+		  ],
+		  "externalizerDomain": "fpProd",
+		  "pageExcludeProperty": null,
+		  "includeInheritance": false,
+		  "extensionlessUrls": true,
+		  "otherLocales": [
+			{
+			  "siteKey": "fisher-price_en-gb",
+			  "rootPath": "/content/fisher-price/gb/en-gb/home"
+			},
+			{
+			  "siteKey": "fisher-price_de-de",
+			  "rootPath": "/content/fisher-price/de/de-de/home"
+			},
+			{
+			  "siteKey": "fisher-price_es-es",
+			  "rootPath": "/content/fisher-price/es/es-es/home"
+			},
+			{
+			  "siteKey": "fisher-price_it-it",
+			  "rootPath": "/content/fisher-price/it/it-it/home"
+			},
+			{
+			  "siteKey": "fisher-price_fr-fr",
+			  "rootPath": "/content/fisher-price/fr/fr-fr/home"
+			},
+			{
+			  "siteKey": "fisher-price_fr-ca",
+			  "rootPath": "/content/fisher-price/ca/fr-ca/home"
+			},
+			{
+			  "siteKey": "fisher-price_en-ca",
+			  "rootPath": "/content/fisher-price/ca/en-ca/home"
+			},
+			{
+			  "siteKey": "fisher-price_ru-ru",
+			  "rootPath": "/content/fisher-price/ru/ru-ru/home"
+			},
+			{
+			  "siteKey": "fisher-price_es-mx",
+			  "rootPath": "/content/fisher-price/mx/es-mx/home"
+			},
+			{
+			  "siteKey": "fisher-price_pt-br",
+			  "rootPath": "/content/fisher-price/br/pt-br/home"
+			},
+			{
+			  "siteKey": "fisher-price_pl-pl",
+			  "rootPath": "/content/fisher-price/pl/pl-pl/home"
+			},
+			{
+			  "siteKey": "fisher-price_el-gr",
+			  "rootPath": "/content/fisher-price/gr/el-gr/home"
+			},
+			{
+			  "siteKey": "fisher-price_nl-nl",
+			  "rootPath": "/content/fisher-price/nl/nl-nl/home"
+			},
+			{
+			  "siteKey": "fisher-price_tr-tr",
+			  "rootPath": "/content/fisher-price/tr/tr-tr/home"
+			}
+			],
+		  "dynamicPageConfigs": [
+			{
+			  "dataSourceType": "REPO",
+			  "repoPath": "/var/commerce/products/{site_name}/{locale}",
+			  "excludeNodes": [],
+			  "includeHtmlSuffix": false,
+			  "nodePrimaryId": "productURL",
+			  "includeLastModified": true,
+			  "lastModifiedProperty": "cq:lastReplicated"
+			}
+		  ],
+		  "rewriteVanityRules": [
+			
+		  ]
+		}
+    }
+}

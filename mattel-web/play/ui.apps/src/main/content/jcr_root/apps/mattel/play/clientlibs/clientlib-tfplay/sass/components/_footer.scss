@@ -1,0 +1,190 @@
+footer{
+    background-color: $midnightBlue;
+    margin-top: 11px;
+    @media #{$medium-down}{
+        padding-bottom: 2.6875rem;
+        padding-top: 2.9rem;
+    }
+    #footer{
+        padding-bottom: 1rem;
+        *{
+            @extend .font-franklin-r;
+        }
+        .country-drop-down-menu{
+            @media #{$small-up} {
+                max-width: 18.75rem;
+            }
+            @media #{$medium-up} {
+                margin-bottom: 0;
+            }
+            @media #{$medium-down}{
+                margin-bottom: 3.1875rem;
+                margin-top: 4px;
+            }
+            a{
+                font-size: 1.25rem;
+                @media #{$small-up}{
+                    font-size: 1.125rem;
+                }
+                &.dropdown-active{
+                    background-color:$white;
+                    color: $black;
+                    border: 1px solid $pacificBlue;
+                    &:after{
+                        background-color: $pacificBlue;
+                        height: 100%;
+                        background: $pacificBlue url(#{$imagePath}/Icon_tnf_kids_arrow-down_28x28px.png) no-repeat center center;
+                        content: "";
+                        width: 40px;
+                    }
+                }
+            }
+            .menu-child {
+                @media #{$small-up} {
+                    width: calc(100% - 40px);
+                }
+                border: 1px solid $pacificBlue;
+                border-top: 0;
+                &::-webkit-scrollbar-thumb {
+                    background-color: $very-dim-light;
+                }
+                a{
+                    // padding-top: .425rem;
+                    // padding-bottom: .425rem;
+                    // padding-left: .875rem;
+                    &:hover{
+                        background-color: $very-dim-light;
+                        color: $black;
+                    }
+                }
+                &.open[menu-level="1"] {
+                    height: 4.9375rem;
+                }
+            }
+            .dropdown-active,
+            .menu-child a{
+                padding: .875rem 1.1875rem .5625rem;
+                font-size: 1.25rem;
+                line-height:1.4375rem;
+                @media #{$small-up}{
+                    line-height: 1.1875rem;
+                }
+                @media #{$medium-up}{
+                    font-size: 1.125rem;
+                    line-height: 1rem;
+                    padding: .875rem .875rem .5625rem;
+                }
+                @media #{$medium-down}{
+                    padding-top: 11.5px;
+                    padding-bottom: 3.5px;
+                }
+            }
+        }
+        .play-footer-mattel-logo{
+            @media #{$medium-down}{
+                img{
+                    max-width: 4.375rem;
+                }
+            }
+        }
+        .play-esrb-logo{
+            @media #{$medium-down}{
+                padding-left: 2rem;
+                img{
+                    max-height: 4.1875rem;
+                }
+            }
+            @media #{$small-down}{
+                padding-left: 1.0625rem;
+            }
+        }
+        .play-footer-link{
+            margin-top: 0;
+            #footer-nav{
+                margin-bottom: 0;
+                li{
+                    @media #{$medium-down}{
+                        display: block;
+                        padding: 1px 0;
+                        a{
+                            padding-top: 0;
+                            padding-bottom: 0;
+                        }
+                    }
+                }
+                &+span,a{
+                    font-size: .875rem;
+                    line-height: 1.0625rem;
+                    @media #{$small-up}{
+                        line-height: .8125rem;
+                    }
+                    @media #{$medium-up}{
+                        font-size: 1rem;
+                        line-height: .9375rem;
+                    }
+                }
+                @media #{$medium-down}{
+                    &+span{
+                        padding-top: 0;
+                    }
+                    padding-top: 1.875rem;
+                    padding-bottom: 2.9375rem;
+                }
+            }
+            @media #{$medium-down}{
+                p:empty{
+                    display: none;
+                }
+            }
+        }
+        &>div:last-child{
+            // outline: 5px solid;
+            @media #{$medium-up}{
+                @include flex();
+                align-items: flex-end;
+                justify-content: center;
+                margin-bottom: 1rem;
+                .play-footer-link{
+                    @include flex();
+                    align-items: flex-end;
+                    justify-content: center;
+                    padding-bottom: 5px;
+                    flex-wrap: wrap;
+                    padding-left: 0;
+                    padding-right: 0;
+                }
+                .play-esrb-logo{
+                    order:2;
+                }
+
+            }
+            @media #{$large-up}{
+                .play-footer-mattel-logo{
+                    width:auto;
+                }
+                .play-footer-link{
+                    width: auto;
+                }
+                .play-esrb-logo{
+                    width: auto;
+                    position: static;
+                    padding-left: 3.375rem;
+                    img{
+                        height: auto;
+                    }
+                }
+            }
+            @media #{$medium-down}{
+                padding-left: 0;
+                padding-right: 0;
+                text-align: center;
+                .play-footer-mattel-logo,
+                .play-esrb-logo{
+                    width: auto;
+                    float: none !important;
+                    display: inline-block;
+                }
+            }
+        }
+    }
+}

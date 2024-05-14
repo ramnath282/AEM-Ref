@@ -1,0 +1,112 @@
+.play-category-details {
+    background: url('https://play.pollypocket.com/sites/mattel_pollypocket/files/2018-04/product-bg_2.jpg');
+    padding: 50px 0;
+}
+
+.cda-banner{
+    &.char-det{
+        width:80%;
+        margin: 0 auto !important;
+    }
+    
+    position: relative;
+    background : $white;
+    .carousel-slides{
+        padding:10px 0;
+        li{
+            position: relative;
+            img {
+                @extend .col-xs-12;
+                @extend .col-sm-12;
+                @extend .col-md-6;
+                @media #{medium-up}{
+                    width:300px !important;
+                }
+            }
+            .img-right{
+                img{
+                    float:right;
+                }
+            }
+
+
+        }
+        .slick-prev,
+        .slick-next{
+            top: 30%;
+            @media #{$small-up}{
+                top:50%;
+            }
+            &:before {
+                font-family: $FontAwesome;
+                background-color: $litviolet;
+                border-radius: 50%;
+                padding: 5px 10px;
+                }
+        }
+        .slick-prev {
+            left: -25px;
+            &:before {
+                content: "\f104";
+            }
+        }
+        .slick-next {
+                right: -25px;
+            &:before {
+                content: "\f105";
+            }
+        }
+        
+    }
+
+
+    .banner-copy{
+        @media #{$medium-up}{
+            width:48%;
+        }
+        padding: em(25);
+        background:$white;
+        @extend .col-xs-12;
+        @extend .col-sm-12;
+        @extend .col-md-6;
+        
+        h2{color:$pink;}
+        p{color:$violet;}
+    }
+}
+.banner-copy{
+    &[class*='top-'],
+     &[class*='bottom-']{
+        transform: none;
+        -webkit-transform: none;
+        -ms-transform: none;
+        top: auto;
+        left: auto;
+    }
+    &.top-left{
+        left: 5%;
+        top: 8%
+    }
+    &.top-right{
+        right: 5%;
+        top: 8%
+    }
+    &.bottom-left{
+        left: 5%;
+        bottom: 8%
+    }
+    &.bottom-right{
+        right: 5%;
+        bottom: 8%
+    }
+    &.top-center{
+        left: 5.686274509803922%;
+        top: 50%;
+        transform: translateY(-50%);
+        -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+    }
+    &.bottom-center{
+
+    }
+}

@@ -1,0 +1,41 @@
+<sly data-sly-test="${wcmmode.edit}">${'Retail Item Component Configuration' @i18n}</sly>
+<sly data-sly-use.retailItem="com.mattel.global.master.core.model.RetailAppItemModel" />
+<sly data-sly-test="${! retailItem.useInterstitial}">
+	<div class="cta-item"> 
+		<sly data-sly-test="${retailItem.linkOptions == 'newTab' || retailItem.linkOptions == 'self'}" >
+			<a class="btn-app-retail-item" href="${retailItem.appOrRetailPath @ context = 'attribute'}" data-retailer="${retailItem.retailerName  ? retailItem.retailerName : retailItem.linkText @ context = 'attribute'}" data-sly-attribute.data-tracking-cta-id="${properties.ctaTrack ? properties.trackingText : ''}"  style="background-color : ${retailItem.fillColor @ context = 'styleToken'}" data-sly-attribute.target="${retailItem.linkOptions == 'newTab' ? '_blank' : '_self' }" role="button">
+				  <picture>
+                    <source media="(min-width: 768px)" srcset="${retailItem.desktopLogo}">
+                    <source media="(max-width: 767px)" srcset="${retailItem.mobileLogo ? retailItem.mobileLogo : retailItem.desktopLogo}">
+                   <img src="${retailItem.desktopLogo}" alt="${retailItem.retailerAltName}">
+                  </picture>
+			</a>
+		</sly>		
+		<sly data-sly-test="${retailItem.linkOptions == 'blank'}" >
+			<a class="btn-app-retail-item" data-sly-attribute.data-tracking-cta-id="${properties.ctaTrack ? properties.trackingText : ''}"  data-retailer="${retailItem.retailerName @ context = 'attribute'}" style="background-color : ${retailItem.fillColor @ context = 'styleToken'}" onclick="window.open('${retailItem.appOrRetailPath @ context = 'attribute'}','FP','width=500, height=500');" role="button">
+				<picture>
+                    <source media="(min-width: 768px)" srcset="${retailItem.desktopLogo}">
+                    <source media="(max-width: 767px)" srcset="${retailItem.mobileLogo ? retailItem.mobileLogo : retailItem.desktopLogo}">
+                   <img src="${retailItem.desktopLogo}" alt="${retailItem.retailerAltName}">
+                  </picture>
+			</a>	
+		</sly>
+	</div>
+</sly>
+<sly data-sly-test="${retailItem.useInterstitial && retailItem.interstitialPath}">
+		<div class="cta-item cta-interstitial"> 
+			<a class="btn-app-retail-item modal-anchor" data-url="${retailItem.appOrRetailPath @ context = 'attribute'}" data-retailer="${retailItem.retailerName @ context = 'attribute'}" data-sly-attribute.data-tracking-cta-id="${properties.ctaTrack ? properties.trackingText : ''}" data-toggle="modal"  style="background-color : ${retailItem.fillColor @ context = 'styleToken'}" role="button">
+				<picture>
+                    <source media="(min-width: 768px)" srcset="${retailItem.desktopLogo}">
+                    <source media="(max-width: 767px)" srcset="${retailItem.mobileLogo ? retailItem.mobileLogo : retailItem.desktopLogo}">
+                   <img src="${retailItem.desktopLogo}" alt="${retailItem.retailerAltName}">
+                  </picture>
+			</a>		
+			<article data-sly-resource = "${retailItem.interstitialPath  @ wcmmode='disabled',selectors='content'}" data-sly-unwrap>
+			</article>		
+	</div>
+</sly>
+
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
+	<sly data-sly-call="${clientlib.js @ categories='global.ctaItem'}"/>
+</sly>

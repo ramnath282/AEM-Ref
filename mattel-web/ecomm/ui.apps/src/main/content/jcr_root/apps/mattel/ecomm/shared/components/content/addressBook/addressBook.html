@@ -1,0 +1,306 @@
+<sly data-sly-test="${wcmmode.edit}">${'Edit Address Book Component' @i18n}</sly>
+
+<div class="address-info-body" id="addressInfo">
+	<sly data-sly-test="${properties.adrsBookTitle}">
+		<h1>${properties.adrsBookTitle}</h1>
+	</sly>
+	<div class="user-info-wrapper">
+		<div>
+			<input class="theme-btn no-bg-btn add-new-address" type="submit" value="${properties.newAdrsBtnLabel}" />
+			<input class="theme-btn no-bg-btn cancel-add-info hide transparent-btn-border" type="submit" value="${properties.cancelAdrsBtnLabel}" />
+		</div>
+		<div class="edit-mode">
+			<script id="addressInfoTemp" type="text/x-handlebars-template">
+				<div class="update-user-address">
+					<fieldset>
+						{{#if defaultAddress}}
+						<input type="checkbox" data-key="defaultAddress" id="defaultCheck" checked>
+						<label for="defaultCheck">${properties.defAddSelLabel @context='unsafe'}</label>
+						<p class="defaultCheck-message">${properties.defCheckMessage @context='unsafe'}</p>
+						{{else}}
+						<input type="checkbox" data-key="defaultAddress" id="defaultCheck">
+						<label for="defaultCheck">${properties.defAddSelLabel @context='unsafe'}</label>
+						<p class="defaultCheck-message hide">${properties.defCheckMessage @context='unsafe'}</p>
+						{{/if}}
+					</fieldset>
+					<fieldset>
+						<div class="input-field required">
+							<input type="text" id="firstName" maxlength="40" name="firstName" data-key="firstName" aria-describedby="addressFirstNameError" class="form-input long-input " value="{{firstName}}" autocomplete="off" required/>
+							<label class="placeholder-label" for="firstName">${properties.fNameLabel @context='unsafe'}</label>
+							<div id="addressFirstNameError" class="help-block form-message"></div>
+						</div>
+					</fieldset>
+					<fieldset>
+						<div class="input-field required">
+							<input type="text" id="lastName" maxlength="40" name="lastName" data-key="lastName" aria-describedby="addressLastNameError" class="form-input long-input " value="{{lastName}}" autocomplete="off" required/>
+							<label class="placeholder-label" for="lastName">${properties.lNameLabel @context='unsafe'}</label>
+							<div id="addressLastNameError" class="help-block form-message"></div>
+						</div>
+					</fieldset>
+					<fieldset aria-describedby="addressTypeError">
+						<legend>${properties.addTypeLabel @context='unsafe'}</legend>
+						<div class="input-field">
+							<ul>
+								{{#if selectAddressType}}
+								{{#if organizationUnitName}}
+								<li>
+									<input type="radio" value="Residential" name="addressOption" class="address-input-val " id="resendentialAdd" required>
+									<label for="resendentialAdd">${properties.resAddLabel @context='unsafe'}</label>
+								</li>
+								<li>
+									<input type="radio" value="Business" checked name="addressOption" class="address-input-val " id="businessAdd" required>
+									<label for="businessAdd">${properties.bussAddLabel @context='unsafe'}</label>
+								</li>
+								{{else}}
+								<li>
+									<input type="radio" value="Residential" checked name="addressOption" class="address-input-val " id="resendentialAdd" required>
+									<label for="resendentialAdd">${properties.resAddLabel @context='unsafe'}</label>
+								</li>
+								<li>
+									<input type="radio" value="Business" name="addressOption" class="address-input-val " id="businessAdd" required>
+									<label for="businessAdd">${properties.bussAddLabel @context='unsafe'}</label>
+								</li>
+								{{/if}}
+								{{else}}
+								<li>
+									<input type="radio" value="Residential" checked name="addressOption" class="address-input-val " id="resendentialAdd" required>
+									<label for="resendentialAdd">${properties.resAddLabel @context='unsafe'}</label>
+								</li>
+								<li>
+									<input type="radio" value="Business" name="addressOption" class="address-input-val " id="businessAdd" required>
+									<label for="businessAdd">${properties.bussAddLabel @context='unsafe'}</label>
+								</li>
+								{{/if}}
+							</ul>
+							<div id="addressTypeError" class="help-block form-message"></div>
+						</div>
+					</fieldset>
+
+					<fieldset>
+						<div class="input-field required business-name hide">
+							<input type="text" id="businessName" maxlength="50" data-key="organizationUnitName" aria-describedby="businessNameError" data-key="organizationUnitName" required class="form-input long-input " value="{{organizationUnitName}}"/>
+							<label class="placeholder-label" for="businessName">${properties.bussNameLabel @context='unsafe'}</label>
+							<div id="businessNameError" class="help-block form-message"></div>
+						</div>
+					</fieldset>
+					<fieldset class="select-picker-wrapper">
+						<ul>
+							<li>
+								<div class="input-field select-country required">
+									<select class="form-input small-input" name="countryRegion" data-key="country" aria-describedby="countrySelectError{{index}}" id="defaultCountry{{index}}" required>
+										{{{countrySelector}}}
+									</select>
+									<label class="placeholder-label" for="defaultCountry">${properties.countryLabel @context='unsafe'}</label>
+									<div id="countrySelectError" class="help-block form-message"></div>
+								</div>
+							</li>
+						</ul>
+					</fieldset>
+					<fieldset>
+						<div class="input-field required">
+							<input type="text" maxlength="100" id="streetName" name="streetAddress" data-key="addressLine1" aria-describedby="streetAddressError" class="form-input long-input " value="{{addressLine1}}" required/>
+							<label class="placeholder-label" for="streetName">${properties.strtAddLabel @context='unsafe'}</label>
+							<div id="streetAddressError" class="help-block form-message"></div>
+						</div>
+					</fieldset>
+					<fieldset>
+						<div class="input-field">
+							<input type="text" id="streetName2"  maxlength="50" name="streetAddress" data-key="addressLine2" aria-describedby="streetAddress2Error" class="form-input long-input " value="{{addressLine2}}" />
+							<label class="placeholder-label" for="streetName2">${properties.strtAddTwoLabel @context='unsafe'}</label>
+							<div id="streetAddress2Error" class="help-block form-message"></div>
+						</div>
+					</fieldset>
+					<fieldset>
+						<div class="input-field required">
+							<input type="text" id="cityName" maxlength="128" name="cityName" aria-describedby="cityError" data-key="city" class="form-input long-input " value="{{city}}" required />
+							<label class="placeholder-label" for="cityName">${properties.cityLabel @context='unsafe'}</label>
+							<div id="cityError" class="help-block form-message"></div>
+						</div>
+					</fieldset>
+					<fieldset class="select-picker-wrapper">
+						<ul>
+							<li>
+								<div class="input-field default-state required">
+									{{#if defaultCountrySet}}
+									<select class="form-input small-input select-state" name="stateProvince" required data-key="state" aria-describedby="defaultStateError" id="defaultState">
+										{{{stateSelector}}}
+									</select>
+									<label class="placeholder-label" for="defaultState">${properties.stateLabel @context='unsafe'}</label>
+									<input type="text" maxlength="128" id="defaultState" name="stateProvince"  required aria-describedby="defaultStateError" data-key="state" class="form-input long-input input-state hide" value="{{state}}"  />									
+									{{else}}
+									<select class="form-input small-input select-state hide" name="stateProvince" required data-key="state" aria-describedby="defaultStateError" id="defaultState">
+										{{{stateSelector}}}
+									</select>
+									<label class="placeholder-label input-state-label" for="defaultState">${properties.stateLabel @context='unsafe'}</label>
+									<input type="text" maxlength="128" id="defaultState" name="stateProvince" required aria-describedby="defaultStateError" data-key="state" class="form-input long-input input-state" value="{{state}}"  />									
+									{{/if}}
+									<div id="defaultStateError" class="help-block form-message"></div>
+								</div>
+							</li>
+							<li>
+								<div class="input-field required">
+									<input type="text" maxlength="40" id="zipCode" name="zipCode" aria-describedby="zipError" data-key="zipCode" class="form-input long-input " value="{{zipCode}}" required />
+									<label class="placeholder-label" for="zipCode">${properties.zipLabel @context='unsafe'}</label>
+									<div id="zipError" class="help-block form-message"></div>
+								</div>
+							</li>
+						</ul>
+					</fieldset>
+					<fieldset>
+					{{#if defaultAddress}}
+						<input type="checkbox" data-key="billingCodeType" class="hide" value="ch" name="mark-child" id="addChildCheckbox">
+						<label for="addChildCheckbox" class="child-check-label hide">${properties.childIdentifyLabel @context='unsafe'}</label>
+					{{else}}
+						{{#if billingCodeType}}
+							<input type="checkbox" data-key="billingCodeType" value="ch" checked name="mark-child" id="addChildCheckbox">
+						{{else}}
+							<input type="checkbox" data-key="billingCodeType" value="ch" name="mark-child" id="addChildCheckbox" >
+						{{/if}}
+						<label for="addChildCheckbox" class="child-check-label">${properties.childIdentifyLabel @context='unsafe'}</label>
+					{{/if}}
+                </fieldset>
+					<input class="theme-btn form-submission update-add-Btn" type="submit" value="${properties.updateAdrsButtonLabel @context='unsafe'}" />
+					<input class="theme-btn form-submission add-add-Btn" type="submit" value="${properties.addAdrsButtonLabel @context='unsafe'}" />
+					<input class="theme-btn transparent-btn cancel-add-info" type="submit" value="${properties.cancelButtonLabel @context='unsafe'}" />
+				</div>
+			</script>
+			<script id="stateListTemp" type="text/x-handlebars-template">
+				<select class="form-input small-input" aria-describedby="stateError" data-width="100%">
+					{{{stateSelector}}}
+				</select>
+				<label class="placeholder-label" for="state">${properties.stateLabel @context='unsafe'}</label>
+				<div id="stateError" class="help-block form-message"></div>
+			</script>
+			<form id="updateAddress"></form>
+		</div>
+	</div>
+	<div class="user-info-wrapper user-info-readMode">
+		<div class="details-list row">
+			<div class="details-list-item">
+				<h2 class="header-label">${properties.dAddLabel}</h2>
+				<script id="defaultAddressTmpl" type="text/x-handlebars-template">
+					{{#if this.length}}
+					{{#this}}
+					{{#if defaultAddress}}
+					<span class="value-label">{{firstName}} {{lastName}}</span>
+                    {{#if organizationUnitName}}
+                    <span class="value-label">{{organizationUnitName}}</span>
+                    {{/if}}
+						{{#each addressLine}}
+							<span class="value-label">{{this}} </span>
+						{{/each}}
+					<span class="value-label">{{city}}, {{state}} {{zipCode}} </span>
+					{{#ifShareCatalog mailCatalogueIndicator "Y"}}
+							 <span class="value-label">Send catalog to this address</span>
+					{{/ifShareCatalog}}
+					{{#ifShareCatalog mailShareIndicator "Y"}}
+                        <span class="value-label">Share this address with other companies similar to ours</span>
+                    {{/ifShareCatalog}}
+					<a href="#" data-addressid="{{addressId}}" class="link-separator edit-address">${properties.editLabel @context='unsafe'}</a>
+					<a href="#" data-nickname="{{nickName}}" data-edit="{{addressId}}" class="remove-address" data-addressid="{{addressId}}">${properties.deleteLabel @context='unsafe'}<span class="sr-only">opens a dialog box</span></a>
+					{{/if}}
+					{{/this}}
+					{{else}}
+					<a href="#" data-default="true" class="add-new-address">${properties.defAddEditLinkLabel @context='unsafe'}</a>
+					{{/if}}
+				</script>
+				<p id="defaultAddContainer"></p>
+			</div>
+			<div class="details-list-item">
+				<div class="form shipping-method">
+					<fieldset>
+						<legend class="header-label defaultShipLabel">${properties.dShipMthdLabel}</legend>
+						<script id="shippingMethodTmpl" type="text/x-handlebars-template">
+
+							<ul class="shippingMode">
+								{{#if isUS}}
+								<li>
+									{{#setChecked shippingMethod}}<input type="radio" value="Standard Shipping" data-value="11296" name="shippingOption{{index}}" class="ship-input-val" data-key="defaultShipMethod" id="stdShip{{index}}" required>{{/setChecked}}
+									<label for="stdShip{{index}}">${properties.stdShipLabel @context='unsafe'}</label>
+								</li>
+								<li class="forUs">
+									{{#setChecked shippingMethod}}<input type="radio" value="3 Business Day" data-value="11253" name="shippingOption{{index}}" class="ship-input-val forUs" data-key="defaultShipMethod" id="three_days_Ship{{index}}" required>{{/setChecked}}
+									<label for="three_days_Ship{{index}}">${properties.thrDaysShipLabel @context='unsafe'}</label>
+								</li>
+								<li class="forUs">
+									{{#setChecked shippingMethod}}<input type="radio" value="2 Business Day" data-value="11251" name="shippingOption{{index}}" class="ship-input-val forUs" data-key="defaultShipMethod" id="two_days_Ship{{index}}" required>{{/setChecked}}
+									<label for="two_days_Ship{{index}}">${properties.twoDaysShipLabel @context='unsafe'}</label>
+								</li>
+								{{else}}
+								<li>
+									{{#setChecked shippingMethod}}<input type="radio" value="Standard Shipping" data-value="11296" name="shippingOption{{index}}" class="ship-input-val" data-key="defaultShipMethod" id="stdShip{{index}}" required>{{/setChecked}}
+									<label for="stdShip{{index}}">${properties.stdShipLabel @context='unsafe'}</label>
+								</li>
+								<li class="forCanada">
+									{{#setChecked shippingMethod}}<input type="radio" value="Express Shipping" data-value="11267" name="shippingOption{{index}}" class="ship-input-val" data-key="defaultShipMethod" id="expShip{{index}}" required>{{/setChecked}}
+									<label for="expShip{{index}}">${properties.xprsShipLabel @context='unsafe'}</label>
+								</li>
+								{{/if}}
+							</ul>
+						</script>
+						<ul id="shippingMethodContainer"></ul>
+					</fieldset>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="user-info-wrapper">
+		<div class="details-list row">
+			<h2 class="header-label">${properties.adtnlAddLabel}</h2>
+			<script id="additionalAddTmpl" type="text/x-handlebars-template">
+				{{#if this.length}}
+				{{#this}}
+				<div class="details-list-item">
+					<div class="address-info-details">
+						<p>
+							<span class="value-label">{{firstName}} {{lastName}}</span>
+                            {{#if organizationUnitName}}
+                            <span class="value-label">{{organizationUnitName}}</span>
+                            {{/if}}
+								{{#each addressLine}}
+									<span class="value-label">{{this}} </span>
+								{{/each}}
+							<span class="value-label">{{city}}, {{state}} {{zipCode}} </span>
+						</p>
+						{{#if billingCodeType}}
+								<p><span class="value-label"><em>${properties.childIdentifyLabel @context='unsafe'}</em></span></p>
+						{{/if}}
+						{{#ifShareCatalog mailCatalogueIndicator "Y"}}
+							 <span class="value-label">Send catalog to this address</span>
+						{{/ifShareCatalog}}
+						{{#ifShareCatalog mailShareIndicator "Y"}}
+							<span class="value-label">Share this address with other companies similar to ours</span>
+						{{/ifShareCatalog}}
+						<a href="#" class="link-separator edit-address" data-addressid="{{addressId}}">${properties.aEditLabel @context='unsafe'} <span class="sr-only">Address Info{{@key}}</span></a>
+						<a href="#" data-nickname="{{nickName}}" class="remove-address" data-addressid="{{addressId}}">${properties.aDeleteLabel @context='unsafe'} <span class="sr-only">opens a dialog box</span> </a>
+					</div>
+				</div>
+				{{/this}}
+				{{else}}
+				<a href="#" class="add-new-address">${properties.adtAddEditLinkLabel @context='unsafe'}</a>
+				{{/if}}
+			</script>
+			<div id="additionalAddContainer"></div>
+		</div>
+	</div>
+    <!-- Modal confirm -->
+    <div class="modal" id="confirmModal" style="display: none;" tabindex="-1">
+        <div class="modal-dialog modal-md">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><em class="fa fa-times fa-lg"></em></button>
+                </div>
+                <div class="modal-body">
+                    ${properties.modelBodyText}
+                </div>
+                <div class="modal-footer">                        
+                    <button type="button" class="theme-btn update-info" id="confirmCancel">${properties.confirmCancel}</button>
+                    <button type="button" data-nickname="" class="theme-btn update-info" id="confirmOk">${properties.confirmOk}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
+	<sly data-sly-call="${clientlib.js @ categories='ecomm.addressBook'}"/>
+</sly>

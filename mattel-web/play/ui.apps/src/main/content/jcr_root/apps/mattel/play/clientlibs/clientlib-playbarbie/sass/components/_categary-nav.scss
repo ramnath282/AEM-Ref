@@ -1,0 +1,336 @@
+.nav-carousel-slides {
+    background-color: mapping($categarynav, main, bgndColor);
+    padding: mapping($categarynav, main, pad);
+    margin: mapping($categarynav, main, margin);
+    width: 1500px;
+    text-align: center;
+
+    @media (max-width: 1366px) {
+        width: auto;
+    }
+
+    li {
+        display: mapping($categarynav, categarynavList, display);
+        margin-right: mapping($categarynav, categarynavList, marginRight);
+        margin-top: 20px;
+        width: auto !important;
+
+        a {
+            display: mapping($categarynav, categarynavLink, display);
+            color: mapping($categarynav, categarynavLink, txtColor);
+            background-color: mapping($categarynav, categarynavLink, bgndColor);
+            font-weight: mapping($categarynav, categarynavLink, fntWeight);
+            padding: 5px 12px 5px 15px;
+            text-transform: mapping($categarynav, categarynavLink, txtTransform);
+            text-align: mapping($categarynav, categarynavLink, txtAlign);
+            white-space: mapping($categarynav, categarynavLink, whitSpace);
+            width: mapping($categarynav, categarynavLink, width);
+            min-width: mapping($categarynav, categarynavLink, minWidth);
+            @include border-radius(mapping($categarynav, categarynavLink, borderRadius));
+            border: mapping($categarynav, categarynavLink, borderColor);
+            letter-spacing: 0.19px;
+            font-size: 22px;
+
+            @media #{$medium-down} {
+                padding: mapping($categarynav, categarynavLink, pad);
+            }
+
+            &:hover,
+            &:focus,
+            &.active {
+                color: mapping($categarynav, categarynavLink, hovertxtColor);
+                background-color: mapping($categarynav, categarynavLink, hoverbgndColor);
+                border: mapping($categarynav, categarynavLink, hoverborderColor);
+            }
+
+        }
+    }
+
+    .slick-track {
+        margin-left: mapping($categarynav, categaryslickTrack, marginLeft);
+        width: auto !important;
+
+        @media #{$small-down} {
+            width: 100% !important;
+        }
+
+        li {
+            @media #{$small-down} {
+                width: auto !important;
+            }
+        }
+    }
+
+    .slick-prev,
+    .slick-next {
+        @if mapping($layout, main, isEnchantimals)==true {
+            background-color: mapping($categarynav, categaryslickprevNext, bgndColor);
+        }
+
+        &:before {
+            font-family: mapping($categarynav, categaryslickprevNext, fntFamily);
+            background-color: mapping($categarynav, categaryslickprevNext, bgndColor);
+
+            @if mapping($layout, main, isEnchantimals)==true {
+                font-size: mapping($categarynav, categaryslickprevNext, arrowFontSize);
+                color: mapping($categarynav, categaryslickprevNext, arrowColor);
+            }
+        }
+    }
+
+    .slick-prev {
+        &:before {
+            content: mapping($categarynav, categaryslickPrev, prevContent);
+        }
+    }
+
+    .slick-next {
+        &:before {
+            content: mapping($categarynav, categaryslickNext, nextContent);
+        }
+    }
+
+    &.char-tiles {
+        padding: mapping($categarynav, categarytile, pad);
+
+        @if mapping($categarynav, categarytile, isEnchantCharList)==true {
+            @extend .container;
+        }
+
+        @media #{$medium-down} {
+
+            .slick-prev,
+            .slick-next {
+                top: 50%;
+                transform: translate(0, -50%);
+
+                &.slick-disabled {
+                    &:focus {
+                        outline: 0px;
+                    }
+
+                    &:before {
+                        opacity: 0;
+                    }
+                }
+            }
+        }
+
+        li {
+            margin-right: mapping($categarynav, categarytileList, marginRight);
+            background-color: mapping($categarynav, categarytileList, bgndColor);
+
+            a {
+                position: mapping($categarynav, categarytileLink, pos);
+                border-radius: mapping($categarynav, categarytileLink, borderRadius);
+                border: mapping($categarynav, categarytileLink, borderColor);
+                padding: mapping($categarynav, categarytileLink, pad);
+                text-align: mapping($categarynav, categarytileLink, txtAlign);
+
+                &:hover,
+                &:focus,
+                &.active {
+                    background: mapping($categarynav, categarytileLink, hoverBgnd);
+                    color: mapping($categarynav, categarytileLink, hovertxtColor);
+                    border: mapping($categarynav, categarytileLink, hoverborderColor);
+                    opacity: mapping($categarynav, categarytileLink, hoveropacity);
+                }
+
+                span {
+                    position: mapping($categarynav, categarytileSpan, pos);
+                    z-index: mapping($categarynav, categarytileSpan, z-index);
+                    left: mapping($categarynav, categarytileSpan, posLeft);
+                    bottom: mapping($categarynav, categarytileSpan, posBottom);
+                    display: mapping($categarynav, categarytileSpan, display);
+
+                    width: mapping($categarynav, categarytileSpan, width);
+                    padding: mapping($categarynav, categarytileSpan, pad);
+                    margin: mapping($categarynav, categarytileSpan, margin);
+
+                    background-color: mapping($categarynav, categarytileSpan, bgndColor);
+                    color: mapping($categarynav, categarytileSpan, txtColor);
+
+                    font-size: mapping($categarynav, categarytileSpan, fntSize);
+                    line-height: mapping($categarynav, categarytileSpan, lineHeight);
+                    letter-spacing: mapping($categarynav, categarytileSpan, letterSpacing);
+                    white-space: mapping($categarynav, categarytileSpan, whitSpace);
+                    text-align: mapping($categarynav, categarytileSpan, txtAlign);
+                    text-transform: mapping($categarynav, categarytileSpan, txtTransform);
+
+                    cursor: mapping($categarynav, categarytileSpan, cursor);
+
+                    @include transform(mapping($categarynav, categarytileSpan, transform));
+                    @include transition(mapping($categarynav, categarytileSpan, transition));
+                    @include border-radius(mapping($categarynav, categarytileSpan, borderRadius));
+
+                }
+            }
+        }
+    }
+}
+
+.enable-carousel-nav {
+    background-color: #effbfb;
+
+    @media #{$small-down} {
+        padding: mapping($categarynav, categarycarouselNav, mobPadding);
+    }
+
+    .category-drpdown-display {
+        display: mapping($categarynav, categarycarouseldropDown, display);
+    }
+
+    @media #{$medium-down} {
+        .crm-container {
+            position: mapping($categarynav, carouselcrmContainer, mobPos);
+            margin: 0 auto;
+            width: auto;
+            display: table;
+        }
+
+        .category-drpdown-display {
+            display: mapping($categarynav, categarydropDown, display);
+            text-align: mapping($categarynav, categarydropDown, txtAlign);
+            width: mapping($categarynav, categarydropDown, width);
+            border: mapping($categarynav, categarydropDown, borderColor);
+            // border-radius: mapping($categarynav, categarydropDown, borderRadius);
+            background: mapping($categarynav, categarydropDown, bgnd);
+            color: mapping($categarynav, categarydropDown, txtColor);
+            font-weight: mapping($categarynav, categarydropDown, fntWeight);
+            padding: mapping($categarynav, categarydropDown, pad);
+            margin-bottom: mapping($categarynav, categarydropDown, marginBottom);
+            position: mapping($categarynav, categarydropDown, pos);
+            margin-top: 20px;
+            border-radius: 100px;
+            font-size: 18px;
+            letter-spacing: -0.45px;
+            span {
+                position: mapping($categarynav, categarydropdownSpan, pos);
+                width: mapping($categarynav, categarydropdownSpan, width);
+                height: mapping($categarynav, categarydropdownSpan, height);
+                background: mapping($categarynav, categarydropdownSpan, bgnd);
+                right: mapping($categarynav, categarydropdownSpan, posRight);
+                top: mapping($categarynav, categarydropdownSpan, posTop);
+                border-radius: 0 100px 100px 0;
+                &:before {
+                    margin: 0 auto 10px;
+                    width: 0;
+                    content: '';
+                    border: solid #fff;
+                    border-width: 0 4px 4px 0;
+                    display: inline-block;
+                    padding: 10px;
+                    transform: rotate(45deg);
+                    -webkit-transform: rotate(45deg);
+                    margin-left: 13px;
+                    height: 17px;
+                    margin-top: 7px;
+                }
+            }
+            &.open{
+                span {
+                    &:before {
+                        //transform: rotate(45deg);
+                        //-webkit-transform: rotate(225deg);
+                        margin-top: 17px;
+                        border-width: 4px 0 0 4px;
+                    }
+                }
+
+            }
+        }
+
+        .nav-carousel-slides {
+            &.nav-categorylist {
+                display: mapping($categarynav, slidescategoryList, display);
+                background-color: mapping($categarynav, slidescategoryList, bgnd);
+                padding: mapping($categarynav, slidescategoryList, pad);
+                position: mapping($categarynav, slidescategoryList, pos);
+                z-index: mapping($categarynav, slidescategoryList, zIndex);
+                top: mapping($categarynav, slidescategoryList, posTop);
+                border: mapping($categarynav, slidescategoryList, borderColor);
+                width: mapping($categarynav, slidescategoryList, width);
+                border-top-left-radius: 18px;
+                border-top-right-radius: 18px;
+                li {
+                    text-align: mapping($categarynav, slidescategoryListL, txtAlign);
+                    /*background: $white;*/
+                   // border-bottom: mapping($categarynav, slidescategoryListL, borderBottom);
+                   border-bottom: 2px solid $white;
+                    border-top: mapping($categarynav, slidescategoryListL, borderTop);
+                    width: mapping($categarynav, slidescategoryListL, width);
+                    margin: mapping($categarynav, slidescategoryListL, margin);
+                    display: mapping($categarynav, slidescategoryListL, display);
+                    font-size: 18px !important;
+                    @media #{$small-down} {
+                        width: mapping($categarynav, slidescategoryListL, mobWidth);
+                        margin: mapping($categarynav, slidescategoryListL, mobMargin);
+                        font-size: 18px !important;
+                    }
+                    &:hover,
+                    &:active {
+                        //background: mapping($categarynav, slidescategoryListL, hoverbgnd);
+                        background-color: #fdedf6;
+                        color: mapping($categarynav, slidescategoryListL, hovertxtColor);
+                        border: mapping($categarynav, slidescategoryListL, hoverborderColor);
+                        width: mapping($categarynav, slidescategoryListL, hoverWidth);
+                        //padding-left: mapping($categarynav, slidescategoryListL, hoverpaddingLeft);
+                        //outline: mapping($categarynav, slidescategoryListL, hoverOutline);
+                    }
+
+                    a {
+                        width: mapping($categarynav, slidescategoryListLink, width);
+                        min-width: mapping($categarynav, slidescategoryListLink, minWidth);
+                        margin: mapping($categarynav, slidescategoryListLink, margin);
+                        //color: mapping($categarynav,slidescategoryListLink,txtColor);
+                        background-color: $white;
+                        color: #6F2E91;
+                        border-radius: mapping($categarynav, slidescategoryListLink, borderRadius);
+                        border: mapping($categarynav, slidescategoryListLink, borderColor);
+                        text-align: mapping($categarynav, slidescategoryListLink, txtAlign);
+                        white-space: none;
+                        text-transform: none;
+                        font-size: 14px;
+                        &:hover,
+                        &:active {
+                            //background: mapping($categarynav, slidescategoryListLink, hoverBgnd);
+                            background-color: #fdedf6;
+                            //color: mapping($categarynav, slidescategoryListLink, hovertxtColor);
+                        }
+
+                        &.active {
+                           // background: mapping($categarynav, slidescategoryListLink, hoverBgnd);
+                           background-color: #fdedf6;
+                            color: #6F2E91;
+
+                            @media #{$small-down} {
+                                //background: mapping($categarynav, slidescategoryListLink, mobBgnd);
+                                //color: mapping($categarynav, slidescategoryListLink, hovertxtColor);
+                            }
+                        }
+
+                        @media #{$small-down} {
+                            color: mapping($categarynav, slidescategoryListLink, mobtxtColor);
+                        }
+                    }
+
+                    &:last-child a {
+                        border-bottom: mapping($categarynav, slidescategoryListLink, borderBottom);
+                    }
+
+                    &:last-child {
+                        border-bottom: mapping($categarynav, slidescategoryListLink, borderBottom);
+                        padding-bottom: 6px;
+                    }
+                    &:first-child {
+                        //padding-top: 6px;
+                        a{
+                            border-top-left-radius: 18px;
+                            border-top-right-radius: 18px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Article Grid Component"
+    sling:resourceType="cq/gui/components/authoring/dialog"
+    helpPath="https://www.adobe.com/go/aem_cmp_text_v2">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <generalConfig
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Config"
+                        sling:resourceType="granite/ui/components/foundation/container"
+                        margin="{Boolean}true">
+                        <items
+                            jcr:primaryType="nt:unstructured"
+                            sling:hideChildren="[searchType,siteName]">
+                            <heading
+                                jcr:primaryType="nt:unstructured"
+                                sling:orderBefore="defImage"
+                                sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+                                fieldLabel="Heading"
+                                name="./heading"
+                                useFixedInlineToolbar="{Boolean}true">
+                                <rtePlugins
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceSuperType="mattel/ecomm/ag/components/content/exploreRtePlugins/rtePlugins"/>
+                                <uiSettings
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceSuperType="mattel/ecomm/ag/components/content/exploreRtePlugins/uiSettings"/>
+                            </heading>
+                            <categoryId
+                                jcr:primaryType="nt:unstructured"
+                                sling:orderBefore="defImage"
+                                sling:resourceType="cq/gui/components/coral/common/form/tagfield"
+                                fieldDescription="If the author does not add Primary category,then code will pick the tag from category page properties and render the value."
+                                fieldLabel="Primary Category Tag"
+                                multiple="{Boolean}false"
+                                name="./categoryId"/>
+                            <sortbyDate
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/switch"
+                                sling:orderBefore="defImage"
+                                fieldLabel="Sort By Date ?"
+                                name="./sortbyDate"
+                                uncheckedValue="false"
+                                value="true"/>
+                            <productLimit
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+                                fieldDescription="Please provide number of items to lazy load on button click"
+                                fieldLabel="Number of items to lazy load on button click"
+                                min="{Long}1"
+                                name="./productLimit"/>
+                        </items>
+                    </generalConfig>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>

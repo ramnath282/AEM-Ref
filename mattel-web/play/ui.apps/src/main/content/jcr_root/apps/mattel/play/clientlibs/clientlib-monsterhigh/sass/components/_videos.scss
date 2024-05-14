@@ -1,0 +1,1005 @@
+/*
+** videos.scss
+*/
+
+// ooyala player ***
+.video-player-wrapper {
+    height: 100%;
+    z-index: 1;
+    margin: 0;
+    width: 100%;
+    position: relative;
+    padding-bottom: if(mapping($videosLanding,player,paddingBottom),mapping($videosLanding,player,paddingBottom),56.25%);
+    @extend .grid-border-style;
+}
+
+.video-player {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    .oo-player {
+        padding-top: 56.25% !important;
+    }
+    &.oo-player-container {
+        .oo-action-icon-pause {
+            &.oo-animate-pause {
+                opacity: 1;
+            }
+        }
+    }
+    .oo-control-bar {
+        .oo-control-bar-items-wrapper {
+            button {
+                &.oo-control-bar-item {
+                    background: none;
+                    /* hide CC option from player */
+                    // &.oo-closed-caption {
+                    //     display: none;
+                    // }
+                    /* hide share button */
+                    .oo-icon-topmenu-share {
+                        display: none
+                    }
+                }
+            }
+            /* hide ooyala logo from player */
+            .oo-watermark {
+                display: none;
+            }
+        }
+    }
+}
+
+// ***ooyala player
+.video-page-title {
+    padding: if(mapping($layout,main,titleMargin), mapping($layout,main,titleMargin), em(70) em(325) em(54) em(55));
+    display: block;
+    @if mapping($videosLanding,homePage,isBgnd) == false {
+        background: none;
+    } @else{
+        background-image: url('../img/sunglasses.jpg');
+        background-color: if(mapping($videosLanding,videoTitle,bgColor), mapping($videosLanding,videoTitle,bgColor), $white);
+        background-position: 90% center;
+        background-size: 15em;
+        background-repeat: no-repeat;
+    }
+    @media #{$medium-down} {
+        padding: if(mapping($layout,main,tabTitleMargin), mapping($layout,main,tabTitleMargin), em(62) em(270) em(60) em(50));
+    }
+    @media #{$small-down} {
+        padding: if(mapping($layout,main,mobTitleMargin), mapping($layout,main,mobTitleMargin), em(30) em(20));
+        background-image: none;
+    }
+    h2 {
+        @if mapping($videosLanding,heading,isDefaultHeadingFont) == true {
+            font-size: mapping($videosLanding,heading,fontSize);    
+        } @else{
+            font-family: mapping($videosLanding,heading,fontFamily);
+            font-weight: mapping($videosLanding,heading,fontWeight);
+            font-size: if(mapping($videosLanding,heading,fontSize), mapping($videosLanding,heading,fontSize), em(38.76));
+        }
+        @media #{$medium-down}{
+            font-size: mapping($videosLanding,heading,tabFontSize);    
+        }
+        @media #{$small-down}{
+            font-size: mapping($videosLanding,heading,mobFontSize);    
+        }
+        background-color: mapping($videosLanding,heading,bgColor);
+        padding: mapping($videosLanding,heading,padding);
+        color:if(mapping($videosLanding,heading,color), mapping($videosLanding,heading,color), $violet);
+        margin:if(mapping($videosLanding,heading,margin), mapping($videosLanding,heading,margin), 0 0 21px 0);
+        text-align: if(mapping($videosLanding,heading,align), mapping($videosLanding,heading,align), left);
+        text-transform: if(mapping($videosLanding,heading,transform), mapping($videosLanding,heading,transform), uppercase);
+        line-height: 1;
+        letter-spacing: 1px;
+    }
+    p {
+        font-family: if(mapping($videosLanding,description,fontFamily), mapping($videosLanding,description,fontFamily),"Arial");
+        font-weight: if(mapping($videosLanding,description,fontWeight), mapping($videosLanding,description,fontWeight),300);
+        background-color: mapping($videosLanding,description,bgColor);
+        padding: if(mapping($videosLanding,description,padding), mapping($videosLanding,description,padding),0);
+        font-size: if(mapping($videosLanding,description,fontSize), mapping($videosLanding,description,fontSize), 1.35714em);
+        color:if(mapping($videosLanding,description,color), mapping($videosLanding,description,color), $pink);
+        margin:if(mapping($videosLanding,description,margin), mapping($videosLanding,description,margin), 0);
+        text-align: if(mapping($videosLanding,description,align), mapping($videosLanding,description,align), left);
+        @media #{$medium-down}{
+            font-size: mapping($videosLanding,description,tabFontSize);    
+        }
+        @media #{$small-down}{
+            font-size: mapping($videosLanding,description,mobFontSize);    
+        }
+    }
+}
+
+.video-playicon-extnd{
+    position: relative;
+    @if mapping($videosLanding, main, isRoundedPlayIcon) == true {
+        &:after{
+            content: "\f04b";
+            @if mapping($videosLanding, playIcon, isRoundedCircle) == true {
+                border-radius: 60px;
+                padding: 0.5em 0.6em;
+            }
+            color: mapping($videosLanding, playIcon, color);
+            background-color: mapping($videosLanding, playIcon, bgnd);
+            position: absolute;
+            left: 50%;
+            transform: translate(-50%);
+            -webkit-transform: translate(-50%);
+            -moz-transform: translate(-50%);
+            -ms-transform: translate(-50%);
+            font-size: mapping($videosLanding, playIcon, mobFontSize);
+            @if mapping($videosLanding, playIcon, isTop) == false {
+                top: 51%;
+            } @else{
+                top: mapping($videosLanding, playIcon, topVal);
+            }
+            opacity: if(mapping($videosLanding,playIcon,opacityAfter), mapping($videosLanding,playIcon,opacityAfter), .9);
+            @include font-awesome();
+            @media #{$small-up}{
+                font-size: mapping($videosLanding, playIcon, tabFontSize);
+                @if mapping($videosLanding, playIcon, isTop) == false {
+                    top: 51%;
+                } @else{
+                    // top: calc(50% - #{mapping($videosLanding, playIcon, mobFontSize)-7px});
+                }
+            }
+            @media #{$medium-up}{
+                font-size: mapping($videosLanding, playIcon, fontSize);
+                @if mapping($videosLanding, playIcon, isTop) == false {
+                    top: 51%;
+                } @else{
+                    // top: calc(50% - #{mapping($videosLanding, playIcon, mobFontSize)-7px});
+                }
+            }
+        }
+        @if mapping($videosLanding, playIcon, playIconBefore) == false {
+                
+        } @else{
+        &:before {
+            content: '';
+            background: #fbd635;
+            position: absolute;
+            top: calc(50% - 35px);
+            left: 50%;
+            width: 160px;
+            height: 70px;
+            @include border-radius(100px);
+            transform: translate(-50%);
+            -webkit-transform: translate(-50%);
+            -moz-transform: translate(-50%);
+            -ms-transform: translate(-50%);
+            opacity: mapping($videosLanding,playIcon,opacityBefore);
+            // @media #{$medium-up}{
+            // 	height: 72px;
+            //  }
+            //  @media #{$medium-up}{
+            // 	height: 80px;
+            //  }
+        }
+        }
+    
+        
+        
+    }
+}
+
+.video-player-container {
+    @extend .col-md-12;
+    display: block;
+    position: mapping($layout,main,position);
+    z-index: mapping($videosLanding,videosDetail,zIndex);
+    padding: if(mapping($layout,main,sectionMargin), mapping($layout,main,sectionMargin), em(55) em(54));
+    @media #{$medium-down} {
+        padding: if(mapping($layout,main,tabSectionMargin), mapping($layout,main,tabSectionMargin), em(50));
+        @if mapping($videosLanding, videosDetail, isAfterBgnd) == true {
+            display: inline-block;
+            width:100%;
+        } @else{
+            overflow: hidden;
+        }
+    }
+    @media #{$small-down} {
+        padding: if(mapping($layout,main,mobSectionMargin), mapping($layout,main,mobSectionMargin), em(20));
+    }
+    background-image: mapping($layout,main,bgImg);
+	background-color: if(mapping($layout,main,bgColor), mapping($layout,main,bgColor), none);
+    background-position:center center;
+    .video-player-in {
+        @extend .col-md-9;
+        @extend .col-sm-12;
+        padding: 0;
+    }
+    .video-player-label {
+        @extend .col-md-12;
+        margin: mapping($videosLanding,playerBar,margin);
+        border-radius: mapping($videosLanding,playerBar,borderRadius);
+        -webkit-border-radius: mapping($videosLanding,playerBar,borderRadius);
+        -moz-border-radius: mapping($videosLanding,playerBar,borderRadius);
+        -ms-border-radius: mapping($videosLanding,playerBar,borderRadius);
+        background-color: if(mapping($videosLanding,main, playerBarBgnd), mapping($videosLanding,main, playerBarBgnd), $violet);
+        color: $white;
+        padding: 20px;
+        display: block;
+        min-height: if(mapping($videosLanding,main, playerBarHeight), mapping($videosLanding,main, playerBarHeight), 102px);
+        h2 {
+            @if mapping($videosLanding,playerBarHeading,isDefaultHeadingFont) == true {
+                font-size: mapping($videosLanding,playerBarHeading, fontSize);
+            } @else{
+                font-weight: mapping($videosLanding,playerBarHeading, fontWeight);
+                font-size: if(mapping($videosLanding,playerBarHeading, fontSize), mapping($videosLanding,playerBarHeading, fontSize), em(24));
+                font-family: if(mapping($videosLanding,playerBarHeading, fontFamily), mapping($videosLanding,playerBarHeading, fontFamily), Arial);
+            }
+            @media #{$medium-down}{
+                font-size: mapping($videosLanding,playerBarHeading,tabFontSize);    
+            }
+            @media #{$small-down}{
+                font-size: mapping($videosLanding,playerBarHeading,mobFontSize);    
+            }
+            text-align: if(mapping($videosLanding,playerBarHeading, align), mapping($videosLanding,playerBarHeading, align), center);
+            letter-spacing: if(mapping($videosLanding,playerBarHeading, letterSpacing), mapping($videosLanding,playerBarHeading, letterSpacing), 2px);
+            text-transform: if(mapping($videosLanding,playerBarHeading, transform), mapping($videosLanding,playerBarHeading, transform), uppercase);
+            color: mapping($videosLanding,playerBarHeading, color);
+            padding: mapping($videosLanding,playerBarHeading, padding);
+            margin: if(mapping($videosLanding,playerBarHeading, margin), mapping($videosLanding,playerBarHeading, margin), 0);
+        }
+        p {
+            margin-bottom: 0;
+            color: mapping($videosLanding,playerBarDescription, color);
+            @if mapping($videosLanding,playerBarDescription,isDefaultDesFont) == true {
+                @extend .page-description-font;
+                font-size: mapping($videosLanding,playerBarDescription, fontSize);
+            } @else{
+                font-family: if(mapping($videosLanding,playerBarDescription, fontFamily), mapping($videosLanding,playerBarDescription, fontFamily), Arial);
+                font-size: if(mapping($videosLanding,playerBarDescription, fontSize), mapping($videosLanding,playerBarDescription, fontSize), em(15));
+                font-weight: mapping($videosLanding,playerBarDescription, fontWeight);
+
+            }
+            
+            text-align: if(mapping($videosLanding,playerBarDescription, align), mapping($videosLanding,playerBarDescription, align), center);
+            padding: mapping($videosLanding,playerBarDescription, padding);
+            margin: if(mapping($videosLanding,playerBarDescription, margin), mapping($videosLanding,playerBarDescription, margin), 0);
+
+            @media #{$small-down}{
+                font-size: mapping($videosLanding,playerBarDescription,mobFontSize);    
+            }
+        }
+    }
+    @if mapping($videosLanding, videosDetail, isAfterBgnd) == true {
+        margin: mapping($videosLanding, videosDetail, isAfterMgn);
+        @media #{$medium-down}{
+            padding-bottom: mapping($videosLanding, videosDetail, paddingMobBtm);
+        }
+        @media screen and (min-width: 1400px){
+            background-color: transparent;
+            &:after{
+                content: none;
+            }
+        }
+        &:after{
+            content: "";
+            background-image: mapping($videosLanding, videosDetail, isAfterBgndUrl);
+            height: mapping($videosLanding, videosDetail, isAfterBgndHeight);
+            display: inline-block;
+            width: 100%;
+            background-size: mapping($videosLanding, videosDetail, isAfterBgndSize);
+            position: absolute;
+            bottom: mapping($videosLanding, videosDetail, isAfterBgndBtm);
+            left: mapping($videosLanding, videosDetail, isAfterBgndLft);
+            z-index: mapping($videosLanding, videosDetail, isAfterBgndIndx);
+        }
+    }
+}
+
+.video-vertical-playlist-container {
+    @extend .col-md-3;
+    padding: em(20);
+    padding-bottom: 0;
+    //background-color:#5fbee6;
+    background-color: if(mapping($videosLanding,videosDetail, pageBgnd), mapping($videosLanding,videosDetail, pageBgnd), $outline-blue);
+    @media #{$medium-down} {
+        display: none;
+    }
+    .video-play-option {
+        background: if(mapping($videosLanding,autoPlay, bgColor), mapping($videosLanding,autoPlay, bgColor), $light-blue);
+        color: $white;
+        font-family: Arial, Helvetica, sans-serif;
+        letter-spacing: 1px;
+        padding: em(6) em(7) em(6) em(11);
+        min-height: 43px;
+        input {
+            float: right;
+        }
+    }
+    .title-block {
+        padding: em(14) 0;
+        h2 {
+            font-size: if(mapping($videosLanding,verticalPlaylist, headingSize), mapping($videosLanding,verticalPlaylist, headingSize), em(24));
+            letter-spacing: if(mapping($videosLanding,verticalPlaylist, headingSpacing), mapping($videosLanding,verticalPlaylist, headingSpacing), 1.5px);
+            margin: 0;
+        }
+    }
+    .video-play-list-area {
+        //  height:523.969px;
+        @extend .col-md-12;
+        overflow-y: scroll;
+        padding: 0;
+        &::-webkit-scrollbar-thumb {
+            @include box-shadow(inset 0 0 6px rgba(0,
+            0,
+            0,
+            0.3));
+            @include border-radius(em(10));
+            background-color: if(mapping($videosLanding,verticalPlaylist, scrollThumbColor), mapping($videosLanding,verticalPlaylist, scrollThumbColor),  $violet);
+        }
+        &::-webkit-scrollbar {
+            width: em(10);
+            background-color: if(mapping($videosLanding,verticalPlaylist, scrollBarColor), mapping($videosLanding,verticalPlaylist, scrollBarColor),  rgba(0, 0, 0, 0.1));
+            height: em(5);
+        }
+        ul {
+            margin: if(mapping($videosLanding,verticalPlaylist, tileMargin), mapping($videosLanding,verticalPlaylist, tileMargin), 0);
+            &>li {
+                margin-bottom: em(20);
+                &:last-child {
+                    margin-bottom: 0;
+                }
+                a {
+                    display: block;
+                    &:link {
+                        color: $white;
+                    }
+                    .gallery-image{
+                        @if mapping($videosLanding, verticalPlaylist, playIcon) == true {
+                            @extend .video-playicon-extnd;
+                        }
+                    }
+                    span {
+                        padding: em(10);
+                        width: 100%;
+                        display: block;
+                        background-color: $violet;
+                        text-align: center;
+                        text-transform: uppercase;
+                        font-family: Arial, Helvetica, sans-serif;
+                        font-size: 1em;
+                        letter-spacing: 1px;
+			            color:$white;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.video-category-filter {
+    @extend .col-md-12;
+    padding: em(30) em(54);
+    @media #{$medium-down} {
+        padding: em(30) em(20);
+        z-index: mapping($videosLanding,navSlidesLink, zIndex);
+        .enable-carousel-nav {
+            padding: 0;
+        }
+    }
+    .cda-banner {
+        background: transparent;
+            @media #{$small-only}{
+                display: inline-block;
+                width: 100%;
+                margin-bottom: -5px; 
+            }
+            .category-drpdown-display{
+                @media #{$small-only}{
+                    margin-bottom: 0;
+                } 
+            }
+    }
+    .nav-carousel-slides {
+        padding: em(10) em(40);
+        background-color: $filter-nav-carousel-bg;
+        .slick-next,
+        .slick-prev {
+            width: auto;
+            height: auto;
+            background-color: $litviolet;
+			font-family:'Font Awesome';
+            padding: 5px 16px;
+            @include border-radius(50%);
+            &:before {
+                color: $white;
+                font-size: 35px;
+                opacity: 1;
+                padding: 0;
+            }
+        }
+        .owl-nav{
+            button{
+                &:before{
+                    color: $filter-nav-arrow-color;
+                }
+            }
+        }
+        li {
+            width: auto;
+            margin-right: 0;
+            a {
+                @if mapping($videosLanding, categoryFilter, sameAsThemeBtn3) == true {
+                    @extend .theme-btn3;
+                } @else{
+                    background-color:$filter-nav-carousel-link-bg;
+                    border: 4px solid $filter-nav-carousel-link-border;
+                    font-family: 'Swiss',Arial;
+                    font-weight: $fontRegular;
+                    font-size: em(19);
+                    letter-spacing: 1px;
+                    min-width:100px;
+                    width:auto;
+                    @include border-radius(em(50,19));
+                    padding: em(10,19) em(25,19);
+                    &:hover,
+                    &:focus, &.active {
+                        color: $filter-nav-carousel-link-bg;
+                        background-color: $filter-nav-carousel-link-hover-bg;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.video-play-list-area {
+    .playing-overlay {
+        display: none;
+    }
+}
+
+.videos-gallery-playlist {
+    @extend .col-md-12;
+    padding: 0;
+	background: mapping($videosLanding,videosGallery,bgColor);
+    @media #{$small-up}{
+        display: inline-block;
+    }
+    h2 {
+        font-family: mapping($videosLanding,thumbnailHeading,fontFamily);
+        font-weight: mapping($videosLanding,thumbnailHeading,fontWeight);
+        background-color: mapping($videosLanding,thumbnailHeading,bgColor);
+        padding: if(mapping($videosLanding,thumbnailHeading,padding), mapping($videosLanding,thumbnailHeading,padding),20px 54px 0);
+        font-size: if(mapping($videosLanding,thumbnailHeading,fontSize), mapping($videosLanding,thumbnailHeading,fontSize), em(24));
+        color:if(mapping($videosLanding,thumbnailHeading,color), mapping($videosLanding,thumbnailHeading,color), $violet);
+        margin:if(mapping($videosLanding,thumbnailHeading,margin), mapping($videosLanding,thumbnailHeading,margin), 0);
+        text-align: mapping($videosLanding,thumbnailHeading,align);
+        text-transform:if(mapping($videosLanding,thumbnailHeading,transform), mapping($videosLanding,thumbnailHeading,transform), uppercase);
+        @media #{$medium-down} {
+            padding: if(mapping($videosLanding,thumbnailHeading,tabPadding), mapping($videosLanding,thumbnailHeading,tabPadding),0 em(20));
+        }
+        @media #{$small-down} {
+            padding: if(mapping($videosLanding,thumbnailHeading,mobPadding), mapping($videosLanding,thumbnailHeading,mobPadding),0 em(10));
+        }
+    }
+    
+    .video-heading{
+        	color:$violet;
+        }
+
+    .play-tiles-gallery {
+        .gallery-tile {
+            padding: if(mapping($videosLanding,galleryTile,tilePadding), mapping($videosLanding,galleryTile,tilePadding), 0 2.14286em 1.07143em);
+			@media #{$medium-down} {
+                padding: if(mapping($videosLanding,galleryTile,tabTilePadding), mapping($videosLanding,galleryTile,tabTilePadding), 0 2.14286em 1.07143em);
+            }
+			@media #{$small-down} {
+                padding: if(mapping($videosLanding,galleryTile,mobTilePadding), mapping($videosLanding,galleryTile,mobTilePadding), 0 1.42857em);
+            }
+			h2{
+				padding: 0 25px;
+				@media #{$medium-down} {
+					padding: 0 25px;
+				}
+				@media #{$small-down} {
+					padding: 0;
+				}
+			}
+			.view-all{margin-right:25px;}
+            ul {
+                padding: 0 0;
+                
+                &>li {
+                    padding: if(mapping($videosLanding,galleryTileList,listPadding), mapping($videosLanding,galleryTile,listPadding), em(25));
+                    @media #{$small-down} {
+                        padding: em(10) 0;
+                    }
+                    &.active, &:hover{
+                        .gallery-image{
+                            @if mapping($videosLanding, listOverlay, isOverlayImgAlone) == true {
+                                &:before{
+                                    content: "";
+                                    position: absolute;
+                                    left: 0;
+                                    right: 0;
+                                    top:0;
+                                    bottom: 0;
+                                    background-color: mapping($videosLanding, listOverlay, backgroundColor);
+                                }
+                            }
+                        }
+                    }
+                    a {
+                        .gallery-image{
+                            position: relative;
+                            border: mapping($videosLanding,player,border);
+                            border-radius: mapping($videosLanding,player,borderRadius);
+                            -webkit-border-radius: mapping($videosLanding,player,borderRadius);
+                            -moz-border-radius: mapping($videosLanding,player,borderRadius);
+                            -ms-border-radius: mapping($videosLanding,player,borderRadius);
+                            @if mapping($videosLanding, main, isRoundedPlayIcon) == true {
+                                &:after{
+                                    content: "\f04b";
+                                    @if mapping($videosLanding, playIcon, isRoundedCircle) == true {
+                                        border-radius: 60px;
+                                        padding: 0.5em 0.6em;
+                                        @media #{$small-up}{
+                                            top: calc(50% - #{mapping($videosLanding, playIcon, tabFontSize) - mapping($videosLanding, playIcon, tabFontSize) });
+                                        }
+                                        @media #{$medium-up}{
+                                            top: calc(50% - #{mapping($videosLanding, playIcon, fontSize) - mapping($videosLanding, playIcon, fontSize) });
+                                        }
+                                    } @else{
+                                        @media #{$small-up}{
+                                            top: calc(50% - #{mapping($videosLanding, playIcon, tabFontSize)-(mapping($videosLanding, playIcon, tabFontSize)/2)});
+                                        }
+                                        @media #{$medium-up}{
+                                            top: calc(50% - #{mapping($videosLanding, playIcon, fontSize)-(mapping($videosLanding, playIcon, fontSize)/2px)});
+                                        }
+                                    }
+                                    color: mapping($videosLanding, playIcon, color);
+                                    background-color: mapping($videosLanding, playIcon, bgnd);
+                                    position: absolute;
+                                    left: 50%;
+                                    transform: translate(-50%);
+                                    -webkit-transform: translate(-50%);
+                                    -moz-transform: translate(-50%);
+                                    -ms-transform: translate(-50%);
+                                    font-size: mapping($videosLanding, playIcon, mobFontSize);
+                                    top: calc(50% - #{mapping($videosLanding, playIcon, mobFontSize)-7px});
+                                    opacity: if(mapping($videosLanding, playIcon, opacity), mapping($videosLanding, playIcon, opacity), .9);
+                                    @include font-awesome();
+                                    @media #{$small-up}{
+                                        font-size: mapping($videosLanding, playIcon, tabFontSize);
+                                    }
+                                    @media #{$medium-up}{
+                                        font-size: mapping($videosLanding, playIcon, fontSize);
+                                    }
+                                    mix-blend-mode: mapping($videosLanding, playIcon, blendMode);
+                                }
+                            }
+                        }
+                        span {
+                            // background-color: mapping($videosLanding,listTitle, bgColor);
+                            color: mapping($videosLanding,listTitle, color);
+                            text-align: if(mapping($videosLanding,listTitle, align), mapping($videosLanding,listTitle, align), center);
+                            font-family: if(mapping($videosLanding,listTitle, fontFamily), mapping($videosLanding,listTitle, fontFamily), Arial);
+                            font-size: if(mapping($videosLanding,listTitle, fontSize), mapping($videosLanding,listTitle, fontSize), 1em);
+                            text-transform: if(mapping($videosLanding,listTitle, transform), mapping($videosLanding,listTitle, transform), uppercase);
+                            letter-spacing: if(mapping($videosLanding,listTitle, letterSpacing), mapping($videosLanding,listTitle, letterSpacing), 1px);
+                            padding: if(mapping($videosLanding,listTitle, padding), mapping($videosLanding,listTitle, padding), em(12));
+                            margin: mapping($videosLanding,listTitle, margin);
+                            font-weight: mapping($videosLanding,listTitle, fontWeight);
+                            border-radius: mapping($videosLanding,listTitle, borderRadius);
+                            line-height: mapping($videosLanding,listTitle, lineHeight);
+                            -webkit-border-radius: mapping($videosLanding,listTitle, borderRadius);
+                            -moz-border-radius: mapping($videosLanding,listTitle, borderRadius);
+                            -ms-border-radius: mapping($videosLanding,listTitle, borderRadius);
+                            @media #{$small-down}{
+                                height: auto !important;
+                                font-size: if(mapping($videosLanding,listTitle, mobFontSize), mapping($videosLanding,listTitle, mobFontSize), inherit);
+                                text-align: if(mapping($videosLanding,listTitle, mobAlign), mapping($videosLanding,listTitle, mobAlign), center);
+                                padding: mapping($videosLanding,listTitle, mobPad);
+                            }
+                        }
+                        &:hover{
+                            .playing-overlay {
+                                display: block;
+                            }        
+                        }
+                        .playing-overlay {
+                            display: block;
+                            position: absolute;
+                            top: 0;
+                            bottom: 0;
+                            left: 0;
+                            right: 0;
+                            background-color: transparent;
+                            span {
+                                position: absolute;
+                                z-index: 1;
+                                &.play-icon {
+                                    @if mapping($videosLanding, main, isRoundedPlayIcon) == true {
+                                        display:none;
+                                    } @else{
+                                        top: 30%;
+                                    }
+                                    left: 50%;
+                                    @include transform(translateX(-50%));
+                                    opacity: 0.9;
+                                    font-family: 'Font Awesome';
+                                    background: transparent;
+                                    color: $white;
+                                    padding: 0;
+                                    font-size: 45px;
+                                    line-height: 1;
+                                }
+                                &.play-text {
+                                    display: none;
+                                }
+                            }
+                        }
+                    }
+                    &.active {
+                        a {
+                            .gallery-image{
+                                @if mapping($videosLanding, main, isRoundedPlayIcon) == true {
+                                    &:after{
+                                        content:none;
+                                    }
+                                }
+                            }
+                            .playing-overlay {
+                                display: block;
+                                @if mapping($videosLanding, listOverlay, isOverlayImgAlone) == true {
+                                    
+                                } @else{
+                                    background-color: rgba(0, 0, 0, 0.1);
+                                }
+                                span {
+                                    &.play-icon {
+                                        display: none;
+                                    }
+                                    &.play-text {
+                                        display: inline-block;
+                                        font-size: if(mapping($videosLanding, nowPlaying, fontSize),mapping($videosLanding, nowPlaying, fontSize), 1em);
+                                        font-family: if( mapping($videosLanding, nowPlaying, fontFamily), mapping($videosLanding, nowPlaying, fontFamily),"Arial");
+                                        font-weight: mapping($videosLanding, nowPlaying, fontWeight);
+                                        color: if(mapping($videosLanding, nowPlaying, color),mapping($videosLanding, nowPlaying, color), $violet);
+                                        background-color: if(mapping($videosLanding, nowPlaying, backgroundColor), mapping($videosLanding, nowPlaying, backgroundColor), $white);
+                                        border-color: mapping($videosLanding, nowPlaying, borderColor);
+                                        padding: if(mapping($videosLanding, nowPlaying, padding), mapping($videosLanding, nowPlaying, padding), em(7));
+                                        margin: mapping($videosLanding, nowPlaying, margin);
+                                        @include border-radius(if(mapping($videosLanding, nowPlaying, borderRadius),mapping($videosLanding, nowPlaying, borderRadius),0));                                      
+                                        top: if(mapping($videosLanding, nowPlaying, top), mapping($videosLanding, nowPlaying, top), 7px);
+                                        left: if(mapping($videosLanding, nowPlaying, left), mapping($videosLanding, nowPlaying, left), 7px);
+                                        right: mapping($videosLanding, nowPlaying, right);
+                                        white-space: if(mapping($videosLanding, nowPlaying, whiteSpace), mapping($videosLanding, nowPlaying, whiteSpace), nowrap);
+                                        letter-spacing: if(mapping($videosLanding, nowPlaying, letterSpacing), mapping($videosLanding, nowPlaying, letterSpacing), 1px);
+                                        text-shadow: mapping($videosLanding, nowPlaying, textShadow);
+                                        text-align: mapping($videosLanding, nowPlaying, align);
+                                        text-transform: mapping($videosLanding, nowPlaying, textTransform);
+                                        line-height: mapping($videosLanding, nowPlaying, lineHeight);
+                                        -webkit-text-stroke-width: mapping($videosLanding, nowPlaying, strokeWidth);
+                                        -webkit-text-stroke-color: mapping($videosLanding, nowPlaying, strokeColor);
+                                        width: mapping($videosLanding, nowPlaying, width);	
+                      
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@if mapping($videosLanding, arrows, sameAsCDAArrow) == true {
+    .video-player-in{
+        .cd-next,
+        .cd-prev{
+            top: 40%;
+            z-index: 1024;
+            text-align: center;
+            @if mapping($videosLanding, arrows, isHideArrows) == true {
+                display: none !important;
+            }
+            @media #{$small-down} {
+                top: 35%;
+                @if mapping($videosLanding, arrows, isHideMobile) == true {
+                    display: none;
+                }
+            }
+        }
+        .cd-prev{
+            @extend .slick-prev;
+        }
+        .cd-next{
+            @extend .slick-next
+        }
+        @extend .arrow-styles;
+    }
+} @else{
+    .cd-prev,
+    .cd-next {
+        top: 40%;
+        z-index: 1024;
+        width: auto;
+        height: auto;
+        @if mapping($videosLanding, arrows, isHideArrows) == true {
+            display: none !important;
+        }
+        @media #{$small-down} {
+            top: 35%;
+            @if mapping($videosLanding, arrows, isHideMobile) == true {
+                display: none !important;
+            }
+        }
+        &:before {
+            font-family: 'Font Awesome';
+            @if mapping($videosLanding,arrows,isRoundBgnd) == false {
+                color: mapping($videosLanding,arrows,color);
+                background: none;
+            } @else{
+                background-color: $litviolet;
+                @include border-radius(50%);
+                padding: 15px 23px;
+            }
+            content: mapping($videosLanding,arrows,arrowContent);
+            opacity: if(mapping($videosLanding,arrows,opacity), mapping($videosLanding,arrows,opacity),0.9);
+            font-size: if(mapping($videosLanding,arrows,fontSize), mapping($videosLanding,arrows,fontSize), 36px);
+            @media #{$small-down} {
+                background-color: transparent;
+                color: if(mapping($videosLanding,arrows,mobColor), mapping($videosLanding,arrows,mobColor), $litviolet);
+                padding: 0;
+                font-size: mapping($videosLanding,arrows,mobFontSize);
+            }
+        }
+    }
+    
+    .cd-prev {
+        @extend .slick-prev;
+        &:before {
+            content: if(mapping($videosLanding, arrows, leftBefore), mapping($videosLanding, arrows, leftBefore), "\f053");
+        }
+        left:if(mapping($videosLanding, arrows, leftPos), mapping($videosLanding, arrows, leftPos), 9px);
+    }
+    
+    .cd-next {
+        @extend .slick-next;
+        &:before {
+            content: if(mapping($videosLanding, arrows, RightBefore), mapping($videosLanding, arrows, RightBefore), "\f054");
+        }
+        right:if(mapping($videosLanding, arrows, rightPos), mapping($videosLanding, arrows, rightPos), 9px);
+    }
+    
+}
+
+//checkbox
+
+/**
+* Checkbox Three
+*/
+
+.autoplay-label {
+    
+	float: left;
+    padding: if(mapping($videosLanding,autoPlayLabel,padding), mapping($videosLanding,autoPlayLabel,padding), 6px 0 0 0);
+	font-family: if(mapping($videosLanding,autoPlayLabel,fontFamily), mapping($videosLanding,autoPlayLabel,fontFamily), "Arial-Rounded");
+    @if mapping($videosLanding,autoPlayLabel,isDefaultHeadingFont) == true {
+        @extend .page-heading-default;
+    } @else{
+        font-family: "Arial-Rounded",Arial,sans-serif;
+        font-weight:700;
+    }
+    font-size: em(20);
+    color: if(mapping($videosLanding,autoPlayLabel,color), mapping($videosLanding,autoPlayLabel,color), $violet);
+}
+
+.autoplay-checkbox {
+    width: 62px;
+    height: 30px;
+    background: if(mapping($videosLanding,autoPlayCheckBox,bgColor), mapping($videosLanding,autoPlayCheckBox,bgColor), $violet);
+    margin: 0;
+    @include border-radius(50px);
+    position: relative;
+    float: right;
+    @if mapping($videosLanding,autoPlayCheckBox,isDefaultHeadingFont) == true {
+        @extend .page-heading-default;
+    }
+    /**
+    * Create the text for the On position
+    */
+    &:before,
+    &:after {
+        position: absolute;
+        top: if(mapping($videosLanding,autoPlayLabel, topVal), mapping($videosLanding,autoPlayLabel, topVal), 8px);
+        height: 2px;
+        text-transform: mapping($videosLanding,autoPlayLabel, transform);
+        font-size: if(mapping($videosLanding,autoPlayLabel, fontSize), mapping($videosLanding,autoPlayLabel, fontSize), 11px);
+        padding: mapping($videosLanding,autoPlayLabel,padding);
+    }
+    &:before {
+        content: 'On';
+        left: if(mapping($videosLanding,autoPlayLabel, leftVal), mapping($videosLanding,autoPlayLabel, leftVal), 6px);
+        color: $white;
+        text-indent: -9999px;
+    }
+    &.checked-true{
+        &:after{content: none;}
+        &:before{text-indent: inherit;}
+
+    }
+    &.checked-false{
+        &:before{content: none;}
+        &:after{ text-indent: inherit;}
+    }
+    /**
+    * Create the label for the off position
+    */
+    &:after {
+        content: 'Off';
+        right: if(mapping($videosLanding,autoPlayLabel, rightVal), mapping($videosLanding,autoPlayLabel, rightVal), 6px);
+        color: if(mapping($videosLanding,autoPlayOnOffTxt,color), mapping($videosLanding,autoPlayOnOffTxt,color), $litviolet);
+    }
+    label {
+        width: 22px;
+        height: 22px;
+        @include border-radius(em(22));
+        @include transition(all .5s ease);
+        cursor: pointer;
+        position: absolute;
+        top: 4px;
+        z-index: 1;
+        left: 4px;
+        background: if(mapping($videosLanding,autoPlayOnOffButton,bgColor), mapping($videosLanding,autoPlayOnOffButton,bgColor), $litviolet);
+        margin: 0;
+    }
+    /**
+    * Create the checkbox event for the label
+    */
+    input[type=checkbox]:checked + label {
+        left: 36px;
+        background: if(mapping($videosLanding,autoPlayOnOffButton,activeBgnd), mapping($videosLanding,autoPlayOnOffButton,activeBgnd), $white);
+    }
+    input[type=checkbox] {
+       opacity:0;
+    }
+}
+.videos-gallery-playlist {
+        .gallery-tile-list {
+            ul {
+                li {
+                    display: block;
+            		@media #{$medium-up} { 
+	            		&.column-3 {
+			                width: 33.33333%;
+			            }
+			            &.column-4 {
+			                width: 25%;
+			            }
+		            }
+                }
+            }
+        }
+    }
+    #videos-gallery {
+        .gallery-tile-list {
+            @extend .gallery-extnd-tile;
+        }
+    }
+.play-video{
+	display:block;
+	float:left;
+	width:100%;
+	.video-player-in{
+		.cd-prev{left:13px;}
+		.cd-next{right:13px;}
+	}
+	.videos-gallery-playlist {
+			.gallery-tile-list {
+				ul {
+					li {
+						display: block;
+						&:nth-of-type(1n+5) {
+							display:none;
+						}
+					}
+				}
+			}
+		}
+}
+    
+#video-gallery-player-component {
+    @if mapping($videosLanding,homePage,isPageBgnd) == true {
+        //background: mapping($videosLanding,homePage,bgnd);
+        padding: mapping($videosLanding,homePage,padding);
+		@media #{$large-only}{
+            padding: mapping($videosLanding,homePage,paddingDesktopDown);
+        }
+        @media #{$medium-down}{
+            padding: mapping($videosLanding,homePage,paddingTab);
+        }
+        @media #{$small-down}{
+            padding: mapping($videosLanding,homePage,paddingMob);
+        }
+        background-size: mapping($videosLanding,homePage,backgroundSize);
+        overflow: hidden;
+        display: inline-block;
+        width: 100%;
+        .play-tiles-gallery{
+            background: none;
+        }
+    }
+    .video-player-in{
+            @extend .col-md-12;
+            padding: if(mapping($videosLanding,homePage,playerPadding), mapping($videosLanding,homePage,playerPadding), 0);
+    }
+    #videos-gallery{
+        padding: mapping($videosLanding,galleryTile,tilePadding);
+        @media #{$medium-only}{
+            padding: mapping($videosLanding,galleryTile,tabTilePadding);
+		margin: mapping($videosLanding,galleryTile,tileMargin);
+        }
+        @media #{$small-only}{
+            padding: mapping($videosLanding,galleryTile,mobTilePadding);
+		margin: mapping($videosLanding,galleryTile,mobTileMargin);
+        }
+        .gallery-tile{
+            @media #{$medium-only} {
+                padding: mapping($videosLanding,galleryTile,tabTilePadding);
+            }
+            @media #{$small-down} {
+                padding: mapping($videosLanding,galleryTile,mobTilePadding);
+		    margin: mapping($videosLanding,galleryTile,mobTileMargin);
+            }
+        }
+    }
+	.view-all {
+        @if mapping($videosLanding, main    ,isViewAllHide) == true {
+            display: none !important;
+        } @else{
+            display:block;
+        }
+	}
+	.show-more {
+        display:block;
+        padding: mapping($videosLanding,showMore,padding);
+	}
+	&::after {
+		@if mapping($layout, waveBorder, isWaveBtmBdr) == true {
+		    content:"";
+		    background: mapping($layout,waveBorder,waveBdrPurple);
+		    background-repeat: mapping($layout,waveBorder,waveBdrbgndRptX);
+		    width: mapping($layout,waveBorder,waveBdrWidth);
+		    height: mapping($layout,waveBorder,waveBdrHeight);
+		    display: mapping($layout,waveBorder,waveBdrDisplay);
+		    position: mapping($layout,waveBorder,waveBdrPosition);
+		    background-size: mapping($layout,waveBorder,waveBdrsize);
+		}
+	}
+}
+#videos{
+    &::after {
+		@if mapping($layout, waveBorder, isWaveBtmBdr) == true {
+		    content:"";
+		    background-image: mapping($layout,waveBorder,waveBdrGreen);
+		    background-repeat: mapping($layout,waveBorder,waveBdrbgndRptX);
+		    width: mapping($layout,waveBorder,waveBdrWidth);
+		    height: mapping($layout,waveBorder,waveBdrHeight);
+		    display: mapping($layout,waveBorder,waveBdrDisplay);
+		    position: mapping($layout,waveBorder,waveBdrPosition);
+		    background-size: mapping($layout,waveBorder,waveBdrsize);
+		    margin-top:mapping($layout,waveBorder,waveBdrMarignTop);
+		}
+	}
+}
+//videos page
+#video-player-component{
+    background: mapping($videosLanding, videosDetail, pageBgnd);
+    @if mapping($videosLanding, videosDetail, isclearDiv) == true {
+        @extend .clearDiv;
+    }
+    .videos-gallery-playlist {
+        h2 {
+            color:mapping($videosLanding,videosDetail,thumbHeadingColor);
+        }
+    }
+    
+}

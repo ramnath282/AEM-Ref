@@ -1,0 +1,1288 @@
+.assetListing  {
+    h3,h4,h5,h6 {
+        margin: 0;
+        clear: both;
+    }
+    .overlay {
+        background: rgba(0, 0, 0, 0.5);
+        @include print-css(
+        map-merge((
+            display: (
+                defaultVal:none,
+                smallUp:none !important
+            ),
+            z-index: 1111
+        ),
+        if(variable-exists(assetListing) and map-has-key($assetListing, overlayCss), 
+                map-get($assetListing,overlayCss), ()
+            )
+        ));
+    }
+    .cta-filter-item {
+        text-align: right;
+        .cta-filter {
+            margin-right: 0;
+        }
+    }
+    .container-fluid {
+        padding: 0;
+    }
+    .grid-page-title {
+        @include print-css(
+        map-merge((
+            padding: (
+                defaultVal:20px 0 20px,
+                mediumUp:  40px 0 50px
+            ),
+        ),
+        if(variable-exists(assetListing) and map-has-key($assetListing, gridPageTitle), 
+                map-get($assetListing,gridPageTitle), ()
+            )
+        ));
+        .main-title {
+            @include print-css(
+                map-merge((
+                    margin-bottom: 12px,
+                    font-weight: 600
+                ),
+                if(variable-exists(assetListing) and map-has-key($assetListing, mainTitle), 
+                map-get($assetListing,mainTitle), ()
+                )
+            ));
+        }
+        .sub-title {
+            @include print-css(
+                map-merge((
+                    margin-bottom: 12px,
+                ),
+                if(variable-exists(assetListing) and map-has-key($assetListing, subTitle), 
+                map-get($assetListing,subTitle), ()
+                )
+            ));
+        }
+        .text-para {
+            @include print-css(
+                map-merge((
+                    margin-bottom: 24px,
+                ),
+                if(variable-exists(assetListing) and map-has-key($assetListing, textPara), 
+                map-get($assetListing,textPara), ()
+                )
+            ));
+        }
+    }
+    &.assetlisting-text-center {
+        .grid-page-title {
+            text-align: center;
+        }
+    }
+    &.assetlisting-text-left {
+        .grid-page-title {
+            text-align: left;
+        }
+    }
+    &.assetlisting-text-right {
+        .grid-page-title {
+            text-align: right;
+        }
+    }
+    &.grid-with-no-inner-margins {
+        .asset-listing-container {
+            .grid-default {
+                padding: 0;
+                .grid-content {
+                    @include print-css(
+                        map-merge((
+                            padding: (
+                                defaultVal:0 0 30px 0,
+                                smOnly:  0 0 20px 0,
+                                xsOnly: 0 0 20px 0
+                                )),
+                        if(variable-exists(assetListing) and map-has-key($assetListing, assetListingContainerGridContent), 
+                        map-get($assetListing,assetListingContainerGridContent), ()
+                        )
+                    ));
+                }
+            }
+        } 
+    }
+    .asset-listing-container {
+        @include print-css(
+            map-merge((
+                display: inline-block,
+                padding: 0,
+                width:(
+                    xSmallDown: 100%,
+                )
+            ),
+            if(variable-exists(assetListing) and map-has-key($assetListing, assetListingContainer), 
+            map-get($assetListing, assetListingContainer), ()
+            )
+        ));
+        &.with-see-more {
+            li {
+                @include print-css(
+                    map-merge((
+                        display: none,
+                        ),
+                    if(variable-exists(assetListing) and map-has-key($assetListing, assetListingContainerSeeMoreBtn), 
+                    map-get($assetListing,assetListingContainerSeeMoreBtn), ()
+                    )
+                ));
+            }
+        }
+        .grid-default {
+            @media #{$xsmall-down} {
+                width: calc(100vw - 15px);
+                position: relative;
+                left: -10px;
+             }
+            @include print-css(
+                    map-merge((
+                        display: flex,
+                        justify-content: left,
+                        flex-wrap: wrap,
+                        margin-bottom: 0,
+                        padding:(
+                            largeUp: 40px 15px 0 15px,
+                            largeOnly: 40px 15px 0 15px,
+                            mediumOnly: 20px 20px 10px 20px,
+                            smOnly: 20px 0 0 0,
+                            defaultVal: 20px 0 0 0,                        
+                        )
+                        ),
+                    if(variable-exists(assetListing) and map-has-key($assetListing, gridDefault), 
+                    map-get($assetListing,gridDefault), ()
+                    )
+            ));
+            .grid-content {
+                @include print-css(
+                    map-merge((
+                        padding:(
+                            largeUp: 0 15px 40px 15px,
+                            largeOnly: 0 15px 40px 15px,
+                            mediumOnly: 0 10px 40px 10px,
+                            smOnly: 0 10px 20px 10px,
+                            defaultVal: 0 10px 20px 10px,
+                        ),
+                        float: left,
+                        ),
+                    if(variable-exists(assetListing) and map-has-key($assetListing, gridContent), 
+                    map-get($assetListing,gridContent), ()
+                    )
+                ));
+                .image-container {
+                    @include print-css(
+                    map-merge((
+                        margin-bottom:(
+                            defaultVal: 20px,
+                            smallDown: 8px
+                            )
+                    ),
+                    if(variable-exists(assetListing) and map-has-key($assetListing, imageContainer), 
+                    map-get($assetListing,imageContainer), ()
+                    )
+                    ));
+                }
+                .main-title {
+                    @include print-css(
+                    map-merge((
+                        margin-bottom:(
+                            defaultVal: 12px
+                            )
+                    ),
+                    if(variable-exists(assetListing) and map-has-key($assetListing, gridContentMainTitle), 
+                    map-get($assetListing,gridContentMainTitle), ()
+                    )
+                    ));
+                }
+                .sub-title {
+                    @include print-css(
+                    map-merge((
+                        margin-bottom:(
+                            defaultVal: 4px
+                            )
+                    ),
+                    if(variable-exists(assetListing) and map-has-key($assetListing, gridContentSubTitle), 
+                    map-get($assetListing,gridContentSubTitle), ()
+                    )
+                    ));
+                }
+                .text-para {
+                    @include print-css(
+                    map-merge((
+                        margin-bottom:(
+                            defaultVal: 24px
+                            )
+                    ),
+                    if(variable-exists(assetListing) and map-has-key($assetListing, gridContentTextPara), 
+                    map-get($assetListing,gridContentTextPara), ()
+                    )
+                    ));
+                    p {
+                        @include print-css(
+                        map-merge((
+                            padding-bottom:(
+                                defaultVal: 0
+                                )
+                        ),
+                        if(variable-exists(assetListing) and map-has-key($assetListing, gridContentTextParaPEle), 
+                        map-get($assetListing,gridContentTextParaPEle), ()
+                        )
+                        ));
+                    }
+                }
+                .ctaItem {
+                    @include print-css(
+                        map-merge((
+                            margin-bottom: (
+                                defaultVal: 16px
+                                )
+                        ),
+                        if(variable-exists(assetListing) and map-has-key($assetListing, gridContentctaItem), 
+                        map-get($assetListing,gridContentctaItem), ()
+                        )
+                        ));
+                    &:last-child {
+                        margin-bottom: 0;
+                    }
+                }
+            }
+            @media #{$large-up} {
+                &.grid-xl-1 {
+                    .grid-content {
+                        width: 100%;
+                    }
+                }
+                &.grid-xl-2 {
+                    .grid-content {
+                        width: 50%;
+                    }
+                }
+                &.grid-xl-3 {
+                    .grid-content {
+                        width: 33.33%;
+                    }
+                }
+                &.grid-xl-4 {
+                    .grid-content {
+                        width: 25%;
+                    }
+                }
+                &.grid-xl-5 {
+                    .grid-content {
+                        width: 20%;
+                    }
+                }
+                &.grid-xl-6 {
+                    .grid-content {
+                        width: 16.66%;
+                    }
+                }
+                &.grid-xl-7 {
+                    .grid-content {
+                        width: 14.28%;
+                    }
+                }
+                &.grid-xl-8 {
+                    .grid-content {
+                        width: 12.5%;
+                    }
+                }
+                &.grid-xl-9 {
+                    .grid-content {
+                        width: 11.11%;
+                    }
+                }
+                &.grid-xl-10 {
+                    .grid-content {
+                        width: 10%;
+                    }
+                }
+                &.grid-xl-11 {
+                    .grid-content {
+                        width: 9.09%;
+                    }
+                }
+                &.grid-xl-12 {
+                    .grid-content {
+                        width: 8.33%;
+                    }
+                }
+            }
+            @media #{$lg-only} {
+                &.grid-lg-1 {
+                    .grid-content {
+                        width: 100%;
+                    }
+                }
+                &.grid-lg-2 {
+                    .grid-content {
+                        width: 50%;
+                    }
+                }
+                &.grid-lg-3 {
+                    .grid-content {
+                        width: 33.33%;
+                    }
+                }
+                &.grid-lg-4 {
+                    .grid-content {
+                        width: 25%;
+                    }
+                }
+                &.grid-lg-5 {
+                    .grid-content {
+                        width: 20%;
+                    }
+                }
+                &.grid-lg-6 {
+                    .grid-content {
+                        width: 16.66%;
+                    }
+                }
+                &.grid-lg-7 {
+                    .grid-content {
+                        width: 14.28%;
+                    }
+                }
+                &.grid-lg-8 {
+                    .grid-content {
+                        width: 12.5%;
+                    }
+                }
+                &.grid-lg-9 {
+                    .grid-content {
+                        width: 11.11%;
+                    }
+                }
+                &.grid-lg-10 {
+                    .grid-content {
+                        width: 10%;
+                    }
+                }
+                &.grid-lg-11 {
+                    .grid-content {
+                        width: 9.09%;
+                    }
+                }
+                &.grid-lg-12 {
+                    .grid-content {
+                        width: 8.33%;
+                    }
+                }
+            }
+            @media #{$md-only} {
+                &.grid-md-1 {
+                    .grid-content {
+                        width: 100%;
+                    }
+                }
+                &.grid-md-2 {
+                    .grid-content {
+                        width: 50%;
+                    }
+                }
+                &.grid-md-3 {
+                    .grid-content {
+                        width: 33.33%;
+                    }
+                }
+                &.grid-md-4 {
+                    .grid-content {
+                        width: 25%;
+                    }
+                }
+                &.grid-md-5 {
+                    .grid-content {
+                        width: 20%;
+                    }
+                }
+                &.grid-md-6 {
+                    .grid-content {
+                        width: 16.66%;
+                    }
+                }
+                &.grid-md-7 {
+                    .grid-content {
+                        width: 14.28%;
+                    }
+                }
+                &.grid-md-8 {
+                    .grid-content {
+                        width: 12.5%;
+                    }
+                }
+                &.grid-mdd-9 {
+                    .grid-content {
+                        width: 11.11%;
+                    }
+                }
+                &.grid-md-10 {
+                    .grid-content {
+                        width: 10%;
+                    }
+                }
+                &.grid-md-11 {
+                    .grid-content {
+                        width: 9.09%;
+                    }
+                }
+                &.grid-md-12 {
+                    .grid-content {
+                        width: 8.33%;
+                    }
+                }
+            }
+            @media #{$sm-only} {
+                &.grid-sm-1 {
+                    .grid-content {
+                        width: 100%;
+                    }
+                }
+                &.grid-sm-2 {
+                    .grid-content {
+                        width: 50%;
+                    }
+                }
+                &.grid-sm-3 {
+                    .grid-content {
+                        width: 33.33%;
+                    }
+                }
+                &.grid-sm-4 {
+                    .grid-content {
+                        width: 25%;
+                    }
+                }
+                &.grid-sm-5 {
+                    .grid-content {
+                        width: 20%;
+                    }
+                }
+                &.grid-sm-6 {
+                    .grid-content {
+                        width: 16.66%;
+                    }
+                }
+                &.grid-sm-7 {
+                    .grid-content {
+                        width: 14.28%;
+                    }
+                }
+                &.grid-sm-8 {
+                    .grid-content {
+                        width: 12.5%;
+                    }
+                }
+                &.grid-sm-9 {
+                    .grid-content {
+                        width: 11.11%;
+                    }
+                }
+                &.grid-sm-10 {
+                    .grid-content {
+                        width: 10%;
+                    }
+                }
+                &.grid-sm-11 {
+                    .grid-content {
+                        width: 9.09%;
+                    }
+                }
+                &.grid-sm-12 {
+                    .grid-content {
+                        width: 8.33%;
+                    }
+                }
+            }
+            @media #{$xs-only} {
+                &.grid-xs-1 {
+                    .grid-content {
+                        width: 100%;
+                    }
+                }
+                &.grid-xs-2 {
+                    .grid-content {
+                        width: 50%;
+                    }
+                }
+                &.grid-xs-3 {
+                    .grid-content {
+                        width: 33.33%;
+                    }
+                }
+                &.grid-xs-4 {
+                    .grid-content {
+                        width: 25%;
+                    }
+                }
+                &.grid-xs-5 {
+                    .grid-content {
+                        width: 20%;
+                    }
+                }
+                &.grid-xs-6 {
+                    .grid-content {
+                        width: 16.66%;
+                    }
+                }
+                &.grid-xs-7 {
+                    .grid-content {
+                        width: 14.28%;
+                    }
+                }
+                &.grid-xs-8 {
+                    .grid-content {
+                        width: 12.5%;
+                    }
+                }
+                &.grid-xs-9 {
+                    .grid-content {
+                        width: 11.11%;
+                    }
+                }
+                &.grid-xs-10 {
+                    .grid-content {
+                        width: 10%;
+                    }
+                }
+                &.grid-xs-11 {
+                    .grid-content {
+                        width: 9.09%;
+                    }
+                }
+                &.grid-xs-12 {
+                    .grid-content {
+                        width: 8.33%;
+                    }
+                }
+            }
+        }
+    
+        .showMoreBtn,
+        .showLessBtn,
+        .viewAllBtn {
+            .cta-item {
+                @include print-css(
+                    map-merge((
+                        margin:(
+                            defaultVal: 0
+                        )),
+                    if(variable-exists(assetListing) and map-has-key($assetListing, showMoreCtaItem), 
+                    map-get($assetListing,showMoreCtaItem), ()
+                    )
+                    ));
+            }
+        }
+        
+        .showMoreBtn,
+        .showLessBtn{
+            .btn-cta-item {
+                @include print-css(
+                    map-merge((
+                        margin-top:(
+                            defaultVal: 10px
+                        ),
+                        margin-right:(
+                            defaultVal: 0
+                        ),
+                        margin-bottom:(
+                            defaultVal: 40px,
+                            smOnly: 30px,
+                        )),
+                    if(variable-exists(assetListing) and map-has-key($assetListing, showMoreBtnCtaItem), 
+                    map-get($assetListing,showMoreBtnCtaItem), ()
+                    )
+                    ));
+            }
+            display: none;
+        }
+        .viewAllBtn {
+            .btn-cta-item {
+                @include print-css(
+                    map-merge((
+                        margin-bottom:(
+                            defaultVal: 10px
+                        ),
+                        margin-right:(
+                            defaultVal: 0
+                        ),
+                        margin-top:(
+                            defaultVal: -10px,
+                            smOnly: 10px,
+                        )),
+                    if(variable-exists(assetListing) and map-has-key($assetListing, viewAllBtnCtaItem), 
+                    map-get($assetListing,viewAllBtnCtaItem), ()
+                    )
+                    ));
+            }
+            display: none;
+        }
+        .slick-arrow {
+            display: none !important;
+        }
+        .slick-dots {
+            @include print-css(
+                map-merge((
+                    position: inherit,
+                    margin-bottom: 32px,
+                    height: 8px,
+                    bottom: (
+                        defaultVal: inherit,
+                        mediumOnly: -30px
+                    )),
+                if(variable-exists(assetListing) and map-has-key($assetListing, slickDots), 
+                map-get($assetListing,slickDots), ()
+                )
+                ));
+            li {
+                @include print-css(
+                    map-merge((
+                        width: 8px,
+                        height: 8px,
+                        margin: 0 6px,
+                        display: inline-block,
+                        vertical-align: top
+                        ),
+                    if(variable-exists(assetListing) and map-has-key($assetListing, slickDots), 
+                    map-get($assetListing,slickDots), ()
+                    )
+                    ));
+                &.slick-active {
+                    button {
+                        opacity: 1;
+                    }
+                }
+                button {
+                    @include print-css(
+                    map-merge((
+                        width: 8px,
+                        height: 8px,
+                        margin: 0,
+                        padding: 0,
+                        opacity: 0.2,
+                        background-color: $black,
+                        ),
+                    if(variable-exists(assetListing) and map-has-key($assetListing, sliderButton), 
+                    map-get($assetListing,sliderButton), ()
+                    )
+                    ));
+                    @include border-radius(50%);
+                    &:before {
+                        content: none;
+                    }
+                }
+            }
+        }
+    
+        .asset {
+            .asset-component {
+              clear: both;
+          
+              .content {
+          
+                h1,
+                h2,
+                h3,
+                h4,
+                h5,
+                h6,
+                p {
+                    @include print-css(
+                        map-merge((
+                            margin: 0,
+                            padding: 0,
+                            font-size: (
+                                defaultVal: 18px
+                            )
+                            ),
+                        if(variable-exists(assetListing) and map-has-key($assetListing, cardContent), 
+                        map-get($assetListing,cardContent), ()
+                        )
+                        ));
+                }
+          
+                .sub-title {
+                    @include print-css(
+                        map-merge((
+                            margin: (
+                                largeUp: 10px 0 0 0,
+                                largeOnly: 10px 0 0 0,
+                                mediumOnly: 10px 0 0 0,
+                                smOnly: 10px 0 0 0,
+                                defaultVal: 10px 0 0 0,
+                            ),
+                            //font-size: 20px
+                            ),
+                        if(variable-exists(assetListing) and map-has-key($assetListing, cardSubTitle), 
+                        map-get($assetListing,cardSubTitle), ()
+                        )
+                        ));
+                }
+          
+                .text-para {
+                    @include print-css(
+                        map-merge((
+                            margin: (
+                                largeUp: 10px 0 0 0,
+                                largeOnly: 10px 0 0 0,
+                                mediumOnly: 10px 0 0 0,
+                                smOnly: 10px 0 0 0,
+                                defaultVal: 10px 0 0 0,
+                            ),
+                            //font-size: 18px
+                            ),
+                        if(variable-exists(assetListing) and map-has-key($assetListing, cardDesc), 
+                        map-get($assetListing,cardDesc), ()
+                        )
+                        ));
+                }
+              }
+          
+              .cta-item {
+                @include print-css(
+                    map-merge((
+                        margin: (
+                            largeUp: 20px 0 0 0,
+                            largeOnly: 20px 0 0 0,
+                            mediumOnly: 20px 0 0 0,
+                            smOnly: 10px 0 0 0,
+                            defaultVal: 10px 0 0 0,
+                        ),
+                        ),
+                    if(variable-exists(assetListing) and map-has-key($assetListing, cardFirstCta), 
+                    map-get($assetListing,cardFirstCta), ()
+                    )
+                    ));
+              }
+            }
+          
+            &.default-container {
+                @include print-css(
+                    map-merge((
+                        padding: 0 !important
+                        ),
+                    if(variable-exists(assetListing) and map-has-key($assetListing, cardDefaultPadding), 
+                    map-get($assetListing,cardDefaultPadding), ()
+                    )
+                    ));
+              .image-container {
+                @include print-css(
+                    map-merge((
+                        padding: (
+                            largeUp: 40px 30px 0 30px,
+                            largeOnly: 40px 30px 0 30px,
+                            mediumOnly: 40px 30px 0 30px,
+                            smOnly: 20px 20px 0 20px,
+                            defaultVal: 20px 20px 0 20px
+                        )),
+                    if(variable-exists(assetListing) and map-has-key($assetListing, cardDefaultImageContainer), 
+                    map-get($assetListing,cardDefaultImageContainer), ()
+                    )
+                    ));
+              }
+            }
+          
+            &.default-container.plain-50-50 {
+              .image-container {
+                @include print-css(
+                    map-merge((
+                        padding: (
+                            defaultVal: 40px 0px 40px 30px,
+                            smOnly: 30px 20px 0 20px,
+                            xsOnly: 20px 20px 0 20px
+                        )
+                        ),
+                    if(variable-exists(assetListing) and map-has-key($assetListing, card5050Default), 
+                    map-get($assetListing,card5050Default), ()
+                    )
+                    ));
+              }
+            }
+          
+            &.default-container.layout-reverse {
+              .image-container {
+                @include print-css(
+                    map-merge((
+                        padding: (
+                            defaultVal: 40px 30px 40px 0,
+                            smOnly: 30px 20px 0 20px,
+                            xsOnly: 30px 20px 0 20px
+                        )
+                        ),
+                    if(variable-exists(assetListing) and map-has-key($assetListing, card5050DefaultReverse), 
+                    map-get($assetListing,card5050DefaultReverse), ()
+                    )
+                    ));
+              }
+            }
+          
+            &.text-off {
+              .text-container {
+                display: none;
+              }
+            }
+          
+            &.plain-full {
+              .image-container {
+                @include print-css(
+                    map-merge((
+                        width: auto
+                        ),
+                    if(variable-exists(assetListing) and map-has-key($assetListing, cardPlainFullWidth), 
+                    map-get($assetListing,cardPlainFullWidth), ()
+                    )
+                    ));
+              }
+            }
+          
+            &.plain-50-50 {
+              .asset-component {
+                @include print-css(
+                    map-merge((
+                        display: (
+                            defaultVal: flex,
+                            smOnly: block
+                        )
+                        ),
+                    if(variable-exists(assetListing) and map-has-key($assetListing, cardPlain5050Margin), 
+                    map-get($assetListing, cardPlain5050Margin), ()
+                    )
+                    ));
+              }
+            }
+            
+            &.plain-50-50, &.layout-reverse{
+                .asset-component {
+                .image-container {
+                    @include print-css(
+                        map-merge((
+                            margin: 0,
+                            margin-bottom: (
+                                smOnly: 10px
+                            ),
+                            width:(
+                                defaultVal: 50%,
+                                smOnly: 100%
+                            ),
+                            clear: (
+                                smOnly: both
+                            )
+                            ),
+                        if(variable-exists(assetListing) and map-has-key($assetListing, cardPlain5050ImageContainer), 
+                        map-get($assetListing, cardPlain5050ImageContainer), ()
+                        )
+                        ));
+                }
+          
+                .text-container {
+                    @include print-css(
+                        map-merge((
+                            padding: (
+                                largeUp: 0 30px 0 30px,
+                                largeOnly: 0 30px 0 30px,
+                                mediumOnly: 0 30px 0 30px,
+                                smOnly: 0 20px 30px 20px,
+                                defaultVal: 0 20px 30px 20px,
+                            ),
+                            width: (
+                                defaultVal: 50%,
+                                smOnly: 100%
+                            ),
+                            margin: 0,
+                            align-self: center
+                            ),
+                        if(variable-exists(assetListing) and map-has-key($assetListing, cardPlain5050TextContainer), 
+                        map-get($assetListing,cardPlain5050TextContainer), ()
+                        )
+                        ));
+                }
+              }
+            }
+          
+            &.layout-reverse {
+              .asset-component {
+                @include print-css(
+                    map-merge((
+                        display: flex,
+                        flex-direction: (
+                            defaultVal: row-reverse,
+                            smOnly: column
+                        ),
+                        box-orient: (
+                            smOnly: vertical
+                        )
+                        ),
+                    if(variable-exists(assetListing) and map-has-key($assetListing, card5050DefaultReverseAsset), 
+                    map-get($assetListing,card5050DefaultReverseAsset), ()
+                    )
+                    ));
+          
+                .text-container {
+                    @include print-css(
+                        map-merge((
+                            display: table-cell,
+                            vertical-align: middle,
+                            float: left
+                            ),
+                        if(variable-exists(assetListing) and map-has-key($assetListing, card5050LayoutReverseTextContainer), 
+                        map-get($assetListing,card5050LayoutReverseTextContainer), ()
+                        )
+                        ));
+                }
+              }
+            }
+            
+        }
+        .default-container.plain-50-50 {
+            .asset-component {
+                .text-container {
+                padding-left: 0;
+                }
+            }
+        }
+        #assetNoFilterData {
+            @include print-css(
+                map-merge((
+                    text-align: center,
+                    font-weight: bold,
+                    font-size: (
+                        defaultVal: 22px,
+                        smallDown: 16px
+                    ),
+                    margin-top: (
+                        smallDown: 0 !important
+                    )),
+                if(variable-exists(assetListing) and map-has-key($assetListing, assetNoFilterData), 
+                map-get($assetListing,assetNoFilterData), ()
+                )
+                ));
+        }
+    }
+    
+    .grid-filter-header{
+        @include print-css(
+            map-merge((
+                background: (smallDown: $grey-smoke),
+                padding: (smallDown: 0 20px 0 30px),
+                margin: (smallDown: -2px -20px 30px -29px),
+                width: (smallDown: 293px),
+                min-height: (smallDown: 110px),
+                margin-bottom:(
+                    defaultVal: 20px,
+                    smallUp: 25px
+                )
+                ),
+            if(variable-exists(assetListing) and map-has-key($assetListing, gridFilterHeader), 
+            map-get($assetListing,gridFilterHeader), ()
+            )
+            ));
+    
+        .cta-item{
+            @include print-css(
+                map-merge((
+                    float:(smallDown: right),
+                    margin-bottom: (smallDown: 30px),
+                    text-align: right
+                    ),
+                if(variable-exists(assetListing) and map-has-key($assetListing, gridFilterHeaderCtaItem), 
+                map-get($assetListing,gridFilterHeaderCtaItem), ()
+                )
+                ));
+            .cta-apply{
+                @include print-css(
+                    map-merge((
+                        margin: 15px 0 0 0,
+                        font-size:16px,
+                        width: 130px,
+                        position: relative,
+                        z-index: 2
+                        ),
+                    if(variable-exists(assetListing) and map-has-key($assetListing, gridFilterCtaApply), 
+                    map-get($assetListing,gridFilterCtaApply), ()
+                    )
+                    ));
+            }
+            h3 {
+                @include print-css(
+                    map-merge((
+                        clear:(smallDown: both),
+                        margin: (smallDown: 0)
+                        ),
+                    if(variable-exists(assetListing) and map-has-key($assetListing, gridFilterH3), 
+                    map-get($assetListing,gridFilterH3), ()
+                    )
+                    ));
+            }
+        }
+        .filter-heading {
+            position: relative;
+            border-bottom: 2px solid $black;
+            padding-bottom: 10px;
+            @media #{$xsmall-down} {
+                border-bottom: none;
+            }
+            h4{
+                @include print-css(
+                    map-merge((
+                        font-size: (
+                            defaultVal: 24px,
+                            smallDown: 18px
+                    )),
+                    if(variable-exists(assetListing) and map-has-key($assetListing, filterHeaderFont), 
+                    map-get($assetListing,filterHeaderFont), ()
+                    )
+                ));
+                b{
+                    font-size: inherit;
+                }
+            }
+            #clearAllFilter {
+                position: absolute;
+                right: 0;
+                bottom: 15px;
+                text-decoration: underline;
+                font-size: 16px;
+                @media #{$xsmall-down} {
+                    bottom: 10px;
+                }
+            }
+        }        
+    }
+    .grid-filter{
+        @include print-css(
+                    map-merge((
+                        padding: (
+                            defaultVal: 50px 2px 50px 0,
+                            xMediumOnly: 30px 2px 30px 10px,
+                            xSmallDown: 0 2px 100px 20px
+                        ),
+                        background: (
+                            defaultVal: transparent,
+                            smallDown: $white
+                        ),
+                        width: (smallDown: 276px),
+                        position: (smallDown: fixed),
+                        right: (smallDown: 0),
+                        top: (smallDown: 0),
+                        bottom: (smallDown: 0),
+                        z-index: (smallDown: 9991),
+                        height: (smallDown: 100vh),
+                        display: (smallDown: none),
+                        padding-top: (smallDown: 0),
+                        overflow:(
+                            xSmallDown: hidden
+                        ),
+                        overflow-y:(
+                            xSmallDown: auto
+                        )
+                    ),
+                    if(variable-exists(assetListing) and map-has-key($assetListing, gridFilter), 
+                    map-get($assetListing,gridFilter), ()
+                    )
+                    ));
+        ul {
+            @include print-css(
+                    map-merge((
+                        padding: 0 15px 0 0,
+                        list-style-type: none,
+                        margin: 0,
+                        background: (smallDown: $white)
+                        ),
+                    if(variable-exists(assetListing) and map-has-key($assetListing, gridFilterUl), 
+                    map-get($assetListing,gridFilterUl), ()
+                    )
+                    ));
+            li {
+                @include print-css(
+                    map-merge((
+                        padding:0 0 16px,
+                        margin: 0,
+                        position: relative
+                        ),
+                    if(variable-exists(assetListing) and map-has-key($assetListing, gridFilterList), 
+                    map-get($assetListing,gridFilterList), ()
+                    )
+                    ));
+                input[type=checkbox], input[type=radio] {
+                    -webkit-appearance: none;
+                    -moz-appearance: none;
+                    appearance: none;     
+                    @include print-css(
+                        map-merge((
+                            display: block,
+                            position: absolute,
+                            width: 100%,
+                            height: 25px,
+                            top: -5px,
+                            border: none,
+                            background: none,
+                            ),
+                        if(variable-exists(assetListing) and map-has-key($assetListing, gridFilterInput), 
+                        map-get($assetListing,gridFilterInput), ()
+                        )
+                    ));
+                }
+                input[type=checkbox] + label, input[type=radio] + label {
+                    @include print-css(
+                    map-merge((
+                        position: relative,
+                        cursor: pointer,
+                        padding:2px 0 0 40px,
+                        font-size : 16px,
+                        margin: 0,
+                        font-weight: normal
+                        ),
+                    if(variable-exists(assetListing) and map-has-key($assetListing, gridFilterInputLbl), 
+                    map-get($assetListing,gridFilterInputLbl), ()
+                    )
+                    ));
+                }            
+                input[type=checkbox] + label:before,input[type=radio] + label:before {
+                    @include print-css(
+                    map-merge((
+                        content: '',
+                        position: absolute,
+                        left: 0,
+                        background:url($HeaderspriteLightPath) #fff no-repeat -194px -48px,
+                        width: 24px,
+                        height: 24px,
+                        top: -2px,
+                        ),
+                    if(variable-exists(assetListing) and map-has-key($assetListing, gridFilterInputLblBefore), 
+                    map-get($assetListing,gridFilterInputLblBefore), ()
+                    )
+                    ));
+                   
+                }
+                input[type=checkbox]:checked + label:before, input[type=radio]:checked + label:before {
+                    @include print-css(
+                    map-merge((
+                        content: '',
+                        position: absolute,
+                        background:url($HeaderspriteLightPath) #fff no-repeat -218px -48px,
+                        width: 24px,
+                        height: 24px,
+                        left: 0,
+                        top:-2px,
+                        ),
+                    if(variable-exists(assetListing) and map-has-key($assetListing, filterInputCheckedlblBefore), 
+                    map-get($assetListing,filterInputCheckedlblBefore), ()
+                    )
+                    ));
+    
+                 }
+            }
+        }
+        hr {
+            display: none;
+            @media #{$xsmall-down} {
+                border-bottom: 1px solid  $black;
+                width: 240px;
+                margin-bottom: 15px !important;
+                display: block;
+            }
+        }
+        .accordion-action {
+            margin-bottom: 15px;        
+            a {
+                cursor: default;
+                @include print-css(
+                    map-merge((
+                        font-size: (
+                            defaultVal: 18px,
+                        )
+                        ),
+                    if(variable-exists(assetListing) and map-has-key($assetListing, categoryAccordionLbl), 
+                    map-get($assetListing,categoryAccordionLbl), ()
+                    )
+                ));
+                @media #{$xsmall-down} {
+                    cursor: pointer;
+                }
+                &:hover {
+                    color: $black;
+                }
+                &:after {
+                    @media #{$xsmall-down} {               
+                        content: "";
+                        width: 24px;
+                        height: 22px;
+                        background: url(#{$HeaderspriteLightPath}) no-repeat -176px 0;
+                        position: absolute;
+                        right: 15px;
+                    }
+                }
+            }
+            &.accordion-expand-in {    
+                @media #{$xsmall-down} {
+                    margin-bottom: 8px;   
+                }          
+                a {
+                    &:after {
+                        @media #{$xsmall-down} {
+                            background: url(#{$HeaderspriteLightPath}) no-repeat -200px 0;
+                        }
+                    }                
+                }
+            }
+        }
+        .category-group {    
+            padding: 0 15px 25px 0;   
+            border-bottom: 2px solid $black;
+            margin-bottom: 25px; 
+            @media #{$xsmall-down} {
+                padding-bottom: 15px;  
+                border-bottom: none;
+                margin-bottom: 0; 
+            }
+            
+            li {  
+                &:last-child {
+                    padding-bottom: 0;
+                }             
+                input[type=checkbox] + label:before {               
+                   background: url(#{$HeaderspriteLightPath}) #fff no-repeat -194px -48px;              
+                }
+                input[type=radio] + label:before {                
+                    background: url(#{$HeaderspriteLightPath}) transparent no-repeat -67px -48px;                
+                }
+                input[type=checkbox]:checked + label:before {                
+                    background: url(#{$HeaderspriteLightPath}) #fff no-repeat -218px -48px;                
+                }
+                input[type=radio]:checked + label:before {
+                    background: url(#{$HeaderspriteLightPath}) transparent no-repeat -90px -48px;
+                }
+                 label {
+                     &:hover {
+                         text-decoration: underline;
+                         color: $primaryTextColor;
+                     }
+                 }
+            }
+        }
+    }
+}
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    .listingFacetsContainer .product-filter-section #filterComponentInfo .productTypes .products-list-item.list-item input[type="radio"],
+    .grid-filter ul li input[type=checkbox],.grid-filter ul li input[type=radio] {
+        left: -9999px;
+    }
+    
+} 
+.asset-filter-on, .hamburger-open {
+    @media #{$xsmall-down} {
+        overflow: hidden;
+        position: fixed;
+        cursor: pointer;
+    }
+}
+.asset-listing-container{
+    .showMoreBtn, .showLessBtn{
+        .btn-cta-item{
+            font: 22px $maaxBold;
+        }
+    }
+}

@@ -1,0 +1,19 @@
+<sly data-sly-test="${wcmmode.edit}">${'Configure Play Image Component' @ i18n}</sly>
+<sly data-sly-use.myNav="com.mattel.play.core.model.PlayImageModel">
+	<div>
+        <section>
+            <sly data-sly-test.myVar="${properties.detailpageMapping}" data-sly-use.info="${'com.mattel.play.core.helper.PlayHelper' @ text= myVar}">
+                <a href="${info.pathURL}" 
+                data-tracking-id="Image Gallery Section|${properties.alwaysEnglish}|${myNav.tilePojo.tileTitle @context='html'}|Games">
+                    <img alt="${myNav.tileAltTxt @ i18n}" src="${myNav.tileThumbnail}"/>
+                        <span>${myNav.tilePojo.tileTitle @context='html',i18n}</span>
+                    <div class="description-tag" data-sly-test="${properties.descLineOne} || ${properties.descLineTwo}">
+                        <p data-sly-test="${properties.descLineOne}">${properties.descLineOne}</p>
+                        <p data-sly-test="${properties.descLineTwo}">${properties.descLineTwo}</p>
+                    </div>
+                </a>
+             </sly>
+         </section>
+		</div>
+	</sly>
+	<div class="clearfix"></div>

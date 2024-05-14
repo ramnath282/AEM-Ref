@@ -1,0 +1,121 @@
+.article-component-outerWrapper {
+  .content-wrapper {
+    .content-inner-wrapper {
+      @include content-spacing(map-get($articleComponent, content_inner_wrapper));
+      @media #{$medium-up} {
+        display: mapping($articleComponent, content_inner_wrapper, display);
+      }
+      .left-wrapper {
+        .main-title {
+          margin: mapping($articleComponent, mainTitle, titleMarginBottom);
+          @media #{$small-down} {
+            margin: mapping($articleComponent, mainTitle, titleMarginBottomMob);
+          }
+          h3 {
+            margin: 0;
+          }
+        }
+        .sub-title {
+          margin: mapping($articleComponent, mainTitle, titleMarginBottom);
+          h4 {
+            text-transform: mapping($articleComponent, subTitle, txtTransform);
+            margin: 0;
+          }
+        }
+        width: mapping($articleComponent, left_wrapper, width_sm);
+        @media #{$medium-up} {
+          width: mapping($articleComponent, left_wrapper, width_md);
+        }
+        .media-image {
+          width: mapping($articleComponent, media_image, width);
+        }
+        .text-para {
+          font-size: mapping($articleComponent, left_wrapper_content_p, pFontSize);
+          line-height: mapping($articleComponent, left_wrapper_content_p, pLineHeight);
+          @include font-properties($maax,$localFontVerdana);
+          margin-bottom: mapping($articleComponent, left_wrapper_content_p, pMarginBottom);
+          @media #{$small-down} {
+            font-size: mapping($articleComponent, left_wrapper_content_p, pFontSizeMob);
+            line-height: mapping($articleComponent, left_wrapper_content_p, lineHeightMob);
+          }
+        }
+        .socialLinks {
+          a {
+            color: mapping($articleComponent, left_wrapper_content_p, color);
+          }
+        }
+        .left-wrapper-content {
+          img {
+            margin-bottom: mapping($articleComponent, left_wrapper_content_img, imgBarginBottom);
+          }
+          .socialShareForProducts {
+            margin-bottom: 16px;
+          }
+          .card {
+            .text-container {
+              padding: 0;
+            }
+            .text-para {
+              margin: 0;
+              p {
+                margin-bottom: 0;
+              }
+            }
+          }
+        }
+      }
+      .right-wrapper {
+        width: mapping($articleComponent, right_wrapper, width_sm);
+        @media #{$medium-up} {
+          @include content-spacing(map-get($articleComponent, right_wrapper));
+          width: mapping($articleComponent, right_wrapper, width_md);
+        }
+        @media #{$medium-down} {
+          width: mapping($articleComponent, right_wrapper, width_sm);
+          overflow: mapping($articleComponent, right_wrapper, overflowHidden);
+        }
+      }
+      .recommendedProducts {
+        .recommended-products .headerPart {
+          display: mapping($articleComponent, content_inner_wrapper, displayNone);
+        }
+      }
+      .more-articles {
+        @media #{$medium-down} {
+          display: mapping($articleComponent, content_inner_wrapper, displayNone);
+        }
+        .articlecomponent-outer-wrapper {
+          border-top: mapping($articleComponent, articleOuterWrapper, borderTop);
+          clear: mapping($articleComponent, articleOuterWrapper, clearBoth);
+          .articlecomponent-container {
+            margin: mapping($articleComponent, articleContainer, articleMargin);
+            li {
+              width: mapping($articleComponent, articleContainerLi, liWidth);
+              padding: mapping($articleComponent, articleContainerLi, liPadding);
+              .articlecomponent-info {
+                height: mapping($articleComponent, articleComponentInfo, compHeight);
+                margin: mapping($articleComponent, articleComponentInfo, compMargin);
+                .articlecomponent-content {
+                  .articlecomponent-headline {
+                    h3 {
+                      margin: mapping($articleComponent, articleContent, articleMargin);
+                    }
+                  }
+                  .articlecomponent-category {
+                    margin: mapping($articleComponent, articleComponentInfo, categoryMargin);
+                    line-height: mapping($articleComponent, articleComponentInfo, categoryLineHeight);
+                  }
+                }
+                .img-wrapper {
+                  img {
+                    margin: mapping($articleComponent, articleComponentInfo, imgMargin);
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

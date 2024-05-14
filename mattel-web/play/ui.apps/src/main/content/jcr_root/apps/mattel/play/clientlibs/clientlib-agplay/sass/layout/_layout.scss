@@ -1,0 +1,410 @@
+/*
+** _layout.scss
+*/
+
+html {
+  font-size: 14px;
+}
+body {
+  font-family: "Source Sans Pro", Arial, sans-serif;
+  // font: 400 16.5px "Source Sans Pro", Arial, sans-serif;
+}
+.outer-wrapper {
+  .inner-wrapper {
+    .page-view.fixed-header {
+      margin: 0;
+      .slick-arrow,
+      .slide-btn {
+        width: auto;
+        height: auto;
+        @media #{$medium-down}{
+          z-index: 11;
+        }
+        &:before {
+          font-size: 35px;
+          background: none;
+          @include border-radius(0);
+          @include font-awesome();
+          color: $black;
+          opacity: 0.75;
+        }
+        &.slick-next {
+          right: -30px;
+        }
+        &.slick-next,
+        &.cd-next {
+          &:before {
+            content: "\f054";
+          }
+        }
+        &.slick-prev {
+          left: -30px;
+        }
+        &.slick-prev,
+        &.cd-prev {
+          &:before {
+            content: "\f053";
+          }
+        }
+      }
+      .show-more,
+      .view-all,
+      .show-more-btn {
+        background: transparent;
+        padding: 25px 0;
+        margin: 0;
+        .global-header-wrapper {
+          display: block;
+          height: auto;
+          .toggle-brands-list {
+            position: static;
+            transform: none;
+            line-height: normal;
+          }
+        }
+        a {
+          background: transparent;
+          border: none;
+          color: $black;
+          padding: 0;
+          font: normal 22.5px "Source Sans Pro", Arial, sans-serif;
+          letter-spacing: normal;
+          .text-more {
+            &:after {
+              content: none;
+            }
+          }
+          &:before {
+            content: none;
+          }
+          &:after {
+            color: inherit;
+            content: "\f0a9";
+            @include font-awesome;
+            margin-left: 3px;
+          }
+        }
+      }
+      .play-tiles-gallery,
+      #video-player-component,
+      .play-video,
+      .play-list,
+      #play-list-datas {
+        .slick-slide {
+          margin: 0 7px;
+          @media #{$small-up} {
+            margin: 0 15px;
+          }
+          a {
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+          }
+        }
+        .tile-content,
+        .gallery-image + span,
+        section > a > span {
+          width: 100%;
+          text-transform: none;
+          font: 400 16.5px "Source Sans Pro", Arial, sans-serif;
+          letter-spacing: normal;
+          padding: 5px 5px;
+          color: $white;
+          background-color: rgba(0, 0, 0, 0.8);
+          display: inline-block;
+          text-align: center !important;
+          position: absolute;
+          margin: auto;
+          bottom: 0px;
+          left: 0px;
+          right: 0px;
+          height: auto !important;
+          @include transform(none);
+          @include border-radius(0);
+          h2,
+          p {
+            color: inherit;
+            font: inherit;
+            text-align: inherit;
+            padding: 0;
+            line-height: normal;
+            height: auto;
+          }
+        }
+        .gallery-title,
+        .video-page-title,.videos-gallery-playlist {
+          padding: 30px 15px 0 8px;
+          background: transparent;
+          padding-top: 10px;
+          @media #{$small-down} {
+            padding-left: 15px;
+          }
+          h2 {
+            margin: 20px 0;
+            letter-spacing: 2px;
+            color: $black;
+            text-transform: none;
+            font: 500 45px "Love Ya Like A Sister", cursive;
+          }
+        }
+      }
+    }
+    h1 {
+      font-family: "Love Ya Like A Sister", cursive;
+      margin-bottom: 0;
+      margin-left: 5px;
+      margin-right: 5px;
+      padding-bottom: 10px;
+      font-size: 63px;
+      font-weight: 500;
+      color: #000;
+      text-transform: none;
+    }
+    .nav-categorylist {
+      background: inherit;
+      text-align: center;
+      @extend .container;
+      margin: auto;
+      padding-left: 0;
+      padding-right: 0;
+      border-image: url(#{$imagePath}/gameDots.png) 9 round;
+      border-bottom: 9px transparent solid;
+      li {
+        margin: 0 18px;
+        &:first-child {
+          margin-left: 0;
+        }
+        a {
+          font: 700 18px "Source Sans Pro", Arial, sans-serif;
+          text-transform: none;
+          color: $night-rider;
+          background: inherit;
+          border: none;
+          @include border-radius(0);
+          width: auto;
+          padding: 0;
+        }
+      }
+    }
+    .play-page-title > div {
+      padding-bottom: 15px;
+    }
+    .play-characters,
+    .play-download .gallery-title,
+    .videos-gallery-playlist,
+    .video-page-title,
+    .play-games .gallery-title {
+      h2 {
+        font-size: 37.5px;
+        &:before {
+          content: "\f005";
+          @include font-awesome();
+          vertical-align: inherit;
+          margin-right: 10px;
+        }
+      }
+    }
+    .video-page-title,.videos-gallery-playlist {
+      h2 {
+        &:before {
+          content: "\f144";
+        }
+      }
+    }
+    .videos-gallery-playlist h2{
+      margin-top: 0;
+      padding-top: 0;
+    }
+    .play-games .gallery-title {
+      h2 {
+        &:before {
+          content: "\f11b";
+        }
+      }
+    }
+    .play-download {
+      padding-bottom: 30px;
+      .gallery-title h2 {
+        &:before {
+          content: "\f02d";
+        }
+      }
+    }
+    .video-player-container,
+    .game-player-area-component {
+      .video-player-label,
+      .title-block {
+        background: transparent;
+        font: 400 22.5px "Source Sans Pro", Arial, sans-serif;
+        color: $black;
+        padding: 10px 0;
+        h2 {
+          font: inherit;
+          color: inherit;
+          text-transform: none;
+          letter-spacing: normal;
+          text-align: left;
+        }
+        p {
+          font: inherit;
+          color: inherit;
+          font-size: 15px;
+          text-align: left;
+        }
+      }
+    }
+    .video-vertical-playlist-container {
+      background: inherit;
+      padding-top: 0;
+      padding-bottom: 0;
+      @media #{$medium-up} {
+        margin-top: -15px;
+      }
+      .video-vertical-playlist {
+        .title-block {
+          h2 {
+            letter-spacing: normal;
+            text-transform: none;
+            font: 400 22.5px "Source Sans Pro", Arial, sans-serif;
+            color: $night-rider;
+          }
+        }
+      }
+      .video-play-option {
+        background: transparent;
+        padding-left: 0;
+        padding-right: 0;
+        .autoplay-label {
+          color: #333;
+          letter-spacing: normal;
+          font-family: "Source Sans Pro", Arial, sans-serif;
+          font-weight: 600;
+        }
+        .autoplay-checkbox {
+          background: #5d5658;
+          label {
+            background: $white;
+          }
+          &:after,
+          &:before {
+            color: $white;
+            top: 5px;
+            right: 9px;
+            font: 700 14px "Source Sans Pro", Arial, sans-serif;
+          }
+          &.checked-true {
+            &:after {
+              content: none;
+            }
+          }
+        }
+      }
+    }
+    #videos-gallery,
+    #video-play-list {
+      .play-icon {
+        font-size: 35px;
+      }
+    }
+    #videos-gallery {
+      .gallery-tile {
+        padding: 0;
+      }
+      .play-list {
+        li {
+          padding: 10px;
+          margin: 0;
+        }
+      }
+      .play-text {
+        color: $night-rider;
+      }
+      .show-more-btn {
+        border: none;
+      }
+    }
+  }
+}
+.fixed-bgnd-w-cover {
+  -webkit-background-size: cover !important;
+  -moz-background-size: cover !important;
+  -o-background-size: cover !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  background-attachment: fixed !important;
+  background-position: center center !important;
+}
+.fixed-bgnd-without-cover {
+  background-attachment: fixed !important;
+  background-position: center center !important;
+  background-size: inherit !important;
+}
+.homepage-page {
+  .play-download {
+    @extend .fixed-bgnd-w-cover;
+  }
+  .play-characters,
+  .play-video {
+    @extend .fixed-bgnd-without-cover;
+  }
+  .gallery-title,
+  .video-component .video-page-title,
+  .gallery-tile {
+    @extend .container;
+    ul {
+      @media #{$small-down} {
+        width: calc(100% - 32px);
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+    li:hover {
+      & > a {
+        @include transform(scale(1));
+        -webkit-filter: saturate(115%) brightness(108%);
+        -moz-filter: saturate(115%) brightness(108%);
+        -ms-filter: saturate(115%) brightness(108%);
+        -o-filter: saturate(115%) brightness(108%);
+        filter: saturate(115%) brightness(108%);
+        -webkit-animation: linear 1000ms wobblyBouncyHover;
+        -moz-animation: linear 1000ms wobblyBouncyHover;
+        -o-animation: linear 1000ms wobblyBouncyHover;
+        -ms-animation: linear 1000ms wobblyBouncyHover;
+        animation: linear 1000ms wobblyBouncyHover;
+        img {
+          opacity: 1 !important;
+        }
+      }
+    }
+  }
+}
+.play-character-landing-block {
+  // max-width: 960px;
+  @extend .container;
+  margin: auto;
+  .play-list {
+    padding: 0;
+    & > div {
+      padding-left: 15px;
+      padding-right: 15px;
+      margin-bottom: 20px;
+    }
+  }
+  .gallery-tile {
+    width: auto;
+  }
+}
+
+.loading-icon-extend,
+.data-loading:after,
+.next-data-loading:after {
+  color: $night-rider;
+}
+
+.next-data-loading:after{
+    width: 100%;
+    margin: 20px 0;
+    background: 0;
+    height: auto;
+    position: static;
+}

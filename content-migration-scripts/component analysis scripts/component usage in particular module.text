@@ -1,0 +1,40 @@
+componentPath = "/apps/mattel/ecomm/shared/components/content";
+contentPath = "/content/ag/en/shop";
+startCouniting();
+
+def startCouniting(){
+    def predicates = [path: componentPath, type: "cq:Component",  "orderby.index": "true", "orderby.sort": "desc"]
+    def query = createQuery(predicates)
+    query.hitsPerPage = 1000
+    def result = query.result
+    println "${result.totalMatches} hits, execution time = ${result.executionTime}s\n--"
+     
+    result.hits.each { hit ->
+        def path=hit.node.path
+        Resource res = resourceResolver.getResource(path)
+        if(res!=null){
+            componentNode = res.adaptTo(javax.jcr.Node.class);
+            if(componentNode != null){
+    			if(componentNode.hasProperty('componentGroup') && !componentNode.getProperty('componentGroup').getString().equals('.hidden')){
+    				path = path.substring(6,path.length())
+    				def str = componentNode.getProperty('jcr:title').getString() + "," + componentNode.getProperty('componentGroup').getString();
+    				getAllContentReferences(path);
+    			}
+            }
+        }
+    }
+}
+
+def getAllContentReferences(assetpath) {
+    println assetpath;
+    //prinln componentdetail;
+    def predicates = [path: contentPath, "property": "sling:resourceType",  "property.value": assetpath]
+    def query = createQuery(predicates)
+    query.hitsPerPage = 1000
+    def result = query.result
+    result.hits.each { hit ->
+        println hit.path;  
+    }
+}
+
+

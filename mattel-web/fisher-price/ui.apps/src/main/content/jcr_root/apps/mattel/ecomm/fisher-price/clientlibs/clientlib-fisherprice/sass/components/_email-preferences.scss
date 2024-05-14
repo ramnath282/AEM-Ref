@@ -1,0 +1,404 @@
+.email-preferences-component {
+    @extend .row;
+    margin-left: mapping($emailpreferences, main, marginLeft);
+    margin-right: mapping($emailpreferences, main, marginRight);
+    .xf-content-height {
+        margin: 0;
+    }
+}
+
+.email-preferences-image-block {
+    @extend .col-sm-12;
+    @extend .col-md-12;
+    @extend .col-lg-4;
+    padding: mapping($emailpreferences, imageBlock, imageBlockPadding);
+    display: mapping($emailpreferences, imageBlock, display);
+    @media #{$medium-down} {
+        display: mapping($emailpreferences, imageBlock, mobDisplay);
+    }
+}
+
+.email-preferences-image-block-mobile {
+    @extend .col-sm-12;
+    @extend .col-md-12;
+    @extend .col-lg-4;
+    padding: mapping($emailpreferences, imageBlock, imageBlockPadding);
+    display: mapping($emailpreferences, imageBlock, mobDisplay);
+    @media #{$medium-down} {
+        display: mapping($emailpreferences, imageBlock, display);
+    }
+    img {
+        @media #{$medium-down} {
+            width: mapping($emailpreferences, imageBlock, width);
+        }
+    }
+}
+
+.email-preferences-content-block {
+    @extend .col-sm-12;
+    @extend .col-md-12;
+    @extend .col-lg-8;
+    padding-right: mapping($emailpreferences, contentBlock, paddingRight);
+    padding-left: mapping($emailpreferences, contentBlock, paddingLeft);
+    @media #{$medium-down} {
+        padding-bottom: 20px;
+    }
+    h4 {
+        margin: 0 0 4px 0;
+        @media #{$small-down} {
+            margin-bottom: 0;
+        }
+    }
+    .opaque-area {
+        opacity: 0.5;
+    }
+    .title-block {
+        padding: mapping($emailpreferences, titleBlock, titleBlockPadding);
+        @media #{$medium-down} {
+            padding: mapping($emailpreferences, titleBlock, tabTitlePadding);
+            margin-top: mapping($emailpreferences, titleBlock, tabMarginTop);
+        }
+        h1 {
+            margin-top: 0;
+            @media #{$small-down} {
+                line-height: 26px;
+            }
+        }
+        h2 {
+            @if (mapping($layout, main, isFisherPriceNav)==true) {
+                @include font-properties($letsBeGlyphs,$localFontInfo)
+            }
+            ;
+            color: mapping($emailpreferences, heading, headingColor);
+            font-family: mapping($emailpreferences, heading, fontFamily);
+            font-size: mapping($emailpreferences, heading, fontSize);
+            font-weight: mapping($emailpreferences, heading, fontWeight);
+            line-height: mapping($emailpreferences, heading, lineHeight);
+            text-align:mapping($emailpreferences, heading, textAlign);
+            margin-bottom:mapping($emailpreferences, heading, marginBottom);
+            @media #{$medium-up} {
+                font-size: mapping($emailpreferences, heading, tabFontSize);
+                line-height: mapping($emailpreferences, heading, tabLineHeight);
+            }
+            @media #{$medium-down} {
+                margin-bottom: mapping($emailpreferences, heading, tabmarginBottom);
+                font-size: mapping($emailpreferences, heading, mobFontSize);
+            }
+        }
+        .label {
+            margin-bottom: mapping($emailpreferences, emailAddrLabel, marginBottom);
+            padding: mapping($emailpreferences, emailAddrLabel, labelPadding);
+            display: mapping($emailpreferences, emailAddrLabel, labelDisplay);
+            text-align: mapping($emailpreferences, emailAddrLabel, textAlign);
+            @media #{$medium-down} {
+                margin-bottom: mapping($emailpreferences, emailAddrLabel, mobMarginBottom);
+            }
+            .title {
+                color: mapping($emailpreferences, emailAddrTitle, titleColor);
+                @include font-properties($maaxMedium,$localFontVerdana);
+                font-size: mapping($emailpreferences, emailAddrTitle, fontSize);
+                font-weight: mapping($emailpreferences, emailAddrTitle, fontWeight);
+                line-height: mapping($emailpreferences, emailAddrTitle, lineHeight);
+                @media #{$medium-down} {
+                    font-size: mapping($emailpreferences, emailAddrTitle, mobFontSize);
+                    margin-bottom: mapping($emailpreferences, emailAddrTitle, marginBottomMob);
+                }
+            }
+            .desc {
+                color: mapping($emailpreferences, emailAddrDesc, descColor);
+                @include font-properties($maax,$localFontVerdana);
+                font-size: mapping($emailpreferences, emailAddrDesc, fontSize);
+                line-height: mapping($emailpreferences, emailAddrDesc, lineHeight);
+                @media #{$medium-down} {
+                    font-size: mapping($emailpreferences, emailAddrDesc, mobTabFontSize);
+                    color: mapping($emailpreferences, emailAddrDesc, mobTabFontColor);
+                    display: mapping($emailpreferences, emailAddrDesc, displayMob);
+                    line-height: mapping($emailpreferences, emailAddrDesc, lineHeightMob);
+                }
+            }
+        }
+        p {
+            color: mapping($emailpreferences, description, descColor);
+            @include font-properties($maax,$localFontVerdana);
+            font-size: mapping($emailpreferences, description, fontSize);
+            line-height: mapping($emailpreferences, description, lineHeight);
+            margin: mapping($emailpreferences, description, descMargin);
+            @media #{$medium-down} {
+                font-size: mapping($emailpreferences, description, mobFontSize);
+            }
+        }
+    }
+    .subscription-opt {
+        padding-left: mapping($emailpreferences, subscriptionUl, paddingLeft);
+        padding-right: mapping($emailpreferences, subscriptionUl, paddingRight);
+        @media #{$medium-down} {
+            padding-left: mapping($emailpreferences, subscriptionUl, mobPaddingLeft);
+            padding-right: mapping($emailpreferences, subscriptionUl, mobPaddingRight);
+        }
+        ul {
+            margin-bottom: mapping($emailpreferences, subscriptionUl, marginBottom);
+            overflow: hidden;
+            li {
+                padding: mapping($emailpreferences, subscriptionLi, liPadding);
+                border-top: mapping($emailpreferences, subscriptionLi, borderTop);
+                @media #{$medium-down} {
+                    padding-bottom: mapping($emailpreferences, subscriptionUl, mobPaddingbot);
+                    padding: mapping($emailpreferences, subscriptionLi, mobliPadding);
+                }
+                &:last-child {
+                    border-bottom: mapping($emailpreferences, subscriptionLi, lastLiBorderBtm);
+                }
+                ul {
+                    &>li {
+                        border-bottom: mapping($emailpreferences, subscriptionLi, lastLiBorderBtm);
+                    }
+                }
+                p {
+                    margin: mapping($emailpreferences, subscriptionLi, margin);
+                    font-size: mapping($emailpreferences, subscriptionLi, PfontFamily);
+                    @media #{$medium-down} {
+                        font-size: mapping($emailpreferences, subscriptionLi, MobPfontSize);
+                        line-height: mapping($emailpreferences, subscriptionLi, MobLineheight);
+                        margin-bottom: mapping($emailpreferences, subscriptionLi, MobMarbottom);
+                    }
+                }
+            }
+        }
+        .change-email-pref-opt {
+            display: mapping($emailpreferences, changeEmailPref, display);
+            ul {
+                li {
+                    @media #{$medium-down} {
+                        padding: mapping($emailpreferences, changeEmailPrefLi, mobpaddingLi);
+                    }
+                    padding-top: 31px;
+                    border-bottom: mapping($emailpreferences, changeEmailPrefLi, borderBottom);
+                    border-top: mapping($emailpreferences, changeEmailPrefLi, borderTop);
+                    .mattelBrandsList {
+                        li {
+                            padding: mapping($emailpreferences, mattelBrandsList, paddingLi);
+                            background: mapping($emailpreferences, mattelBrandsList, bgLi);
+                            width: mapping($emailpreferences, mattelBrandsList, widthLi);
+                            margin-bottom: mapping($emailpreferences, mattelBrandsList, marginBottomLi);
+                            float: mapping($emailpreferences, mattelBrandsList, liFloat);
+                            @media #{$medium-down} {
+                                width: mapping($emailpreferences, mattelBrandsList, mobWidthLi);
+                                padding: mapping($emailpreferences, mattelBrandsList, mobPaddingList);
+                                margin-bottom: mapping($emailpreferences, mattelBrandsList, mobMarginBottomLi);
+                            }
+                            &:nth-child(odd) {
+                                margin-right: mapping($emailpreferences, mattelBrandsList, paddingLiOdd);
+                                @media #{$medium-down} {
+                                    margin-right: mapping($emailpreferences, mattelBrandsList, mobPaddingLiOdd);
+                                }
+                            }
+                         &.check-active {
+                             background: #6AD1E3;
+                         }
+                        }
+                    }
+                }
+            }
+        }
+        .checkbox,
+        .radio {
+            margin: mapping($emailpreferences, checkbox, checkboxMargin);
+            label {
+                &.emailpref-checkbox {
+                    padding: mapping($emailpreferences, emailPrefCheckbox, padding);
+                    padding-left: mapping($emailpreferences, emailPrefCheckbox, paddingLeft);
+                    p {
+                        line-height: mapping($emailpreferences, emailPrefCheckbox, lineHeight);
+                        margin: mapping($emailpreferences, emailPrefCheckbox, marginP);
+                        font-size: mapping($emailpreferences, emailPrefCheckbox, fontSizeP) !important;
+                    }
+                }
+                color: mapping($emailpreferences, checkboxLabel, labelColor);
+                @include font-properties($maax,$localFontVerdana);
+                font-size: mapping($emailpreferences, checkboxLabel, fontSize);
+                font-weight: mapping($emailpreferences, checkboxLabel, fontWeight);
+                line-height: mapping($emailpreferences, checkboxLabel, lineHeight);
+                .checkval {
+                    color: mapping($emailpreferences, checkval, valColor);
+                    font-size: mapping($emailpreferences, checkval, fontSize);
+                    font-weight: mapping($emailpreferences, checkval, fontWeight);
+                    @include font-properties($maaxMedium,$localFontVerdana);
+                    line-height: mapping($emailpreferences, checkval, lineHeight);
+                    @media #{$medium-down} {
+                        color: mapping($emailpreferences, checkboxLabel, tabMoblabelColor);
+                        font-size: mapping($emailpreferences, checkval, mobFontSize);
+                    }
+                }
+                p {
+                    margin: mapping($emailpreferences, checkval, descMargin);
+                    color: mapping($emailpreferences, checkval, descColor);
+                    @include font-properties($maax,$localFontVerdana);
+                    font-size: mapping($emailpreferences, checkval, descFontSize);
+                    line-height: mapping($emailpreferences, checkval, descLineHeight);
+                }
+            }
+            &.with-accordion {
+                padding: mapping($emailpreferences, withAccordion, accordionPadding);
+                padding-top: mapping($emailpreferences, withAccordion, paddingTop);
+            }
+            .accordion-component {
+                .accordion {
+                    padding: mapping($emailpreferences, accordion, accPadding);
+                    margin: mapping($emailpreferences, accordion, accMargin);
+                    float: none;
+                    border-top: 2px solid #E5E0DC;
+                    border-bottom: 0px solid #E5E0DC;
+                    .accordion-title {
+                        margin-bottom: mapping($emailpreferences, accordionTitle, marginBottom);
+                        padding: mapping($emailpreferences, accordionTitle, titlePadding);
+                        border-bottom: mapping($emailpreferences, accordionTitle, borderBottom);
+                        border-top: mapping($emailpreferences, accordionTitle, borderTop);
+                        p {
+                            color: mapping($emailpreferences, accordionTitle, descColor);
+                            @include font-properties($maax,$localFontVerdana);
+                            font-size: mapping($emailpreferences, accordionTitle, fontSize);
+                            line-height: mapping($emailpreferences, accordionTitle, lineHeight);
+                            margin: mapping($emailpreferences, accordionTitle, descMargin);
+                            padding: mapping($emailpreferences, accordionTitle, descPadding);
+                        }
+                    }
+                    .arrow {
+                        width: mapping($emailpreferences, accordion, arrowWidth);
+                        height: mapping($emailpreferences, accordion, arrowHeight);
+                        top: mapping($emailpreferences, accordion, arrowTop);
+                        @media #{$medium-down} {
+                            top: mapping($emailpreferences, accordion, arrowTabTop);
+                        }
+                        @media #{$small-down} {
+                            top: mapping($emailpreferences, accordion, arrowMobTop);
+                        }
+                        right: mapping($emailpreferences, accordion, arrowRight);
+                        &.arrowDown:after {
+                            background: none !important;
+                        }
+                        &.arrowUp:after {
+                            background: none !important;
+                        }
+                    }
+                    .accordion-content {
+                        padding: mapping($emailpreferences, accordion, accContentPadding);
+                        border-bottom: mapping($emailpreferences, accordion, borderBottom);
+                        p {
+                            font-weight: mapping($emailpreferences, accordion, descFontWeight);
+                            font-size: mapping($emailpreferences, accordion, descFontSize);
+                            padding: mapping($emailpreferences, accordion, descPadding);
+                            @include font-properties($maax,$localFontVerdana);
+                        }
+                    }
+                }
+            }
+        }
+    }
+    /* The emailpref-checkbox  <label class="emailpref-checkbox"> */
+    .emailpref-checkbox {
+        display: mapping($emailpreferences, emailPrefCheckbox, display);
+        position: mapping($emailpreferences, emailPrefCheckbox, position);
+        padding-left: mapping($emailpreferences, emailPrefCheckbox, checkboxPaddLeft);
+        cursor: mapping($emailpreferences, emailPrefCheckbox, cursor);
+        font-size: mapping($emailpreferences, emailPrefCheckbox, fontSize);
+        -webkit-user-select: mapping($emailpreferences, emailPrefCheckbox, webkitSelect);
+        -moz-user-select: mapping($emailpreferences, emailPrefCheckbox, mozSelect);
+        -ms-user-select: mapping($emailpreferences, emailPrefCheckbox, msSelect);
+        user-select: mapping($emailpreferences, emailPrefCheckbox, userSelect);
+        input {
+            position: mapping($emailpreferences, emailPrefInput, position);
+            opacity: mapping($emailpreferences, emailPrefInput, opacity);
+            cursor: mapping($emailpreferences, emailPrefInput, cursor);
+            height: mapping($emailpreferences, emailPrefInput, height);
+            width: mapping($emailpreferences, emailPrefInput, width);
+            &:checked~.checkmark {
+                &:after {
+                    display: mapping($emailpreferences, emailPrefInput, display);
+                }
+            }
+        }
+        .checkmark {
+            position: mapping($emailpreferences, emailPrefCheckmark, position);
+            background: url($spriteImgPath) no-repeat -194px -48px;
+            left: mapping($emailpreferences, emailPrefCheckmark, left);
+            height: mapping($emailpreferences, emailPrefCheckmark, height);
+            width: mapping($emailpreferences, emailPrefCheckmark, width);
+            background-color: #ffffff;
+            &:after {
+                display: mapping($emailpreferences, emailPrefCheckmark, display);
+                position: mapping($emailpreferences, emailPrefCheckmark, afterPosition);
+                content: mapping($emailpreferences, emailPrefCheckmark, content);
+                background: url($spriteImgPath) no-repeat -218px -48px;
+                text-align: mapping($emailpreferences, emailPrefCheckmark, textAlign);
+                width: mapping($emailpreferences, emailPrefCheckmark, afterwidth);
+                height: mapping($emailpreferences, emailPrefCheckmark, afterHeight);
+            }
+        }
+    }
+    .emailpref-radio {
+        display: mapping($emailpreferences, emailPrefRadio, display);
+        position: mapping($emailpreferences, emailPrefRadio, position);
+        padding-left: mapping($emailpreferences, emailPrefRadio, paddingLeft);
+        cursor: mapping($emailpreferences, emailPrefRadio, cursor);
+        font-size: mapping($emailpreferences, emailPrefRadio, fontSize);
+        -webkit-user-select: mapping($emailpreferences, emailPrefRadio, webkitSelect);
+        -moz-user-select: mapping($emailpreferences, emailPrefRadio, mozSelect);
+        -ms-user-select: mapping($emailpreferences, emailPrefRadio, msSelect);
+        user-select: mapping($emailpreferences, emailPrefRadio, userSelect);
+        @media #{$medium-down} {
+            padding-left: mapping($emailpreferences, emailPrefRadio, mobPaddingLeft);
+        }
+        input {
+            position: mapping($emailpreferences, emailPrefRadioInput, position);
+            opacity: mapping($emailpreferences, emailPrefRadioInput, opacity);
+            cursor: mapping($emailpreferences, emailPrefRadioInput, cursor);
+            &:checked~.checkmark:after {
+                display: mapping($emailpreferences, emailPrefRadioInput, display);
+            }
+        }
+        .checkmark {
+            position: mapping($emailpreferences, emailPrefRadioCheckMark, position);
+            top: mapping($emailpreferences, emailPrefRadioCheckMark, top);
+            @media #{$mobile-down-only} {
+                top: -3px !important;
+            }
+            left: mapping($emailpreferences, emailPrefRadioCheckMark, left);
+            height: mapping($emailpreferences, emailPrefRadioCheckMark, height);
+            width: mapping($emailpreferences, emailPrefRadioCheckMark, width);
+            background: url($spriteImgPath) no-repeat -66px -48px;
+            &:after {
+                content: mapping($emailpreferences, emailPrefRadioCheckMark, afterContent);
+                position: mapping($emailpreferences, emailPrefRadioCheckMark, afterPosition);
+                display: mapping($emailpreferences, emailPrefRadioCheckMark, afterDisplay);
+                width: mapping($emailpreferences, emailPrefRadioCheckMark, afterWidth);
+                height: mapping($emailpreferences, emailPrefRadioCheckMark, afterHeight);
+                background: url($spriteImgPath) no-repeat -90px -48px;
+            }
+        }
+        p {
+            margin: mapping($emailpreferences, emailPrefRadioCheckMark, margin);
+        }
+    }
+    .btn-primary {
+        margin: mapping($emailpreferences, btnPrimary, margin);
+        background-color: mapping($emailpreferences, btnPrimary, bgColor);
+        @include font-properties($maaxMedium,$localFontVerdana);
+        font-size: mapping($emailpreferences, btnPrimary, fontSize);
+        line-height: mapping($emailpreferences, btnPrimary, lineHeight);
+        padding: mapping($emailpreferences, btnPrimary, paddingBtn);
+        font-weight: mapping($emailpreferences, btnPrimary, fontWeight);
+        border: mapping($emailpreferences, btnPrimary, borderBtn);
+        
+        &:hover {
+            background-color: #e51c06 !important;
+        }
+        @media #{$medium-down} {
+            margin: mapping($emailpreferences, btnPrimary, tabMargin);
+            min-width: inherit;
+            padding: 11px 49px 12px 50px;
+        }
+        @media #{$small-down} {
+            margin: mapping($emailpreferences, btnPrimary, mobMargin);
+        }
+    }
+}

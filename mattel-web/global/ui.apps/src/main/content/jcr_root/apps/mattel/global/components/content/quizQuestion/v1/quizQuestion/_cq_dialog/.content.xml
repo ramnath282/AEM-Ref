@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Quiz Question"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <configuration
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Config"
+                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                margin="true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <answerSelectionDropdown
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                emptyOption="{Boolean}false"
+                                                fieldDescription="Please select the Answer Type"
+                                                fieldLabel="Answer Selection Type"
+                                                name="./answerSelectionType">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <checkbox
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Check Box"
+                                                        value="checkbox"/>
+                                                    <radio
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Radio"
+                                                        value="radio"/>
+                                                </items>
+                                            </answerSelectionDropdown>
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </configuration>
+                    <qna
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Q&amp;A"
+                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                margin="true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <title
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+                                                fieldDescription="Question Title"
+                                                fieldLabel="Question Title"
+                                                height="20"
+                                                name="./title"
+                                                useFixedInlineToolbar="{Boolean}true">
+                                                <htmlRules
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceSuperType="mattel/global/components/content/globalRtePlugins/htmlRules"/>
+                                                <rtePlugins
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceSuperType="mattel/global/components/content/globalRtePlugins/rtePlugins"/>
+                                                <uiSettings
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceSuperType="mattel/global/components/content/globalRtePlugins/uiSettings"/>
+                                            </title>
+                                            <subtitle
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+                                                fieldDescription="Question Subtitle"
+                                                fieldLabel="Question Subtitle"
+                                                height="20"
+                                                name="./subTitle"
+                                                useFixedInlineToolbar="{Boolean}true">
+                                                <htmlRules
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceSuperType="mattel/global/components/content/globalRtePlugins/htmlRules"/>
+                                                <rtePlugins
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceSuperType="mattel/global/components/content/globalRtePlugins/rtePlugins"/>
+                                                <uiSettings
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceSuperType="mattel/global/components/content/globalRtePlugins/uiSettings"/>
+                                            </subtitle>
+                                            <selectTags
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="cq/gui/components/coral/common/form/tagfield"
+                                                fieldLabel="Answers to Display"
+                                                multiple="{Boolean}true"
+                                                name="./selectedTags"/>
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </qna>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>

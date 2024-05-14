@@ -1,0 +1,194 @@
+.grid-featured-module{
+    @extend .pt-30;
+    .container {
+        padding-left: 0;
+        padding-right: 0;
+        ul {
+            display: inline-block;
+            max-width: 100%;
+            li {
+                @extend .col-md-4;
+                @media #{$medium-up} {
+                    float: right;
+                }
+                &.list {
+                    overflow: hidden;
+                    &:nth-child(1)   {
+                        @media #{$medium-up} {
+                            width: 70%;
+                            padding-left: 0;
+                            padding-right: 0;                            
+                        }
+                        @media #{$medium-only} {
+                            width: 100%;
+                        }
+                        
+                        float: left;
+                        .tile-container {
+                            .tile-anchor-parent {        
+                                @media #{$medium-up} {
+                                    height: 510px;
+                                    overflow: hidden;
+                                }
+                                .tile-link {                               
+                                    @media #{$medium-up} {
+                                        height: 510px;
+                                        overflow: hidden;
+                                    }
+                                    .tile-img {
+                                        @media #{$medium-up} {
+                                            height: 510px;
+                                        }
+                                    }
+                                    
+                                }
+                            }
+                            .tile-content {
+                                padding: 0.8em 1.6em;
+                                a{
+                                    .tile-name{
+                                        color: $night-rider;
+                                    }
+                                }
+                                .tile-name {
+                                    font-size: 2.5em;
+                                    @media #{$medium-up} {
+                                        padding: 0 3em;
+                                    }
+                                }
+                            }
+                        }                        
+                    }                    
+                    @media #{$medium-up} {
+                        width: 28%;
+                        padding:0 0.31em 0 0;
+                    }
+                    @media #{$medium-only} {
+                        width: 50%;
+                        float: left;
+                    }  
+                    @media #{$small-down} {
+                        padding-left: 0;
+                        padding-right: 0;
+                        clear: both;
+                    }
+
+                }
+                .tile-container {
+                    background-color: transparent;
+                    box-shadow: none;      
+                    max-width: 100%;
+                    height: 100%;
+                    margin: 0;
+                    .tile-anchor-parent {        
+                        overflow: hidden;
+                        min-height: 200px;   
+                        .tile-link {                        
+                            display: block;
+                            overflow: hidden;
+                            background-repeat: no-repeat;
+                            background-size: cover;
+                            transition: all 2s ease;
+                            @media #{$medium-up} {
+                                height: 200px;
+                                width: auto;
+                            } 
+                            min-height: 200px; 
+                            &:hover {
+                                transform: scale(1.2);
+                                overflow: hidden;
+                            }
+                            .tile-img {                            
+                                visibility: hidden;
+                                background-position: center;                                
+                                @media #{$medium-up} {
+                                    min-height: 200px;
+                                }                                
+                            }                      
+                        }
+                    }
+                    .tile-content {
+                    a{
+                       .tile-name{
+                       color: $night-rider;
+                            }
+                        }
+                        @media #{$medium-up} {        
+                            min-height: 150px;
+                        }            
+                        background-color: $white;
+                        display: block;
+                        width: 95%;
+                        margin: -3em auto 0;
+                        position: relative;
+                        text-align: center;
+                        padding: 0.7em .4em 0.8em;
+                        &:before, &:after{
+                            content:"";
+                            position:absolute;
+                            z-index:-1;
+                            box-shadow:0 0 10px $grey;
+                            top:0;
+                            bottom:50px;
+                            height: 70%;
+                            left:0;
+                            right:0;
+                        }
+                        &:after {
+                            right:10px;
+                            left:auto;
+                            transform:skew(8deg) rotate(3deg);
+                        }
+                        .tile-name {
+                            font-weight: $fontSemiBold;
+                            margin-bottom: 0.2em;  
+                            margin-top: 0;    
+                            line-height: 1.1em;   
+                            font-size: 1.9em;
+                        }
+                        .tile-category {
+                            font-style: italic;
+                            margin-top: 0;
+                            color: $very-dim-light-grey;
+                            margin-bottom: 0.5em;
+                        }
+                        .social-icons {
+                            margin-left: 1.07143em;
+                            li {
+                                margin-right: 0.5em;
+                                float: left;
+                                padding: 0;
+                                width: auto;
+                                a {
+                                    color: $white;
+                                    background: $dim-gray;
+                                    text-align: center;
+                                    width: 1.35em;
+                                    height: 1.35em;
+                                    border-radius: 1.35em;
+                                    font-size: 1.2em;
+                                    display: block;
+                                    cursor: pointer;
+                                    &:after {
+                                        margin-top: 2px;
+                                    }
+                                    &.pinterest, &.twitter {
+                                        font-size: 1em;
+                                        width: 1.65em;
+                                        height: 1.65em;
+                                        position: relative;
+                                        top: -1px;
+                                        border-radius: 1.65em;
+                                        &:after {
+                                            margin-top: 5px;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }        
+    }
+}

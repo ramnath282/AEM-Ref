@@ -1,0 +1,177 @@
+/*
+** _char-details-noslider.scss styles for character details
+*/
+
+.char-detials-comp {
+    padding: 5% 0;
+    position: relative;
+
+    .container {
+        background-color: $white;
+        padding: 0px;
+
+        @media #{$small-down} {
+            width: 95%;
+        }
+
+        @media #{$medium-only} {
+            width: 80%;
+        }
+    }
+
+    .char-detials-content {
+        @extend .row;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .char-details-image {
+        @extend .col-xs-12;
+        @extend .col-sm-12;
+        @extend .col-md-6;
+        text-align: center;
+        padding: 0;
+
+        &.img-right {
+            float: right;
+        }
+
+        @media #{$medium-only} {
+            img {
+                max-width: 100%;
+                padding-top: 10;
+            }
+        }
+    }
+
+    .char-details-description {
+        @extend .col-xs-12;
+        @extend .col-sm-12;
+        @extend .col-md-6;
+        //padding-bottom: 1em;
+        padding: em(60) em(60) 0 em(60);
+        //padding-bottom: 0px;
+        overflow: hidden;
+		overflow-y : auto;
+		height: 500px;
+        @media #{$large-down} {
+            padding: em(42) em(45);
+        }
+
+        @media #{$small-down} {
+            padding: em(25);
+        }
+
+        h1,
+        h2 {
+            color: $pink;
+            font-family: Swiss, Arial, Sans-serif;
+            font-weight: 400;
+            font-size: em(38);
+            margin-top: 0;
+
+            small {
+                color: $violet;
+                font-size: em(21);
+
+            }
+        }
+
+        p {
+            color: $violet;
+            font-family: "Arial-Rounded", Arial, sans-serif;
+            font-weight: $fontRegular;
+            font-size: em(21);
+
+            span {
+                font-family: "Arial-Rounded", Arial, sans-serif;
+            }
+        }
+
+    }
+
+    .cd-prev {
+        @extend .slick-prev;
+        left: 60px;
+
+        @media (max-width: 1024px) {
+            left: 0;
+        }
+
+        @media #{$medium-only} {
+            left: 45px;
+        }
+
+        @media #{$small-down} {
+            left: -12px;
+        }
+
+        &:before {
+            content: "\f104";
+        }
+    }
+
+    .cd-next {
+        @extend .slick-next;
+        right: 60px;
+
+        @media (max-width: 1024px) {
+            right: 0;
+        }
+
+        @media #{$medium-only} {
+            right: 45px;
+        }
+
+        @media #{$small-down} {
+            right: -12px;
+        }
+
+        &:before {
+            content: "\f105";
+        }
+    }
+
+    .cd-prev,
+    .cd-next {
+        top: 50%;
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        padding: 0;
+        background: $pink;
+
+        &:hover,
+        &:focus,
+        &:active {
+            background: $pink;
+        }
+
+        @media #{$small-down} {
+            /*display: none;*/
+            top: 25%;
+            background: transparent;
+
+            &:hover,
+            &:focus,
+            &:active {
+                background: transparent;
+            }
+        }
+
+        @media #{$medium-only} {
+            top: 30%;
+        }
+
+        &:before {
+            font-family: $fontAwesome;
+            //background-color: $litviolet;
+            border-radius: 50%;
+            padding: 0;
+            opacity: 0.9;
+            font-size: 64px;
+            background: transparent;
+
+        }
+    }
+}

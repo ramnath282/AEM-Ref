@@ -1,0 +1,21 @@
+<sly data-sly-use.accordionItemsModel="com.mattel.global.master.core.model.AccordionItemsModel"/>
+<sly data-sly-test="${wcmmode.edit}">${'Edit Accordion Item Component' @i18n}</sly>
+<div class="accordion-grid">
+	<h2 class="accordion-title" id="${accordionItemsModel.anchorName}" data-sly-test="${accordionItemsModel.title}" >${accordionItemsModel.title @context='html',i18n}
+		<a href="JavaScript:void(0);" class="arrow arrowDown" data-accordion-open="${accordionItemsModel.ctaOpenText @context='html'}" data-accordion-close="${accordionItemsModel.ctaCloseText @context='html'}"  aria-label="accordian" aria-expanded="false">open</a>
+	</h2>
+	<div class="accordion-content">
+		<sly data-sly-use.contentTab="com.mattel.global.master.core.model.ContentTab">
+			<sly data-sly-test="${contentTab.items && contentTab.items.size > 0}">
+				<sly data-sly-repeat.item="${contentTab.items}" data-sly-resource="${item.name @ decorationTagName='div'}"></sly>
+			</sly>
+			<sly data-sly-resource="${resource.path @ resourceType='wcm/foundation/components/parsys/newpar', appendPath='/*', decorationTagName='div', cssClassName=''}" data-sly-test="${(wcmmode.edit || wcmmode.preview) && contentTab.items.size < 1}">
+			</sly>
+		</sly>
+	</div>
+	<div class="hide" data-sly-test="${accordionItemsModel.trackThisCta}">${accordionItemsModel.trackThisCta @i18n}</div>
+	<div class="hide" data-sly-test="${accordionItemsModel.trackingText}">${accordionItemsModel.trackingText @i18n}</div>
+	<div class="hide" data-sly-test="${accordionItemsModel.anchorName}">${accordionItemsModel.anchorName @i18n}</div>
+	<div class="hide" data-sly-test="${accordionItemsModel.trackThisAnchor}" >${accordionItemsModel.trackThisAnchor @i18n}</div>
+	<div class="hide" data-sly-test="${accordionItemsModel.trackingTextAnchor}" >${accordionItemsModel.trackingTextAnchor @i18n}</div>
+</div>

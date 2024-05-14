@@ -1,0 +1,295 @@
+.textOverlayComponent {
+  @include print-css(map-merge((
+    float: left,
+    width: 100%
+  ),
+  if(variable-exists(textOverlayProp) and map-has-key($textOverlayProp, parentContainer),
+      map-get($textOverlayProp, parentContainer), ())));
+
+  &.default-container {
+    @include print-css(map-merge((
+      padding: 0 !important
+    ),
+    if(variable-exists(textOverlayProp) and map-has-key($textOverlayProp, defaultContainer),
+        map-get($textOverlayProp, defaultContainer), ())));
+  
+
+    .desktop-bg {
+      @include print-css(map-merge((
+        padding: (
+            largeUp : 40px,
+            largeOnly: 40px,
+            mediumOnly : 40px
+        )
+      ),
+      if(variable-exists(textOverlayProp) and map-has-key($textOverlayProp, desktopBG),
+          map-get($textOverlayProp, desktopBG), ())));
+    
+    }
+
+    .mobile-bg {
+      @include print-css(map-merge((
+        padding: (
+            smOnly : 20px,
+            xsOnly: 20px,
+        )
+      ),
+      if(variable-exists(textOverlayProp) and map-has-key($textOverlayProp, mobileBG),
+          map-get($textOverlayProp, mobileBG), ())));
+    
+    }
+  }
+
+  &.text-overlay-with-title-image {
+    .main-title {
+      h1 {
+        &:before {
+          @include print-css(map-merge((
+            content: '',
+            background-image: url('#{$imagePath}/PDP_text-scallop.png'),
+            background-repeat: no-repeat,
+            width: 91px,
+            height: 15px,
+            margin-right: 20px,
+            display: (
+              mediumOnly: none,
+              smOnly: none,
+              xsOnly: none,
+              defaultVal: inline-block
+            )
+          ),
+          if(variable-exists(textOverlayProp) and map-has-key($textOverlayProp, titleBefore),
+              map-get($textOverlayProp, titleBefore), ())));
+        }
+  
+        &:after {
+          @include print-css(map-merge((
+            content: '',
+            background-image: url('#{$imagePath}/PDP_text-scallop.png'),
+            background-repeat: no-repeat,
+            width: 91px,
+            height: 15px,
+            margin-left: 20px,
+            display: (
+              mediumOnly: none,
+              smOnly: none,
+              xsOnly: none,
+              defaultVal: inline-block
+            )
+          ),
+          if(variable-exists(textOverlayProp) and map-has-key($textOverlayProp, titleAfter),
+              map-get($textOverlayProp, titleAfter), ())));
+        }
+      }
+
+    }
+  }
+
+  .text-overlay {
+    @include print-css(map-merge((
+      width: 100%
+    ),
+    if(variable-exists(textOverlayProp) and map-has-key($textOverlayProp, innerContent),
+        map-get($textOverlayProp, innerContent), ())));
+
+    .text-container {
+      @include print-css(map-merge((
+        padding: (
+           largeUp:  0px 0px,
+           largeOnly:  0px 0px,
+           mediumOnly:  0px 0px,
+           smOnly:  0px 0px,
+           defaultVal:  0px 0px,
+        ),
+      ),
+      if(variable-exists(textOverlayProp) and map-has-key($textOverlayProp, container),
+          map-get($textOverlayProp, container), ())));
+    }
+
+    .main-title {
+      @include print-css(map-merge((
+        font-size:  (
+          defaultVal: 36px,
+          smallDown: 22px
+        ),
+        padding: 0,
+        margin: (
+            largeUp: 0 0 10px 0,
+            largeOnly: 0 0 10px 0,
+            mediumOnly: 0 0 10px 0,
+            smOnly: 0 0 10px 0,
+            defaultVal: 0 0 10px 0,
+        ),
+      ),
+      if(variable-exists(textOverlayProp) and map-has-key($textOverlayProp, titleH2),
+          map-get($textOverlayProp, titleH2), ())));
+    }
+
+    .sub-title {
+      @include print-css(map-merge((
+        font-size: (
+          defaultVal: 20px,
+          smallDown: 18px,
+        ),
+        padding: 0,
+        margin: (
+            largeUp:  0 0 10px 0,
+            largeOnly:  0 0 10px 0,
+            mediumOnly:  0 0 10px 0,
+            smOnly:  0 0 10px 0,
+            defaultVal:  0 0 10px 0,
+        ),
+      ),
+      if(variable-exists(textOverlayProp) and map-has-key($textOverlayProp, subTitle),
+          map-get($textOverlayProp, subTitle), ())));
+    }
+
+    .text-para {
+      @include print-css(map-merge((
+        font-size: (
+          defaultVal: 18px,
+          smallDown: 16px,
+        ),
+        padding: 0,
+        margin: (
+            largeUp:   0 0 20px 0,
+            largeOnly:   0 0 20px 0,
+            mediumOnly:   0 0 20px 0,
+            smOnly:   0 0 10px 0,
+            defaultVal:   0 0 10px 0,
+        ),
+      ),
+      if(variable-exists(textOverlayProp) and map-has-key($textOverlayProp, textPara),
+          map-get($textOverlayProp, textPara), ())));
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p {
+      margin: 0;
+      padding: 0
+    }
+
+  }
+}
+.rich-text, .textOverlayComponent, .card-component{
+  ul,ol{
+      li{
+          list-style-type: inherit;
+      }
+  }
+}
+.custom-list-icons{
+  font-family: 'Font Awesome';
+  position: absolute;
+  left: 0;
+  top: -2px;
+  width: 32px;
+  text-align:right;
+}
+.rich-text, .textOverlayComponent, .card-component, .cta-item{
+    ul, ol{
+        &.arrow-list-item{
+            list-style-type: none;
+            padding-left: 0;
+            >li{
+                position: relative;
+                list-style-type: none;
+                padding-left:40px;
+                left: 0;
+                &:before{
+                @extend .custom-list-icons;
+                content: "\f061";
+                }
+            }
+        }
+        li.arrow-list-item{
+            position: relative;
+            list-style-type: none;
+            left: 0;
+            &:before{
+                @extend .custom-list-icons;
+                content: "\f061";
+            }
+        }
+    }
+    ul, ol{
+        &.angle-list-item{
+            list-style-type: none;
+            padding-left: 0;
+            >li{
+                position: relative;
+                list-style-type: none;
+                padding-left:40px;
+                left: 0;
+                &:before{
+                    @extend .custom-list-icons;
+                    content: "\f105";
+                }
+            }
+        }
+        li.angle-list-item{
+            position: relative;
+            list-style-type: none;
+            left: 0;
+            &:before{
+                @extend .custom-list-icons;
+                content: "\f105";
+            }
+        }
+    }
+    ul, ol{
+        &.caret-list-item{
+            list-style-type: none;
+            padding-left: 0;
+            >li{
+                position: relative;
+                list-style-type: none;
+                padding-left:40px;
+                left: 0;
+                &:before{
+                    @extend .custom-list-icons;
+                    content: "\f0da";
+                }
+            }
+        }
+        li.caret-list-item{
+            position: relative;
+            list-style-type: none;
+            left: 0;
+            &:before{
+                @extend .custom-list-icons;
+                content: "\f0da";
+            }
+        }
+    }
+    ul, ol{
+        &.long-arrow-list-item{
+            list-style-type: none;
+            padding-left: 0;
+            >li{
+                position: relative;
+                list-style-type: none;
+                padding-left:40px;
+                left: 0;
+                &:before{
+                    @extend .custom-list-icons;
+                    content: "\f30b";
+                }
+            }
+        }
+        li.long-arrow-list-item{
+            position: relative;
+            list-style-type: none;
+            left: 0;
+            &:before{
+                @extend .custom-list-icons;
+                content: "\f30b";
+            }
+        }
+    }
+}

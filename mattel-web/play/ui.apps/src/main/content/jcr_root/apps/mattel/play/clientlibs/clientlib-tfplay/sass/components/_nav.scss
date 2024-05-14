@@ -1,0 +1,140 @@
+header{
+    background: $midnightBlue;
+    @media #{$large-up}{
+        background: $midnightBlue url(#{$imagePath}/header_slide_bgnd.png) no-repeat center right;
+    }
+    @media #{$large-down}{
+        border-bottom: 1px solid $medium-grey;
+    }
+    &>div{
+        @media #{$small-down}{
+            padding-left: 0;
+        }
+    }
+    .brand-logo{
+        img{
+            max-width: 17.8125rem;
+            width:auto;
+            margin: 0.3125rem;
+            @media #{$small-up}{
+                @media #{$medium-down}{
+                    margin-left: .9375rem;
+                }
+            }
+            @media #{$medium-up}{
+                margin: 0.3125rem 0 0.3125rem 0.9375rem;
+            }
+            @media screen and (max-width:321px){
+                max-width: 15rem;
+                margin-top: 10px;
+            }
+        }
+    }
+    .primary-nav{
+        @extend .font-goldana-r;
+        
+        *{
+            font-family: inherit;
+            font-weight: inherit;
+        }
+        ul{
+            @include flex();
+            li{
+                color:$white;
+                padding: 0.625rem 0;
+                margin: 0 1.25rem;
+                a{
+                    color: inherit;
+                    font-size: 2.25rem;
+                    letter-spacing: 0.3px;
+                    padding:0;
+                    &:before{
+                        content: none;
+                        @media #{$medium-up}{
+                            content:"";
+                        }
+                        width: 3.125rem;
+                        height: 3.125rem;
+                        display: inline-block;
+                        vertical-align: middle;
+                        background: url($spriteImagePath) no-repeat;
+                        margin-right: 5px;
+                        // background-size: 300% 100%;
+                        background-position: -100%;
+                    }
+                    &[data-link-name="games"],&[data-link-name="Games"]{
+                        &:before{
+                            background-position: 0 0;
+                        }
+                        &:hover:before{
+                            background-position: 0 -50px;
+                        }
+                    }
+                    &[data-link-name="characters"],&[data-link-name="Characters"],
+                    &[data-link-name="engines"],&[data-link-name="Engines"]{
+                        &:before{
+                            background-position: -50px 0;
+                        }
+                        &:hover:before{
+                            background-position: -50px -50px;
+                        }
+                    }
+                    &[data-link-name="sodor"],&[data-link-name="Sodor"]{
+                        &:before{
+                            background-position: -100px 0;
+                        }
+                        &:hover:before{
+                            background-position: -100px -50px;
+                        }
+                    }
+                    &[data-link-name="videos"],&[data-link-name="Videos"]{
+
+                    }
+                    &.active{
+                        border-bottom: none;
+                    }
+                }
+            }
+        }
+        @media #{$large-down}{
+            background: $ceruleanBlue url(#{$imagePath}/Nav_M_Train.png) no-repeat bottom right;
+            padding: 0.625rem 0 10.3125rem;
+            max-height: 29.4375rem;
+            height: auto !important;
+            border-bottom: .75rem solid $white;
+            @media screen and (orientation: landscape){
+                max-height: calc(100vh - 4.375rem);
+            }
+            ul{
+                background-color: transparent;
+                background-image: none;
+                max-width: 87%;
+                margin: auto;
+                flex-direction: column;
+                li{
+                    border-bottom: 2px solid $white;
+                    // margin: 10px 5px;
+                    // margin-bottom: 6px;
+                    margin: 0 5px 6px;
+                    padding-bottom: 12px;
+                    a{
+                        margin: 4px 0;
+                        // @extend .font-knapford-b;
+                    }
+                    &:first-child{
+                        margin-top:0;
+                    }
+                }
+            }
+        }
+    }
+    .hamburger{
+        width: 28px;
+        &,&:focus,&:active,&:hover{
+            color: $white;
+            &:after{
+                font-size: 2rem;
+            }
+        }
+    }
+}

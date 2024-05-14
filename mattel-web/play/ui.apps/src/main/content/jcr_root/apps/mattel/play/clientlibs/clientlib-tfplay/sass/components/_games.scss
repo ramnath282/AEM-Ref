@@ -1,0 +1,142 @@
+.game-player-area-component{
+    // background-color:$white;
+    background-color:$pacificBlue;
+    @media #{$medium-up}{
+        border-bottom: .75rem solid $white;
+    }
+    .game-player-area-content{
+        padding-top: 4.875rem;
+        @media #{$medium-down}{
+            padding: 1.5rem;
+        }
+        @media #{$small-down}{
+            padding-top: 1.25rem;
+            padding-bottom: 1.25rem;
+            // background-color: inherit !important;
+        }
+        .game-player-area-container{
+            @media #{$large-down} {
+                max-width: 100%;
+            }
+        }
+        iframe {
+            @extend .tf-list;
+            @media #{$small-down} {
+                // background: transparent;
+                padding: 6px !important;
+                margin: 0;
+            }
+        }
+        padding-bottom: 1.25rem;;
+    }
+    .title-block{
+        padding: 0;
+        background: inherit;
+        padding: 0 .975rem 1.75rem;
+        @media #{$small-up} {
+            padding: 0 .975rem 3.75rem;
+        }
+        h2{
+            @extend .h4-tag;
+        }
+        h2,p{
+            max-width: 50rem;
+            margin: auto;
+            text-align: center;
+        }
+        &>p{
+            margin-top: 5px;
+            @media #{$medium-down} {
+                font-size: 1.125rem;
+                line-height:1.5rem;
+            }
+        }
+    
+    }
+    &+.aem-Grid .gameLandingGrid #play-game{
+        .gallery-tile{
+            padding: 0 5px;
+            h2{
+                @media #{$small-down} {
+                    margin-top:1.875rem;
+                    margin-bottom:1.125rem;
+                }
+            }
+            li{
+                @media #{$small-down}{
+                    margin:0;
+                }
+                @media #{$xsmall-down}{
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+#play-game{
+    padding-bottom: 1rem;
+    @media #{$small-up}{
+        padding-bottom: 1.625rem;
+    }
+}
+//only applied for games page
+#pagename-games{
+    #play-game{
+        padding: 1rem 0 2.25rem;
+        @media #{$small-up}{
+            padding: 1.625rem 0 2.25rem;
+        }
+        .gallery-tile{
+            h2{
+                display: none; // as per VD, confirmed by venmathi / Ian
+            }
+            @media #{$small-down} {
+                li{
+                    margin: 0;
+                }
+            }
+        }
+    }   
+}
+.page-view:not(#pagename-home){
+    #play-game{
+        padding-bottom: 2.25rem;
+    }
+}
+.gameLandingGrid{
+    #play-game{
+        .play-list{
+            .column-4{
+                @media #{$medium-up}{
+                    clear: none !important;
+                }
+            }
+        }
+    }
+}
+
+// aspect ratio - only for specific games
+#pagename-steam-team-relay,
+#pagename-spot-the-difference,
+#pagename-catch-the-kippers{
+    @media #{$large-down}{
+        .game-player-area-content {
+            @media #{$medium-up} {
+                @media #{$large-down} {
+                    padding-left: 1.5rem;
+                    padding-right: 1.5rem;
+                }
+            }
+            .game-player-area-container{
+                position: relative;
+                padding-bottom: calc(50% + 6px);
+                @media #{$small-up}{
+                    padding-bottom: calc(50% + 12px);
+                }
+                width: 100% !important;
+                height: 0 !important;
+                overflow: hidden;
+            }
+        }
+    }
+}

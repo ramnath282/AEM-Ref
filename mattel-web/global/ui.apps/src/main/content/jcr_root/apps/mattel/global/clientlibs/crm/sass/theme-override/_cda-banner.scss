@@ -1,0 +1,41 @@
+.cda-banner{
+    background : mapping($banner,main, bgndColor);
+}
+.banner-copy{
+    .module-title{
+      color: mapping($banner,heading,color);
+      background-color: mapping($banner,heading,bgndColor);
+      font-size: mapping($banner,heading,fontSize-M);
+      font-weight: mapping($banner,heading,fontWeight);
+      font-style: mapping($banner,heading,fontStyle);
+      font-family: mapping($banner,heading,font);
+      @media #{$small-up}{
+        font-size: mapping($banner,heading,fontSize-T);
+      }
+      @media #{$medium-up}{
+        font-size: mapping($banner,heading,fontSize);
+      }
+      p{
+        @if mapping($banner,heading,fontWeightInherit){
+          font-weight: mapping($banner,heading,fontWeight);
+        }
+        span{
+          @if mapping($banner,heading,fontWeightInherit){
+            font-weight: mapping($banner,heading,fontWeight);
+          }
+        }        
+      }
+    }
+    .module-sub-title {
+      color: mapping($banner,subHeading,color);
+      background-color: mapping($banner,heading,bgndColor);
+      font-weight: mapping($banner,subHeading,fontWeight);
+      font-family: mapping($banner,subHeading,fontFamily);
+      @media #{$small-up}{
+          font-size: mapping($banner,subHeading,fontSize-T);
+      }
+      @media #{$medium-up}{
+          font-size: mapping($banner,subHeading,fontSize);
+      }
+    }
+}

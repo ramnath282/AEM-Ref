@@ -1,0 +1,53 @@
+<sly data-sly-test="${wcmmode.edit}">${' Configure Mall Tour Page
+Component' @ i18n}</sly>
+
+	<div class="mall-tour-page">
+		<div class="mall-time-schedule">
+			<div
+				data-sly-use.mallTourPageInfo="com.mattel.play.core.model.MallTourPageModel">
+				<div
+					data-sly-list.mallDetailsList="${mallTourPageInfo.mallTourPageList}">
+
+					<div class="schedule-details">
+						<div class="time-details">${mallDetailsList.dateDetails @ i18n}</div>
+						<div class="location-details">
+							${mallDetailsList.locationDetails @ i18n}</div>
+						<sly
+							data-sly-test="${mallDetailsList.mallTourTarget =='sameWindow'}">
+						<div class="link-details">
+							<a href="${mallDetailsList.ctaButtonUrl}"
+								data-tracking-id="Mall Tour |${mallDetailsList.awalysEnglish}|${mallDetailsList.ctaButtonText}|${mallDetailsList.locationDetails}"
+								class="btn-view-details">${mallDetailsList.ctaButtonText @ i18n}</a>
+						</div>
+						</sly>
+						<sly
+							data-sly-test="${mallDetailsList.mallTourTarget =='tabWindow'}">
+						<div class="link-details">
+							<a href="${mallDetailsList.ctaButtonUrl}" target="_blank"
+								data-tracking-id="Mall Tour|${mallDetailsList.awalysEnglish}|${mallDetailsList.ctaButtonText}|${mallDetailsList.locationDetails}"
+								class="btn-view-details">${mallDetailsList.ctaButtonText @ i18n}<span class="sr-only"> ${'Opens in a new window' @ i18n}</span></a>
+						</div>
+						</sly>
+						<sly
+							data-sly-test="${mallDetailsList.mallTourTarget =='newWindow'}">
+						<div class="link-details">
+							<a data-url="${mallDetailsList.ctaButtonUrl}"
+								data-tracking-id="Mall Tour|${mallDetailsList.awalysEnglish}|${mallDetailsList.ctaButtonText}|${mallDetailsList.locationDetails}"
+								onclick="window.open(this.dataset.url,'PLAY','width=500, height=500');"
+								class="btn-view-details">${mallDetailsList.ctaButtonText @ i18n}<span class="sr-only"> ${'Opens in new window' @ i18n}</span></a>
+						</div>
+						</sly>
+						<sly
+							data-sly-test="${mallDetailsList.mallTourTarget =='interstitial'}">
+						<div class="link-details">
+							<a href="javascript:void(0);" data-tracking-id="Mall Tour|${mallDetailsList.awalysEnglish}|${mallDetailsList.ctaButtonText}|${mallDetailsList.locationDetails}" class="btn-view-details"
+								data-toggle="modal" data-url="${mallDetailsList.ctaButtonUrl}"
+								data-target="#interstitialModal">${mallDetailsList.ctaButtonText @ i18n}<span class="sr-only"> ${'opens a popup' @ i18n}</span></a>
+						</div>
+						</sly>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>

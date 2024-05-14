@@ -1,0 +1,303 @@
+.carouselContainer {
+  @extend .text-black;
+  &.aem-GridColumn.inner-dots{
+    .slick-dots{
+      position: absolute;
+    }
+  }
+}
+.flexible-carousel-component {
+  .small-size-grid {
+    @extend .container;
+  }
+  .large-size-grid {
+    @extend .container-fluid;
+  }
+  .ag-container{
+    width: 100%;
+  }
+  .article-text:empty{
+    display:none !important;
+  }
+  &.single-stretched-slider {
+    padding: 0;
+    ul {
+      width: 100%;
+      margin-bottom: 0;
+      li {
+        .slick_banner img {
+          width: 100%;
+          height: calc(100vh - 60px);
+          object-fit: cover;
+          @media (max-width: 839px) and (orientation: landscape) {
+            height: calc(140vh - 60px);
+            max-height: calc(140vh - 60px);
+            -o-object-position: center center;
+            object-position: center center;
+          }
+        }
+      }
+      &.carousel-slides>li{
+        margin: 0;
+      }
+      .slick-slide{
+        margin: 0;
+        .article-text{
+          margin: 0;
+        }
+      }
+      .product-image,
+      .cmp-image__image {
+        width: 100%;
+        // height: auto;
+      }
+      &.inner-dots,
+      .inner-dots.jumbotron-banner-component & {
+        .slick-dots {
+          position: absolute;
+        }
+      }
+      .inner-dots.carat-arrow-on:not(.cta-links-on) & {
+        .slick-dots {
+          bottom: em(50);
+          @media #{$small-down} {
+            bottom: em(90);
+          }
+          @media #{$small-up} {
+            @media #{$medium-down} {
+              bottom: em(116);
+            }
+          }
+        }
+      }
+      .inner-dots.cta-links-on:not(.carat-arrow-on)  &{
+         .slick-dots {
+          @media #{$small-up} {
+            bottom: em(60);
+          }
+          @media #{$small-down} {
+            bottom: em(90);
+          }
+          @media #{$small-up} {
+            @media #{$medium-down} {
+              bottom: em(126);
+            }
+          }
+        }
+      }
+       .inner-dots.cta-links-on.carat-arrow-on  &{
+         .slick-dots {
+          @media #{$small-up} {
+            bottom: em(70);
+          }
+          @media #{$small-down} {
+            bottom: em(90);
+          }
+          @media #{$small-up} {
+            @media #{$medium-down} {
+              bottom: em(136);
+            }
+          }
+        }
+      }
+    }
+    .product-info {
+      display: none;
+    }
+    .slick-dots {
+      bottom: 20px;
+      @media #{$small-up} {
+        bottom: 40px;
+      }
+    }
+  }
+  .slider-content {
+    li {
+      display: inline-block;
+      text-align: center;
+      margin-bottom: 10px;
+      vertical-align: top;
+      .product-image {
+        display: inline-block;
+        width: auto;
+        height: auto;
+      }
+    }
+    &.slider-in-center {
+      .slick-slide {
+        margin: 10px;
+        opacity: 0.5;
+        img {
+          // transform: scale(0.8);
+        }
+        .product-info,
+        .content {
+          transition: all 0.5s;
+          opacity: 0;
+        }
+      }
+      .slick-active.slick-center {
+        opacity: 1;
+        img {
+          transition: all 0.5s;
+          transform: scale(1);
+        }
+        .product-info,
+        .content {
+          opacity: 1;
+        }
+      }
+    }
+  }
+  .product-info,
+  .content {
+    h2:empty,
+    h3:empty,
+    p:empty {
+      display: none;
+    }
+  }
+  .slick-next,
+  .slick-prev {
+    z-index: 1;
+    @media #{$small-down} {
+      font-size: 20px;
+    }
+    &:before {
+      content: "\f054";
+      @include font-awesome();
+      padding: 0;
+      color: $black;
+      .text-white & {
+        color: $white;
+      }
+      font-size: 40px;
+      background: none;
+      opacity: 0.75;
+      // text-shadow: 0 0 0.1em $white, 0 0 0.2em $white, 0 0 0.3em $white,
+      //   0 0 0.4em $white;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    @media #{$medium-down} {
+      top: 50%;
+    }
+    @media #{$small-down} {
+      top: 0;
+      bottom: 0;
+      margin: auto;
+	}
+    }
+  .slick-prev {
+    left: 0px;
+    @media #{$small-up}{
+      margin-left: 20px;
+    }
+    &:before {
+      content: "\f053";
+    }
+  }
+  .slick-next {
+    @media #{$small-up}{
+      margin-right: 20px;
+    }
+    right: 0px;
+  }
+  .slick-dots {
+    position: static;
+    // @media #{$medium-down} {
+    // }
+    li {
+      // padding: 0 12px;
+      margin-left: 5px;
+      margin-right: 5px;
+      &.slick-active button {
+        opacity: 1;
+        background: $slick-dots-active-btn-bg;
+        .text-black & {
+          background: $night-rider;
+          border-color: $night-rider;
+        }
+        .text-white & {
+          background: $white;
+          border-color: $white;
+        }
+      }
+      button {
+        opacity: 0.25;
+        background: $black;
+        border: 2px solid transparent;
+        .text-black & {
+          background: transparent;
+          border-color: $night-rider;
+          opacity: 1;
+        }
+        .text-white & {
+          background: transparent;
+          border-color: $white;
+          opacity: 1;
+        }
+        width: 16px;
+        height: 16px;
+        border-radius: 20px;
+        &:focus {
+          opacity: 1;
+        }
+        &:hover {
+          opacity: 1;
+        }
+        &:before {
+          content: "";
+        }
+      }
+    }
+  }
+  .section-title {
+    h2 {
+      font: $fontSemiBold em(40) $primaryFontFamily;
+      margin: em(15, 40) 0 em(5, 40);
+      padding: 0;
+      @media #{$large-up} {
+        font: $fontSemiBold em(70) $primaryFontFamily;
+        margin: em(15, 70) 0 em(5, 70);
+      }
+    }
+    p {
+      font: $fontSemiBold em(16) $primaryFontFamily;
+      margin-bottom: em(15, 16);
+      @media #{$small-up} {
+        font: $fontSemiBold em(18) $primaryFontFamily;
+      }
+      @media #{$large-up} {
+        font: $fontSemiBold em(20) $primaryFontFamily;
+      }
+    }
+  }
+}
+// global carousel component fixes
+.carouselContainer:not(.carousel){
+  &.fullbleed{
+      .flexible-carousel-component .slider-content{
+          width: 100%;
+      }
+  }
+.flexible-carousel-component{
+  .wrap-dots-section{
+    .play-pause-button{
+      button{
+        vertical-align: middle;
+      }
+    }
+  }
+  .slick-dots{
+    li{
+        vertical-align: middle;
+      button{
+        top: -1px;
+        vertical-align: middle;
+        position: relative;
+      }
+    }
+  }
+}
+}

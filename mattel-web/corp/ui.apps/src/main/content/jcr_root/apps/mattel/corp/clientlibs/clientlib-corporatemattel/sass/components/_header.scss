@@ -1,0 +1,127 @@
+header {
+  // background: url($header-bg-path) 0 0 repeat-x;
+  //min-height: em(70);
+  left: 0;
+  z-index: 1025;
+  position: fixed;
+  width: 100%;
+  line-height: em(14);
+  background-size: cover;
+  background-color: #ffffff;
+  top: 0;
+  @media #{$desktop} {
+    background-size: contain;
+  }
+  > div {
+    @extend .container-fluid;
+    width: auto;
+    padding: 5px;
+  }
+  .brand-logo {
+    position: absolute;
+    z-index: 9999;
+    padding-left: 25px;
+    top: em(30);
+    @media #{$large-up} {
+      top: em(40);
+    }
+    @media #{$tablet-mobile} {
+      padding-left: 0;
+    }
+    img {
+      //margin:em(10) 0 0 em(5);
+      //width: em(130);
+      width: 66px;
+      height: 66px;
+      @media #{$desktop} {
+        // margin:em(10) 0 0 em(38);;
+        // width: em(140);
+        width: 66px;
+        height: 66px;
+      }
+      @media #{$tablet-mobile} {
+        // margin:em(10) 0 0;
+        // width: 7.285em;
+        width: 45px;
+        height: 45px;
+      }
+    }
+  }
+}
+.navigationHeader {
+  @media #{$tablet-mobile} {
+    padding: 0;
+  }
+  header {
+    & > div {
+      @media #{$tablet-mobile} {
+        background-color: white;
+      }
+    }
+    @media #{$tablet-mobile} {
+      position: relative;
+      min-height: initial;
+      border-bottom: 1px solid #979797;
+    }
+    .primary-nav {
+      @media #{$tablet-mobile} {
+        max-height: initial;
+      }
+      .overlay {
+        @media #{$tablet-mobile} {
+          z-index: -1;
+        }
+      }
+      .pull-right {
+        @media #{$tablet-mobile} {
+          width: 100%;
+        }
+      }
+      & > ul {
+       & > li:last-of-type {
+          @media #{$desktop} {
+            margin-right: 33px
+          }
+          & > ul {
+            @media #{$desktop} {
+              min-width: calc(100% + 81px);
+            }
+          }
+        }
+      }
+    }
+    .news-search {
+      .search-input-field {
+        @media #{$tablet-mobile} {
+          width: 100% !important;
+        }
+        @media #{$desktop} {
+          right: 24px;
+        }
+        .input-group {
+          #searchInput_field {
+            @media #{$tablet-mobile} {
+              padding-right: 33px;
+            }
+            color: #000;
+            font-weight: 400 !important;
+            &::-ms-clear{
+              display: none;
+            }
+          }
+          .tt-menu {
+            @media #{$tablet-mobile} {
+              left: -64px !important;
+              top: 57px !important;
+            }
+            .tt-dataset-result {
+              @media #{$tablet-mobile} {
+                min-height: 270px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

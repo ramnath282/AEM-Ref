@@ -1,0 +1,16 @@
+<sly data-sly-test="${wcmmode.edit}">${'Configure Play Video' @ i18n}</sly>
+<sly data-sly-include="/apps/mattel/global/components/content/globalVideoConfig/globalVideoConfig.html"/>
+<sly data-sly-use.videoTile="com.mattel.play.core.model.PlayVideo">
+	<div>
+		<section>
+			<a href="${videoTile.videoDetails.ooyalaLink}" target="_blank"> 
+			<img src="${videoTile.videoDetails.videoThumbnail}" alt="${videoTile.videoDetails.thumbnailAltTxt}">
+				<span>${videoTile.videoDetails.videoTitle @context='html',i18n}</span>
+			</a>
+		</section>
+	</div>
+</sly>
+
+<sly data-sly-use.clientlibPlayVideo="/libs/granite/sightly/templates/clientlib.html">
+    <sly data-sly-call="${clientlibPlayVideo.js @ categories='global.mattelVideoPlayer'}" />
+</sly>

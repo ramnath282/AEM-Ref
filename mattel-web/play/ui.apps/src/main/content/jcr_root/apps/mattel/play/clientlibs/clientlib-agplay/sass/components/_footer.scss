@@ -1,0 +1,88 @@
+footer[role="contentinfo"] {
+    padding-top: 20px;
+}
+
+#footer {
+    color: #333333;
+    @extend .container;
+    width: auto;
+    &>div {
+        width: 100%;
+        display: table;
+        @media #{$small-down} {
+            display: block;
+            margin: auto;
+        }
+        .play-esrb-logo {
+            display: table-footer-group;
+            float: none !important;
+            text-align: center;
+            @media #{$small-down} {
+                display: block;
+                margin: auto;
+            }
+        }
+        .play-footer-link {
+            float: none;
+            width: 100%;
+            padding-top: 0;
+            @media #{$small-down} {
+                display: block;
+                margin: auto;
+            }
+        }
+        .play-footer-mattel-logo {
+            display: none;
+        }
+    }
+    #footer-nav {
+        display: block;
+        overflow: hidden;
+        // max-width: 900px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 5px;
+        border-bottom: 1px solid #cacaca;
+        padding-bottom: 10px;
+        @media #{$small-down} {
+            margin: 15px 0;
+        }
+        li {
+            @extend .col-sm-3;
+            @media #{$small-down} {
+                display: block;
+            }
+        }
+        &+span {
+            border: none;
+            padding-top: 10px;
+            @media #{$small-down} {
+                display: block;
+            }
+            p {
+                font: normal 15px Arial, Helvetica, sans-serif;
+                span {
+                    font: inherit !important;
+                }
+                a {
+                    color: #ca1353;
+                    font-weight: 500;
+                    span {
+                        font: inherit;
+                        display: inline;
+                        @media #{$small-down} {
+                            display: inline-block;
+                        }
+                        padding: 0;
+                    }
+                }
+            }
+        }
+    }
+    a {
+        padding: 10px 0;
+        font: normal 14px Arial, Helvetica, sans-serif;
+        font-weight: normal;
+        color: #333333;
+    }
+}

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Related Product"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <relatedProduct
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Related Products"
+                        sling:resourceType="granite/ui/components/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <landingPageUrl
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="/libs/granite/ui/components/coral/foundation/form/pathbrowser"
+                                fieldDescription="Please provide landing page URL"
+                                fieldLabel="Landing Page Url"
+                                name="./landingPageUrl"
+                                required="{Boolean}true"
+                                rootPath="/content"/>
+                            <articlePageUrl
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="/libs/granite/ui/components/coral/foundation/form/pathbrowser"
+                                fieldDescription="Please provide landing page URL"
+                                fieldLabel="Article Landing Page Url"
+                                name="./articlePageUrl"
+                                required="{Boolean}true"
+                                rootPath="/content"/>
+                             <popularRecordsTitle
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Popular Record Title"
+                                name="./popularRecordsTitle"
+                                required="{Boolean}true"/>
+                            <relatedProductheading
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Related Product Heading"
+                                name="./relatedProductHeading"
+                                required="{Boolean}true"/>
+                            <relatedArticleheading
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Related Article Heading"
+                                name="./relatedArticleHeading"
+                                required="{Boolean}true"/>
+                          	  <suggestionLimit
+                              	jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+                                fieldDescription="Please enter number of data items that need to show"
+                                fieldLabel="Number of data items need to show"
+                                min="{Long}0"
+                                name="./dataItems"
+                                step="1"
+                                value="4"/>
+                            <viewAllButtonLabel
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="View All Button Label"
+                                name="./viewAllButtonLabel"/>
+                        </items>
+                    </relatedProduct>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>

@@ -1,0 +1,565 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Parent Footer"
+    sling:resourceType="cq/gui/components/authoring/dialog"
+    height="{Long}500">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <backgroundStyle
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Background Style"
+                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <column
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <backgroundColor
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/colorfield"
+                                        fieldLabel="Background Color:"
+                                        name="./backgroundColor"/>
+                                    <backgroundImage
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                        allowUpload="{Boolean}false"
+                                        autoStart="{Boolean}false"
+                                        class="cq-droptarget"
+                                        fieldLabel="Upload Background Image:"
+                                        fileReferenceParameter="./fileReferenceBgImg"
+                                        mimeTypes="[image/gif,image/jpeg,image/png,image/webp,image/tiff]"
+                                        multiple="{Boolean}false"
+                                        name="./backgroundImage"
+                                        uploadUrl="${suffix.path}"
+                                        useHTML5="{Boolean}true"/>
+                                    <backgroundoption
+                                        granite:class="cq-dialog-dropdown-showhide"
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                        fieldLabel="Background Option"
+                                        name="./backOption">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <image
+                                                jcr:primaryType="nt:unstructured"
+                                                text="Image"
+                                                value="image"/>
+                                            <color
+                                                jcr:primaryType="nt:unstructured"
+                                                text="Color"
+                                                value="color"/>
+                                        </items>
+                                    </backgroundoption>
+                                    <alwaysEnglish
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Always English check for Multi-Lingual  Site Tagging"
+                                                fieldLabel="Adobe Tracking Name"
+                                                name="./alwaysEnglish"
+                                                required="{Boolean}true"/>
+                                    <aeLocationName
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Location Name for Analytics (Always English )"
+                                                fieldLabel="Location Name for Adobe Tracking"
+                                                name="./locationName"/>
+                                </items>
+                            </column>
+                        </items>
+                    </backgroundStyle>
+                    <footerLinkSetOne
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Column1"
+                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <column
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <groupTitle
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Always English check for Multi-Lingual  Site Tagging"
+                                        fieldLabel="Group Title"
+                                        name="./groupTitleOne"/>
+                                    <footerLinks
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                        composite="{Boolean}true"
+                                        fieldLabel="Footer Links:">
+                                        <field
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/fieldset"
+                                            name="./footerLinksOne">
+                                            <items jcr:primaryType="nt:unstructured">
+                                                <column
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                    <items jcr:primaryType="nt:unstructured">
+                                                        <linkText
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                            fieldLabel="Link Text:"
+                                                            name="./linkText"
+                                                            required="{Boolean}true"/>
+                                                        <linkURL
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                            fieldLabel="Link URL:"
+                                                            name="./linkURL"/>
+                                                        <linkTarget
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                            fieldLabel="Open URL In"
+                                                            name="./linkTarget">
+                                                            <items jcr:primaryType="nt:unstructured">
+                                                                <sameWindow
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    text="Same Window"
+                                                                    value="sameWindow"/>
+                                                                <newTab
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    text="New Tab"
+                                                                    value="tabWindow"/>
+                                                                <newWindow
+                                                                    granite:hide="${cqDesign.disableSearch}"
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    text="New Window"
+                                                                    value="newWindow"/>
+                                                                <interstitalLeaving
+                                                                    granite:hide="${cqDesign.disableSearch}"
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    text="Interstitial Leaving The Site"
+                                                                    value="interstitialLeaving"/>
+                                                            </items>
+                                                        </linkTarget>
+                                                        <alwaysEnglish
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                            fieldDescription="Always English check for Multi-Lingual  Site Tagging"
+                                                            fieldLabel="Adobe Tracking Name"
+                                                            name="./alwaysEnglish"
+                                                            required="{Boolean}true"/>
+                                                    </items>
+                                                </column>
+                                            </items>
+                                        </field>
+                                    </footerLinks>
+                                </items>
+                            </column>
+                        </items>
+                    </footerLinkSetOne>
+                    <footerLinkSetTwo
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Column2"
+                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <column
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <groupTitle
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Always English check for Multi-Lingual  Site Tagging"
+                                        fieldLabel="Group Title"
+                                        name="./groupTitleTwo"/>
+                                    <footerLinks
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                        composite="{Boolean}true"
+                                        fieldLabel="Footer Links:">
+                                        <field
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/fieldset"
+                                            name="./footerLinksTwo">
+                                            <items jcr:primaryType="nt:unstructured">
+                                                <column
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                    <items jcr:primaryType="nt:unstructured">
+                                                        <linkText
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                            fieldLabel="Link Text:"
+                                                            name="./linkText"
+                                                            required="{Boolean}true"/>
+                                                        <linkURL
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                            fieldLabel="Link URL:"
+                                                            name="./linkURL"/>
+                                                        <linkTarget
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                            fieldLabel="Open URL In"
+                                                            name="./linkTarget">
+                                                            <items jcr:primaryType="nt:unstructured">
+                                                                <sameWindow
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    text="Same Window"
+                                                                    value="sameWindow"/>
+                                                                <newTab
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    text="New Tab"
+                                                                    value="tabWindow"/>
+                                                                <newWindow
+                                                                    granite:hide="${cqDesign.disableSearch}"
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    text="New Window"
+                                                                    value="newWindow"/>
+                                                                <interstitalLeaving
+                                                                    granite:hide="${cqDesign.disableSearch}"
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    text="Interstitial Leaving The Site"
+                                                                    value="interstitialLeaving"/>
+                                                            </items>
+                                                        </linkTarget>
+                                                        <alwaysEnglish
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                            fieldDescription="Always English check for Multi-Lingual  Site Tagging"
+                                                            fieldLabel="Adobe Tracking Name"
+                                                            name="./alwaysEnglish"
+                                                            required="{Boolean}true"/>
+                                                    </items>
+                                                </column>
+                                            </items>
+                                        </field>
+                                    </footerLinks>
+                                </items>
+                            </column>
+                        </items>
+                    </footerLinkSetTwo>
+                    <footerLinkSetThree
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Column3"
+                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <column
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <groupTitle
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Always English check for Multi-Lingual  Site Tagging"
+                                        fieldLabel="Group Title"
+                                        name="./groupTitleThree"/>
+                                    <footerLinks
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                        composite="{Boolean}true"
+                                        fieldLabel="Footer Links:">
+                                        <field
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/fieldset"
+                                            name="./footerLinksThree">
+                                            <items jcr:primaryType="nt:unstructured">
+                                                <column
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                    <items jcr:primaryType="nt:unstructured">
+                                                        <linkText
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                            fieldLabel="Link Text:"
+                                                            name="./linkText"
+                                                            required="{Boolean}true"/>
+                                                        <linkURL
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                            fieldLabel="Link URL:"
+                                                            name="./linkURL"/>
+                                                        <linkTarget
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                            fieldLabel="Open URL In"
+                                                            name="./linkTarget">
+                                                            <items jcr:primaryType="nt:unstructured">
+                                                                <sameWindow
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    text="Same Window"
+                                                                    value="sameWindow"/>
+                                                                <newTab
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    text="New Tab"
+                                                                    value="tabWindow"/>
+                                                                <newWindow
+                                                                    granite:hide="${cqDesign.disableSearch}"
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    text="New Window"
+                                                                    value="newWindow"/>
+                                                                <interstitalLeaving
+                                                                    granite:hide="${cqDesign.disableSearch}"
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    text="Interstitial Leaving The Site"
+                                                                    value="interstitialLeaving"/>
+                                                            </items>
+                                                        </linkTarget>
+                                                        <alwaysEnglish
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                            fieldDescription="Always English check for Multi-Lingual  Site Tagging"
+                                                            fieldLabel="Adobe Tracking Name"
+                                                            name="./alwaysEnglish"
+                                                            required="{Boolean}true"/>
+                                                    </items>
+                                                </column>
+                                            </items>
+                                        </field>
+                                    </footerLinks>
+                                </items>
+                            </column>
+                        </items>
+                    </footerLinkSetThree>
+                    <footerLinkSetFour
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Legal &amp; Cookies"
+                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <column
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <groupTitle
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Always English check for Multi-Lingual  Site Tagging"
+                                        fieldLabel="Group Title"
+                                        name="./groupTitleFour"/>
+                                    <footerLinks
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                        composite="{Boolean}true"
+                                        fieldLabel="Footer Links:">
+                                        <field
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/fieldset"
+                                            name="./footerLinksFour">
+                                            <items jcr:primaryType="nt:unstructured">
+                                                <column
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                    <items jcr:primaryType="nt:unstructured">
+                                                        <linkText
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                            fieldLabel="Link Text:"
+                                                            name="./linkText"
+                                                            required="{Boolean}true"/>
+                                                        <linkURL
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                            fieldLabel="Link URL:"
+                                                            name="./linkURL"/>
+                                                        <linkTarget
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                            fieldLabel="Open URL In"
+                                                            name="./linkTarget">
+                                                            <items jcr:primaryType="nt:unstructured">
+                                                                <sameWindow
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    text="Same Window"
+                                                                    value="sameWindow"/>
+                                                                <newTab
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    text="New Tab"
+                                                                    value="tabWindow"/>
+                                                                <newWindow
+                                                                    granite:hide="${cqDesign.disableSearch}"
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    text="New Window"
+                                                                    value="newWindow"/>
+                                                                <interstitalLeaving
+                                                                    granite:hide="${cqDesign.disableSearch}"
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    text="Interstitial Leaving The Site"
+                                                                    value="interstitialLeaving"/>
+                                                            </items>
+                                                        </linkTarget>
+                                                        <alwaysEnglish
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                            fieldDescription="Always English check for Multi-Lingual  Site Tagging"
+                                                            fieldLabel="Adobe Tracking Name"
+                                                            name="./alwaysEnglish"
+                                                            required="{Boolean}true"/>
+                                                    </items>
+                                                </column>
+                                            </items>
+                                        </field>
+                                    </footerLinks>
+                                </items>
+                            </column>
+                        </items>
+                    </footerLinkSetFour>
+                    <socialIcons
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Social Icons"
+                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <column
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <groupTitle
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Always English check for Multi-Lingual  Site Tagging"
+                                        fieldLabel="Group Title"
+                                        name="./socialIconTitle"/>
+                                    <socialIcons
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                        composite="{Boolean}true"
+                                        fieldLabel="Social Icons:">
+                                        <field
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/fieldset"
+                                            name="./socialIcons">
+                                            <items jcr:primaryType="nt:unstructured">
+                                                <column
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                    <items jcr:primaryType="nt:unstructured">
+                                                        <socialIcons
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="/libs/granite/ui/components/coral/foundation/form/pathbrowser"
+                                                            fieldDescription="Social Icons"
+                                                            fieldLabel="Social Icons"
+                                                            name="./icons"
+                                                            required="{Boolean}true"
+                                                            rootPath="/content/dam"/>
+                                                        <iconAltText
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                            fieldLabel="Alternative Text for Icon"
+                                                            name="./linkText"/>
+                                                        <socialLinkURL
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                            fieldLabel="Link URL:"
+                                                            name="./socialLinkURL"/>
+                                                        <linkTarget
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                            fieldLabel="Open URL In"
+                                                            name="./linkTarget">
+                                                            <items jcr:primaryType="nt:unstructured">
+                                                                <sameWindow
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    text="Same Window"
+                                                                    value="sameWindow"/>
+                                                                <newTab
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    text="New Tab"
+                                                                    value="tabWindow"/>
+                                                                <newWindow
+                                                                    granite:hide="${cqDesign.disableSearch}"
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    text="New Window"
+                                                                    value="newWindow"/>
+                                                                <interstitalLeaving
+                                                                    granite:hide="${cqDesign.disableSearch}"
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    text="Interstitial Leaving The Site"
+                                                                    value="interstitialLeaving"/>
+                                                            </items>
+                                                        </linkTarget>
+                                                        <alwaysEnglish
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                            fieldDescription="Always English check for Multi-Lingual  Site Tagging"
+                                                            fieldLabel="Adobe Tracking Name"
+                                                            name="./alwaysEnglish"
+                                                            required="{Boolean}true"/>
+                                                    </items>
+                                                </column>
+                                            </items>
+                                        </field>
+                                    </socialIcons>
+                                </items>
+                            </column>
+                        </items>
+                    </socialIcons>
+                    <esrbLogo
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="ESRB Logo"
+                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <column
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <esrbLogoImg
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                        allowUpload="{Boolean}false"
+                                        autoStart="{Boolean}false"
+                                        class="cq-droptarget"
+                                        fieldLabel="Upload ESRB Logo Image:"
+                                        fileReferenceParameter="./fileReference1"
+                                        mimeTypes="[image/gif,image/jpeg,image/png,image/webp,image/tiff]"
+                                        multiple="{Boolean}false"
+                                        name="./esrbLogoImg"
+                                        uploadUrl="${suffix.path}"
+                                        useHTML5="{Boolean}true"/>
+                                    <esrbLogoURL
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                        fieldLabel="Logo URL:"
+                                        name="./esrbLogoURL"/>
+                                    <esrbAltText
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldLabel="ImageAlternative Text"
+                                        name="./esrbAltText"/>
+                                    <esrbTargetUrl
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                        fieldLabel="Open URL In"
+                                        name="./esrbTargetUrl">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <sameWindow
+                                                jcr:primaryType="nt:unstructured"
+                                                text="Same Window"
+                                                value="sameWindow"/>
+                                            <newTab
+                                                jcr:primaryType="nt:unstructured"
+                                                text="New Tab"
+                                                value="tabWindow"/>
+                                            <newWindow
+                                                granite:hide="${cqDesign.disableSearch}"
+                                                jcr:primaryType="nt:unstructured"
+                                                text="New Window"
+                                                value="newWindow"/>
+                                            <interstitial
+                                                jcr:primaryType="nt:unstructured"
+                                                text="Interstitial - Leaving the Site"
+                                                value="interstitial"/>
+                                        </items>
+                                    </esrbTargetUrl>
+                                    <alwaysEnglish
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Analytics Tracking Name for ESRBLogo Image Alternative Text in English"
+                                        fieldLabel="Adobe Tracking Name"
+                                        name="./alwaysEnglishForEsrbLogo"/>
+                                </items>
+                            </column>
+                        </items>
+                    </esrbLogo>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>

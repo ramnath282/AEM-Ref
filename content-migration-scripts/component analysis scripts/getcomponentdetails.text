@@ -1,0 +1,35 @@
+
+pagepath = "/apps/mattel/ecomm/ag";
+def predicates = [path: pagepath, type: "cq:Component",  "orderby.index": "true", "orderby.sort": "desc"]
+def query = createQuery(predicates)
+query.hitsPerPage = 1000
+def result = query.result
+println "${result.totalMatches} hits, execution time = ${result.executionTime}s\n--"
+ 
+result.hits.each { hit ->
+
+	def path=hit.node.path
+    Resource res = resourceResolver.getResource(path)
+	
+    if(res!=null){
+        componentNode = res.adaptTo(javax.jcr.Node.class);
+        if(componentNode != null){
+            printableString = "";
+			if(componentNode.hasProperty('componentGroup')){
+				printableString = printableString + componentNode.getProperty('componentGroup').getString();
+			}
+            printableString = printableString + "," + path + ",";
+			
+			if(componentNode.hasProperty('jcr:title')){
+				printableString = printableString + componentNode.getProperty('jcr:title').getString()
+			}
+            printableString = printableString + ",";
+            
+            if(componentNode.hasProperty('sling:resourceSuperType')){
+                printableString = printableString + componentNode.getProperty('sling:resourceSuperType').getString() + ",";
+            }
+            println printableString
+        }
+    }
+	
+}

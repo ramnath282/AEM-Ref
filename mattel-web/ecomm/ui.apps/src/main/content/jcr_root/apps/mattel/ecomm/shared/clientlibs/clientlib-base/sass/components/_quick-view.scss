@@ -1,0 +1,73 @@
+#productViewModal {
+    z-index:12000;
+    .modal-dialog {
+        width:960px;
+        .modal-content {
+            padding:10px;
+            overflow-y:auto;
+            .modal-header {
+                .close {
+                    top: 0.8em;
+                    z-index: 12001;
+                    .fa-times.fa-lg{
+                        font-size:1.1em;                        
+                        color:$headerHoverColor;
+                    }
+                }
+            }
+            .modal-body {
+                display: inline-block;
+                width: 100%;
+                .preview-image {
+                    margin-bottom: 1em;
+                    margin-top: 1em;
+                }
+                .sku-bundle-wrapper {
+                    margin-top: 1.5em;
+                    .sku-bundle-container {
+                        padding: 15px;
+                        .custom-checkbox[type="checkbox"]:not(:checked) + label:before, .custom-checkbox[type="checkbox"]:checked + label:before {
+                            top: 12px;
+                        }
+                       .custom-checkbox[type="checkbox"]:not(:checked) + label:after, .custom-checkbox[type="checkbox"]:checked + label:after{
+                            top: 12px;
+                        }
+                        .product-reviews {
+                            .review-status {
+                                width: auto;
+                            }
+                        } 
+                        .marketing-addons{
+                            .addon-option{
+                                margin-bottom: 1.5em;                                    
+                                .addon-desc{
+                                    width: 75%;
+                                }
+                            }
+                        }
+                        .guarantee-details {
+                            &:before {
+                                cursor: default;
+                            }
+                        }
+                    }
+                }              
+            }
+        }
+    }
+}
+.product-addOn-modal .modal-dialog .modal-content .modal-body .added-services {
+	padding: 0;
+	margin-top: 15px;
+}
+.non-buyable-product-section{
+    pointer-events: none;
+    opacity: 0.45;
+}
+.non-buyable-product-btn, #addToBagBtn.non-buyable-product-btn{
+    pointer-events: none;
+    opacity: 0.8;
+    border: none !important;
+    cursor: default;
+    background: #cacaca !important;
+}

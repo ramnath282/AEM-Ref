@@ -1,0 +1,76 @@
+// Menu Location Dropsown Styles
+.location-dropdown{
+    @extend .pull-left;
+    @extend .btn;
+    display: none;
+    @media #{$small-up} {
+        display: inline-block;
+        margin-top: em(14,16);
+    }
+    @media #{$medium-up} {
+        display: none;
+    }
+    &:after {
+        @include font-awesome;
+        content: "\f105";
+		margin-left:em(7);
+		font-size:em(18);
+    }
+  }
+  
+// Hamburger Styles
+  .hamburger {
+    @extend .pull-left;
+	@extend .btn;
+    outline: none;
+    border: none;
+    background: transparent;
+    margin: em(10) 0 0 em(25);
+    @media #{$medium-up} {
+        display: none;
+    }
+    &:after{
+      @include font-awesome;
+      @extend .fa-2x;
+      content: "\f0c9";
+    }
+  }
+
+  // Primary Navigation Styles
+  .primary-nav {
+  background-color: $white;
+    @media #{$medium-down} {
+
+      @include nav-mobile(absolute,-200px);
+      background-color: $white;
+    } 
+    @media #{$medium-up} {
+      float: right;
+      display: inline-block;
+    }
+    ul {
+        margin-bottom: 0;
+        li {
+            display: block;
+            @media #{$medium-up} {
+                display: inline-block;
+            }
+            a {
+                color: $night-rider;
+                display: block;
+                padding: 0 1.5625em;
+                text-decoration: none;
+                font-size: 1.142em;
+            }
+            &.select-location-menu{
+                a{
+                    &:after{
+                      @include font-awesome;
+                      padding-left: 2px;
+                      content: "\f105";
+                    }
+                }
+            }
+        }
+    }
+  }

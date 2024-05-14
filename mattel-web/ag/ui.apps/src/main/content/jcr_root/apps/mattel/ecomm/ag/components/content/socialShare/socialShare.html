@@ -1,0 +1,31 @@
+<sly data-sly-test="${wcmmode.edit}">${'Social Share Component' @i18n}</sly>
+<sly data-sly-test="${properties.header}">
+<h5 class="text-center"><a aria-label="instagram opens a new window" href="${properties.hashtagLink}">${properties.header @i18n}</a></h5>
+</sly>
+<ul class="text-right">
+	<sly data-sly-test="${properties.enableFb=='true'}">
+	<li>
+		<a aria-label="facebook opens a new window" class="facebook track-social-share" data-tracking-social = "footer - social share|facebook"  target="_blank" href="${properties.fbPath}"></a>
+	</li>
+	</sly>
+	<sly data-sly-test="${properties.enableInsta=='true'}">
+	<li>
+		<a aria-label="instagram opens a new window" class="instagram track-social-share" data-tracking-social = "footer - social share|instagram" target="_blank" href="${properties.instaPath}"></a>
+	</li>
+	</sly>
+	<sly data-sly-test="${properties.enablePinterest=='true'}">
+	<li>
+		<a aria-label="pinterest opens a new window" class="pinterest track-social-share" data-tracking-social = "footer - social share|pinterest" target="_blank" href="${properties.pinterestPath}"></a>
+	</li>
+	</sly>
+	<sly data-sly-test="${properties.enableTwitter=='true'}">
+	<li>
+		<a aria-label="twitter opens a new window" class="twitter track-social-share" data-tracking-social = "footer - social share|twitter" target="_blank" href="${properties.twitterPath}"></a>
+	</li>
+	</sly>
+	<sly data-sly-test="${properties.enableYoutube=='true'}">
+	<li>
+		<a aria-label="youtube opens a new window" class="youtube track-social-share" data-tracking-social = "footer - social share|youtube" target="_blank" href="${properties.youtubePath}"></a>
+	</li>
+	</sly>
+</ul>

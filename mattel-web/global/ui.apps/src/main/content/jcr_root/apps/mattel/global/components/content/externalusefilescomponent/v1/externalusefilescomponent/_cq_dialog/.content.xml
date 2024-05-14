@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Experience Fragment options"
+    sling:resourceType="cq/gui/components/authoring/dialog"
+    extraClientlibs="[cq.xf.editor.picker.validator]">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
+        <items jcr:primaryType="nt:unstructured">
+            <column
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/container">
+                <items jcr:primaryType="nt:unstructured">
+                    <customfiles
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                        fieldLabel="Custom Files CSS for External Fragment Request">
+                        <field
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/container"
+                            name="./customFiles">
+                            <items jcr:primaryType="nt:unstructured">
+                                <heading
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/heading"
+                                    level="{Long}5"
+                                    text="Custom File"/>
+                                <well
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/well"
+                                    margin="{Boolean}true">
+                                    <column
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container"/>
+                                    <items jcr:primaryType="nt:unstructured">
+                                        <file
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                            fieldDescription="Please select a CSS file to include with Non-AEM Requests"
+                                            fieldLabel="CSS File"
+                                            name="./file"
+                                            rootPath="/content/dam"/>
+                                        <externalfile
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/switch"
+                                            fieldDescription="Please check this switch for External Files"
+                                            fieldLabel="External File?"
+                                            name="./isExternalFile"
+                                            uncheckedValue="false"
+                                            value="true"/>
+                                    </items>
+                                </well>
+                            </items>
+                        </field>
+                    </customfiles>
+                    <customjsfiles
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                        fieldLabel="Custom JS Files for External Fragment Request">
+                        <field
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/container"
+                            name="./customFiles">
+                            <items jcr:primaryType="nt:unstructured">
+                                <heading
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/heading"
+                                    level="{Long}5"
+                                    text="Custom JS File"/>
+                                <well
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/well"
+                                    margin="{Boolean}true">
+                                    <column
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container"/>
+                                    <items jcr:primaryType="nt:unstructured">
+                                        <externalfile
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/switch"
+                                            fieldDescription="Please check this switch for External Files"
+                                            fieldLabel="External File?"
+                                            name="./isExternalFile"
+                                            uncheckedValue="false"
+                                            value="true"/>
+                                        <jsfile
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                            fieldDescription="Please enter paths for JS files to include with Non-AEM Request"
+                                            fieldLabel="JS File"
+                                            name="./jsfile"
+                                            rootPath="/content/dam"/>
+                                    </items>
+                                </well>
+                            </items>
+                        </field>
+                    </customjsfiles>
+                </items>
+            </column>
+        </items>
+    </content>
+</jcr:root>

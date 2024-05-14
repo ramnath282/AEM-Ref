@@ -1,0 +1,173 @@
+<sly data-sly-test="${wcmmode.edit}">${'Edit Loyalty & Rewards Drawer Component' @i18n}</sly>
+<sly data-sly-use.loyaltyRewardsConfig="com.mattel.ecomm.core.models.LoyaltyRewardsDrawerModel">
+	<div class="pencil-drawer">
+		<div class="userProfileComponent">
+			<div class="anonymous-user-content">
+			</div>
+			<div class="logged-user-content">
+				<div class="req-loading" id="loyalityComponentContainer"></div>
+			</div>
+		</div>
+	<div class="crm-hidden-properties hide" data-tier-with-pts="SILVER_0,GOLD_250,BERRY_500" data-expiration-time="${loyaltyRewardsConfig.localStorageExpiry ? loyaltyRewardsConfig.localStorageExpiry : '0'}" data-api-failure-calls="${loyaltyRewardsConfig.apiFailureCallCount}" data-max-promo-codes="${properties.maxPromoCodes ? properties.maxPromoCodes : '2'}"></div>
+		<script type="text/x-handlebars-template" id="loyalityComponentTemplate">
+			<div class="enhanced-container" data-bar-name="loyality">
+				<div class="loyality-bar">
+					<div class="col usr-name-section">
+						<span class="usr-name">{{userName}}</User></span>
+						<span>Membership: <span class="usr-membership">{{consumerLoyalty.LoyaltyNumber}}</span></span>
+					</div>
+					{{#consumerLoyalty}}
+					{{#if @root.progressBar}}
+					<div class="col usr-badge-section">
+						<div class="progress">
+							<div class="progress-bar" role="progressbar" aria-valuenow="{{completedPts}}" aria-valuemin="0" aria-valuemax="100" style="width:{{completedPts}}%">
+							<span class="sr-only">{{completedPts}} Complete</span>
+							</div>
+						</div>
+						<ul class="">
+							{{#if tierConfigs.[2].berryBadge}}
+								<li class="{{#if tierConfigs.[2].completedBadge}}active-badge berry-user {{#if activeBadge}}star-icon{{/if}}{{/if}}">
+									<div class="label badge-name" data-points="{{tierConfigs.[2].tierRange}}">{{tierConfigs.[2].tierName}}</div>
+									<div class="progress-bar-points">
+											<span class="default-pts"><span
+												class="hidden-xl">{{#if NextRewardPoint}}{{NextRewardPoint}}{{else}}0{{/if}}</span> POINTS TO NEXT</span>
+										<span class="sub-label">$10 REWARD</span>
+									</div>
+								</li>
+							{{else}}
+								{{#each tierConfigs}}
+									<li class="{{#if completedBadge}}active-badge {{#if activeBadge}}star-icon{{/if}}{{/if}}">
+									<div class="label badge-name" data-points="{{tierRange}}">{{tierName}}</div>
+									</li>
+								{{/each}}	
+							{{/if}}
+						</ul>
+					</div>
+					{{/if}}
+					{{#if @root.userPts}}
+					<div class="col usr-points pp-1px special-col">
+						<span class="highlight-col">{{#if LoyaltyPointCount}}{{LoyaltyPointCount}}{{else}}0{{/if}} </span>
+						<span>
+						<span class="default-pts"><span class="hidden-xl">{{LoyaltyPointCount}}</span> ${properties.pointsLabel
+							@context='scriptString'}</span>
+						<span class="sub-label">{{LoyaltyTierCode}} ${properties.tierLabel @context='scriptString'}</span>
+					</span>
+					</div>
+					{{/if}}
+					{{#if @root.nextRewardPts}}
+					<div class="col usr-next-points pp-1px special-col">
+						<span class="highlight-col">{{#if NextRewardPoint}}{{NextRewardPoint}}{{else}}0{{/if}} </span>
+						<span>
+						<span class="default-pts"><span
+								class="hidden-xl">{{#if NextRewardPoint}}{{NextRewardPoint}}{{else}}0{{/if}}</span>${properties.pointsToNextLabel
+							@context='scriptString'}</span>
+						<span class="sub-label">${properties.rewardLabel @context='scriptString'}</span>
+					</span>
+					</div>
+					{{/if}}
+					{{#if nextBadge}}
+					{{#if @root.nextBerry}}
+					<div class="col usr-next-tier pp-1px special-col">
+						<span class="highlight-col"><span>$</span>{{roundOffValue NextTierAmount}} </span>
+						<span>
+						<span class="default-pts"><span class="hidden-xl"><span>$</span>{{roundOffValue NextTierAmount}}</span>
+							${properties.toReachLabel @context='scriptString'}</span>
+						<span class="sub-label">{{nextBadge}}</span>
+					</span>
+					</div>
+					{{/if}}
+					{{/if}}
+					{{/consumerLoyalty}}
+					{{#with ConsumerPromotions.[0]}}
+					{{#if @root.recentExpirePromo}}
+					<div class="col usr-points pp-1px special-col">
+						<div class="col-inner-content {{#ifEquals RedeemedStatus 'REDEEMED'}}redeemed-on{{/ifEquals}}">
+					<span>
+						<span class="promo-description"><span class="default-pts">{{PromotionType}}</span></span>
+					</span>
+							<span class="sub-label hidden-xs">EXP: {{convertDateToSlashFormat PromotionExpiryDate}}</span>
+							<span class="right-col">
+          				<span class="btn-action">
+							<span class="reward-redeem">
+								<button class="btn fas fa-info-circle reward-tooltip" data-container="body" data-trigger="hover" tabindex="0"
+										aria-label="more information opens a tooltip" data-toggle="popover" data-placement="bottom"
+										data-content="${properties.redeemTooltip @context='scriptString'}"
+										data-original-title="" title=""></button>
+								<a href="#" data-promo-code="{{RewardsPromoCode}}" data-award-amt="{{AwardAmount}}" role="button"
+								   class="btn apply-promo-code cta-right-arrow" tabindex="0">${properties.redeemLabel @context='scriptString'}</a>
+							</span>
+							<span class="reward-applied">
+								<button class="btn fas fa-info-circle reward-tooltip hide" data-container="body" data-trigger="hover" tabindex="0"
+										aria-label="more information opens a tooltip" data-toggle="popover" data-placement="bottom"
+										data-content="${properties.redeemTooltip @context='scriptString'}"
+										data-original-title="" title=""></button>
+								<a role="button" class="btn appied-txt">${properties.appliedLabel @context='scriptString'}</a>
+								<button data-promo-code="{{RewardsPromoCode}}" data-award-amt="{{AwardAmount}}"
+										class="btn fa fa-times remove-promo-code"></button>
+							</span>
+						</span>
+            			<span class="sub-label visible-xs">EXP: {{convertDateToSlashFormat PromotionExpiryDate}}</span>
+					</span>
+						</div>
+					</div>
+					{{/if}}
+					{{#if @root.showRewardsBtn}}
+					<div class="col pp-1px">
+						<a class="btn rewards-btn" aria-expanded="false">
+							<span class="collapse-btn">${properties.showRewardsLabel @context='scriptString'}<i class="fa fa-plus-circle" aria-hidden="true"></i></span>
+							<span class="expand-btn">${properties.hideRewardsLabel @context='scriptString'}<i class="fa fa-minus-circle" aria-hidden="true"></i></span>
+						</a>
+					</div>
+					{{/if}}
+					{{/with}}
+				</div>
+			</div>
+			<div class="enhanced-container" id="collapsepromoBar" data-bar-name="rewards" style="background: #FFF7FA;">
+				<div class="rewards-bar">
+					<ul class="rewards-content rewards-item-{{ConsumerPromotions.length}}">
+						{{#each ConsumerPromotions}}
+						{{#if @key}}
+						<li class="col usr-points pp-1px special-col">
+							<div class="col-inner-content {{#ifEquals RedeemedStatus 'REDEEMED'}}redeemed-on{{/ifEquals}}">
+						<span class="middle-col">
+							<span class="promo-description"><span class="default-pts">{{PromotionType}}</span></span>
+						</span>
+								<span class="right-col">
+							<span class="btn-action">
+								<span class="reward-redeem">
+									<button class="btn fas fa-info-circle reward-tooltip" data-container="body" data-trigger="hover" tabindex="0"
+											aria-label="more information opens a tooltip" data-toggle="popover"
+											data-placement="bottom"
+											data-content="${properties.redeemTooltip @context='scriptString'}"
+											data-original-title="" title=""></button>
+									<a href="#" data-promo-code="{{RewardsPromoCode}}" data-award-amt="{{AwardAmount}}" role="button"
+									   class="btn apply-promo-code cta-right-arrow" tabindex="0">${properties.redeemLabel @context='scriptString'}</a>
+								</span>
+								<span class="reward-applied">
+									<button class="btn fas fa-info-circle reward-tooltip hide" data-container="body" data-trigger="hover" tabindex="0"
+											aria-label="more information opens a tooltip" data-toggle="popover"
+											data-placement="bottom"
+											data-content="${properties.redeemTooltip @context='scriptString'}"
+											data-original-title="" title=""></button>
+									<a role="button" class="btn appied-txt">${properties.appliedLabel @context='scriptString'}</a>
+									<button data-promo-code="{{RewardsPromoCode}}" data-award-amt="{{AwardAmount}}"
+											class="btn fa fa-times remove-promo-code"></button>
+								</span>
+							</span>
+							<span class="sub-label">EXP: {{convertDateToSlashFormat PromotionExpiryDate}}</span>
+						</span>
+							</div>
+						</li>
+						{{/if}}
+						{{/each}}
+					</ul>
+				</div>
+			</div>
+		</script>
+	</div>
+	<sly data-sly-test="${!loyaltyRewardsConfig.disableClientLibs}">
+		<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
+			<sly data-sly-call="${clientlib.js @ categories='ecomm.crmheader'}" />
+		</sly>
+	</sly>
+</sly>

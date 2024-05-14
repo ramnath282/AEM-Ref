@@ -1,0 +1,69 @@
+.related-search {
+    float: mapping($relatedSearchProp, relatedCon, relatedConFloat);
+    width: mapping($relatedSearchProp, relatedCon, relatedConWidth);
+    background-color: mapping($relatedSearchProp, relatedCon, relatedConBG);
+    padding: mapping($relatedSearchProp, relatedCon, relatedConPad);
+
+    @media #{$medium-down} {
+        text-align: mapping($relatedSearchProp, relatedCon, tabAlign);
+        padding: mapping($relatedSearchProp, relatedCon, tabPad);
+    }
+
+    @media #{$small-down} {
+        // text-align: center;
+        padding: mapping($relatedSearchProp, relatedCon, mobPad);
+    }
+
+    .rs-header {
+        float: mapping($relatedSearchProp, rsHeader, rsHeaderFloat);
+        color: mapping($relatedSearchProp, rsHeader, rsHeaderColor);
+        font: mapping($relatedSearchProp, rsHeader, rsHeaderFont);
+        text-transform: mapping($relatedSearchProp, rsHeader, rsHeaderTrns);
+
+        @media #{$medium-down} {
+            float: mapping($relatedSearchProp, rsHeader, raHeaderTabF);
+            margin: mapping($relatedSearchProp, rsHeader, raHeaderTabMar);
+        }
+
+        @media #{$small-down} {
+            font: mapping($relatedSearchProp, rsHeader, rsMobHeaderFont);
+        }
+    }
+
+    .rs-rightDiv {
+        margin-left: mapping($relatedSearchProp, rightDiv, rightDivML);
+        width: mapping($relatedSearchProp, rightDiv, rightDivWidth);
+
+        @media #{$medium-down} {
+            margin-left: mapping($relatedSearchProp, rightDiv, tabML);
+            float: mapping($relatedSearchProp, rightDiv, tabFloat);
+            width: mapping($relatedSearchProp, rightDiv, tabWidth);
+        }
+
+        ul {
+            margin: mapping($relatedSearchProp, ulList, liMar);
+
+            li {
+                display: mapping($relatedSearchProp, ulList, ulDis);
+
+                a {
+                    margin: mapping($relatedSearchProp, ulList, hrefMarg);
+                    text-decoration: mapping($relatedSearchProp, ulList, hrefDec);
+                    display: mapping($relatedSearchProp, ulList, hrefDis);
+                    font-family: mapping($relatedSearchProp, ulList, hrefFont);
+                    font-weight: mapping($relatedSearchProp, ulList, hrefFW);
+                    color: mapping($relatedSearchProp, ulList, hrefColor);
+
+                    @media #{$medium-down} {
+                        margin: mapping($relatedSearchProp, ulList, ulListTabMar);
+                    }
+
+                    @media #{$small-down} {
+                        margin: mapping($relatedSearchProp, ulList, ulListMobMar);
+                    }
+                }
+            }
+        }
+
+    }
+}

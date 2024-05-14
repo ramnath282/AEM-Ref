@@ -1,0 +1,1600 @@
+//title
+$col : (1: 100%,
+    2: 50%,
+    3: 33.33%,
+    4: 25%,
+    5: 20%,
+    6: 20%,
+    7: 20%,
+    8: 20%,
+    9: 20%,
+    10: 20%,
+    11: 20%,
+    12: 20%,
+);
+
+
+.gallery-headings {
+    //padding: if(mapping($layout,main,titleMargin), mapping($layout,main,titleMargin), em(55) em(65) em(50) em(65));
+    padding: em(55) em(65) em(50) em(65);
+
+    @media #{$medium-down} {
+        //padding: mapping($layout,main,tabTitleMargin);
+    }
+
+    @media #{$small-down} {
+        //padding: mapping($layout,main,mobTitleMargin);
+    }
+
+    @if mapping($gallery, heading, isDefinedgalleryTitle)==true {
+        padding: mapping($gallery, heading, definedTitlePad);
+
+        @media #{$medium-down} {
+            padding: mapping($gallery, heading, definedTitlePadTab);
+        }
+
+        @media #{$small-down} {
+            padding: mapping($gallery, heading, definedTitlePadMob);
+        }
+    }
+
+    h2 {
+        @if mapping($gallery, heading, isDefaultHeadingFont)==true {
+            font-size: mapping($gallery, heading, fontSize);
+        }
+
+        @else {
+            font-family: mapping($gallery, heading, fontFamily);
+            font-size: if(mapping($gallery, heading, fontSize), mapping($gallery, heading, fontSize), em(38));
+            font-weight: mapping($gallery, heading, fontWeight);
+        }
+
+        @media #{$medium-down} {
+            font-size: mapping($gallery, heading, tabFontSize);
+            color: if(mapping($gallery, heading, tabColor), mapping($gallery, heading, tabColor), mapping($gallery, heading, colorOpt));
+        }
+
+        @media #{$small-down} {
+            font-size: mapping($gallery, heading, mobFontSize);
+            color: mapping($gallery, heading, colorOpt);
+        }
+
+        color: if(mapping($gallery, heading, color), mapping($gallery, heading, color), $page-title);
+        text-transform: if(mapping($gallery, heading, transform), mapping($gallery, heading, transform), none);
+        margin:if(mapping($gallery, heading, margin), mapping($gallery, heading, margin), 0 0 21px 0);
+        text-align: if(mapping($gallery, heading, align), mapping($gallery, heading, align), left);
+        display: block;
+        line-height: if(mapping($gallery, heading, lineHeight), mapping($gallery, heading, lineHeight), 1);
+
+
+    }
+
+    p {
+        @if mapping($gallery, description, isDefaultDesFont)==true {
+            font-size: mapping($gallery, description, fontSize);
+        }
+
+        @else {
+            font-family: if(mapping($gallery, description, fontFamily), mapping($gallery, description, fontFamily), "Arial");
+            font-size: if(mapping($gallery, description, fontSize), mapping($gallery, description, fontSize), 1.35714em);
+            font-weight: if(mapping($gallery, description, fontWeight), mapping($gallery, description, fontWeight), 300);
+
+        }
+
+        @media #{$medium-down} {
+            font-size: mapping($gallery, description, tabFontSize);
+        }
+
+        @media #{$small-down} {
+            font-size: mapping($gallery, description, mobFontSize);
+        }
+
+        color: if(mapping($gallery, description, color), mapping($gallery, description, color), $page-sub-title);
+        text-align: if(mapping($gallery, description, align), mapping($gallery, description, align), left);
+        margin: if(mapping($gallery, description, descMargin), mapping($gallery, description, descMargin), 10px 0 0);
+    }
+
+    i,
+    em {
+        font-weight: mapping($gallery, description, italicfontWeight);
+    }
+}
+
+.gallery-extnd-tile {
+    @if(map-get($gallery, defaultListCol)) {
+        ul {
+            &>li {
+                position: relative;
+                min-height: 1px;
+
+                //padding-left: 15px;
+                //padding-right: 15px;
+                //padding-bottom: mapping($gallery,defaultListCol, pad);
+                //padding-top: mapping($gallery,defaultListCol, padTop);
+                //width: map-get($col,mapping($gallery, defaultListCol, mobItem));
+                // @media #{$small-down}{
+                //     padding-left: mapping($gallery,defaultListCol, mobPadLft);
+                //     padding-right: mapping($gallery,defaultListCol, mobPadRit);
+                //     padding-bottom: mapping($gallery,defaultListCol, mobPadBtm);
+                // }
+                @if mapping($gallery, defaultListCol, listShowCSS)==false {}
+
+                @else {
+                    @media #{$small-up} {
+                        @media #{$large-down} {
+                            $tabItem: if(mapping($gallery, defaultListCol, tabItemToShow), mapping($gallery, defaultListCol, tabItemToShow), mapping($gallery, defaultListCol, itemToShow));
+
+                            &:nth-of-type(1n+#{$tabItem+1}) {
+                                display: block;
+                            }
+                        }
+                    }
+
+                    @media #{$large-up} {
+                        &:nth-of-type(1n+#{mapping($gallery, defaultListCol, itemToShow)+1}) {
+                            display: block;
+                        }
+                    }
+
+                    @media #{$small-down} {
+                        $mobItem: if(mapping($gallery, defaultListCol, mobItemToShow), mapping($gallery, defaultListCol, mobItemToShow), mapping($gallery, defaultListCol, itemToShow));
+
+                        &:nth-of-type(1n+#{$mobItem+1}) {
+                            display: block;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .view-all {
+        @if mapping($gallery, defaultListCol, isViewAllHide)==true {
+            display: none !important;
+        }
+    }
+}
+
+//list structure
+.gallery-tile-list {
+    ul {
+        @extend .row;
+
+        .row:before,
+        .row:after {
+            display: none !important;
+        }
+
+        display:block;
+        width: if(mapping($gallery, galleryWrapper, width), mapping($gallery, galleryWrapper, width), 100%);
+        margin: if(mapping($gallery, galleryWrapper, margin), mapping($gallery, galleryWrapper, margin), 0);
+
+        @media #{$medium-down} {
+            width: mapping($gallery, galleryWrapper, tabWidth);
+        }
+
+        &>li {
+            @extend .col-sm-3;
+            @extend .col-md-3;
+            @extend .col-lg-3;
+            text-align: if(mapping($gallery, galleryTileList, txtAlign), mapping($gallery, galleryTileList, txtAlign), center);
+            //padding:10px;
+            padding: 0;
+            margin: 0;
+            position: relative;
+
+            &:nth-of-type(1n+5) {
+                display: none;
+            }
+
+            @media #{$medium-down} {
+                width: 50%;
+            }
+
+            @media #{$small-down} {
+                width: 100%;
+                display: inline-block;
+
+                @if mapping($layout, main, isFisherPriceNav)==true {
+                    width: 49.4%;
+                    padding-bottom: 12px;
+                    float: left;
+                    padding-top: 20px;
+
+                    &:nth-of-type(2n+1) {
+                        padding-right: 10px;
+                    }
+
+                    &:nth-of-type(2n+0) {
+                        padding-left: 10px;
+                    }
+                }
+            }
+
+            @media #{$medium-up} {
+                &.column-3 {
+                    width: 33.33333%;
+                }
+
+                &.column-4 {
+                    width: 25%;
+                }
+            }
+
+            //character Name
+            a {
+                display: block;
+                position: relative;
+                margin: if(mapping($gallery, gallerytilelink, linkMargin), mapping($gallery, gallerytilelink, linkMargin), em(15));
+
+                &.btn-primary {
+                    color: $white;
+                }
+
+                &:hover,
+                &:focus,
+                &.active {
+                    img {
+                        @if mapping($gallery, galleryImg, isHoverEffect)==true {
+                            opacity: mapping($gallery, galleryImg, hoverOpac);
+
+                            @media #{$small-down} {
+                                opacity: mapping($gallery, galleryImg, mobhoverOpac);
+                            }
+                        }
+                    }
+
+                    &.gallery-image {
+                        img {
+                            opacity: 1;
+                        }
+                    }
+                }
+
+                .gallery-image {
+                    background-color: if(mapping($gallery, gallerytileImage, bgndColor), mapping($gallery, gallerytileImage, bgndColor), $white);
+
+                    img {
+                        // max-height: 100%;
+                        max-width: 100%;
+                        width: 100%;
+                        display: block;
+                        border: mapping($gallery, galleryImg, imgBdr);
+
+                        @media #{$small-down} {
+                            width: mapping($gallery, galleryImg, width);
+                        }
+
+                        .image-container {
+                            &:hover {
+                                opacity: 1;
+                            }
+                        }
+                    }
+                }
+
+                span {
+                    @if mapping($gallery, listTitle, isBgnd)==false {
+                        background: none;
+                        @include border-radius(0);
+                    }
+
+                    @else {
+                        background-color: $character-label-bg;
+                    }
+
+                    @include transition(350ms ease);
+                    text-transform: none;
+                    //font-size: em(28.01);
+                    padding: 0 em(2.5);
+                    //color: $character-label;
+                    display: block;
+                    letter-spacing: em(1);
+                    font-family: mapping($gallery, listTitle, fontFamily);
+                    text-align:if(mapping($gallery, listTitle, align), mapping($gallery, listTitle, align), left);
+                    font-size:if(mapping($gallery, listTitle, fontSize), mapping($gallery, listTitle, fontSize), em(28.01));
+                    font-weight: mapping($gallery, listTitle, fontWeight);
+                    color: if(mapping($gallery, listTitle, color), mapping($gallery, listTitle, color), $character-label);
+
+                    &.btn-primary {
+                        @if mapping($gallery, main, sameasDefaultBtn)==true {
+                            @extend .theme-btn;
+                        }
+
+                        @else {
+                            @extend .btn-primary;
+                            font-size: em(14);
+                            text-align: center;
+                            padding: 10px 5px;
+                            display: inline-block;
+                        }
+                    }
+                }
+            }
+
+            &.active {
+                a {
+                    .gallery-image {
+                        background-color: mapping($gallery, gallerytileImage, bgnd);
+                    }
+                }
+            }
+        }
+    }
+}
+
+.gallery-image {
+
+    &:hover,
+    &:focus,
+    &.active {
+        img {
+            opacity: if(mapping($gallery, gallerytileImage, opac), mapping($gallery, gallerytileImage, opac), 0.5);
+            background-color: mapping($gallery, gallerytileImage, bgColorhover);
+
+            &.image-container {
+                opacity: 1;
+            }
+        }
+    }
+}
+
+.view-all {
+    display: none;
+    text-align: right;
+    margin: em(20) 0;
+
+    @media #{$small-down} {
+        text-align: center;
+    }
+}
+
+.show-more {
+    display: none;
+    width: 100%;
+    text-align: center;
+    padding: if(mapping($gallery, showMoreDiv, pad), mapping($gallery, showMoreDiv, pad), em(24));
+    position: relative;
+    z-index: 1;
+
+    a {
+        @if mapping($gallery, primaryBtn, isExtendSecondaryBtn)==true {
+            //@extend .secondary-btn;
+        }
+
+        @else if mapping($gallery, primaryBtn, isExtendPrimaryBtn)==true {
+            @extend .theme-btn;
+        }
+
+        @else {
+            @extend .btn-show-more;
+        }
+    }
+}
+
+.margin-LR0 {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
+.tiles-center {
+    padding: em(6);
+}
+
+//common structure
+.play-tiles-gallery {
+    padding: 0;
+    width: 100%;
+    margin: 0 auto !important;
+    background-color: $white;
+    @extend .margin-LR0;
+
+    .gallery-title {
+        @extend .gallery-headings;
+    }
+
+    .gallery-tile {
+        @extend .gallery-tile-list;
+
+        &.plp-tiles {
+            text-align: center;
+            margin-top: 15px;
+        }
+    }
+
+    @media #{$medium-down} {
+        width: 100%;
+    }
+
+}
+
+//dont include any class into this
+.play-tiles-gallery {
+
+    // overflow: hidden;
+    @if mapping($gallery, main, bgnd)==true {
+        background: url(mapping($gallery, main,bgnd));
+    }
+
+    @else {
+        background-color: transparent;
+    }
+
+    &.play-character-landing-block {
+
+        ul {
+            li {
+                display: block !important;
+            }
+
+            .playing-overlay {
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+
+                span {
+                    position: absolute;
+                    top: 7px;
+                    left: 7px;
+                    font-size: 1em;
+                    font-family: "Arial", sans-serif;
+                    white-space: nowrap;
+                    display: inline-block;
+                    padding: em(7);
+                    color: $character-label;
+                    background-color: $character-label-bg;
+                    z-index: 1;
+                    letter-spacing: 1px;
+                }
+            }
+        }
+    }
+
+    &#play-game {
+        background: url($game-gallery-bg) 0 0 repeat;
+
+        .gallery-tile {
+            h2 {
+                color: $violet;
+                //padding:40px 55px 25px 55px;
+                margin: 0;
+                padding: 20px 54px 0;
+                font-size: 2.5em;
+            }
+        }
+
+        ul {
+            padding: 0 40px 35px 40px;
+
+            li {
+                padding: em(15);
+            }
+        }
+    }
+}
+
+//gallery component classes
+//retailers
+.play-retailers {
+    margin: 0px auto;
+    overflow: mapping($gallery, retailers, fpnavoverflow);
+
+    //background-color: mapping($gallery,retailers, fpbgColor);
+    @if mapping($gallery, retailers, isImageAfter)==true {
+        position: relative;
+
+        &:after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            top: mapping($gallery, retailers, afterBgndTop);
+            bottom: mapping($gallery, retailers, afterBgndBottom);
+            height: mapping($gallery, retailers, afterBgndHght);
+            background: mapping($gallery, retailers, afterBgnd);
+            background-size: mapping($gallery, retailers, afterBgndSize);
+            z-index: mapping($gallery, retailers, afterBgndZindx);
+
+            @media #{$medium-down} {
+                background-size: mapping($gallery, retailers, afterBgndSizeMob);
+            }
+        }
+    }
+
+    .gallery-title {
+        @if mapping($gallery, retailers, isImageAfter)==true {
+            position: relative;
+            z-index: 1;
+            margin: 94px 0 15px 0;
+            padding: 0;
+
+            @media #{$medium-down} {
+                margin: 88px 0 7px 0;
+            }
+        }
+
+        h2 {
+            text-align: center;
+            color: mapping($gallery, retailers, titleTxtColor);
+            @include font-properties($maaxMedium,$localFontVerdana);
+            font-size: 18px;
+            font-weight: 500;
+            letter-spacing: em(.4355);
+            line-height: em(17.89);
+
+            @media #{$medium-down} {
+                font-size: 18px;
+                line-height: em(28);
+            }
+
+            @if mapping($gallery, main, isCurlnHead)==true {
+
+                &::after,
+                &::before {
+                    background: url('#{$brandImgPath}/curls-right.png') no-repeat;
+                    content: " ";
+                    height: 35px;
+                    width: 320px;
+                    display: inline-block;
+                    vertical-align: middle;
+                    margin-left: 10px;
+                }
+
+                &::before {
+                    background: url('#{$brandImgPath}/curls-left.png') no-repeat;
+                    margin-right: 10px;
+                }
+            }
+        }
+    }
+
+    .gallery-tile {
+        @if mapping($gallery, retailers, isImageAfter)==true {
+            position: relative;
+            z-index: 1;
+        }
+
+        text-align: mapping($gallery, retailers, tileAlign);
+        margin-bottom: mapping($gallery, retailers, marginBottom);
+
+        ul {
+            background: mapping($gallery, retailers, tileBgnd);
+            display: mapping($gallery, retailers, tileDisplay);
+            width: mapping($gallery, retailers, tilewidth);
+            justify-content: center;
+
+            @media #{$large-down} {
+                display: mapping($gallery, retailers, tabtileDisplay);
+            }
+
+            @media #{$medium-down} {
+                width: mapping($gallery, retailers, mobTilewidth);
+            }
+
+            margin: mapping($gallery, retailers, tileMargin);
+
+            @media #{$small-down} {
+                margin: mapping($gallery, retailers, mobtileMargin);
+            }
+
+            border-radius: mapping($gallery, retailers, borderRadius);
+
+            @if mapping($gallery, retailers, applyBordrToParnt)==true {
+                @extend .grid-border-style;
+
+                @media #{$small-only} {
+                    padding: if(mapping($gallery, retailers, mobPadd), mapping($gallery, retailers, mobPadd), 0 15px);
+                    background: transparent;
+                    @include border-radius(0);
+                    border: 0;
+                }
+            }
+
+            //@media #{$small-up} {
+            //padding: if(mapping($gallery,retailers,paddingRetailers), mapping($gallery,retailers,paddingRetailers),0 em(50));
+            //}
+            //@media #{$large-only} {
+            //padding: mapping($gallery, retailers, largeOnlypadding);
+            //}
+
+            &>li {
+
+                @if mapping($gallery, retailers, isColConfigTrue)==true and map-get($gallery, retailersListCol) {
+
+                    position: relative;
+                    min-height: 1px;
+                    //padding-left: 15px;
+                    //padding-right: 15px;
+                    padding: 0;
+                    width: map-get($col, mapping($gallery, retailersListCol, mobItem));
+                    float: mapping($gallery, retailersListCol, float);
+
+                    @media #{$small-up} {
+                        width: map-get($col, mapping($gallery, retailersListCol, tabItem));
+                    }
+
+                    @media #{$large-up} {
+                        //width: map-get($col,mapping($gallery, retailersListCol, desItem));
+                        width: auto;
+                    }
+
+                    @if mapping($gallery, retailers, applyBordrToParnt)==true {
+                        @media #{$small-only} {
+                            margin: 15px 0;
+                            border-radius: 10px;
+                            background: mapping($gallery, retailers, tileBgnd);
+                        }
+                    }
+                }
+
+                @else {
+                    &:nth-of-type(1n+5) {
+                        display: block;
+                    }
+
+
+                    @media #{$small-up} {
+                        padding: 0 em(25);
+                    }
+
+                    @media #{$small-down} {
+                        width: 50%;
+                        float: left;
+                        margin: 0;
+                    }
+                }
+
+                @if mapping($gallery, retailersListCol, showAllList)==true {
+                    display: block !important;
+                }
+
+                //margin:0px auto;
+                a {
+                    margin: 0;
+
+                    span {
+                        display: inline;
+
+                        &.sr-only {
+                            padding: 0;
+                            margin: 0;
+                        }
+                    }
+
+                    .gallery-image {
+                        background-color: transparent;
+
+                        @if mapping($gallery, retailers, applyBordrToParnt)==true {
+                            border: 0;
+                            @include border-radius(0);
+                        }
+                    }
+                }
+            }
+        }
+
+        .view-all {
+            display: none !important;
+        }
+    }
+}
+
+
+/**/
+
+//character-gallery
+.play-characters {
+    background: mapping($gallery, playCharacters, bgnd);
+
+    @if mapping($gallery, characters, isclearDiv)==true {
+        //@extend .clearDiv;
+    }
+
+    .gallery-title {
+        h2 {
+            margin: mapping($gallery, characters, headingMgn);
+        }
+    }
+
+    .gallery-tile {
+        @if mapping($gallery, retailers, isImageAfter)==true {
+            position: relative;
+            z-index: 1;
+        }
+
+        @if mapping($gallery, characters, isDefaultMargin)==true {
+
+            //padding: mapping($layout,main,sectionMargin);
+            @media #{$medium-down} {
+                //padding: mapping($layout,main,tabSectionMargin);
+            }
+
+            @media #{$small-down} {
+                //padding: mapping($layout,main,mobSectionMargin);
+                text-align: mapping($gallery, characters, imgAlign);
+            }
+        }
+
+        ul {
+            &>li {
+                padding: if(mapping($gallery, characters, tilePadding), mapping($gallery, characters, tilePadding), 0px);
+                margin: mapping($gallery, characters, tileMargin);
+                background-color: if(mapping($gallery, characters, bgnd), mapping($gallery, characters, bgnd), $character-bg);
+                max-width: mapping($gallery, characters, tileMaxWidth);
+
+                @media #{$medium-down} {
+                    max-width: mapping($gallery, characters, maxWidthMob);
+                }
+
+                a {
+                    margin: 0;
+
+                    .gallery-image {
+                        background: mapping($gallery, characters, listBgnd)
+                    }
+
+                    span {
+                        @if mapping($gallery, characters, isStickyTitle)==false {
+                            background: mapping($gallery, characters, tileBgnd);
+                            color: mapping($gallery, characters, tileTitleColor);
+                            display: mapping($gallery, characters, tileTitleDisplay);
+                            font-size: mapping($gallery, characters, tileTitleSize);
+                            font-family: mapping($gallery, characters, tileTitleFamily);
+                            font-weight: mapping($gallery, characters, tileTitleWeight);
+                            padding: mapping($gallery, characters, tileTitlePadding);
+                            text-align: mapping($gallery, characters, tileAlign);
+                            width: mapping($gallery, characters, tileWidth);
+                            margin: mapping($gallery, characters, tileMargin);
+                            text-transform: mapping($gallery, characters, transform);
+
+                            @media #{$small-down} {
+                                font-size: mapping($gallery, characters, mobFontSize);
+                            }
+                        }
+
+                        @else {
+                            z-index: 1024;
+                            width: auto;
+                            position: absolute;
+                            margin: 0 auto;
+                            left: 50%;
+                            bottom: em(20);
+                            @include transform(translateX(-50%));
+                            @include border-radius(8px);
+                            display: block;
+                            text-align: center;
+                            text-transform: none;
+                            line-height: 26px;
+                            padding: em(8);
+                            font-size: em(26);
+                            letter-spacing: normal;
+
+                            @if mapping($gallery, main, isCharTitleForEnchantimals)==true {
+                                color: mapping($gallery, charListTitle, txtColor);
+                                background-color: mapping($gallery, charListTitle, bgnd);
+                                position: mapping($gallery, charListTitle, pos);
+                                bottom: mapping($gallery, charListTitle, posBtm);
+                                text-align: mapping($gallery, charListTitle, align);
+                                text-transform: mapping($gallery, charListTitle, txtCase);
+                                font-size: mapping($gallery, charListTitle, fontSize);
+                                line-height: mapping($gallery, charListTitle, lineHeight);
+                                font-weight: mapping($gallery, charListTitle, fontWeight);
+                                margin: mapping($gallery, charListTitle, margin);
+                                padding: mapping($gallery, charListTitle, padding);
+                            }
+                        }
+                    }
+
+                    &:hover,
+                    &:focus,
+                    &.active {
+                        img {
+                            opacity: if(mapping($gallery, gallerytileImage, opac), mapping($gallery, gallerytileImage, opac), 0.7);
+                        }
+                    }
+                }
+
+                &>span {
+                    background: mapping($gallery, characters, tileBgnd);
+                    color: mapping($gallery, characters, tileTitleColor);
+                    display: mapping($gallery, characters, tileTitleDisplay);
+                    font-size: mapping($gallery, characters, tileTitleSize);
+                    font-family: mapping($gallery, characters, tileTitleFamily);
+                    font-weight: mapping($gallery, characters, tileTitleWeight);
+                    padding: mapping($gallery, characters, tileTitlePadding);
+                    text-align: mapping($gallery, characters, tileAlign);
+                    width: mapping($gallery, characters, tileWidth);
+                    margin: mapping($gallery, characters, tileMargin);
+
+                    @media #{$medium-only} {
+                        min-height: mapping($gallery, characters, tabHeight);
+                    }
+
+                    @media #{$small-down} {
+                        font-size: mapping($gallery, characters, mobFontSize);
+                        margin-top: mapping($gallery, characters, mobtileMargin);
+                    }
+                }
+            }
+        }
+
+        @if mapping($gallery, characters, isColConfigTrue)==true {
+
+            //@extend .gallery-extnd-tile;
+            ul {
+                &>li {
+                    @if(map-get($gallery, charactersListCol)) {
+                        position: relative;
+                        min-height: 1px;
+                        padding-left: 15px;
+                        padding-right: 15px;
+                        width: map-get($col, mapping($gallery, charactersListCol, mobItem));
+
+                        @media #{$small-up} {
+                            width: map-get($col, mapping($gallery, charactersListCol, tabItem));
+                        }
+
+                        @media #{$large-up} {
+                            width: map-get($col, mapping($gallery, charactersListCol, desItem));
+                        }
+
+                        @media #{$small-up} {
+                            @media #{$large-down} {
+                                $tabItem: if(mapping($gallery, charactersListCol, tabItemToShow), mapping($gallery, charactersListCol, tabItemToShow), mapping($gallery, charactersListCol, itemToShow));
+
+                                &:nth-of-type(1n+#{$tabItem+1}) {
+                                    display: none;
+                                }
+                            }
+                        }
+
+                        @media #{$large-up} {
+                            &:nth-of-type(1n+#{mapping($gallery, charactersListCol, itemToShow)+1}) {
+                                display: none;
+                            }
+                        }
+
+                        @media #{$small-down} {
+                            $mobItem: if(mapping($gallery, charactersListCol, mobItemToShow), mapping($gallery, charactersListCol, mobItemToShow), mapping($gallery, charactersListCol, itemToShow));
+
+                            &:nth-of-type(1n+#{$mobItem+1}) {
+                                display: none;
+                            }
+                        }
+                    }
+
+                    @media #{$large-down} {
+                        margin: mapping($gallery, characters, tileMarginTab);
+                    }
+
+                    @media #{$small-down} {
+                        padding: mapping($gallery, characters, tilePaddingMob);
+                        max-width: mapping($gallery, characters, maxWidthMob);
+                    }
+                }
+            }
+        }
+    }
+
+    @if mapping($gallery, characters, isImageBefore)==true {
+        position: relative;
+        display: inline-block;
+        width: 100%;
+        padding: mapping($gallery, characters, padding);
+
+        @media #{$medium-down} {
+            padding: mapping($gallery, characters, paddingTab);
+        }
+
+        @media #{$small-only} {
+            padding: mapping($gallery, characters, paddingMobOnly);
+        }
+
+        @media #{$small-down} {
+            padding: mapping($gallery, characters, paddingMob);
+        }
+
+        &:before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            top: mapping($gallery, characters, beforeBgndTop);
+            height: mapping($gallery, characters, beforeBgndHght);
+            background: mapping($gallery, characters, beforeBgnd);
+            background-size: mapping($gallery, characters, beforeBgndSize);
+
+            @media #{$medium-down} {
+                background-size: mapping($gallery, characters, beforeBgndSizeTab);
+                height: mapping($gallery, characters, beforeBgndHghtTab);
+            }
+
+            @media #{$medium-down} {
+                background-size: mapping($gallery, characters, beforeBgndSizeMob);
+                top: mapping($gallery, characters, beforeBgndTopTab);
+            }
+
+            @media #{$small-down} {
+                top: mapping($gallery, characters, beforeBgndTopMob);
+            }
+        }
+    }
+
+    @if mapping($gallery, characters, isImageAfter)==true {
+        &:after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            top: mapping($gallery, characters, afterBgndTop);
+            height: mapping($gallery, characters, afterBgndHght);
+            background: mapping($gallery, characters, afterBgnd);
+            background-size: mapping($gallery, characters, afterBgndSize);
+            z-index: mapping($gallery, characters, afterBgndZindx);
+
+            @media #{$medium-down} {
+                background-size: mapping($gallery, characters, afterBgndSizeMob);
+            }
+        }
+    }
+
+    .show-more {
+        background-color: if(mapping($gallery, characters, showMoreBgnd), mapping($gallery, characters, showMoreBgnd), $show-more-block-bg);
+        margin: mapping($gallery, characters, ctaMargin);
+
+        @media #{$small-down} {
+            margin: mapping($gallery, characters, ctaMarginMob);
+        }
+    }
+}
+
+.page-view {
+    >div.play-characters+div.play-characters {
+        background: mapping($gallery, playCharacters, othersCharBgnd);
+
+        .gallery-tile {
+            ul {
+                li {
+                    a {
+                        span {
+                            text-align: mapping($gallery, playCharacters, txtAlignLeft);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+div.play-characters:nth-child(2) {
+    &::after {
+        display: none;
+    }
+}
+
+.character {
+    .play-category-details-component {
+        .play-page-title {
+            h1 {
+                color: if(mapping($gallery, heading, color), mapping($gallery, heading, color), $page-title);
+            }
+        }
+    }
+
+    .play-characters {
+        @if mapping($gallery, charactersPage, isEnchantCharacterPageGallery)==true {
+            .play-page-title {
+                h1 {
+                    color: $enchanpurple;
+                }
+            }
+
+            background: mapping($gallery, charactersPage, bgnd);
+            @include box-shadow(inset 0px -450px 100px -300px #BBE0FF);
+
+            .gallery-title {
+                h2 {
+                    color: mapping($gallery, charactersPage, galHeadingColor);
+                }
+            }
+
+            .gallery-tile {
+                ul {
+                    li {
+                        a {
+                            span {
+                                text-align: mapping($gallery, charactersPage, txtAlignLeft);
+                                color: mapping($gallery, charactersPage, txtColor);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .enable-carousel-nav {
+        .char-tiles {
+            display: none;
+
+            &.slick-initialized {
+                display: block;
+            }
+
+            .slick-track {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            li {
+                a.active {
+                    img {
+                        opacity: mapping($gallery, charactersPage, activeOpacity);
+                    }
+                }
+            }
+        }
+    }
+}
+
+/**/
+/**/
+
+//products-gallery
+.play-products {
+    background: url($product-gallery-bg-path) 0 0 repeat;
+
+    //enchantimals_req
+    //background-image: if(mapping($gallery, playProducts, bgnd), mapping($gallery, playProducts, bgnd), $product-gallery-bg-path);
+    .gallery-title {
+        background-color: if(mapping($gallery, retailerSection, titleBgnd), mapping($gallery, retailerSection, titleBgnd), transparent); //$white);
+
+        h2 {
+            font-weight: if(mapping($gallery, retailerSection, fntweight), mapping($gallery, retailerSection, fntweight), $fontLight);
+            color: mapping($gallery, playProducts, titleColor);
+        }
+
+    }
+
+    .gallery-tile {
+        padding: em(50) em(30) em(16);
+
+        ul {
+            &>li {
+                margin-bottom: em(10);
+
+                a {
+                    background-color: if(mapping($gallery, playProducts, imgBgnd), mapping($gallery, playProducts, imgBgnd), 'transparent');
+
+                    .gallery-image {
+                        @if mapping($gallery, retailerSection, isRounded)==false {
+                            @include border-radius(0);
+                        }
+
+                        @else {
+                            @include border-radius(50%);
+                        }
+
+                        overflow: hidden;
+                        background-color: if(mapping($gallery, playProducts, imgBgnd), mapping($gallery, playProducts, imgBgnd), $white);
+                        outline: none;
+                        padding:if(mapping($gallery, playProducts, imgPad), mapping($gallery, playProducts, imgPad), 0);
+
+                        &:hover {
+                            img {
+                                opacity: 1;
+                            }
+                        }
+                    }
+
+                    span {
+                        margin-top: em(15);
+                        @include border-radius(8px);
+                        display: inline-block;
+                        text-align: center;
+                        font-weight: $fontLight;
+                        line-height: 26px;
+                        padding: 8px;
+                        font-size: 26px;
+                        letter-spacing: normal;
+
+                        @if mapping($gallery, main, isDefaulTitleForRetailer)==true {
+                            color: mapping($gallery, defaultListTitle, color);
+                            background-color: mapping($gallery, defaultListTitle, bgnd);
+                            font-family: mapping($gallery, listTitle, fontFamily);
+                            text-align: mapping($gallery, listTitle, align);
+                            text-transform: mapping($gallery, listTitle, txtCase);
+                            font-size: mapping($gallery, listTitle, fontSize);
+                            line-height: mapping($gallery, listTitle, fontSize);
+                            font-weight: mapping($gallery, listTitle, fontWeight);
+                            margin: mapping($gallery, listTitle, margin);
+                            padding: mapping($gallery, listTitle, padding);
+                            display: mapping($gallery, listTitle, display);
+                            float: if(mapping($gallery, listTitle, float), mapping($gallery, listTitle, float), left);
+                        }
+
+                    }
+                }
+            }
+        }
+
+        @extend .gallery-extnd-tile;
+    }
+}
+
+
+/**/
+
+//image-gallery
+.play-image-gallery {
+    .gallery-title {}
+
+    .gallery-tile {
+        background-color: $litviolet;
+        padding: em(10) em(20);
+
+        ul {
+            &>li {
+                text-align: left;
+
+                a {
+                    &:hover {}
+
+                    span {
+                        width: 100%;
+                        padding: 0;
+                    }
+                }
+            }
+        }
+    }
+}
+
+//image-gallery with download button
+.play-download {
+    position: relative;
+
+    .gallery-tile {
+        @if mapping($layout, main, isFisherPriceNav)==true {
+            padding: mapping($gallery, galleryTileWrap, mobPad);
+
+            ul>li {
+                a {
+                    span.btn-primary {
+                        &.buynow-overlay-txt {
+                            margin-bottom: 15px;
+                            background-color: #1377C9 !important;
+                            font-size: 16px;
+                            @include font-properties($maaxMedium,$localFontVerdana);
+                            font-weight: 500;
+                            line-height: 19px;
+                            text-align: center;
+
+                            @media #{$small-down} {
+                                min-width: inherit;
+                            }
+
+                            &:hover {
+                                background-color: #E51C06 !important;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        @if mapping($layout, main, isRescueHeroes)==true {
+            ul>li {
+                a {
+                    span.btn-primary {
+                        &.buynow-overlay-txt {
+                            background-color: #ed4323 !important;
+                            transform: translate(50%, -50%);
+                            -webkit-transition: 350ms ease;
+                            -o-transition: 350ms ease;
+                            transition: 350ms ease;
+                            text-transform: none;
+                            padding: 21px 50px;
+                            display: none !important;
+                            border-radius: 50px !important;
+                            letter-spacing: .07143em;
+                            text-align: left;
+                            font-size: 1.14286em;
+                            font-weight: 700;
+                            width: auto;
+                            max-width: max-content;
+                            min-width: 50px;
+                            content: "";
+                            position: absolute;
+                            bottom: 50%;
+                            right: 50%;
+                        }
+                    }
+
+                    &:hover {
+                        span.btn-primary.buynow-overlay-txt {
+                            display: block !important;
+
+                            @media #{$small-down} {
+                                display: none !important;
+                            }
+                        }
+                    }
+
+                }
+            }
+        }
+
+        .character-label {
+            @extend .gallery-headings;
+            padding: if(mapping($gallery, download, LabelWrapPad), mapping($gallery, download, LabelWrapPad), em(3) em(0));
+
+            h2 {
+                font-size: if(mapping($gallery, download, labelSize), mapping($gallery, download, labelSize), em(21));
+                height: if(mapping($gallery, download, labelHeight), mapping($gallery, download, labelHeight), 32px);
+                margin: if(mapping($gallery, download, labelMargin), mapping($gallery, download, labelMargin), em(0));
+                text-overflow: if(mapping($gallery, download, LabelTextOverflow), mapping($gallery, download, LabelTextOverflow), ellipsis);
+                overflow: if(mapping($gallery, download, LabelOverflow), mapping($gallery, download, LabelOverflow), hidden);
+                width: if(mapping($gallery, download, LabelWidth), mapping($gallery, download, LabelWidth), 100%);
+                white-space: if(mapping($gallery, download, LabelWhiteSpace), mapping($gallery, download, LabelWhiteSpace), nowrap);
+                padding: if(mapping($gallery, download, LabelPadding), mapping($gallery, download, LabelPadding), em(3) em(0));
+                text-align: mapping($gallery, download, LabelTxtAlign);
+
+                /*white-space:mapping($gallery, download, LabelWhiteSpace);*/
+                @media #{$small-down} {
+                    font-size: mapping($gallery, download, labelMobSize);
+                    margin-top: 6px;
+                    margin-bottom: 0;
+                }
+            }
+
+            //height variables
+            $font-size:1em;
+            $line-height:1.4;
+            $lines-to-show:3;
+
+            p {
+                display: none;
+
+                &:first-child {
+                    display: block;
+                    /* Fallback for non-webkit */
+                    display: -webkit-box;
+                    width: 100%;
+                    height: $font-size*$line-height*$lines-to-show;
+                    /* Fallback for non-webkit */
+                    margin: 0 auto;
+                    font-size: $font-size;
+                    line-height: $line-height;
+                    -webkit-line-clamp: $lines-to-show;
+                    -webkit-box-orient: vertical;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+            }
+
+            ul {
+                &>li {
+                    margin-bottom: em(10);
+
+                    a {
+                        margin: 5px;
+                        color: $white;
+
+                        @media #{$medium-down} {
+                            margin: 0;
+                        }
+
+                        .gallery-image {
+                            background-color: transparent;
+                        }
+                    }
+
+                    .hover-overlay {
+                        position: absolute;
+                        top: 0em;
+                        left: 0;
+                        bottom: 0;
+                        right: 0;
+                        background: rgba(95, 37, 159, .5);
+                        z-index: 99;
+                        opacity: 0; //@include css3(transform, scale(1.1));
+                        // border-radius:50%;
+                        width: 100%;
+                        margin: auto;
+                        @include transition(350ms ease);
+
+                        button {
+                            //@include center();
+                            -webkit-transform: translate(-50%, -50%);
+                            -moz-transform: translate(-50%, -50%);
+                            -ms-transform: translate(-50%, -50%);
+                            -o-transform: translate(-50%, -50%);
+                            transform: translate(-50%, -50%);
+                            top: 50%;
+                            left: 50%;
+                            position: absolute;
+                            padding: .5em;
+                            font-family: ArialBold, Arial, sans-serif;
+                            font-size: em(12);
+                            letter-spacing: 1px;
+                        }
+                    }
+
+                    &:hover {
+                        .hover-overlay {
+                            opacity: 1;
+                        }
+                    }
+                }
+            }
+        }
+
+        @if mapping($gallery, download, isImageWidthAuto)==true {
+            .gallery-image {
+                display: inline-block;
+
+                img {
+                    width: auto;
+                }
+            }
+        }
+
+        @if mapping($gallery, download, isColConfigTrue)==true {
+
+            //@extend .gallery-extnd-tile;
+            ul {
+                &>li {
+
+                    // clear: none !important;
+                    @if(map-get($gallery, downloadListCol)) {
+                        position: relative;
+                        min-height: 1px;
+                        padding-left: 15px;
+                        padding-right: 15px;
+                        z-index: 1;
+                        width: map-get($col, mapping($gallery, downloadListCol, mobItem));
+
+                        @media #{$small-up} {
+                            width: map-get($col, mapping($gallery, downloadListCol, tabItem));
+                        }
+
+                        @media #{$large-up} {
+                            width: map-get($col, mapping($gallery, downloadListCol, desItem));
+                        }
+
+                        @media #{$small-up} {
+                            @media #{$large-down} {
+                                $tabItem: if(mapping($gallery, downloadListCol, tabItemToShow), mapping($gallery, downloadListCol, tabItemToShow), mapping($gallery, downloadListCol, itemToShow));
+
+                                &:nth-of-type(1n+#{$tabItem+1}) {
+                                    display: none;
+                                }
+                            }
+                        }
+
+                        @media #{$large-up} {
+                            &:nth-of-type(1n+#{mapping($gallery, downloadListCol, itemToShow)+1}) {
+                                display: none;
+                            }
+                        }
+
+                        @media #{$small-down} {
+                            $mobItem: if(mapping($gallery, downloadListCol, mobItemToShow), mapping($gallery, downloadListCol, mobItemToShow), mapping($gallery, downloadListCol, itemToShow));
+
+                            &:nth-of-type(1n+#{$mobItem+1}) {
+                                display: none;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        &.plp-tiles {
+            ul>li {
+                text-align: mapping($gallery, plpDownload, tileLiTxtAlign);
+
+                @media #{$small-down} {
+                    width: mapping($gallery, plpDownload, widthMob);
+                    padding-left: mapping($gallery, plpDownload, imgPadLeft);
+                    padding-right: mapping($gallery, plpDownload, imgPadRight);
+                }
+
+                .character-label {
+                    padding: mapping($gallery, plpDownload, charLablPad);
+
+                    h2 {
+                        font-size: mapping($gallery, plpDownload, titleFontSize);
+                        text-align: mapping($gallery, plpDownload, titleTxtAlign);
+                        padding: mapping($gallery, plpDownload, titlePad);
+                        margin: 15px 0px 8px 0px;
+
+                        @media #{$small-up} {
+                            font-size: mapping($gallery, plpDownload, titleFontSizeDesk);
+                            line-height: mapping($gallery, plpDownload, titleLineHeightDesk);
+                        }
+
+                        @media #{$small-down} {
+                            margin-bottom: mapping($gallery, plpDownload, mobTitleMargin);
+                        }
+                    }
+
+                    p {
+                        margin: mapping($gallery, plpDownload, descMargin);
+                        text-align: mapping($gallery, plpDownload, descTxtAlign);
+
+                        @media #{$small-down} {
+                            display: mapping($gallery, plpDownload, descDisp);
+                        }
+                    }
+                }
+
+                .btn-primary {
+                    min-width: 150px;
+                    margin-top: 10px;
+                }
+            }
+        }
+    }
+
+    .gallery-title {
+        h2 {
+            @if mapping($gallery, download, isDefaultHeadingFont)==true {
+                @extend .page-heading-font;
+            }
+
+            -webkit-text-stroke-width: mapping($gallery, download, strokeWidth);
+            -webkit-text-stroke-color: mapping($gallery, download, strokeColor);
+
+            @media #{$small-down} {
+                -webkit-text-stroke-width: mapping($gallery, download, strokeMobWidth);
+            }
+
+        }
+
+        p {
+            @if mapping($gallery, download, isDefaultHeadingFont)==true {
+                @extend .page-heading-font;
+            }
+        }
+    }
+}
+
+.play-tiles-gallery {
+    &.play-download {
+        .gallery-title {
+            h2 {
+                font-size: mapping($gallery, download, labelMobSize);
+            }
+        }
+    }
+}
+
+.play-games {
+    .gallery-tile {
+        ul {
+            padding: 30px;
+
+            &>li {
+                padding: 25px;
+
+                a {
+                    margin: 0;
+
+                    span {
+                        text-align: center;
+                        background-color: $violet;
+                        color: $white;
+                        font-size: em(14);
+                        font-family: "Arial", sans-serif;
+                        padding: em(12);
+                    }
+                }
+            }
+        }
+    }
+}
+
+.play-tiles-gallery {
+    .gallery-tile {
+        .play-list {
+            li {
+                a {
+                    margin: 0;
+
+                    span {
+                        font-size: 1em;
+                        font-family: "Arial", sans-serif;
+                        padding: em(12);
+                        color: $white;
+                        background-color: $violet;
+                    }
+
+                    .playing-overlay {
+                        background-color: rgba(0, 0, 0, 0.7);
+
+                        span {
+                            color: $violet;
+                            background-color: $white;
+                            padding: em(7);
+                        }
+
+                        .play-icon {
+                            i {}
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.videos-gallery-playlist {
+    .play-tiles-gallery .gallery-tile {
+        @extend .gallery-extnd-tile;
+
+    }
+}
+
+.videos-gallery,
+#videos-gallery {
+    .play-tiles-gallery .gallery-tile li {
+        @media #{$medium-only} {
+            @if mapping($gallery, defaultListCol, tabItem)==5 {
+                width: 50%;
+            }
+
+        }
+    }
+}
+
+.others {
+    .gallery-tile {
+        ul {
+            li {
+                @media #{$small-down} {
+                    width: 100%;
+                }
+
+                a {
+                    text-align: center;
+
+                    .character-label {
+                        h2 {
+                            @include font-properties($maax,$localFontVerdana);
+                            font-size: 24px;
+                            line-height: 26px;
+                            font-weight: 500;
+                            margin: 26px 0 17px 0;
+                            text-align: center;
+                            overflow: hidden;
+
+                            @media #{$medium-down} {
+                                font-size: 18px;
+                                line-height: 22px;
+                                margin: 14px 0 3px 0;
+                                @include font-properties($maaxMedium,$localFontVerdana);
+                                font-weight: 500;
+                            }
+                        }
+
+                        p {
+                            text-align: center;
+                            font-size: 18px;
+                            line-height: 28px;
+                            color: #000000;
+                            @include font-properties($maax,$localFontVerdana);
+                            margin-bottom: 18px;
+
+                            @media #{$medium-down} {
+                                font-size: 16px !important;
+                                line-height: 26px !important;
+                                margin-bottom: 12px !important;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

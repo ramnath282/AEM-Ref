@@ -1,0 +1,395 @@
+.bitty-twin-choices {
+    @include print-css(
+        map-merge((
+            padding: 5px 0 10px
+        ),
+        if(variable-exists(bittyTwins) and map-has-key($bittyTwins, bittyTwinsContainer),
+            map-get($bittyTwins,bittyTwinsContainer), ()
+        )
+    ));
+    .bitty-twin-title {
+        @include print-css(
+            map-merge((
+                font-family: $primaryFontFamily,
+                color: $color-dark-grey,
+                font-weight: 600,
+                font-size: 16px,
+                line-height: 20px,
+            ),
+            if(variable-exists(bittyTwins) and map-has-key($bittyTwins, bittyTwinsTitle),
+                map-get($bittyTwins,bittyTwinsTitle), ()
+            )
+        ));
+        span {
+            @include print-css(
+                map-merge((
+                    font-weight: 400,
+                    margin-left: 2px,
+                ),
+                if(variable-exists(bittyTwins) and map-has-key($bittyTwins, bittyTwinsSubTitle),
+                    map-get($bittyTwins,bittyTwinsSubTitle), ()
+                )
+            ));
+        }
+    }
+    section {
+         &.doll-choice-section {
+            @include print-css(
+                map-merge((
+                   overflow: (
+                       defaultVal: auto,
+                       smallUp: hidden,
+                   )
+                ),
+                if(variable-exists(bittyTwins) and map-has-key($bittyTwins, bittyTwinsSection),
+                    map-get($bittyTwins,bittyTwinsSection), ()
+                )
+            ));
+        }
+        &.sleeper-choice-section {
+            overflow: hidden;
+        }
+        ul {
+            @include print-css(
+                map-merge((
+                    margin: 0
+                ),
+                if(variable-exists(bittyTwins) and map-has-key($bittyTwins, bittyTwinsList),
+                    map-get($bittyTwins,bittyTwinsList), ()
+                )
+            ));
+            &.sleeper-choices {
+                li {
+                    @include print-css(
+                        map-merge((
+                            float: left,
+                            margin: 6px 6px 15px 0,
+                        ),
+                        if(variable-exists(bittyTwins) and map-has-key($bittyTwins, bittyTwinsSleeperChoice),
+                            map-get($bittyTwins,bittyTwinsSleeperChoice), ()
+                        )
+                    ));
+                    a {
+                        @include print-css(
+                            map-merge((
+                                position: relative,
+                                display: block,
+                                border-radius: 50%,
+                                border: none
+                            ),
+                            if(variable-exists(bittyTwins) and map-has-key($bittyTwins, bittyTwinsSleeperLink),
+                                map-get($bittyTwins,bittyTwinsSleeperLink), ()
+                            )
+                        ));
+                        img {
+                            @include print-css(
+                                map-merge((
+                                width: 50px,
+                                height: 50px,
+                                border-radius: 50%,
+                                border: 1px solid $white
+                                ),
+                                if(variable-exists(bittyTwins) and map-has-key($bittyTwins, bittyTwinsSleeperimage),
+                                    map-get($bittyTwins,bittyTwinsSleeperimage), ()
+                                )
+                            ));
+                        }
+                        &:hover {
+                            @include print-css(
+                                map-merge((
+                                    border: 1px solid $light-pink
+                                ),
+                                if(variable-exists(bittyTwins) and map-has-key($bittyTwins, bittyTwinsSleeperLinkHover),
+                                    map-get($bittyTwins,bittyTwinsSleeperLinkHover), ()
+                                )
+                            ));
+                            img {
+                                @include print-css(
+                                    map-merge((
+                                    border: 1px solid $light-pink
+                                    ),
+                                    if(variable-exists(bittyTwins) and map-has-key($bittyTwins, bittyTwinsSleeperimage),
+                                        map-get($bittyTwins,bittyTwinsSleeperimage), ()
+                                    )
+                                ));
+                            }
+                        }
+                    }
+                    &.active {
+                        a {
+                            @include print-css(
+                                map-merge((
+                                    border: 1px solid $light-pink
+                                ),
+                                if(variable-exists(bittyTwins) and map-has-key($bittyTwins, bittyTwinsSleeperLinkActive),
+                                    map-get($bittyTwins,bittyTwinsSleeperLinkActive), ()
+                                )
+                            ));
+                            img {
+                                @include print-css(
+                                    map-merge((
+                                    border: 1px solid $light-pink
+                                    ),
+                                    if(variable-exists(bittyTwins) and map-has-key($bittyTwins, bittyTwinsSleeperimage),
+                                        map-get($bittyTwins,bittyTwinsSleeperimage), ()
+                                    )
+                                ));
+                            }
+                        }
+                    }
+                    &.unavailable{
+                        &.active {
+                            a {
+                                border: 1px solid $light-pink;
+                                img {
+                                    border: 1px solid $light-pink;
+                                }
+                            }
+                        }
+                        a {
+                            @include print-css(
+                                map-merge((
+                                    border: 1px solid transparent
+                                ),
+                                if(variable-exists(bittyTwins) and map-has-key($bittyTwins, bittyTwinsDollUnavailable),
+                                    map-get($bittyTwins,bittyTwinsDollUnavailable), ()
+                                )
+                            ));
+                            img {
+                                @include print-css(
+                                    map-merge((
+                                        border: 1px solid $color-grey
+                                    ),
+                                    if(variable-exists(bittyTwins) and map-has-key($bittyTwins, bittyTwinsDollImage),
+                                        map-get($bittyTwins,bittyTwinsDollImage), ()
+                                    )
+                                ));
+                            }
+                            &:after {
+                                @include print-css(
+                                    map-merge((
+                                        content: "",
+                                        top: 0,
+                                        position: absolute,
+                                        height: 100%,
+                                        width: 1px,
+                                        left: 49%,
+                                        transform: rotate(45deg),
+                                        background: $color-grey,
+                                        z-index: 99,
+                                    ),
+                                    if(variable-exists(bittyTwins) and map-has-key($bittyTwins, bittyTwinsDollCross),
+                                        map-get($bittyTwins,bittyTwinsDollCross), ()
+                                    )
+                                ));
+                            }
+                            &:before {
+                                @include print-css(
+                                    map-merge((
+                                        content: "",
+                                        top: 0,
+                                        position: absolute,
+                                        height: 100%,
+                                        width: 100%,
+                                        left: 0,
+                                        background: $white,
+                                        opacity: .3,
+                                        z-index: 9,
+                                        border-radius: 50%,
+                                    ),
+                                    if(variable-exists(bittyTwins) and map-has-key($bittyTwins, bittyTwinsDollOverlay),
+                                        map-get($bittyTwins,bittyTwinsDollOverlay), ()
+                                    )
+                                ));
+                            }
+                        }
+
+                    }
+                }
+            }
+            &.doll-choices {
+                @include print-css(
+                    map-merge((
+                        position: relative,
+                        margin-bottom: 15px,
+                        width: (
+                            defaultVal: 508px,
+                            smallUp: 100%,
+                        ),
+                        overflow: auto,
+                        white-space: nowrap,
+                    ),
+                    if(variable-exists(bittyTwins) and map-has-key($bittyTwins, bittyTwinsDollChoice),
+                        map-get($bittyTwins,bittyTwinsDollChoice), ()
+                    )
+                ));
+                @media #{$medium-up}{
+                    @include print-css(
+                        map-merge((
+                            overflow: inherit,
+                            white-space: initial,
+                        ),
+                        if(variable-exists(bittyTwins) and map-has-key($bittyTwins, bittyTwinsDollChoiceMS),
+                            map-get($bittyTwins,bittyTwinsDollChoiceMS), ()
+                        )
+                    ));
+                }
+                li {
+                    @include print-css(
+                        map-merge((
+                            margin: 6px 6px 0 0,
+                            width: auto,
+                            float: left,
+                        ),
+                        if(variable-exists(bittyTwins) and map-has-key($bittyTwins, bittyTwinsDollChoiceLi),
+                            map-get($bittyTwins,bittyTwinsDollChoiceLi), ()
+                        )
+                    ));
+                    a {
+                        @include print-css(
+                            map-merge((
+                                position: relative,
+                                display: block,
+                                border: 1px solid transparent,
+                            ),
+                            if(variable-exists(bittyTwins) and map-has-key($bittyTwins, bittyTwinsDollChoiceLink),
+                                map-get($bittyTwins,bittyTwinsDollChoiceLink), ()
+                            )
+                        ));
+                        img {
+                            @include print-css(
+                                map-merge((
+                                    max-width: 76px,
+                                    max-height: 76px,
+                                    border: 1px solid $white,
+                                ),
+                                if(variable-exists(bittyTwins) and map-has-key($bittyTwins, bittyTwinsDollImage),
+                                    map-get($bittyTwins,bittyTwinsDollImage), ()
+                                )
+                            ));
+                        }
+                        &:hover {
+                            @include print-css(
+                                map-merge((
+                                    border: 1px solid $light-pink
+                                ),
+                                if(variable-exists(bittyTwins) and map-has-key($bittyTwins, bittyTwinsDollHover),
+                                    map-get($bittyTwins,bittyTwinsDollHover), ()
+                                )
+                            ));
+                            img {
+                                @include print-css(
+                                    map-merge((
+                                        border: 1px solid $light-pink
+                                    ),
+                                    if(variable-exists(bittyTwins) and map-has-key($bittyTwins, bittyTwinsDollImage),
+                                        map-get($bittyTwins,bittyTwinsDollImage), ()
+                                    )
+                                ));
+                            }
+                        }
+                    }
+                    &.active {
+                    a {
+                            @include print-css(
+                                map-merge((
+                                    border: 1px solid $light-pink
+                                ),
+                                if(variable-exists(bittyTwins) and map-has-key($bittyTwins, bittyTwinsDollActive),
+                                    map-get($bittyTwins,bittyTwinsDollActive), ()
+                                )
+                            ));
+                            img {
+                                @include print-css(
+                                    map-merge((
+                                        border: 1px solid $light-pink
+                                    ),
+                                    if(variable-exists(bittyTwins) and map-has-key($bittyTwins, bittyTwinsDollImage),
+                                        map-get($bittyTwins,bittyTwinsDollImage), ()
+                                    )
+                                ));
+                            }
+                        }
+                    }
+                    &.unavailable{
+                        &.active {
+                            a {
+                                border: 1px solid $light-pink;
+                                img {
+                                    border: 1px solid $light-pink;
+                                }
+                                &:after {
+                                    background: $light-pink;
+                                    width: 2px;
+                                }
+                            }
+                        }
+                        a {
+                            @include print-css(
+                                map-merge((
+                                    border: 1px solid transparent
+                                ),
+                                if(variable-exists(bittyTwins) and map-has-key($bittyTwins, bittyTwinsDollUnavailable),
+                                    map-get($bittyTwins,bittyTwinsDollUnavailable), ()
+                                )
+                            ));
+                            img {
+                                @include print-css(
+                                    map-merge((
+                                        border: 1px solid $color-grey
+                                    ),
+                                    if(variable-exists(bittyTwins) and map-has-key($bittyTwins, bittyTwinsDollImage),
+                                        map-get($bittyTwins,bittyTwinsDollImage), ()
+                                    )
+                                ));
+                            }
+                            &:after {
+                                @include print-css(
+                                    map-merge((
+                                        content: "",
+                                        top: -15px,
+                                        position: absolute,
+                                        height: 140%,
+                                        width: 1px,
+                                        left: 49%,
+                                        transform: rotate(45deg),
+                                        background: $color-grey,
+                                        z-index: 99
+                                    ),
+                                    if(variable-exists(bittyTwins) and map-has-key($bittyTwins, bittyTwinsDollUnavailableCross),
+                                        map-get($bittyTwins,bittyTwinsDollUnavailableCross), ()
+                                    )
+                                ));
+                            }
+                            &:before {
+                                @include print-css(
+                                    map-merge((
+                                        content: "",
+                                        top: 0,
+                                        position: absolute,
+                                        height: 100%,
+                                        width: 100%,
+                                        left: 0,
+                                        background: $white,
+                                        opacity: .3,
+                                        border-radius: 50%,
+                                        z-index: 9,
+                                    ),
+                                    if(variable-exists(bittyTwins) and map-has-key($bittyTwins, bittyTwinsDollUnavailableOverlay),
+                                        map-get($bittyTwins,bittyTwinsDollUnavailableOverlay), ()
+                                    )
+                                ));
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+.bitty-twins-section{
+    &.non-buyable-product{
+        cursor: none;
+        pointer-events: none;
+    }
+}

@@ -1,0 +1,86 @@
+.grid-container {   
+    @media #{$small-up} {
+        width: 100%;
+        margin-left: 0;    
+    }
+    @media #{$medium-only} {
+        width: 100%;
+        margin-left: 0;    
+    }
+    .grid-default {
+        @include content-spacing(map-get($grid, gridDefault));
+        @media #{$small-up} {
+            margin: 0 -15px;
+        }
+        @media #{$medium-only} {
+            margin: 0 -10px;
+        }
+        @media #{$large-up} {
+            margin: 0 -15px;
+        }
+        &.grid-sm-1, &.grid-xs-1{
+            .grid-content{
+                @media #{$small-down} {
+                    padding: 0 0 20px 0;
+                }
+            }
+        }
+        &.grid-md-2, &.grid-sm-2, &.grid-xs-2{
+            li:nth-child(odd){
+                @media #{$small-down} {
+                    padding-left: 0;
+                }
+            }
+            li:nth-child(even){
+                @media #{$small-down} {
+                    padding-right: 0;
+                }
+            }
+        } 
+    }   
+    
+    .card  {
+        .card-component {
+            .image-container {
+                margin-bottom: 12px;
+                @media #{$small-up} {
+                    margin-bottom: 20px;        
+                }
+            } 
+            /*.content {
+                @media #{$xsmall-down} {
+                    height: auto !important;      
+                }
+            }*/
+            .text-container {
+                @media #{$xsmall-down} {
+                    margin: 20px 0 10px;      
+                }
+                .main-title {
+                    margin-bottom: 4px;
+                    h5 {
+                        margin-bottom: 0;
+                    }                   
+                }
+                .sub-title {
+                    margin-bottom: 8px;
+                    @media #{$small-up} {
+                        margin-bottom: 12px;        
+                    }
+                }
+                .text-para {
+                    margin-bottom: 16px;
+                    @media #{$small-up} {
+                        margin-bottom: 24px;        
+                    }
+                }
+            }
+        }
+    }
+    
+    
+    
+}
+
+
+

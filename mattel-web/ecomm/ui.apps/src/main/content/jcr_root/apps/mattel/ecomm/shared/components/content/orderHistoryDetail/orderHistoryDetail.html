@@ -1,0 +1,15 @@
+<sly data-sly-test="${wcmmode.edit}">${'Configure Order History Details'@i18n}</sly>
+<div class="order-details">
+<a href="${properties.backToOrderHistoryLink}" class="back-icon hidden-sm hidden-md hidden-lg hidden-xl"><strong>${properties.backToOrderHistoryLabel}</strong></a>
+    <h1 data-sly-test="${properties.orderDetailHeading}">${properties.orderDetailHeading}</h1>
+    <a href="${properties.backToOrderHistoryLink}" class="back-icon back-link hidden-xs">${properties.backToOrderHistoryLabel}</a>
+    <div class="my-order-details">
+      <script id="orderInfo" type="text/x-handlebars-template" 
+			data-sly-include="orderDetail.html">
+        </script>
+        <div id="viewOrderInfo"></div> 
+    </div>
+</div>
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
+    <sly data-sly-call="${clientlib.js @ categories='ecomm.orderHistoryDetail'}"/>
+</sly>

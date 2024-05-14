@@ -1,0 +1,103 @@
+<sly data-sly-test="${wcmmode.edit}">${'Edit Personal-Information
+Component' @i18n}</sly>
+
+<div class="personal-info-body" id="personalInfo">
+	<sly data-sly-test="${properties.pInfoTitle}">
+	<h1>${properties.pInfoTitle}</h1>
+	</sly>
+	<form action="">
+		<script id="editNameTemp" type="text/x-handlebars-template"
+			data-sly-include="editNameTemp.html">
+        </script>
+
+		<script id="editEmailTemp" type="text/x-handlebars-template"
+			data-sly-include="editEmailTemp.html">
+        </script>
+
+		<script id="editPhoneTemp" type="text/x-handlebars-template"
+			data-sly-include="editPhoneTemp.html">
+        </script>
+
+		<script id="editPassTemp" type="text/x-handlebars-template"
+			data-sly-include="editPassTemp.html">
+        </script>
+
+		<script id="editAddressTemp" type="text/x-handlebars-template"
+			data-sly-include="editAddressTemp.html">
+        </script>
+
+		<script id="stateListTemp" type="text/x-handlebars-template"
+			data-sly-include="stateListTemp.html">
+        </script>
+
+		<div class="user-info-editMode hide">
+			<div class="user-info-editModeDiv"></div>
+		</div>
+		<div class="user-info-readMode">
+			<script id="personalInfoDetailsTemp"
+				type="text/x-handlebars-template"
+				data-sly-include="personalInfoDetailsTemp.html">
+            </script>
+
+			<div class="user-info-wrapper" id="personalInfoDetails"></div>
+			<div class="user-info-wrapper">
+				<sly data-sly-test="${properties.cInfoTitle}">
+				<h2 class="header-label">
+					${properties.cInfoTitle} <strong><em>${properties.cInfoOptionalText}</em></strong>
+				</h2>
+				</sly>
+				<form>
+					<script id="childInfoListTemp" type="text/x-handlebars-template"
+						data-sly-include="childInfoListTemp.html">
+                    </script>
+
+					<div class="details-list row" id="childInfoList"></div>
+					<script id="childInfoTemp" type="text/x-handlebars-template"
+						data-sly-include="childInfoTemp.html">                    
+                    </script>
+
+					<div class="child-information-wrapper hide"></div>
+					<div class="add-child-birth">
+						<a href="#"><strong>${properties.addChildLabel}</strong><i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+					</div>
+				</form>
+			</div>
+		</div>
+		<!-- Modal confirm -->
+        <div class="modal" id="confirmModal" style="display: none; z-index: 1050;" tabindex="-1">
+            <div class="modal-dialog modal-md">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><em class="fa fa-times fa-lg"></em></button>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure you want to remove this?
+                    </div>
+                    <div class="modal-footer">                        
+                        <button type="button" class="theme-btn update-info" id="confirmCancel">No</button>
+                        <button type="button" class="theme-btn update-info" id="confirmOk">Yes, remove this</button>
+                    </div>
+                </div>
+            </div>
+        </div>        
+        <!-- Duplicate email popup -->
+        <div class="modal" id="duplicateEmailModal" style="display: none;z-index: 1050" tabindex="-1">
+            <div class="modal-dialog modal-md">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><em class="fa fa-times fa-lg"></em></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>An account with this email already exists.</p>
+                    </div>
+                    <div class="modal-footer"></div>
+                </div>
+            </div>
+        </div>
+	</form>
+</div>
+
+<sly
+	data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
+<sly data-sly-call="${clientlib.js @ categories='ecomm.personalInfo'}" />
+</sly>

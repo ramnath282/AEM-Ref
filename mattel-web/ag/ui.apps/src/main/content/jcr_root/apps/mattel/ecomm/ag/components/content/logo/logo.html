@@ -1,0 +1,22 @@
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
+    <sly data-sly-call="${clientlib.css @ categories='ag.retail.logo'}"/>
+	<sly data-sly-test="${wcmmode.edit}">${'Logo Component' @i18n}</sly>
+     <div class="pull-left">
+	<sly data-sly-test="${properties.url != null }">
+	<sly data-sly-test="${properties.targetUrl =='sameWindow'}">
+		<a href="${properties.url}" class="brand-logo">
+		</sly>
+		<sly data-sly-test="${properties.targetUrl =='tabWindow'}">
+			<a href="${properties.url}" target="_blank"  class="brand-logo">
+			</sly>
+			<sly data-sly-test="${properties.targetUrl =='newWindow'}">
+				<a data-url="${properties.url}" onclick="window.open(this.dataset.url,'AG','width=500, height=500');"  class="brand-logo">
+				</sly>
+			</sly>
+		<img src="${properties.desktopImage}" alt="${properties.alt @i18n}" title="${properties.alt @i18n}"/>
+			<sly data-sly-test="${properties.url != null }">
+	</a>
+	</sly>
+        </div>
+ <sly data-sly-call="${clientlib.js @ categories='ag.retail.logo'}"/>
+ </sly>

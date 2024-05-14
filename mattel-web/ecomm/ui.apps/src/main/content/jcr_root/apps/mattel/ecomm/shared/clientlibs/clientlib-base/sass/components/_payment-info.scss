@@ -1,0 +1,112 @@
+.payment-info-body{
+    .user-info-wrapper {
+        h2 {
+             @include content-spacing(map-get($paymentinfo, h2));
+        }
+        fieldset {
+            ul {
+                li {
+                    display: mapping($paymentinfo, input, display);
+                    margin: 0 em(17) 0 0;
+                    .add-new-address {
+                        &:focus {
+                            text-decoration: mapping($paymentinfo, input, text-decoration);
+                        }
+                    }
+                    .payment-select-label {
+                        @include content-spacing(map-get($paymentinfo, inputLabel));
+                        font: mapping($paymentinfo, inputLabel, font);
+                    }
+                    p{
+                        &.billing_add{
+                            color: mapping($paymentinfo, billingAdd, color);
+                            a{
+                                &:focus {
+                                    text-decoration: mapping($paymentinfo, input, text-decoration);  
+                                }
+                                .add-new-address{
+                                    font: mapping($paymentinfo, billingAdd, font);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .form-input{
+                &.long-input{
+                    max-width: em(569.8);                    
+                }
+                &.medium-input{
+                    max-width: em(341.6);
+                }
+                &.small-input{
+                    width: em(111);
+                     @media #{$small-down} {
+                         width: em(111);
+                     }
+                }
+            } 
+            .address-details {
+                select {
+                    margin: 0;
+                }
+            }
+            div {
+                input {
+                    &.card-number {
+                        background-position: calc(100% - 7px);
+                        background-repeat: no-repeat;
+                    }
+                    &.AMEX {
+                        background-image: url("#{$imagePath}/amex.png");                        
+                    }
+                    &.Visa {
+                        background-image: url("#{$imagePath}/visa.png");
+                    }
+                    &.Mastercard {
+                        background-image: url("#{$imagePath}/mastercard.png");
+                    }
+                    &.Discover {
+                        background-image: url("#{$imagePath}/discover.png");
+                    }
+                }
+            }
+        }
+        .details-list {
+            .details-list-item {
+                &:nth-child(1) {
+                    @include content-spacing(map-get($paymentinfo, listItem));
+                }
+                a{
+                   @include content-spacing(map-get($paymentinfo, anchrorMargin));
+                }
+                float: left;
+            }
+            &.billing-address-ul {
+                margin: mapping($paymentinfo, billingAddUl, margin);
+            }
+            .billing-addressLi {
+                p{
+                    color: mapping($paymentinfo, billingAddLi, color);
+                }
+            }
+        }
+        input {
+            &.theme-btn {
+                &.add-new-card{
+                    @include content-spacing(map-get($paymentinfo, themeButton));
+                     &.transparent-btn-border {
+                        @include content-spacing(map-get($paymentinfo, transparentButton));
+                    }
+                }
+                &.cancel-card{
+                    color: mapping($paymentinfo, cancelBtn, color); 
+                    font: mapping($paymentinfo, cancelBtn, font);
+                }
+                &.update-payment-info{
+                     @include content-spacing(map-get($paymentinfo, addthisCard));
+                }
+            }
+        }
+    }
+}

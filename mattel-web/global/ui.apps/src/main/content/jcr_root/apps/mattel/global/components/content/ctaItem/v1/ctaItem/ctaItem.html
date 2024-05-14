@@ -1,0 +1,39 @@
+<sly data-sly-test="${wcmmode.edit}">${'Configure CTA Item' @i18n}</sly>
+<sly data-sly-use.ctaItem="com.mattel.global.core.model.v1.CtaItemModel" />
+<sly data-sly-test="${!(ctaItem.useInterstitial || ctaItem.useInterstitialParent)}">
+	<div class="cta-item ${ctaItem.onlyCTA ? 'btn-first-cta-margin' : ''} ${properties.imagePath ? 'cta-with-image' : ''}" data-sly-test="${ctaItem.linkText && ctaItem.url}">
+		<img data-sly-test="${properties.imagePath}" src="${properties.imagePath}" class="${properties.mobileThumbnailPath && properties.enableMobileThumbnail ? 'visible-md visible-lg visible-sm' : ''}" />
+		<img data-sly-test="${properties.mobileThumbnailPath && properties.enableMobileThumbnail}" src="${properties.mobileThumbnailPath}" class="visible-xs"/>
+		<sly data-sly-test="${ctaItem.linkOptions == 'newTab' || ctaItem.linkOptions == 'self'}" >
+			<a data-sly-attribute.class="cta_button_tracking ${properties.imagePath ? '' : 'btn-cta-item'}" data-type="click" data-sly-attribute.data-section="${properties.trackThisCTA ? properties.trackingText : ''}" data-component="cta" data-sly-attribute.data-cta="${properties.trackThisCTA ? properties.trackingText : ''}"  aria-label="${ctaItem.linkAltText}" href="${ctaItem.url @ context = 'attribute'}" data-sly-attribute.data-tracking-cta-id="${properties.trackThisCTA ? properties.trackingText : ''}"  data-sly-attribute.data-price-spider="${properties.priceSpiderCtaTrack ? properties.trackingText : ''}" style="background-color : ${ctaItem.fillColor @ context = 'styleToken'}" data-sly-attribute.target="${ctaItem.linkOptions == 'newTab' ? '_blank' : '_self' }" role="button">${ctaItem.linkText @ context = 'html',i18n}</a>
+		</sly>
+		<sly data-sly-test="${ctaItem.linkOptions == 'download'}" >
+			<a data-sly-attribute.class="cta_button_tracking ${properties.imagePath ? '' : 'btn-cta-item'}" data-type="click" data-sly-attribute.data-section="${properties.trackThisCTA ? properties.trackingText : ''}" data-component="cta" data-sly-attribute.data-cta="${properties.trackThisCTA ? properties.trackingText : ''}" aria-label="${ctaItem.linkAltText}" href="${ctaItem.url @ context = 'attribute'}" data-sly-attribute.data-tracking-cta-id="${properties.trackThisCTA ? properties.trackingText : ''}" data-sly-attribute.data-price-spider="${properties.priceSpiderCtaTrack ? properties.trackingText : ''}" style="background-color : ${ctaItem.fillColor @ context = 'styleToken'}" download role="button">${ctaItem.linkText @ context = 'html',i18n}</a>
+		</sly>
+		<sly data-sly-test="${ctaItem.linkOptions == 'blank'}" >
+			<a data-sly-attribute.class="cta_button_tracking ${properties.imagePath ? '' : 'btn-cta-item'}" data-type="click" data-sly-attribute.data-section="${properties.trackThisCTA ? properties.trackingText : ''}" data-component="cta" data-sly-attribute.data-cta="${properties.trackThisCTA ? properties.trackingText : ''}" aria-label="${ctaItem.linkAltText}" data-sly-attribute.data-tracking-cta-id="${properties.trackThisCTA ? properties.trackingText : ''}" data-sly-attribute.data-price-spider="${properties.priceSpiderCtaTrack ? properties.trackingText : ''}" style="background-color : ${ctaItem.fillColor @ context = 'styleToken'}" onclick="window.open('${ctaItem.url @ context = 'attribute'}','FP','width=500, height=500');" role="button">${ctaItem.linkText @ context = 'html',i18n}</a>
+		</sly>
+		<sly data-sly-test="${ctaItem.linkOptions == 'gotogrid'}" >
+			<a data-sly-attribute.class="cta_button_tracking shopNowFocus ${properties.imagePath ? '' : 'btn-cta-item'}" data-type="click" data-sly-attribute.data-section="${properties.trackThisCTA ? properties.trackingText : ''}" data-component="cta" data-sly-attribute.data-cta="${properties.trackThisCTA ? properties.trackingText : ''}" aria-label="${ctaItem.linkAltText}" data-sly-attribute.data-tracking-cta-id="${properties.trackThisCTA ? properties.trackingText : ''}" data-sly-attribute.data-price-spider="${properties.priceSpiderCtaTrack ? properties.trackingText : ''}" style="background-color : ${ctaItem.fillColor @ context = 'styleToken'}" download role="button">${ctaItem.linkText @ context = 'html',i18n}</a>
+		</sly>
+	</div>
+</sly>
+<sly data-sly-test="${ctaItem.useInterstitial && ctaItem.interstitialPath && ctaItem.linkText}">
+	<div class="cta-item cta-interstitial">
+		<a class="btn-cta-item cta_useInterstitial_tracking modal-anchor" data-type="click" data-sly-attribute.data-section="${properties.trackThisCTA ? properties.trackingText : ''}" data-component="cta" data-sly-attribute.data-cta="${properties.trackThisCTA ? properties.trackingText : ''}"  data-sly-attribute.data-tracking-cta-id="${properties.trackThisCTA ? properties.trackingText : ''}"  data-sly-attribute.data-price-spider="${properties.priceSpiderCtaTrack ? properties.trackingText : ''}" data-sly-attribute.data-url="${ctaItem.url}" data-toggle="modal" stylet="background-color : ${ctaItem.fillColor @ context = 'styleToken'}" role="button">${ctaItem.linkText @ context = 'html',i18n}</a>
+		<div class="${ctaItem.interstitialType} interstitialmodal-global">
+			<article data-sly-resource = "${@path=ctaItem.interstitialPath, selectors='content', wcmmode='disabled'}" data-sly-unwrap>
+			</article>
+		</div>
+</sly>
+<sly data-sly-test="${ctaItem.useInterstitialParent && !ctaItem.useInterstitial && ctaItem.interstitialPath && ctaItem.linkText}">
+	<div class="cta-item cta-interstitial">
+		<a class="btn-cta-item cta_useInterstitial_tracking modal-anchor" data-type="click" data-sly-attribute.data-section="${properties.trackThisCTA ? properties.trackingText : ''}" data-component="cta" data-sly-attribute.data-cta="${properties.trackThisCTA ? properties.trackingText : ''}" data-sly-attribute.data-tracking-cta-id="${properties.trackThisCTA ? properties.trackingText : ''}"  data-sly-attribute.data-price-spider="${properties.priceSpiderCtaTrack ? properties.trackingText : ''}" data-sly-attribute.data-url="${ctaItem.url}" data-toggle="modal" style="background-color : ${ctaItem.fillColor @ context = 'styleToken'}" role="button">${ctaItem.linkText @ context = 'html',i18n}</a>
+		<div class="${ctaItem.interstitialType} interstitialmodal-global" data-sly-resource = "${ @ path= ctaItem.interstitialPath,wcmmode='disabled'}">
+		</div>
+	</div>
+</sly>
+
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
+	<sly data-sly-call="${clientlib.js @ categories='global.ctaItem'}"/>
+</sly>

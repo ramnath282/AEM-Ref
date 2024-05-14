@@ -1,0 +1,755 @@
+.productGrid {
+
+    // important is given to overwrite the default AEM padding and make our style apply
+    @media #{$small-up} {
+        padding-right: 29px !important;
+    }
+
+    .product-grid-no-search-result-txt.hide {
+        display: mapping($productTilesProp, itemCount, itemCountDis);
+        min-width: mapping($productTilesProp, itemCount, itemCountWidth);
+        bottom: mapping($productTilesProp, itemCount, itemCountBot);
+        position: mapping($productTilesProp, itemCount, itemCountposition);
+        z-index: mapping($productTilesProp, itemCount, itemCountzindex);
+        margin-left: mapping($productTilesProp, itemCount, itemCountmargin);
+        font-size: mapping($productTilesProp, itemCount, itemCountSize);
+        font-style: mapping($productTilesProp, itemCount, itemCountStyle);
+    }
+
+    .grid-sort {
+        //background-color:mapping($productTilesProp, sortDropdownGrid, sortConBG);
+        position: mapping($productTilesProp, sortDropdownGrid, sortConPos);
+        text-align: mapping($productTilesProp, sortDropdownGrid, sortConText);
+        padding: mapping($productTilesProp, sortDropdownGrid, sortConPad);
+        margin: mapping($productTilesProp, sortDropdownGrid, sortConMar);
+        float: mapping($productTilesProp, sortDropdownGrid, sortConFloat);
+        width: mapping($productTilesProp, sortDropdownGrid, sortConWidth);
+        border-bottom: 2px solid #E5E0DC;
+        opacity: mapping($productTilesProp, sortDropdownGrid, sortOpacity);
+
+        &.show-sort {
+            opacity: mapping($productTilesProp, sortDropdownGrid, activeOpacity);
+        }
+
+        @media #{$medium-down} {
+            display: mapping($productTilesProp, sortDropdownGrid, tabDropDown);
+            //margin:mapping($productTilesProp, sortDropdownGrid, tabsortConMar);
+        }
+
+        @media #{$small-down} {
+            display: mapping($productTilesProp, sortDropdownGrid, mobDropDown);
+
+        }
+
+        &.hide {
+            @media #{$medium-down} {
+                display: mapping($productTilesProp, sortDropdownGrid, mobDropDown);
+            }
+
+        }
+
+        .custom-dropdown-toggle {
+            height: mapping($productTilesProp, sortDropdownGrid, dropDownHeight);
+            width: mapping($productTilesProp, sortDropdownGrid, dropDownWidth);
+            position: mapping($productTilesProp, sortDropdownGrid, dropDownPos);
+            text-align: mapping($productTilesProp, sortDropdownGrid, dropDownText);
+            margin-left: mapping($productTilesProp, sortDropdownGrid, marginLeft);
+            box-shadow: mapping($productTilesProp, sortDropdownGrid, boxShadow);
+            line-height: 0;
+
+            @media #{$medium-down} {
+                width: mapping($productTilesProp, sortDropdownGrid, TabdropDownWidth);
+            }
+
+            .text {
+                @include font-properties($maax,$localFontVerdana);
+                font-size: 14px;
+                font-weight: 400;
+                color: #000000;
+            }
+
+            &:before {
+                position: mapping($productTilesProp, sortDropdownGrid, dDpos);
+                content: mapping($productTilesProp, sortDropdownGrid, dDContent);
+                right: mapping($productTilesProp, sortDropdownGrid, dDRight);
+                top: mapping($productTilesProp, sortDropdownGrid, dDTop);
+                display: mapping($productTilesProp, sortDropdownGrid, dDDis);
+                background-image: url($spriteImgPath);
+                background-repeat: no-repeat;
+                width: 28px;
+                height: 24px;
+                background-position: -28px 0px;
+
+            }
+
+            &:after {
+                position: mapping($productTilesProp, sortDropdownGrid, dDpos);
+                content: mapping($productTilesProp, sortDropdownGrid, arrowContent);
+                @include font-awesome;
+                color: mapping($productTilesProp, sortDropdownGrid, arrowColor);
+                font-size: mapping($productTilesProp, sortDropdownGrid, arrowFont);
+                right: mapping($productTilesProp, sortDropdownGrid, arrowRight);
+                top: mapping($productTilesProp, sortDropdownGrid, arrowTop);
+
+            }
+
+            &:hover,
+            &:focus {
+                background: mapping($productTilesProp, sortDropdownGrid, focusBG);
+                outline: mapping($productTilesProp, sortDropdownGrid, outline);
+            }
+        }
+
+        .dropdown-menu {
+            left: mapping($productTilesProp, dropDownList, dropDownLeft);
+            right: mapping($productTilesProp, dropDownList, dropDownRight);
+            width: mapping($productTilesProp, dropDownList, dropDownWidth);
+            top: mapping($productTilesProp, dropDownList, dropDownTop);
+            z-index: mapping($productTilesProp, dropDownList, dropDownZindex);
+            border-radius: mapping($productTilesProp, dropDownList, borderRadius);
+            margin: 0px;
+            padding: 0px;
+
+            @media #{$medium-down} {
+                width: mapping($productTilesProp, sortDropdownGrid, TabdropDownWidth);
+            }
+
+            ul.inner {
+                margin: 0;
+                //&.inner li{
+                //padding:14px;
+                //}
+            }
+
+            li {
+                a {
+                    display: mapping($productTilesProp, dropDownList, hrefDis);
+                    //margin:  mapping($productTilesProp, dropDownList, hrefMar);
+                    color: mapping($productTilesProp, dropDownList, hrefColor);
+                    padding: 3px 20px;
+                    height: 32px;
+                    line-height: 25px;
+                    font-size: 14px;
+                    font-weight: 700;
+                    @include font-properties($maaxMedium,$localFontVerdana);
+
+                    span {
+                        line-height: 26px;
+                    }
+
+                    &:focus {
+                        background: mapping($productTilesProp, sortDropdownGrid, focusBG);
+                        outline: none;
+                    }
+
+                }
+
+                &:hover {
+                    background: mapping($productTilesProp, sortDropdownGrid, HoverBG);
+                }
+            }
+        }
+    }
+
+
+    .product-title-bar {
+        padding: mapping($productTilesProp, productTile, productTilePad);
+        font: mapping($productTilesProp, productTile, productTileFont);
+        margin: mapping($productTilesProp, productTile, productTileMar);
+        display: mapping($productTilesProp, productTile, productTileDis);
+        line-height: mapping($productTilesProp, productTile, productTileLH);
+        height: mapping($productTilesProp, productTile, productTileHeight);
+
+        @media #{$small-down} {
+            padding: mapping($productTilesProp, sortDropdownGrid, mobpadDropDown);
+            font: mapping($productTilesProp, sortDropdownGrid, mobFont);
+            margin: mapping($productTilesProp, productTile, MobproductTileMar);
+            display: mapping($productTilesProp, productTile, MobDisplay);
+            text-align: mapping($productTilesProp, productTile, MobAlign);
+            line-height: mapping($productTilesProp, productTile, MobproductTileLH);
+        }
+    }
+
+    .total-reviews {
+        color: mapping($productTilesProp, reviewList, reviewListColor);
+        display: mapping($productTilesProp, reviewList, reviewListDis);
+        overflow: mapping($productTilesProp, reviewList, reviewListFlow);
+        font-size: mapping($productTilesProp, reviewList, countFontSize);
+        margin: mapping($productTilesProp, reviewList, reviewMar);
+        position: mapping($productTilesProp, reviewList, reviewPos);
+        top: mapping($productTilesProp, reviewList, reviewLeft);
+
+        //line-height: mapping($productTilesProp, reviewList, reviewLineHeight);
+        @media #{$small-down} {
+            top: mapping($productTilesProp, reviewList, mobreviewLeft);
+        }
+    }
+
+    .grid-lists {
+        &.grid-col-1 {
+            li {
+                width: mapping($productTilesProp, gridColum, gridColumn1);
+            }
+        }
+
+        &.grid-col-2 {
+            li {
+                width: mapping($productTilesProp, gridColum, gridColumn2);
+            }
+        }
+
+        &.grid-col-3 {
+            li {
+                width: mapping($productTilesProp, gridColum, gridColumn3);
+
+                @media #{$medium-down} {
+                    width: mapping($productTilesProp, productList, productTabWidth);
+                }
+
+                @media #{$small-down} {
+                    width: mapping($productTilesProp, productList, productTabWidth);
+                }
+            }
+        }
+
+        &.grid-col-4 {
+            li {
+                width: mapping($productTilesProp, gridColum, gridColumn3);
+
+                @media #{$medium-down} {
+                    width: mapping($productTilesProp, productList, productTabWidth);
+                }
+
+                @media #{$small-down} {
+                    width: mapping($productTilesProp, productList, productTabWidth);
+                    padding: mapping($productTilesProp, productList, productTabPadding);
+                }
+            }
+        }
+
+        li {
+            padding: mapping($productTilesProp, productList, productListPad);
+            float: mapping($productTilesProp, productList, productListFloat);
+            position: mapping($productTilesProp, productList, productListPos);
+            margin: mapping($productTilesProp, productList, productListMar);
+            height: mapping($productTilesProp, gridColum, gridHeight);
+
+            @media #{$medium-down} {
+                height: mapping($productTilesProp, gridColum, tabgridHeight);
+                margin-bottom: mapping($productTilesProp, gridColum, productListMarBottom);
+            }
+            
+            @media #{$small-down} {
+                height: mapping($productTilesProp, gridColum, mobgridHeight);
+                margin-bottom: mapping($productTilesProp, gridColum, productListMarBottom);
+            }
+      
+           .grid-title-wrapper {
+                margin: mapping($productTilesProp, gridTitle, gridTitleMar);
+                line-height: mapping($productTilesProp, gridTitle, lineHeight);
+                .grid-title {
+                    @include font-properties($maax,$localFontVerdana);
+                    font-size: 18px;
+                    font-weight: 300;
+                    color: #000;
+                    line-height: mapping($productTilesProp, gridTitle, spanlineHeight);
+
+                    @media #{$small-down} {
+                        font-size: mapping($productTilesProp, reviewList, mobreviewListFont);
+                        line-height: mapping($productTilesProp, reviewList, mobreviewLine);
+                    }
+                }
+            }
+
+            .quick-view {
+                display: mapping($productTilesProp, quickView, viewDisplay);
+            }
+
+            .product-badge:not(:empty) {
+                display: mapping($productTilesProp, productBadge, productBadgeDisplay);
+                align-items: mapping($productTilesProp, productBadge, productBadgeAlignItem);
+                @include font-properties($maaxBold,$localFontVerdana);
+                font-size: 14px;
+                font-weight: 700;
+                letter-spacing: mapping($productTilesProp, productBadge, productBadgeSpc);
+                height: mapping($productTilesProp, productBadge, productBadgeHeight);
+                color: mapping($productTilesProp, productBadge, productBadgeColor);
+                text-align: mapping($productTilesProp, productBadge, productBadgeAlign);
+                padding: mapping($productTilesProp, productBadge, productBadgePad);
+                line-height: mapping($productTilesProp, productBadge, productBadgeLH);
+                margin: mapping($productTilesProp, productBadge, productBadgeMar);
+                border-radius: mapping($productTilesProp, productBadge, productBadgeBR);
+                overflow: mapping($productTilesProp, productBadge, productBadgeHD);
+                margin-top: mapping($productTilesProp, productBadge, productBadgeMarginTop);
+
+                @media #{$medium-down} {
+                    margin-top: mapping($productTilesProp, productBadge, TabBadgeMarginTop);
+                }
+
+                @media #{$small-down} {
+                    min-height: 22px;
+                    height: 22px;
+                    font-size: 12px;
+                    overflow: visible;
+                }
+
+                img {
+                    margin-right: mapping($productTilesProp, productBadgeImg, marginRight);
+                    vertical-align: mapping($productTilesProp, productBadgeImg, bgAlign);
+
+                    @media #{$small-down} {
+                        display: none;
+                    }
+                }
+            }
+
+            .product-info {
+                position: mapping($productTilesProp, productInfo, productInfoPos);
+                padding: mapping($productTilesProp, productInfo, productInfoPad);
+                min-height: mapping($productTilesProp, productInfo, productInfoMin);
+                border-bottom: mapping($productTilesProp, productInfo, productInfoBor);
+
+                @media #{$small-down} {
+                    padding: mapping($productTilesProp, productInfo, mobproductInfoPad);
+                }
+
+                .product-badge {
+                    display: mapping($productTilesProp, productBadge, productBadgeDisplay);
+                    font: mapping($productTilesProp, productBadge, productBadgeFont);
+                    letter-spacing: mapping($productTilesProp, productBadge, productBadgeSpc);
+                    height: mapping($productTilesProp, productBadge, productBadgeHeight);
+                    color: mapping($productTilesProp, productBadge, productBadgeColor);
+                    background-color: mapping($productTilesProp, productBadge, productBadgeBG);
+                    text-align: mapping($productTilesProp, productBadge, productBadgeAlign);
+                    padding: mapping($productTilesProp, productBadge, productBadgePad);
+                    line-height: mapping($productTilesProp, productBadge, productBadgeLH);
+                    margin: mapping($productTilesProp, productBadge, productBadgeMar);
+                    border-radius: mapping($productTilesProp, productBadge, productBadgeBR);
+                    overflow: mapping($productTilesProp, productBadge, productBadgeHD);
+                  
+                  &:empty{
+                        display:none!important
+                   }
+                }
+
+                .product-price {
+                    color: mapping($productTilesProp, productList, priceColor);
+                    margin: mapping($productTilesProp, productList, priceMar);
+                    padding: mapping($productTilesProp, productList, pricePad);
+                    line-height: mapping($productTilesProp, productList, linePricePad);
+
+                    @media #{$small-down} {
+                        margin: mapping($productTilesProp, productList, MobpriceMar);
+                    }
+
+                    span {
+                        @include font-properties($maaxMedium,$localFontVerdana);
+                        font-size: 20px;
+                        font-weight: 500;
+                        display: mapping($productTilesProp, productInfo, priceDis);
+                        line-height: mapping($productTilesProp, productInfo, lineHeight);
+
+                        @media #{$medium-down} {
+                            font-size: mapping($productTilesProp, productList, MobpriceFont);
+                        }
+                    }
+
+                }
+
+                .promo-text {
+                    display: mapping($productTilesProp, productInfo, productInfoDis);
+                }
+            }
+
+            >a {
+                position: mapping($productTilesProp, productInfo, hrefPosition);
+                height: mapping($productTilesProp, productInfo, hrefHeight);
+                width: mapping($productTilesProp, productInfo, hrefWidth);
+                display: mapping($productTilesProp, productInfo, hrefDisplay);
+                align-items: mapping($productTilesProp, productInfo, hrefAlignitems);
+                justify-content: mapping($productTilesProp, productInfo, hrefJustify);
+                margin: mapping($productTilesProp, productInfo, imgMargin);
+
+                @media #{$medium-down} {
+                    width: mapping($productTilesProp, productInfo, TabInfoWidth);
+                }
+
+                @media #{$small-down} {
+                    height: mapping($productTilesProp, gridColum, mobgridHeightAuto);
+                    width: mapping($productTilesProp, productInfo, mobileInfoWidth);
+                }
+
+                >img {
+                    max-height: mapping($productTilesProp, productInfo, imgMaxheight);
+                }
+            }
+
+            &.zero-result,
+            &.zero-result.scroll-loaded {
+                width: 100%;
+                height: auto;
+                font-size: 32px;
+                margin: 0;
+            }
+        }
+    }
+
+    .product-reviews {
+        margin: mapping($productTilesProp, reviewList, reviewListMar);
+        overflow: mapping($productTilesProp, reviewList, reviewListFlow);
+        line-height: mapping($productTilesProp, reviewList, reviewLine);
+    }
+
+    .rating-section {
+        &.rating-1 {
+            background-position: mapping($productTilesProp, reviewList, reviewBGPos10);
+        }
+
+        &.rating-1-1,
+        &.rating-1-2,
+        &.rating-1-3,
+        &.rating-1-4,
+        &.rating-1-5 {
+            background-position: mapping($productTilesProp, reviewList, reviewBGPos15);
+        }
+
+        &.rating-1-6,
+        &.rating-1-7,
+        &.rating-1-8,
+        &.rating-1-9,
+        &.rating-2 {
+            background-position: mapping($productTilesProp, reviewList, reviewBGPos20);
+        }
+
+        &.rating-2-1,
+        &.rating-2-2,
+        &.rating-2-3,
+        &.rating-2-4,
+        &.rating-2-5 {
+            background-position: mapping($productTilesProp, reviewList, reviewBGPos25);
+        }
+
+        &.rating-2-6,
+        &.rating-2-7,
+        &.rating-2-8,
+        &.rating-2-9,
+        &.rating-3 {
+            background-position: mapping($productTilesProp, reviewList, reviewBGPos30);
+        }
+
+        &.rating-3-1,
+        &.rating-3-2,
+        &.rating-3-3,
+        &.rating-3-4,
+        &.rating-3-5 {
+            background-position: mapping($productTilesProp, reviewList, reviewBGPos35);
+        }
+
+        &.rating-3-6,
+        &.rating-3-7,
+        &.rating-3-8,
+        &.rating-3-9,
+        &.rating-4 {
+            background-position: mapping($productTilesProp, reviewList, reviewBGPos40);
+        }
+
+        &.rating-4-1,
+        &.rating-4-2,
+        &.rating-4-3,
+        &.rating-4-4,
+        &.rating-4-5 {
+            background-position: mapping($productTilesProp, reviewList, reviewBGPos45);
+        }
+
+        &.rating-4-6,
+        &.rating-4-7,
+        &.rating-4-8,
+        &.rating-4-9,
+        &.rating-5 {
+            background-position: mapping($productTilesProp, reviewList, reviewBGPos50);
+        }
+
+        &.rating-0 {
+            background-position: mapping($productTilesProp, reviewList, reviewBGPos100);
+        }
+
+        background: transparent url($spriteImgPath) no-repeat 0px -141px;
+        width: mapping($productTilesProp, reviewList, reviewListWidth);
+        height: mapping($productTilesProp, reviewList, reviewListHeight);
+        margin-left:5px;
+        float: mapping($productTilesProp, reviewList, reviewListFloat);
+    }
+
+    #see-more {
+        width: mapping($productTilesProp, seemoreButton, BtnConWidth);
+        float: mapping($productTilesProp, seemoreButton, BtnConFloat);
+        text-align: mapping($productTilesProp, seemoreButton, BtnConText);
+        margin: mapping($productTilesProp, seemoreButton, BtnMrgnTop);
+
+        @media #{$small-down} {
+            margin: mapping($productTilesProp, seemoreButton, mobileMarginTop);
+        }
+
+        .theme-btn {
+            position: relative;
+            min-width: 187px;
+            padding: 16px 30px;
+            @include font-properties($maaxMedium,$localFontVerdana);
+            font-weight: normal;
+            background-color: $lbk-blue !important;
+            font-size: 16px;
+            margin: 0;
+            text-transform: inherit;
+
+            @media #{$small-down} {
+                min-width: 180px;
+                padding: 10px 30px;
+            }
+
+            &:before {
+                content: mapping($productTilesProp, seemoreButton, spContent);
+                background-image: url($spriteImgPath);
+                @include font-awesome;
+                line-height: mapping($productTilesProp, seemoreButton, spLH);
+                position: mapping($productTilesProp, seemoreButton, spPos);
+                top: mapping($productTilesProp, seemoreButton, spTop);
+                margin-right: mapping($productTilesProp, seemoreButton, spMarg);
+                font-size: mapping($productTilesProp, seemoreButton, spFont);
+                width: 24px;
+                height: 24px;
+                background-position: -184px -141px;
+            }
+
+            &:hover {
+                background-color: $lbk-red !important;
+            }
+        }
+    }
+
+    //Tab view css
+    .dropdown-backdrop {
+        @media #{$medium-down} {
+            z-index: 1;
+        }
+    }
+
+    .theme-btn {
+        margin-top: 0px;
+    }
+
+    .product-grid-no-search-result-txt {
+        display: none;
+    }
+
+    .plp-search-container.plp-no-search {
+        display: none;
+    }
+
+    .product-grid-no-results-heading {
+        background-color: mapping($productTilesProp, headerStrip, headerStripBG);
+        padding: mapping($productTilesProp, headerStrip, headerStripPad);
+        margin: mapping($productTilesProp, headerStrip, headerStripMar);
+        font-size: mapping($productTilesProp, headerStrip, headerStripFont);
+        @include font-properties($maaxMedium,$localFontVerdana);
+        //text-transform:mapping($productTilesProp, headerStrip, headerStripTF);
+        color: mapping($productTilesProp, headerStrip, headerStripColor);
+        border-bottom: mapping($productTilesProp, headerStrip, borderStripColor);
+
+        @media #{$small-down} {
+            margin: mapping($productTilesProp, headerStrip, mobheaderStripMar);
+            text-align: mapping($productTilesProp, headerStrip, mobAlign);
+            font-size: mapping($productTilesProp, headerStrip, mobFont);
+            padding: 0 0 10px;
+        }
+
+    }
+}
+
+.category-aside-section {
+    .rating-section {
+        &.rating-1 {
+            background-position: mapping($productTilesProp, reviewList, reviewBGPos10);
+        }
+
+        &.rating-1-5 {
+            background-position: mapping($productTilesProp, reviewList, reviewBGPos15);
+        }
+
+        &.rating-2-00 {
+            background-position: mapping($productTilesProp, reviewList, reviewBGPos20);
+        }
+
+        &.rating-2-50 {
+            background-position: mapping($productTilesProp, reviewList, reviewBGPos25);
+        }
+
+        &.rating-3-00 {
+            background-position: mapping($productTilesProp, reviewList, reviewBGPos30);
+        }
+
+        &.rating-3-50 {
+            background-position: mapping($productTilesProp, reviewList, reviewBGPos35);
+        }
+
+        &.rating-4-00 {
+            background-position: mapping($productTilesProp, reviewList, reviewBGPos40);
+        }
+
+        &.rating-4-50 {
+            background-position: mapping($productTilesProp, reviewList, reviewBGPos45);
+        }
+
+        &.rating-5-00 {
+            background-position: mapping($productTilesProp, reviewList, reviewBGPos50);
+        }
+
+        background: transparent url($starImg) no-repeat 1100% 200%;
+        width: mapping($productTilesProp, reviewList, reviewListWidth);
+        height: mapping($productTilesProp, reviewList, reviewListHeight);
+        // height: 1.3em;
+        // width: 6.71429em;
+        margin-left:5px;
+        float: mapping($productTilesProp, reviewList, reviewListFloat);
+
+    }
+}
+
+.product-grid-text-container,
+.product-grid-search-result {
+    float: left;
+    height: 33px;
+    font-size: 32px;
+    @include font-properties($maaxBold,$localFontVerdana);
+    font-weight: 700;
+    margin-right: 10px;
+    position: relative;
+    top: -14px;
+    display: none;
+}
+
+.bc-title>span {
+    font-weight: mapping($productTilesProp, searchNotFound, fontWight);
+    @include font-properties($letsBeGlyphs,$localFontInfo);
+    font-size: mapping($productTilesProp, searchNotFound, fontSize);
+    display: inline-block;
+
+    @media #{$small-down} {
+        font-weight: mapping($productTilesProp, searchNotFound, mobfontWight);
+        font-size: mapping($productTilesProp, searchNotFound, mobfontSize);
+    }
+}
+
+
+.search-result,
+.nosearchResult {
+    display: mapping($productTilesProp, searchNotFound, searchNFDis);
+    font-weight: mapping($productTilesProp, searchNotFound, fontWight);
+    @include font-properties($letsBeGlyphs,$localFontInfo);
+    font-size: mapping($productTilesProp, searchNotFound, fontSize);
+    color: #000000;
+
+    line-height: 36px;
+
+    @media #{$small-down} {
+        font-weight: mapping($productTilesProp, searchNotFound, mobfontWight);
+        font-size: mapping($productTilesProp, searchNotFound, mobfontSize);
+    }
+}
+
+.brandnCategoryListing {
+    overflow: hidden;
+    width: 100%;
+}
+
+.plpFacetsLeftNav {
+    .filter-grid {
+        @media #{$large-down} {
+            opacity: mapping($productTilesProp, sortDropdownGrid, sortOpacity);
+
+            &.show-sort {
+                opacity: mapping($productTilesProp, sortDropdownGrid, activeOpacity);
+            }
+        }
+    }
+}
+
+@keyframes placeHolderShimmer {
+    0% {
+        background-position: -468px 0
+    }
+
+    100% {
+        background-position: 468px 0
+    }
+}
+
+@mixin stuff {
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-name: placeHolderShimmer;
+    animation-timing-function: linear;
+    background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
+    background-size: 800px 104px;
+    position: relative;
+
+}
+
+.preview-list {
+    position: mapping($productTilesProp, placeholderCon, phPosition);
+
+    .image-preview {
+        width: mapping($productTilesProp, placeholderCon, phWidth);
+        height: mapping($productTilesProp, placeholderCon, phHeight);
+        background: mapping($productTilesProp, placeholderCon, phBackground);
+        @include stuff;
+
+        @media #{$medium-down} {
+            height: mapping($productTilesProp, placeholderCon, MobImgheight);
+        }
+    }
+
+    .linePlaceholder {
+        background: mapping($productTilesProp, placeholderCon, lHbackground);
+        height: mapping($productTilesProp, placeholderCon, lHheight);
+        margin: mapping($productTilesProp, placeholderCon, lHmargin);
+        width: mapping($productTilesProp, placeholderCon, lHwidth);
+        float: mapping($productTilesProp, placeholderCon, lHfloat);
+        clear: mapping($productTilesProp, placeholderCon, lHclear);
+        @include stuff;
+    }
+
+    .avatarPlaceholder {
+        display: mapping($productTilesProp, placeholderCon, avDisplay);
+    }
+
+    .product-price {
+        width: mapping($productTilesProp, placeholderCon, phWidth);
+        clear: mapping($productTilesProp, placeholderCon, lHclear);
+
+        .price-content {
+            display: mapping($productTilesProp, placeholderCon, prDisplay);
+            width: mapping($productTilesProp, placeholderCon, prWidth);
+            vertical-align: mapping($productTilesProp, placeholderCon, prVertical);
+        }
+    }
+
+    .linePlaceholder-thin {
+        height: mapping($productTilesProp, placeholderCon, thinHeight);
+        margin: mapping($productTilesProp, placeholderCon, thinMargin);
+        width: mapping($productTilesProp, placeholderCon, thinWidth);
+    }
+}
+
+
+.preview-list .product-info div .linePlaceholder:not(.linePlaceholder-thin):nth-child(2) {
+    width: mapping($productTilesProp, placeholderCon, secondWidth);
+}
+
+.preview-list .product-info div .linePlaceholder:not(.linePlaceholder-thin):nth-child(3) {
+    width: mapping($productTilesProp, placeholderCon, thirdWidth);
+}
+
+.preview-list .product-info div .linePlaceholder:not(.linePlaceholder-thin):nth-child(4) {
+    width: mapping($productTilesProp, placeholderCon, fourWidth);
+}

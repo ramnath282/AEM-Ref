@@ -1,0 +1,283 @@
+.error-style-extend{
+	color: mapping($form,error, color);	
+  	font-size: mapping($form,error, fontSize);
+}
+
+.form-component{
+	font-family: mapping($form,main, fontFamily);
+	*{
+		@if mapping($form,main, fontInheritChildren){
+			font-family: mapping($form,main, fontFamily);
+		}
+	}
+	
+	h2{
+		font-size: mapping($form,heading, fontSize);
+		color: mapping($form,heading, color);
+		text-align: mapping($form,heading, align);
+		font-family: mapping($form,heading, fontFamily);
+		font-weight: mapping($form,heading, fontWeight);
+		font-style: mapping($form,heading, fontStyle);
+	}
+	#crm-form{
+		.required{
+			.input_label{
+				&:after{
+					color: mapping($form,required, color);
+					font-size: mapping($form,required, fontSize);
+				}
+			}
+		}
+		.input-group{
+			display:block !important;
+			max-width: 19.4em;
+			input[type="text"]{
+				width:80% !important;
+				cursor: pointer;	
+			}
+			.input-group-addon{
+				display: inline-block;
+				width: 20%;
+				height: 34px;
+				line-height: 20px;
+			}
+			label {
+					display: block;
+					&:after{
+						display: none !important;
+					}
+				}
+		 }
+		input,select{
+			font-size: mapping($form,input, fontSize);
+			max-width: mapping($form,input, maxWidth);
+			@include border-radius(mapping($form,input, borderRadius));
+		}
+		input{
+			border-color:mapping($form,input, borderColor);
+			@include placeholders{
+				color:mapping($form,input, placeholderColor);
+				font-size: mapping($form,input, placeholderFontsize);
+				font-family: mapping($form,input, placefontFamily);
+				letter-spacing:mapping($form,input, letterSpace);
+				-webkit-transform:translate3d(0,em(mapping($form,input, placeholderFontsize))/2,0);
+				-moz-transform:translate3d(0,em(mapping($form,input, placeholderFontsize))/2,0);
+				-ms-transform:translate3d(0,em(mapping($form,input, placeholderFontsize))/2,0);
+				transform:translate3d(0,em(mapping($form,input, placeholderFontsize))/2,0);
+			}
+		}
+		select{
+			font-size: mapping($form,select, fontSize);
+			max-width: mapping($form,select, maxWidth);
+	    	border-color:mapping($form,select, borderColor);
+			color: mapping($form,select, textCol);
+			font-family: mapping($form,select, placefontFamily);
+			option {
+			  	color:mapping($form,select, textCol);
+				font-size: mapping($form,select, fontSize);
+				font-family: mapping($form,select, placefontFamily);
+			}
+		}
+		textarea{
+			border-radius: mapping($form,input, borderRadius) !important;
+		}
+		.country-code-dropdown{
+			.relative-dropdown-container{
+				@include border-radius(mapping($form,input, borderRadius));
+				border: 1px solid mapping($form,select, borderColor);
+				color:mapping($form,select, color);
+				font-size: mapping($form,select, customCountryColor);
+				.arrow{
+				    border-color: mapping($form,select, placeholderColor) transparent transparent;
+				    font-size: mapping($form,select, arrowFontSize);
+				}
+			}
+		}
+		.input_label{
+			font-size: mapping($form,label, fontSize);
+			font-weight: mapping($form,label, fontWeight);
+			color: mapping($form,label, color);	
+		}
+		input[type="radio"]{
+			&+ label:before {
+			    background: mapping($form,radio, bgColor);
+			    border: 1px solid mapping($form,radio, defaultColor);
+			}
+			&:checked + label:before {
+			    background: -webkit-radial-gradient(circle cover,mapping($form,radio, checkedColor) 0,mapping($form,radio, checkedColor) 40%,#fff 41%,#fff 100%);
+				background:-ms-radial-gradient(circle cover,mapping($form,radio, checkedColor) 0,mapping($form,radio, checkedColor) 40%,#fff 41%,#fff 100%);
+				background:-moz-radial-gradient(circle cover,mapping($form,radio, checkedColor) 0,mapping($form,radio, checkedColor) 40%,#fff 41%,#fff 100%);
+				background:-o-radial-gradient(circle cover,mapping($form,radio, checkedColor) 0,mapping($form,radio, checkedColor) 40%,#fff 41%,#fff 100%);
+				background:radial-gradient(circle cover,mapping($form,radio, checkedColor) 0,mapping($form,radio, checkedColor) 40%,#fff 41%,#fff 100%);
+				border-color: mapping($form,radio, checkedColor);
+			}
+			&:focus + label:before {
+				border-color: mapping($form,radio, checkedColor);
+			}
+		}
+		input[type="checkbox"]{
+			opacity: mapping($form,checkbox,checkOpacity);
+			&+ span:after{
+				background: mapping($form,checkbox,checkboxBg);
+				border: 1px solid mapping($form,checkbox,checkboxBorderCol);
+				width:mapping($form,checkbox,checkboxW);
+				height:mapping($form,checkbox,checkboxH);
+				position:mapping($form,checkbox,checkboxPos);
+				content:mapping($form,checkbox,checkboxCont);
+				left:mapping($form,checkbox,checkboxLeft);
+				top:mapping($form,checkbox,checkboxTop);
+			}
+			&:checked + span:before{
+				position:mapping($form,checkboxCH,checkboxPos);
+				content:mapping($form,checkboxCH,checkboxCont);
+				left:mapping($form,checkboxCH,checkboxLeft);
+				top:mapping($form,checkboxCH,checkboxTop);
+				font-family:mapping($form,checkboxCH,checkboxFam);
+				font-size:mapping($form,checkboxCH,checkboxFon);
+				color:mapping($form,checkboxCH,checkboxCol);
+				z-index:mapping($form,checkboxCH,checkboxZ);
+			}
+			&+ label:after{
+				background: mapping($form,checkbox,checkboxBg);
+				border: 1px solid mapping($form,checkbox,checkboxBorderCol);
+				width:mapping($form,checkbox,checkboxW);
+				height:mapping($form,checkbox,checkboxH);
+				position:mapping($form,checkbox,checkboxPos);
+				content:mapping($form,checkbox,checkboxCont);
+				left:mapping($form,checkbox,checkboxLeft);
+				top:mapping($form,checkbox,checkboxTop);
+			}
+			&:checked + label:before{
+				position:mapping($form,checkboxCH,checkboxPos);
+				content:mapping($form,checkboxCH,checkboxCont);
+				left:mapping($form,checkboxCH,checkboxLeft);
+				top:mapping($form,checkboxCH,checkboxTop);
+				font-family:mapping($form,checkboxCH,checkboxFam);
+				font-size:mapping($form,checkboxCH,checkboxFon);
+				color:mapping($form,checkboxCH,checkboxCol);
+				z-index:mapping($form,checkboxCH,checkboxZ);
+			}
+		}
+		.has-error{
+			input{
+				border-color: mapping($form,error, borderColor);
+			}
+			input[type="radio"]{
+				outline:1px solid mapping($form,error, borderColor);
+			}
+			.form-error{	
+				@extend .error-style-extend;
+			}
+	    }
+	    .has-api-error{
+	    	input{
+				border-color: mapping($form,error, borderColor);
+			}
+			input[type="radio"]{
+				outline:1px solid mapping($form,error, borderColor);
+			}
+			.api-error{	
+				@extend .error-style-extend;
+			}
+	    }
+	    .add-child-option{
+			color: mapping($form,addChild, color);		
+			span{
+				font-size: mapping($form,addChild, fontSize);
+				font-weight: mapping($form,addChild, fontWeight);
+			}
+		}
+		span.terms{
+			font-size: mapping($form,agree,fontSize);
+			a{
+				font-weight: mapping($form,agree,linkFontWeight);
+				text-decoration: mapping($form,agree,linkUnderline);
+				color: mapping($form,agree,linkColor);
+			}
+			p{
+				color: mapping($form,agree,linkColorp);
+			}
+		}
+		fieldset{
+			&:not(.sub-fieldset){
+				>legend{
+					font-size: mapping($form,legend, fontSize);
+					font-weight: mapping($form,legend, fontWeight);
+					color: mapping($form,legend, color);
+				}
+			}
+			&.sub-fieldset{
+				legend{
+					font-size:mapping($form,subLegend, fontSize);
+				}
+				.item-list{
+					label{
+						font-size:mapping($form,subLegend, fontSize);
+						color: mapping($form,subLegend, color);
+					}
+				}
+			}
+		}
+		.form-action-btn{
+			text-align: mapping($form,cta, align);
+			&.api-fails:before{
+				color: mapping($form,cta, submitBgnd);
+			}
+		}
+		#crm-form-submit,
+			#crm-form-reset{
+	    		@extend .theme-btn;
+	    		font-size: mapping($form,cta, fontSize);
+	    		font-weight: mapping($form,cta, fontWeight);
+	    		border: mapping($form,cta, borderSize) solid;
+				min-width:mapping($form,cta, minWidth);
+	    		@if mapping($form,cta,borderRadius){
+
+	    		} @else{
+	    			border-radius: 0px !important;
+	    		}
+	    		@if mapping($form,cta,paddingBool){
+	    			padding: mapping($form,cta,padding);
+	    		}
+	    }
+	    #crm-form-submit{
+	    	background: mapping($form,cta, submitBgnd);
+	    	color: mapping($form,cta, submitColor);
+	    	border-color: mapping($form,cta, submitBorder);
+			transform: mapping($form,cta,transformBtn);
+			letter-spacing: mapping($form,cta,letterSpace);
+			text-transform:mapping($form,cta,upperCase);
+			border-radius: mapping($form,cta, submitRadius);
+	    	&:hover{
+	    		background: mapping($form,cta, submitBgndHover);
+		    	color: mapping($form,cta, submitColorHover) !important;
+		    	border-color: mapping($form,cta, submitBorderHover);
+	    	}
+			&:after{
+				content:' ';
+			}
+			 span{
+				 display: mapping($form,cta,transformD);
+				transform: mapping($form,cta,transformSpan)
+			} 
+
+	    }
+	    #crm-form-reset{
+			background: mapping($form,cta, resetBgnd);
+	    	color: mapping($form,cta, resetColor) !important;
+	    	border-color: mapping($form,cta, resetBorder);
+			transform: mapping($form,cta,transformBtn);
+			letter-spacing: mapping($form,cta,letterSpace);
+			text-transform:mapping($form,cta,upperCase);
+			border-radius: mapping($form,cta, submitRadius);
+	    	&:hover{
+	    		background: mapping($form,cta, resetBgndHover);
+		    	color: mapping($form,cta, resetColorHover) !important;
+		    	border-color: mapping($form,cta, resetBorderHover);
+	    	}	
+		}
+	}
+	.small_txt1{
+		font-size: mapping($form,label, fontSize);
+	}
+}

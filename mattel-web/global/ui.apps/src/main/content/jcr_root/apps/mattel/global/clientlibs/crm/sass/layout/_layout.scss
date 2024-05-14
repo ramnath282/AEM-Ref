@@ -1,0 +1,306 @@
+*,
+body {
+    font-family: sans-serif;
+}
+html{
+    font-size:1em;
+}
+body {
+    font-size: 87.5%; //14px
+    background: $white;
+}
+.extendRteTags{
+    p{
+        margin: 10px 0;
+        font-family: inherit;
+        span{
+            font-family: inherit;
+        }
+    }
+}
+.page-view{
+    width:100%;
+    margin:auto;
+    .p-0{
+        padding: 0 !important;
+    }
+    .m-0{
+        margin: 0 !important;
+    }
+    .default-width{
+        width: auto !important;
+    }
+}
+.crmContainer{
+    max-width: $page-max-width;
+    padding:0;
+    margin: auto;
+    float: none !important;
+    clear: both !important;
+}
+a {
+    &:link,
+    &:hover,
+    &:active,
+    &:visited,
+    &:hover {
+        color: $light-pink;
+    }
+}
+
+.page-view .xf-content-height {
+    min-height: 0;
+}
+.slick-next{
+    right:em(25);
+}
+.slick-prev{
+    left:em(25);
+}
+.slick-next,
+.slick-prev{
+    width: 60px;
+    height: 60px;
+    z-index:1;
+    &:before{
+        background-color: $navy-blue;
+        border-radius: 50%;
+        padding:5px;
+        font-weight: bold;
+    }
+}
+.slick-dots{
+    @media #{$small-only}{
+        position: static;
+    }
+    bottom:10px;
+    li{
+        button{
+            font-size: 14px;
+            display: block;
+            width: em(12);
+            height: em(12);
+            margin: 5px 7px;
+            filter: Alpha(Opacity=50);
+            opacity: .5;
+            -webkit-border-radius: em(20);
+            -moz-border-radius: em(20);
+            border-radius: em(20);
+            background: $light-green;
+            &:before{
+                content:none;
+            }
+            &:focus{
+                outline: 1px solid $light-blue;
+            }
+        }
+        &.slick-active{
+            button{
+                width: em(14);
+                opacity:1;
+                height: em(14);
+                background: $light-red;
+            }
+        }
+    }
+}
+a.play{
+    @media #{$small-only}{
+        display:none;
+    }
+    position: absolute;
+    width: em(20);
+    height: em(20);
+    right: em(20);
+    bottom: em(10);
+    z-index: 2;
+    margin: 0 auto;
+    text-align: center;
+    background: $light-green;
+    padding: 0px;
+    // opacity: 0.6;
+    &:after{
+        @include font-awesome();
+        content: "\f04b";
+        color: $white;
+    }
+}
+a.pause{
+    &:after{
+        content: "\f04c";
+    }
+}
+
+
+.theme-btn{
+    padding: em(10) em(20);
+    color: $white !important;
+    border-radius: 2.14286em !important;
+    border: 2px solid $white;
+    font-size: em(16);
+    line-height: 1;
+    text-align: center;
+    background-color: transparent;
+    &.red{
+        background-color: $red;
+        border-color: $red;
+    }
+}
+.right-arrow{
+    font-family: monospace;
+    display: inline-block;
+    margin-left: em(10);
+    font-size: 125%;
+    line-height: inherit;
+    color: inherit;
+    vertical-align:middle;
+}
+.text-blue{
+    color: $light-blue;
+}
+
+.text-sm-center{
+    @media #{$small-only}{
+        text-align: center;
+    }
+}
+.clear-both{
+    clear:both;
+}
+
+ .banner-btn[class*='top-'], .banner-btn[class*='bottom-'], .banner-btn[class*='v-'] {
+  transform: none;
+  -webkit-transform: none;
+  -ms-transform: none;
+  top: auto;
+  left: auto; 
+  text-align: center;
+  }
+
+ 
+
+  @media #{$small-up}{
+    .banner-btn {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translateX(-50%) translateY(-50%); 
+      &.top-left {
+        left: 5%;
+        top: 8%; 
+
+       } 
+       &.bottom-center {
+        bottom: 8%; 
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      &.v-center {
+        left: 50%;
+        top: 50%;
+        transform: translateX(-50%) translateY(-50%);
+      }
+      &.top-right {
+        right: 5%;
+        top: 8%;
+      }
+      &.bottom-left {
+        left: 5%;
+        bottom: 8%;
+      }
+      &.bottom-right {
+        right: 5%;
+        bottom: 8%;
+      }
+      &.top-center {
+        left: 5.68627%;
+        top: 50%;
+        transform: translateY(-50%);
+        -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%); 
+      } 
+    }
+  }
+  .white-bgnd{
+    background:$white;
+  }
+
+.fa,.fab{
+    font-family: 'Font Awesome 5 Brands', sans-serif;
+     -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height: 1
+}
+.fa {
+    font-family: 'Font Awesome', sans-serif;
+    font-weight: 900
+}
+.mb-15 {
+    margin-bottom: 15px
+}
+.module-title {
+    @extend .mb-15;
+    font-size: em(28);
+    font-weight: 300;
+    @extend .extendRteTags;   
+}
+.module-sub-title{
+    @extend .extendRteTags;
+}
+
+.module-description {
+    @extend .mb-15;
+    font-size: em(17);
+    +.module-description {
+        margin-top: 0;
+    }
+}
+.tile-name {
+    @extend .mb-15;
+    font-size: em(22);
+    font-weight: 300;
+}
+//.bg-img {
+//     background-repeat:no-repeat;
+//     background-size:cover;
+//     background-attachment: fixed;
+//     background-position: bottom;
+//      -webkit-background-size: cover;
+//     -moz-background-size: cover;
+//     -o-background-size: cover;
+//     background-size: cover;
+   // @media #{$large-down}{
+        //height: 100vh;
+  //  }
+//}
+body.bg-img {
+    background: none !important;
+    &::before{
+      content: "";
+      display: block;
+      position: fixed;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -10;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+      background-position: bottom;
+        @media #{$large-up}{
+            background-position: center;
+            
+        }
+    }
+}
+div.outer-wrapper .inner-wrapper .page-view .crmContainer{
+    margin-left: auto;
+    margin-right: auto;
+}

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Social Links"
+    sling:resourceType="cq/gui/components/authoring/dialog"
+    height="{Long}500"
+    width="{Long}600">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <configuration
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Config"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <siteName
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Site Name E.g.corp to fetch respective Osgi configuration"
+                                fieldLabel="Site Name"
+                                name="./siteName"/>
+                            <categoryConfiguration
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                composite="{Boolean}true"
+                                fieldLabel="Social Link Configuration">
+                                <field
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/fieldset"
+                                    name="./categoryConfiguration">
+                                    <items jcr:primaryType="nt:unstructured">
+                                        <column
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                                            <items jcr:primaryType="nt:unstructured">
+                                                <categoryType
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="cq/gui/components/coral/common/form/tagfield"
+                                                    fieldDescription="Category Tag Picker"
+                                                    fieldLabel="Category Tag Picker"
+                                                    multiple="{Boolean}false"
+                                                    name="./categoryType"
+                                                    required="{Boolean}true"/>
+                                                <socialConfiguration
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                                    composite="{Boolean}true"
+                                                    fieldLabel="Social Link Detail">
+                                                    <field
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/fieldset"
+                                                        name="./socialConfiguration">
+                                                        <items jcr:primaryType="nt:unstructured">
+                                                            <column
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                                <items jcr:primaryType="nt:unstructured">
+                                                                    <linkLabel
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                        fieldDescription="Provide Select Social link label tag E.g. Facebook or Twitter or Linkedin"
+                                                                        fieldLabel="Link Label"
+                                                                        name="./linkLabel"
+                                                                        required="{Boolean}true"/>
+                                                                    <linkName
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                        fieldDescription="Provide social link name  E.g. @barbie"
+                                                                        fieldLabel="Link Name"
+                                                                        name="./linkName"
+                                                                        required="{Boolean}true"/>
+                                                                    <linkUrl
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                        fieldDescription="Provide social link url"
+                                                                        fieldLabel="Link Url"
+                                                                        name="./linkUrl"
+                                                                        required="{Boolean}true"
+                                                                        rootPath="/content"/>
+                                                                </items>
+                                                            </column>
+                                                        </items>
+                                                    </field>
+                                                </socialConfiguration>
+                                            </items>
+                                        </column>
+                                    </items>
+                                </field>
+                            </categoryConfiguration>
+                        </items>
+                    </configuration>
+		    <cta
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="CTA"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <socialLinkLabel
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+                                fieldDescription="Provide social link label  E.g. Social Links"
+                                fieldLabel="Social Link Label"
+                                name="./socialLinkLabel"
+                                useFixedInlineToolbar="{Boolean}true">
+                                    <rtePlugins
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceSuperType="mattel/global/components/content/rtePlugins/rtePlugins"/>
+                                    <uiSettings
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceSuperType="mattel/global/components/content/rtePlugins/uiSettings"/>
+                            </socialLinkLabel>
+                        </items>
+                    </cta>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>

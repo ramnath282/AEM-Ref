@@ -1,0 +1,34 @@
+			<div class="update-pass">
+                <fieldset>
+                    <sly data-sly-test="${properties.passwordLabel}">
+                        	<h2>${properties.passwordLabel}:</h2>
+                        </sly>
+                    <div class="input-field required">
+                        <input type="password" id="currPassword" name="currentPassword" aria-describedby="currPasswordError" data-key="logonPasswordOld" class="form-input long-input" value="" required autocomplete="off"/>
+							<sly data-sly-test="${properties.cPasswordLabel}">
+                            	<label class="placeholder-label" for="currPassword">${properties.cPasswordLabel}</label>
+                            </sly>
+                        <div id="currPasswordError" class="help-block form-message"></div>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <div class="input-field required">
+                        <input type="password" id="password" name="password" aria-describedby="passwordError" data-key="logonPassword" class="form-input long-input password-field" value="" required autocomplete="off"/>
+							<sly data-sly-test="${properties.sPasswordLabel}">
+                            	<label class="placeholder-label" for="password">${properties.sPasswordLabel}</label>
+                            </sly>
+                        <div id="passwordError" class="help-block form-message"></div>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <div class="input-field required">
+                        <input type="password" id="passwordVerify" name="verifyPassword" data-key="logonPasswordVerify" aria-describedby="passwordVerifyError" class="form-input long-input verify-password" value="" required autocomplete="off"/>
+							<sly data-sly-test="${properties.vPasswordLabel}">
+                            	<label class="placeholder-label" for="passwordVerify">${properties.vPasswordLabel}</label>
+                            </sly>
+                        <div id="passwordVerifyError" class="help-block form-message"></div>
+                    </div>
+                </fieldset>
+                <input class="theme-btn no-bg-btn update-info" data-val="update" data-formname=".update-pass" type="submit" value="${properties.updateButtonLabel}" />
+                <input class="theme-btn transparent-btn remove-template" data-val="cancel" type="submit" value="${properties.cancelButtonLabel}" />
+            </div> 

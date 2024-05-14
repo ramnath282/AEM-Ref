@@ -1,0 +1,124 @@
+// header
+header {
+    background: mapping($header, main, bgnd);
+    min-height: mapping($header, main, minHeight);
+    top: mapping($header, main, posTop);
+    left: mapping($header, main, posLeft);
+    z-index: mapping($header, main, zIndex);
+    position: mapping($header, main, pos);
+    width: mapping($header, main, width);
+    line-height: mapping($header, main, lineHeight);
+    background-size: mapping($header, main, mobBgndSize);
+    box-shadow: mapping($header, main, boxShadow);
+
+    @media #{$large-up} {
+        background-size: mapping($header, main, bgndSize);
+    }
+
+    @media #{$medium-down} {
+        background: mapping($header, main, mobBgndColor);
+        min-height: 65px !important;
+        top: 0;
+    }
+
+    @media #{$small-down} {
+        top: 0;
+    }
+
+    >div {
+        @extend .container-fluid;
+        width: mapping($header, childDiv, width);
+        padding-right: 0;
+
+        @media (min-width: 1200px) {
+            width: auto;
+        }
+
+        @media (min-width: 992px) {
+            width: 970px;
+        }
+
+        @media (min-width: 768px) {
+            width: 750px;
+        }
+
+    }
+
+    .brand-logo {
+        position: mapping($header, logo, pos);
+        z-index: mapping($header, logo, zIndex);
+
+        img {
+            margin: mapping($header, logoImage, margin);
+            // width: mapping($header,logoImage,width);
+            width: 135px !important;
+
+            @media #{$medium-down} {
+                width: 96px !important;
+            }
+
+            @media #{$small-down} {
+                width: 96px !important;
+                margin: 7px 0 0 0
+            }
+
+            @media #{$small-up} {
+                margin: mapping($header, logoImage, mobMargin);
+                width: mapping($header, logoImage, mobWidth);
+            }
+
+            @media #{$small-up} {
+                @media #{$large-down} {
+                    width: mapping($header, logoImage, tabWidth);
+                    margin: mapping($header, logoImage, tabMargin);
+                }
+            }
+        }
+    }
+
+    &::after {
+        @if mapping($layout, waveBorder, isWaveBtmBdr)==true {
+            content: "";
+            // background-image: mapping($layout,waveBorder,waveBdrPurple);
+            // background-repeat: mapping($layout,waveBorder,waveBdrbgndRptX);
+            width: mapping($layout, waveBorder, waveBdrWidth);
+            height: mapping($layout, waveBorder, waveBdrHeight);
+            display: mapping($layout, waveBorder, waveBdrDisplay);
+            position: mapping($layout, waveBorder, waveBdrPosition);
+            background-size: mapping($layout, waveBorder, waveBdrsize);
+
+            @media #{$large-down} {
+                bottom: -20px;
+            }
+
+            @media #{$medium-down} {
+                bottom: -20px;
+                background-size: 300%;
+            }
+
+            @media #{$small-down} {
+                background-size: cover;
+            }
+        }
+    }
+}
+
+header.scroll-sticky {
+    @media (min-width: 768px) {
+        top: 0 !important;
+    }
+}
+
+.brand-logo {
+    img {
+        max-width: mapping($header, logoImage, MaxWidth);
+
+        @media #{$small-up} {
+            max-width: mapping($header, logoImage, mobMaxWidth);
+        }
+    }
+}
+
+.cq-placeholder {
+    height: auto;
+}

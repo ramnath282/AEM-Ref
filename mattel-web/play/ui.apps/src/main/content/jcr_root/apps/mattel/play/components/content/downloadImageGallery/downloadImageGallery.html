@@ -1,0 +1,250 @@
+<sly data-sly-test="${wcmmode.edit}">${'Configure Image and CTA Gallery' @ i18n}</sly>
+<sly
+	data-sly-use.downloadL="com.mattel.play.core.model.DownloadImageGalleryModel">
+		<sly data-sly-test="${(properties.downloadBgImage == null && properties.downloadBgColor == null )|| (properties.downloadBackOption =='image' && properties.downloadBgImage == null ) || (properties.downloadBackOption =='color' && properties.downloadBgColor == null )}">
+        <div class="play-tiles-gallery play-download ${properties.styleFor}" id="${properties.linkNavigationCheck?properties['linkNavOption']:''}" data-link-attribute="${properties.linkNavigationCheck?properties['linkNavOption']:''}" data-height-sync=".gallery-image">
+    
+    </sly>
+    <sly data-sly-test="${properties.downloadBackOption =='image' && properties.downloadBgImage != null }">
+        <div class="play-tiles-gallery play-download ${properties.styleFor}" id="${properties.linkNavigationCheck?properties['linkNavOption']:''}" data-link-attribute="${properties.linkNavigationCheck?properties['linkNavOption']:''}" data-height-sync=".gallery-image" style="background: transparent url('${properties.downloadBgImage @ context='styleString'}') 0 0;">
+    </sly>
+    <sly data-sly-test="${properties.downloadBackOption =='color' && properties.downloadBgColor != null }">
+        <div class="play-tiles-gallery play-download ${properties.styleFor}" id="${properties.linkNavigationCheck?properties['linkNavOption']:''}" data-link-attribute="${properties.linkNavigationCheck?properties['linkNavOption']:''}" data-height-sync=".gallery-image" style="background-color:${properties.downloadBgColor @ context='styleString'};">
+    </sly>
+
+
+<sly data-sly-test="${properties.title != null || properties.description != null }">
+    <div class="gallery-title">
+        <sly data-sly-test="${properties.title!=null}">
+            <h2>${properties.title}</h2> </sly>
+        <sly data-sly-test="${properties.description!=null}">
+            <p>${properties.description @context='html'}</p>
+        </sly>
+    </div>
+</sly>
+<div class="gallery-tile ${pageProperties.cq:template =='/conf/fisher-price/settings/wcm/templates/fisher-price-plp-template'? 'plp-tiles' : ''}">
+	<ul>
+		<sly
+			data-sly-list.imageGallery="${downloadL.downloadImageGalleryList}">
+			<li class="${properties.columnLayout}"> 
+			<sly data-sly-test="${imageGallery.openCtaLinksIn  =='linkToSamePage'}">
+					<a href="${imageGallery.downloadCtaLink}"
+					target="_self"
+					data-tracking-id="Download Section|${imageGallery.alwaysEnglish}|${imageGallery.downloadCtaLabel || 'Download'}|${properties.title}">
+						<div class="gallery-image">
+							<img
+								style="opacity: ${properties.enablehovering?'':'1'@context='styleString'}"
+								src="${imageGallery.thumbnailImage}"
+								alt="${imageGallery.altTextThumbnail}" />
+						</div>
+						<div class="character-label tile-content">
+							<h2>${imageGallery.thumbnailTitle}</h2>
+							<sly data-sly-test="${imageGallery.thumbnailDescription != null}">
+							<div class="character-hint">
+								<p>${imageGallery.thumbnailDescription @context='html'}</p>
+							</div>
+							</sly>
+						</div>
+						<span class="btn btn-primary buynow-overlay-txt" data-sly-test="${properties.enabledownload && imageGallery.downloadCtaLabel !=null}">${imageGallery.downloadCtaLabel || 'Download'}</span>
+					</a> 
+				</sly> 
+				<sly data-sly-test="${imageGallery.openCtaLinksIn  =='samewindow'}">
+				<sly data-sly-test="${!imageGallery.enableDownloadFile}">
+				 <sly data-sly-test.myVar="${imageGallery.downloadCtaLink}" data-sly-use.info="${'com.mattel.play.core.helper.PlayHelper' @ text= myVar}">
+           	<a href="${info.pathURL}" 	target="_self"	data-tracking-id="Download Section|${imageGallery.alwaysEnglish}|${imageGallery.downloadCtaLabel || 'Download'}|${properties.title}" >
+				</sly>
+                    <sly data-sly-test="${imageGallery.downloadCtaLink==null}">
+           	<a href="${imageGallery.downloadCtaLink}" target="_self" data-tracking-id="Download Section|${imageGallery.alwaysEnglish}|${imageGallery.downloadCtaLabel || 'Download'}|${properties.title}" >
+				</sly>
+				</sly>
+				<sly data-sly-test="${imageGallery.enableDownloadFile}">      
+					 <sly data-sly-test.myVar="${imageGallery.downloadCtaLink}" data-sly-use.info="${'com.mattel.play.core.helper.PlayHelper' @ text= myVar}">
+           	<a href="${info.pathURL}" 	target="_self" 	data-tracking-id="Download Section|${imageGallery.alwaysEnglish}|${imageGallery.downloadCtaLabel || 'Download'}|${properties.title}" download>
+				</sly>
+                    <sly data-sly-test="${imageGallery.downloadCtaLink==null}">
+           	<a href="${imageGallery.downloadCtaLink}" target="_self" 	data-tracking-id="Download Section|${imageGallery.alwaysEnglish}|${imageGallery.downloadCtaLabel || 'Download'}|${properties.title}"download>
+				</sly>
+				</sly>
+						<div class="gallery-image">
+							<img
+								style="opacity: ${properties.enablehovering?'':'1'@context='styleString'}"
+								src="${imageGallery.thumbnailImage}"
+								alt="${imageGallery.altTextThumbnail}" />
+						</div>
+						<div class="character-label tile-content">
+							<h2>${imageGallery.thumbnailTitle}</h2>
+							<sly data-sly-test="${imageGallery.thumbnailDescription != null}">
+							<div class="character-hint">
+								<p>${imageGallery.thumbnailDescription @context='html'}</p>
+							</div>
+							</sly>
+						</div>
+						<span class="btn btn-primary buynow-overlay-txt" data-sly-test="${properties.enabledownload && imageGallery.downloadCtaLabel !=null}">${imageGallery.downloadCtaLabel || 'Download'}</span>
+					</a> 
+				</sly> 
+				<sly
+					data-sly-test="${imageGallery.openCtaLinksIn  =='newtab'}"> 
+					<sly data-sly-test="${!imageGallery.enableDownloadFile}">
+					<sly data-sly-test.myVar="${imageGallery.downloadCtaLink}" data-sly-use.info="${'com.mattel.play.core.helper.PlayHelper' @ text= myVar}">
+           	<a href="${info.pathURL}" 	target="_blank" data-tracking-id="Download Section|${imageGallery.alwaysEnglish}|${imageGallery.downloadCtaLabel || 'Download'}|${properties.title}">
+				</sly>
+                    <sly data-sly-test="${imageGallery.downloadCtaLink==null}">
+           	<a href="${imageGallery.downloadCtaLink}" target="_blank" data-tracking-id="Download Section|${imageGallery.alwaysEnglish}|${imageGallery.downloadCtaLabel || 'Download'}|${properties.title}">
+				</sly>
+					</sly>
+					<sly data-sly-test="${imageGallery.enableDownloadFile}">
+					<sly data-sly-test.myVar="${imageGallery.downloadCtaLink}" data-sly-use.info="${'com.mattel.play.core.helper.PlayHelper' @ text= myVar}">
+           	<a href="${info.pathURL}" 	target="_blank" 	data-tracking-id="Download Section|${imageGallery.alwaysEnglish}|${imageGallery.downloadCtaLabel || 'Download'}|${properties.title}" download>
+				</sly>
+                    <sly data-sly-test="${imageGallery.downloadCtaLink==null}">
+           	<a href="${imageGallery.downloadCtaLink}" target="_blank" 	data-tracking-id="Download Section|${imageGallery.alwaysEnglish}|${imageGallery.downloadCtaLabel || 'Download'}|${properties.title}"download>
+				</sly>
+					</sly>
+                    <div class="gallery-image">
+							<img
+								style="opacity: ${properties.enablehovering?'':'1'@context='styleString'}"
+								src="${imageGallery.thumbnailImage}"
+								alt="${imageGallery.altTextThumbnail}" />
+						</div>
+						<div class="character-label tile-content">
+							<h2>${imageGallery.thumbnailTitle}</h2>
+							<sly data-sly-test="${imageGallery.thumbnailDescription != null}">
+							<div class="character-hint">
+								<p>${imageGallery.thumbnailDescription @context='html'}</p>
+							</div>
+							</sly>
+						</div>
+						<!--<span class="btn btn-primary buynow-overlay-txt">${imageGallery.downloadCtaLabel || 'Download'}</span><div class="gallery-image">
+							<img
+								style="opacity: ${properties.enablehovering?'':'1'@context='styleString'}"
+								src="${imageGallery.thumbnailImage}"
+								alt="${imageGallery.altTextThumbnail}" />
+						</div>
+						<div class="character-label">
+							<h2>${imageGallery.thumbnailTitle}</h2>
+							<div class="character-hint">
+								<p>${imageGallery.thumbnailDescription @context='html'}</p>
+							</div>
+						</div> -->
+						<span class="btn btn-primary buynow-overlay-txt" data-sly-test="${properties.enabledownload && imageGallery.downloadCtaLabel !=null}">${imageGallery.downloadCtaLabel || 'Download'}</span>
+						<span class="sr-only"> ${'Opens in a new tab' @ i18n}</span>
+					</a> 
+				</sly> 
+				<sly data-sly-test="${imageGallery.openCtaLinksIn  =='newwindow'}">
+				<sly data-sly-test="${!imageGallery.enableDownloadFile}">
+
+ <sly data-sly-test.myVar="${imageGallery.downloadCtaLink}" data-sly-use.info="${'com.mattel.play.core.helper.PlayHelper' @ text= myVar}">
+           	<a href="${info.pathURL}" onclick="window.open(this.dataset.url,'PLAY','width=500, height=500');" data-tracking-id="Download Section|${imageGallery.alwaysEnglish}|${imageGallery.downloadCtaLabel || 'Download'}|${properties.title}"> 	
+				</sly>
+                    <sly data-sly-test="${imageGallery.downloadCtaLink==null}">
+           	<a href="${imageGallery.downloadCtaLink}" onclick="window.open(this.dataset.url,'PLAY','width=500, height=500');" data-tracking-id="Download Section|${imageGallery.alwaysEnglish}|${imageGallery.downloadCtaLabel || 'Download'}|${properties.title}"download>
+				</sly>
+
+				</sly>
+				<sly data-sly-test="${imageGallery.enableDownloadFile}">
+ <sly data-sly-test.myVar="${imageGallery.downloadCtaLink}" data-sly-use.info="${'com.mattel.play.core.helper.PlayHelper' @ text= myVar}">
+           	<a href="${info.pathURL}" onclick="window.open(this.dataset.url,'PLAY','width=500, height=500');"
+						data-tracking-id="Download Section|${imageGallery.alwaysEnglish}|${imageGallery.downloadCtaLabel || 'Download'}|${properties.title}"download>	
+				</sly>
+                    <sly data-sly-test="${imageGallery.downloadCtaLink==null}">
+           	<a href="${imageGallery.downloadCtaLink}" onclick="window.open(this.dataset.url,'PLAY','width=500, height=500');"
+						data-tracking-id="Download Section|${imageGallery.alwaysEnglish}|${imageGallery.downloadCtaLabel || 'Download'}|${properties.title}"download>
+				</sly>
+
+				</sly>
+						<div class="gallery-image">
+							<img
+								style="opacity: ${properties.enablehovering?'':'1'@context='styleString'}"
+								src="${imageGallery.thumbnailImage}"
+								alt="${imageGallery.altTextThumbnail}" />
+						</div>
+						<div class="character-label tile-content">
+							<h2>${imageGallery.thumbnailTitle}</h2>
+							<sly data-sly-test="${imageGallery.thumbnailDescription != null}">
+							<div class="character-hint">
+								<p>${imageGallery.thumbnailDescription @context='html'}</p>
+							</div>
+							</sly>
+						</div>
+						<span class="btn btn-primary buynow-overlay-txt" data-sly-test="${properties.enabledownload && imageGallery.downloadCtaLabel !=null}">${imageGallery.downloadCtaLabel || 'Download'}</span>
+						<span class="sr-only"> ${'Opens in new window' @ i18n}</span>
+					</a> 
+				</sly> 
+				<sly data-sly-test="${imageGallery.openCtaLinksIn  =='interstitial'}">
+					<a href="javascript:void(0);" data-toggle="modal" class="btn-download-interstitial" data-downlodId="Download_${imageGalleryList.index}" data-path="${currentNode.path}"
+
+                        						data-download="Download Section|${imageGallery.alwaysEnglish}|${imageGallery.downloadCtaLabel || 'Download'}|App Interstitial"
+
+						data-target="#interstitialGameRetailerModal">
+						<div class="gallery-image">
+							<img
+								style="opacity: ${properties.enablehovering?'':'1'@context='styleString'}"
+								src="${imageGallery.thumbnailImage}"
+								alt="${imageGallery.altTextThumbnail}" />
+						</div>
+						<div class="character-label tile-content">
+							<h2>${imageGallery.thumbnailTitle}</h2>
+							<sly data-sly-test="${imageGallery.thumbnailDescription != null}">
+							<div class="character-hint">
+								<p>${imageGallery.thumbnailDescription @context='html'}</p>
+							</div>
+							</sly>
+						</div>
+						<span class="btn btn-primary buynow-overlay-txt" data-sly-test="${properties.enabledownload && imageGallery.downloadCtaLabel !=null}">${imageGallery.downloadCtaLabel || 'Download'}</span> 
+						<span class="sr-only"> ${'Opens a pop up' @ i18n}</span>
+					</a> 
+				</sly>
+			</li>
+		</sly>
+	</ul>
+	<sly data-sly-test="${properties.enableviewall}">
+	<div class="view-all"
+		data-sly-test="${properties.viewAllOpenCtaLinksIn  =='samewindow'}">
+		<a class="btn btn-view-all"
+			href="${properties.viewAllLink @ extension ='html'}" target="_self"
+			role="button"
+			data-tracking-id="Download Section|${imageGallery.alwaysEnglish}|${properties.viewAll || 'view all'}">${properties.viewAll
+			|| 'view all'}</a>
+	</div>
+	<div class="view-all"
+		data-sly-test="${properties.viewAllOpenCtaLinksIn  =='newtab'}">
+		<a class="btn btn-view-all"
+			href="${properties.viewAllLink @ extension ='html'}" target="_blank"
+			role="button"
+			data-tracking-id="Download Section|${imageGallery.alwaysEnglish}|${properties.viewAll || 'view all'}">${properties.viewAll
+			|| 'view all'}<span class="sr-only"> ${'Opens in a new tab' @ i18n}</span></a>
+	</div>
+	<div class="view-all"
+		data-sly-test="${properties.viewAllOpenCtaLinksIn  =='newwindow'}">
+		<a class="btn btn-view-all"
+			data-url="${properties.viewAllLink @ extension ='html'}"
+			onclick="window.open(this.dataset.url,'PLAY','width=500, height=500');"
+			role="button"
+			data-tracking-id="Download Section|${imageGallery.alwaysEnglish}|${properties.viewAll || 'view all'}">${properties.viewAll
+			|| 'view all'}<span class="sr-only"> ${'Opens in new window' @ i18n}</span></a>
+	</div>
+	<div class="view-all"
+		data-sly-test="${properties.viewAllOpenCtaLinksIn  =='interstitial'}">
+		<a class="btn btn-view-all" href="javascript:void(0);"
+			data-toggle="modal"
+			data-tracking-id="Download Section|${imageGallery.alwaysEnglish}|${properties.viewAll || 'view all'}"
+			data-target="#interstitialGameRetailerModal">
+			${properties.viewAll || 'view all'} <span class="sr-only"> ${'Opens a pop up' @ i18n}</span></a>
+	</div>
+
+
+	</sly>
+</div>
+<div class="show-more">
+	<a href="javascript:void(0);"
+		data-component-id="Download Section|${properties.alwaysEnglish}"
+		class="accordion"
+		data-text-collapse="${properties.showMoreText || 'SEE MORE'}"
+		data-text-expand="${properties.showLessText || 'SEE LESS'}"
+		aria-expanded="false"> ${properties.showMoreText || 'SEE MORE'} </a>
+</div>
+</div>
+</sly>
+
+
+

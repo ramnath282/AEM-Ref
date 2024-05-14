@@ -1,0 +1,136 @@
+//  @include animation(0, 0.5s, animation-slide-in-down, ease);
+@mixin animation ($val) {
+  -webkit-animation: $val;
+  -moz-animation: $val;
+  -ms-animation: $val;
+  animation: $val;
+}
+
+@mixin flex() {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: -moz-box;
+  display: flex;
+}
+
+@mixin max-lines($lines: 3, $line-height: 1.2) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $lines;
+  line-height: $line-height;
+  max-height: $line-height * $lines;
+}
+
+// @include content-spacing(map-get($layout, description));
+@mixin content-spacing($spacing) {
+  $isMarginValue: type-of(map-get($spacing, margin))==map;
+  $isPaddingValue: type-of(map-get($spacing, padding))==map;
+
+  margin: $isMarginValue and map-get(map-get($spacing, margin), sm) or null;
+  padding: $isPaddingValue and map-get(map-get($spacing, padding), sm) or null;
+
+  @media #{$desktop} {
+    margin: $isMarginValue and map-get(map-get($spacing, margin), md) or null;
+    padding: $isPaddingValue and map-get(map-get($spacing, padding), md) or null;
+  }
+
+  @media #{$desktop} {
+    margin: $isMarginValue and map-get(map-get($spacing, margin), lg) or null;
+    padding: $isPaddingValue and map-get(map-get($spacing, padding), lg) or null;
+  }
+
+}
+
+// @include read-all-content(map-get($previewPlaceholder,image));
+@mixin read-all-content($obj){
+  @each $key, $val in $obj {
+    @if (type-of(map-get($obj, #{$key})) ==map){
+      @include content-responsive($obj, #{$key});
+    }@else{
+     #{$key}: $val;
+    }
+ }
+}
+
+// @include content-responsive(map-get($layout, description), height);
+@mixin content-responsive($spacing,$variableName, $propertyName: $variableName) {
+  $isValue: type-of(map-get($spacing, $variableName))==map;
+
+  #{$propertyName}: $isValue and map-get(map-get($spacing, $variableName), sm) or null;
+  @media #{$desktop} {
+    #{$propertyName}: $isValue and map-get(map-get($spacing, $variableName), md) or null;
+  }
+  @media #{$desktop} {
+    #{$propertyName}: $isValue and map-get(map-get($spacing, $variableName), lg) or null;
+  }
+
+}
+
+// @include font-style(map-get($layout, description));
+@mixin font-style($spacing) {
+  @if(type-of(map-get($spacing, font))==map){
+    font-size: map-get(map-get($spacing, font), sm) or null;
+
+    @media #{$desktop} {
+      font-size: map-get(map-get($spacing, font), md) or null;
+    }
+
+    @media #{$desktop} {
+      font-size: map-get(map-get($spacing, font), lg) or null;
+    }
+  } @else{
+    font: map-get($spacing, font)
+  }
+
+}
+
+// @include button-style(map-get($layout, button));
+@mixin button-style($buttonConfig : null) {
+  @if ($buttonConfig !=null) {
+    color: map-get($buttonConfig, color);
+    background-color: map-get($buttonConfig, background);
+    border-color: map-get($buttonConfig, border);
+    font: map-get($buttonConfig, font);
+    line-height: map-get($buttonConfig, lineHeight);
+    @include border-radius(map-get($buttonConfig, borderRadius));
+
+    @if (map-get($buttonConfig, hover)) {
+      &:hover {
+        color: map-get(map-get($buttonConfig, hover), color);
+        background-color: map-get(map-get($buttonConfig, hover), background);
+      }
+    }
+
+    &.active {
+      @if(map-get($buttonConfig, hover) and map-get(map-get($buttonConfig, hover), sameForActive)) {
+        color: map-get(map-get($buttonConfig, hover), color);
+        background-color: map-get(map-get($buttonConfig, hover), background);
+      }
+
+      @else if(map-get($buttonConfig, active)) {
+        color: map-get(map-get($buttonConfig, active), color);
+        background-color: map-get(map-get($buttonConfig, active), background);
+      }
+    }
+
+    &.disabled,
+    &[disabled] {
+      // in progress
+    }
+
+    @include content-spacing($buttonConfig);
+  }
+}
+
+/* @include loaderBg(left, #ee0024, 10%, rgba(0,120,200,0), 42%, right); */
+
+@mixin loaderBg($to, $fColor, $fPercent, $sColor, $sPercent, $linierTo) {
+  background: $fColor;
+  background: -moz-linear-gradient($to, $fColor $fPercent, $sColor $sPercent);
+  background: -webkit-linear-gradient($to, $fColor $fPercent, $sColor $sPercent);
+  background: -o-linear-gradient($to, $fColor $fPercent, $sColor $sPercent);
+  background: -ms-linear-gradient($to, $fColor $fPercent, $sColor $sPercent);
+  background: linear-gradient(to $linierTo, $fColor $fPercent, $sColor $sPercent);
+}

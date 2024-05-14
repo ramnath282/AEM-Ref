@@ -1,0 +1,192 @@
+<div class="doll-registration" id="dollRegistration">
+   <h1 data-sly-test="${properties.dollRegPageTitle}">${properties.dollRegPageTitle}</h1>
+   <div class="user-info-wrapper">
+      <sly data-sly-use.regModel="com.mattel.ecomm.core.models.RegisterDollModel">
+         <h2 data-sly-test="${properties.dollRegSectionTitle}">${properties.dollRegSectionTitle}</h2>
+         <form action="" class="doll-registration-form">
+            <fieldset class="select-picker-wrapper">
+            <div class="input-field required">
+               <select name="productLine" id="productLine" aria-required="true" size="1" class="form-input long-input" aria-describedby="productLineField">
+                  <option data-sly-test="${properties.productlinePlaceholderText}" selected="" disabled="" hidden="">${properties.productlinePlaceholderText}</option>
+                  <sly data-sly-list.productline="${regModel.productlineList}">
+                     <li>
+                        <option value="${productline}">${productline}</option>
+                     </li>
+                  </sly>
+               </select>
+               <label data-sly-test="${properties.productlineText}" class="placeholder-label" for="productLine">${properties.productlineText}</label>
+               <div data-sly-test="${properties.productlineRequiredMessage}" id="productLineField" class="help-block form-message custom-message">${properties.productlineRequiredMessage}</div>
+            </div>
+            </fieldset>
+            <fieldset class="select-picker-wrapper">
+            <div class="input-field required">
+               <select name="retailer" id="retailer" aria-required="true" size="1" class="form-input long-input" aria-describedby="retailerField" >
+                  <option data-sly-test="${properties.retailerPlaceholderText}" selected="" disabled="" hidden="">${properties.retailerPlaceholderText}</option>
+                  <sly data-sly-list.retailer="${regModel.retailerList}">
+                     <li>
+                        <option value="${retailer}">${retailer}</option>
+                     </li>
+                  </sly>
+               </select>
+               <label data-sly-test="${properties.retailerText}" class="placeholder-label" for="retailer">${properties.retailerText}</label>
+               <div data-sly-test="${properties.retailerRequiredMessage}" id="retailerField" class="help-block form-message custom-message">${properties.retailerRequiredMessage}</div>
+            </div>
+            </fieldset>
+            <fieldset class="select-picker-wrapper">
+               <legend data-sly-test="${properties.purchaseDateLabel}">${properties.purchaseDateLabel}</legend>
+               <ul>
+                  <li class="col-sm-3">
+                     <div class="input-field required">
+                        <select class="form-input small-input dob-select child-input-val" aria-describedby="monthField"
+                           aria-required="true" id="month" name="purchasedMM">
+                           <option data-sly-test="${properties.monthPlaceholderText}" value="">${properties.monthPlaceholderText}</option>
+                           <option value="1"> 01 </option>
+                           <option value="2"> 02 </option>
+                           <option value="3"> 03 </option>
+                           <option value="4"> 04 </option>
+                           <option value="5"> 05 </option>
+                           <option value="6"> 06 </option>
+                           <option value="7"> 07 </option>
+                           <option value="8"> 08 </option>
+                           <option value="9"> 09 </option>
+                           <option value="10"> 10 </option>
+                           <option value="11"> 11 </option>
+                           <option value="12"> 12 </option>
+                        </select>
+                        <label data-sly-test="${properties.monthText}" class="placeholder-label" for="month">${properties.monthText}</label>
+                        <div data-sly-test="${properties.monthRequiredMessage}" id="monthField" class="help-block form-message custom-message">${properties.monthRequiredMessage}</div>
+                     </div>
+                  </li>
+                  <li class="col-sm-3">
+                     <div class="input-field required">
+                        <select class="form-input small-input dob-select child-input-val" aria-describedby="dayField" aria-required="true" id="day" name="purchasedDD">
+                           <option data-sly-test="${properties.datePlaceholderText}" value="">${properties.datePlaceholderText}</option>
+                           <option value="1">1</option>
+                           <option value="2">2</option>
+                           <option value="3">3</option>
+                           <option value="4">4</option>
+                           <option value="5">5</option>
+                           <option value="6">6</option>
+                           <option value="7">7</option>
+                           <option value="8">8</option>
+                           <option value="9">9</option>
+                           <option value="10">10</option>
+                           <option value="11">11</option>
+                           <option value="12">12</option>
+                           <option value="13">13</option>
+                           <option value="14">14</option>
+                           <option value="15">15</option>
+                           <option value="16">16</option>
+                           <option value="17">17</option>
+                           <option value="18">18</option>
+                           <option value="19">19</option>
+                           <option value="20">20</option>
+                           <option value="21">21</option>
+                           <option value="22">22</option>
+                           <option value="23">23</option>
+                           <option value="24">24</option>
+                           <option value="25">25</option>
+                           <option value="26">26</option>
+                           <option value="27">27</option>
+                           <option value="28">28</option>
+                           <option value="29">29</option>
+                           <option value="30">30</option>
+                           <option value="31">31</option>
+                        </select>
+                        <label data-sly-test="${properties.dateText}" class="placeholder-label" for="day">${properties.dateText}</label>
+                        <div data-sly-test="${properties.dayRequiredMessage}" id="dayField" class="help-block form-message custom-message">${properties.dayRequiredMessage}</div>
+                     </div>
+                  </li>
+                  <li class="col-sm-4">
+                     <div class="input-field required">
+                        <input type="hidden" value="1986" id="registration-started-year">
+                        <select name="purchasedYY" class="form-input small-input dob-select child-input-val"
+                           aria-describedby="year" aria-required="true" id="yearField">
+                           <option value="">${properties.yearPlaceholderText}</option>
+                        </select>
+                        <label class="placeholder-label" for="">${properties.yearText}</label>
+                        <div class="help-block form-message custom-message">${properties.yearRequiredMessage}</div>
+                     </div>
+                  </li>
+               </ul>
+            </fieldset>
+            <div class="input-field">
+               <input class="form-input long-input" type="text" name="recipient" value="" id="forwhomfield" maxlength="40" autocomplete="on" aria-required="false" aria-describedby="forwhom"/>
+               <label data-sly-test="${properties.forWhomPlaceholder}" class="placeholder-label" for="forwhomfield">${properties.forWhomPlaceholder}</label>
+               <div data-sly-test="${properties.forWhomRequiredMessage}" id="forwhom" class="help-block form-message"></div>
+            </div>
+            <fieldset class="select-picker-wrapper">
+            <div class="input-field">
+               <select name="reason" id="purchaseReasonField" size="1" class="form-input long-input" aria-describedby="purchaseReason">
+                  <option value="" data-sly-test="${properties.purchaseReasonPlaceholderText}" selected="" disabled="" hidden="">${properties.purchaseReasonPlaceholderText}</option>
+                  <sly data-sly-list.purchaseReason="${regModel.purchaseReasonList}">
+                     <li>
+                        <option title="${purchaseReason}" value="${purchaseReason}">${purchaseReason}</option>
+                     </li>
+                  </sly>
+               </select>
+               <label data-sly-test="${properties.purchaseReason}" class="placeholder-label" for="purchaseReasonField">${properties.purchaseReason}</label>
+               <div data-sly-test="${properties.purchaseReasonRequiredMessage}" id="purchaseReason" class="help-block form-message"></div>
+            </div>
+            </fieldset>
+            <input class="theme-btn doll-reg" type="submit" value="${properties.regDollCTALabel}">
+         </form>
+      </sly>
+   </div>
+   <div class="registered-dolls">
+      <h2 data-sly-test="${properties.registeredDollsTitle}">${properties.registeredDollsTitle}</h2>
+      <script id="registeredDataTemp" type="text/x-handlebars-template">
+         {{#if this.length}}
+                       <div id="pagination"></div>
+                       <table>
+                           <thead class="hidden-xs">
+                               <tr>
+                                   <th scope="col">${properties.productLineColumnHeading @context='scriptString'}</th>
+                                   <th scope="col">${properties.purchasedFromColumnHeading @context='scriptString'}</th>
+                                   <th scope="col">${properties.purchasedDateColumnHeading @context='scriptString'}</th>
+                                   <th scope="col">${properties.recipientsColumnHeading @context='scriptString'}</th>
+                                   <th scope="col"><span class="invisible">${properties.createCertificateLinkLabel @context='scriptString'}</span></th>
+                                   <th scope="col"><span class="invisible">${properties.removeLinkLabel @context='scriptString'}</span></th>
+                               </tr>
+                           </thead>
+                           <tbody>  
+                               {{#each this}}  
+                                   <tr>
+                                       <td>
+                                           <span class="label-key">
+                                               <strong>${properties.productLineColumnHeading @context='scriptString'}</strong></span> <span class="label-value">{{character}}</span>
+                                       </td>
+                                       <td>
+                                           <span class="label-key">
+                                               <strong>${properties.purchasedFromColumnHeading @context='scriptString'}</strong></span><span class="label-value">{{store}}</span>
+                                       </td>
+                                       <td>
+                                           <span class="label-key">
+                                               <strong>${properties.purchasedDateColumnHeading @context='scriptString'}</strong></span><span class="label-value">{{purchasedDate}}</span>
+                                       </td>
+                                       <td>
+                                           <span class="label-key">
+                                               <strong>${properties.recipientsColumnHeading @context='scriptString'}</strong></span><span class="label-value">{{boughtFor}}</span>
+                                       </td>
+                                       <td class="create-certificate-col">
+                                           <a href="${properties.createCertificateURL @context='html'}" class="create-certificate"  target="_blank">${properties.createCertificateLinkLabel @context='scriptString'}</a>
+                                       </td>
+                                       <td class="remove-col">
+                                           <a role="button" class="remove-doll" data-product-id="{{productID}}">${properties.removeLinkLabel @context='scriptString'}</a>
+                                       </td>
+                                   </tr>  
+                               {{/each}}               
+                           </tbody>
+                       </table>
+                       {{else}}
+                           <p style="text-align: center;">${properties.dataNotFoundText @context='scriptString'}</p>
+                       {{/if}}   
+         
+                   
+      </script>
+      <div id="registered-dolls-data"></div>
+   </div>
+</div>
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
+   <sly data-sly-call="${clientlib.js @ categories='ecomm.registerDolls'}"/>
+</sly>

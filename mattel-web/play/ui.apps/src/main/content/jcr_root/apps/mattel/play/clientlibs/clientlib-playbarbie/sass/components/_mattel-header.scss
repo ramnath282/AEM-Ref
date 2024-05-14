@@ -1,0 +1,211 @@
+$mattelHeaderSticky: true;
+.extend-action-btn {
+  font-size: em(30);
+  @media #{$small-up} {
+    font-size: em(32);
+  }
+  &:after {
+    content: "\f358";
+    @include font-awesome();
+    color: $light-red;
+  }
+  .text-less,
+  .text-more {
+    display: none;
+    position: relative;
+    line-height: 1;
+    color: $black;
+    margin-right: em(7, 40);
+    font-weight:$fontMedium;
+    @media #{$small-up} {
+      display: inline-block;
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      background-color: $yellow;
+      left: -10%;
+      right: 0;
+      height: 60%;
+      top: 32%;
+      z-index: -1;
+      width: 120%;
+    }
+  }
+  &[aria-expanded="false"],
+  &.brands-loading {
+    &:after {
+      content: "\f358";
+    }
+    .text-less {
+      display: none;
+    }
+  }
+  &[aria-expanded="true"],
+  &.brands-loaded {
+    &:after {
+      content: "\f35b";
+    }
+    .text-more {
+      display: none;
+    }
+  }
+}
+
+.global-mattel-header {
+  font-family: "MattelFounders", Arial, Helvetica, sans-serif;
+  font-weight: $fontMedium;
+  width: 100%;
+  background: $white;
+  * {
+    font-family: inherit;
+  }
+
+  &.height-md {
+    .global-header-wrapper {
+      height: em(55);
+      @media #{$small-up} {
+        height: em(57);
+      }
+    }
+    #brand-list-dropdown {
+      top: em(55);
+      @media #{$small-up} {
+        top: em(57);
+      }
+    }
+  }
+  .global-header-wrapper {
+    text-align: center;
+    height: 100%;
+    position: relative;
+    padding: em(5) em(22);
+    //height: em(75);
+    @media #{$medium-down} {
+      margin-right: em(8);
+    }
+    @media #{$small-down} {
+      margin-right: em(11);
+    }
+    @media #{$small-up} {
+      height: em(84);
+    }
+  }
+  #brand-list-dropdown {
+    top: em(75);
+    @media #{$small-up} {
+      top: em(84);
+    }
+    background: $light-white;
+    position: relative;
+    z-index: 1026;
+    //position: absolute;
+    left: 0;
+    right: 0;
+    @media #{$small-only} {
+      text-align: center;
+    }
+    .brand-list-item {
+      margin-bottom: 0;
+      padding-top: em(20);
+      li {
+        @media #{$small-only} {
+          display: none;
+        }
+        a{
+          img{
+
+// max-height: none;
+            max-height: 12rem; // 192px
+          }
+        }
+      }
+    }
+    .slick-dots {
+      left: 0;
+      bottom: 10px;
+    }
+    .more-dropdown-btn {
+      display: none;
+      @extend .extend-action-btn;
+      padding: 20px;
+      text-align: center;
+      @media #{$small-down} {
+        padding-top:0;
+        margin-top:-10px;
+      }
+      @media #{$small-only} {
+        &.brands-loading,
+        &.brands-loaded {
+          display: inline-block;
+        }
+      }
+      .text-more,
+      .text-less {
+        display: inline-block;
+      }
+    }
+  }
+  .logo {
+    max-height: 100%;
+  }
+  .toggle-brands-list {
+    position: absolute;
+    right: em(22);
+    top: 44%;
+    line-height: 1;
+    @include transform(translateY(-50%));
+    .action-btn {
+      @extend .extend-action-btn;
+    }
+    @media #{$medium-only} {
+      right: 0.8em;
+    }
+    @media #{$small-only} {
+      right: 0.6em;
+    }
+  }
+}
+
+@if $mattelHeaderSticky == true {
+  .experiencefragment.aem-GridColumn{
+    padding: 0;
+    .globalHeader{
+      padding: 0;
+    }
+  }
+  header{
+    position: absolute;
+    &.scroll-sticky{
+      position: fixed;
+      top: 0;
+    }
+  }
+  .global-mattel-header{
+    // position: absolute;
+    z-index:1039; //1111;
+    background-color: inherit;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+  body header {
+    top: 0;
+    @media #{$small-up} {
+      top: 0;
+    }
+  }
+  body .page-view:not(.parent-page) {
+    margin-top: if(mapping($layout, main, sectionTopPaddingMob),mapping($layout, main, sectionTopPaddingMob), em(68));
+    @media #{$small-up} {
+      margin-top: if(mapping($layout, main, sectionTopPadding),mapping($layout, main, sectionTopPadding), em(70));
+    }
+    @media #{$small-down} {
+      margin-top:0;
+    }
+  }
+  // mattel.com site
+  .parent-page.page-view {
+    margin-top: 0;
+  }
+}

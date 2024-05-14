@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Mini Cart Component Configuration"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <column
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/container">
+                <items jcr:primaryType="nt:unstructured">
+                    <addOnModalTitle
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        fieldDescription="Please enter Title for Add On Modal"
+                        fieldLabel="Add On Modal Title :"
+                        name="./addOnModalTitle"
+                        required="{Boolean}true"/>
+                    <addOnModalSubTitle
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        fieldDescription="Please enter Add On Modal Subtitle"
+                        fieldLabel="Add On Modal Subtitle :"
+                        name="./addOnModalSubTitle"
+                        required="{Boolean}true"/>
+                    <addOnModalNoThanksLabel
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        fieldDescription="Please enter label for No Thanks Link in Add On Modal"
+                        fieldLabel="No Thanks Link Label :"
+                        name="./addOnModalNoThanksLabel"
+                        required="{Boolean}true"/>
+                    <addToBagButtonLabel
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        fieldDescription="Please enter label for Add To Doll Button in Add On Modal"
+                        fieldLabel="Add To Doll Button Label :"
+                        name="./addOnModalAddToBagButtonLabel"
+                        required="{Boolean}true"/>
+                   <freeShippingLimit
+                       jcr:primaryType="nt:unstructured"
+                       sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+                       fieldDescription="Please enter free shipping limit"
+                       fieldLabel="Free shipping limit"
+                       min="{Long}0"
+                       name="./freeShippingLimit"
+                       step="1"
+                       value="125"/>
+                   <shoppingButtonLabel
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        fieldDescription="Please enter label for Shopping Bag"
+                        fieldLabel="Shopping Bag Button Label :"
+                        name="./shoppingBagLabel"
+                        required="{Boolean}true"/>
+                   <shoppingButtonlink
+                        cq:showOnCreate="{Boolean}true"
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="/libs/granite/ui/components/coral/foundation/form/pathbrowser"
+                        fieldLabel="Shopping Bag Button Link"
+                        name="./shoppingButtonlink"
+                        rootPath="/content"/>
+                   <keepShoppingButtonLabel
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        fieldDescription="Please enter label for Keep Shopping"
+                        fieldLabel="Keep Shopping Button Label :"
+                        name="./keepShoppingLabel"
+                        required="{Boolean}true"/>
+                    <numberOfProductAddedToCartLabel
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        fieldDescription="Please enter number of product Added to Cart Label"
+                        fieldLabel="Number of product Added to Cart Label"
+                        name="./numberOfProductAddedToCartLabel"
+                        required="{Boolean}true"/>
+                </items>
+            </column>
+        </items>
+    </content>
+</jcr:root>

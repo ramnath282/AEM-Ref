@@ -1,0 +1,23 @@
+<div data-sly-test="${properties.textSectionTitle}" data-sly-unwrap>
+	<h1>${properties.textSectionTitle @context='html'}</h1>
+</div>
+<div data-sly-test="${properties.textSectionDescription}" data-sly-unwrap>
+	<p>${properties.textSectionDescription @context='html'}</p>
+</div>
+
+<div data-sly-test="${properties.imageTextCtaButtonText && !properties.imageTextLink}" data-sly-unwrap>
+	<div class="cta-btn">
+		<div data-sly-test.myVar="${properties.imageTextCtaButtonLink}" data-sly-use.info="${'com.mattel.ecomm.core.utils.EcomUtil' @ url= myVar}" data-sly-unwrap>
+			<div data-sly-test="${properties.imageTextCtaOption =='samewindow'}" data-sly-unwrap>
+				<button class="btn btn-view-all fp-email-btn"  data-url="${info.pageUrl}" data-tracking-id="${properties.locationName==null ? 'Text Image Section': [properties.locationName,'starts'] @join='-'}|${properties.trackingNameForTitle}|${properties.imageTextAnalticsText}|${properties.locationName || properties.trackingNameForTitle}" role="button" onclick="window.open(this.dataset.url,'_self','AG');">${properties.imageTextCtaButtonText}</button>
+			</div>
+			<div data-sly-test="${properties.imageTextCtaOption =='newtab'}" data-sly-unwrap>
+				<button class="btn btn-view-all fp-email-btn" data-url="${info.pageUrl}" data-tracking-id="${properties.locationName==null ? 'Text Image Section': [properties.locationName,'starts'] @join='-'}|${properties.trackingNameForTitle}|${properties.imageTextAnalticsText}|${properties.locationName || properties.trackingNameForTitle}" role="button" onclick="window.open(this.dataset.url,'_blank');">${properties.imageTextCtaButtonText}<span class="sr-only">${'Opens in a new tab' @ i18n}</span></button>
+			</div>
+			<div data-sly-test="${properties.imageTextCtaOption =='newwindow'}" data-sly-unwrap>
+				<button class="btn btn-view-all fp-email-btn" data-url="${info.pageUrl}" data-tracking-id="${properties.locationName==null ? 'Text Image Section': [properties.locationName,'starts'] @join='-'}|${properties.trackingNameForTitle}|${properties.imageTextAnalticsText}|${properties.locationName || properties.trackingNameForTitle}" role="button" onclick="window.open(this.dataset.url,'AG','width=500, height=500');">${properties.imageTextCtaButtonText}<span class="sr-only"> ${'Opens in new window' @ i18n}</span></button>
+			</div>
+		</div>
+	</div>
+</div>
+

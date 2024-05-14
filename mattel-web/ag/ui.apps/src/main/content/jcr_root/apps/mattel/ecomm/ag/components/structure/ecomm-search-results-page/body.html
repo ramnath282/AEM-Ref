@@ -1,0 +1,37 @@
+<!--/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  ~ Copyright 2016 Adobe Systems Incorporated
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/-->
+
+<!-- skip main content link -->
+<a class="skip-main" href="#page-content">Skip to content</a>
+<div class="toast-container toast-top-center"></div>
+<div class="outer-wrapper">
+	<div class="inner-wrapper">
+		<div id="consent_blackbar"></div>
+		<div class="page-view">
+			<div class="ecomm-wrapper">
+				<div class="grid-section">
+					<input type="hidden" value="true" id="isSearchMode">
+					<sly data-sly-use.templatedContainer="com.day.cq.wcm.foundation.TemplatedContainer"
+						 data-sly-repeat.child="${templatedContainer.structureResources}"
+						 data-sly-resource="${child.path @ resourceType=child.resourceType, decorationTagName='div'}"></sly>
+				</div>
+				<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
+					<sly data-sly-call="${clientlib.js @ categories='ecomm.plpLayout'}" />
+				</sly>
+			</div>
+		</div>
+	</div>
+</div>

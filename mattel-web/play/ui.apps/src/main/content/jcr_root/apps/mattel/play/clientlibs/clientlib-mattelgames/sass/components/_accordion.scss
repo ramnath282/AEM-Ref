@@ -1,0 +1,350 @@
+.accordion-component {
+  padding: 30px 40px 40px;
+    @media #{$small-down}{
+      padding: 20px 20px 30px;
+    }
+  &.withbg {
+    background: mapping($accordion,withbg,bgndImg);
+    background-size: mapping($accordion,withbg,bgndSize);
+    letter-spacing: mapping($accordion,withbg,letter-spacing);
+    
+	@if mapping($accordion,title,isAccordionPDP) == true {
+		> div {
+			padding: mapping($accordion,withbginnerDiv,padding);;
+		}
+	}
+    .accordion {
+		@if mapping($accordion,title,isAccordionPDP) == true {
+			 padding: mapping($accordion,accordion,padding);
+			 @media #{$large-down}{
+				padding: mapping($accordion,accordion,tabpadding);
+			}
+    }
+    padding:0;
+  margin:0;
+  border-bottom: 4px solid black;
+	
+   
+      .accordion-title {
+          font-family: mapping($accordion,withbg,fntFamily);
+          font-size: mapping($accordion,withbg,fntSize);
+         
+		  @if mapping($accordion,title,isAccordionPDP) == true {
+       text-transform: mapping($accordion,withbg,textTransform);
+			 line-height: mapping($accordion,withbg,lineHeight);		 
+      }
+      text-transform:none;
+      letter-spacing:0.22px;
+      background:transparent;
+        }
+      }
+  }
+  .title-block {
+    padding: mapping($accordion,main,titleBlockPad);
+    @media #{$small-down}{
+        padding: 0;
+     }
+  }
+  .accordion {
+    padding: if(mapping($accordion,main,sectionBlockPad),mapping($accordion,main,sectionBlockPad), mapping($accordion,main,pad));
+	@if mapping($accordion,accordionLastBorder,isAccordionJurrasic) == true {
+		padding: mapping($accordion,accordionLastBorder,padding);
+		margin: mapping($accordion,accordionLastBorder,margin);
+		border-bottom: mapping($accordion,accordionLastBorder,accordianBottom);
+	} 
+  	@if mapping($accordion,accordionLastBorder,isAccordionPDP) == true {	
+		border-bottom: mapping($accordion,accordionLastBorder,accordianBottomBorder);
+  } 
+  
+    @media #{$small-down}{
+      margin: 0;
+  }
+    .accordion-title {
+        position: relative;
+        margin: mapping($accordion,title,margin);
+        padding: mapping($accordion,title,pad);
+        font-weight: 500;
+        border-bottom: mapping($accordion,title,borderBottom);
+        color: #000000;
+        font-size: 25px;
+        border-top: mapping($accordion,title,borderTop);
+        text-transform:none;
+        font-family: $mattelGamesPrimaryFontMedium;
+        letter-spacing: 0.22px;
+        line-height: 29px;
+        @media #{$small-down}{
+          font-size: 18px;
+          letter-spacing: 0.16px;
+          line-height: 21px;
+         }
+         @if mapping($accordion,title,isAccordionPDP) == true {
+          background-color: mapping($accordion,title,bgColor);
+          margin-bottom: mapping($accordion,title,mrgnBottom);
+		  @media #{$small-down}{
+			 margin-bottom: mapping($accordion,title,mobmrgnBottom);
+		  }
+         }
+        .view {
+            font-size:   mapping($accordion,view,fntSize);
+            line-height: mapping($accordion,view,lineHeight);
+            font-weight: mapping($accordion,view,fntWeight);
+            text-align:  mapping($accordion,view,txtAlign);
+        }
+    }
+    >div {
+      &:last-child {
+        .accordion-title {
+          border-bottom: mapping($accordion,title,borderTop);
+		  @if mapping($accordion,accordionLastBorder,isAccordionJurrasic) == true {
+			border-bottom: mapping($accordion,accordionLastBorder,borderBottom);
+		  }
+        }
+      }
+    }
+    .accordion-content {
+        display: mapping($accordion,accContent,display);
+        padding: mapping($accordion,accContent,pad);
+        margin: mapping($accordion,accContent,mgrTopBot);
+		@if (mapping($layout, main, isFisherPriceNav)  == true) {
+          margin-top: mapping($accordion,accContent,mgrTop);
+        }
+        &.default {
+            display: mapping($accordion,acccontentDefault,display);
+        }
+        p {
+          font-weight: mapping($accordion,accContentP,fntWeight);
+          color: mapping($accordion,accContentP,txtColor);
+          font-size: mapping($accordion,accContentP,fntSize);
+          font-family: mapping($accordion,accContentP,fntFamily);
+          padding: mapping($accordion,accContentP,pad);
+          margin: mapping($accordion,accContentP,margin);
+        }
+		h2 , h3 {
+			    font-size: mapping($accordion,accContentH,fntSize);
+				color: mapping($accordion,accContentH,txtColor);
+				margin: mapping($accordion,accContentH,margin);
+				@media #{$small-down}{
+					font-size: mapping($accordion,accContentH,mobFntSize);
+				}
+		}
+		#video-player-title {
+			margin: mapping($accordion,accContentVideoTitle,margin);
+		}
+		.videos-gallery-playlist .play-tiles-gallery .gallery-tile ul>li a span {
+			font-size: mapping($accordion,accContentH,fntSize);
+			@media #{$small-down}{
+				font-size: mapping($accordion,accContentH,mobFntSize);
+			}
+		}
+		.videos-gallery-playlist .play-tiles-gallery .gallery-tile ul>li a .gallery-image {
+			&:active , &:focus , &:hover {
+				img {
+				 opacity: mapping($accordion,videoImg,opacity);
+				
+				}
+			}
+		}
+		.videos-gallery-playlist .play-tiles-gallery .gallery-tile ul>li a .gallery-image {
+			img {
+				border: mapping($accordion,videoImg,imgBorder);
+				opacity: mapping($accordion,videoImg,opacity);
+					@media #{$small-down}{
+						border: mapping($accordion,videoImg,mobimgBorder);
+					}
+				
+			}
+		}
+		.videos-gallery-playlist .play-tiles-gallery .gallery-tile ul>li.active a .gallery-image {
+			img {
+					border: mapping($accordion,videoImg,hoverimgBorder);
+					opacity: mapping($accordion,videoImg,opacity);
+						@media #{$small-down}{
+							border: mapping($accordion,videoImg,mobhoverimgBorder);
+						}
+				}
+		}
+		
+		.show-more {
+			margin: mapping($accordion,accContentShowMore,showMoreMargin);
+			border-bottom: mapping($accordion,accContentShowMore,showBorder);
+			padding-bottom: mapping($accordion,accContentShowMore,showMorePading);
+			a {
+				padding: mapping($accordion,accContentShowMore,padding);
+				margin: mapping($accordion,accContentShowMore,margin);
+			}
+		}
+        ol {
+          li {
+           
+            list-style-type: inherit;
+			@if (mapping($layout, main, isFisherPriceNav)  == true) {
+				list-style-type: disc;
+			}
+			font-weight: mapping($accordion,accContentOlLi,fntWeight);
+            color: mapping($accordion,accContentOlLi,txtColor);
+            font-size: mapping($accordion,accContentOlLi,fntSize);
+            font-family: mapping($accordion,accContentOlLi,fntFamily);
+            padding: mapping($accordion,accContentOlLi,pad);
+            margin: mapping($accordion,accContentOlLi,margin);
+            line-height: mapping($accordion,accContentOlLi,lineHeight);
+          }
+        }
+        h2:empty,p:empty{
+          display: none;
+        }
+        .image-block{
+          // display: none;
+        }
+        .image-text-container, .text-component{
+          padding: 0;
+        }
+        .text-component{
+          h4{
+            margin: mapping($accordion, accContentHeading,margin);
+          }
+        }
+		.image-text-component {
+			padding: mapping($accordion,imgTextComp,padd);
+		}
+		.download-img-text {
+			border-bottom: mapping($accordion,downloadImgText,borderBottom);
+			padding: mapping($accordion,downloadImgText,padding);
+			@media #{$small-down}{
+				border-bottom: mapping($accordion,downloadImgText,mobborderBottom);
+				padding: mapping($accordion,downloadImgText,mobPad);
+			}
+		}
+		.play-video {
+			.video-component {
+				/*border-bottom: mapping($accordion,videoComp,borderBottom);
+				  margin-bottom: mapping($accordion,videoComp,marginBottom);*/
+				
+				.video-page-title {
+					 font-family: mapping($accordion,videoTitle,fontFamily);
+					 font-size: mapping($accordion,videoTitle,fontSize);
+					 font-weight: mapping($accordion,videoTitle,fontWeight);
+					 margin-bottom: mapping($accordion,videoTitle,marginBottom);
+				}
+			}
+			.videos-gallery-playlist {
+				padding-bottom: mapping($accordion,videoCompPlaylist,paddBottom);
+				.play-tiles-gallery  {
+					.gallery-tile {
+						ul {
+							> li {
+								padding-bottom: mapping($accordion,videoCompLi,paddBottom); 
+							}
+						}
+					}
+				}
+			}
+		}
+    }
+    .arrow {
+        margin-left: mapping($accordion,accArrow,marginLeft);
+        display:  mapping($accordion,accArrow,display);
+        position: mapping($accordion,accArrow,pos);
+        right:   mapping($accordion,accArrow,posRight);
+        /*border: mapping($accordion,accArrow,brdr);*/
+        border-radius: mapping($accordion,accArrow,brdrRadius);
+        width: mapping($accordion,accArrow,iconWidth);
+        height: mapping($accordion,accArrow,iconHeight);
+        cursor: mapping($accordion,accArrow,cursor);
+        top: 50%;
+        transform: translateY(-50%);
+        background: url("/content/dam/toy-box/mattel-games/global/Mattel-Games_accordion-Plus.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+        &:before,
+        &:after {
+          content: '';
+          display: block;
+          border-radius: 1em;
+          @include transform(translate(-50%,-50%));
+          top: 50%;
+          left: 50%;
+          position: absolute;
+          @include transition(all,350ms,ease-out);
+          background: mapping($accordion,accArrow,iconColor);
+        }
+        &.arrowDown {
+          &:before {
+            width: 5px;
+            height: 75%;
+          }
+          &:after {
+            width: 75%;
+            height: 5px;
+          }
+        }
+        &.arrowUp {
+          background: transparent;
+          &:before {
+            width: 90%;
+            height: 4px;
+			@if (mapping($layout, main, isFisherPriceNav)  == true) {	
+				height: 6px;
+			}
+          }
+        }
+    }
+  }
+}
+.accordion{
+  .accordion-component{
+    .accordion{
+      div{
+        .accordion-content{
+          .image-text-component{
+            .image-text-container{
+              display: inline-block;
+              .text-component{
+                width:90%;
+                background: #fff;
+                a{
+                  color: #337ab7;
+                  text-decoration: none;
+                  font-family: $mattelGamesSecondaryFont;
+                  font-size: 16px;
+                  line-height: 27px;
+                  font-weight: initial;
+                  @media #{$small-down}{
+                    font-size: 14px;
+                  }
+                  &:hover{
+                    text-decoration: underline;
+                  }
+                }
+                p{
+                  text-align: left;
+                  width: 100%;
+                  color: #000000;
+                  font-family: $mattelGamesSecondaryFont;
+                  font-size: 16px;
+                  line-height: 27px;
+                  @media #{$small-down}{
+                    font-size: 14px;
+                  }
+                }
+                ul{
+                  margin-left: 20px;
+                  li{
+                    text-align: left;
+                    color: #000000;
+                    font-family: $mattelGamesSecondaryFont;
+                    font-size: 16px;
+                    line-height: 27px;
+                    list-style-type: disc;
+                    @media #{$small-down}{
+                      font-size: 14px;
+                    }
+                  }
+                }
+              }
+            }
+          }        
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,62 @@
+<sly data-sly-test="${wcmmode.edit}">${'Card Container Component' @i18n}</sly>
+<div class="grid-module mb-20 accordion-grid " data-height-sync=".tile-name">
+	<sly data-sly-use.cardContainerModel = "com.mattel.ag.retail.core.model.CardContainerModel">
+
+		<div class="container">
+			<div class="module-header"> 
+				<h2>${properties.containerHeading}</h2>
+				<div class="module-descriptions">${properties.containerDescription @context='html'}</div>
+			</div>
+			<div data-sly-test="${properties.layoutStructure == 'three'}">
+
+				<ul class="col-3">
+					<sly data-sly-test ="${wcmmode.edit}">
+						<li>
+							<sly data-sly-resource="${'columnOne' @ resourceType='wcm/foundation/components/parsys'}"></sly>
+						</li>
+						<li>
+							<sly data-sly-resource="${'columnTwo' @ resourceType='wcm/foundation/components/parsys'}"></sly>
+						</li>
+						<li>
+							<sly data-sly-resource="${'columnThree' @ resourceType='wcm/foundation/components/parsys'}"></sly>
+						</li>
+					</sly>
+					<sly data-sly-test ="${!wcmmode.edit}">
+						<sly data-sly-list.cards = "${cardContainerModel.resourcePaths}">
+							<li>
+								<sly data-sly-resource ="${cards}"></sly>
+							</li>
+						</sly>
+					</sly>
+				</ul>
+			</div>
+			<div data-sly-test="${properties.layoutStructure == 'two'}">
+				<ul class="col-2-md">
+					<sly data-sly-test ="${wcmmode.edit}">
+						<li>
+							<sly data-sly-resource="${'columnOne' @ resourceType='wcm/foundation/components/parsys'}"></sly>
+						</li>
+						<li>
+							<sly data-sly-resource="${'columnTwo' @ resourceType='wcm/foundation/components/parsys'}"></sly>
+						</li>
+					</sly>
+					<sly data-sly-test ="${!wcmmode.edit}">
+						<sly data-sly-list.cards = "${cardContainerModel.resourcePaths}">
+							<li>
+								<sly data-sly-resource ="${cards}"></sly>
+							</li>
+						</sly>
+					</sly>
+				</ul>
+
+			</div>
+			<sly data-sly-test="${properties.showTextImage == 'true'}">
+				<div data-sly-resource="${'par' @ resourceType='/apps/mattel/ecomm/ag/components/content/cardTextImage'}"></div>
+			</sly>
+			<div class="events-reservation">
+				${cardContainerModel.additionalInformationWithDate @context='html'}
+			</div>
+
+		</div>
+	</sly>
+</div>

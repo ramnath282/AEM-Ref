@@ -1,0 +1,145 @@
+// Product Features
+.product-features {
+    width: 100%;
+    float: left;
+    background: #F8F6F5;
+
+    @media #{$medium-up} {
+        padding: 0 200px;
+    }
+
+    .product-title {
+        text-align: mapping($productFeatures, productFeaturesProp, productTitleText);
+        background: mapping($productFeatures, productFeaturesProp, productTitleBg);
+        padding-top: mapping($productFeatures, productFeaturesProp, productTitlePadTop);
+        padding-bottom: mapping($productFeatures, productFeaturesProp, productTitlePadBot);
+
+        //margin-bottom:mapping($productFeatures, productFeaturesProp, productTitleMarBot);
+        @media #{$small-down} {
+            padding-top: mapping($productFeatures, productFeaturesProp, mobProductTitlePadTop);
+            padding-bottom: mapping($productFeatures, productFeaturesProp, mobProductTitlePadBot);
+        }
+        @media #{$medium-only} {
+            padding-bottom: mapping($productFeatures, productFeaturesProp, tabProductTitlePadBot);
+        }
+
+        h1 {
+            color: mapping($productFeatures, productH1, productHeaderColor);
+            font-size: mapping($productFeatures, productH1, productHeaderSize);
+
+            @media #{$medium-down} {
+                font-size: 20px;
+            }
+
+            @media #{$medium-down} {
+                font-size: 20px;
+            }
+
+            margin:mapping($productFeatures, productH1, productHeaderMar);
+        }
+
+        h2 {
+            color: mapping($productFeatures, productH1, productHeaderColor);
+            font-size: mapping($productFeatures, productH1, productHeaderSize);
+            line-height: mapping($productFeatures, productH1, productLineHeight);
+            @include font-properties($letsBeGlyphs,$localFontInfo);
+            display: inline-block;
+
+            @media #{$medium-down} {
+                font-size: 22px;
+                line-height: mapping($productFeatures, productH1, mobProductLineHeight);
+            }
+
+            margin:mapping($productFeatures, productH1, productHeaderMar);
+
+            &:before,
+            &:after {
+                content: '';
+                background-image: url('#{$imagePath}/PDP_text-scallop.png');
+                background-repeat: no-repeat;
+                display: inline-block;
+                width: 91px;
+                height: 15px;
+
+                @media #{$medium-down} {
+                    display: none;
+                }
+            }
+
+            &:before {
+                margin-right: 20px;
+            }
+
+            &:after {
+                margin-left: 20px;
+            }
+        }
+    }
+
+    .product-desc {
+        p {
+            margin: mapping($productFeatures, descriptionPara, descParaMar);
+            line-height: mapping($productFeatures, descriptionPara, descParaLinehight);
+            font-size: 18px;
+
+            @media #{$medium-down} {
+                font-size: 16px;
+                line-height: 26px;
+            }
+        }
+    }
+
+    .features-view {
+        >h2 {
+            margin: mapping($productFeatures, productH2, listHeadMar);
+            font-size: mapping($productFeatures, productH2, listHeadSize);
+        }
+    }
+
+    .features-list {
+        margin-left: 23px;
+
+        li {
+            position: relative;
+            padding-left: mapping($productFeatures, productHeaderLi, FeaListPadLeft);
+            margin-bottom: mapping($productFeatures, productHeaderLi, FeaListMarBot);
+            font-size: mapping($productFeatures, productHeaderLi, liFontSize);
+            line-height: mapping($productFeatures, productHeaderLi, lineHeight);
+
+            @media #{$medium-down} {
+                font-size: mapping($productFeatures, productHeaderLi, liMobileFontSize);
+                line-height: mapping($productFeatures, productHeaderLi, mobLineHeight);
+            }
+
+            &::before {
+                content: mapping($productFeatures, productHeaderLi, ListBulletcontent);
+                position: mapping($productFeatures, productHeaderLi, ListBulletPos);
+                left: mapping($productFeatures, productHeaderLi, ListBulletLeft);
+                font-size: mapping($productFeatures, productHeaderLi, ListBulletSize);
+            }
+        }
+    }
+
+    .heiglight-text {
+        font-size: mapping($productFeatures, highLightTxt, textHightSize);
+        @include font-properties($maax,$localFontVerdana);
+        line-height: mapping($productFeatures, highLightTxt, lineHeight);
+
+        @media #{$medium-down} {
+            margin-bottom: mapping($productFeatures, highLightTxt, mobMarginBottom);
+            font-size: mapping($productFeatures, highLightTxt, mobTextSize);
+            line-height: mapping($productFeatures, highLightTxt, mobLineHeight);
+        }
+    }
+
+    .col-lg-9 {
+        padding: mapping($productFeatures, columnGrid, padding);
+        width: 100%;
+
+        @media #{$medium-down} {
+            padding-left: mapping($productFeatures, columnGrid, MobpaddingLeft);
+            padding-right: mapping($productFeatures, columnGrid, mobPaddingRight);
+        }
+
+    }
+}

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Light Box Container"
+    sling:resourceType="cq/gui/components/authoring/dialog"
+    extraClientlibs="[acs-commons.widgets.showhidedialogfields,global.customContentChildreneditor]"
+    height="{Long}500"
+    width="{Long}600">
+    <content
+        jcr:primaryType="nt:unstructured"
+		granite:class="cq-dialog-lightbox-container"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs">
+                <items
+                    jcr:primaryType="nt:unstructured"
+                    sling:hideChildren="[image]">
+                    <configTab
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Config"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <containerType
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/radiogroup"
+                                deleteHint="{Boolean}false"
+                                horizontal="{Boolean}true"
+                                name="./containerType"
+                                vertical="{Boolean}false">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <slideIn
+                                            granite:class="cq-dialog-checkbox-showhide-lightbox"
+                                            jcr:primaryType="nt:unstructured"
+                                            checked="{Boolean}true"
+                                            text="SlideIn"
+                                            value="slidein">
+                                        <granite:data
+                                                jcr:primaryType="nt:unstructured"
+                                                cq-dialog-checkbox-showhide-lightbox-target=".togglelightbox"/>
+                                    </slideIn>
+                                    <modal
+                                            granite:class="cq-dialog-checkbox-showhide-lightbox"
+                                            jcr:primaryType="nt:unstructured"
+                                            text="Modal"
+                                            value="modal">
+                                        <granite:data
+                                                jcr:primaryType="nt:unstructured"
+                                                cq-dialog-checkbox-showhide-lightbox-target=".togglelightbox"/>
+                                    </modal>
+                                </items>
+                            </containerType>
+                            <toggleContainer
+                                    granite:class="togglelightbox"
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <checkbox
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                            name="./enablePageLoadFeature"
+                                            text="Enable Modal On Page Load"
+                                            fieldDescription="Use this feature when you want to export the modal to Target."
+                                            uncheckedValue="false"
+                                            value="true"/>
+                                </items>
+                            </toggleContainer>
+							<enableCookies
+                                granite:class="lightbox-enablecookie-options"
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/switch"
+                                fieldDescription="Turning this on will allow author to set a cookie which determines how long before users who close the modal will not see it again."
+                                fieldLabel="Enable Cookie Configuration"
+                                name="./enableCookies"/>
+							<cookieName
+		                        jcr:primaryType="nt:unstructured"
+		                        granite:class="lightbox-enablecookie-cookie-label"
+		                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+		                        fieldDescription="This should be a unique identifier that has not been used before. Best practice is to use only alpha-numeric characters thought dashes and underscores are acceptable."
+		                        fieldLabel="Cookie Name"
+		                        name="./cookieName"/>
+							<cookieExpiry
+                                jcr:primaryType="nt:unstructured"
+								granite:class="lightbox-enablecookie-cookie-expiry"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+                                fieldLabel="Cookie Expiration (In Hours)"
+                                fieldDescription="This value is the number of hours that, after a user closes modal, the modal will not display again"
+								min="1"
+								max="500"
+								step="1"
+                                name="./cookieExpiry"/>
+                        </items>
+                    </configTab>
+                    <background
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/foundation/include"
+                        path="mattel/global/master/components/core/background/v1/background/cq:dialog/content/items/tabs/items/backgroundInfo"/>
+                    <text
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/foundation/include"
+                        path="mattel/global/master/components/core/text/v1/text/cq:dialog/content/items/tabs/items/text"/>
+                    <content
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/foundation/include"
+                        path="mattel/global/master/components/core/content/v1/content/cq:dialog/content/items/tabs/items/items"/>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>

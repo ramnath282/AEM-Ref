@@ -1,0 +1,159 @@
+.country-drop-down-menu {
+  margin: mapping($countrydropdown, dropdownMenu, margin);
+  padding: mapping($countrydropdown, dropdownMenu, pad);
+  width: mapping($countrydropdown, dropdownMenu, width);
+  max-width: mapping($countrydropdown, dropdownMenu, maxWidth);
+  text-align: mapping($countrydropdown, dropdownMenu, txtAlign);
+  font-size: mapping($countrydropdown, dropdownMenu, fntSize);
+  @media #{$small-only} {
+    margin-bottom: 46px;
+  }
+  @media #{$medium-only} {
+    margin-bottom: 59px;
+  }
+  li {
+    position: mapping($countrydropdown, dropdownList, pos);
+    padding: mapping($countrydropdown, dropdownList, pad);
+    background: mapping($countrydropdown, dropdownList, bgnd);
+    list-style: mapping($countrydropdown, dropdownList, lstStyle);
+    display: mapping($countrydropdown, dropdownList, display);
+    // width: mapping($countrydropdown,dropdownList,width);
+    width: 270px;
+    height: 40px;
+    border: 2px solid #ec008c;
+    a.dropdown-active {
+      border: mapping($countrydropdown, dropdownActive, brdr);
+      display: mapping($countrydropdown, dropdownActive, display);
+      font-size: 20px;
+      height: 25px;
+      line-height: 25px;
+      padding: mapping($countrydropdown, dropdownActive, pad);
+      color: mapping($countrydropdown, dropdownActive, txtColor);
+      background: mapping($countrydropdown, dropdownActive, bgnd);
+      @include transition(mapping($countrydropdown,dropdownActive,spantransition));
+      // font-family: "Duper Pro";
+      font-family:"ff-duper-web-pro";
+      font-weight: mapping($countrydropdown, dropdownActive, fontWeight);
+      line-height: mapping($countrydropdown, dropdownActive, lineHeight);
+      @media #{$medium-only} {
+        font-size: 24px;
+        height: 29px;
+        line-height: 29px;
+      }
+      @media #{$small-only} {
+        font-size: 22px;
+        line-height: 26px;
+        height: 26px;
+      }
+      &:hover {
+        color: mapping($countrydropdown, dropdownActive, hoverColor);
+        background: mapping($countrydropdown, dropdownActive, hoverbgnd);
+      }
+      &:after {
+        content: "\f078";
+        font-family: "Font Awesome";
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding-top: 0.42857em;
+        text-align: center;
+        background: #ec008c;
+        color: #ec008c;
+        box-sizing: border-box;
+        //  content: mapping($countrydropdown,dropdownSpan,spanContent);
+        /*'\e259';*/
+        font-family: mapping($countrydropdown, dropdownSpan, fntFamily);
+        position: mapping($countrydropdown, dropdownSpan, pos);
+        top: mapping($countrydropdown, dropdownSpan, posTop);
+        right: mapping($countrydropdown, dropdownSpan, posRight);
+        width: mapping($countrydropdown, dropdownSpan, width);
+        height: mapping($countrydropdown, dropdownSpan, height);
+        padding: mapping($countrydropdown, dropdownSpan, spanafterPad);
+        text-align: mapping($countrydropdown, dropdownSpan, txtAlign);
+        // background: mapping($countrydropdown,dropdownSpan,spanafterBgnd);
+        color: mapping($countrydropdown, dropdownSpan, spanaftertxtColor);
+        box-sizing: mapping($countrydropdown, dropdownSpan, boxSizing);
+      }
+    }
+  }
+  span {
+    border: mapping($countrydropdown, dropdownSpan, brdr);
+    color: mapping($countrydropdown, dropdownSpan, txtColor);
+    display: mapping($countrydropdown, dropdownSpan, display);
+    font-size: mapping($countrydropdown, dropdownSpan, fntSize);
+    padding: mapping($countrydropdown, dropdownSpan, pad);
+    background: mapping($countrydropdown, dropdownSpan, bgnd);
+    @include transition(mapping($countrydropdown,dropdownSpan,spantransition));
+    &:hover,
+    &.open {
+      background: mapping($countrydropdown, dropdownSpan, hoverbgnd);
+      color: mapping($countrydropdown, dropdownSpan, hoverColor);
+    }
+    &:after {
+      content: mapping($countrydropdown, dropdownSpan, spanContent);
+      /*'\e259';*/
+      font-family: mapping($countrydropdown, dropdownSpan, fntFamily);
+      position: mapping($countrydropdown, dropdownSpan, pos);
+      top: mapping($countrydropdown, dropdownSpan, posTop);
+      right: mapping($countrydropdown, dropdownSpan, posRight);
+      width: mapping($countrydropdown, dropdownSpan, width);
+      height: mapping($countrydropdown, dropdownSpan, height);
+      padding: mapping($countrydropdown, dropdownSpan, spanafterPad);
+      padding-top: mapping($countrydropdown, dropdownSpan, paddingTop);
+      text-align: mapping($countrydropdown, dropdownSpan, txtAlign);
+      background: mapping($countrydropdown, dropdownSpan, spanafterBgnd);
+      color: mapping($countrydropdown, dropdownSpan, spanaftertxtColor);
+      box-sizing: mapping($countrydropdown, dropdownSpan, boxSizing);
+    }
+  }
+  ul {
+    position: mapping($countrydropdown, dropdownUl, pos);
+    width: mapping($countrydropdown, dropdownUl, width);
+    padding: mapping($countrydropdown, dropdownUl, pad);
+    z-index: mapping($countrydropdown, dropdownUl, z-index);
+    height: mapping($countrydropdown, dropdownUl, height);
+  }
+  a {
+    display: mapping($countrydropdown, dropdownLink, display);
+    padding: mapping($countrydropdown, dropdownLink, pad);
+    text-decoration: mapping($countrydropdown, dropdownLink, textDecoration);
+    color: mapping($countrydropdown, dropdownLink, txtColor);
+    font-size: mapping($countrydropdown, dropdownLink, fntSize);
+    font-family: mapping($countrydropdown, dropdownLink, fntFamily);
+    @include transition(mapping($countrydropdown,dropdownLink,transition));
+    &:hover {
+      background: mapping($countrydropdown, dropdownLink, hoverBgnd);
+      color: mapping($countrydropdown, dropdownLink, hovertxtColor);
+    }
+  }
+  * {
+    cursor: mapping($countrydropdown, dropdownAll, point);
+  }
+  [menu-level="1"] {
+    display: mapping($countrydropdown, menuLevel, display);
+  }
+  .open[menu-level="1"] {
+    display: mapping($countrydropdown, menuLevel, menuopenDisplay);
+    height: mapping($countrydropdown, menuLevel, height);
+    overflow: mapping($countrydropdown, menuLevel, overflow);
+    overflow-y: mapping($countrydropdown, menuLevel, yScroll);
+    &.overflow-y {
+      overflow-y: mapping($countrydropdown, menuLevel, overflowY);
+    }
+    &::-webkit-scrollbar-thumb {
+      @include box-shadow(mapping($countrydropdown,menuLevel,boxShadow));
+      -webkit-box-shadow: mapping($countrydropdown, menuLevel, webkitboxShadow);
+      border-radius: mapping($countrydropdown, menuLevel, borderRadius);
+      background-color: mapping($countrydropdown, menuLevel, bgndColor);
+    }
+    &::-webkit-scrollbar {
+      width: mapping($countrydropdown, menuLevel, webkitscrollWidth);
+      background-color: mapping(
+        $countrydropdown,
+        menuLevel,
+        webkitscrollbgndColor
+      );
+      height: mapping($countrydropdown, menuLevel, webkitscrollHeight);
+    }
+  }
+}

@@ -1,0 +1,143 @@
+/*
+**_char-landing.scss
+*/
+.play-character-landing-block {
+  @extend .container-fluid;
+  > div {
+    @extend .row;
+    margin-left: 0;
+    margin-right: 0;
+    > div {
+      @extend .col-xs-12;
+      @extend .col-sm-6;
+      @extend .col-md-4;
+      margin-left: 0;
+      margin-right: 0;
+      padding: 0;
+      text-align: center;
+      position: relative;
+      section {
+        text-align: center;
+        position: relative;
+        img {
+          @extend .img-responsive;
+        }
+        span {
+          //   background-color: $character-label-bg;
+          @include border-radius(8px);
+          text-align: center;
+          text-transform: uppercase;
+          line-height: 26px;
+          padding: em(8);
+          font-size: em(26);
+          color: $character-label;
+          position: absolute;
+          bottom: em(14);
+          left: 50%;
+          transform: translateX(-50%);
+          height: auto !important;
+        }
+      }
+    }
+  }
+  &#play-character-landing {
+    padding-left: 0;
+    padding-right: 0;
+    background-repeat: repeat !important;
+  }
+  .play-list {
+    padding: 0 20px;
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    .lazy-load.column-4{
+        @extend .col-md-3;
+        .description-tag {
+          color: $black;
+        }
+        .description-tag p {
+            font-weight: 300;
+            font-size: 16px;
+            margin: 0;
+            line-height: 26px;
+            font-family: "neue-haas-unica", sans-serif;
+        } 
+    }
+    section[aria-label] {
+      margin: 1.07143em;
+      a {
+        img {
+          width: auto;
+          margin: auto;
+        }
+        span {
+          display: block;
+          font: 500 20px "Mattel Founders", sans-serif !important;
+          margin-bottom: 0;
+          position: static;
+          color: $black;
+          width: auto;
+          min-width: auto;
+          -webkit-transform: none;
+          -ms-transform: none;
+          -moz-transform: none;
+          transform: none;
+          text-transform: none;
+        }
+      }
+    }
+  }
+}
+.play-category-details-component {
+  .char-tiles {
+    a span {
+      height: auto !important;
+    }
+  }
+  .char-detials-comp {
+    .container {
+      padding: 10px 20px 24px;
+      @media #{$desktop} {
+        padding: 10px 25px;
+      }
+      margin: 15px 0 0;
+      width: auto;
+      > button[data-url] {
+        display: none;
+      }
+    }
+  }
+  .nav-carousel-slides {
+    li {
+      a {
+        &.active {
+          span {
+            color: #ee0024;
+          }
+        }
+        span {
+          display: block;
+          font: 500 20px "Mattel Founders", sans-serif !important;
+          margin-bottom: 10px;
+          position: static;
+          color: $black;
+          width: auto;
+          min-width: auto;
+          -webkit-transform: none;
+          -ms-transform: none;
+          -moz-transform: none;
+          transform: none;
+          text-transform: none;
+          text-align: center;
+          margin-top: 12px;
+          @media #{$tablet-mobile} {
+            font-size: 16px !important;
+             font-family: "neue-haas-unica", sans-serif !important; 
+            margin-top: 10px;
+          }
+        }
+      }
+    }
+  }
+}

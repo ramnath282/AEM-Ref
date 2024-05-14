@@ -1,0 +1,42 @@
+<sly data-sly-test="${wcmmode.edit}">${' Configure Leaving The Site Modal' @ i18n}</sly>
+ <div class="modal interstitial-modal" id="interstitialModal" tabindex="-1" role="dialog" aria-labelledby="interstitialLeavingSiteModalLabel">
+                    <div class="modal-dialog" role="document">
+                       <sly data-sly-test="${properties.backOption == 'color'}">
+					<div class="modal-content"  style="background:${properties.backgroundColorModel @ context='styleString'};">
+					  </sly>
+				      <sly data-sly-test="${properties.backOption == 'image'}">
+					  <div class="modal-content" style="background-image: url('${properties.fileReferenceBgImgmodel @ context='styleString'}');">
+				       </sly>
+                     <sly data-sly-test="${properties.backOption==null}">
+                        <div class="modal-content">
+                    </sly>
+
+                            <div class="modal-header">
+								<!--/*<a href="#" aria-hidden="true" class="sr-only" id="first-link">first link </a>*/-->
+                                <button type="button" class="close" data-tracking-id="interstitial section|${properties.alwaysEnglish}|Model Close|Interstitial Leaving The Site" data-dismiss="modal" aria-label="Close"> </button>
+                            </div>
+                            <div class="modal-body" id="interstitialLeavingSiteModalLabel">
+		                    <sly data-sly-test="${properties.modelTitle != null }">
+                            	<h2 class="modal-title">${properties.modelTitle @ i18n}</h2>
+                             </sly>
+							 <sly data-sly-test="${properties.modelDescription != null }">
+		                      <p>${properties.modelDescription @ context='html',i18n}</p> 
+                              </sly>  
+								<div class="modal-btn-wrap">
+									<a class="go-back-btn" href="javascript:void(0)" data-tracking-id="interstitial section|${properties.alwaysEnglish}|Go Back|Interstitial Leaving The Site" >${properties.modelGoBackButton @ i18n}</a>
+									<sly data-sly-test="${properties.buttonsTargetUrl =='sameWindow'}">
+                                    <a class="continue-btn"  data-tracking-id="interstitial section|${properties.alwaysEnglish}|Continue|Interstitial Leaving The Site">${properties.modelContinueButton @ i18n}</a>
+                                </sly>
+                                <sly data-sly-test="${properties.buttonsTargetUrl =='tabWindow'}">
+                                   <a class="continue-btn"   target="_blank" 
+								   aria-label="Continue opens a new tab" data-tracking-id="interstitial section|${properties.alwaysEnglish}|Continue|Interstitial Leaving The Site">${properties.modelContinueButton @ i18n}<span class="sr-only"> ${'Opens in a new tab' @ i18n}</span></a>
+                                </sly>
+                                <sly data-sly-test="${properties.buttonsTargetUrl =='newWindow'}">
+                                    <a  class="continue-btn"  data-tracking-id="interstitial section|${properties.alwaysEnglish}|Continue|Interstitial Leaving The Site" data-target="#selectLocationModal" onclick="window.open(this.href,'PLAY','width=500, height=500'); " aria-label="Continue opens a new window" >${properties.modelContinueButton @ i18n}<span class="sr-only"> ${'Opens in new window' @ i18n}</span></a>
+                                </sly>
+									<!--/* <a href="#" aria-hidden="true" class="sr-only" id="last-link"> Last link </a> */-->
+								</div>
+							</div>
+                        </div>
+                    </div>
+              </div> 

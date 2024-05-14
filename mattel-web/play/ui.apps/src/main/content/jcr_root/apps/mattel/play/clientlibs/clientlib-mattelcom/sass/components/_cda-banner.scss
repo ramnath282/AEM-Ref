@@ -1,0 +1,1174 @@
+.arrow-styles {
+
+  .slick-next,
+  .cd-next,
+  .slick-prev,
+  .cd-prev {
+    background: mapping($cdabanner, playcontainerslickprevNext, bgnd);
+    border-radius: mapping($cdabanner, playcontainerslickprevNext, borderRadius);
+    width: mapping($cdabanner, playcontainerslickprevNext, buttonWidth);
+    height: mapping($cdabanner, playcontainerslickprevNext, buttonHeight);
+
+    &:before {
+      font-family: mapping($cdabanner, playcontainerslickprevNext, fntFamily);
+      padding: mapping($cdabanner, playcontainerslickprevNext, pad);
+      color: mapping($cdabanner, playcontainerslickprevNext, txtColor);
+      font-size: mapping($cdabanner, playcontainerslickprevNext, fntSize);
+      background: mapping($cdabanner, playcontainerslickprevNext, beforeBgnd);
+
+      @if mapping($layout, main, isWhyPlay)==true {
+        display: none;
+      }
+    }
+
+    @media #{$small-down} {
+      top: mapping($cdabanner, playcontainerslickprevNext, mobPosTop);
+    }
+
+    @media #{$medium-only} {
+      top: 26%;
+    }
+
+    @media #{$large-up} {
+      top: mapping($cdabanner, playcontainerslickprevNext, desktopPosTop);
+    }
+  }
+
+  .slick-prev,
+  .cd-prev {
+    margin-left: mapping($cdabanner, playcontainerslickPrev, marginLeft);
+
+    @media #{$small-down} {
+      margin-left: mapping($cdabanner, playcontainerslickPrev, mobMarginLeft);
+    }
+  }
+
+  .slick-next,
+  .cd-next {
+    margin-right: mapping($cdabanner, playcontainerslickNext, marginRight);
+
+    @media #{$small-down} {
+      margin-right: mapping($cdabanner, playcontainerslickNext, mobMarginRight);
+    }
+  }
+
+  .slick-next:before,
+  .cd-next:before {
+    content: mapping($cdabanner, slicknextBefore, nextContent);
+    margin-left: mapping($cdabanner, slicknextBefore, marginLeft);
+    opacity: mapping($cdabanner, slicknextBefore, opacity);
+    font-size: mapping($cdabanner, slicknextBefore, fontSize);
+
+    @media #{$small-down} {
+      font-size: mapping($cdabanner, slicknextBefore, mobfontSize);
+    }
+  }
+
+  .slick-prev:before,
+  .cd-prev:before {
+    content: mapping($cdabanner, slickprevBefore, prevContent);
+    margin-right: mapping($cdabanner, slickprevBefore, marginRight);
+    opacity: mapping($cdabanner, slickprevBefore, opacity);
+    font-size: mapping($cdabanner, slickprevBefore, fontSize);
+
+    @media #{$small-down} {
+      font-size: mapping($cdabanner, slickprevBefore, mobfontSize);
+    }
+  }
+
+  @if mapping($cdabanner, main, isNoDotsCarousel)==true {
+    .slick-dots {
+      display: none !important;
+    }
+  }
+
+ 
+  .slick-dots li button {
+    background-color: mapping($cdabanner, slickdotsButton, bgndColor);
+    width: mapping($cdabanner, slickdotsButton, width);
+    height: mapping($cdabanner, slickdotsButton, height);
+    opacity: mapping($cdabanner, slickdotsButton, opacity);
+
+    @if mapping($layout, main, isWhyPlay)==true {
+      border: mapping($cdabanner, slickdotsButton, circleBorder);
+    }
+
+    @media #{$medium-down} {
+      background-color: mapping($cdabanner, slickdotsButton, tabbgndColor);
+      width: mapping($cdabanner, slickdotsButton, mobileWidth);
+      height: mapping($cdabanner, slickdotsButton, mobileHeight);
+      opacity: mapping($cdabanner, slickdotsButton, mobileOpacity);
+    }
+  }
+
+  .slick-dots li.slick-active button {
+    background: mapping($cdabanner, slickdotsActive, bgnd);
+    opacity: mapping($cdabanner, slickdotsActive, btnOpacity);
+
+    @media #{$medium-down} {
+      background-color: mapping($cdabanner, slickdotsButton, tabbgndColorActive);
+      opacity: mapping($cdabanner, slickdotsButton, mobileOpacity);
+    }
+  }
+
+ 
+  @media #{$small-down} {
+
+    .slick-next,
+    .slick-prev,
+    .cd-next,
+    .cd-prev {
+      width: mapping($cdabanner, playcontainerslickprevNext, buttonMobileWidth);
+      height: mapping($cdabanner, playcontainerslickprevNext, buttonMobileHeight);
+    }
+  }
+}
+
+p:empty {
+  display: none;
+}
+
+.cda-banner {
+  position: mapping($cdabanner, main, pos);
+
+  &.fpSubHead {
+    img {
+      max-width: mapping($cdabanner, cdabannerImage, maxWidth);
+      max-height: mapping($cdabanner, cdabannerImage, maxHeight);
+
+      @media (max-width: 1024px) {
+        max-width: mapping($cdabanner, cdabannerImage, maxWidthTabLs);
+      }
+
+      @media #{$medium-down} {
+        max-width: mapping($cdabanner, cdabannerImage, maxWidthTab);
+      }
+
+      @media #{$small-down} {
+        max-width: mapping($cdabanner, cdabannerImage, maxWidthMob);
+      }
+    }
+  }
+
+  .carousel-slides {
+    padding-bottom: mapping($cdabanner, carouselSlides, paddingBottom);
+    padding-top: mapping($cdabanner, carouselSlides, paddingTop);
+    border-bottom: mapping($cdabanner, carouselSlides, borderBottom);
+
+    @media #{$medium-up} {
+      padding-bottom: mapping($cdabanner, carouselSlides, tabpaddingBottom);
+      border-bottom: mapping($cdabanner, carouselSlides, tabborderBottom);
+    }
+
+    li {
+      position: mapping($cdabanner, carouselslidesList, pos);
+      margin: mapping($cdabanner, carouselslidesList, margin);
+    }
+  }
+
+  .banner-copy {
+    padding: mapping($cdabanner, bannerCopy, pad);
+    width: mapping($cdabanner, bannerCopy, width);
+    word-break: mapping($cdabanner, bannerCopy, wordBreak);
+    text-align: mapping($cdabanner, bannerCopy, txtAlign);
+    background: mapping($cdabanner, bannerCopy, bgnd);
+
+    @media #{$medium-down} {
+      background-image: mapping($cdabanner, bannerCopy, deviceBgImg);
+    }
+
+    @media #{$medium-only} {
+      @if mapping($cdabanner, main, isMobileDesignForiPadPortrait)==true {
+        position: static !important;
+        @include transform(none !important);
+      }
+    }
+
+    @media #{$medium-up} {
+      width: mapping($cdabanner, bannerCopy, tabWidth);
+    }
+
+    @media #{$small-up} {
+      @include position-center();
+
+      h2 {
+        margin: mapping($cdabanner, bannercopyH2, margin);
+      }
+    }
+
+    @if mapping($layout, main, isMattelcom)==true {
+      .theme-btn {
+        background-color: mapping($cdabanner, carouselCTA, ctaBgColor);
+        color: mapping($cdabanner, carouselCTA, ctaTxtColor);
+        font-family: mapping($cdabanner, carouselCTA, ctaFontFamily);
+        font-size: mapping($cdabanner, carouselCTA, ctaFontSize);
+        text-transform: mapping($cdabanner, carouselCTA, ctaTxtTransform);
+        padding: mapping($cdabanner, carouselCTA, ctaPadding);
+        border-radius: 27px !important;
+        font-weight: 500 !important;
+        line-height: 26px !important;
+
+        @media #{$medium-down} {
+          line-height: 23px !important;
+          text-align: center !important;
+          font-weight: 500 !important;
+        }
+
+        &:hover {
+          background-color: mapping($cdabanner, carouselCTA, ctaBgColorHover);
+        }
+      }
+    }
+
+    h2 {
+      font-size: 72px;
+      line-height: 78px;
+      font-weight: 500;
+
+      @media #{$large-down} {
+        font-size: 40px;
+        line-height: 50px;
+      }
+
+      @media #{$medium-down} {
+        font-size: 40px;
+        line-height: 50px;
+      }
+
+      @media #{$small-down} {
+        font-size: 40px;
+        line-height: 44px;
+        margin: 0px;
+      }
+    }
+
+    p {
+      font-size: 30px;
+      line-height: 36px;
+      font-weight: 300;
+
+      @media #{$large-down} {
+        font-size: 18px;
+        line-height: 24px;
+      }
+
+      @media #{$medium-down} {
+        font-size: 18px;
+        line-height: 24px;
+        margin-top:5px;
+        margin-bottom:5px;
+      }
+
+      @media #{$small-down} {
+        font-size: 18px;
+        line-height: 24px;
+      }
+    }
+  }
+
+  img {
+    display: mapping($cdabanner, cdabannerImage, display);
+    margin: mapping($cdabanner, cdabannerImage, margin);
+  }
+
+  //play site
+  .play-container {
+    @extend .arrow-styles;
+
+    .banner-copy {
+      @media #{$small-down} {
+        text-align: if(mapping($cdabanner, bannerCopyPromo, mobTxtAlign), mapping($cdabanner, bannerCopyPromo, mobTxtAlign), left);
+        // padding: 25px 20px !important;
+        padding: 25px 20px 0 20px !important;
+      }
+
+      a,
+      span {
+        background-color: mapping($cdabanner, bannercopySpan, bgndColor);
+        border: mapping($cdabanner, bannercopySpan, borderColor);
+        color: mapping($cdabanner, bannercopySpan, txtColor);
+        font-size: mapping($cdabanner, bannercopySpan, fntSize);
+
+        @media #{$medium-down} {
+          color: mapping($cdabanner, bannercopySpan, fontColor);
+          margin: mapping($cdabanner, bannercopySpan, learnMoreMargin);
+          text-align: left;
+        }
+
+        @media #{$small-down} {
+          font-size: mapping($cdabanner, bannercopySpan, mobfntSize);
+          line-height: mapping($cdabanner, bannercopySpan, mobLineHeight);
+          font-weight: mapping($cdabanner, bannercopySpan, mobFntWeight);
+          text-align: left;
+        }
+      }
+
+      a:hover,
+      span:hover {
+        background: mapping($cdabanner, bannercopySpan, hoverBgnd);
+        border: mapping($cdabanner, bannercopySpan, hoverborderColor);
+      }
+
+      .module-description {
+        @if mapping($cdabanner, bannercopymoduleDesc, isDefaultDesFont)==true {
+          @extend .page-description-font;
+        }
+
+        @else {
+          font-family: mapping($cdabanner, bannercopymoduleDesc, fntFamily);
+        }
+
+        font-weight: mapping($cdabanner, bannercopymoduleDesc, fntWeight);
+        color: mapping($cdabanner, bannercopymoduleDesc, txtColor);
+        font-size: mapping($cdabanner, bannercopymoduleDesc, fntSize);
+        letter-spacing: mapping($cdabanner, bannercopymoduleDesc, letterSpacing);
+        margin: mapping($cdabanner, bannercopymoduleDesc, margin);
+        line-height: mapping($cdabanner, bannercopymoduleDesc, lineHeight);
+
+        @if mapping($layout, main, isMattelcom)==true {
+          font-size: mapping($cdabanner, bannercopymoduleDesc, fntSizeMob);
+          line-height: mapping($cdabanner, bannercopymoduleDesc, mobLineHeight);
+          margin: mapping($cdabanner, bannercopymoduleDesc, mobMargin);
+        }
+
+        @media #{$medium-down} {
+          color: mapping($cdabanner, bannercopymoduleDesc, tabtxtColor);
+
+          @if mapping($cdabanner, bannerCopy, mobileViewFP)==true {
+            margin: mapping($cdabanner, bannerCopy, mobDesMargin);
+          }
+        }
+
+        @if mapping($layout, main, isMattelcom)==true {
+          @media #{$small-down} {
+            font-size: mapping($cdabanner, bannercopymoduleDesc, fntSizeMob);
+          }
+        }
+
+        span {
+          display: mapping($cdabanner, bannercopymoduleSpan, display);
+          color: mapping($cdabanner, bannercopymoduleSpan, txtColor);
+          font-family: mapping($cdabanner, bannercopymoduleSpan, fntFamily);
+          font-size: mapping($cdabanner, bannercopymoduleSpan, fntSsize);
+          font-weight: 500;
+          line-height: 26px;
+
+          @media #{$medium-down} {
+            font-size: 20px;
+            line-height: 23px;
+          }
+
+          @media #{$small-down} {
+            font-size: 20px;
+          }
+        }
+
+        a:hover,
+        span:hover {
+          text-decoration: underline;
+        }
+
+        p {
+          margin-bottom: mapping($cdabanner, bannercopymoduleP, marginBottom);
+        }
+      }
+
+      .module-title {
+        color: if(mapping($cdabanner, bannercopymoduleTitle, mobTxtColor),
+            mapping($cdabanner, bannercopymoduleTitle, mobTxtColor),
+            mapping($cdabanner, bannercopymoduleTitle, txtColor));
+
+        @media #{$small-up} {
+          font-size: mapping($cdabanner, bannercopymoduleTitle, tabFontSize);
+        }
+
+        @media #{$medium-up} {
+          color: mapping($cdabanner, bannercopymoduleTitle, txtColor);
+          max-width: mapping($cdabanner, bannercopymoduleTitle, maxWidth);
+        }
+
+        @media #{$large-up} {
+          font-size: mapping($cdabanner, bannercopymoduleTitle, fntSize);
+        }
+
+        font-size: mapping($cdabanner, bannercopymoduleTitle, fntSize);
+        font-weight: mapping($cdabanner, bannercopymoduleTitle, fntWeight);
+
+        @if mapping($layout, main, isMattelcom)==true {
+          line-height: mapping($cdabanner, bannercopymoduleTitle, lineHeight);
+
+          @media #{$medium-down} {
+            padding: mapping($cdabanner, bannercopymoduleTitle, tabpadding);
+          }
+        }
+
+        @media #{$small-down} {
+          color: mapping($cdabanner, bannercopymoduleTitle, mobileTextColor);
+          font-size: mapping($cdabanner, bannercopymoduleTitle, mobfntSize);
+          max-width: if(mapping($cdabanner, bannercopymoduleTitle, tabMaxWidth),
+              mapping($cdabanner, bannercopymoduleTitle, tabMaxWidth),
+              initial);
+          text-align: if(mapping($cdabanner, bannercopymoduleTitle, mobTxtAlign),
+              mapping($cdabanner, bannercopymoduleTitle, mobTxtAlign),
+              left);
+        }
+
+        sup {
+          font-size: 15%;
+          top: -43px;
+
+          @media #{$small-down} {
+            top: -30px;
+          }
+        }
+      }
+
+      @media #{$medium-down} {
+        // padding: mapping($cdabanner, bannerCopy, tabpadding);
+        padding: 15px 47px 40px 47px;
+        position: mapping($cdabanner, bannerCopy, pos);
+        top: mapping($cdabanner, bannerCopy, tabposTop);
+        left: mapping($cdabanner, bannerCopy, tabposLeft);
+        right: mapping($cdabanner, bannerCopy, tabposRight);
+        bottom: mapping($cdabanner, bannerCopy, tabposBottom);
+        text-align: mapping($cdabanner, bannerCopy, tabtxtAlign);
+        background: mapping($cdabanner, bannerCopy, tabBgnd);
+
+        @if mapping($cdabanner, bannercopyposmiddleLeft, fisherPriceBanner)==true {
+          background: mapping($cdabanner, bannercopyposmiddleLeft, ContainBG);
+        }
+
+        @if mapping($layout, main, isMattelcom)==true {
+          background-size: cover;
+        }
+
+        .module-description {
+          color: if(mapping($cdabanner, bannerCopy, mobModuledestxtColor),
+              mapping($cdabanner, bannerCopy, mobModuledestxtColor),
+              mapping($cdabanner, bannerCopy, moduledestxtColor));
+          font-size: mapping($cdabanner, bannerCopy, moduledestxtfontSize);
+          line-height: mapping($cdabanner, bannerCopy, moduledestxtLineHeight);
+
+          @media #{$small-up} {
+            color: mapping($cdabanner, bannerCopy, tabModuledestxtColor);
+          }
+
+          @media #{$medium-up} {
+            color: mapping($cdabanner, bannerCopy, moduledestxtColor);
+          }
+
+          @media #{$small-down} {
+            text-align: if(mapping($cdabanner, bannerCopy, mobTxtAlign), mapping($cdabanner, bannerCopy, mobTxtAlign), left);
+          }
+        }
+      }
+
+      @media #{$small-down} {
+        padding: mapping($cdabanner, bannerCopy, mobPadding);
+      }
+
+      @if mapping($cdabanner, bannerCopy, mobileViewFP)==true {
+        @media #{$small-down} {
+          padding: mapping($cdabanner, bannerCopy, mobilePad);
+        }
+
+        @media #{$medium-up} {
+          padding: mapping($cdabanner, bannerCopy, tabPad);
+        }
+      }
+    }
+  }
+}
+
+.banner-copy {
+
+  &[class*='top-'],
+  &[class*='bottom-'],
+  &[class*='middle-'] {
+    transform: mapping($cdabanner, bannercopyPos, posTransform);
+    -webkit-transform: mapping($cdabanner, bannercopyPos, posTransform);
+    -ms-transform: mapping($cdabanner, bannercopyPos, posTransform);
+    top: mapping($cdabanner, bannercopyPos, posTop);
+    left: mapping($cdabanner, bannercopyPos, posLeft);
+  }
+
+  &.top-left {
+    left: mapping($cdabanner, bannercopypostopLeft, posLeft);
+    top: mapping($cdabanner, bannercopypostopLeft, posTop);
+  }
+
+  &.top-right {
+    right: mapping($cdabanner, bannercopypostopRight, posRight);
+    top: mapping($cdabanner, bannercopypostopRight, posTop);
+  }
+
+  &.bottom-left {
+    left: mapping($cdabanner, bannercopyposbottomLeft, posLeft);
+    bottom: mapping($cdabanner, bannercopyposbottomLeft, posBottom);
+  }
+
+  &.bottom-right {
+    right: mapping($cdabanner, bannercopyposbottomRight, posRight);
+    bottom: mapping($cdabanner, bannercopyposbottomRight, posBottom);
+  }
+
+  //polly Styles
+  &.middle-left {
+    left: mapping($cdabanner, bannercopyposmiddleLeft, posLeft);
+    top: mapping($cdabanner, bannercopyposmiddleLeft, posTop);
+    transform: mapping($cdabanner, bannercopyposmiddleLeft, transform);
+
+    @if mapping($cdabanner, bannercopyposmiddleLeft, mattelComBanner)==true {
+      background-color: mapping($cdabanner, bannercopyposmiddleLeft, ContainBG);
+      background-size: cover;
+      text-align: mapping($cdabanner, bannercopyposmiddleLeft, textAlign);
+      bottom: mapping($cdabanner, bannercopyposmiddleLeft, bottomPos);
+
+      .middle-div {
+        width: mapping($cdabanner, bannercopyposmiddleLeft, titleWidth);
+        position: relative;
+        display: mapping($cdabanner, bannercopyposmiddleLeft, midDivdisplay);
+        top: mapping($cdabanner, bannercopyposmiddleLeft, MidDivtop);
+        transform: mapping($cdabanner, bannercopyposmiddleLeft, MidDivtransform);
+        -webkit-transform: mapping($cdabanner, bannercopyposmiddleLeft, MidDivtransform);
+        -ms-transform: mapping($cdabanner, bannercopyposmiddleLeft, MidDivtransform);
+
+        @media #{$medium-down} {
+          width: mapping($cdabanner, bannercopyposmiddleLeft, MobileWidth);
+          margin-top: mapping($cdabanner, bannercopyposmiddleLeft, mobileTop);
+          top: mapping($cdabanner, bannercopyposmiddleLeft, mobileInher);
+          transform: mapping($cdabanner, bannercopyposmiddleLeft, mobileInher);
+          -webkit-transform: mapping($cdabanner, bannercopyposmiddleLeft, mobileInher);
+          -ms-transform: mapping($cdabanner, bannercopyposmiddleLeft, mobileInher);
+        }
+      }
+    }
+
+    @media #{$medium-down} {
+      transform: mapping($cdabanner, bannercopyposmiddleLeft, ipadtransform);
+    }
+
+    @media #{$large-only} {
+      font-size: mapping($cdabanner, bannercopyposmiddleLeft, tabFontSize);
+      width: mapping($cdabanner, bannercopyposmiddleLeft, tabWidth);
+    }
+
+    @media #{$large-up} {
+      width: mapping($cdabanner, bannercopyposmiddleLeft, deskWidth);
+    }
+
+    @media #{$xlarge-up} {
+      width: mapping($cdabanner, bannercopyposmiddleLeft, xdeskWidth);
+    }
+
+    .theme-btn {
+      background: none;
+      padding: 0;
+      color: $white !important;
+
+      &:hover {
+        text-decoration: mapping($cdabanner, bannercopyposmiddleLeft, textDecoration);
+      }
+    }
+  }
+
+  &.middle-right {
+    .theme-btn {
+      &:hover {
+        text-decoration: mapping($cdabanner, bannercopyposmiddleRight, textDecoration);
+      }
+    }
+
+    right: mapping($cdabanner, bannercopyposmiddleRight, posRight);
+    top: mapping($cdabanner, bannercopyposmiddleRight, posTop);
+    transform: mapping($cdabanner, bannercopyposmiddleLeft, transform);
+
+    h2 {
+      font-size: mapping($cdabanner, bannercopyposmiddleRight, headingFontSize);
+      line-height: mapping($cdabanner, bannercopyposmiddleRight, headingLineHeight);
+    }
+
+    @media #{$medium-down} {
+      .module-title {
+        font-size: mapping($cdabanner, bannercopyposmiddleRight, titleFontSizeTab);
+        color: mapping($cdabanner, bannercopyposmiddleRight, titleColorTab);
+      }
+    }
+
+    @media #{$small-down} {
+      .module-title {
+        width: 65%;
+      }
+    }
+
+    .module-description {
+      font-size: mapping($cdabanner, bannercopyposmiddleRight, headingFontSizeDes);
+      line-height: mapping($cdabanner, bannercopyposmiddleRight, headingLineHeight);
+
+      @media #{$medium-down} {
+        font-size: mapping($cdabanner, bannercopyposmiddleRight, desFontSizeTab);
+      }
+    }
+
+    @media #{$medium-down} {
+      transform: mapping($cdabanner, bannercopyposmiddleLeft, ipadtransform);
+      border-bottom: mapping($cdabanner, bannercopyposmiddleLeft, ipadBorderBottom);
+      padding-left: 48px !important;
+      padding-right: 48px !important;
+    }
+
+    @media #{$large-only} {
+      font-size: mapping($cdabanner, bannercopyposmiddleRight, tabFontSize);
+      width: mapping($cdabanner, bannercopyposmiddleRight, tabWidth);
+    }
+  }
+
+  &.top-center {
+    @media #{$small-up} {
+      left: mapping($cdabanner, bannercopypostopCenter, mobposLeft);
+      top: mapping($cdabanner, bannercopypostopCenter, mobposTop);
+      transform: mapping($cdabanner, bannercopypostopCenter, mobposTransform);
+      -webkit-transform: mapping($cdabanner, bannercopypostopCenter, mobposTransform);
+      -ms-transform: mapping($cdabanner, bannercopypostopCenter, mobposTransform);
+    }
+  }
+
+  @media #{$small-up} {
+    .banner-copy {
+      &.bottom-center {
+        left: mapping($cdabanner, bannercopyposbottomCenter, mobposLeft);
+        bottom: mapping($cdabanner, bannercopyposbottomCenter, mobposBottom);
+        transform: mapping($cdabanner, bannercopyposbottomCenter, mobposTransform);
+      }
+
+      &.v-center {
+        left: mapping($cdabanner, bannercopyposVcenter, mobposLeft);
+        top: mapping($cdabanner, bannercopyposVcenter, mobposTop);
+        transform: mapping($cdabanner, bannercopyposVcenter, mobposTransform);
+      }
+    }
+  }
+
+  &.no-bg {
+    @media #{$small-up} {
+      background: mapping($cdabanner, bannercopyBg, mobBgnd);
+    }
+  }
+
+  .module-title {
+    @media #{$small-only} {
+      margin: mapping($cdabanner, bannercopymodTitle, mobMargin);
+    }
+
+    font-size: mapping($cdabanner, bannercopymodTitle, fntSize);
+
+    @media #{$small-up} {
+      font-size: mapping($cdabanner, bannercopymodTitle, mobfntSize);
+    }
+
+    @media #{$medium-up} {
+      font-size: mapping($cdabanner, bannercopymodTitle, tabfntSize);
+    }
+  }
+
+  .module-sub-title {
+    @media #{$small-up} {
+      font-size: mapping($cdabanner, bannercopymodSubtitle, mobfntSize);
+    }
+
+    @media #{$medium-up} {
+      font-size: mapping($cdabanner, bannercopymodSubtitle, tabfntSize);
+    }
+  }
+
+  @media #{$small-only} {
+    text-align: mapping($cdabanner, bannercopymodSubtitle, mobtxtAlign);
+  }
+
+  a,
+  span {
+    @if mapping($layout, main, isMattelcom)==true {
+      @media #{$small-only} {
+        margin: mapping($cdabanner, bannercopySpan, marginMob);
+      }
+    }
+
+    &:after {
+      display: mapping($cdabanner, bannercopySpan, displayNone);
+    }
+  }
+}
+
+.heroImageBanner {
+  .cda-banner {
+    text-align: mapping($cdabanner, heroimageBanner, txtAlign);
+
+    .crm-container {
+      display: mapping($cdabanner, heroimageCrm, display);
+      position: mapping($cdabanner, heroimageCrm, pos);
+      text-align: mapping($cdabanner, heroimageCrm, txtAlign);
+    }
+  }
+}
+
+.promoCarousel {
+  @media #{$small-down} {
+    padding: if(mapping($cdabanner, promoCarousel, padMob), mapping($cdabanner, promoCarousel, padMob), 0);
+    background: #92ccd9;
+  }
+
+  @media #{$medium-down} {
+    background: #92ccd9;
+  }
+
+  .cda-banner {
+    @if mapping($cdabanner, mobBanner, isContainsBorder)==true {
+      @media #{$medium-down} {
+        &::after {
+          content: mapping($cdabanner, mobBanner, afterBdrcontent);
+          background-image: mapping($cdabanner, mobBanner, afterBdrBgimage);
+          background-repeat: mapping($cdabanner, mobBanner, afterBdrBgrepeat);
+          background-size: mapping($cdabanner, mobBanner, afterBdrBgSize);
+          width: mapping($cdabanner, mobBanner, afterBdrWidth);
+          height: mapping($cdabanner, mobBanner, afterBdrHeight);
+          display: mapping($cdabanner, mobBanner, afterBdrDisp);
+          position: mapping($cdabanner, mobBanner, afterBdrPos);
+          bottom: mapping($cdabanner, mobBanner, afterBdrPosBottom);
+          left: mapping($cdabanner, mobBanner, afterBdrPosLeft);
+        }
+      }
+    }
+
+    ul {
+      margin-bottom: 0;
+
+      @media #{$medium-down} {
+        margin-bottom: 0px;
+        background: #fff;
+      }
+
+      @media #{$small-down} {
+        // padding-bottom: 15px;
+        padding-bottom: 20px;
+        margin-bottom: 0px !important;
+      }
+
+      .slick-track {
+        @media #{$small-down} {
+          background: mapping($cdabanner, slickTrack, bgColor);
+        }
+      }
+
+      li {
+        margin: 0;
+
+        img {
+          width: 100%;
+          max-width: if(mapping($cdabanner, promoCarousel, maxWidth), mapping($cdabanner, promoCarousel, maxWidth), 1600px);
+          padding: 0;
+
+          @media #{$small-down} {
+            height: 186px;
+          }
+
+          @media #{$medium-only} {
+            height: 262px;
+          }
+        }
+      }
+
+      // li:nth-of-type(2) {
+      //   .module-description {
+      //     p {
+      //       color: #000 !important;
+      //       padding-right: 15px;
+      //     }
+      //   }
+      // }
+
+      // li:nth-of-type(3) {
+      //   @media #{$medium-down} {
+      //     .module-description {
+      //       h2 {
+      //         color: #FF5100 !important;
+      //         padding-right: 20px;
+      //       }
+
+      //       p {
+      //         color: #000 !important;
+      //         padding-right: 15px;
+
+      //         a {
+      //           span {
+      //             color: #000 !important;
+      //           }
+      //         }
+      //       }
+      //     }
+      //   }
+      // }
+    }
+  }
+
+  .slick-dots {
+    bottom: mapping($cdabanner, slickDots, bottomBtn);
+
+    @media #{$small-up} {
+      width: auto;
+      transform: translateX(-50%);
+      -webkit-transform: translateX(-50%);
+      -moz-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+      left: 50%;
+      right: auto;
+    }
+
+    li {
+      margin: mapping($cdabanner, slickDots, margin);
+
+      @media #{$medium-down} {
+        margin: mapping($cdabanner, slickDots, marginMobile);
+      }
+    }
+  }
+}
+
+.has-video-carousel:not(.only-video-slider) {
+  li.video-player-container {
+    .oo-player-container {
+      position: mapping($cdabanner, imageAndVideo, imgPosition);
+      left: mapping($cdabanner, imageAndVideo, imgLeft);
+      top: mapping($cdabanner, imageAndVideo, imgTop);
+      height: mapping($cdabanner, imageAndVideo, imgHeight);
+      width: mapping($cdabanner, imageAndVideo, imgWidth);
+
+      .oo-player {
+        padding: mapping($cdabanner, imageAndVideo, imgPad);
+        height: mapping($cdabanner, imageAndVideo, imgHeight);
+        width: mapping($cdabanner, imageAndVideo, imgWidth);
+      }
+    }
+  }
+}
+
+.has-video-carousel {
+  .video-player-banner.oo-player-container {
+    position: mapping($cdabanner, imageAndVideo, imgPosition);
+    left: mapping($cdabanner, imageAndVideo, imgLeft);
+    top: mapping($cdabanner, imageAndVideo, imgTop);
+    height: mapping($cdabanner, imageAndVideo, imgHeight);
+    width: mapping($cdabanner, imageAndVideo, imgWidth);
+  }
+
+  .oo-player {
+    padding: mapping($cdabanner, imageAndVideo, imgPad);
+    height: mapping($cdabanner, imageAndVideo, imgHeight);
+    width: mapping($cdabanner, imageAndVideo, imgWidth);
+  }
+
+  .video-player-container {
+    position: mapping($cdabanner, videoContainer, VideoConPos);
+    padding: mapping($cdabanner, videoContainer, VideoConPad);
+    min-height: mapping($cdabanner, videoContainer, VideoMinheight);
+
+    @media #{$small-down} {
+      min-height: mapping($cdabanner, videoContainer, VideoBanMin);
+    }
+  }
+
+  .video-player-banner {
+    position: mapping($cdabanner, videoContainer, VideoBanPos);
+    top: mapping($cdabanner, videoContainer, VideoBanTop);
+    right: mapping($cdabanner, videoContainer, VideoBanRight);
+    bottom: mapping($cdabanner, videoContainer, VideoBanBottom);
+    left: mapping($cdabanner, videoContainer, VideoBanLeft);
+  }
+}
+
+.carousel-slides {
+  &.only-video-slider {
+    .slick-slide {
+      min-height: mapping($cdabanner, videoContainer, VideoMinheight);
+
+      @media #{$small-down} {
+        min-height: mapping($cdabanner, videoContainer, VideoBanMin);
+      }
+    }
+  }
+}
+
+.brandsBtn {
+  .theme-btn {
+    background: mapping($cdabanner, brandsBtn, btnBackground);
+    padding: mapping($cdabanner, brandsBtn, btnPadding);
+    color: mapping($cdabanner, brandsBtn, btnColor);
+    font-weight: mapping($cdabanner, brandsBtn, btnFontWeight);
+    padding-top: 15px !important;
+    text-align: center !important;
+
+    &:hover {
+      color: mapping($cdabanner, brandsBtn, hoverColor);
+      text-decoration: mapping($cdabanner, brandsBtn, hoverUnderline);
+    }
+
+    &:active {
+      box-shadow: none !important;
+      -webkit-box-shadow: none !important;
+    }
+
+  }
+}
+
+#pagename-mobile-apps {
+
+  .promoCarousel{    
+    .cda-banner {
+      ul {
+        @media #{$xsmall-down} {
+          padding-bottom: 0px;
+        }  
+        li {
+          img {
+            height: auto;
+
+            @media #{$medium-down} {
+              height: auto;
+            }
+
+            @media #{$small-down} {
+              height: auto;
+            }
+          }
+        }
+      }
+
+      .play-container {
+        .banner-copy {
+          .module-description {
+            @media #{$medium-down} {
+              font-size: 18px !important;
+              line-height: 24px !important;
+              margin-top: 0px;
+            }
+            @media #{$small-down} {
+              margin-top: 5px;
+            }
+          }
+        }
+      }
+    }
+  }  
+
+
+  .banner-copy.middle-right {
+    top: 62%;
+    h2 {
+      line-height: 56px !important;
+      @media #{$medium-down} {
+        line-height: 40px !important;
+      }
+      @media #{$small-down} {
+        line-height: 34px !important;
+      }
+    }
+    .theme-btn {
+      text-align: center !important;
+      margin-bottom: 20px;
+      margin-top:5px;
+      line-height: 26px !important;
+      background-color: #FBD635;
+
+      @media #{$medium-down} {
+        color: #000000 !important;
+        font-size: 22px !important;
+        line-height: 26px !important;
+        margin-bottom: 0px;
+      }
+      @media #{$small-down} {
+        line-height: 23px !important;
+        margin-bottom: 40px;
+      }
+    }
+    
+  }
+
+  .cda-banner{
+    .banner-copy{
+      .theme-btn{
+        background-color: #FBD635;
+
+        @media #{$small-down} {
+          padding : 0px;
+          height:44px;
+          width:200px;
+      }
+
+      @media #{$medium-down} {
+        padding : 14px 48px;
+        height:54px;
+        width:218px;
+    }
+    }
+  }
+  }
+}
+
+#pagename-home {   
+  .cda-banner{    
+    .banner-copy{
+      p{
+        margin-top:20px;
+
+        @media #{$xlarge-only}{
+          margin-top: 10px;
+          margin-bottom: 20px;
+        }
+
+        @media #{$medium-down} {
+          margin-top: 0px;
+          color: #808080 !important;
+        }
+
+      }
+
+      h2{
+        @media #{$medium-down}{
+          color: #808080 !important;
+        }
+      }
+    }
+    .play-container{
+      .banner-copy{
+        .module-description{
+          span{
+            @media #{$medium-down}{
+              color: #808080 !important;
+            }
+          }
+        }
+      }
+    }
+  }  
+
+  .promoCarousel {
+    .cda-banner {
+      ul {
+        margin-bottom:0px;
+      }
+    }
+  }
+}
+
+#pagename-our-brands {
+  .play-download{
+    .gallery-tile{
+      .character-label{
+        h2{
+          @media #{$large-up} {
+            margin: 13px 0 23px;
+          }
+        }
+      }
+    }
+  }   
+
+  .cda-banner{
+    .play-container{
+      .banner-copy{
+        .module-description{
+          @media #{$large-up} {
+            margin: 4px 0 20px 0;
+          }          
+        }
+      }
+    }
+  }   
+
+  .promoCarousel {
+    .cda-banner {
+      ul {
+        li {
+          img {
+            height: auto;
+
+            @media #{$medium-down} {
+              height: auto;
+            }
+
+            @media #{$small-down} {
+              height: auto;
+            }
+          }
+        }
+      }
+
+      .play-container {
+        .banner-copy {
+          .module-description {
+            @media #{$medium-down} {
+              font-size: 18px !important;
+              line-height: 24px !important;
+              margin-top: 5px;
+            }
+            @media #{$small-down} {              
+              margin-top: 16px;
+              margin-bottom: 0px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .banner-copy.middle-right {
+
+    right: 2.7%;
+
+    @media #{$xlarge-only} {
+      right: 7.9%;
+    }
+    
+    .theme-btn {
+      text-align: left !important;
+      margin-bottom: 20px;
+
+      @media #{$xlarge-only} {
+        
+        margin-bottom: 35px;
+        padding: 15px 0px 0px 0px !important;
+      }  
+      @media #{$medium-down} {
+        color: #000000 !important;
+        font-size: 20px !important;
+        margin-bottom: 0px;
+        margin-top: 0px;
+        padding-top: 0px !important;
+      }
+      @media #{$small-down} {
+        color: #000000 !important;
+        margin-top: 17px;
+        margin-bottom: 40px;        
+      }
+    }
+
+    h2 {
+      margin-top: 25px;
+      line-height: 56px !important;
+
+      @media #{$large-down} {
+        font-size: 30px !important;
+        line-height: 40px !important;
+      }
+
+      @media #{$medium-down} {
+          margin-top:0px;
+          line-height: 40px !important;
+      }
+
+      @media #{$small-down} {
+        margin-top: 0px;
+        line-height: 34px !important;        
+      }
+    }
+  }
+}

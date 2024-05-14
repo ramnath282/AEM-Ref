@@ -1,0 +1,115 @@
+footer {
+  width:100%;
+   p {
+    margin:em(10) 0 em(10) 0;
+   }
+  .crm-mega-footer {
+        @include container-fixed;
+      @media (min-width: $screen-sm-min) {
+        width: $container-sm;
+      }
+      @media (min-width: $screen-md-min) {
+        width: $container-md;
+      }
+      @media (min-width: $screen-lg-min) {
+        width: $container-lg;
+      }
+    .footer-logo {      
+      @media #{$medium-up} {
+        float: left;
+        margin-left: 0;
+        padding-left: 0;
+        padding-right: 0
+      }/*
+      @media #{$large-only} {
+        float: none;
+        margin-left: 15px;
+      }*/
+      @include make-md-column(1);
+    }
+    .footer-links {
+      ul {
+        
+      margin:0;
+    display:inline-block;
+        li {
+          display:inline-block;
+      padding:0 em(10) 0 0;
+          a {
+            color:$white;
+            text-decoration:none;
+            
+          }
+        }
+      }
+      span {
+        @media #{$medium-down} {
+            display: block;
+        }
+      }
+      .hvr-underline-from-left {
+      display: inline-block;
+      vertical-align: middle;
+      -webkit-transform: perspective(1px) translateZ(0);
+      transform: perspective(1px) translateZ(0);
+      box-shadow: 0 0 1px transparent;
+      position: relative;
+      overflow: hidden;
+   } 
+   .hvr-underline-from-left:before {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      left: 0;
+      right: 100%;
+      bottom: 0;
+  }
+  .hvr-underline-from-left:hover:before, .hvr-underline-from-left:focus:before, .hvr-underline-from-left:active:before {
+    right: 0;
+  }
+    }
+  .crm-socials {
+     padding:em(35) 0 0 0;
+     .stay-in-touch {
+	    @include make-md-column(6);
+	    font-size: em(15);
+    	margin-bottom: 10px;
+	    @media #{$medium-up} {
+	    	// text-align: right;
+  			padding:0;
+	    	float: none;
+	    	width: auto;
+    		// min-width: 40%;
+	  	}
+     }
+     ul {
+      	@include make-md-column(6);
+      	padding-right:0;
+      	@media #{$medium-up} {
+	    	float: none;
+	    	width: auto;
+	    	display: inline-block;
+	  	}
+         li {
+        display:inline-block;
+        padding-right:em(5);
+      }
+      a {
+        @extend .fa;
+      }
+      .hvr-float-shadow {
+          vertical-align:middle;
+          transform:perspective(1px) translateZ(0);
+          box-shadow:0 0 1px transparent;
+          position:relative;
+          transition-duration:0.3s;
+          transition-property:transform;
+      }
+      .hvr-float-shadow:hover {
+        transform:translateY(-5px);
+      }
+      }
+  }
+   }
+}
+

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+	xmlns:granite="http://www.adobe.com/jcr/granite/1.0"
+	xmlns:cq="http://www.day.com/jcr/cq/1.0"
+	xmlns:jcr="http://www.jcp.org/jcr/1.0"
+	xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+	jcr:primaryType="nt:unstructured" jcr:title="Product Accordion Info"
+	sling:resourceType="cq/gui/components/authoring/dialog"
+	height="{Long}500">
+	<content jcr:primaryType="nt:unstructured"
+		sling:resourceType="granite/ui/components/coral/foundation/container">
+		<items jcr:primaryType="nt:unstructured">
+			<tabs jcr:primaryType="nt:unstructured"
+				sling:resourceType="granite/ui/components/coral/foundation/tabs"
+				maximized="{Boolean}true">
+				<items jcr:primaryType="nt:unstructured">
+					<accordionConfig jcr:primaryType="nt:unstructured"
+						jcr:title="General Config"
+						sling:resourceType="granite/ui/components/coral/foundation/container">
+						<items jcr:primaryType="nt:unstructured">
+							<column jcr:primaryType="nt:unstructured"
+								sling:resourceType="granite/ui/components/coral/foundation/container">
+								<items jcr:primaryType="nt:unstructured">
+									<title jcr:primaryType="nt:unstructured"
+										sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+										fieldDescription="AccordionTitle" fieldLabel="AccordionTitle"
+										name="./title" />
+									<awalysEnglish jcr:primaryType="nt:unstructured"
+										sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+										fieldDescription="Awalys English dealing with multi-lingual site tagging"
+										fieldLabel="Adobe Tracking Name" name="./awalysEnglish"
+										required="{Boolean}true" />
+									<aeLocationName
+										jcr:primaryType="nt:unstructured"
+										sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+										fieldDescription="Location Name for Analytics (Always English )"
+										fieldLabel="Location Name for Adobe Tracking"
+										name="./locationName" />
+								</items>
+							</column>
+						</items>
+					</accordionConfig>
+				</items>
+			</tabs>
+		</items>
+	</content>
+</jcr:root>
+
+

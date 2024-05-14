@@ -1,0 +1,226 @@
+.anchorNav {
+    @include print-css(map-merge((
+        right: 0,
+        left: 0,
+        min-height: 50px,
+        z-index: 999 !important,
+        transition: .2s,
+        float: left,
+        width: 100%,
+        position: relative
+    ),
+    if(variable-exists(anchorNav) and map-has-key($anchorNav, fixednavContainer),
+        map-get($anchorNav, fixednavContainer), ())));
+
+    &.navbar-fixed-top {
+        .anchor-nav {
+            position: fixed;
+        }
+
+        &.default-container {
+            .anchor-nav {
+                @include print-css(map-merge((
+                    width: (
+                        defaultVal : calc(100% - 80px),
+                        smallDown : calc(100% - 40px)
+                    )
+                ),
+                if(variable-exists(anchorNav) and map-has-key($anchorNav, fixedDefaultContainer),
+                    map-get($anchorNav, fixedDefaultContainer), ())));
+            }
+        }
+    }
+
+    .navbar-header {
+        @media#{$md-only} {
+            width: 100%;
+
+            .navbar-toggle {
+                display: block
+            }
+        }
+    }
+
+    &.fullbleed {
+        .navbar-header {
+            .brand-logo {
+                padding-left: 0;
+                position: absolute;
+            }
+        }
+
+        .navbar-nav {
+            li {
+                &:last-child {
+                    padding-right: 0;
+                }
+            }
+        }
+    }
+
+    &.base-nav {
+        position: relative;
+    }
+
+    &.horizontal-left {
+        .navbar {
+            .navbar-nav {
+                @include print-css(map-merge((
+                    float: left !important
+                ),
+                if(variable-exists(anchorNav) and map-has-key($anchorNav, navbarAnchorLeft),
+                    map-get($anchorNav, navbarAnchorLeft), ())));
+            }
+        }
+    }
+
+    &.horizontal-right {
+        .navbar {
+            .navbar-nav {
+                @include print-css(map-merge((
+                    float: right !important
+                ),
+                if(variable-exists(anchorNav) and map-has-key($anchorNav, navbarAnchorRight),
+                    map-get($anchorNav, navbarAnchorRight), ())));
+            }
+        }
+    }
+
+    &.horizontal-center {
+        .navbar {
+            .navbar-nav {
+                @include print-css(map-merge((
+                    float:none,
+                    margin: 0 auto,
+                    display: table,
+                    table-layout: fixed,
+                ),
+                if(variable-exists(anchorNav) and map-has-key($anchorNav, navbarAnchorCenter),
+                    map-get($anchorNav, navbarAnchorCenter), ())));
+            }
+        }
+    }
+
+    &.dark-theme {
+        .navbar {
+            .navbar-nav {
+                >li {
+                    >a {
+                        @include print-css(map-merge((
+                            color: $white,
+                        ),
+                        if(variable-exists(anchorNav) and map-has-key($anchorNav, anchorNavDarkTheme),
+                            map-get($anchorNav, anchorNavDarkTheme), ())));
+
+                        &:hover,
+                        &.active {
+                            @include print-css(map-merge((
+                                color: $white,
+                                background-color: transparent,
+                                border-bottom: 4px solid $white
+                            ),
+                            if(variable-exists(anchorNav) and map-has-key($anchorNav, anchorNavActive),
+                                map-get($anchorNav, anchorNavActive), ())));
+                        }
+
+                    }
+                }
+            }
+        }
+    }
+
+
+    .anchor-nav {
+        float: left;
+        width: 100%;
+
+        .navbar {
+            margin-bottom: 0;
+
+            @media#{$md-only} {
+                .navbar-collapse {
+                    &.collapse {
+                        clear: both;
+                        display: none !important;
+
+                        &.in {
+                            display: block !important;
+                        }
+                    }
+                }
+            }
+        }
+
+        .navbar-nav {
+            @media#{$md-only} {
+                float: none;
+                width: 100%;
+            }
+
+            @media#{$mobile-down-only} {
+                width: 100%;
+            }
+
+            >li {
+                padding-left: 15px;
+                padding-right: 15px;
+                line-height: 50px;
+
+                @media#{$md-only} {
+                    float: none;
+                }
+
+                >a {
+                    color: $black;
+                    line-height: normal;
+                    padding: 0;
+                    display: inline-block;
+
+                    &:hover,
+                    &.active {
+                        color: $black;
+                        background-color: transparent;
+                        border-bottom: 4px solid $black;
+                    }
+
+                    &:focus {
+                        background: transparent
+                    }
+                }
+            }
+
+        }
+
+        .navbar-toggle {
+            margin-top: 16px;
+            margin-bottom: 16px;
+
+            &:before {
+                background: url($spriteImgPath) no-repeat -180px -76px;
+                content: "";
+                width: 24px;
+                height: 24px;
+                position: absolute;
+                left: 0;
+                top: -2px;
+            }
+
+            &.collapsed {
+                &:before {
+                    background: url($spriteImgPath) no-repeat -160px -24px;
+                }
+            }
+        }
+
+        .brand-logo {
+            padding: 0 15px;
+            display: block;
+            float: left;
+
+            img {
+                max-width: 70px;
+
+            }
+        }
+    }
+}

@@ -1,0 +1,93 @@
+.grid-sort {
+    float: right;
+    position: relative;
+    padding: 0 em(15) 0 0;
+    bottom:em(10);
+
+    @media #{$medium-down} {
+        overflow: hidden;
+        border-bottom: 1px solid $borderColor;
+    }
+
+    >span {
+        vertical-align: middle;
+        font: $fontRegular 1.14286em $primaryFontFamily;
+    }
+
+    button.custom-dropdown-toggle {
+        font: $fontSemiBold em(16) $primaryFontFamily;
+        color: $color-dark-grey;
+        padding-left: 5px;
+        box-shadow: none;
+        border: none;
+        outline: none;
+        background: transparent;
+            &:focus {
+                 outline: 1px solid $theme-btn-border-color;
+            }
+        span {
+            font: inherit;
+
+            &:after {
+                @media #{$medium-up} {
+                    content: "\f078";
+                    width:em(12);
+                    height: em(12);
+                }
+
+                @include font-awesome();
+                margin-left: 5px;
+                font-size: 75%;
+            }
+        }
+
+        &[aria-expanded="true"] span:after {
+            @media #{$medium-up} {
+                content: "\f077";
+                width:em(12);
+                height: em(12);
+            }
+        }
+    }
+
+    .custom-dropdown {
+        box-shadow: 0 0 4px 0 rgba($black, 0.35);
+        border: none;
+        border-radius: 0;
+        left: auto;
+        right: em(2);
+        z-index: 50000;
+		 @media #{$medium-up} {
+            width:210px;
+            height:235px;
+        }
+
+        .inner {
+            margin: em(15) 0;
+        }
+
+        @media #{$medium-down} {
+            display: block;
+            background: transparent;
+        }
+
+        li {
+            padding: 0 em(15);
+			 @media #{$medium-up} {
+                margin:0.7em 0;
+            }
+            @media #{$medium-down} {
+                margin: em(7) 0 em(14) 0;
+            }
+        }
+
+        a {
+            font: $fontRegular em(16) $primaryFontFamily;
+            color: inherit !important;
+
+            span {
+                font: inherit;
+            }
+        }
+    }
+}

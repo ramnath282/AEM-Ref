@@ -1,0 +1,44 @@
+<template data-sly-template.itemBeantemplate="${@ properties}">
+
+      <script id="earPiercingTemplate" type="text/x-handlebars-template">
+          {{#ifEquals KitDisplayable 'Y'}}
+          <div  id="earPiercing"
+          data-selection-id="addon{{../index}}"
+          data-sku-id="{{../partNumber}}"
+          data-product-type="{{../product_type}}"
+          data-association="{{../associationType}}"
+          data-variantid="{{../variantId}}"
+          class="option addon itemBean disabled">                      <div class="selected">
+                        <span class="name" id="change{{../name}}Acc">{{#if ../name}}{{../name}}{{else}}{{../optionalName}}{{/if}}</span>
+                        <span aria-describedby="change{{../name}}Acc" class="change" aria-expanded="false" role="link" tabindex="0">
+                                 <span>
+                                       ${properties.addonsChangeLabel @ context='unsafe'}
+                                       <i class="fas fa-chevron-right"></i>
+                                 </span>
+                            </span>
+                 </div>
+                 <div class="option-details">
+                  <h2>{{#if ../name}}{{../name}}{{else}}{{../optionalName}}{{/if}}</h2>
+                  <header>{{{../KitInstructions}}}</header>
+                  <div class="choice" data-sku-id="{{../partNumber}}"  data-data-itematpreceiptid= "{{../variant_itematpreceiptid}}" data-backorderdate="{{../variant_backorderdate}}" data-variantinventry="{{../variant_inventorystatus}}" data-product-type="{{../product_type}}" data-association="{{../associationType}}" data-variantid="{{../variantId}}" data-choice="{{#if ../name}}{{../name}}{{else}}{{../optionalName}}{{/if}}: Yes">
+                        <div class="img-responsive"><img alt="addon thumbnail" src="{{../thumbnail}}" /></div>
+                        <div class="trunk-desc">
+                        <p><span class="trunk-heading">Include for <span class="gt-price stock-price"></span></span></p>
+                        <p>{{{../TrunkDescription}}}</p>
+                        </div>
+                  </div>
+                  <div class="choice notInterestedAddon addons"  data-choice="{{#if ../name}}{{../name}}{{else}}{{../optionalName}}{{/if}}: No">
+                  <div class="trunk-desc">
+                        <p><span class="trunk-heading" role="link" tabindex="0">${properties.addonsNotInterestedLabel  @ context='unsafe'}</span><span class="arrow-toggle arrowLink"></span></p>
+                        </div>
+                  </div>
+                 </div>
+                  </div>
+          {{/ifEquals}}
+     </script>
+
+   </template>
+
+   <template data-sly-template.itemBeanEmptytemplate="${@ properties}">
+         <script id="earPiercingTemplate" type="text/x-handlebars-template"></script>
+   </template>

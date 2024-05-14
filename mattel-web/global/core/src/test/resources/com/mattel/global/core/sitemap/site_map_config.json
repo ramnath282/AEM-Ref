@@ -1,0 +1,67 @@
+{
+    "schema": {
+        "ag_en": {
+            "rootPath": "/content/ag/en",
+            "excludePagesOfTemplateType": [],
+            "includeLastModified": true,
+            "defaultpriority": "1.0",
+             "defaultFrequency": "weekly",
+            "saveSiteMapOnPath": "/content/dam/generated-sitemaps/",
+            "externalizerDomain": "agdomainstage",
+            "pageExcludeProperty": null,
+            "priorityProperties": [],
+            "changeFreqProperties": [],
+            "includeInheritance": false,
+            "extensionlessUrls": false,
+            "otherLocales": [{
+                    "siteKey": "ag_fr",
+                    "rootPath": "/content/ag/fr"
+                },
+                {
+                    "siteKey": "ag_en-gb",
+                    "rootPath": "/content/ag/en-gb"
+                }
+            ],
+            "dynamicPageConfigs": [{
+                    "dataSourceType": "REPO",
+                    "repoPath": "/var/commerce/{site_name}/{locale}/products",
+                    "excludeNodes": ["fun-games-set-fln07"],
+                    "includeHtmlSuffix": false,
+                    "startsWith": "/shop/p",
+                    "defaultpriority": "3.0",
+                    "primaryId": "pdpLink",
+                    "includeLastModified": false
+                },
+                {
+                    "dataSourceType": "CSV",
+                    "repoPath": "/content/dam/{site_key}/nodes.txt",
+                    "excludeNodes": ["xyz"],
+                    "includeHtmlSuffix": true,
+                    "startsWith": "/shop/p"
+                }
+            ],
+            "rewriteVanityRules": [{
+                    "forPageHierarchy": "/content/{site_name}/{locale}/shop/categories",
+                    "startsWith": "/shop/c",
+                    "defaultpriority": "2.0",
+                    "defaultFrequency": "daily",
+                    "includeLastModified": false,
+                    "endsWith": null,
+                    "newVanityUrl": null
+                },
+                {
+                    "forVanityUrl": "/landing",
+                    "startsWith": "/shop",
+                    "endsWith": null,
+                    "newVanityUrl": null
+                },
+                {
+                    "forRegexPattern": "\/*\/discover",
+                    "startsWith": null,
+                    "endsWith": null,
+                    "newPattern": "/new-discover"
+                }
+            ]
+        }
+    }
+}

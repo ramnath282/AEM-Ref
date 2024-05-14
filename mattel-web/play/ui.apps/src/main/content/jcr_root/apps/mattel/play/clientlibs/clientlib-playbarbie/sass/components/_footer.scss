@@ -1,0 +1,131 @@
+footer {
+    background-color: mapping($footer,main,bgndColor);
+    border-top: mapping($footer,main,borderTop);
+    background-size: mapping($footer,main,bgndSize);
+    padding: mapping($footer,main,pad);
+    position: mapping($footer,main,pos);
+    >div {
+        @extend .container;
+        @media #{$medium-down} {
+            padding-top: mapping($footer,mainDiv,tabpaddingTop);
+        }
+        @media #{$large-only} {
+             width: 850px !important;
+        }
+        >div {
+            @extend .row;
+            .play-footer-mattel-logo {
+                @extend .col-md-1;
+                @extend .col-sm-6;
+                @extend .col-xs-6;
+                @media #{$medium-down} {
+                    text-align: mapping($footer,playmattelLogo,tabtxtAlign);
+                    img {
+                        margin-right: mapping($footer,playmattelLogo,tabmarginRight);
+                    }
+                   
+                }
+                 @media (min-width: 992px)
+                {
+                   width: 100px !important; 
+                }
+            }
+            .play-esrb-logo {
+                @extend .col-md-1;
+                @extend .col-sm-6;
+                @extend .col-xs-6;
+                @extend .pull-right;
+                @media #{$large-only} {
+                    right: mapping($footer,playesrbLogo,labposRight);
+                    bottom: mapping($footer,playesrbLogo,labposBottom);
+                    z-index: mapping($footer,playesrbLogo,labposzindex);
+                     
+                }
+                @media #{$medium-down} {
+                    text-align: mapping($footer,playesrbLogo,tabtxtAlign);
+                    img {
+                        margin-left: mapping($footer,playesrbLogo,tabmarginLeft);
+                    }
+                    
+                }
+                a {
+                    img {
+                        height: mapping($footer,playesrblogoLink,height);
+                    }
+                }
+                @media (min-width: 992px)
+                {
+                   width: 100px !important; 
+                }
+            }
+            .play-footer-link {
+                @extend .col-md-10;
+                padding-top: mapping($footer,playfooterLink,paddingTop);
+                text-align: mapping($footer,playfooterLink,txtAlign);
+                @media #{$medium-down} {
+                    clear: mapping($footer,playfooterLink,tabClear);
+                    padding-left: mapping($footer,playfooterLink,tabpaddingLeft);
+                    padding-right: mapping($footer,playfooterLink,tabpaddingRight);
+                }
+                ul {
+                    text-align: mapping($footer,playfooterUL,txtAlign);
+                    display: mapping($footer,playfooterUL,display);
+                    @media #{$medium-down} {
+                        margin-bottom: mapping($footer,playfooterUL,tabmarginBottom);
+                    }
+                    li {
+                        display: mapping($footer,playfooterulList,display);
+                        font-size: mapping($footer,playfooterulList,fntSize);
+                        padding: mapping($footer,playfooterulList,pad);
+                        @media #{$small-down} {
+                            //padding: mapping($footer,playfooterulList,mobPadding);
+                            //display: mapping($footer,playfooterulList,mobDisplay);
+                            display: block;
+                        }
+                        @media (min-width: 769px){
+                            display: mapping($footer,playfooterulList,mobDisplay);
+                        }
+                        a {
+                            color: mapping($footer,playfooterulLink,txtColor);
+                            font-family: mapping($footer,playfooterulLink,fntFamily) , Sans-serif;
+                            font-weight: mapping($footer,playfooterulLink,fntWeight);
+                        }
+                        // &:last-child {}
+                    }
+                }
+                span {
+                    font-family: mapping($footer,playfooterSpan,fntFamily), Sans-serif;
+                    font-weight: mapping($footer,playfooterSpan,fntWeight);
+                    font-size: mapping($footer,playfooterSpan,fntSize);
+                    padding: mapping($footer,playfooterSpan,pad);
+                    display: mapping($footer,playfooterSpan,display);
+                    padding-top: mapping($footer,playfooterSpan,paddingTop);
+                    @media #{$medium-up} {
+                        display: mapping($footer,playfooterSpan,tabDisplay);
+                        padding-top: mapping($footer,playfooterSpan,tabpaddingTop);
+                    }
+                }
+                 
+            }
+           
+        }
+        @media (min-width: 1200px){
+            width: 850px !important;
+        }
+        
+    }
+    div {
+        div {
+            .play-footer-link
+            {
+                         @media (min-width: 992px)
+                {
+                    width: 650px !important;
+                }
+            }
+        }
+    } 
+}
+.footer.aem-GridColumn{
+    padding:0;
+}

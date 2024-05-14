@@ -1,0 +1,663 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Created by TIBCO WSDL-->
+<wsdl:definitions xmlns:ns2="http://www.mattel.com/esb/cdm/dtc/validateaddress/core1" xmlns:ns1="http://www.mattel.com/esb/cdm/dtc/common/core1" xmlns:ns3="http://www.mattel.com/esb/cdm/dtc/common/datatypes1" xmlns:tns="http://www.mattel.com/esb/launchpad/addressvalidation/service/validateaddressservice" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns0="http://www.mattel.com/esb/cdm/dtc/validateaddress/components1" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="Untitled" targetNamespace="http://www.mattel.com/esb/launchpad/addressvalidation/service/validateaddressservice">
+    <wsdl:types>
+        <xs:schema xmlns="http://www.mattel.com/esb/cdm/dtc/validateaddress/components1" xmlns:com="http://www.mattel.com/esb/cdm/dtc/common/core1" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:core="http://www.mattel.com/esb/cdm/dtc/validateaddress/core1" targetNamespace="http://www.mattel.com/esb/cdm/dtc/validateaddress/components1" elementFormDefault="qualified" attributeFormDefault="unqualified">
+            <xs:import namespace="http://www.mattel.com/esb/cdm/dtc/validateaddress/core1"/>
+            <xs:import namespace="http://www.mattel.com/esb/cdm/dtc/common/core1"/>
+            <xs:complexType name="optionsType">
+                <xs:sequence>
+                    <xs:element ref="core:performUSProcessing" minOccurs="0"/>
+                    <xs:element ref="core:outputAddressBlocks" minOccurs="0"/>
+                    <xs:element ref="core:performCanadianProcessing" minOccurs="0"/>
+                    <xs:element ref="core:performInternationalProcessing" minOccurs="0"/>
+                    <xs:element ref="core:outputFormattedOnFail" minOccurs="0"/>
+                    <xs:element ref="core:keepMultimatch" minOccurs="0"/>
+                    <xs:element ref="core:maximumResults" minOccurs="0"/>
+                    <xs:element ref="core:performDPV" minOccurs="0"/>
+                    <xs:element ref="core:performRDI" minOccurs="0"/>
+                    <xs:element ref="core:performLACSLink" minOccurs="0"/>
+                    <xs:element ref="core:performLOT" minOccurs="0"/>
+                    <xs:element ref="core:performESM" minOccurs="0"/>
+                    <xs:element ref="core:enableSERP" minOccurs="0"/>
+                    <xs:element ref="core:performASM" minOccurs="0"/>
+                    <xs:element ref="core:performEWS" minOccurs="0"/>
+                    <xs:element ref="core:extractFirm" minOccurs="0"/>
+                    <xs:element ref="core:extractUrb" minOccurs="0"/>
+                    <xs:element ref="core:outputFieldLevelReturnCodes" minOccurs="0"/>
+                    <xs:element ref="core:outputPostalCodeSeparator" minOccurs="0"/>
+                    <xs:element ref="core:outputCasing" minOccurs="0"/>
+                    <xs:element ref="core:outputRecordType" minOccurs="0"/>
+                    <xs:element ref="core:outputCountryFormat" minOccurs="0"/>
+                    <xs:element ref="core:outputMultinationalCharacters" minOccurs="0"/>
+                    <xs:element ref="core:standardAddressFormat" minOccurs="0"/>
+                    <xs:element ref="core:standardAddressPMBLine" minOccurs="0"/>
+                    <xs:element ref="core:outputShortCityName" minOccurs="0"/>
+                    <xs:element ref="core:outputReport3553" minOccurs="0"/>
+                    <xs:element ref="core:outputReportSERP" minOccurs="0"/>
+                    <xs:element ref="core:outputReportSummary" minOccurs="0"/>
+                    <xs:element ref="core:streetMatchingStrictness" minOccurs="0"/>
+                    <xs:element ref="core:firmMatchingStrictness" minOccurs="0"/>
+                    <xs:element ref="core:directionalMatchingStrictness" minOccurs="0"/>
+                    <xs:element ref="core:dualAddressLogic" minOccurs="0"/>
+                    <xs:element ref="core:dPVSuccessfulStatusCondition" minOccurs="0"/>
+                    <xs:element ref="core:failOnCMRAMatch" minOccurs="0"/>
+                    <xs:element ref="core:reportListProcessorName" minOccurs="0"/>
+                    <xs:element ref="core:reportListFileName" minOccurs="0"/>
+                    <xs:element ref="core:reportListNumber" minOccurs="0"/>
+                    <xs:element ref="core:reportMailerName" minOccurs="0"/>
+                    <xs:element ref="core:reportMailerAddress" minOccurs="0"/>
+                    <xs:element ref="core:reportMailerCityLine" minOccurs="0"/>
+                    <xs:element ref="core:canReportMailerCPCNumber" minOccurs="0"/>
+                    <xs:element ref="core:canReportMailerName" minOccurs="0"/>
+                    <xs:element ref="core:canReportMailerAddress" minOccurs="0"/>
+                    <xs:element ref="core:canReportMailerCityLine" minOccurs="0"/>
+                    <xs:element ref="core:internationalCityStreetSearching" minOccurs="0"/>
+                    <xs:element ref="core:addressLineSearchOnFail" minOccurs="0"/>
+                    <xs:element ref="core:homeCountry" minOccurs="0"/>
+                    <xs:element ref="core:USImDestEnable" minOccurs="0"/>
+                    <xs:element ref="core:USImDestBarcodeID" minOccurs="0"/>
+                    <xs:element ref="core:USImDestSpecSvcCode" minOccurs="0"/>
+                    <xs:element ref="core:USImDestSubID" minOccurs="0"/>
+                    <xs:element ref="core:USImDestDftMailingID" minOccurs="0"/>
+                    <xs:element ref="core:USImDestEnableInc" minOccurs="0"/>
+                    <xs:element ref="core:USImOrgEnable" minOccurs="0"/>
+                    <xs:element ref="core:USImOrgBarcodeID" minOccurs="0"/>
+                    <xs:element ref="core:USImOrgSpecSvcCode" minOccurs="0"/>
+                    <xs:element ref="core:USImOrgCustID" minOccurs="0"/>
+                    <xs:element ref="core:USImOrgRouteZip" minOccurs="0"/>
+                    <xs:element ref="core:USImGenEnable" minOccurs="0"/>
+                    <xs:element ref="core:USImGenBarcodeID" minOccurs="0"/>
+                    <xs:element ref="core:USImGenSpecSvcCode" minOccurs="0"/>
+                    <xs:element ref="core:USImGenSubID" minOccurs="0"/>
+                    <xs:element ref="core:USImGenCustID" minOccurs="0"/>
+                    <xs:element ref="core:USImGenEnableInc" minOccurs="0"/>
+                    <xs:element ref="core:USImErrorHandle" minOccurs="0"/>
+                    <xs:element ref="core:performSuiteLink" minOccurs="0"/>
+                    <xs:element ref="core:outputStreetNameAlias" minOccurs="0"/>
+                    <xs:element ref="core:outputVeriMoveDataBlock" minOccurs="0"/>
+                    <xs:element ref="core:DPVDetermineNoStat" minOccurs="0"/>
+                    <xs:element ref="core:DPVDetermineVacancy" minOccurs="0"/>
+                    <xs:element ref="core:outputAbbreviatedAlias" minOccurs="0"/>
+                    <xs:element ref="core:outputPreferredAlias" minOccurs="0"/>
+                    <xs:element ref="core:canStandardAddressFormat" minOccurs="0"/>
+                    <xs:element ref="core:canEnglishApartmentLabel" minOccurs="0"/>
+                    <xs:element ref="core:canFrenchApartmentLabel" minOccurs="0"/>
+                    <xs:element ref="core:canFrenchFormat" minOccurs="0"/>
+                    <xs:element ref="core:canOutputCityFormat" minOccurs="0"/>
+                    <xs:element ref="core:canOutputCityAlias" minOccurs="0"/>
+                    <xs:element ref="core:canDualAddressLogic" minOccurs="0"/>
+                    <xs:element ref="core:canPreferHouseNum" minOccurs="0"/>
+                    <xs:element ref="core:canRuralRouteFormat" minOccurs="0"/>
+                    <xs:element ref="core:canNonCivicFormat" minOccurs="0"/>
+                    <xs:element ref="core:canDeliveryOfficeFormat" minOccurs="0"/>
+                    <xs:element ref="core:databaseUS" minOccurs="0"/>
+                    <xs:element ref="core:databaseCanada" minOccurs="0"/>
+                    <xs:element ref="core:databaseInternational" minOccurs="0"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="rowRequestType">
+                <xs:sequence>
+                    <xs:element ref="core:addressLine1" minOccurs="0"/>
+                    <xs:element ref="core:addressLine2" minOccurs="0"/>
+                    <xs:element ref="core:addressLine3" minOccurs="0"/>
+                    <xs:element ref="core:addressLine4" minOccurs="0"/>
+                    <xs:element ref="com:city" minOccurs="0"/>
+                    <xs:element ref="core:stateProvince" minOccurs="0"/>
+                    <xs:element ref="com:postalCode" minOccurs="0"/>
+                    <xs:element ref="com:country" minOccurs="0"/>
+                    <xs:element ref="core:firmName" minOccurs="0"/>
+                    <xs:element ref="core:USUrbanName" minOccurs="0"/>
+                    <xs:element ref="core:canLanguage" minOccurs="0"/>
+                    <xs:element ref="ns0:user_fields" minOccurs="0"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="rowResponseType">
+                <xs:sequence>
+                    <xs:element ref="core:confidence" minOccurs="0"/>
+                    <xs:element ref="core:recordType" minOccurs="0"/>
+                    <xs:element ref="core:recordTypeDefault" minOccurs="0"/>
+                    <xs:element ref="core:multipleMatches" minOccurs="0"/>
+                    <xs:element ref="core:couldNotValidate" minOccurs="0"/>
+                    <xs:element ref="core:countryLevel" minOccurs="0"/>
+                    <xs:element ref="core:processedBy" minOccurs="0"/>
+                    <xs:element ref="core:addressFormat" minOccurs="0"/>
+                    <xs:element ref="core:matchScore" minOccurs="0"/>
+                    <xs:element ref="core:multimatchCount" minOccurs="0"/>
+                    <xs:element ref="core:addressLine1" minOccurs="0"/>
+                    <xs:element ref="core:addressLine2" minOccurs="0"/>
+                    <xs:element ref="core:addressLine3" minOccurs="0"/>
+                    <xs:element ref="core:addressLine4" minOccurs="0"/>
+                    <xs:element ref="com:city" minOccurs="0"/>
+                    <xs:element ref="core:cityResult" minOccurs="0"/>
+                    <xs:element ref="core:stateProvince" minOccurs="0"/>
+                    <xs:element ref="core:stateProvinceResult" minOccurs="0"/>
+                    <xs:element ref="com:postalCode" minOccurs="0"/>
+                    <xs:element ref="core:postalCodeResult" minOccurs="0"/>
+                    <xs:element ref="core:postalCodeCityResult" minOccurs="0"/>
+                    <xs:element ref="core:addressRecordResult" minOccurs="0"/>
+                    <xs:element ref="core:postalCodeSource" minOccurs="0"/>
+                    <xs:element ref="core:postalCodeType" minOccurs="0"/>
+                    <xs:element ref="core:postalCodeBase" minOccurs="0"/>
+                    <xs:element ref="core:postalCodeAddOn" minOccurs="0"/>
+                    <xs:element ref="com:country" minOccurs="0"/>
+                    <xs:element ref="core:countryResult" minOccurs="0"/>
+                    <xs:element ref="core:firmName" minOccurs="0"/>
+                    <xs:element ref="core:firmNameResult" minOccurs="0"/>
+                    <xs:element ref="core:additionalInputData" minOccurs="0"/>
+                    <xs:element ref="core:houseNumber" minOccurs="0"/>
+                    <xs:element ref="core:houseNumberResult" minOccurs="0"/>
+                    <xs:element ref="core:leadingDirectional" minOccurs="0"/>
+                    <xs:element ref="core:leadingDirectionalResult" minOccurs="0"/>
+                    <xs:element ref="core:streetName" minOccurs="0"/>
+                    <xs:element ref="core:streetResult" minOccurs="0"/>
+                    <xs:element ref="core:streetNameResult" minOccurs="0"/>
+                    <xs:element ref="core:streetNameAliasType" minOccurs="0"/>
+                    <xs:element ref="core:streetNamePreferredAliasResult" minOccurs="0"/>
+                    <xs:element ref="core:streetNameAbbreviatedAliasResult" minOccurs="0"/>
+                    <xs:element ref="core:streetSuffix" minOccurs="0"/>
+                    <xs:element ref="core:streetSuffixResult" minOccurs="0"/>
+                    <xs:element ref="core:trailingDirectional" minOccurs="0"/>
+                    <xs:element ref="core:trailingDirectionalResult" minOccurs="0"/>
+                    <xs:element ref="core:apartmentLabel" minOccurs="0"/>
+                    <xs:element ref="core:apartmentLabelResult" minOccurs="0"/>
+                    <xs:element ref="core:apartmentNumber" minOccurs="0"/>
+                    <xs:element ref="core:apartmentNumberResult" minOccurs="0"/>
+                    <xs:element ref="core:apartmentLabel2" minOccurs="0"/>
+                    <xs:element ref="core:apartmentLabel2Result" minOccurs="0"/>
+                    <xs:element ref="core:apartmentNumber2" minOccurs="0"/>
+                    <xs:element ref="core:apartmentNumber2Result" minOccurs="0"/>
+                    <xs:element ref="core:RRHC" minOccurs="0"/>
+                    <xs:element ref="core:RRHCResult" minOccurs="0"/>
+                    <xs:element ref="core:RRHCType" minOccurs="0"/>
+                    <xs:element ref="core:POBox" minOccurs="0"/>
+                    <xs:element ref="core:POBoxResult" minOccurs="0"/>
+                    <xs:element ref="core:privateMailbox" minOccurs="0"/>
+                    <xs:element ref="core:privateMailboxType" minOccurs="0"/>
+                    <xs:element ref="core:abbreviatedAliasResult" minOccurs="0"/>
+                    <xs:element ref="core:preferredAliasResult" minOccurs="0"/>
+                    <xs:element ref="core:canadianDeliveryInstallationAreaName" minOccurs="0"/>
+                    <xs:element ref="core:canadianDeliveryInstallationType" minOccurs="0"/>
+                    <xs:element ref="core:canadianDeliveryInstallationQualifierName" minOccurs="0"/>
+                    <xs:element ref="core:USUrbanName" minOccurs="0"/>
+                    <xs:element ref="core:USUrbanNameResult" minOccurs="0"/>
+                    <xs:element ref="core:houseNumberInput" minOccurs="0"/>
+                    <xs:element ref="core:leadingDirectionalInput" minOccurs="0"/>
+                    <xs:element ref="core:streetNameInput" minOccurs="0"/>
+                    <xs:element ref="core:streetSuffixInput" minOccurs="0"/>
+                    <xs:element ref="core:trailingDirectionalInput" minOccurs="0"/>
+                    <xs:element ref="core:apartmentLabelInput" minOccurs="0"/>
+                    <xs:element ref="core:apartmentNumberInput" minOccurs="0"/>
+                    <xs:element ref="core:RRHCInput" minOccurs="0"/>
+                    <xs:element ref="core:POBoxInput" minOccurs="0"/>
+                    <xs:element ref="core:privateMailboxInput" minOccurs="0"/>
+                    <xs:element ref="core:privateMailboxTypeInput" minOccurs="0"/>
+                    <xs:element ref="core:canadianDeliveryInstallationAreaNameInput" minOccurs="0"/>
+                    <xs:element ref="core:canadianDeliveryInstallationTypeInput" minOccurs="0"/>
+                    <xs:element ref="core:canadianDeliveryInstallationQualifierNameInput" minOccurs="0"/>
+                    <xs:element ref="core:cityInput" minOccurs="0"/>
+                    <xs:element ref="core:stateProvinceInput" minOccurs="0"/>
+                    <xs:element ref="core:postalCodeInput" minOccurs="0"/>
+                    <xs:element ref="core:countryInput" minOccurs="0"/>
+                    <xs:element ref="core:firmNameInput" minOccurs="0"/>
+                    <xs:element ref="core:USUrbanNameInput" minOccurs="0"/>
+                    <xs:element ref="core:USBCCheckDigit" minOccurs="0"/>
+                    <xs:element ref="core:postalBarCode" minOccurs="0"/>
+                    <xs:element ref="core:USCarrierRouteCode" minOccurs="0"/>
+                    <xs:element ref="core:USFIPSCountyNumber" minOccurs="0"/>
+                    <xs:element ref="core:USCountyName" minOccurs="0"/>
+                    <xs:element ref="core:USCongressionalDistrict" minOccurs="0"/>
+                    <xs:element ref="core:USLOTCode" minOccurs="0"/>
+                    <xs:element ref="core:USLOTSequence" minOccurs="0"/>
+                    <xs:element ref="core:USLOTHex" minOccurs="0"/>
+                    <xs:element ref="core:USAltAddr" minOccurs="0"/>
+                    <xs:element ref="core:USLastLineNumber" minOccurs="0"/>
+                    <xs:element ref="core:USFinanceNumber" minOccurs="0"/>
+                    <xs:element ref="core:USLACS" minOccurs="0"/>
+                    <xs:element ref="core:USLACSReturnCode" minOccurs="0"/>
+                    <xs:element ref="core:DPV" minOccurs="0"/>
+                    <xs:element ref="core:DPVFootnote" minOccurs="0"/>
+                    <xs:element ref="core:CMRA" minOccurs="0"/>
+                    <xs:element ref="core:DPVNoStat" minOccurs="0"/>
+                    <xs:element ref="core:DPVVacant" minOccurs="0"/>
+                    <xs:element ref="core:canadianSERPCode" minOccurs="0"/>
+                    <xs:element ref="core:RDI" minOccurs="0"/>
+                    <xs:element ref="core:UsImDestinationDATF" minOccurs="0"/>
+                    <xs:element ref="core:UsImOriginDATF" minOccurs="0"/>
+                    <xs:element ref="core:UsImGenericDATF" minOccurs="0"/>
+                    <xs:element ref="core:UsImDestinationRaw" minOccurs="0"/>
+                    <xs:element ref="core:UsImOriginRaw" minOccurs="0"/>
+                    <xs:element ref="core:UsImGenericRaw" minOccurs="0"/>
+                    <xs:element ref="core:suiteLinkReturnCode" minOccurs="0"/>
+                    <xs:element ref="core:suiteLinkMatchCode" minOccurs="0"/>
+                    <xs:element ref="core:suiteLinkFidelity" minOccurs="0"/>
+                    <xs:element ref="core:addressBlock1" minOccurs="0"/>
+                    <xs:element ref="core:addressBlock2" minOccurs="0"/>
+                    <xs:element ref="core:addressBlock3" minOccurs="0"/>
+                    <xs:element ref="core:addressBlock4" minOccurs="0"/>
+                    <xs:element ref="core:addressBlock5" minOccurs="0"/>
+                    <xs:element ref="core:addressBlock6" minOccurs="0"/>
+                    <xs:element ref="core:addressBlock7" minOccurs="0"/>
+                    <xs:element ref="core:addressBlock8" minOccurs="0"/>
+                    <xs:element ref="core:addressBlock9" minOccurs="0"/>
+                    <xs:element ref="core:veriMoveDataBlock" minOccurs="0"/>
+                    <xs:element ref="core:intINSEECode" minOccurs="0"/>
+                    <xs:element ref="core:intHexaviaCode" minOccurs="0"/>
+                    <xs:element ref="core:status" minOccurs="0"/>
+                    <xs:element ref="core:statusCode" minOccurs="0"/>
+                    <xs:element ref="core:statusDescription" minOccurs="0"/>
+                    <xs:element ref="ns0:user_fields" minOccurs="0"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="rowsRequestType">
+                <xs:sequence>
+                    <xs:element name="row" type="ns0:rowRequestType" maxOccurs="unbounded"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="rowsResponseType">
+                <xs:sequence>
+                    <xs:element name="row" type="ns0:rowResponseType" minOccurs="0" maxOccurs="unbounded"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="user_fieldsType">
+                <xs:sequence>
+                    <xs:element name="user_field" type="com:NameValuePairType" minOccurs="0" maxOccurs="unbounded"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="validateAddressRequestType">
+                <xs:sequence>
+                    <xs:element name="options" type="ns0:optionsType" minOccurs="0"/>
+                    <xs:element name="rows" type="ns0:rowsRequestType"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="validateAddressResponseType">
+                <xs:sequence>
+                    <xs:element ref="core:error" minOccurs="0"/>
+                    <xs:element name="rows" type="ns0:rowsResponseType" minOccurs="0"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="user_fields" type="ns0:user_fieldsType"/>
+            <xs:element name="validateAddressRequest" nillable="true" type="ns0:validateAddressRequestType"/>
+            <xs:element name="validateAddressResponse" nillable="true" type="ns0:validateAddressResponseType"/>
+        </xs:schema>
+        <xs:schema xmlns:dt="http://www.mattel.com/esb/cdm/dtc/common/datatypes1" xmlns:tns="http://www.mattel.com/esb/cdm/dtc/common/core1" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.mattel.com/esb/cdm/dtc/common/core1" elementFormDefault="qualified" attributeFormDefault="unqualified">
+            <xs:import namespace="http://www.mattel.com/esb/cdm/dtc/common/datatypes1"/>
+            <xs:annotation>
+                <xs:documentation>Common schema is defined to capture common generic elements which can be leveraged by other Mattel schemas.</xs:documentation>
+            </xs:annotation>
+            <xs:complexType name="NameValuePairType">
+                <xs:sequence>
+                    <xs:element name="name" type="xs:string"/>
+                    <xs:element name="value" type="xs:string"/>
+                    <xs:element ref="tns:description" minOccurs="0"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="ID">
+                <xs:complexType>
+                    <xs:simpleContent>
+                        <xs:extension base="xs:string">
+                            <xs:attribute name="type" type="xs:string"/>
+                        </xs:extension>
+                    </xs:simpleContent>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="adddressLocale" type="xs:string"/>
+            <xs:element name="address" type="xs:string"/>
+            <xs:element name="address1" type="xs:string"/>
+            <xs:element name="address2" type="xs:string"/>
+            <xs:element name="address3" type="xs:string"/>
+            <xs:element name="areaCode" type="xs:int"/>
+            <xs:element name="category">
+                <xs:complexType>
+                    <xs:simpleContent>
+                        <xs:extension base="xs:string">
+                            <xs:attribute name="type" type="xs:string"/>
+                        </xs:extension>
+                    </xs:simpleContent>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="channel">
+                <xs:complexType>
+                    <xs:simpleContent>
+                        <xs:extension base="xs:string">
+                            <xs:attribute name="type" type="xs:string"/>
+                        </xs:extension>
+                    </xs:simpleContent>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="city" type="xs:string"/>
+            <xs:element name="contact" type="xs:string"/>
+            <xs:element name="country" type="xs:string"/>
+            <xs:element name="currency" type="dt:typeCode"/>
+            <xs:element name="deliveryPointValidationCodeText" type="xs:string"/>
+            <xs:element name="depth" type="xs:decimal"/>
+            <xs:element name="description">
+                <xs:complexType>
+                    <xs:simpleContent>
+                        <xs:extension base="xs:string">
+                            <xs:attribute name="type" type="xs:string"/>
+                        </xs:extension>
+                    </xs:simpleContent>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="effectiveEndDate" type="xs:dateTime"/>
+            <xs:element name="effectiveStartDate" type="xs:dateTime"/>
+            <xs:element name="emailAddress" type="xs:string"/>
+            <xs:element name="extension" type="xs:string"/>
+            <xs:element name="fax" type="xs:string"/>
+            <xs:element name="firstName" type="xs:string"/>
+            <xs:element name="gifteeIndicator" type="xs:boolean"/>
+            <xs:element name="height" type="xs:decimal"/>
+            <xs:element name="intlCallingCode" type="xs:int"/>
+            <xs:element name="language" type="xs:string"/>
+            <xs:element name="lastName" type="xs:string"/>
+            <xs:element name="length" type="xs:decimal"/>
+            <xs:element name="lifecyclePhase" type="xs:string"/>
+            <xs:element name="longName" type="xs:string"/>
+            <xs:element name="mailableIndicator" type="xs:boolean"/>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="nameLocale" type="xs:string"/>
+            <xs:element name="phone" type="xs:string"/>
+            <xs:element name="phoneNumber" type="xs:string"/>
+            <xs:element name="postalCode" type="xs:string"/>
+            <xs:element name="priority" type="xs:double"/>
+            <xs:element name="quantity" type="xs:double"/>
+            <xs:element name="remarks" type="xs:string"/>
+            <xs:element name="state" type="xs:string"/>
+            <xs:element name="status">
+                <xs:complexType>
+                    <xs:simpleContent>
+                        <xs:extension base="xs:string">
+                            <xs:attribute name="type" type="xs:string"/>
+                        </xs:extension>
+                    </xs:simpleContent>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="title" type="xs:string"/>
+            <xs:element name="type" type="xs:string"/>
+            <xs:element name="value" type="xs:double"/>
+            <xs:element name="weight" type="xs:decimal"/>
+            <xs:element name="width" type="xs:decimal"/>
+        </xs:schema>
+        <xs:schema xmlns="http://www.mattel.com/esb/cdm/dtc/validateaddress/core" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.mattel.com/esb/cdm/dtc/validateaddress/core1" elementFormDefault="qualified" attributeFormDefault="unqualified">
+            <xs:element name="CMRA" type="xs:string"/>
+            <xs:element name="DPV" type="xs:string"/>
+            <xs:element name="DPVDetermineNoStat" type="xs:string"/>
+            <xs:element name="DPVDetermineVacancy" type="xs:string"/>
+            <xs:element name="DPVFootnote" type="xs:string"/>
+            <xs:element name="DPVNoStat" type="xs:string"/>
+            <xs:element name="DPVVacant" type="xs:string"/>
+            <xs:element name="POBox" type="xs:string"/>
+            <xs:element name="POBoxInput" type="xs:string"/>
+            <xs:element name="POBoxResult" type="xs:string"/>
+            <xs:element name="RDI" type="xs:string"/>
+            <xs:element name="RRHC" type="xs:string"/>
+            <xs:element name="RRHCInput" type="xs:string"/>
+            <xs:element name="RRHCResult" type="xs:string"/>
+            <xs:element name="RRHCType" type="xs:string"/>
+            <xs:element name="USAltAddr" type="xs:string"/>
+            <xs:element name="USBCCheckDigit" type="xs:string"/>
+            <xs:element name="USCarrierRouteCode" type="xs:string"/>
+            <xs:element name="USCongressionalDistrict" type="xs:string"/>
+            <xs:element name="USCountyName" type="xs:string"/>
+            <xs:element name="USFIPSCountyNumber" type="xs:string"/>
+            <xs:element name="USFinanceNumber" type="xs:string"/>
+            <xs:element name="USImDestBarcodeID" type="xs:string"/>
+            <xs:element name="USImDestDftMailingID" type="xs:string"/>
+            <xs:element name="USImDestEnable" type="xs:string"/>
+            <xs:element name="USImDestEnableInc" type="xs:string"/>
+            <xs:element name="USImDestSpecSvcCode" type="xs:string"/>
+            <xs:element name="USImDestSubID" type="xs:string"/>
+            <xs:element name="USImErrorHandle" type="xs:string"/>
+            <xs:element name="USImGenBarcodeID" type="xs:string"/>
+            <xs:element name="USImGenCustID" type="xs:string"/>
+            <xs:element name="USImGenEnable" type="xs:string"/>
+            <xs:element name="USImGenEnableInc" type="xs:string"/>
+            <xs:element name="USImGenSpecSvcCode" type="xs:string"/>
+            <xs:element name="USImGenSubID" type="xs:string"/>
+            <xs:element name="USImOrgBarcodeID" type="xs:string"/>
+            <xs:element name="USImOrgCustID" type="xs:string"/>
+            <xs:element name="USImOrgEnable" type="xs:string"/>
+            <xs:element name="USImOrgRouteZip" type="xs:string"/>
+            <xs:element name="USImOrgSpecSvcCode" type="xs:string"/>
+            <xs:element name="USLACS" type="xs:string"/>
+            <xs:element name="USLACSReturnCode" type="xs:string"/>
+            <xs:element name="USLOTCode" type="xs:string"/>
+            <xs:element name="USLOTHex" type="xs:string"/>
+            <xs:element name="USLOTSequence" type="xs:string"/>
+            <xs:element name="USLastLineNumber" type="xs:string"/>
+            <xs:element name="USUrbanName" type="xs:string"/>
+            <xs:element name="USUrbanNameInput" type="xs:string"/>
+            <xs:element name="USUrbanNameResult" type="xs:string"/>
+            <xs:element name="UsImDestinationDATF" type="xs:string"/>
+            <xs:element name="UsImDestinationRaw" type="xs:string"/>
+            <xs:element name="UsImGenericDATF" type="xs:string"/>
+            <xs:element name="UsImGenericRaw" type="xs:string"/>
+            <xs:element name="UsImOriginDATF" type="xs:string"/>
+            <xs:element name="UsImOriginRaw" type="xs:string"/>
+            <xs:element name="abbreviatedAliasResult" type="xs:string"/>
+            <xs:element name="additionalInputData" type="xs:string"/>
+            <xs:element name="addressBlock1" type="xs:string"/>
+            <xs:element name="addressBlock2" type="xs:string"/>
+            <xs:element name="addressBlock3" type="xs:string"/>
+            <xs:element name="addressBlock4" type="xs:string"/>
+            <xs:element name="addressBlock5" type="xs:string"/>
+            <xs:element name="addressBlock6" type="xs:string"/>
+            <xs:element name="addressBlock7" type="xs:string"/>
+            <xs:element name="addressBlock8" type="xs:string"/>
+            <xs:element name="addressBlock9" type="xs:string"/>
+            <xs:element name="addressFormat" type="xs:string"/>
+            <xs:element name="addressLine1" type="xs:string"/>
+            <xs:element name="addressLine2" type="xs:string"/>
+            <xs:element name="addressLine3" type="xs:string"/>
+            <xs:element name="addressLine4" type="xs:string"/>
+            <xs:element name="addressLineSearchOnFail" type="xs:string"/>
+            <xs:element name="addressRecordResult" type="xs:string"/>
+            <xs:element name="apartmentLabel" type="xs:string"/>
+            <xs:element name="apartmentLabel2" type="xs:string"/>
+            <xs:element name="apartmentLabel2Result" type="xs:string"/>
+            <xs:element name="apartmentLabelInput" type="xs:string"/>
+            <xs:element name="apartmentLabelResult" type="xs:string"/>
+            <xs:element name="apartmentNumber" type="xs:string"/>
+            <xs:element name="apartmentNumber2" type="xs:string"/>
+            <xs:element name="apartmentNumber2Result" type="xs:string"/>
+            <xs:element name="apartmentNumberInput" type="xs:string"/>
+            <xs:element name="apartmentNumberResult" type="xs:string"/>
+            <xs:element name="canDeliveryOfficeFormat" type="xs:string"/>
+            <xs:element name="canDualAddressLogic" type="xs:string"/>
+            <xs:element name="canEnglishApartmentLabel" type="xs:string"/>
+            <xs:element name="canFrenchApartmentLabel" type="xs:string"/>
+            <xs:element name="canFrenchFormat" type="xs:string"/>
+            <xs:element name="canLanguage" type="xs:string"/>
+            <xs:element name="canNonCivicFormat" type="xs:string"/>
+            <xs:element name="canOutputCityAlias" type="xs:string"/>
+            <xs:element name="canOutputCityFormat" type="xs:string"/>
+            <xs:element name="canPreferHouseNum" type="xs:string"/>
+            <xs:element name="canReportMailerAddress" type="xs:string"/>
+            <xs:element name="canReportMailerCPCNumber" type="xs:string"/>
+            <xs:element name="canReportMailerCityLine" type="xs:string"/>
+            <xs:element name="canReportMailerName" type="xs:string"/>
+            <xs:element name="canRuralRouteFormat" type="xs:string"/>
+            <xs:element name="canStandardAddressFormat" type="xs:string"/>
+            <xs:element name="canadianDeliveryInstallationAreaName" type="xs:string"/>
+            <xs:element name="canadianDeliveryInstallationAreaNameInput" type="xs:string"/>
+            <xs:element name="canadianDeliveryInstallationQualifierName" type="xs:string"/>
+            <xs:element name="canadianDeliveryInstallationQualifierNameInput" type="xs:string"/>
+            <xs:element name="canadianDeliveryInstallationType" type="xs:string"/>
+            <xs:element name="canadianDeliveryInstallationTypeInput" type="xs:string"/>
+            <xs:element name="canadianSERPCode" type="xs:string"/>
+            <xs:element name="city" type="xs:string"/>
+            <xs:element name="cityInput" type="xs:string"/>
+            <xs:element name="cityResult" type="xs:string"/>
+            <xs:element name="confidence" type="xs:string"/>
+            <xs:element name="couldNotValidate" type="xs:string"/>
+            <xs:element name="countryInput" type="xs:string"/>
+            <xs:element name="countryLevel" type="xs:string"/>
+            <xs:element name="countryResult" type="xs:string"/>
+            <xs:element name="dPVSuccessfulStatusCondition" type="xs:string"/>
+            <xs:element name="databaseCanada" type="xs:string"/>
+            <xs:element name="databaseInternational" type="xs:string"/>
+            <xs:element name="databaseUS" type="xs:string"/>
+            <xs:element name="directionalMatchingStrictness" type="xs:string"/>
+            <xs:element name="dualAddressLogic" type="xs:string"/>
+            <xs:element name="enableSERP" type="xs:string"/>
+            <xs:element name="error" type="xs:string"/>
+            <xs:element name="extractFirm" type="xs:string"/>
+            <xs:element name="extractUrb" type="xs:string"/>
+            <xs:element name="failOnCMRAMatch" type="xs:string"/>
+            <xs:element name="firmMatchingStrictness" type="xs:string"/>
+            <xs:element name="firmName" type="xs:string"/>
+            <xs:element name="firmNameInput" type="xs:string"/>
+            <xs:element name="firmNameResult" type="xs:string"/>
+            <xs:element name="homeCountry" type="xs:string"/>
+            <xs:element name="houseNumber" type="xs:string"/>
+            <xs:element name="houseNumberInput" type="xs:string"/>
+            <xs:element name="houseNumberResult" type="xs:string"/>
+            <xs:element name="intHexaviaCode" type="xs:string"/>
+            <xs:element name="intINSEECode" type="xs:string"/>
+            <xs:element name="internationalCityStreetSearching" type="xs:string"/>
+            <xs:element name="keepMultimatch" type="xs:string"/>
+            <xs:element name="leadingDirectional" type="xs:string"/>
+            <xs:element name="leadingDirectionalInput" type="xs:string"/>
+            <xs:element name="leadingDirectionalResult" type="xs:string"/>
+            <xs:element name="matchScore" type="xs:string"/>
+            <xs:element name="maximumResults" type="xs:string"/>
+            <xs:element name="multimatchCount" type="xs:string"/>
+            <xs:element name="multipleMatches" type="xs:string"/>
+            <xs:element name="outputAbbreviatedAlias" type="xs:string"/>
+            <xs:element name="outputAddressBlocks" type="xs:string"/>
+            <xs:element name="outputCasing" type="xs:string"/>
+            <xs:element name="outputCountryFormat" type="xs:string"/>
+            <xs:element name="outputFieldLevelReturnCodes" type="xs:string"/>
+            <xs:element name="outputFormattedOnFail" type="xs:string"/>
+            <xs:element name="outputMultinationalCharacters" type="xs:string"/>
+            <xs:element name="outputPostalCodeSeparator" type="xs:string"/>
+            <xs:element name="outputPreferredAlias" type="xs:string"/>
+            <xs:element name="outputRecordType" type="xs:string"/>
+            <xs:element name="outputReport3553" type="xs:string"/>
+            <xs:element name="outputReportSERP" type="xs:string"/>
+            <xs:element name="outputReportSummary" type="xs:string"/>
+            <xs:element name="outputShortCityName" type="xs:string"/>
+            <xs:element name="outputStreetNameAlias" type="xs:string"/>
+            <xs:element name="outputVeriMoveDataBlock" type="xs:string"/>
+            <xs:element name="performASM" type="xs:string"/>
+            <xs:element name="performCanadianProcessing" type="xs:string"/>
+            <xs:element name="performDPV" type="xs:string"/>
+            <xs:element name="performESM" type="xs:string"/>
+            <xs:element name="performEWS" type="xs:string"/>
+            <xs:element name="performInternationalProcessing" type="xs:string"/>
+            <xs:element name="performLACSLink" type="xs:string"/>
+            <xs:element name="performLOT" type="xs:string"/>
+            <xs:element name="performRDI" type="xs:string"/>
+            <xs:element name="performSuiteLink" type="xs:string"/>
+            <xs:element name="performUSProcessing" type="xs:string"/>
+            <xs:element name="postalBarCode" type="xs:string"/>
+            <xs:element name="postalCode" type="xs:string"/>
+            <xs:element name="postalCodeAddOn" type="xs:string"/>
+            <xs:element name="postalCodeBase" type="xs:string"/>
+            <xs:element name="postalCodeCityResult" type="xs:string"/>
+            <xs:element name="postalCodeInput" type="xs:string"/>
+            <xs:element name="postalCodeResult" type="xs:string"/>
+            <xs:element name="postalCodeSource" type="xs:string"/>
+            <xs:element name="postalCodeType" type="xs:string"/>
+            <xs:element name="preferredAliasResult" type="xs:string"/>
+            <xs:element name="privateMailbox" type="xs:string"/>
+            <xs:element name="privateMailboxInput" type="xs:string"/>
+            <xs:element name="privateMailboxType" type="xs:string"/>
+            <xs:element name="privateMailboxTypeInput" type="xs:string"/>
+            <xs:element name="processedBy" type="xs:string"/>
+            <xs:element name="recordType" type="xs:string"/>
+            <xs:element name="recordTypeDefault" type="xs:string"/>
+            <xs:element name="reportListFileName" type="xs:string"/>
+            <xs:element name="reportListNumber" type="xs:string"/>
+            <xs:element name="reportListProcessorName" type="xs:string"/>
+            <xs:element name="reportMailerAddress" type="xs:string"/>
+            <xs:element name="reportMailerCityLine" type="xs:string"/>
+            <xs:element name="reportMailerName" type="xs:string"/>
+            <xs:element name="standardAddressFormat" type="xs:string"/>
+            <xs:element name="standardAddressPMBLine" type="xs:string"/>
+            <xs:element name="stateProvince" type="xs:string"/>
+            <xs:element name="stateProvinceInput" type="xs:string"/>
+            <xs:element name="stateProvinceResult" type="xs:string"/>
+            <xs:element name="status" type="xs:string"/>
+            <xs:element name="statusCode" type="xs:string"/>
+            <xs:element name="statusDescription" type="xs:string"/>
+            <xs:element name="streetMatchingStrictness" type="xs:string"/>
+            <xs:element name="streetName" type="xs:string"/>
+            <xs:element name="streetNameAbbreviatedAliasResult" type="xs:string"/>
+            <xs:element name="streetNameAliasType" type="xs:string"/>
+            <xs:element name="streetNameInput" type="xs:string"/>
+            <xs:element name="streetNamePreferredAliasResult" type="xs:string"/>
+            <xs:element name="streetNameResult" type="xs:string"/>
+            <xs:element name="streetResult" type="xs:string"/>
+            <xs:element name="streetSuffix" type="xs:string"/>
+            <xs:element name="streetSuffixInput" type="xs:string"/>
+            <xs:element name="streetSuffixResult" type="xs:string"/>
+            <xs:element name="suiteLinkFidelity" type="xs:string"/>
+            <xs:element name="suiteLinkMatchCode" type="xs:string"/>
+            <xs:element name="suiteLinkReturnCode" type="xs:string"/>
+            <xs:element name="trailingDirectional" type="xs:string"/>
+            <xs:element name="trailingDirectionalInput" type="xs:string"/>
+            <xs:element name="trailingDirectionalResult" type="xs:string"/>
+            <xs:element name="veriMoveDataBlock" type="xs:string"/>
+        </xs:schema>
+        <xs:schema xmlns="http://www.mattel.com/esb/cdm/dtc/common/datatypes1" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.mattel.com/esb/cdm/dtc/common/datatypes1" version="1.0" elementFormDefault="qualified" attributeFormDefault="unqualified">
+            <xs:annotation>
+                <xs:documentation> This schema defines custom datatypes used by other launchpad schemas.</xs:documentation>
+            </xs:annotation>
+            <xs:simpleType name="decimalValue">
+                <xs:restriction base="xs:decimal"/>
+            </xs:simpleType>
+            <xs:simpleType name="description">
+                <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+            <xs:simpleType name="displayOrder">
+                <xs:restriction base="xs:int"/>
+            </xs:simpleType>
+            <xs:simpleType name="itemNumber">
+                <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+            <xs:simpleType name="name">
+                <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+            <xs:simpleType name="stringValue">
+                <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+            <xs:simpleType name="typeCode">
+                <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+            <xs:simpleType name="unitOfMeasure">
+                <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:service name="ValidateAddressSOAPHTTPStarter.serviceagent">
+        <wsdl:port name="ValidateAddressServiceInterfaceEndpoint" binding="tns:ValidateAddressServiceInterfaceEndpointBinding">
+            <soap:address location="http://localhost:30056/ValidateAddressHTTPListener/StarterProcesses/ServiceAgents/ValidateAddressSOAPHTTPStarter.serviceagent/validateAddressServiceEndpoint"/>
+        </wsdl:port>
+    </wsdl:service>
+    <wsdl:portType name="ValidateAddressServiceInterface">
+        <wsdl:operation name="validateAddress">
+            <wsdl:input message="tns:validateAddressInput"/>
+            <wsdl:output message="tns:validateAddressOutput"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="ValidateAddressServiceInterfaceEndpointBinding" type="tns:ValidateAddressServiceInterface">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="validateAddress">
+            <soap:operation style="document" soapAction="/ValidateAddressHTTPListener/StarterProcesses/ServiceAgents/ValidateAddressSOAPHTTPStarter.serviceagent/validateAddressServiceEndpoint/validateAddress"/>
+            <wsdl:input>
+                <soap:body use="literal" parts="validateAddressInput"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" parts="validateAddressOutput"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:message name="validateAddressInput">
+        <wsdl:part name="validateAddressInput" element="ns0:validateAddressRequest"/>
+    </wsdl:message>
+    <wsdl:message name="validateAddressOutput">
+        <wsdl:part name="validateAddressOutput" element="ns0:validateAddressResponse"/>
+    </wsdl:message>
+</wsdl:definitions>

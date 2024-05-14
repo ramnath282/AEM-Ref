@@ -1,0 +1,230 @@
+$overflowHeight: 24px;
+// awning effect
+@mixin slide-animation($position, $delay) {
+    position: absolute;
+    #{$position}: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    @include transition(all, $delay);
+}
+
+// bottom to center text
+@include keyframes(bottom-center-text) {
+    0% {
+        bottom: 10%;
+        @include transform(translateY(10%));
+        opacity: 0.1;
+    }
+    25% {
+        bottom: 20%;
+        @include transform(translateY(20%));
+        opacity: 0.2;
+    }
+    50% {
+        bottom: 30%;
+        @include transform(translateY(30%));
+        opacity: 0.3;
+    }
+    75% {
+        bottom: 40%;
+        @include transform(translateY(40%));
+        opacity: 0.4;
+    }
+    100% {
+        bottom: 50%;
+        @include transform(translateY(50%));
+        opacity: 1;
+    }
+}
+
+// top to bottom
+@include keyframes(top-bottom-in) {
+    from {
+        top: calc(-100% - #{$overflowHeight});
+    }
+    to {
+        top: -2px;
+    }
+}
+
+@include keyframes(top-bottom-out) {
+    from {
+        top: 0%;
+    }
+    to {
+        top: calc(-100% - #{$overflowHeight});
+    }
+}
+
+// confetti-keyframe
+@include keyframes(confetti-keyframe) {
+    0% {
+        top: -100%;
+        background: transparent('#{$navImgPath}/Confetti_default.svg');
+        opacity: 1;
+    }
+    25% {
+        top: -50%;
+        background: transparent('#{$navImgPath}/Confetti_flip.svg');
+        opacity: 1;
+    }
+    50% {
+        top: 0%;
+        background: transparent('#{$navImgPath}/Confetti_default.svg');
+        opacity: 1;
+    }
+    75% {
+        top: 50%;
+        background: transparent('#{$navImgPath}/Confetti_flip.svg');
+        opacity: 0.4;
+    }
+    100% {
+        top: 100%;
+        background: transparent('#{$navImgPath}/Confetti_default.svg');
+        opacity: .25;
+    }
+}
+
+// bottom to center
+@include keyframes(bottom-center-in) {
+    0% {
+        bottom: -100%;
+    }
+    20% {
+        bottom: -50%;
+    }
+    40% {
+        bottom: 0%;
+    }
+    60% {
+        bottom: -20%;
+    }
+    80% {
+        bottom: -12%;
+    }
+    100% {
+        bottom: -5%;
+    }
+}
+
+@include keyframes(bottom-center-out) {
+    0% {
+        bottom: -12%;
+    }
+    20% {
+        bottom: -20%;
+    }
+    40% {
+        bottom: -60%;
+    }
+    60% {
+        bottom: -70%;
+    }
+    80% {
+        bottom: -85%;
+    }
+    100% {
+        bottom: calc(-100% - #{$overflowHeight});
+    }
+}
+
+// only center
+@include keyframes(only-center-in) {
+    0% {
+        opacity: 0;
+        bottom: -8px;
+    }
+    25% {
+        bottom: 0px;
+    }
+    50% {
+        opacity: .25;
+        bottom: 8px;
+    }
+    75% {
+        opacity: .5;
+        bottom: 16px;
+    }
+    100% {
+        opacity: 1;
+        bottom: 25px;
+    }
+}
+
+@include keyframes(only-center-out) {
+    100% {
+        opacity: 0;
+        bottom: -14px;
+    }
+    75% {
+        bottom: -8px;
+    }
+    50% {
+        opacity: .25;
+        bottom: 0px;
+    }
+    25% {
+        opacity: .5;
+        bottom: 8px;
+    }
+    0% {
+        opacity: 1;
+        bottom: 16px;
+    }
+}
+
+@include keyframes(text-fade-out-in) {
+    0% {
+        @include transform(translateY(40px));
+        opacity: 0;
+    }
+    25% {
+        @include transform(translateY(30px));
+        opacity: 0.25;
+    }
+    50% {
+        @include transform(translateY(20px));
+        opacity: 0.3;
+    }
+    75% {
+        @include transform(translateY(10px));
+        opacity: 0.5;
+    }
+    100% {
+        @include transform(translateY(0px));
+        opacity: 1;
+    }
+}
+
+@include keyframes(puppy-fade-out-in) {
+    0% {
+        @include transform(translateY(150px));
+        opacity: 0.5;
+    }
+    25% {
+        @include transform(translateY(100px));
+        opacity: 0.5;
+    }
+    50% {
+        @include transform(translateY(50px));
+        opacity: 0.5;
+    }
+    75% {
+        @include transform(translateY(100px));
+        opacity: 0.75;
+    }
+    100% {
+        @include transform(translateY(150px));
+        opacity: 1;
+    }
+}
+
+@include keyframes(playPuppy-keyframe){
+    0% {
+        background-position-x: 0px;
+      }
+      100% {
+        background-position-x: -14557.5px;
+      }
+}

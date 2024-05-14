@@ -1,0 +1,167 @@
+<sly data-sly-test="${wcmmode.edit}">${'Edit AG Rewards Membership Registration Component' @i18n}</sly>
+<div class="link-rewards-member">
+    <div class="link-member-content">
+        <div class="col-md-8">
+            <p>
+                <strong data-sly-test="${properties.queryToMember }">${properties.queryToMember @i18n }</strong>
+            </p>
+            <span data-sly-test="${properties.suggestionToMember}">${properties.suggestionToMember @i18n }</span>
+        </div>
+        <div class="col-md-4 reward-toggle-actions">
+            <a data-sly-test="${properties.linkAgRewardsLabel}" href="#rewards-registration-form" class="expand-reward-form theme-btn no-bg-btn" data-toggle="collapse" role="button" aria-expanded="false">${properties.linkAgRewardsLabel @i18n }</a>
+            <a data-sly-test="${properties.cancelButtonLabel}" href="#rewards-registration-form" class="collapse-reward-form theme-btn transparent-btn-border" data-toggle="collapse" role="button" aria-expanded="false">${properties.cancelButtonLabel @i18n }</a>
+        </div>
+    </div>
+    <div id="rewards-registration-form" class="collapse">
+        <p data-sly-test="${properties.membershipInfoDesc}">${properties.membershipInfoDesc @i18n }</p>
+        <form class="find-rewards-form" action="${properties.successPath @extension='html'}">
+            <div class="input-field required">
+                <input class="form-input long-input" type="text" name="member_id" value="" id="rewards-membership-id" aria-describedby="rewards-membership-id-error" maxlength="" autocomplete="on" aria-required="true" />
+                <label data-sly-test="${properties.agRewardsMembershipIdLabel}" class="placeholder-label" for="rewards-membership-id">${properties.agRewardsMembershipIdLabel @i18n }</label>
+                <div id="rewards-membership-id-error"class="help-block form-message"></div>
+            </div>
+            <div class="input-field required">
+                <input class="form-input long-input" type="email" name="emailId" value="" id="rewards-email" aria-describedby="rewards-email-error"maxlength="" autocomplete="on" aria-required="true" />
+                <label data-sly-test="${properties.emailAddressLabel}" class="placeholder-label" for="rewards-email">${properties.emailAddressLabel @i18n }</label>
+                <div id="rewards-email-error"class="help-block form-message"></div>
+            </div>
+            <button data-sly-test="${properties.findAgRewardsMembership}" class="find-rewards theme-btn no-bg-btn">${properties.findAgRewardsMembership @i18n }</button>
+            <div data-sly-test="${properties.emailExistsMessage}"class="form-message api-error-message">
+                    <span class="no-membership-msg hide">Your rewards account was not found based on the information entered.Please verify your info and try again.</span>
+                    <span class="membership-linked-msg hide">
+                        <span id="email-id-value"></span>${properties.emailExistsMessage @i18n}
+                    </span>
+            </div> 
+            <div data-sly-test="${properties.agRewardsAccMessage}" class="form-message reward-success-message">${properties.agRewardsAccMessage @i18n}</div>
+            <div class="signup-with-membership form hide">
+                <div class="input-field required">
+                    <input class="form-input long-input" type="password" name="password" value="" id="rewards-password" aria-describedby="rewards-password-error"maxlength="" autocomplete="on" aria-required="true" />
+                    <label data-sly-test="${properties.passwordLabel}" class="placeholder-label" for="rewards-password">${properties.passwordLabel @i18n }</label>
+                    <div id="rewards-password-error"class="help-block form-message"></div>
+                </div>
+                <div class="input-field required">
+                    <input class="form-input long-input" type="password" name="verifyPassword" value="" id="rewards-verify-password" aria-describedby="rewards-verify-password-error" maxlength="" autocomplete="on" aria-required="true" />
+                    <label data-sly-test="${properties.verifyPasswordLabel}" class="placeholder-label" for="rewards-verify-password">${properties.verifyPasswordLabel @i18n }</label>
+                    <div id="rewards-verify-password-error"class="help-block form-message"></div>
+                </div>
+                <fieldset class="col-sm-8 col-lg-6">
+                    <legend data-sly-test="${properties.dobTitle}">${properties.dobTitle @i18n}</legend>
+                    <ul>
+                        <li class="col-sm-3">
+                            <div class="input-field required">
+                                <select name="childBirthMonth" class="form-input small-input dob-select child-input-val" aria-required="true" id="childBirthMonth1" aria-describedby="childBirthMonth-error1">
+                                    <option value="">MM</option>
+                                    <option value="01">1</option>
+                                    <option value="02">2</option>
+                                    <option value="03">3</option>
+                                    <option value="04">4</option>
+                                    <option value="05">5</option>
+                                    <option value="06">6</option>
+                                    <option value="07">7</option>
+                                    <option value="08">8</option>
+                                    <option value="09">9</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                </select>
+                                <label data-sly-test="${properties.dobMonthLabel}" class="placeholder-label" for="childBirthMonth1">${properties.dobMonthLabel @i18n}</label>
+                                <div id="childBirthMonth-error1"class="help-block form-message"></div>
+                            </div>
+                        </li>
+                        <li class="col-sm-3">
+                            <div class="input-field required">
+                                <select name="childBirthDay" class="form-input small-input dob-select child-input-val" aria-required="true" id="childBirthDay1" aria-describedby="childBirthDay-error1">
+                                    <option value="">DD</option>
+                                    <option value="01">1</option>
+                                    <option value="02">2</option>
+                                    <option value="03">3</option>
+                                    <option value="04">4</option>
+                                    <option value="05">5</option>
+                                    <option value="06">6</option>
+                                    <option value="07">7</option>
+                                    <option value="08">8</option>
+                                    <option value="09">9</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                    <option value="13">13</option>
+                                    <option value="14">14</option>
+                                    <option value="15">15</option>
+                                    <option value="16">16</option>
+                                    <option value="17">17</option>
+                                    <option value="18">18</option>
+                                    <option value="19">19</option>
+                                    <option value="20">20</option>
+                                    <option value="21">21</option>
+                                    <option value="22">22</option>
+                                    <option value="23">23</option>
+                                    <option value="24">24</option>
+                                    <option value="25">25</option>
+                                    <option value="26">26</option>
+                                    <option value="27">27</option>
+                                    <option value="28">28</option>
+                                    <option value="29">29</option>
+                                    <option value="30">30</option>
+                                    <option value="31">31</option>
+                                </select>
+                                <label data-sly-test="${properties.dobDateLabel}" class="placeholder-label" for="childBirthDay1">${properties.dobDateLabel @i18n}</label>
+                                <div id="childBirthDay-error1"class="help-block form-message"></div>
+                            </div>
+                        </li>
+                        <li class="col-sm-4">
+                            <div class="input-field required">
+                                <select name="childBirthYear" class="form-input small-input dob-select child-input-val" aria-required="true" id="childBirthYear1" aria-describedby="childBirthYear-error1">
+                                    <option value="">YYYY</option>
+                                    <option value="2019">2019</option>
+                                    <option value="2018">2018</option>
+                                    <option value="2017">2017</option>
+                                    <option value="2016">2016</option>
+                                    <option value="2015">2015</option>
+                                    <option value="2014">2014</option>
+                                    <option value="2013">2013</option>
+                                    <option value="2012">2012</option>
+                                    <option value="2011">2011</option>
+                                    <option value="2010">2010</option>
+                                    <option value="2009">2009</option>
+                                    <option value="2008">2008</option>
+                                    <option value="2007">2007</option>
+                                    <option value="2006">2006</option>
+                                    <option value="2005">2005</option>
+                                    <option value="2004">2004</option>
+                                    <option value="2003">2003</option>
+                                    <option value="2002">2002</option>
+                                    <option value="2001">2001</option>
+                                    <option value="2000">2000</option>
+                                    <option value="1999">1999</option>
+                                    <option value="1998">1998</option>
+                                    <option value="1997">1997</option>
+                                    <option value="1996">1996</option>
+                                    <option value="1995">1995</option>
+                                    <option value="1994">1994</option>
+                                    <option value="1993">1993</option>
+                                    <option value="1992">1992</option>
+                                    <option value="1991">1991</option>
+                                    <option value="1990">1990</option>
+                                    <option value="1989">1989</option>
+                                </select>
+                                <label data-sly-test="${properties.dobYearLabel}" class="placeholder-label" for="childBirthYear1">${properties.dobYearLabel @i18n}</label>
+                                <div id="childBirthYear-error1"class="help-block form-message"></div>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="help-block form-message"></div>
+                </fieldset>
+                <div class="input-field">
+                    <input type="checkbox" id="rewards-send-email" name="rewardsSendMeEmail">
+                    <label data-sly-test="${properties.privacyAgreementText}" for="rewards-send-email">${properties.privacyAgreementText @i18n }
+                        <sly data-sly-test="${properties.privacyLinkURL && properties.privacyLinkText}">
+                            <a href="${properties.privacyLinkURL}">${properties.privacyLinkText @i18n }</a>
+                        </sly>
+                    </label>
+                </div>
+                <input data-sly-test="${properties.createAccountButtonLabel}" class="theme-btn create-membership-account" type="submit" value="${properties.createAccountButtonLabel @i18n }">
+            </div>
+        </form>
+        <!-- <div style="clear:left;"></div> -->
+    </div>
+</div>

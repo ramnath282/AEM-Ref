@@ -1,0 +1,165 @@
+//products-gallery
+.play-products {
+	background:url($product-gallery-bg-path) 0 0 repeat;
+	background-size:100%;
+	 @media #{$medium-up} {
+        background-size:41%;
+     }
+    	//padding:10px 0;
+	padding:0;
+	.gallery-title {
+		background-color:$white;
+        h2{
+            font-weight: $fontLight;
+        }
+	}
+    .category-title{
+        h2{
+            font-size:em(21);
+            font-weight: $fontLight;
+            color:$white;
+            padding: 0 55px;
+	    @media #{$small-down} {
+		padding: 0 20px;
+	    }
+        }
+    }
+    .gallery-tile {
+         padding:em(15) em(30) em(15);
+        @media #{$small-up} {
+            padding:em(20) em(30) em(15);
+        }
+        @media #{$medium-up} {
+            padding:em(30) em(30) em(15);
+        }
+        ul.product-list {
+            &>li {
+                margin-bottom:em(10);
+                display: block;
+                a {
+					.gallery-image {
+                        @include border-radius(50%);
+                        overflow:hidden;
+                        background-color:$white;
+                        outline:none;
+						&:hover {
+                            img {
+                                opacity:1;
+                            }
+                        }
+                    }
+                    
+                    span {
+						margin-top:em(15);
+						@include border-radius(5px);
+                        //display:inline-block;
+                        text-align:center;
+                        font-size:em(14);
+                        font-weight: $fontLight;
+                        color: $violet;
+                        background-color: $white; 
+						/* Internet Explorer 10 */
+                        display:block;
+                        -ms-flex-pack:center;
+                        -ms-flex-align:center;
+
+                        /* Firefox */
+                        //display:block;
+                        -moz-box-pack:center;
+                        -moz-box-align:center;
+
+                        /* Safari, Opera, and Chrome */
+                        //display:block;
+                        -webkit-box-pack:center;
+                        -webkit-box-align:center;
+
+                        /* W3C */
+                        //display:block;
+                        //box-pack:center;
+                        //box-align:center; 
+                        //AEMMIG-2292 fixes
+                        padding: 3px 5px 1px;
+                        
+                    }
+                }
+            }
+        }
+        
+    }
+}
+
+.play-products-hp{
+	.gallery-tile {
+		ul.product-list {
+			&>li:nth-of-type(1n+5) {
+				display: none;
+			}
+		}
+	}
+}
+/*
+.category-drpdown-display{
+    @media #{$small-up} {
+        display:none;
+    }
+    @media #{$small-down} {
+        display:block;
+    }
+}*/
+
+.products-category-filter{
+   .nav-carousel-slides {
+       @media #{$small-up} {
+        display:block;
+        }
+        /*@media #{$small-down} {
+            display:none;
+        }*/
+        background-color:$light-white;
+        li{
+            a{
+                width:auto;
+                font-family: 'Swiss', Arial,sans-serif;
+                letter-spacing: 1px;
+				padding: em(10) em(20);
+                background-color: $pink;
+                border: 3px solid $icegreen;
+                color: $white;
+                @include border-radius(em(25));
+                &:hover,
+                &:focus, &.active {
+                    border-color: $icegreen;
+                    background-color: $white;
+                    color: $pink;
+                }
+            }
+        }
+   }
+}
+.products-page-title{
+    @extend .video-page-title;
+    @media #{$small-down} {
+        background-image: none;
+    }
+}
+
+.products-gallery-list {
+    @extend .col-md-12;
+    padding: 0;
+	/*@media #{$small-down} {
+         margin-top:40px;
+        }*/
+    h2 {
+        padding: 0 54px;
+        font-size: em(21);
+        @media #{$medium-down} {
+            padding: 0 em(20);
+        }
+        @media #{$small-down} {
+            padding: 0 em(10);
+        }
+        color:$white;
+        margin:0;
+        text-transform:uppercase;
+    }
+}

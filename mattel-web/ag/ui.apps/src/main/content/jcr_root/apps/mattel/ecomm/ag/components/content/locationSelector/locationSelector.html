@@ -1,0 +1,40 @@
+<sly data-sly-use.locationSelector="com.mattel.ag.retail.core.model.LocationSelectionModel">
+   <sly data-sly-test="${wcmmode.edit}">
+      ${'Edit Location Selector Component' @i18n}
+   </sly>
+   <div class="modal" id="selectLocationModal" tabindex="-1" role="dialog" aria-labelledby="selectLocationModalLabel" style="display: none;" >
+      <div class="modal-dialog" role="document">
+         <div class="modal-content">
+            <div class="modal-header">
+               <a href="#" aria-hidden="true" class="sr-only" id="first-link"><!--first link --></a>
+               <button type="button" class="close store-location-close" data-dismiss="modal" aria-label="Close">
+               </button>
+               <div class="modal-title" id="selectLocationModalLabel">${properties.locationchoosertitle @context = 'html'}</div>
+            </div>
+            <div class="modal-body">
+               <div class="col-xs-12 col-sm-5">
+                  <sly data-sly-list.localStores = "${locationSelector.localLocations}">
+                     <sly data-sly-test="${localStoresList.count <12}">
+                        <a class="select-location" href="${localStores.PageUrl}">${localStores.pageTitle} <span>(${localStores.location}) </span></a>
+                     </sly>
+                  </sly>
+               </div>
+               <div class="col-xs-12 col-sm-7">
+                  <sly data-sly-list.localStores = "${locationSelector.localLocations}">
+                     <sly data-sly-test="${localStoresList.count >=12}">
+                        <a class="select-location" href="${localStores.PageUrl}">${localStores.pageTitle} <span>(${localStores.location}) </span></a>
+                     </sly> </sly>
+                  <h3 class="international">${properties.internationalLabel}</h3>
+                  <sly data-sly-list.internationalStores = "${locationSelector.internationalLocations}">
+                     <a class="select-location" href="${internationalStores.PageUrl}">${internationalStores.pageTitle} <span>(${internationalStores.location}) </span></a>
+                  </sly>
+                  <sly data-sly-test="${properties.middleEastTitle}" != null>
+                     <a class="select-location" href="${properties.middleEastLink}">${properties.middleEastTitle} <span>(${properties.middleEastLocation}) </span></a>
+                     <a href="#" aria-hidden="true" class="sr-only" id="last-link"><!-- Last link --></a>
+                  </sly>
+               </div>
+            </div>
+            </div>
+         </div>
+
+      </div>

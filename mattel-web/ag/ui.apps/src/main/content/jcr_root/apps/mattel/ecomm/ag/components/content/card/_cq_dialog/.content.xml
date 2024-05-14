@@ -1,0 +1,557 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Card"
+    sling:resourceType="cq/gui/components/authoring/dialog"
+    extraClientlibs="[core.wcm.components.list.v1.editor]"
+    helpPath="https://www.adobe.com/go/aem_cmp_list_v1">
+    <content
+        granite:class="cmp-list--editor"
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <cardSetting
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Card Setting"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <column
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <cardType
+                                        granite:class="cq-dialog-dropdown-showhide"
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                        fieldLabel="Card Type"
+                                        name="./cardType">
+                                        <granite:data
+                                            jcr:primaryType="nt:unstructured"
+                                            cq-dialog-dropdown-showhide-target=".list-option-listfrom-showhide-target"/>
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <party
+                                                jcr:primaryType="nt:unstructured"
+                                                text="Party Card"
+                                                value="party"/>
+                                            <cafe
+                                                jcr:primaryType="nt:unstructured"
+                                                text="Cafe Card"
+                                                value="cafe"/>
+                                            <salon
+                                                jcr:primaryType="nt:unstructured"
+                                                text="Salon"
+                                                value="salon"/>
+                                            <cyo
+                                                jcr:primaryType="nt:unstructured"
+                                                text="Create Your Own Card"
+                                                value="cyo"/>
+                                            <hotel
+                                                jcr:primaryType="nt:unstructured"
+                                                text="Hotel Card"
+                                                value="hotel"/>
+                                            <shopping
+                                                jcr:primaryType="nt:unstructured"
+                                                text="Shopping"
+                                                value="shopping"/>
+                                        </items>
+                                    </cardType>
+                                    <setParty
+                                        granite:class="hide list-option-listfrom-showhide-target foundation-layout-util-vmargin setpartyId"
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <granite:data
+                                            jcr:primaryType="nt:unstructured"
+                                            showhidetargetvalue="party"/>
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <heading
+                                                granite:class="coral-Heading coral-Heading--4"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/heading"
+                                                level="{Long}4"
+                                                text="Options for Party Card"/>
+                                            <well
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/well">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <heading
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                        fieldLabel="Heading"
+                                                        name="./partyCardHeading"/>
+                                                    <subHeading
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                        fieldLabel="Sub Heading"
+                                                        name="./partyCardSubHeading"/>
+                                                    <buttonHeading
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                        fieldDescription="Enter button label for Make a Reservation Button"
+                                                        fieldLabel="Reservation Button Heading"
+                                                        name="./partyCardButtonHeading"/>
+                                                    <buttonLink
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                        fieldLabel="Reservation Button Link"
+                                                        name="./partyCardButtonLink"/>
+                                                    <showMoreHeading
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                        fieldLabel="Show More Heading"
+                                                        name="./partyCardShowMoreHeading"/>
+                                                    <showLessHeading
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                        fieldLabel="Show Less Heading"
+                                                        name="./partyCardShowLessHeading"/>
+                                                    <additionalInformation
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+                                                        fieldDescription="This text will be displayed when show more is clicked"
+                                                        fieldLabel="Additional Information"
+                                                        name="./partyCardAdditionalInformation"
+                                                        useFixedInlineToolbar="{Boolean}true">
+                                                        <rtePlugins
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceSuperType="mattel/global/components/content/rtePlugins/rtePlugins"/>
+                                                        <uiSettings
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceSuperType="mattel/global/components/content/rtePlugins/uiSettings"/>
+                                                    </additionalInformation>
+                                                </items>
+                                            </well>
+                                        </items>
+                                    </setParty>
+                                    <setCafe
+                                        granite:class="hide list-option-listfrom-showhide-target foundation-layout-util-vmargin"
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <granite:data
+                                            jcr:primaryType="nt:unstructured"
+                                            showhidetargetvalue="cafe"/>
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <heading
+                                                granite:class="coral-Heading coral-Heading--4"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/heading"
+                                                level="{Long}4"
+                                                text="Options for Cafe Card"/>
+                                            <well
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/well">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <cardImage
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                                        allowUpload="{Boolean}false"
+                                                        autoStart="{Boolean}false"
+                                                        class="cq-droptarget"
+                                                        fieldLabel="Cafe Card Image"
+                                                        fileReferenceParameter="./cafeCardImagePath"
+                                                        mimeTypes="[image/gif,image/jpeg,image/png,image/webp,image/tiff]"
+                                                        multiple="{Boolean}false"
+                                                        name="./cafeCardImage"
+                                                        uploadUrl="${suffix.path}"
+                                                        useHTML5="{Boolean}true"/>
+                                                    <alt
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                        fieldLabel="Image Alternative Text"
+                                                        name="./cafeImageAlt"
+                                                        wrapperClass="cmp-image--editor-alt"/>
+                                                    <heading
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                        fieldLabel="Heading"
+                                                        name="./cafecardHeading"/>
+                                                    <buttonHeading
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                        fieldDescription="Enter button label for Make a Reservation Button"
+                                                        fieldLabel="Reservation Button Heading"
+                                                        name="./cafeCardButtonHeading"/>
+                                                    <buttonLink
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                        fieldLabel="Reservation Button Link"
+                                                        name="./cafeCardButtonLink"/>
+                                                    <viewMoreHeading
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                        fieldLabel="View Menu Button Heading"
+                                                        name="./cafecardViewMoreHeading"/>
+                                                    <viewMoreLink
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+                                                        fieldLabel="View Menu Button URL"
+                                                        name="./cafeCardViewMoreLink"/>
+                                                    <linkAltText
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                        fieldLabel="Link Alternative Text"
+                                                        name="./cafeCardLinkAlt"
+                                                        wrapperClass="cmp-image--editor-alt"/>
+                                                    <openUrlIn
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/foundation/form/select"
+                                                        fieldLabel="Open View Menu URL In"
+                                                        name="./cafeCardOpenUrlIn">
+                                                        <items jcr:primaryType="nt:unstructured">
+                                                            <sameWindow
+                                                                jcr:primaryType="nt:unstructured"
+                                                                text="Same Window"
+                                                                value="sameWindow"/>
+                                                            <newTab
+                                                                jcr:primaryType="nt:unstructured"
+                                                                text="New Tab"
+                                                                value="tabWindow"/>
+                                                            <newWindow
+                                                                jcr:primaryType="nt:unstructured"
+                                                                text="New Window"
+                                                                value="newWindow"/>
+                                                        </items>
+                                                    </openUrlIn>
+                                                </items>
+                                            </well>
+                                        </items>
+                                    </setCafe>
+                                    <setSalon
+                                        granite:class="hide list-option-listfrom-showhide-target foundation-layout-util-vmargin"
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <granite:data
+                                            jcr:primaryType="nt:unstructured"
+                                            showhidetargetvalue="salon"/>
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <heading
+                                                granite:class="coral-Heading coral-Heading--4"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/heading"
+                                                level="{Long}4"
+                                                text="Options for Salon Card"/>
+                                            <well
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/well">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <cardImage
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                                        allowUpload="{Boolean}false"
+                                                        autoStart="{Boolean}false"
+                                                        class="cq-droptarget"
+                                                        fieldLabel="Card Image"
+                                                        fileReferenceParameter="./salonCardImagePath"
+                                                        mimeTypes="[image/gif,image/jpeg,image/png,image/webp,image/tiff]"
+                                                        multiple="{Boolean}false"
+                                                        name="./salonCardImage"
+                                                        uploadUrl="${suffix.path}"
+                                                        useHTML5="{Boolean}true"/>
+                                                    <alt
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                        fieldDescription="Textual alternative of the meaning or function of the image, for visually impaired readers."
+                                                        fieldLabel="Image Alternative Text"
+                                                        name="./salonCardAlt"
+                                                        wrapperClass="cmp-image--editor-alt"/>
+                                                    <heading
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                        fieldLabel="Heading"
+                                                        name="./salonCardHeading"/>
+                                                    <buttonHeading
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                        fieldDescription="Enter button label for Make a Reservation Button"
+                                                        fieldLabel="Reservation Button Heading"
+                                                        name="./salonCardButtonHeading"/>
+                                                    <buttonLink
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                        fieldLabel="Reservation Button Link"
+                                                        name="./salonCardButtonLink"/>
+                                                    <showMoreHeading
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                        fieldLabel="Show More Heading"
+                                                        name="./salonCardShowMoreHeading"/>
+                                                    <showLessHeading
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                        fieldLabel="Show Less Heading"
+                                                        name="./salonCardShowLessHeading"/>
+                                                    <additionalInformation
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+                                                        fieldDescription="This text will be displayed when show more is clicked"
+                                                        fieldLabel="Additional Information"
+                                                        name="./salonCardAdditionalInformation"
+                                                        useFixedInlineToolbar="{Boolean}true">
+                                                        <rtePlugins
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceSuperType="mattel/global/components/content/rtePlugins/rtePlugins"/>
+                                                        <uiSettings
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceSuperType="mattel/global/components/content/rtePlugins/uiSettings"/>
+                                                    </additionalInformation>
+                                                </items>
+                                            </well>
+                                        </items>
+                                    </setSalon>
+                                    <setCyo
+                                        granite:class="hide list-option-listfrom-showhide-target foundation-layout-util-vmargin"
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <granite:data
+                                            jcr:primaryType="nt:unstructured"
+                                            showhidetargetvalue="cyo"/>
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <heading
+                                                granite:class="coral-Heading coral-Heading--4"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/heading"
+                                                level="{Long}4"
+                                                text="Options for Create Your Own Card"/>
+                                            <well
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/well">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <cardImage
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                                        allowUpload="{Boolean}false"
+                                                        autoStart="{Boolean}false"
+                                                        class="cq-droptarget"
+                                                        fieldLabel="Card Image"
+                                                        fileReferenceParameter="./cyoCardImagePath"
+                                                        mimeTypes="[image/gif,image/jpeg,image/png,image/webp,image/tiff]"
+                                                        multiple="{Boolean}false"
+                                                        name="./cyoCardImage"
+                                                        uploadUrl="${suffix.path}"
+                                                        useHTML5="{Boolean}true"/>
+                                                    <alt
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                        fieldDescription="Textual alternative of the meaning or function of the image, for visually impaired readers."
+                                                        fieldLabel="Image Alternative Text"
+                                                        name="./cyoAlt"
+                                                        wrapperClass="cmp-image--editor-alt"/>
+                                                    <heading
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                        fieldLabel="Heading"
+                                                        name="./cyoHeading"/>
+                                                    <showMoreHeading
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                        fieldLabel="Show More Heading"
+                                                        name="./cyoShowMoreHeading"/>
+                                                    <showLessHeading
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                        fieldLabel="Show Less Heading"
+                                                        name="./cyoShowLessHeading"/>
+                                                    <additionalInformation
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+                                                        fieldDescription="This text will be displayed when show more is clicked"
+                                                        fieldLabel="Additional Information"
+                                                        name="./cyoAdditionalInformation"
+                                                        useFixedInlineToolbar="{Boolean}true">
+                                                        <rtePlugins
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceSuperType="mattel/global/components/content/rtePlugins/rtePlugins"/>
+                                                        <uiSettings
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceSuperType="mattel/global/components/content/rtePlugins/uiSettings"/>
+                                                    </additionalInformation>
+                                                </items>
+                                            </well>
+                                        </items>
+                                    </setCyo>
+                                    <setHotel
+                                        granite:class="hide list-option-listfrom-showhide-target foundation-layout-util-vmargin"
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <granite:data
+                                            jcr:primaryType="nt:unstructured"
+                                            showhidetargetvalue="hotel"/>
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <heading
+                                                granite:class="coral-Heading coral-Heading--4"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/heading"
+                                                level="{Long}4"
+                                                text="Options for Hotel Card"/>
+                                            <well
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/well">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <heading
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                        fieldLabel="Heading"
+                                                        name="./hotelCardHeading"/>
+                                                    <showMoreHeading
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                        fieldLabel="Show More Heading"
+                                                        name="./hotelCardShowMoreHeading"/>
+                                                    <showLessHeading
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                        fieldLabel="Show Less Heading"
+                                                        name="./hotelCardShowLessHeading"/>
+                                                    <additionalInformation
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+                                                        fieldDescription="This text will be displayed when show more is clicked"
+                                                        fieldLabel="Additional Information"
+                                                        name="./hotelCardAdditionalInformation"
+                                                        useFixedInlineToolbar="{Boolean}true">
+                                                        <rtePlugins
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceSuperType="mattel/global/components/content/rtePlugins/rtePlugins"/>
+                                                        <uiSettings
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceSuperType="mattel/global/components/content/rtePlugins/uiSettings"/>
+                                                    </additionalInformation>
+                                                    <visitWebsiteHeading
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                        fieldLabel="Visit Website Button Heading"
+                                                        name="./hotelCardViewMoreHeading"/>
+                                                    <visitWebsiteLink
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+                                                        fieldLabel="Visit Website Button URL"
+                                                        name="./hotelCardViewMoreLink"/>
+                                                    <openUrlIn
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/foundation/form/select"
+                                                        fieldLabel="Open View More URL In"
+                                                        name="./hotelCardOpenUrlIn">
+                                                        <items jcr:primaryType="nt:unstructured">
+                                                            <sameWindow
+                                                                jcr:primaryType="nt:unstructured"
+                                                                text="Same Window"
+                                                                value="sameWindow"/>
+                                                            <newTab
+                                                                jcr:primaryType="nt:unstructured"
+                                                                text="New Tab"
+                                                                value="tabWindow"/>
+                                                            <newWindow
+                                                                jcr:primaryType="nt:unstructured"
+                                                                text="New Window"
+                                                                value="newWindow"/>
+                                                        </items>
+                                                    </openUrlIn>
+                                                    <getDirectionButtonHeading
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                        fieldLabel="Get Direction Button Heading"
+                                                        name="./hotelCardGetDirectionHeading"/>
+                                                    <getDirectionButtonLink
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+                                                        fieldLabel="Get Direction Button URL"
+                                                        name="./hotelCardGetDirectionLink"/>
+                                                    <openGetDirectionUrlIn
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/foundation/form/select"
+                                                        fieldLabel="Open Get Direction URL In"
+                                                        name="./hotelCardGetDirectionOpenUrlIn">
+                                                        <items jcr:primaryType="nt:unstructured">
+                                                            <sameWindow
+                                                                jcr:primaryType="nt:unstructured"
+                                                                text="Same Window"
+                                                                value="sameWindow"/>
+                                                            <newTab
+                                                                jcr:primaryType="nt:unstructured"
+                                                                text="New Tab"
+                                                                value="tabWindow"/>
+                                                            <newWindow
+                                                                jcr:primaryType="nt:unstructured"
+                                                                text="New Window"
+                                                                value="newWindow"/>
+                                                        </items>
+                                                    </openGetDirectionUrlIn>
+                                                </items>
+                                            </well>
+                                        </items>
+                                    </setHotel>
+                                    <setShopping
+                                        granite:class="hide list-option-listfrom-showhide-target foundation-layout-util-vmargin"
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <granite:data
+                                            jcr:primaryType="nt:unstructured"
+                                            showhidetargetvalue="shopping"/>
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <heading
+                                                granite:class="coral-Heading coral-Heading--4"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/heading"
+                                                level="{Long}4"
+                                                text="Options for Shopping Card"/>
+                                            <well
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/well">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <cardImage
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                                        allowUpload="{Boolean}false"
+                                                        autoStart="{Boolean}false"
+                                                        class="cq-droptarget"
+                                                        fieldLabel="Card Image"
+                                                        fileReferenceParameter="./shoppingCardImagePath"
+                                                        mimeTypes="[image/gif,image/jpeg,image/png,image/webp,image/tiff]"
+                                                        multiple="{Boolean}false"
+                                                        name="./salonCardImage"
+                                                        uploadUrl="${suffix.path}"
+                                                        useHTML5="{Boolean}true"/>
+                                                    <alt
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                        fieldDescription="Textual alternative of the meaning or function of the image, for visually impaired readers."
+                                                        fieldLabel="Image Alternative Text"
+                                                        name="./shoppingCardAlt"
+                                                        wrapperClass="cmp-image--editor-alt"/>
+                                                    <heading
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                        fieldLabel="Heading"
+                                                        name="./shoppingCardHeading"/>
+                                                    <additionalInformation
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+                                                        fieldDescription="This text will be displayed when show more is clicked"
+                                                        fieldLabel="Additional Information"
+                                                        name="./shoppingCardDescription"
+                                                        useFixedInlineToolbar="{Boolean}true">
+                                                        <rtePlugins
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceSuperType="mattel/global/components/content/rtePlugins/rtePlugins"/>
+                                                        <uiSettings
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceSuperType="mattel/global/components/content/rtePlugins/uiSettings"/>
+                                                    </additionalInformation>
+                                                </items>
+                                            </well>
+                                        </items>
+                                    </setShopping>
+                                </items>
+                            </column>
+                        </items>
+                    </cardSetting>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>

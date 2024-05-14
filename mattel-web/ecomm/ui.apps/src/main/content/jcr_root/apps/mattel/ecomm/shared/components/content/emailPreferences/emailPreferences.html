@@ -1,0 +1,100 @@
+<sly data-sly-use.emailPreferences="com.mattel.ecomm.core.models.EmailPreferencesModel">
+<sly data-sly-test="${wcmmode.edit}">${'Configure Email Preferences' @ i18n}</sly>
+<input type="hidden" value="${emailPreferences.isValidEmail ? emailPreferences.decodedEmailId : ''}" id="useremaiID">
+<input type="hidden" id="formApi-url" value="${emailPreferences.formAPIUrl}">
+<input type="hidden" id="formApi-key" value="${emailPreferences.formAPIKey}">
+<input type="hidden" id="prefApi-key" value="${emailPreferences.prefAPIKey}">
+<input type="hidden" id="prefApi-url" value="${emailPreferences.prefAPIUrl}">  
+<input type="hidden" id="requestedBy" value="AEM">
+<input type="hidden" id="redirect_brands" data-sly-test.changePrefCTA="${properties.changePrefCTALink}" data-sly-use.changePref="${'com.mattel.ecomm.core.helper.EcommHelper' @ text= changePrefCTA}" value="${changePref.pathURL}">
+<input type="hidden" id="redirect_unsubscribe" data-sly-test.unsubscribeCTA="${properties.unsubscribeCTALink}" data-sly-use.unsubscribe="${'com.mattel.ecomm.core.helper.EcommHelper' @ text= unsubscribeCTA}" value="${unsubscribe.pathURL}">
+				<div class="email-preferences-component">
+                    <div class="email-preferences-content-block">
+                        <div class="title-block">
+                            <h2 data-sly-test="${properties.emailPrefTitle}">${properties.emailPrefTitle @ i18n}</h2>
+                            <div class="label">
+                                <sly data-sly-test="${properties.emailAddressLabel}">
+                                	<span class="title">${properties.emailAddressLabel @ i18n}</span>
+                                 </sly>
+                                <span data-sly-test="${emailPreferences.isValidEmail}" class="desc" id="useremailId">${emailPreferences.decodedEmailId}</span>
+                            </div>
+                            <p data-sly-test="${properties.optionText}">${properties.optionText @i18n}</p>
+                        </div>
+                        <div class="subscription-opt">
+                            <ul>
+                                <li class="radio">
+                                    <label class="emailpref-radio">
+                                        <input type="radio" name="radio" class="radio-opt unsubscribe">
+                                        <span class="checkmark"></span>
+                                        <span data-sly-test="${properties.unsubscribeTitle}" class="checkval">${properties.unsubscribeTitle @i18n}</span>
+                                        <p data-sly-test="${properties.unsubscribeDescr}">${properties.unsubscribeDescr @i18n}</p>
+                                    </label>
+                                </li>
+                                <li class="radio">
+									 <label class="emailpref-radio">
+                                        <input type="radio" name="radio" id="changeEmailPref" class="radio-opt" checked>
+                                        <span class="checkmark"></span>
+                                        <span data-sly-test="${properties.changePrefTitle}" class="checkval">${properties.changePrefTitle @i18}</span>
+                                        <p data-sly-test="${properties.changePrefDescr}">${properties.changePrefDescr @i18}</p>
+                                    </label>
+                                    <div class="change-email-pref-opt" id="changeEmailPrefOpt">
+                                        <ul>
+                                        	<sly data-sly-list.prefList="${emailPreferences.preferencesList}">
+                                            <li class="checkbox">
+                                                <label class="emailpref-checkbox">
+                                                    <input type="checkbox" value="" class="primary-preference" data-id="${prefList.preferenceID}">
+                                                    <span class="checkmark"></span>
+                                                    <span class="checkval">${prefList.title @i18n}</span>
+                                                    <p data-sly-test="${prefList.description}">${prefList.description @i18n}</p>
+                                                </label>
+                                            </li>
+                                            </sly>
+                                            <li class="checkbox with-accordion">
+                                                <div class="accordion-component">
+                                                    <div class="accordion">
+                                                        <div>
+                                                            <h2 class="accordion-title">
+                                                                <label class="emailpref-checkbox">
+                                                                    <input type="checkbox">
+                                                                    <span class="checkmark"></span>
+                                                                    <span data-sly-test="${properties.mattelBrandsTitle}" class="checkval">${properties.mattelBrandsTitle @i18}</span>
+                                                                </label>
+                                                                <a href="JavaScript:Void(0);" class="arrow arrowUp" aria-label="Mattel Brand Accordian" aria-expanded="true"></a>
+                                                                <p data-sly-test="${properties.mattelBrandsDescr}">${properties.mattelBrandsDescr @i18}</p>
+                                                            </h2>
+
+                                                            <div class="accordion-content default active">
+                                                                <div class="checkbox">
+                                                                        <label class="emailpref-checkbox">
+                                                                            <input type="checkbox" id="selectAllBrands">
+                                                                            <span class="checkmark"></span>
+                                                                            <span data-sly-test="${properties.selectAllLabel}" class="checkval">${properties.selectAllLabel @i18n}</span>
+                                                                        </label>
+                                                                </div>
+                                                                <ul id="inputfield">
+                                                                <sly data-sly-resource="${'brandsListContainer0' @ resourceType='wcm/foundation/components/responsivegrid'}"></sly>
+                                                                 </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>                                    
+                                        </ul>
+                                    </div>                                                                
+                                </li>
+                            </ul>
+                        </div>
+                        <button class="btn btn-primary" id="update-btn" type="button">${properties.updateCTALabel @i18n}</button>
+                    </div>
+                    <div data-sly-test="${properties.dsktpImgFileRef}" class="email-preferences-image-block">
+                        <img src="${properties.dsktpImgFileRef}" alt="">
+                    </div>
+                    <div data-sly-test="${properties.mblImgFileRef}" class="email-preferences-image-block-mobile">
+                        <img src="${properties.mblImgFileRef}" alt="">
+                    </div>
+                </div>
+</sly>
+
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
+    <sly data-sly-call="${clientlib.js @ categories='ecomm.emailPreferences'}" />
+</sly>

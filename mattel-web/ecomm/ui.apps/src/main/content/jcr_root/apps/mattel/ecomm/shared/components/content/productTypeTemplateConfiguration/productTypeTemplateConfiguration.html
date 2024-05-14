@@ -1,0 +1,22 @@
+<sly data-sly-use.productTypeTemplateModel="com.mattel.ecomm.core.models.ProductTypeTemplateModel">
+    <div>
+        <table style="width:100%">
+            <tr>
+                <th>Product Type</th>
+                <th>Page Path</th>
+            </tr>
+            <sly data-sly-list.pagePathMappingList="${productTypeTemplateModel.pagePathMappingList}">
+                <tr>
+                    <td>${pagePathMappingList.productType}</td>
+                    <td>${pagePathMappingList.pagePath}</td>
+                </tr>
+            </sly>
+
+        </table>
+    </div>
+</sly>
+<style>
+table, th, td {
+  border: 1px solid black;
+}
+</style>

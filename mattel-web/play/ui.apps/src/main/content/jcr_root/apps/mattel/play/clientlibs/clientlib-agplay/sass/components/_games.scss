@@ -1,0 +1,89 @@
+.gameLandingGrid {
+    #play-game {
+        .gallery-tile {
+            &>h2 {
+                color: $night-rider;
+                font: 400 32px "Source Sans Pro", Arial, sans-serif;
+                line-height: normal;
+            }
+            .play-list {
+                .column-3 {
+                    clear: inherit !important;
+                }
+            }
+        }
+    }
+    .cda-banner {
+        background: transparent;
+    }
+    .cda-banner .crm-container .category-drpdown-display {
+        @media #{$small-down} {
+            font-size: 18px;
+            width: calc(100% - 90px);
+            span {
+                width: 52px;
+                height: 48px;
+                &:before {
+                    margin-top: 20px;
+                }
+            }
+            &+.nav-categorylist.nav-carousel-slides {
+                width: calc(100% - 90px);
+                left: 0;
+                right: 0;
+                li a {
+                    font-size: 16px;
+                }
+            }
+        }
+    }
+}
+
+.play-tiles-gallery.play-games {
+  @extend .fixed-bgnd-w-cover;
+  ul {
+    padding: 0;
+    li {
+      margin: 0;
+      padding: 0;
+      > a {
+        margin-right: 1.07143em;
+        margin-bottom: 15px;
+      }
+    }
+  }
+}
+
+.game-player-area-component {
+    .title-block {
+        h2,
+        p {
+            max-width: 750px;
+            margin: 0 auto 20px auto;
+        }
+    }
+}
+
+// ADPB-2703 fixes for courtney page
+#pagename-Courtney,
+.page-view[id$='-stretched'],
+.page-view[id^='pagename-Goty'],
+.page-view[id^='pagename-goty']{
+    @media #{$large-down} {
+        .game-player-area-content{
+            padding: 7px;
+            --app-height: calc(100vh - 64px); // headerheight + padding
+            @media #{$xsmall-up} {
+                --app-height: calc(100vh - 70px);
+                padding: 10px;
+            }
+            @media #{$small-up} {
+                --app-height: calc(100vh - 127px);
+            }
+            .game-player-area-container{
+                width: 100% !important;
+                height: var(--app-height) !important;
+            }
+        }
+    }
+}

@@ -1,0 +1,111 @@
+<sly data-sly-test="${wcmmode.edit}">${'PDP Product' @i18n}</sly>
+<sly data-sly-use.model="com.mattel.ecomm.core.models.ProductInfoModel">
+  <div class="affirm_eligible_key hidden">${model.affirmInEligibleKey}</div>
+  <img class="social_pinterest_image hidden"></img>
+  <sly data-sly-test.product = ${model.productUIResponse}>
+   <sly data-sly-test.core=${product.core}></sly>
+   <sly data-sly-test.variants=${product.variants}>
+      <sly data-sly-test="${core.product_type == 'ItemBean' || core.product_type == 'PackageBean' || core.product_type == 'DynamicKitBean'}" data-sly-list="${variants}">
+        <sly data-sly-test.itemvariantid="${item.id}"/>
+      </sly>
+   </sly>
+    <div class="product-wrapper">
+      <div id="${core.product_type == 'BundleBean'? 'floating-bundle-info': 'floating-product-info'}">
+          <sly data-sly-resource="${'productdetailbreadcrumb'@resourceType='/apps/mattel/ecomm/shared/components/content/productdetailbreadcrumb'}"></sly>
+        <div class="product-container" aria-labeledby="lab">
+          <sly data-sly-use.templ="productinfo.html" data-sly-call="${templ.productInfo @ productObj=product}"></sly>
+          <span class="gt-thumbnail hidden" data-binder-name="gt-product-thumbnail">${core.product_thumnail}</span>
+          <span class="gt-image hidden" data-binder-name="gt-product-imageLink" data-thumbnail="{{core.product_thumnail}}">${core.product_imagelink}</span>
+          <span class="gt-smalltrunkpricerange hidden">${core.product_smallTrunkLowPrice}</span>
+          <span class="gt-largetrunkpricerange hidden">${core.product_largeTrunkLowPrice}</span>
+          <div class="product_id hidden">${product.partnumber @ context="unsafe"}</div>
+          <div class="bazarvoice_key hidden">${model.bazarVoicePassKey @ context="unsafe"}</div>
+          <sly data-sly-test="${product.components && core.product_type != 'PackageBean'}">
+            <div class="product-bundle-wrapper  marketing-savings-cont" data-type="parent">
+              <sly data-sly-list.component="${product.components}">
+                <sly data-sly-use.templ="bundlecomponent.html" data-sly-call="${templ.bundleComponentInfo @ componentObj=component, productObj=product}"></sly>
+              </sly>
+            </div>
+        </sly>
+          <div class="button-wrapper">
+            <!--/* Modal Popup for Guarantee Details Starts */-->
+            <div class="modal fade" id="guaranteeModal" tabindex="-1" role="dialog" aria-labelledby="guaranteeModal">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close"  aria-label="close" data-dismiss="modal"><span class="sr-only">Close</span><em class="fa fa-times fa-sm"></em></button>
+                    <h2 class="modal-title">${properties.ourguaranteeDetailtitle @i18n}</h2>
+                  </div>
+                  <div class="modal-body">
+                    <p>${properties.ourGuaranteeDescription @context='html'}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mobile-fixed-btn">
+              <button type="button" class="btn-add-to-bag ${((!core.product_buyable || core.product_buyable == '0')  && (core.product_type == 'ItemBean' || core.product_type == 'PackageBean' || core.product_type == 'ProductBean')) ? 'non-buyable-product-btn' : ''}" disabled data-dismiss="modal" data-custsegment="${core.product_custsegexcl}"  id="addToBagBtn" data-parentpartnumber="${product.partnumber}" data-variant-id="${itemvariantid}" data-producttype="${core.product_type}" data-hasaddon="${core.product_hasAddOns}" data-hasquicksell="${core.product_hasQuickSell}" data-quickview="false" data-formname=".update-message" data-dismiss="modal">${properties.addtobagButtonText}</button>
+              <sly data-sly-test="${core.product_type != 'BundleBean' && core.product_isretailinventorycheckenabled == 'true'}">
+                <sly data-sly-use.tmpl="retailStoreDropdown.html" data-sly-call="${tmpl.retailStore @ productObj=product}"></sly>
+              </sly>
+            </div>
+            <sly data-sly-test="${'CA' == core.product_excludeShippingCountriesFlag && !core.product_isAltCanadaSKU}">
+              <div class="exclude-shipping-message">
+                <span>${properties.excludeShippingCountryMessage}</span>
+              </div>
+            </sly>    
+            <sly data-sly-test="${'CA' == core.product_excludeShippingCountriesFlag && core.product_isAltCanadaSKU}">
+              <div class="exclude-shipping-message">
+                <span>${properties.excludeShippingCountryMessageForSku}</span>
+              </div>
+            </sly>        
+            <div class="guarantee-message">
+              <div class="guarantee-details">
+                <p>${properties.ourGuaranteeTitle @i18n}</p>
+                <p>${properties.ourGuaranteeSubtitle}<a href="javascript:void(0);" class="see-guarantee-details">See details<span class="sr-only">opens a dialog box</span></a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </sly>
+</sly>
+
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
+  <sly data-sly-call="${clientlib.js @ categories='ecomm.pdpproduct'}"/>
+</sly>
+<script id="recommendedProdTemp" type="application/ld+json">
+{
+  "entity.id" : "${product.partnumber @ context='unsafe'}",
+  "entity.categoryId" : "${product.attributes.AEMcanonical @ context='unsafe'}",
+  "entity.inventory" : "${product.availabilityStatus @ context='unsafe'}",
+  "entity.value" : "${product.priceForRecommendations @ context='unsafe'}",
+  "entity.name" : "${core.title @ context='unsafe'}",
+  "entity.productCategory" : "${core.product_productCategory @ context='unsafe'}",
+  "entity.productCharacter" : "${core.product_character @ context='unsafe'}",
+  "entity.promoCategory" : "${core.product_promoCategory @ context='unsafe'}",
+  "entity.subCategory" : "${core.product_subCategory @ context='unsafe'}",
+  "entity.subBrand" : "${core.product_subBrand @ context='unsafe'}",
+  "entity.giftguide" : "${core.product_giftGuide @ context='unsafe'}",
+  "entity.productBundle" : "${core.product_type @context='unsafe'}",
+  "at_property" : "${model.atPropertyTarget @context='unsafe'}"
+}
+</script>
+<script id="seoScript" type="application/ld+json">
+${model.productSeoSchema @context='unsafe'}
+</script>
+<script type="text/javascript" >
+    $(document).ready(function(){
+        setRecomendedProduct();
+        if ($("link[rel='canonical']").length && (typeof $("link[rel='canonical']")
+            .attr("href") == "undefined" || $("link[rel='canonical']").attr("href")
+            .trim() == "")) {
+            $("link[rel='canonical']").attr("href", window.location.href);
+        }
+    });
+  function setRecomendedProduct() {
+    var recommendedProdJson = JSON.parse($("#recommendedProdTemp").html());
+    sessionStorage.setItem("recommendedProduct", JSON.stringify(recommendedProdJson));
+  }
+    
+</script>

@@ -1,0 +1,706 @@
+.arrow-styles {
+
+    .slick-next,
+    .cd-next,
+    .slick-prev,
+    .cd-prev {
+        @if mapping($cdabanner, main, isNoArrowCarousel)==true {
+            display: none !important;
+        }
+
+        background: mapping($cdabanner, playcontainerslickprevNext, bgnd);
+        border-radius: mapping($cdabanner, playcontainerslickprevNext, borderRadius);
+
+        &:before {
+            font-family: mapping($cdabanner, playcontainerslickprevNext, fntFamily);
+            padding: mapping($cdabanner, playcontainerslickprevNext, pad);
+            color: mapping($cdabanner, playcontainerslickprevNext, txtColor);
+            font-size: mapping($cdabanner, playcontainerslickprevNext, fntSize);
+            background: mapping($cdabanner, playcontainerslickprevNext, beforeBgnd);
+
+            @if mapping($layout, main, isWhyPlay)==true {
+                display: none;
+            }
+        }
+
+        @media #{$medium-down} {
+            top: mapping($cdabanner, playcontainerslickprevNext, tabposTop);
+        }
+    }
+
+    .slick-prev,
+    .cd-prev {
+        margin-left: mapping($cdabanner, playcontainerslickPrev, marginLeft);
+    }
+
+    .slick-next,
+    .cd-next {
+        margin-right: mapping($cdabanner, playcontainerslickNext, marginRight);
+    }
+
+    .slick-next:before,
+    .cd-next:before {
+        content: mapping($cdabanner, slicknextBefore, nextContent);
+        margin-left: mapping($cdabanner, slicknextBefore, marginLeft);
+        opacity: mapping($cdabanner, slicknextBefore, opacity);
+    }
+
+    .slick-prev:before,
+    .cd-prev:before {
+        content: mapping($cdabanner, slickprevBefore, prevContent);
+        margin-right: mapping($cdabanner, slickprevBefore, marginRight);
+        opacity: mapping($cdabanner, slickprevBefore, opacity);
+    }
+
+    @if mapping($cdabanner, main, isNoDotsCarousel)==true {
+        .slick-dots {
+            display: none !important;
+        }
+    }
+
+    //@else{
+
+    .slick-dots li button {
+        background-color: mapping($cdabanner, slickdotsButton, bgndColor);
+        width: mapping($cdabanner, slickdotsButton, width);
+        height: mapping($cdabanner, slickdotsButton, height);
+        opacity: mapping($cdabanner, slickdotsButton, opacity);
+
+        @if mapping($layout, main, isWhyPlay)==true {
+            border: mapping($cdabanner, slickdotsButton, circleBorder);
+        }
+
+        @media #{$small-down} {
+            background-color: mapping($cdabanner, slickdotsButton, tabbgndColor);
+        }
+    }
+
+    .slick-dots li.slick-active button {
+        background: mapping($cdabanner, slickdotsActive, bgnd);
+        opacity: mapping($cdabanner, slickdotsActive, btnOpacity);
+    }
+
+    //}
+
+    @media #{$small-down} {
+
+        .slick-next,
+        .slick-prev,
+        .cd-next,
+        .cd-prev {
+            display: mapping($cdabanner, playcontainerslickprevNext, tabDisplay);
+        }
+    }
+}
+
+.cda-banner {
+    position: mapping($cdabanner, main, pos);
+    background: mapping($cdabanner, main, bgnd);
+
+    @if mapping($layout, main, isRescueHeroes)==true {
+        margin-top: 62px;
+    }
+
+    &.fpSubHead {
+        img {
+            max-width: mapping($cdabanner, cdabannerImage, maxWidth);
+            max-height: mapping($cdabanner, cdabannerImage, maxHeight);
+
+            @media (max-width: 1024px) {
+                max-width: mapping($cdabanner, cdabannerImage, maxWidthTabLs);
+            }
+
+            @media #{$medium-down} {
+                max-width: mapping($cdabanner, cdabannerImage, maxWidthTab);
+            }
+
+            @media #{$small-down} {
+                max-width: mapping($cdabanner, cdabannerImage, maxWidthMob);
+            }
+        }
+    }
+
+    .carousel-slides {
+        padding-bottom: mapping($cdabanner, carouselSlides, paddingBottom);
+        padding-top: mapping($cdabanner, carouselSlides, paddingTop);
+        border-bottom: mapping($cdabanner, carouselSlides, borderBottom);
+
+        @media #{$medium-up} {
+            padding-bottom: mapping($cdabanner, carouselSlides, tabpaddingBottom);
+            border-bottom: mapping($cdabanner, carouselSlides, tabborderBottom);
+        }
+
+        li {
+            position: mapping($cdabanner, carouselslidesList, pos);
+            margin: mapping($cdabanner, carouselslidesList, margin);
+        }
+    }
+
+    .banner-copy {
+        padding: mapping($cdabanner, bannerCopy, pad);
+        width: mapping($cdabanner, bannerCopy, width);
+        word-break: mapping($cdabanner, bannerCopy, wordBreak);
+        text-align: mapping($cdabanner, bannerCopy, txtAlign);
+        background: mapping($cdabanner, bannerCopy, bgnd);
+
+        @media #{$medium-down} {
+            background-image: mapping($cdabanner, bannerCopy, deviceBgImg);
+        }
+
+        @media #{$medium-only} {
+            @if mapping($cdabanner, main, isMobileDesignForiPadPortrait)==true {
+                position: static !important;
+                @include transform(none !important);
+            }
+        }
+
+        @media #{$medium-up} {
+            width: mapping($cdabanner, bannerCopy, tabWidth);
+        }
+
+        @media #{$small-up} {
+            @include position-center();
+
+            h2 {
+                margin: mapping($cdabanner, bannercopyH2, margin);
+            }
+        }
+
+        @if mapping($layout, main, isRescueHeroes)==true {
+            .theme-btn {
+                background-color: mapping($cdabanner, carouselCTA, ctaBgColor);
+                color: mapping($cdabanner, carouselCTA, ctaTxtColor);
+                @include font-properties($maaxLight,$localFontVerdana);
+
+                &:hover {
+                    background-color: mapping($cdabanner, carouselCTA, ctaBgColorHover);
+                }
+            }
+        }
+
+        @if mapping($cdabanner, heroimageBanner, fisherPriceButton)==true {
+            .theme-btn {
+                color: mapping($cdabanner, heroimageBanner, fontColor);
+                min-width: mapping($cdabanner, heroimageBanner, btnWidth);
+                text-transform: mapping($cdabanner, heroimageBanner, textTrans);
+                height: mapping($cdabanner, heroimageBanner, btnHeight);
+                background: mapping($cdabanner, heroimageBanner, bgColor);
+                margin: mapping($cdabanner, heroimageBanner, btnMargin);
+                display: mapping($cdabanner, heroimageBanner, dispInline);
+
+                @media #{$medium-down} {
+                    margin-top: mapping($cdabanner, heroimageBanner, mobMargin);
+
+                }
+
+                &:hover {
+                    background: mapping($cdabanner, heroimageBanner, btnColorHover);
+                }
+            }
+        }
+    }
+
+
+    img {
+        display: mapping($cdabanner, cdabannerImage, display);
+        margin: mapping($cdabanner, cdabannerImage, margin);
+    }
+
+    //play site
+    .play-container {
+        @extend .arrow-styles;
+
+        .banner-copy {
+            @media #{$small-down} {
+                text-align: if(mapping($cdabanner, bannerCopyPromo, mobTxtAlign), mapping($cdabanner, bannerCopyPromo, mobTxtAlign), left)
+            }
+
+            a,
+            span {
+                background-color: mapping($cdabanner, bannercopySpan, bgndColor);
+                border: mapping($cdabanner, bannercopySpan, borderColor);
+                color: mapping($cdabanner, bannercopySpan, txtColor);
+                font-size: mapping($cdabanner, bannercopySpan, fntSize);
+            }
+
+            a:hover,
+            span:hover {
+                background: mapping($cdabanner, bannercopySpan, hoverBgnd);
+                border: mapping($cdabanner, bannercopySpan, hoverborderColor);
+            }
+
+            .module-description {
+                @if mapping($cdabanner, bannercopymoduleDesc, isDefaultDesFont)==true {
+                    @extend .page-description-font;
+                }
+
+                @else {
+                    font-family: mapping($cdabanner, bannercopymoduleDesc, fntFamily);
+                }
+
+                font-weight: mapping($cdabanner, bannercopymoduleDesc, fntWeight);
+                color: mapping($cdabanner, bannercopymoduleDesc, txtColor);
+                font-size: mapping($cdabanner, bannercopymoduleDesc, fntSize);
+                letter-spacing: mapping($cdabanner, bannercopymoduleDesc, letterSpacing);
+                margin: mapping($cdabanner, bannercopymoduleDesc, margin);
+
+                @if mapping($layout, main, isRescueHeroes)==true {
+                    line-height: mapping($cdabanner, bannercopymoduleDesc, lineHeight);
+                }
+
+                @media #{$medium-down} {
+                    color: mapping($cdabanner, bannercopymoduleDesc, tabtxtColor);
+
+                    @if mapping($cdabanner, bannerCopy, mobileViewFP)==true {
+                        margin: mapping($cdabanner, bannerCopy, mobDesMargin);
+                    }
+
+                }
+
+                @if mapping($layout, main, isRescueHeroes)==true {
+                    @media #{$small-down} {
+                        font-size: mapping($cdabanner, bannercopymoduleDesc, fntSizeMob);
+                    }
+                }
+
+                span {
+                    display: mapping($cdabanner, bannercopymoduleSpan, display);
+                    color: mapping($cdabanner, bannercopymoduleSpan, txtColor);
+                    @include font-properties($maaxBold,$localFontVerdana);
+                    font-weight: mapping($cdabanner, bannercopymoduleSpan, fntWeight);
+                    font-size: mapping($cdabanner, bannercopymoduleSpan, fntSsize);
+
+                    @media #{$medium-down} {
+                        color: mapping($cdabanner, bannercopymoduleSpan, tabtxtColor);
+                    }
+                }
+
+                p {
+                    margin-bottom: mapping($cdabanner, bannercopymoduleP, marginBottom);
+                }
+            }
+
+            .module-title {
+                color: if(mapping($cdabanner, bannercopymoduleTitle, mobTxtColor), mapping($cdabanner, bannercopymoduleTitle, mobTxtColor), mapping($cdabanner, bannercopymoduleTitle, txtColor));
+
+                @media #{$small-up} {
+                    color: mapping($cdabanner, bannercopymoduleTitle, tabTxtColor);
+                }
+
+                @media #{$medium-up} {
+                    color: mapping($cdabanner, bannercopymoduleTitle, txtColor);
+                    max-width: mapping($cdabanner, bannercopymoduleTitle, maxWidth);
+                }
+
+                font-size: mapping($cdabanner, bannercopymoduleTitle, fntSize);
+                font-weight: mapping($cdabanner, bannercopymoduleTitle, fntWeight);
+
+                @if mapping($layout, main, isRescueHeroes)==true {
+                    line-height: mapping($cdabanner, bannercopymoduleTitle, lineHeight);
+
+                    @media #{$medium-down} {
+                        padding: mapping($cdabanner, bannercopymoduleTitle, tabpadding);
+                    }
+                }
+
+                @media #{$small-down} {
+                    color: mapping($cdabanner, bannercopymoduleTitle, mobileTextColor);
+                    font-size: mapping($cdabanner, bannercopymoduleTitle, mobfntSize);
+                    max-width: if(mapping($cdabanner, bannercopymoduleTitle, tabMaxWidth), mapping($cdabanner, bannercopymoduleTitle, tabMaxWidth), initial);
+                    text-align: if(mapping($cdabanner, bannercopymoduleTitle, mobTxtAlign), mapping($cdabanner, bannercopymoduleTitle, mobTxtAlign), left);
+                }
+
+                sup {
+                    font-size: 15%;
+                    top: -43px;
+
+                    @media #{$small-down} {
+                        top: -30px;
+                    }
+                }
+            }
+
+            @media #{$medium-down} {
+                padding: mapping($cdabanner, bannerCopy, tabpadding);
+                position: mapping($cdabanner, bannerCopy, pos);
+                top: mapping($cdabanner, bannerCopy, tabposTop);
+                left: mapping($cdabanner, bannerCopy, tabposLeft);
+                right: mapping($cdabanner, bannerCopy, tabposRight);
+                bottom: mapping($cdabanner, bannerCopy, tabposBottom);
+                text-align: mapping($cdabanner, bannerCopy, tabtxtAlign);
+                background: mapping($cdabanner, bannerCopy, tabBgnd);
+
+                @if mapping($cdabanner, bannercopyposmiddleLeft, fisherPriceBanner)==true {
+                    background: mapping($cdabanner, bannercopyposmiddleLeft, ContainBG);
+                }
+
+                @if mapping($layout, main, isRescueHeroes)==true {
+                    background-size: cover;
+                }
+
+                .module-description {
+                    color: if(mapping($cdabanner, bannerCopy, mobModuledestxtColor), mapping($cdabanner, bannerCopy, mobModuledestxtColor), mapping($cdabanner, bannerCopy, moduledestxtColor));
+
+                    @media #{$small-up} {
+                        color: mapping($cdabanner, bannerCopy, tabModuledestxtColor);
+                    }
+
+                    @media #{$medium-up} {
+                        color: mapping($cdabanner, bannerCopy, moduledestxtColor);
+                    }
+
+                    @media #{$small-down} {
+                        text-align: if(mapping($cdabanner, bannerCopy, mobTxtAlign), mapping($cdabanner, bannerCopy, mobTxtAlign), left);
+                    }
+                }
+            }
+
+            @media #{$small-down} {
+                padding: mapping($cdabanner, bannerCopy, mobPadding);
+            }
+
+            @if mapping($cdabanner, bannerCopy, mobileViewFP)==true {
+
+
+                @media #{$small-down} {
+                    padding: mapping($cdabanner, bannerCopy, mobilePad);
+                }
+
+                @media #{$medium-up} {
+                    padding: mapping($cdabanner, bannerCopy, tabPad);
+                }
+
+            }
+        }
+    }
+}
+
+.banner-copy {
+
+    &[class*='top-'],
+    &[class*='bottom-'],
+    &[class*='middle-'] {
+        transform: mapping($cdabanner, bannercopyPos, posTransform);
+        -webkit-transform: mapping($cdabanner, bannercopyPos, posTransform);
+        -ms-transform: mapping($cdabanner, bannercopyPos, posTransform);
+        top: mapping($cdabanner, bannercopyPos, posTop);
+        left: mapping($cdabanner, bannercopyPos, posLeft);
+    }
+
+    &.top-left {
+        left: mapping($cdabanner, bannercopypostopLeft, posLeft);
+        top: mapping($cdabanner, bannercopypostopLeft, posTop);
+    }
+
+    &.top-right {
+        right: mapping($cdabanner, bannercopypostopRight, posRight);
+        top: mapping($cdabanner, bannercopypostopRight, posTop);
+    }
+
+    &.bottom-left {
+        left: mapping($cdabanner, bannercopyposbottomLeft, posLeft);
+        bottom: mapping($cdabanner, bannercopyposbottomLeft, posBottom);
+    }
+
+    &.bottom-right {
+        right: mapping($cdabanner, bannercopyposbottomRight, posRight);
+        bottom: mapping($cdabanner, bannercopyposbottomRight, posBottom);
+    }
+
+    //polly Styles
+    &.middle-left {
+        left: mapping($cdabanner, bannercopyposmiddleLeft, posLeft);
+        top: mapping($cdabanner, bannercopyposmiddleLeft, posTop);
+        transform: mapping($cdabanner, bannercopyposmiddleLeft, transform);
+
+        @if mapping($cdabanner, bannercopyposmiddleLeft, fisherPriceBanner)==true {
+            background-color: mapping($cdabanner, bannercopyposmiddleLeft, ContainBG);
+            background-size: cover;
+            text-align: mapping($cdabanner, bannercopyposmiddleLeft, textAlign);
+            bottom: mapping($cdabanner, bannercopyposmiddleLeft, bottomPos);
+
+            .middle-div {
+                width: mapping($cdabanner, bannercopyposmiddleLeft, titleWidth);
+                position: relative;
+                display: mapping($cdabanner, bannercopyposmiddleLeft, midDivdisplay);
+                top: mapping($cdabanner, bannercopyposmiddleLeft, MidDivtop);
+                transform: mapping($cdabanner, bannercopyposmiddleLeft, MidDivtransform);
+                -webkit-transform: mapping($cdabanner, bannercopyposmiddleLeft, MidDivtransform);
+                -ms-transform: mapping($cdabanner, bannercopyposmiddleLeft, MidDivtransform);
+
+                @media #{$medium-down} {
+                    width: mapping($cdabanner, bannercopyposmiddleLeft, MobileWidth);
+                    margin-top: mapping($cdabanner, bannercopyposmiddleLeft, mobileTop);
+                    top: mapping($cdabanner, bannercopyposmiddleLeft, mobileInher);
+                    transform: mapping($cdabanner, bannercopyposmiddleLeft, mobileInher);
+                    -webkit-transform: mapping($cdabanner, bannercopyposmiddleLeft, mobileInher);
+                    -ms-transform: mapping($cdabanner, bannercopyposmiddleLeft, mobileInher);
+                }
+            }
+
+
+
+        }
+
+        @media #{$medium-down} {
+            transform: mapping($cdabanner, bannercopyposmiddleLeft, ipadtransform);
+        }
+
+        @media #{$large-only} {
+            font-size: mapping($cdabanner, bannercopyposmiddleLeft, tabFontSize);
+            width: mapping($cdabanner, bannercopyposmiddleLeft, tabWidth);
+        }
+    }
+
+    &.middle-right {
+        right: mapping($cdabanner, bannercopyposmiddleRight, posRight);
+        top: mapping($cdabanner, bannercopyposmiddleRight, posTop);
+        transform: mapping($cdabanner, bannercopyposmiddleLeft, transform);
+
+        @media #{$medium-down} {
+            transform: mapping($cdabanner, bannercopyposmiddleLeft, ipadtransform);
+        }
+
+        @media #{$large-only} {
+            font-size: mapping($cdabanner, bannercopyposmiddleRight, tabFontSize);
+            width: mapping($cdabanner, bannercopyposmiddleRight, tabWidth);
+        }
+    }
+
+    &.top-center {
+        @media #{$small-up} {
+            left: mapping($cdabanner, bannercopypostopCenter, mobposLeft);
+            top: mapping($cdabanner, bannercopypostopCenter, mobposTop);
+            transform: mapping($cdabanner, bannercopypostopCenter, mobposTransform);
+            -webkit-transform: mapping($cdabanner, bannercopypostopCenter, mobposTransform);
+            -ms-transform: mapping($cdabanner, bannercopypostopCenter, mobposTransform);
+        }
+    }
+
+    @media #{$small-up} {
+        .banner-copy {
+            &.bottom-center {
+                left: mapping($cdabanner, bannercopyposbottomCenter, mobposLeft);
+                bottom: mapping($cdabanner, bannercopyposbottomCenter, mobposBottom);
+                transform: mapping($cdabanner, bannercopyposbottomCenter, mobposTransform);
+            }
+
+            &.v-center {
+                left: mapping($cdabanner, bannercopyposVcenter, mobposLeft);
+                top: mapping($cdabanner, bannercopyposVcenter, mobposTop);
+                transform: mapping($cdabanner, bannercopyposVcenter, mobposTransform);
+            }
+        }
+    }
+
+    &.no-bg {
+        @media #{$small-up} {
+            background: mapping($cdabanner, bannercopyBg, mobBgnd);
+        }
+    }
+
+    .module-title {
+        @media #{$small-only} {
+            margin: mapping($cdabanner, bannercopymodTitle, mobMargin);
+        }
+
+        font-size: mapping($cdabanner, bannercopymodTitle, fntSize);
+
+        @media #{$small-up} {
+            font-size: mapping($cdabanner, bannercopymodTitle, mobfntSize);
+        }
+
+        @media #{$medium-up} {
+            font-size: mapping($cdabanner, bannercopymodTitle, tabfntSize);
+        }
+    }
+
+    .module-sub-title {
+        @media #{$small-up} {
+            font-size: mapping($cdabanner, bannercopymodSubtitle, mobfntSize);
+        }
+
+        @media #{$medium-up} {
+            font-size: mapping($cdabanner, bannercopymodSubtitle, tabfntSize);
+        }
+    }
+
+    @media #{$small-only} {
+        text-align: mapping($cdabanner, bannercopymodSubtitle, mobtxtAlign);
+    }
+
+    a,
+    span {
+        display: mapping($cdabanner, bannercopySpan, display);
+        margin: mapping($cdabanner, bannercopySpan, margin);
+
+        @if mapping($layout, main, isRescueHeroes)==true {
+            @media #{$small-only} {
+                margin: mapping($cdabanner, bannercopySpan, marginMob);
+            }
+        }
+
+
+    }
+}
+
+.heroImageBanner {
+    .cda-banner {
+        text-align: mapping($cdabanner, heroimageBanner, txtAlign);
+
+        .crm-container {
+            display: mapping($cdabanner, heroimageCrm, display);
+            position: mapping($cdabanner, heroimageCrm, pos);
+            text-align: mapping($cdabanner, heroimageCrm, txtAlign);
+        }
+    }
+}
+
+.promoCarousel {
+    @media #{$small-down} {
+        background: if(mapping($cdabanner, promoCarousel, promoBgMob), mapping($cdabanner, promoCarousel, promoBgMob), transparent);
+        padding: if(mapping($cdabanner, promoCarousel, padMob), mapping($cdabanner, promoCarousel, padMob), 0);
+    }
+
+    @media #{$medium-down} {
+        background: mapping($cdabanner, promoCarousel, promoBgMob);
+    }
+
+    .cda-banner {
+        @if mapping($cdabanner, mobBanner, isContainsBorder)==true {
+            @media #{$medium-down} {
+                &::after {
+                    content: mapping($cdabanner, mobBanner, afterBdrcontent);
+                    background-image: mapping($cdabanner, mobBanner, afterBdrBgimage);
+                    background-repeat: mapping($cdabanner, mobBanner, afterBdrBgrepeat);
+                    background-size: mapping($cdabanner, mobBanner, afterBdrBgSize);
+                    width: mapping($cdabanner, mobBanner, afterBdrWidth);
+                    height: mapping($cdabanner, mobBanner, afterBdrHeight);
+                    display: mapping($cdabanner, mobBanner, afterBdrDisp);
+                    position: mapping($cdabanner, mobBanner, afterBdrPos);
+                    bottom: mapping($cdabanner, mobBanner, afterBdrPosBottom);
+                    left: mapping($cdabanner, mobBanner, afterBdrPosLeft);
+                }
+            }
+        }
+
+        ul {
+            margin-bottom: 0;
+
+            .slick-track {
+                @media #{$small-down} {
+                    background: mapping($cdabanner, slickTrack, bgColor);
+
+                }
+            }
+
+            li {
+                margin: 0;
+
+                img {
+                    width: 100%;
+                    max-width: if(mapping($cdabanner, promoCarousel, maxWidth), mapping($cdabanner, promoCarousel, maxWidth), 1600px);
+                    padding: 0;
+                }
+            }
+        }
+    }
+
+    .slick-dots {
+        @media #{$small-up} {
+            width: auto;
+            transform: translateX(-50%);
+            -webkit-transform: translateX(-50%);
+            -moz-transform: translateX(-50%);
+            -ms-transform: translateX(-50%);
+            left: 50%;
+            right: auto;
+        }
+
+        @if mapping($cdabanner, slickTrack, fisherPriceTab)==true {
+            @media #{$medium-down} {
+                bottom: mapping($cdabanner, slickTrack, bottomTab);
+
+            }
+
+        }
+    }
+}
+
+
+.has-video-carousel:not(.only-video-slider) {
+    li.video-player-container {
+        .oo-player-container {
+            position: mapping($cdabanner, imageAndVideo, imgPosition);
+            left: mapping($cdabanner, imageAndVideo, imgLeft);
+            top: mapping($cdabanner, imageAndVideo, imgTop);
+            height: mapping($cdabanner, imageAndVideo, imgHeight);
+            width: mapping($cdabanner, imageAndVideo, imgWidth);
+
+            .oo-player {
+                // stylelint-disable Important is needed to remove the padding in tablet
+                padding: mapping($cdabanner, imageAndVideo, imgPad) !important;
+                height: mapping($cdabanner, imageAndVideo, imgHeight);
+                width: mapping($cdabanner, imageAndVideo, imgWidth);
+
+            }
+        }
+    }
+}
+
+
+.has-video-carousel {
+    .video-player-banner.oo-player-container {
+        position: mapping($cdabanner, imageAndVideo, imgPosition);
+        left: mapping($cdabanner, imageAndVideo, imgLeft);
+        top: mapping($cdabanner, imageAndVideo, imgTop);
+        height: mapping($cdabanner, imageAndVideo, imgHeight);
+        width: mapping($cdabanner, imageAndVideo, imgWidth);
+
+    }
+
+    .oo-player {
+        // stylelint-disable Important is needed to remove the padding in tablet
+        padding: mapping($cdabanner, imageAndVideo, imgPad) !important;
+        height: mapping($cdabanner, imageAndVideo, imgHeight);
+        width: mapping($cdabanner, imageAndVideo, imgWidth);
+    }
+
+    .video-player-container {
+        position: mapping($cdabanner, videoContainer, VideoConPos);
+        padding: mapping($cdabanner, videoContainer, VideoConPad);
+        min-height: mapping($cdabanner, videoContainer, VideoMinheight);
+
+        @media #{$small-down} {
+            min-height: mapping($cdabanner, videoContainer, VideoBanMin);
+        }
+    }
+
+    .video-player-banner {
+        position: mapping($cdabanner, videoContainer, VideoBanPos);
+        top: mapping($cdabanner, videoContainer, VideoBanTop);
+        right: mapping($cdabanner, videoContainer, VideoBanRight);
+        bottom: mapping($cdabanner, videoContainer, VideoBanBottom);
+        left: mapping($cdabanner, videoContainer, VideoBanLeft);
+    }
+
+}
+
+.carousel-slides {
+    &.only-video-slider {
+        .slick-slide {
+            min-height: mapping($cdabanner, videoContainer, VideoMinheight);
+
+            @media #{$small-down} {
+                min-height: mapping($cdabanner, videoContainer, VideoBanMin);
+            }
+        }
+    }
+}
+// MATRECOMP-1146 fixes
+ @media screen and (-ms-high-contrast: active),
+ (-ms-high-contrast: none) {
+     .fp-homepage-page .gridContainer .grid-container>ul {
+        display: block;
+     }
+ }

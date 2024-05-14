@@ -1,0 +1,15 @@
+<sly data-sly-test="${wcmmode.edit}">${' Configure Product Accordian Info Module' @ i18n}</sly>
+<div class="accordion-component withbg">
+    <div class="col-xs-12 col-md-12 col-lg-9">
+        <div class="accordion">
+            <div>
+                <h2 class="accordion-title" data-sly-test="${properties.title}">${properties.title @i18n}
+                    <a href="javascript:void(0);" data-tracking-accordion="Accordion Section|${properties.title}|Expand|${properties.title}" class="arrow ${wcmmode.edit?'arrowUp':'arrowDown'}" aria-expanded="false" aria-label="${properties.title}"></a>
+                </h2>
+                <div class="accordion-content ${wcmmode.edit?'default':''}">
+                    <div data-sly-resource="${'productAccordionInfo' @ resourceType='wcm/foundation/components/parsys'}" data-sly-unwrap></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

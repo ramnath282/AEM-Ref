@@ -1,0 +1,120 @@
+<sly data-sly-test="${wcmmode.edit}">${'Edit S&P Grid Component' @i18n}</sly>
+<sly data-sly-use.listingModel="com.mattel.global.core.model.ListingModel" />
+<input type="hidden" id="DefaultLoad" value="${listingModel.initialLoadCount}">
+<input type="hidden" id="ProductLimit" value="${listingModel.productLimit}">
+<input type="hidden" id="snpEP" value="${listingModel.snpUrl}">
+<input type="hidden" id="searchType" value="${listingModel.searchType || 'newsroom'}">
+<input type="hidden" id="defaultImage" value="${listingModel.defaultImage}">
+<div class="listingComponent-outer-wrapper ${listingModel.enableFilters == 'true' ? 'col-30-70' : 'col-100'}">
+    <div class="listingFacetsContainer">
+        <div class="filter-heading">
+            <h3>
+                <span class="visible-sm visible-md visible-lg">${listingModel.filterSectionLabel @context='html',i18n}</span>
+                <span class="visible-xs">${listingModel.filterSectionLabel @context='html',i18n}</span>
+            </h3>
+        </div>
+        <div class="product-filter-section">
+            <div id="filterComponentInfo" data-selection-type="radio" data-facets="${listingModel.enableFilters == 'true' ? 'on' : 'off'}">
+
+            </div>
+        </div>
+    </div>
+    <div class="listingComponent-container">
+        <ul class="grid-lists" id="listingComponentInfo">
+        </ul>
+        <div class="solid cta-button cta-btn-column-1">
+            <a href="javascript:void(0);" role="button" class="btn-cta-item view-all-btn hide">${listingModel.viewAllLabel @ i18n}</a>
+        </div>
+    </div>
+</div>
+
+<div class="loader-outer">
+    <div class="loader">Loading</div>
+</div>
+
+<script type="text/x-handlebars-template" id="listingComponentTemplate">
+    {{#each this}}
+    <li class="grid-item">
+        <div class="listingComponent-info">
+            <a href="{{link}}" class="total-content">
+                <div class="img-wrapper">
+                    <img alt="" src="{{#if media_url}}{{media_url}}{{else}}${listingModel.defaultImage @ context='unsafe'}{{/if}}">
+                </div>
+                <div class="listingComponent-date">{{MMDDYYYY pubDate}}</div>
+                <div class="listingComponent-content">
+                    <div class="listingComponent-headline">{{title}}</div>
+                </div>
+                {{#if category}}
+                    <div class="listingComponent-category">{{category}}</div>
+                {{else}}
+                    <div class="listingComponent-category invisible">{{category}}</div>
+                {{/if}}
+                {{#if dataEnd}} {{else}}
+                <div class="listingComponent-cta">
+                    <div class="learn-more">${listingModel.seeMoreLabel @ context="unsafe", i18n}</div>
+                    <span class="sr-only">opens details Page</span>
+                </div>
+                {{/if}}
+            </a>
+        </div>
+    </li>
+    {{/each}}
+</script>
+<script type="text/x-handlebars-template" id="filterComponentTemplate">
+    {{#each this.facets}} {{#if this.label}}
+    <div class="products-list-item checkbox-cont">
+        <div class="" id="collapse{{@key}}" data-index="{{this.label}}">
+            <fieldset>
+                <legend class="sr-only">{{this.label}}. Page will refresh based on your selection</legend>
+                <div class="{{#if @root.isSingleSelection}}btn-group solid cta-button{{/if}}">
+                    {{#if @root.enableDropdownMenu}}
+                    <button type="button" class="btn-cta-item dropdown-toggle" data-toggle="dropdown">
+                            <span
+                                id="selected-value">{{#if @root.isSingleSelection}}{{#if @root.selectedValue}}{{@root.selectedValue}}{{else}}${listingModel.defaultFilterlabel
+                                @ context="unsafe", i18n}{{/if}}{{else}}Filter{{/if}} </span>
+                            <span class="caret"></span>
+                        </button> {{/if}}
+                    <div role="menu" class="{{#if @root.enableDropdownMenu}}dropdown-menu{{/if}} productTypes checkPreference">
+                        {{#each this.values}} {{#if @root.isSingleSelection}} {{#ifEquals @key 0}}
+                        <div class="products-list-item list-item">
+                            <input {{#ifEquals @root.selectedValue false}}checked{{/ifEquals}} id="checkbox-0{{@../key}}{{@key}}" class="no-fiter custom-checkbox filter-action" data-seo-text="" type="{{#if @root.isSingleSelection}}radio{{else}}checkbox{{/if}}" name="{{#if @root.isSingleSelection}}{{../../this.label}}{{/if}}"
+                                data-total-count="{{@root.totalCount}}" data-action="">
+                            <label for="checkbox-0{{@../key}}{{@key}}">${listingModel.defaultFilterlabel @
+                                            context="unsafe", i18n}</label>
+                            <span class="product-count hide"> ({{@root.totalCount}})</span>
+                        </div>
+                        {{/ifEquals}} {{/if}}
+                        <div class="products-list-item list-item">
+                            <input class="custom-checkbox filter-action" data-seo-text={{seoFormat this.value}} type="{{#if @root.isSingleSelection}}radio{{else}}checkbox{{/if}}" name="{{#if @root.isSingleSelection}}{{../this.label}}{{/if}}" data-total-count="{{this.count}}" id="checkbox-{{@../key}}{{@key}}"
+                                data-action="{{#if this.undolink}}{{this.undolink}}{{else}}{{this.link}}{{/if}}" {{#if @root.isSingleSelection}} {{#ifEquals @root.selectedValue this.value}}checked{{/ifEquals}}{{else}} {{#ifEquals this.selected 'true'}}checked
+                                {{/ifEquals}}{{/if}}>
+                            <label for="checkbox-{{@../key}}{{@key}}">{{this.value}}</label>
+                            <span class="product-count hide"> ({{this.count}})</span>
+                        </div>
+                        {{/each}}
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+        {{/if}} {{/each}}
+</script>
+<script id="previewListTemp" type="text/x-handlebars-template">
+    {{#forLoop this}}
+    <li class="rich-grid-skeleton">
+        <div class="grid-details">
+            <div class="rich-thumbnail skeleton-bg-color"></div>
+            <div class="details">
+                <div class="details-text-shell">
+                    <div class="sub-title skeleton-bg-color"></div>
+                    <div class="rich-title text-shell skeleton-bg-color"></div>
+                    <div class="rich-date text-shell skeleton-bg-color"></div>
+                    <div class="rich-link text-shell skeleton-bg-color"></div>
+                </div>
+            </div>
+        </div>
+    </li>
+    {{/forLoop}}
+</script>
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
+    <sly data-sly-call="${clientlib.js @ categories='global.listingComponent'}" />
+</sly>

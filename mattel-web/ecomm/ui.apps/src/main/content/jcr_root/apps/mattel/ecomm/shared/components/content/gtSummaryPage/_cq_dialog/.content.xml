@@ -1,0 +1,489 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="GT - Summary Page"
+    sling:resourceType="cq/gui/components/authoring/dialog"
+    extraClientlibs="[acs-commons.widgets.showhidedialogfields]">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <modules
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Marketing Accordians"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <column
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <fieldlabel
+                                        jcr:primaryType="nt:unstructured"
+                                        jcr:title="Select the Marketing Accordians to display in summary Page"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/fieldset">
+                                        <items jcr:primaryType="nt:unstructured">
+                                        	<showDollChangeConfig
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                name="./showDollConfig"
+                                                text="Doll Change Accordion"
+                                                uncheckedValue="{Boolean}false"
+                                                value="true">
+                                                <granite:data
+                                                    jcr:primaryType="nt:unstructured"
+                                                    acs-cq-dialog-dropdown-checkbox-showhide=""
+                                                    acs-cq-dialog-dropdown-checkbox-showhide-target=".gt-dollChange-showhide-target"/>
+                                            </showDollChangeConfig>
+                                            <showTrunksize
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                name="./showTrunkSize"
+                                                text="Trunk Size"
+                                                uncheckedValue="{Boolean}false"
+                                                value="true">
+                                                <granite:data
+                                                    jcr:primaryType="nt:unstructured"
+                                                    acs-cq-dialog-dropdown-checkbox-showhide=""
+                                                    acs-cq-dialog-dropdown-checkbox-showhide-target=".gt-trunksize-showhide-target"/>
+                                            </showTrunksize>
+                                            <showCategoryBundle1
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                name="./showCategoryBundle1"
+                                                text="PlayPack 1"
+                                                uncheckedValue="{Boolean}false"
+                                                value="true">
+                                                <granite:data
+                                                    jcr:primaryType="nt:unstructured"
+                                                    acs-cq-dialog-dropdown-checkbox-showhide=""
+                                                    acs-cq-dialog-dropdown-checkbox-showhide-target=".gt-category1-showhide-target"/>
+                                            </showCategoryBundle1>
+                                            <showCategoryBundle2
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                name="./showCategoryBundle2"
+                                                text="PlayPack 2"
+                                                uncheckedValue="{Boolean}false"
+                                                value="true">
+                                                <granite:data
+                                                    jcr:primaryType="nt:unstructured"
+                                                    acs-cq-dialog-dropdown-checkbox-showhide=""
+                                                    acs-cq-dialog-dropdown-checkbox-showhide-target=".gt-category2-showhide-target"/>
+                                            </showCategoryBundle2>
+                                            <showAddons
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                name="./showAddons"
+                                                text="Addons"
+                                                uncheckedValue="{Boolean}false"
+                                                value="true">
+                                                <granite:data
+                                                    jcr:primaryType="nt:unstructured"
+                                                    acs-cq-dialog-dropdown-checkbox-showhide=""
+                                                    acs-cq-dialog-dropdown-checkbox-showhide-target=".gt-addons-showhide-target"/>
+                                            </showAddons>
+                                            <showLetter
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                name="./showletter"
+                                                text="Letter"
+                                                uncheckedValue="{Boolean}false"
+                                                value="true">
+                                                <granite:data
+                                                    jcr:primaryType="nt:unstructured"
+                                                    acs-cq-dialog-dropdown-checkbox-showhide=""
+                                                    acs-cq-dialog-dropdown-checkbox-showhide-target=".gt-letter-showhide-target"/>
+                                            </showLetter>
+                                            <ctaLink
+		                                        jcr:primaryType="nt:unstructured"
+		                                        granite:class="hide gt-letter-showhide-target"
+		                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+		                                        fieldDescription="Please enter CTA Link to product recommendation Page"
+		                                        fieldLabel="Select letter page"
+		                                        name="./letterPage"
+		                                        rootPath="/content/ag/en">
+		                                         <granite:data
+						                            jcr:primaryType="nt:unstructured"
+						                            acs-checkboxshowhidetargetvalue="{Boolean}true"/>
+		                                     </ctaLink>
+		                                     <letterAccordionLabel
+		                                        jcr:primaryType="nt:unstructured"
+		                                        granite:class="hide gt-letter-showhide-target"
+		                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+		                                        fieldDescription="Provide Letter Accordion Label text"
+		                                        fieldLabel="Letter Accordion Label"
+		                                        name="./letterAccordionLabel">
+		                                        	<granite:data
+						                            jcr:primaryType="nt:unstructured"
+						                            acs-checkboxshowhidetargetvalue="{Boolean}true"/>
+						                    </letterAccordionLabel>
+                                            <categoryBundleQueryParams
+		                                        jcr:primaryType="nt:unstructured"
+		                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+		                                        fieldDescription="Please configure SnP query note this query params is common configuration for both playpack 1 and playpack 2"
+		                                        fieldLabel="Playpack Query Params"
+		                                        name="./playbackQueryParams"/>
+											 <adderPriceText
+		                                        jcr:primaryType="nt:unstructured"
+		                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+		                                        fieldDescription="Please configure text to be displayed for adder pricing label"
+		                                        fieldLabel="Playpack Dynamic Adder Pricing Label"
+		                                        name="./adderPriceText"/>
+											 <deductPriceText
+		                                        jcr:primaryType="nt:unstructured"
+		                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+		                                        fieldDescription="Please configure text to be displayed for deduct pricing label"
+		                                        fieldLabel="Playpack Dynamic Deduct Pricing Label"
+		                                        name="./deductPriceText"/>	
+		                                     <animations
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                fieldLabel="Select a Pricing Animation"
+                                                name="./containerAnimation">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <noAnimation
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="No animation"
+                                                        value="noAnimate"/>
+                                                    <fadein
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Fade In"
+                                                        value="fadeIn"/>
+                                                    <fadeinleft
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Fade In Left"
+                                                        value="fadeInLeft"/>
+                                                    <fadeinright
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Fade In Right"
+                                                        value="fadeInRight"/>
+                                                    <fadeinup
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Fade In Up"
+                                                        value="fadeInUp"/>
+                                                    <fadeindown
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Fade In Down"
+                                                        value="fadeInDown"/>
+                                                </items>
+                                            </animations>											
+		                                     <addToBagButtonText
+		                                        jcr:primaryType="nt:unstructured"
+		                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+		                                        fieldDescription="Provide Add to Bag button text"
+		                                        fieldLabel="Add to bag button Text"
+		                                        name="./addToBagText"/>
+		                                     <addToBagButtonUrl
+		                                        jcr:primaryType="nt:unstructured"
+		                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+		                                        fieldDescription="Please provide the link for add to bag"
+		                                        fieldLabel="Add to Bag URL Link"
+		                                        name="./addToBagUrl"/> 
+											 <buyNowButtonText
+		                                        jcr:primaryType="nt:unstructured"
+		                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+		                                        fieldDescription="Provide Buy Now button text"
+		                                        fieldLabel="Buy Now button Text"
+		                                        name="./buyNowText"/>
+		                                     <buyNowButtonUrl
+		                                        jcr:primaryType="nt:unstructured"
+		                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+		                                        fieldDescription="Please provide the link for buy now"
+		                                        fieldLabel="Buy now URL Link"
+		                                        name="./buyNowUrl"/>    
+                                        </items>
+                                    </fieldlabel>
+                                </items>
+                            </column>
+                        </items>
+                    </modules>
+                    <dollChangeConfig
+                        granite:class="hide gt-dollChange-showhide-target"
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Doll Change Configuration"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                        margin="{Boolean}true">
+                        <granite:data
+                            jcr:primaryType="nt:unstructured"
+                            acs-checkboxshowhidetargetvalue="{Boolean}true"/>
+                        <items jcr:primaryType="nt:unstructured">
+                            <column
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">                                                                      
+                                    <dollChangeLabel
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please Configure doll Change label"
+                                        fieldLabel="Doll Change CTA Label"
+                                        name="./dollChangeLabel"/>
+                                    <ctaLink
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                        fieldDescription="Please enter CTA Link to product recommendation Page"
+                                        fieldLabel="Change CTA Link"
+                                        name="./dollCtaLink"
+                                        rootPath="/content/ag/en"/>
+                                </items>
+                            </column>
+                        </items>
+                    </dollChangeConfig>
+                    <trunkSizeConfig
+                        granite:class="hide gt-trunksize-showhide-target"
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Trunk Size Configuration"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                        margin="{Boolean}true">
+                        <granite:data
+                            jcr:primaryType="nt:unstructured"
+                            acs-checkboxshowhidetargetvalue="{Boolean}true"/>
+                        <items jcr:primaryType="nt:unstructured">
+                            <column
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <accordianTitle
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please configure the title for Trunk Size Accordian"
+                                        fieldLabel="Trunk Size Accordian Title"
+                                        name="./trunkSizeAccordianTitle"/>
+                                    <sectionTitle
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please configure the section title for Trunk Size"
+                                        fieldLabel="Section Title"
+                                        name="./trunkSectionTitle"/>
+									<trunkPricingText
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please configure the trunk pricing label"
+                                        fieldLabel="Trunk Pricing Label"
+                                        name="./trunkPricingText"/>
+									<trunkUnavailablePricingText
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please configure the trunk pricing label if trunk is not available"
+                                        fieldLabel="Unavailable Trunk Pricing Label"
+                                        name="./trunkNAPricingText"/>
+                                   <unavailabilityText
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please configure the unavailability error message for Trunk Size"
+                                        fieldLabel="Unavailability Error Message"
+                                        name="./unavailabilityErrorMessage"/>
+                                   <smallTrunkConfigSection
+                                        jcr:primaryType="nt:unstructured"
+                                        jcr:title="Small Trunk configurations"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/fieldset">
+                                        <items jcr:primaryType="nt:unstructured">
+                                        	<smalltrunkSkuid
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Please configure small trunk sku id"
+                                                fieldLabel="Small Trunk SKU Id"                                                
+                                                name="./smallTrunkSku"/> 
+		                                    <smallTrunkChangeLabel
+		                                        jcr:primaryType="nt:unstructured"
+		                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+		                                        fieldDescription="Please Configure small trunk Change link"
+		                                        fieldLabel="Small Trunk Change CTA Label"
+		                                        name="./smallTrunkChangeLabel"/>
+		                                    <fragmentpath
+			                                    required="{Boolean}true"
+			                                    granite:id="xfPicker"
+			                                    jcr:primaryType="nt:unstructured"
+			                                    sling:resourceType="cq/experience-fragments/editor/components/xffield"
+			                                    fieldDescription="relatedContent.dialog.fieldDec.promoCard"
+			                                    fieldLabel="Trunk Extra Offers"
+			                                    filter="folderOrVariant"
+			                                    name="./smallfragmentPath"
+			                                    propertyFilter="cq:xfShowInEditor"
+			                                    variant="web"/>
+                                        </items>
+                                    </smallTrunkConfigSection>
+                                    <largeTrunkConfigSection
+                                        jcr:primaryType="nt:unstructured"
+                                        jcr:title="Large Trunk configurations"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/fieldset">
+                                        <items jcr:primaryType="nt:unstructured">
+                                        	<largetrunkSkuid
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Please configure large trunk sku id"
+                                                fieldLabel="Large Trunk SKU Id"                                                
+                                                name="./largeTrunkSku"/>
+		                                   <largeTrunkChangeLabel
+		                                        jcr:primaryType="nt:unstructured"
+		                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+		                                        fieldDescription="Please Configure large trunk Change link"
+		                                        fieldLabel="Large Trunk Change CTA Label"
+		                                        name="./largeTrunkChangeLabel"/>
+		                                   <fragmentpath
+			                                    required="{Boolean}true"
+			                                    granite:id="xfPicker"
+			                                    jcr:primaryType="nt:unstructured"
+			                                    sling:resourceType="cq/experience-fragments/editor/components/xffield"
+			                                    fieldDescription="relatedContent.dialog.fieldDec.promoCard"
+			                                    fieldLabel="Trunk Extra Offers"
+			                                    filter="folderOrVariant"
+			                                    name="./largefragmentPath"
+			                                    propertyFilter="cq:xfShowInEditor"
+			                                    variant="web"/>
+                                        </items>
+                                    </largeTrunkConfigSection>
+                                </items>
+                            </column>
+                        </items>
+                    </trunkSizeConfig>
+                    <categoryBundle1
+                        granite:class="hide gt-category1-showhide-target"
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="PlayPack 1"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                        margin="{Boolean}true">
+                        <granite:data
+                            jcr:primaryType="nt:unstructured"
+                            acs-checkboxshowhidetargetvalue="{Boolean}true"/>
+                        <items jcr:primaryType="nt:unstructured">
+                            <column
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <accordianTitle
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please configure the title for Category Bundle1 Accordian"
+                                        fieldLabel="Accordian Title"
+                                        name="./category1Accordian"/>
+                                    <sectionTitle
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please configure the section title for Trunk Size"
+                                        fieldLabel="Section Title"
+                                        name="./bundle1Title"/>
+                                    <category1ChangeLabel
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please Configure Bundle 1 Change Label"
+                                        fieldLabel="Bundle Change CTA Label"
+                                        name="./category1ChangeLabel"/>
+                                    <numberOfDolls
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+                                        fieldDescription="Please configure the number of Bundles recommended to user on Page Load"
+                                        fieldLabel="Number of Bundles recommended to User on Page Load"
+                                        min="{Long}0"
+                                        name="./numberofProductsCategory1"/>
+                                    <viewallproducts
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please enter Text for hyperlink to display all bundles in Page"
+                                        fieldLabel="Hyperlink Text to display All Bundles"
+                                        name="./viewAllProductsCategory1"/>
+                                    <showRecommended
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please enter Text for hyperlink to display only recommended products"
+                                        fieldLabel="Hyperlink Text to display only recommended Bundles"
+                                        name="./showRecommendCategory1"/>                                     
+                                </items>
+                            </column>
+                        </items>
+                    </categoryBundle1>
+                    <categoryBundle2
+                        granite:class="hide gt-category2-showhide-target"
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="PlayPack 2"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                        margin="{Boolean}true">
+                        <granite:data
+                            jcr:primaryType="nt:unstructured"
+                            acs-checkboxshowhidetargetvalue="{Boolean}true"/>
+                        <items jcr:primaryType="nt:unstructured">
+                            <column
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <accordianTitle
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please configure the title for Category Bundle2 Accordian"
+                                        fieldLabel="Accordian Title"
+                                        name="./category2Accordian"/>
+                                    <category2ChangeLabel
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please Configure Bundle 2 Change Label"
+                                        fieldLabel="Bundle Change CTA Label"
+                                        name="./category2ChangeLabel"/>
+                                    <sectionTitle
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please configure the section title for Trunk Size"
+                                        fieldLabel="Section Title"
+                                        name="./bundle2Title"/>
+                                    <numberOfDolls
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+                                        fieldDescription="Please configure the number of Bundles recommended to user on Page Load"
+                                        fieldLabel="Number of Bundles recommended to User on Page Load"
+                                        min="{Long}0"
+                                        name="./numberofProductsCategory2"/>
+                                    <viewallproducts
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please enter Text for hyperlink to display all bundles in Page"
+                                        fieldLabel="Hyperlink Text to display All Bundles"
+                                        name="./viewAllProductsCategory2"/>
+                                    <showRecommended
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please enter Text for hyperlink to display only recommended products"
+                                        fieldLabel="Hyperlink Text to display only recommended Bundles"
+                                        name="./showRecommendCategory2"/>                                  
+                                </items>
+                            </column>
+                        </items>
+                    </categoryBundle2>
+                    <addonsConfig
+                        granite:class="hide gt-addons-showhide-target"
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Addons Configurations"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                        margin="{Boolean}true">
+                        <granite:data
+                            jcr:primaryType="nt:unstructured"
+                            acs-checkboxshowhidetargetvalue="{Boolean}true"/>
+                        <items jcr:primaryType="nt:unstructured">
+                            <column
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                     <addonsChangeLabel
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please Change Label"
+                                        fieldLabel="Change CTA Label"
+                                        name="./addonsChangeLabel"/>
+                                    <notinterested
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please configure the HyperLink Text"
+                                        fieldLabel="Hyperlink Text for Not Interested"
+                                        name="./addonsNotInterestedLabel"/>
+                                </items>
+                            </column>
+                        </items>
+                    </addonsConfig>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>

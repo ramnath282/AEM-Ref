@@ -1,0 +1,261 @@
+.entry-modal-container {
+  z-index: 111111;
+  background: #c82151; //$venetianRed;
+  color: $white;
+  opacity: 0.5;
+  -webkit-transition: all 0.25s linear;
+  -o-transition: all 0.25s linear;
+  transition: all 0.25s linear;
+  background-size: cover;
+  .modal-content {
+    border: none;
+    background: inherit;
+  }
+  &.full-screen {
+    padding: 0 !important;
+    .modal-dialog {
+      min-width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      -webkit-transform: translate(0, 0);
+      -ms-transform: translate(0, 0);
+      -o-transform: translate(0, 0);
+      transform: translate(0, 0);
+      .modal-content {
+        height: auto;
+        min-height: 100%;
+        min-height: 100vh;
+        border-radius: 0;
+        box-shadow: none;
+        .modal-content-inner {
+          width: em(1000);
+          max-width: 100%;
+          margin: auto;
+          position: absolute;
+          left: 50%;
+          @include transform(translateX(-50%) translateY(0));
+          top: 0;
+          @media #{$small-up} {
+            @include transform(translateX(-50%) translateY(-50%));
+            top: 50%;
+          }
+        }
+      }
+    }
+  }
+  .modal-header {
+    border: none;
+    margin-bottom: em(28);
+    @media #{$small-up}{
+      margin-bottom: em(40);
+    }
+    //iPhone XR
+    @media only screen and (min-device-width : 414px) and (max-device-width : 896px) and (-webkit-device-pixel-ratio : 2) and (orientation : landscape){
+      margin-bottom: 0;
+      padding: 0;
+    }
+    //iPhone XS Max
+    @media only screen and (min-device-width : 414px) and (max-device-width : 896px) and (-webkit-device-pixel-ratio : 3) and (orientation : landscape){
+      margin-bottom: 0;
+      padding: 0;
+    }
+    //samasung s10
+    @media only screen and (min-width: 760px) and (orientation: landscape) { 
+      margin-bottom: 0;
+      padding: 0;
+     }
+    #entry-modal-title {
+      font: $fontLight em(24) $primaryFontFamily;
+      @media #{$small-up}{
+        font: $fontLight em(25) $primaryFontFamily;
+      }
+      @media #{$large-up}{
+        font: $fontLight em(30) $primaryFontFamily;
+        line-height: 1;  
+      }
+      color: inherit;
+      margin-bottom: 0;
+      padding-bottom: 0;
+      //iphone XR
+      @media only screen and (min-device-width : 414px) and (max-device-width : 896px) and (-webkit-device-pixel-ratio : 2) and (orientation : landscape){
+        padding-top: 0;
+      }
+      //iphone XS max
+      @media only screen and (min-device-width : 414px) and (max-device-width : 896px) and (-webkit-device-pixel-ratio : 3) and (orientation : landscape){
+        padding-top: 0;
+      }
+      //samasung s10
+      @media only screen and (min-width: 760px) and (orientation: landscape) { 
+        padding-top: 0;
+      }
+    }
+    .site-logo{
+      img{
+        @media #{$small-up}{
+          max-width: em(550);
+          @media #{$medium-up}{
+            max-width: em(789);
+          }
+        }
+      }
+    }
+  }
+  .modal-body {
+    a.theme-btn {
+      background-color: rgba($white, 0.75);
+      padding: em(11.2, 16) em(30, 16);
+      color: #c82151 !important;
+      border-radius: 10px;
+      font: $fontSemiBold em(16) $primaryFontFamily;
+      margin-top: em(10);
+      display: inline-block;
+      cursor: pointer;
+      width: auto;
+      height: auto;
+      outline: none;
+      text-decoration: none;
+      min-width: em(164,16);
+      border: 1px solid transparent;
+      @media #{$small-down}{
+        padding: em(7.67, 16) em(30, 16);
+      }
+      &:hover{
+        border: 1px solid $light-pink;
+        // color: $black;
+        background: $white;
+        @include transition(all .1s ease-in);
+      }
+    }
+    .title,h2,h3 {
+      font: $fontLight em(30) $primaryFontFamily;
+      @media #{$small-up}{
+        font: $fontLight em(35) $primaryFontFamily;
+      }
+      @media #{$large-up}{
+        font: $fontLight em(50) $primaryFontFamily;
+      }
+      // font-size: em(36);
+      text-shadow: 0 2px 25px 0 rgba($black, 0.6);
+      margin: 0;
+      padding: 0;
+      color: inherit;
+      *{
+        font: inherit;
+      }
+    }
+    .description,p {
+      @media #{$small-up} {
+        @include max-lines(3);
+        // min-height: em(60);
+      }
+      font: $fontRegular em(14) $primaryFontFamily;
+      margin: em(16, 14) auto;
+      max-width: em(250, 14);
+      line-height: em(18,14);
+      @media #{$small-up}{
+        font: $fontRegular em(18) $primaryFontFamily;
+        min-height: em(68,18);
+        margin: em(12, 18) auto em(20, 18);
+        max-width: em(250, 18);
+        line-height: em(23,18);
+      }
+      @media #{$large-up}{
+        line-height: em(27,18);
+      }
+      color: inherit;
+      // max-width: em(480,18);
+      *{
+        font: inherit;
+      }
+    }
+    > div {
+      transition: all 0.25s linear;
+      -webkit-transition: all 0.25s linear;
+      -moz-transition: all 0.25s linear;
+      @media #{$small-down}{
+        max-width: em(300);
+        margin-left: auto;
+        margin-right: auto;
+      }
+      @media screen and (max-width:380px){
+        max-width: em(250);
+      }
+    }
+    .shop-section {
+      border-right: 1px solid;
+
+      @media #{$small-down} {
+        border-bottom: 1px solid;
+        border-right: none;
+        margin-bottom: em(28);
+        padding-bottom: em(28);
+        // border-color: $medium-grey;
+      }
+    }
+    @media only screen and (min-device-width : 414px) and (max-device-width : 896px) and (-webkit-device-pixel-ratio : 2) and (orientation : landscape){
+      padding: 0;
+    }
+    @media only screen and (min-device-width : 414px) and (max-device-width : 896px) and (-webkit-device-pixel-ratio : 3) and (orientation : landscape){
+      padding: 0;
+    }
+    //samasung s10
+    @media only screen and (min-width: 760px) and (orientation: landscape) { 
+      padding: 0;
+    }
+  }
+  &.in {
+    opacity: 1;
+    .modal-body {
+      > div {
+        -webkit-animation: FadeZoom 0.4s linear;
+        -webkit-animation-fill-mode: both;
+        -webkit-animation-delay: 0s;
+        -moz-animation: FadeZoom 0.4s linear;
+        -moz-animation-fill-mode: both;
+        -moz-animation-delay: 0s;
+        animation: FadeZoom 0.4s linear;
+        animation-fill-mode: both;
+        animation-delay: 0s;
+        transform-origin: 50% 50% 0px;
+        @media #{$small-up} {
+          padding: em(30) em(50);
+        }
+        //iphone XR
+        @media only screen and (min-device-width : 414px) and (max-device-width : 896px) and (-webkit-device-pixel-ratio : 2) and (orientation : landscape){
+         padding-top: 0;
+        }
+        //iphone XS max
+        @media only screen and (min-device-width : 414px) and (max-device-width : 896px) and (-webkit-device-pixel-ratio : 3) and (orientation : landscape){
+         padding-top: 0;
+        }
+        //samasung s10
+        @media only screen and (min-width: 760px) and (orientation: landscape) { 
+          padding-top: 0;
+        }
+        &:nth-child(1) {
+          -webkit-animation-delay: 0.4s;
+        }
+        &:nth-child(2) {
+          -webkit-animation-delay: 0.6s;
+        }
+      }
+    }
+  }
+}
+
+@-webkit-keyframes FadeZoom {
+  0% {
+    opacity: 0;
+    transform: translateX(0px) translateY(0px) scaleX(0.8) scaleY(0.8);
+  }
+  85% {
+    opacity: 0.5;
+    transform: translateX(0px) translateY(0px) scaleX(0.99) scaleY(0.99);
+  }
+  100% {
+    // -webkit-transform: scale(1);
+    transform: translateX(0px) translateY(0px) scaleX(1) scaleY(1);
+    opacity: 1;
+  }
+}

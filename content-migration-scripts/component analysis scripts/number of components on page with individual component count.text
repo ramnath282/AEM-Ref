@@ -1,0 +1,83 @@
+import javax.jcr.Node
+import javax.jcr.Node
+import org.apache.jackrabbit.vault.packaging.*
+import org.apache.jackrabbit.vault.fs.api.*
+import org.apache.jackrabbit.vault.fs.config.*
+import org.apache.jackrabbit.vault.util.*
+import org.apache.jackrabbit.vault.fs.filter.*
+import org.apache.sling.api.resource.ResourceResolverFactory.*
+import org.apache.jackrabbit.commons.JcrUtils;
+import javax.jcr.Session.*
+import java.util.*
+
+/*Count number of components present on each page */
+path='/content/mattel-play/jurassic-world/language-masters'
+getDetails()
+
+def getDetails(){    
+    getPage(path).recurse
+    {
+        page ->
+        def printableString = "";
+    	count = 0;
+		if(page != null && !page.getPath().contains('test')){
+		    def jcrContentNode = page.node;
+            String currentPagePath=page.getPath();
+    		def template = page.getTemplate();
+		
+    		if(template != null){
+    		    printableString = page.getName() + "," + template.getName() + ","+ template.getPath();
+    		}
+    		NodeIterator itr = jcrContentNode.getNodes();
+    		Map<String, Integer> rsTypeMap = new HashMap<String, Integer>();
+            iterateNode(itr, currentPagePath, rsTypeMap);
+			
+            printableString = printableString + "," + count;
+            printableString = printableString + "," + page.getPath() + ",";
+            rsTypeMap.each{ k, v -> 
+                rsType = "${k}";
+                componentName = getComponentName(rsType);
+                printableString  = printableString + componentName + " = " + "${v}" + " | ";
+            }
+			printableString = printableString + "," + rsTypeMap.size();
+            println printableString;
+		}
+    }
+}
+
+def String getComponentName(String path){
+    Resource res = resourceResolver.getResource(path)
+    if(res!=null){
+        componentNode = res.adaptTo(javax.jcr.Node.class);
+        if(componentNode != null){
+            return componentNode.getProperty('jcr:title').getString();
+        }
+    }    
+}
+
+def iterateNode(NodeIterator itr, currentPagePath, rsTypeMap){
+    while(itr.hasNext()){      
+		Node childNode=itr.nextNode();
+		getComponentCount(childNode, rsTypeMap);
+		if(childNode.hasNodes()){
+			NodeIterator inrItr=childNode.getNodes();
+		    iterateNode(inrItr ,currentPagePath, rsTypeMap);
+		 }             
+    }
+}
+
+def getComponentCount(Node node, Map rsTypeMap){
+    if(node.hasProperty('sling:resourceType')){ 
+        rstype = node.getProperty('sling:resourceType').getString();
+        if(!rstype.equals('wcm/foundation/components/responsivegrid')){
+			count = count + 1;
+            if(rsTypeMap.get(rstype) == null){
+                rsTypeMap.put(rstype, 1);
+            }else{
+                Integer cnt = rsTypeMap.get(rstype);
+                cnt = cnt + 1;
+                rsTypeMap.replace(rstype, cnt);
+            }
+        }
+    }
+}

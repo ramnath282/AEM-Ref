@@ -1,0 +1,433 @@
+footer {
+    background-color: mapping($footer, main, bgndColor);
+    border-top: mapping($footer, main, borderTop);
+    background-size: mapping($footer, main, bgndSize);
+    padding: mapping($footer, main, pad);
+    position: mapping($footer, main, pos);
+
+    >div {
+        @extend .container;
+
+        @media #{$medium-down} {
+            padding-top: mapping($footer, mainDiv, tabpaddingTop);
+        }
+
+        >div {
+            @extend .row;
+
+            .play-footer-mattel-logo {
+                @extend .col-md-1;
+                @extend .col-sm-6;
+                @extend .col-xs-6;
+
+                @media #{$medium-down} {
+                    text-align: mapping($footer, playmattelLogo, tabtxtAlign);
+                    padding: if(mapping($footer, playmattelLogo, tabPad), mapping($footer, playmattelLogo, tabPad), 0);
+
+                    img {
+                        margin-right: mapping($footer, playmattelLogo, tabmarginRight);
+
+                        @if mapping($layout, main, canvas)==true {
+                            margin-top: mapping($footer, playmattelLogo, tabMarginTop);
+                            max-width: mapping($footer, playmattelLogo, tabMaxWidth);
+                        }
+                    }
+                }
+
+                @if mapping($layout, main, canvas)==true {
+                    @extend .col-md-2;
+                    @extend .col-sm-6;
+                    @extend .col-xs-6;
+
+                    @media #{$small-down} {
+                        img {
+                            margin-top: mapping($footer, playmattelLogo, mobMarginTop);
+                            max-width: mapping($footer, playmattelLogo, mobMaxWidth);
+                        }
+                    }
+                }
+            }
+
+            .play-esrb-logo {
+                @extend .col-md-1;
+                @extend .col-sm-6;
+                @extend .col-xs-6;
+                @extend .pull-right;
+
+                @media #{$large-only} {
+                    right: mapping($footer, playesrbLogo, labposRight);
+                    bottom: mapping($footer, playesrbLogo, labposBottom);
+                    z-index: mapping($footer, playesrbLogo, labposzindex);
+                }
+
+                @media #{$medium-down} {
+                    text-align: mapping($footer, playesrbLogo, tabtxtAlign);
+
+                    img {
+                        margin-left: mapping($footer, playesrbLogo, tabmarginLeft);
+                    }
+                }
+
+                a {
+                    img {
+                        height: mapping($footer, playesrblogoLink, height);
+                    }
+                }
+
+                @if mapping($layout, main, canvas)==true {
+                    @extend .col-md-1;
+                    @extend .col-sm-6;
+                    @extend .col-xs-6;
+                }
+            }
+
+            .play-footer-link {
+                @extend .col-md-9;
+
+                @if mapping($layout, main, canvas)==true {
+                    @extend .col-md-7;
+                }
+
+                padding-top: mapping($footer, playfooterLink, paddingTop);
+                text-align: mapping($footer, playfooterLink, txtAlign);
+
+                @media #{$medium-down} {
+                    clear: mapping($footer, playfooterLink, tabClear);
+                    padding-left: mapping($footer, playfooterLink, tabpaddingLeft);
+                    padding-right: mapping($footer, playfooterLink, tabpaddingRight);
+                }
+
+                ul {
+                    text-align: mapping($footer, playfooterUL, txtAlign);
+                    display: mapping($footer, playfooterUL, display);
+
+                    @media #{$medium-down} {
+                        margin-bottom: mapping($footer, playfooterUL, tabmarginBottom);
+                    }
+
+                    li {
+                        display: mapping($footer, playfooterulList, display);
+                        font-size: mapping($footer, playfooterulList, fntSize);
+                        padding: mapping($footer, playfooterulList, pad);
+
+                        @media #{$small-up} {
+                            padding: mapping($footer, playfooterulList, mobPadding);
+                            display: mapping($footer, playfooterulList, mobDisplay);
+                        }
+
+                        a {
+                            color: mapping($footer, playfooterulLink, txtColor);
+                            font-family: mapping($footer, playfooterulLink, fntFamily), Sans-serif;
+                            font-weight: mapping($footer, playfooterulLink, fntWeight);
+                        }
+                    }
+                }
+
+                span {
+                    font-family: mapping($footer, playfooterSpan, fntFamily), Sans-serif;
+                    font-weight: mapping($footer, playfooterSpan, fntWeight);
+                    font-size: mapping($footer, playfooterSpan, fntSize);
+                    padding: mapping($footer, playfooterSpan, pad);
+                    display: mapping($footer, playfooterSpan, display);
+                    padding-top: mapping($footer, playfooterSpan, paddingTop);
+
+                    @media #{$medium-up} {
+                        display: mapping($footer, playfooterSpan, tabDisplay);
+                        padding-top: mapping($footer, playfooterSpan, tabpaddingTop);
+                    }
+                }
+            }
+        }
+    }
+}
+
+.footer.aem-GridColumn {
+    padding: 0;
+}
+
+.footer-links-accordion {
+    background-color: mapping($footer, footerLinkAccordion, bgColor);
+    background-size: mapping($footer, footerLinkAccordion, bgSize);
+    padding: mapping($footer, footerLinkAccordion, padding);
+    text-align: mapping($footer, footerLinkAccordion, textAlign);
+    border-top: mapping($footer, footerLinkAccordion, borderTop);
+
+    @media #{$large-down} {
+        padding: mapping($footer, footerLinkAccordion, tabPadding);
+    }
+
+    h4 {
+        margin: mapping($footer, footerLinkAccordionH4, margin);
+    }
+
+    .footer-links {
+        width: mapping($footer, footerLinks, width);
+        display: mapping($footer, footerLinks, display);
+        text-align: mapping($footer, footerLinks, textAlign);
+        vertical-align: mapping($footer, footerLinks, verticalAlign);
+
+        @media #{$large-down} {
+            width: mapping($footer, footerLinks, tabWidth);
+        }
+
+        h4 {
+            font-size: mapping($footer, footerLinksH4, fontSize);
+            font-weight: mapping($footer, footerLinksH4, fontWeight);
+            font-family: mapping($footer, footerLinksH4, fontFamily);
+            padding-bottom: mapping($footer, footerLinksH4, paddBottom);
+            line-height: mapping($footer, footerLinksH4, lineHeight);
+
+            @media #{$large-down} {
+                border-top: mapping($footer, footerLinksH4, tabborderTop);
+                border-bottom: mapping($footer, footerLinksH4, tabborderTop);
+                padding: mapping($footer, footerLinksH4, fptabpadd);
+                margin: mapping($footer, footerLinksH4, fptabmargin);
+            }
+
+            a {
+                color: mapping($footer, footerLinksH4A, color);
+                cursor: mapping($footer, footerLinksH4A, cursor);
+                line-height: mapping($footer, footerLinksH4, lineHeight);
+
+                @media #{$small-down} {
+                    font-size: mapping($footer, footerLinksH4A, fontSizeMob);
+                }
+            }
+        }
+
+        &.footer-social {
+            width: mapping($footer, footerSocial, width);
+            vertical-align: mapping($footer, footerSocial, verticalAlign);
+
+            @media #{$large-down} {
+                width: mapping($footer, footerSocial, tabWidth);
+                text-align: mapping($footer, footerSocial, tabTextAlign);
+                padding: mapping($footer, footerLinksH4, fptabpadd);
+                border-bottom: mapping($footer, footerLinksH4, fptabBorder);
+                margin-bottom: mapping($footer, footerLinksH4, fptabMargin);
+            }
+
+            a {
+                font-weight: mapping($footer, footerSocialLink, fontWeight);
+                color: mapping($footer, footerSocialLink, color);
+            }
+
+            li {
+                float: mapping($footer, footerSocialLi, float);
+                margin: mapping($footer, footerSocialLi, margin);
+            }
+
+            h4 {
+                padding: mapping($footer, footerSocialH4, padd);
+
+                &:first-child {
+                    padding: mapping($footer, footerSocialH4, firstpadd);
+
+                    @media #{$medium-down} {
+                        font-size: mapping($footer, footerLinksH4A, fontSizeMob);
+                    }
+                }
+
+                @media #{$large-down} {
+                    padding: mapping($footer, footerSocialH4, tabpadd);
+                    border-top: mapping($footer, footerSocialH4, tabborderTop);
+                    border-bottom: mapping($footer, footerAccordionfpLegal, liborderBottom);
+                }
+
+                &:after {
+                    content: mapping($footer, footerSocialH4, content);
+                }
+            }
+        }
+
+        &.footer-esrblogo {
+            text-align: mapping($footer, footerEsrblogo, textAlign);
+            width: mapping($footer, footerEsrblogo, width);
+
+            img {
+                height: mapping($footer, footerEsrblogoImg, height);
+            }
+
+            @media #{$large-down} {
+                text-align: mapping($footer, footerEsrblogo, mobtextAlign);
+                width: mapping($footer, footerEsrblogo, mobwidth);
+                padding: mapping($footer, footerEsrblogo, fptabpadd);
+            }
+        }
+
+        .countryDropDown {
+            h4 {
+                font-family: mapping($footer, footerLinksH4, fontFamily);
+                font-weight: mapping($footer, footerLinksH4, fontWeight);
+                font-size: mapping($footer, footerLinksH4, fontSize);
+                color: mapping($footer, footerLinksH4, color);
+            }
+        }
+
+        &.fp-legal-cookies {
+            h4 {
+                border-bottom: mapping($footer, footerAccordionfpLegal, liborderBottom);
+            }
+
+            .accordion-container {
+                @media #{$large-down} {
+                    display: mapping($footer, footerAccordionfpLegal, fplegalDisplay);
+                    border-bottom: mapping($footer, footerAccordionfpLegal, tabborderBottom);
+
+                    ul {
+                        padding-left: mapping($footer, footerAccordionfpLegal, paddingLeft);
+
+                        li {
+                            padding: mapping($footer, footerAccordionfpLegal, padding);
+                            border-bottom: mapping($footer, footerAccordionfpLegal, liborderBottom);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .accordion-action {
+        pointer-events: mapping($footer, footerAccordionAction, pointerEvents);
+
+        @media #{$large-down} {
+            cursor: mapping($footer, footerAccordionAction, tabcursor);
+            pointer-events: mapping($footer, footerAccordionAction, tabpointerEvents);
+            font-size: mapping($footer, footerAccordionAction, tabfontSize);
+            border-bottom: mapping($footer, footerAccordionAction, tabborderBottom);
+            margin-bottom: mapping($footer, footerAccordionAction, tabmarginBottom);
+            padding-bottom: mapping($footer, footerAccordionAction, tabpaddBottom);
+
+            &:after {
+                content: mapping($footer, footerActionAfter, content);
+                font-family: mapping($footer, footerActionAfter, fontFamily);
+                font-weight: mapping($footer, footerActionAfter, fontWeight);
+                -webkit-font-smoothing: mapping($footer, footerActionAfter, webkit);
+                display: mapping($footer, footerActionAfter, display);
+                font-style: mapping($footer, footerActionAfter, fontStyle);
+                font-variant: mapping($footer, footerActionAfter, fontVariant);
+                text-rendering: mapping($footer, footerActionAfter, textRendering);
+                line-height: mapping($footer, footerActionAfter, lineHeight);
+                vertical-align: mapping($footer, footerActionAfter, vericalAlign);
+                color: mapping($footer, footerActionAfter, color);
+                float: mapping($footer, footerActionAfter, float);
+            }
+        }
+
+        &.expand-in {
+            &:after {
+                content: mapping($footer, footerActionAfter, expandContent);
+            }
+        }
+
+        a {
+            font-size: mapping($footer, footerActionLink, fontSize);
+            font-weight: mapping($footer, footerActionLink, fontWeight);
+            padding-bottom: mapping($footer, footerActionLink, paddBottom);
+            color: mapping($footer, footerActionLink, color);
+        }
+    }
+
+    .accordion-container {
+        @media #{$large-only} {
+            display: mapping($footer, footerAccordionContainer, display);
+        }
+
+        @media #{$large-down} {
+            display: mapping($footer, footerAccordionContainer, tabDisplay);
+        }
+
+        ul {
+            padding: mapping($footer, footerActionLinkul, padding);
+            margin: mapping($footer, footerActionLinkul, margin);
+
+            li {
+                font-size: mapping($footer, footerActionLinkli, fontSize);
+                padding-bottom: mapping($footer, footerActionLinkli, paddingBottom);
+                line-height: mapping($footer, footerActionLinkli, lineHeight);
+
+                @media #{$large-down} {
+                    line-height: mapping($footer, footerActionLinkli, tablineHeight);
+                    padding: mapping($footer, footerActionLinkli, tabpadding);
+                    //border-bottom: mapping($footer, footerActionLinkli, borderBottom);
+                }
+
+                a {
+                    font-family: mapping($footer, footerActionliLink, fontFamily);
+                    font-weight: mapping($footer, footerActionliLink, fontWeight);
+                    color: mapping($footer, footerActionliLink, color);
+
+                    @media #{$medium-down} {
+                        //font-size: mapping($footer, footerActionliLink, fontSizeMob);
+                        font-size: 18px;
+                        line-height: 35px;
+                    }
+                }
+
+                &:first-child {
+                    margin-top: mapping($footer, footerActionLinkli, marginTopfirstchild);
+                }
+            }
+        }
+    }
+}
+
+.family-brands {
+    .gallery-title {
+
+        .play-retailers{
+            background-color: transparent;
+        }
+
+        h2 {
+            font-size: mapping($footer, familyBrands, fontSize);
+            color: mapping($footer, familyBrands, fontColor);
+            margin-top: mapping($footer, familyBrands, marginTop);
+            @media #{$medium-down} {
+                margin-top: 30px;
+                margin-bottom: 15px;
+            }
+            @media #{$small-down} {
+                margin-top: 15px;
+                margin-bottom: 0px;
+            }
+               
+            
+        }
+    }
+
+    .gallery-image {
+        img {
+            width: mapping($footer, familyBrands, imageWidth);
+        }
+    }
+}
+
+.footer-links:nth-child(3) {
+    .accordion-container {
+        ul {
+            li:nth-child(2) {
+                line-height: mapping($footer, footerActionLinkli, lineHeightAlign);
+
+                @media #{$large-only} {
+                    width: 30%;
+                }
+                @media #{$medium-only} {
+                    width: 35%;
+                }
+                @media #{$small-only} {
+                    width: 35%;
+                }
+                @media #{$xsmall-only} {
+                    width: 65%;
+                }
+                a{
+                    @media #{$large-down} {
+                        line-height: 1.3;
+                    }
+                }
+
+            }
+        }
+    }
+}

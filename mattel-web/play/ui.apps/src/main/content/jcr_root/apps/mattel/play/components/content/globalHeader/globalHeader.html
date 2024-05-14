@@ -1,0 +1,86 @@
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
+    <sly data-sly-call="${clientlib.all @ categories='play.GbHeader'}" />
+    <sly data-sly-test="${wcmmode.edit}">${'Configure Play.Mattel Navigation' @i18n}</sly>
+    <sly data-sly-use.headerObj="com.mattel.play.core.model.HeaderModel">
+        <input type="hidden" id="alwaysEnglishGH" value="${properties.alwaysEnglish}" />
+        <sly data-sly-test="${(properties.fileReferenceBgImg == null && properties.backgroundColor == null )||(properties.backOption=='image'&& properties.fileReferenceBgImg ==null)||(properties.backOption=='color'&& properties.backgroundColor ==null)}">
+            <div class="${pageProperties.cq:template == '/conf/play/settings/wcm/templates/mattelhomepage-template'? 'global-mattel-header' : 'global-mattel-header height-md'}">
+        </sly>
+        <sly data-sly-test="${properties.backOption=='color' && properties.backgroundColor !=null}">
+            <div class="${pageProperties.cq:template == '/conf/play/settings/wcm/templates/mattelhomepage-template'? 'global-mattel-header' : 'global-mattel-header height-md'}" style="background-color:${properties.backgroundColor @ context='styleString'};">
+        </sly>
+        <sly data-sly-test="${properties.backOption=='image' && properties.fileReferenceBgImg !=null}">
+            <div class="${pageProperties.cq:template == '/conf/play/settings/wcm/templates/mattelhomepage-template'? 'global-mattel-header' : 'global-mattel-header height-md'}" style="background-image: url('${properties.fileReferenceBgImg @ context='styleString'}'); background-repeat:no-repeat;">
+        </sly>
+
+        <div class="global-header-wrapper">
+        <!-- skip main content link -->
+			<a class="skip-main" href="#page-content">Skip to content</a>
+            <sly data-sly-test="${properties.globalTargetUrl =='sameWindow'}">
+                <a href="${headerObj.globalUrl}" data-tracking-id="Play.Mattel.com Global Header|${properties.alwaysEnglish}|Mattel Kids Logo" >
+                    <img class="hidden-xs hidden-sm hidden-md logo" src="${properties.globalImage}" alt="${properties.globalAlt @i18n}" title="${properties.globalAlt @i18n}">
+                    <img class="hidden-lg logo" src="${properties.globalMImage||properties.globalImage}" alt="${properties.globalAlt @i18n}" title="${properties.globalAlt @i18n}">
+                </a>
+            </sly>
+            <sly data-sly-test="${properties.globalTargetUrl =='tabWindow'}">
+                <a href="${headerObj.globalUrl}" target="_blank" data-tracking-id="Play.Mattel.com Global Header|${properties.alwaysEnglish}|Mattel Kids Logo">
+                    <img class="hidden-xs hidden-sm hidden-md logo" src="${properties.globalImage}" alt="${properties.globalAlt @i18n}" title="${properties.globalAlt @i18n}" >
+                    <img class="hidden-lg logo" src="${properties.globalMImage||properties.globalImage}" alt="${properties.globalAlt @i18n}" title="${properties.globalAlt @i18n}">
+                    <span class="sr-only"> ${'Opens in a new tab' @ i18n}</span>
+                </a>
+            </sly>
+            <sly data-sly-test="${properties.globalTargetUrl =='newWindow'}">
+                <a data-url="${headerObj.globalUrl}" data-tracking-id="Play.Mattel.com Global Header|${properties.alwaysEnglish}|Mattel Kids Logo}" onclick="window.open(this.dataset.url,'PLAY','width=500, height=500');">
+                    <img class="hidden-xs hidden-sm hidden-md logo" src="${properties.globalImage}" alt="${properties.globalAlt @i18n}" title="${properties.globalAlt @i18n}" >
+                    <img class="hidden-lg logo" src="${properties.globalMImage||properties.globalImage}" alt="${properties.globalAlt @i18n}" title="${properties.globalAlt @i18n}">
+                    <span class="sr-only"> ${'Opens in new window' @ i18n}</span>
+                </a>
+            </sly>
+
+            <sly data-sly-test="${properties.optional =='globalHeader'}">
+                <div class="toggle-brands-list">
+                    <a href="#brand-list-dropdown" data-tracking-less="Play.Mattel.com Global Header|${properties.alwaysEnglish}|Less" data-tracking-more="Play.Mattel.com Global Header|${properties.alwaysEnglish}|More" role="button" aria-expanded="false" aria-controls="brand-list-dropdown" data-toggle="collapse" class="action-btn">
+                        <span class="text-more">${properties.moreText @i18n}</span><span class="text-less">${properties.lessText}</span> <span class="accordion-icon"></span>
+                    </a>
+                </div>
+            </sly>
+        </div>
+        
+        <sly data-sly-test="${properties.optional =='globalHeader'}">
+        <div id="brand-list-dropdown" class="collapse" data-autoplay="false" data-dots="true" data-mobile-load="6" data-next-load="all">
+            <ul class="brand-list-item col-5 global-header-page" data-maintain-height=".title-name">
+
+                <sly data-sly-list.navList="${headerObj.mainNavList}">
+                    <sly data-sly-test="${navList.navTarget =='sameWindow'}">
+                        <li>
+                            <a href="${navList.navLink}" data-tracking-id="Play.Mattel.com Global Header|${navList.alwaysEnglish}|${navList.navLabel}|Brand Logos" data-link-name="${head.pageName @i18n}">
+                                <img src="${navList.navImage}" alt="${navList.navAltText}-brandlogo" data-src="${navList.navImage}" data-hover="${navList.navDesktopHoverImage}" data-mobile-src="${navList.navMobileImage}"/>
+								<span class="title-name">${navList.navLabel @i18n}</span></a>
+                        </li>
+                    </sly>
+                    <sly data-sly-test="${navList.navTarget == 'tabWindow'}">
+                        <li>
+                            <a href="${navList.navLink}" target="_blank" data-tracking-id="Play.Mattel.com Global Header|${navList.alwaysEnglish}|${navList.navLabel}|Brand Logos">
+                                <img src="${navList.navImage}" alt="${navList.navAltText}-brandlogo" data-src="${navList.navImage}" data-hover="${navList.navDesktopHoverImage}" data-mobile-src="${navList.navMobileImage}"/>
+								<span class="title-name">${navList.navLabel @i18n}</span><span class="sr-only"> ${'Opens in a new tab' @ i18n}</span></a>
+                        </li>
+                    </sly>
+                    <sly data-sly-test="${navList.navTarget == 'newWindow'}">
+                        <li>
+                            <a data-url="${navList.navLink}" onclick="window.open(this.dataset.url,'AG','width=500, height=500');" data-tracking-id="Play.Mattel.com Global Header|${navList.alwaysEnglish}|${navList.navLabel}|Brand Logos">
+                                <img src="${navList.navImage}" alt="${navList.navAltText}-brandlogo" data-src="${navList.navImage}" data-hover="${navList.navDesktopHoverImage}" data-mobile-src="${navList.navMobileImage}"/> 
+								<span class="title-name">${navList.navLabel @i18n}</span>
+								<span class="sr-only"> ${'Opens in new window' @ i18n}</span></a>
+                        </li>
+                    </sly>
+                </sly>
+
+            </ul>
+            <a role="button" class="more-dropdown-btn">
+                <span class="text-more">${properties.moreText @i18n}</span><span class="text-less">${properties.lessText @i18n}</span>
+            </a>
+        </div>
+        </sly>
+        </div>
+
+    </sly>

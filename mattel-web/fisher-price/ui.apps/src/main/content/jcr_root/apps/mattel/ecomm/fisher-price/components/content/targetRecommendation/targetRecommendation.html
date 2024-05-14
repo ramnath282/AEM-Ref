@@ -1,0 +1,51 @@
+<sly data-sly-test="${wcmmode.edit}">${'Target Recommendations Component' @i18n}</sly>
+
+<sly data-sly-use.targetRecommendationModel="com.mattel.fisherprice.core.models.TargetRecommendationModel">
+    <input type="hidden" id="mboxValue${targetRecommendationModel.componentId}" value="${targetRecommendationModel.mboxValue}" />
+    <input type="hidden" id="atProperty${targetRecommendationModel.componentId}" value="${targetRecommendationModel.atProperty}" />
+</sly>
+
+<div class="mboxDefault">
+    <div class="target-recommendation${targetRecommendationModel.componentId @ context='unsafe'}"></div>
+</div>
+<sly data-sly-list.entityList="${targetRecommendationModel.entityParametersList}"/>
+<input type="hidden" id="entityParameters${targetRecommendationModel.componentId}" value="{${targetRecommendationModel.paramsString}}" data-list-size= "${targetRecommendationModel.entityParametersList.size}"/>
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html"
+     data-sly-call="${clientlib.js @ categories='fp.targetRecommendations'}"/>
+<script>
+$(document).ready(function(){
+    var articleId = $('meta[name=article_uid]').attr("content") ? $('meta[name=article_uid]').attr("content") :'';
+    var articleCategory = $('meta[name=article_category]').attr("content") ? $('meta[name=article_category]').attr("content") :'';
+    var articleSubcategory = $('meta[name=article_subcategory]').attr("content") ? $('meta[name=article_subcategory]').attr("content") :'';
+    var articleTitle = $('meta[name=article_title]').attr("content") ? $('meta[name=article_title]').attr("content") :'';
+    var parameter;
+    var listSize = $('#entityParameters${targetRecommendationModel.componentId @ context='unsafe'}').attr('data-list-size');
+    if(listSize > 1){
+    	var parameter1 =   $('#entityParameters${targetRecommendationModel.componentId @ context='unsafe'}').val();
+        parameter = JSON.parse(parameter1.split("'").join('"'));
+    }
+    else {
+		parameter = {
+            "entity.id": articleId,
+            "entity.category": articleCategory,
+            "entity.subcategory":articleSubcategory,
+            "entity.article_name": articleTitle,
+            "at_property": $('#atProperty${targetRecommendationModel.componentId @ context='unsafe'}').val() ? $('#atProperty${targetRecommendationModel.componentId @ context='unsafe'}').val() : ''
+            }
+    }
+    adobe.target.getOffer({
+            "mbox": $('#mboxValue${targetRecommendationModel.componentId @ context='unsafe'}').val(),
+            "params": parameter,
+            "success": function (offer) {
+                if (typeof offer != "undefined" && typeof offer != undefined) {
+                $('.target-recommendation${targetRecommendationModel.componentId @ context='unsafe'}').html(offer[0].content);
+                $('.mboxDefault').css('visibility','visible');
+                window.global.recentArticlecomponentInstance.pickValuesForSlider();
+                }
+            },
+            "error": function (status, error) {
+                console.log('Error', status, error);
+            }
+        });
+});
+</script>

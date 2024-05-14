@@ -1,0 +1,129 @@
+.interstitial-modal {
+	&.modal {
+		.modal-dialog {
+			width:90%;
+			margin:em(60) auto;
+		}
+		 @media #{$medium-up}{
+			.modal-dialog {
+				width:66%;
+			}
+		 }
+		.modal-header {
+			padding:0;
+			border-bottom:none;
+			h2 {
+			@media #{$small-up}{
+				font-size:em(36);
+			}
+			text-align:center;
+			color:$pink;
+			font-size:em(24);
+			font-weight:$fontBold;
+			margin-top:em(3);
+			}
+			.close {
+				opacity:.5;
+			}
+			.close:after {
+				content: "\f00d";
+				font-family: $fontAwesome;
+				font-weight: 700;
+				color:$litviolet;
+				font-size:em(24);
+			}
+		}
+		.modal-content {
+			    border-radius: em(30);
+				padding:em(20) em(20) em(0) em(20);
+				@media #{$small-down} {
+					background-image: none !important;
+				}
+		}
+		.modal-body {
+			@media #{$small-up}{
+					padding:em(30) em(60);
+			}
+			padding:em(40) 0;
+			.play-retailers  {
+				background-color: transparent;
+					ul {
+						li {
+							padding-bottom:em(20);
+							&:nth-of-type(1n+5) {
+								display:block;
+							}
+						}
+						
+					}
+					.gallery-tile {
+			        ul {
+			            display:inline-table;
+			            text-align: center;
+			            li {
+			                display: inline-block;
+			                float: none;
+			                &:nth-of-type(1n+5) {
+			                    display: inline-block;
+			                } 
+			            }
+			        }
+			    }
+			}
+			
+		
+			
+			
+			
+			
+			
+			p {
+				@media #{$small-up}{
+					font-size:em(18);
+				}
+				text-align:center;
+				color:$page-title;
+				font-size:em(16);
+				margin:0;
+				font-weight:$fontBold;
+				padding-bottom:em(20);
+			}
+			.go-back-btn {
+				text-align:center;
+				padding:em(5) em(20);
+				margin:em(10) em(20) em(10) 0;
+				display:inline-block;
+				color:$violet;
+				background:$white;
+				border:em(2) solid $dark-pink;
+				border-radius:em(30);
+				font-size:em(24);
+				@include transition(0.5s);
+				&:hover,
+				&:focus,
+				&:active {
+					color:$dark-pink;
+					border:em(2) solid $violet;
+				}
+			}
+			.continue-btn {
+				text-align:center;
+				padding:em(5) em(20);
+				margin:em(10) 0;
+				display:inline-block;
+				color:$white;
+				background:$violet;
+				border:em(2) solid $dark-pink;
+				border-radius:em(30);
+				font-size:em(24);
+				@include transition(0.5s);
+				&:hover,
+				&:focus,
+				&:active {
+					background:$dark-pink;
+					border:em(2) solid $violet;
+				}
+			}
+		}
+	}
+}

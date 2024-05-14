@@ -1,0 +1,156 @@
+<sly data-sly-test="${wcmmode.edit}">${'Edit Quick View Component'  @i18n}</sly>
+
+<sly data-sly-test="${!wcmmode.edit}">
+	<sly data-sly-use.response = "com.mattel.ecomm.core.models.QuickViewModel">
+		<div class="modal ecomm-modal" role="alert" aria-atomic="true" id="productViewModal" tabindex="-1">
+			<div class="modal-dialog modal-md">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><em class="fa fa-times fa-lg"><span
+								class="sr-only">close</span></em></button>
+					</div>
+					
+					<div class="modal-body">
+						<script id="quickViewModalTemp" type="text/x-handlebars-template">
+							<div class="col-md-6">
+								<img class="preview-image" src="{{#if core.product_thumnail}}//mattel.scene7.com/is/image/Mattel/{{core.product_thumnail}}{{else}}{{core.product_imagelink}}{{/if}}?$osmedium$" alt="">
+								{{#if core.product_safetyMessage}}
+									{{{core.product_safetyMessage}}}
+								{{/if}}
+							   {{#each displayAssociations}}
+								   <input type="hidden" value={{product.partnumber}} class="packageBeanComp">
+								{{/each}}
+							</div>
+							{{!-- Basic Sku Bundle Starts --}}
+
+							<div class="product-wrapper product-info-wrapper parent col-md-6" data-partnumber="{{partnumber}}" data-product-character="{{attributes.Character}}" data-producttype="{{core.product_type}}" data-agcategory="{{attributes.AGCategory}}" data-variant-id="{{variants.0.id}}">
+								<div class="product-container" aria-labeledby="lab">
+									<span class="gt-image hidden" data-binder-name="gt-product-imageLink" data-thumbnail="{{core.product_thumnail}}">{{core.product_imagelink}}</span>
+									<div class="product-callout">
+										<span class="product-callout-attribute">{{core.product_productcallout}}</span>
+									</div>
+									<h2 class="product-name">{{{core.title}}}</h2>
+									<p class="age-specification">${properties.marketingAgeLabel || 'Ages'  @context='html'}: {{core.product_marketingAge}} </p>
+									<div class="grid-section">
+										<div class="product-reviews">
+										<span class="rating-section rating-{{core.product_reviewRating}}">
+											<span class="sr-only">{{core.product_reviewRatingSR}} stars</span>
+										</span>
+											<div class="review-status">
+												<a class="read-reviews" href="{{core.product_pageUrl}}#bvReviewHeading">${properties.readReviewLabel || 'Read reviews'  @context='html'} ({{core.product_reviewCount}})</a>
+												<a class="write-review" href="{{core.product_pageUrl}}#BVOSWriteReview">${properties.writeReviewLabel || 'Write a review'  @context='html'}</a>
+											</div>
+										</div>
+									</div>
+									<div class="product-price product-price-tag">
+										{{#ifGreater core.prices.listPrice core.prices.salePrice}}
+												<span class="price-value"><span class="price-currency ">$</span><span class="current_price price-value">{{core.prices.salePrice }}</span></span>
+												<span class="price-strike"> <span class="sr-only price-value">Actual Price Strikes</span> $<span class="offer_price">{{core.prices.listPrice }}</span></span>
+												<span class="price-saved price-value">You save $<span class="discount_price price-value">{{core.prices.differenceAmount}} </span> (<span class="discount_percentage price-value">{{core.prices.inPrecentage}}</span>%)</span>
+										{{else}}
+											<span class="price-value"><span class="price-currency ">$</span><span class="current_price price-value">{{core.prices.salePrice}}</span></span>
+											<span class="price-strike hide"> <span class="sr-only price-value">Actual Price Strikes</span> $<span class="offer_price">{{core.prices.listPrice }}</span></span>
+											<span class="price-saved price-value hide">You save $<span class="discount_price price-value"> </span> (<span class="discount_percentage price-value"></span>%)</span>
+										{{/ifGreater}}
+									</div>
+									<div id="bagAffirm" class="bag__affirm hide">
+										<p class="bag__affirm-copy">
+										Pay in full or in 4 interest-free installments of <span id="bagAffirmPayments"></span> with <span class="shoppay-logo"><img src="/content/dam/ag-dam/ag-global-dam/parent-site-dam/images/Shop-pay-47.png" /></span>
+										<a class="affirm-modal-trigger" aria-label="Learn more about Affirm Financing" href="${response.affirmInfoPagePath @context='html'}" target="_blank">${properties.affirmLearnMoreLabel @context='html'}</a>
+										</p>
+									</div>
+									<div class="inventory-status">
+										<span class="inventory-status-message" aria-live="polite"></span>
+										<span class="back-oderable-date"></span>
+										
+									</div>
+									<div class="marketing-wrapper marketing-addon-wrapper row">
+										<div class="marketing-component">
+											{{#each experienceFragmentPath}}
+												{{{this}}}
+											{{/each}}
+											<div class="marketing-addons">
+												{{#each displayAssociations}}
+												<div class="addon-option addon-box {{#if product.inventoryNA}}hide{{/if}}">
+													<input class="custom-checkbox" data-imgUrl="{{product.core.product_imagelink}}" type="checkbox" id="ad-on-{{@index}}" data-partnumber="{{this.partNumber}}"  data-variant-id="{{product.variants.0.id}}">
+													<label for="ad-on-{{@index}}" data-partnumber={{product.partnumber}} class="addon-desc">{{product.core.title}}</label>
+													<span class="addon-price" data-partnumber={{product.partnumber}}>$<span>{{product.prices.listPrice}}</span></span>
+												</div>
+												{{/each}}
+											</div>
+										</div>
+									</div>
+									{{#if core.clothingColor}}
+									<div class="select-size-wrapper sku-cloth-select marketing-savings-cont" data-type="child">
+										<div class="size-header-wrap filter_cont">
+											<div class="product-specification cloth-product-specification">
+												<div class="product-label">
+													${properties.colorLabel || 'Color'  @context='html'}:
+												</div>
+												<div class="product-value">{{core.selectedClothingColor}}</div>
+											</div>
+											<div class="size-selection-preference color-selection">
+												<ul role="radiogroup" data-id="color-selection" aria-label="size" class="text-swatches color_category filter_list_cont cloth_list">
+													{{#each variants}}
+													<li class="innerCont {{this.variantClassName}}" data-partnoswatch="{{this.core.sku}}" data-variant-id="{{this.id}}">
+														<a href="#" role="radio" aria-setsize="{{@root.variants.length}}" aria-posinset="{{index_1 @key}}" aria-checked="false" class="swatch_item-l">
+															<img class="img-swatch" alt="{{this.core.option1}}" src="{{this.core.variant_swatch}}"
+															data-imagepreview="{{this.core.variant_imageLink}}"><span></span>
+														</a>
+													</li>
+													{{/each}}
+													<li class="size-chart-text">
+														<a href="javascript:void(0);" onclick="javascript:window.open('{{@root.core.product_sizeChartLink}}', 'title', 'scrollbars=yes, width=700, height=700')" class="size-chart size-modal-chart">Size chart<span class="sr-only">opens in a dialog box</span></a>
+													</li>
+												</ul>
+												<div class="inline-message childErrMsg">
+													<span class="inline-icon">${properties.selectSwatchErrorMessage || 'Please select an option'  @context='html'}</span>
+												</div>
+											</div>
+										</div>
+									</div>
+									{{/if}}
+									{{#if core.clothingSize}}
+									<div class="select-size-wrapper sku-size-select marketing-savings-cont" data-type="child">
+										<div class="size-header-wrap filter_cont">
+											<span class="size-label">${properties.sizeLabel || 'Size' @context='html' }:</span>
+											<div class="size-selection-preference size-selection">
+												<ul role="radiogroup" aria-label="size" class="text-swatches size_category filter_list_cont">
+													{{#each variants}}
+													<li class="innerCont {{this.variantClassName}}" data-partnoswatch="{{this.core.sku}}" data-variant-id="{{this.id}}"><a href="#" role="radio" aria-setsize="5" aria-posinset="1" aria-label="size {{this.core.option1}}" aria-checked="false" data-partnumber=""><span>{{this.core.option1}}</span></a></li>
+													{{/each}}
+													<li class="size-chart-text">
+														<a href="javascript:void(0);" onclick="javascript:window.open('{{@root.core.product_sizeChartLink}}', 'title', 'scrollbars=yes, width=700, height=700')" class="size-chart size-modal-chart">Size chart<span class="sr-only">opens in a dialog box</span></a>
+													</li>
+												</ul>
+												<div class="inline-message childErrMsg">
+													<span class="inline-icon">${properties.selectSwatchErrorMessage || 'Please select an option'  @context='html'}</span>
+												</div>
+											</div>
+										</div>
+									</div>
+									{{/if}}
+									<div class="button-wrapper">
+										<button type="submit" id="addToBagBtn" data-custsegment="{{core.product_custsegexcl}}"  data-parentpartnumber="{{partnumber}}" data-quickview="true" data-variant-id="{{variants.0.id}}" class="btn-add-to-bag" data-producttype="{{core.product_type}}"  data-hasaddon="{{core.product_hasAddOns}}"  disabled data-formname=".update-message">${properties.addtobagButtonText || 'Add to bag'  @context='html'}</button>
+										<div class="guarantee-message hide">
+											<div class="guarantee-details">
+												<p>${properties.ourGuaranteeTitle || 'Our guarantee'  @context='html'}</p>
+												<p>${properties.ourGuaranteeSubtitle || "Get a refund, credit, or exchange if you're not delighted."  @context='html'}</p>
+											</div>
+										</div>
+									</div>
+
+								</div>
+							</div>
+						</script>
+						<div id="quickViewModal" style="display: inline-block; width:100%"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</sly>
+</sly>
+
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
+	<sly data-sly-call="${clientlib.js @ categories=['ecomm.quickview']}"/>
+</sly>

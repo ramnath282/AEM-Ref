@@ -1,0 +1,65 @@
+<sly data-sly-test.author="${wcmmode.edit}">
+	${'Edit Accordion Container'  @i18n}
+</sly>
+<sly data-sly-test.isAuthorExperienceFrag="${currentPage.getTemplate.getName == 'ecomm-expreience-fragment-template'}"></sly>
+
+<sly data-sly-use.utilObj="${'com.mattel.ecomm.core.utils.EcomUtil'}"> 
+	<sly data-sly-test.dynamicId="${utilObj.id}"></sly>
+</sly>
+<sly data-sly-test="${isAuthorExperienceFrag}">
+	<div class="gt-wrapper">
+		  <div class="gt-container">
+				 <div class="row">
+				 	<div class="gt-bundle-selection-wrapper"> 
+</sly>
+			 	   <div class="include-extras">
+			 	   	 	<header>${properties.accordionHeading}</header>
+						<div data-sly-resource="${'columnone' @ resourceType='wcm/foundation/components/responsivegrid'}"></div>						
+					</div>
+										
+					<sly data-sly-test="${properties.showGuranteeConfig}">
+						<div class="contact-us">
+							<span><i class="fas fa-shield-alt"></i></span>
+							<p class="contact-heading">${properties.guranteeTitle}</p>
+							<p>${properties.ourGuaranteeSubtitle}</p>
+							<span class="see-details"><a data-toggle="modal" role="link" tabindex="0"  data-target="#${dynamicId}">${properties.guranteectaLabel} <i class="fas fa-chevron-right"></i><span class="sr-only">opens a popup</span></a></span>
+						</div>
+						<!--// Model Content  //-->
+						<div class="modal fade" id="${dynamicId}">
+						    <div class="modal-dialog">
+						      <div class="modal-content">
+						      
+						        <!-- Modal Header -->
+						        <div class="modal-header">
+						          <h2 class="modal-title">${properties.guranteeTitle}</h2>
+						          <button type="button" class="close" data-dismiss="modal" aria-label="close" ><i class="fa fa-times" aria-hidden="true"></i></button>
+						        </div>
+						        
+						        <!-- Modal body -->
+						        <div class="modal-body">
+						          ${properties.guranteeDescription @ context='html'}
+						        </div>
+						        
+						      </div>
+						    </div>
+						  </div> 
+					</sly>
+					<sly data-sly-test="${properties.showHelpText}">
+						<div class="contact-us">
+							<span><i class="far fa-question-circle"></i></span>
+							<p class="contact-heading">${properties.helpTitle}</p>
+							<p>${properties.helpSubtitle}</p>
+							<span class="see-details">
+								<a role="link" tabindex="0" href="${properties.helpCTALink  @ extension='html'}" target="_blank">${properties.helpCTALabel} 
+								<i class="fas fa-chevron-right"></i>
+								<span class="sr-only">opens in a  new window</span>
+								</a>
+							</span>
+						</div>
+					</sly>
+<sly data-sly-test="${isAuthorExperienceFrag}">				
+				</div>
+			</div>
+		</div>
+	</div>
+</sly>

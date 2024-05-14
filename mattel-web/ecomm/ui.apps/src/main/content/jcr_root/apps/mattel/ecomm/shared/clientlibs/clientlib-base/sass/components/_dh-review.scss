@@ -1,0 +1,399 @@
+.dh-review-block{
+    max-width: em(988);
+    margin: 0 auto;
+    width: 100%;
+    section{
+        text-align: inherit;
+        h2{
+            margin:13px 0 21px;
+            @media #{$small-down}{
+                margin:11px 0 15px 0;
+            }
+        }
+        .review-img{
+            float: left;
+            width: em(450);
+            text-align: right;
+            margin-top: em(16);
+            @media #{$large-down}{
+                width: 100%;
+                text-align: center;
+                margin-top: 0;
+                padding: 0 em(20) em(20) em(15);
+            }
+                @media #{$small-down}{
+                width: 100%;
+                text-align: center;
+                margin-top: 0;
+                padding: 0 em(20) em(20) em(15);
+            }
+            img{
+                width: em(450);
+                height: auto;
+                display: inline-block;
+                border-radius: em(10);
+                @media #{$small-down}{
+                    width: 100%;
+                    height: auto;
+                }
+            }
+        }
+        .review-right-column{
+            display: inline-block;
+            width: em(476);
+            margin-left:em(62); 
+            @media #{$large-down}{
+                width: 100%;
+                margin-left: 0;
+            }
+            @media #{$small-down}{
+                width: 100%;
+                margin-left: 0;
+            }
+            .review-table{
+                display: block;
+                max-width: em(476);
+                margin: 0 auto;
+                @media #{$small-down}{
+                    width: 100%;
+                    padding: 0 em(3) 0 em(7);
+                }
+                .table-title{
+                        font:$fontLight em(50,14) "Source Sans Pro", sans-serif;
+                        color: $color-dark-grey;
+                        text-align: center;
+                        margin: 0;
+                        @media #{$small-down}{
+                        font:$fontLight em(30,14) "Source Sans Pro", sans-serif; 
+                        padding: 0;
+                        }
+                }
+                .review-table-row{
+                    border-bottom: 1px solid #979797;
+                    .review-row{
+                        display: flex;
+                        flex-wrap: wrap;
+                        text-align: center;
+                        padding: 0 0 0 em(10);
+                        @media #{$small-down}{
+                            padding: 0 em(10) 0 em(17);
+                        }
+                        .review-col{
+                            width:33.33%;
+                            &.v-align-bottom{
+                                display: flex;
+                                justify-content: center;
+                                align-items: flex-end;
+                            }
+                            .italic-txt{
+                                font:italic $fontRegular em(20,14) "Source Sans Pro", sans-serif;
+                                color: $color-dark-grey;
+                                    @media #{$small-down}{
+                                    font:italic $fontLight em(18) "Source Sans Pro", sans-serif;
+                                }
+                            }
+                            .bold-txt{
+                                font:$fontSemiBold 18px "Source Sans Pro", sans-serif;
+                                color: $color-dark-grey;
+                                @media #{$small-down}{
+                                    font-size: em(14);
+                                }
+                                span{
+                                    font:$fontSemiBold 18px "Source Sans Pro", sans-serif;
+                                    color: $color-dark-grey;
+                                    @media #{$small-down}{
+                                        font-size: em(14);
+                                    }
+                                }
+                            }
+                            &.special-addons-name, &.special-addons-price{
+                                .bold-txt{
+                                    div{
+                                        font:$fontSemiBold em(18,14) "Source Sans Pro", sans-serif;
+                                        color: $color-dark-grey;
+                                        @media #{$small-down}{
+                                            font-size: em(14);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        .review-treatment-text{
+                            font: $fontRegular em(14) "Source Sans Pro", sans-serif;
+                            color: $color-dark-grey;
+                            margin: 0;
+                            p{
+                                @extend .review-treatment-text;
+                            }
+                        }
+                        .textarea-desc{
+                            min-height: 200px;
+                            border-radius: em(10);
+                            background: rgba(151, 151, 151, 0.1);
+                            width: 462px;
+                            border: transparent;
+                            margin-bottom: em(18);
+                            @media #{$small-down}{
+                                min-height: 88px;
+                                padding:0;
+                                &:hover,
+                                &.active{
+                                    outline: none !important;
+                                    border-color: #9ecaed !important;
+                                    box-shadow: 0em 0em 0.57143em rgba(82, 168, 236, 0.8) !important;
+                                }
+                            }
+                        }
+                    }
+                    &.review-doll-type{
+                        @media #{$small-down}{
+                            border-bottom: 2px solid #D5D5D5;
+                        }
+                        .review-row{
+                            padding: 0 0 em(15) 0;
+                            @media #{$small-down}{
+                                padding: 0 0 em(23) 0;
+                            }
+                            &:first-child{
+                                padding: em(12) 0 em(7) 0;
+                                @media #{$small-down}{
+                                    padding: em(20) 0 em(2) 0;
+                                }
+                            }
+                        }
+                    }
+                    &.review-doll-treatment{
+                        @media #{$small-down}{
+                            border-bottom: 2px solid #D5D5D5;
+                        }
+                        .review-row{
+                            padding: 0 0 em(10) 0;
+                            &:first-child{
+                                padding: em(15) 0 em(10) 0;
+                                @media #{$small-down}{
+                                    padding: em(19) 0 em(2) 0;
+                                }
+                            }
+                            .review-treatment-text{
+                                text-align: justify;
+                                @media #{$small-down}{
+                                    margin-top: -3px;
+                                }
+                            }
+                        }
+                    }
+                    &.review-special-addons{
+                        @media #{$small-down}{
+                            border-bottom: 1px solid #D5D5D5;
+                        }
+                        .review-row{
+                            padding: em(15) 0 em(10) 0;
+                            @media #{$small-down}{
+                                padding: em(19) 0 em(10) 0;
+                            }
+                            .colspan-2{
+                                flex: 2;
+                                text-align: left;
+                                padding-left: 2%;
+                            }
+                        }
+                        .specialAddonsContainer{
+                            .review-row.special-addons-row{
+                                padding: em(0) 0 em(15) 0;
+                                @media #{$small-down}{
+                                    padding: em(0) 0 em(15) 0;
+                                }
+                            }
+                        }
+                        .specialAddons-empty-content {
+                            font: 600 18px "Source Sans Pro", sans-serif;
+                            color: #333333;
+                            padding-bottom: em(15);
+                            text-align: center;
+                        }
+                    }
+                    &.review-aditional-desc{
+                        @media #{$small-down}{
+                            border-bottom: 1px solid #D5D5D5;
+                        }
+                        .review-row{
+                            &:first-child{
+                                padding: em(12) 0 em(15) 0;
+                                @media #{$small-down}{
+                                    padding: em(14) 0 em(10) 0;
+                                }
+                            }
+                            text-align: left;
+                            width: 100%;
+                            padding: 0;
+                            .review-col{
+                                width: 100%;
+                            }
+                        }
+                        .err-msg {
+                            display: none;
+                            color: $DHerrorColor;
+                            font-size: em(14);
+                            font-weight: 600;
+                            padding: 0 0 em(17.5) 0;
+                            &:before {
+                                content: "\f00d";
+                                @include font-awesome();
+                                color: $DHerrorColor;
+                                font-size: em(14);
+                                padding-right: 6px;
+                                line-height: 1.1em;
+                                vertical-align: bottom;
+                                font-weight: 600;
+                            }
+                            &.in {
+                                display: block;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+.review-add-to-bag{
+    background: $white;
+    box-shadow: 0 -3px 12px 0 rgba(0,0,0,0.2);
+    border-top: 1px solid #D5D5D5;
+    min-height: 103px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+        height: 103px;
+    }
+    @media #{$small-down}{
+        flex-direction: column-reverse;
+        min-height: 103px;
+        height: unset;
+    }
+    .dh-btn-span{
+        padding:0;
+        display: inherit;
+        @media #{$small-down}{
+            position: static;
+            height: auto;
+            background: transparent;
+        }
+        .dh-back-btn, .dh-next-btn{
+            display:inline-block;
+            @media #{$small-down}{
+                margin-top: 13px;
+                margin-bottom: 10px;
+                margin-right: 0;
+            }
+            @media #{$large-up}{
+                margin-top: 0px;
+            }
+        }
+        .dh-next-btn{
+            @media #{$medium-only}{
+                margin-bottom: 10px;
+            }
+            @media #{$large-only}{
+                margin-bottom: 10px;
+            }
+        }
+        .dh-back-btn{
+            @media #{$medium-only}{
+                margin-right: 0;
+            }
+            @media #{$large-only}{
+                margin-right: 0;
+            }
+        }
+    }
+    .column-1,.column-2, .column-3{
+        @extend .col-sm-4;
+        text-align: center;
+    }
+    .column-1,.column-3{
+        @media #{$small-down}{
+            background: $dhfooterbg;
+            float: left;
+            width: 100%;
+        }
+    }
+    .column-1{
+        @media #{$small-down}{
+            display: flex;
+            flex-direction: row-reverse;
+            align-items: center;
+            justify-content: center;
+            padding: em(14) em(16);
+        }
+        .small-Parts-warning{
+            @media #{$small-down}{
+                width: 60%;
+            }
+        }
+        .age-grade{
+            font:15px "Source Sans Pro", sans-serif;
+            padding-top: 5px;
+            @media #{$small-down}{
+                float: left;
+                width: 40%;
+                font:12px "Source Sans Pro", sans-serif;
+                padding-top: 0;
+            }
+        }
+    }
+    .column-2{
+        @media #{$small-down}{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            padding: 15px 19px 13px 8px;
+            order: 1;
+            float: left;
+            width: 100%;
+        }
+        .doll-admission{
+            font:$fontSemiBold 20px "Source Sans Pro", sans-serif;
+            color: $color-dark-grey;
+            @media #{$small-down}{
+                width: 60%;
+                font:$fontSemiBold 18px "Source Sans Pro", sans-serif;
+            }
+        }
+        .total-price{
+            @media #{$small-down}{
+                width: 40%;
+            }
+            span{
+                font:$fontSemiBold 24px "Source Sans Pro", sans-serif;
+                color: $color-dark-grey;
+                margin-left:-2px;
+                @media #{$small-down}{
+                    font:$fontSemiBold 18px "Source Sans Pro", sans-serif;
+                }
+            }
+        }
+    }
+    .column-3{
+        @media #{$small-up}{
+            background-color: transparent !important;
+        }
+    }
+	.column-1{
+        @media #{$small-up}{
+            background-color: transparent !important;
+        }
+    }
+}
+
+
+
+
+

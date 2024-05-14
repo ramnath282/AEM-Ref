@@ -1,0 +1,14 @@
+<sly data-sly-test="${wcmmode.edit}">${'Footer Component' @i18n}</sly>
+
+<footer role="contentinfo" class="global-footer">
+<div class="container">
+<sly data-sly-resource="${'footerContainer' @ resourceType='/apps/mattel/ecomm/ag/components/content/footerContainer'}"></sly>
+</div>
+</footer>
+
+<sly data-sly-use.baseModel="com.mattel.ag.ecomm.core.model.BasePageModel">
+<sly data-sly-test="${!baseModel.disableClientLibs}">
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
+	<sly data-sly-call="${clientlib.js @ categories='ag.retail.footer'}"/>
+</sly>
+</sly>

@@ -1,0 +1,20 @@
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
+	<sly data-sly-test="${wcmmode.edit}">${'Configure Header Anouncement' @ i18n}</sly>
+	<div class="recall-component"> <span class="recall-alert" data-sly-test="${properties.recallHeader}">${properties.recallHeader @ i18n}</span>
+    	<div class="mobile-container">
+            <span class="recall-alert-txt" data-sly-test="${properties.recallText}">${properties.recallText @context='html',i18n}</span>
+            <sly data-sly-test="${properties.recallCtaButtonText}">
+                <sly data-sly-test.myVar="${properties.recallCtaButtonLink}" data-sly-use.info="${'com.mattel.play.core.helper.PlayHelper' @ text= myVar}">
+                    <sly data-sly-test="${properties.recallCtaOption =='samewindow'}"> <a class="recall-link" href="${info.pathURL}" data-tracking-id="${properties.locationName}-click|${properties.recallAnalyticsText}|${properties.recallCtaButtonText}|${properties.locationName}">${properties.recallCtaButtonText @i18n}</a>
+                    </sly>
+                    <sly data-sly-test="${properties.recallCtaOption =='newtab'}"> <a class="recall-link" href="${info.pathURL}" data-tracking-id="${properties.locationName}-click|${properties.recallAnalyticsText}|${properties.recallCtaButtonText}|${properties.locationName}" target="_blank">${properties.recallCtaButtonText @i18n}<span class="sr-only">${'Opens in  new tab' @ i18n}</span></a>
+                    </sly>
+                    <sly data-sly-test="${properties.recallCtaOption =='newwindow'}"> <a class="recall-link" data-url="${info.pathURL}" data-tracking-id="${properties.locationName}-click|${properties.recallAnalyticsText}|${properties.recallCtaButtonText}|${properties.locationName}" onclick="window.open(this.dataset.url,'PLAY','width=500, height=500');">${properties.recallCtaButtonText}<span class="sr-only"> ${'Opens in new window' @ i18n}</span></a>
+                    </sly>
+                </sly>
+            </sly>
+        </div>
+        <button type="button" class="mobarrow-icon"> </button>
+        <h1 data-sly-test ="${pageProperties.cq:template == '/conf/fisher-price/settings/wcm/templates/fp-homepage-template' && pageProperties.pageTitle}"><span class="sr-only">${pageProperties.pageTitle}</span></h1>
+	</div>
+</sly>

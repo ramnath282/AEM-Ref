@@ -1,0 +1,94 @@
+//JS Structure
+
+var AEMECOMM = AEMECOMM || {};
+var jquery_new_version;
+var loadTargetScript = function(src, callbackfn) {
+    var __origDefine = define;
+    define = null;
+
+    #1 File Name :: jQuery 3.2.1
+        Change : NA
+
+    #2 File Name :: Owl Carousel v2.3.4
+        Change : NA
+
+    #3 File Name :: Underscore.js 1.9.0
+        Change : NA
+
+    #4 File Name :: AOS JS
+        Change : NA
+
+    #5 File Name :: Parallax JS
+        Change : NA
+
+    #6 File Name :: ES Lint JS
+        Change : NA
+
+    #7 File Name :: handlebars v1.2.0
+        Change : NA
+
+    #8 File Name :: imagesLoaded PACKAGED v4.1.4
+        Change : NA
+
+    #9 File Name :: Slick 1.8.0
+        Change : NA
+
+    #10 File Name :: CTA video modal JS
+        Change : NA
+
+    #11 File Name :: typeahead.js 0.11.1
+        Change : NA
+
+    #12 File Name :: ecomm search jS
+        change1 : jquery_new_version(this).height()
+        change2 : jquery_new_version(".typeahead").typeahead
+
+    13 File Name :: Navigation jS
+        Change : NA
+
+    #14 File Name :: CRM jS
+        Change : NA
+
+    #15 File Name :: CRM COOkie/email subscription jS
+        Change : NA
+
+    #16 File Name :: email subscription(third party) jS
+        Change : NA
+
+    #17 File Name :: Unknown jS
+        Change : NA
+
+    #18 File Name :: Email Lightbox jS
+        Change : NA
+
+jquery_new_version = $.noConflict(true);
+
+    #19 File Name :: Promo Banner jS
+        Change : NA
+
+define = __origDefine;
+}
+
+function targetJSInit(){
+    if (!AEMECOMM.FileLoaded) {
+        targetJSLoaded = true;
+        loadTargetScript();
+        AEMECOMM.FileLoaded = true;
+        console.log("AEM Bundled file loaded");
+    } else{
+        console.log("JS File already loaded..returning..");
+    }
+}
+if(typeof dojo !="undefined" && typeof dojo.addOnLoad == "function"){
+    dojo.addOnLoad(function() {
+        targetJSInit();
+    });
+}
+window.addEventListener("load", function() {
+    if(!targetJSLoaded){
+        targetJSInit();
+    }
+    typeof cursor_clear == "function" && cursor_clear();
+});
+
+var targetJSLoaded = false;

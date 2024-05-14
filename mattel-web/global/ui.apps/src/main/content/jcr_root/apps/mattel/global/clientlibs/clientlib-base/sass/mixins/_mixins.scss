@@ -1,0 +1,423 @@
+//@include border-radius(10px);
+@mixin border-radius($radius) {
+  -moz-border-radius: $radius;
+  -webkit-border-radius: $radius;
+  -ms-border-radius: $radius;
+  border-radius: $radius;
+}
+
+// max-width : applyVariableStyle(140px)
+@function applyVariableStyle($value: inherit) {
+  @return $value;
+}
+
+// @include transition(all,2s,ease-out);
+@mixin transition($what: all, $time: 0.2s, $how: ease-in-out) {
+  -webkit-transition: $what $time $how;
+  -moz-transition: $what $time $how;
+  -ms-transition: $what $time $how;
+  -o-transition: $what $time $how;
+  transition: $what $time $how;
+}
+
+// @include keyframes(top-bottom-in) { 
+// from {top: 0px;}
+// to { top: -2px;}
+// }
+
+@mixin keyframes($name) {
+  @-webkit-keyframes #{$name} {
+    @content;
+  }
+
+  @-moz-keyframes #{$name} {
+    @content;
+  }
+
+  @keyframes #{$name} {
+    @content;
+  }
+}
+
+// @include background-clip(padding-box);
+@mixin background-clip($background-clip) {
+  background-clip: $background-clip;
+  -moz-background-clip: $background-clip;
+  -webkit-background-clip: $background-clip;
+}
+
+// @include placeholders { color:$dark-grey; }
+@mixin placeholders {
+  &::-webkit-input-placeholder {
+    @content;
+  }
+
+  &:-moz-placeholder {
+    @content;
+  }
+
+  &::-moz-placeholder {
+    @content;
+  }
+
+  &:-ms-input-placeholder {
+    @content;
+  }
+}
+
+// @include transform(translateY(-50%));
+@mixin transform($transforms) {
+  -moz-transform: $transforms;
+  -o-transform: $transforms;
+  -ms-transform: $transforms;
+  -webkit-transform: $transforms;
+  transform: $transforms;
+}
+
+// @include box-shadow(-1px 2px 5px 0 rgba(0, 0, 0, 0.5));
+@mixin box-shadow($top, $left:null, $blur:null, $color:null, $inset: false) {
+  @if ($left !=null){
+      @if $inset {
+        -webkit-box-shadow: inset $top $left $blur $color;
+        -moz-box-shadow: inset $top $left $blur $color;
+        box-shadow: inset $top $left $blur $color;
+      }
+    
+      @else {
+        -webkit-box-shadow: $top $left $blur $color;
+        -moz-box-shadow: $top $left $blur $color;
+        box-shadow: $top $left $blur $color;
+      }
+  } @else{
+      -webkit-box-shadow: $top;
+      -moz-box-shadow: $top;
+      box-shadow: $top;
+  }
+}
+
+// Usage : font-size: em(32);
+@function em($pixels, $context: $font-size-base) {
+  @return #{$pixels/$context}em;
+}
+
+@mixin nav-mobile($pos, $right: -200px) {
+  position: $pos;
+  height: 100%;
+  width: 200px;
+  top: 0;
+  right: $right;
+}
+
+// @include font-awesome();
+@mixin font-awesome() {
+  font-family: 'Font Awesome', sans-serif;
+  font-weight: 900;
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  line-height: 1;
+  vertical-align: middle;
+}
+
+@mixin nth-child($n) {
+  @for $i from 0 to $n {
+    &:nth-child(#{$i + 1}) {
+      display: block;
+    }
+  }
+}
+
+
+@mixin position-center($pos : absolute) {
+  position: $pos;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+
+// @include font-face("NexaBold", font-files("nexa_bold-webfont.woff", "nexa_bold-webfont.ttf", "nexa_bold-webfont.svg", "nexa_bold-webfont.eot"));
+@mixin font-face($name, $font-files, $weight: false, $eot: false, $style: false) {
+  $iefont: unquote("#{$eot}?#iefix");
+
+  @font-face {
+    font-family: quote($name);
+
+    @if $eot {
+      src: font-url($eot);
+      $font-files: font-url($iefont) unquote("format('eot')"), $font-files;
+    }
+
+    src: $font-files;
+
+    @if $weight {
+      font-weight: $weight;
+    }
+
+    @if $style {
+      font-style: $style;
+    }
+  }
+}
+
+// class name for each fonts
+// Usage
+// @param1 - class name
+// @param2 - font weight variations
+// Ex: @include fontVariations('noto-',r r-i b b-i); 
+
+@mixin fontVariations($className, $fontWeights) {
+  @each $fontWeight in $fontWeights {
+    &.#{$className}#{$fontWeight} {
+      @extend '.font-#{$fontWeight}';
+    }
+  }
+}
+
+// @include font-style(map-get($layout, description));
+@mixin font-style($spacing) {
+  @if(type-of(map-get($spacing, font))==map) {
+    font-size: map-get(map-get($spacing, font), sm) or null;
+
+    @media #{$medium-up} {
+      font-size: map-get(map-get($spacing, font), md) or null;
+    }
+
+    @media #{$large-up} {
+      font-size: map-get(map-get($spacing, font), lg) or null;
+    }
+  }
+
+  @else {
+    font: map-get($spacing, font)
+  }
+
+}
+
+// retrieve form from $form` map ie. `form(base, primary)`, primary)`
+@function form($elementName, $property:null) {
+
+  // form variant is optional
+  @if ($property !=null) {
+    // map inception
+    @return map-get(map-get($form, $elementName), $property);
+  }
+}
+
+// retrieve form from $form` map ie. `form(base, primary)`
+@function mapping($mapName, $elementName, $property:null) {
+
+  // form variant is optional
+  @if ($property !=null and map-get($mapName, $elementName)) {
+    // map inception
+    @return map-get(map-get($mapName, $elementName), $property);
+  }
+
+  @else {
+    @return null;
+  }
+}
+
+@mixin line-clamp($numLines : 1, $lineHeight: 1.412) {
+  overflow: hidden;
+  text-overflow: -o-ellipsis-lastline;
+  text-overflow: ellipsis;
+  display: block;
+  display: -webkit-box;
+  -webkit-line-clamp: $numLines;
+  -webkit-box-orient: vertical;
+  max-height: $numLines * $lineHeight + unquote('em');
+}
+
+
+// @include animation(top-bottom-out .5s linear);
+@mixin animation ($val) {
+  -webkit-animation: $val;
+  -moz-animation: $val;
+  -ms-animation: $val;
+  animation: $val;
+}
+
+// @include flex();
+@mixin flex() {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: -moz-box;
+  display: flex;
+}
+
+// @include max-lines(3);
+@mixin max-lines($lines: 3, $line-height: 1.2) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $lines;
+  line-height: $line-height;
+  max-height: $line-height * $lines;
+}
+
+@mixin content-spacing($spacing) {
+  $isMarginValue: type-of(map-get($spacing, margin))==map;
+  $isPaddingValue: type-of(map-get($spacing, padding))==map;
+
+  margin: $isMarginValue and map-get(map-get($spacing, margin), xs) or null;
+  padding: $isPaddingValue and map-get(map-get($spacing, padding), xs) or null;
+
+  @media #{$sm-only} {
+    margin: $isMarginValue and map-get(map-get($spacing, margin), sm) or null;
+    padding: $isPaddingValue and map-get(map-get($spacing, padding), sm) or null;
+  }
+
+  @media #{$md-only} {
+    margin: $isMarginValue and map-get(map-get($spacing, margin), md) or null;
+    padding: $isPaddingValue and map-get(map-get($spacing, padding), md) or null;
+  }
+
+  @media #{$lg-only} {
+    margin: $isMarginValue and map-get(map-get($spacing, margin), lg) or null;
+    padding: $isPaddingValue and map-get(map-get($spacing, padding), lg) or null;
+  }
+
+  @media #{$large-up} {
+    margin: $isMarginValue and map-get(map-get($spacing, margin), xl) or null;
+    padding: $isPaddingValue and map-get(map-get($spacing, padding), xl) or null;
+  }
+
+}
+
+// @include print-css(
+//   map-merge((
+//       padding: 18px,
+//       clear: both,
+//       float: left,
+//       width: 100%,
+//       height: 100%,
+//       padding: (
+//           defaultVal: 0px,
+//           xSmallUp: 10px 20px,        // (min-width: 544px)
+//           smallUp: 20px 30px,         // (min-width: 768px)
+//           mediumUp: 30px 30px,        // (min-width: 992px)
+//           largeUp: 40px 40px,         // (min-width: 1200px)
+//           xLargeUp: 50px 120px,       // (min-width: 1366px)
+//           xSmallDown: 10px 20px,      // (max-width: 543px)
+//           smallDown: 20px 30px,       // (max-width: 767px)
+//           mediumDown: 30px 30px,      // (max-width: 991px)
+//           largeDown: 40px 40px,       // (max-width: 1199px)
+//           xMediumOnly: 50px 120px,    // (min-width: 768px) and (max-width: 991px)
+//           mediumOnly: 10px 20px,      // (min-width: 768px) and (max-width: 1023px)
+//           xLargeOnly: 20px 30px,      // (min-width: 992px) and (max-width: 1199px)
+//           largeOnly: 30px 30px,       // (min-width: 1024px) and (max-width: 1199px)
+//           smOnly: 40px 40px,          // (min-width: 480px) and (max-width: 767px)
+//           xsOnly: 50px 120px,         // (min-width: 320px) and (max-width: 479px)
+//         ),
+//       if(variable-exists(accordion) and map-has-key($accordion, h1), 
+//           map-get($accordion,h1),
+//           ()
+//         )
+//   ))
+// )
+@mixin checkPropertyMixin($property, $value){
+  @if $property == "border-radius" {
+      @include border-radius($value);
+  } @else if $property == "transition" {
+      @include transition($value);  
+  } @else if $property == "background-clip" {
+      @include background-clip($value);  
+  } @else if $property == "transform" {
+      @include transform($value);
+  } @else if $property == "animation" {
+      @include animation($value);
+  } @else {
+      #{$property}: $value;
+  }
+}
+@mixin print-css($declarations) {
+@each $property, $value in $declarations {
+   @if (type-of(map-get($declarations,$property))==map){
+      #{$property}: map-get(map-get($declarations,$property),defaultVal) or null;
+      @media #{$xsmall-up} {
+        #{$property}: map-get(map-get($declarations,$property),xSmallUp) or null;
+      }
+      @media #{$small-up} {   
+        #{$property}: map-get(map-get($declarations,$property),smallUp) or null;
+      }
+      @media #{$medium-up} {
+        #{$property}: map-get(map-get($declarations,$property),mediumUp) or null;
+      }
+      @media #{$xlarge-up} {
+        #{$property}: map-get(map-get($declarations,$property),xLargeUp) or null;
+      }
+      @media #{$xsmall-down} {
+        #{$property}: map-get(map-get($declarations,$property),xSmallDown) or null;
+      }
+      @media #{$small-down} {
+        #{$property}: map-get(map-get($declarations,$property),smallDown) or null;
+      }
+      @media #{$medium-down} {
+        #{$property}: map-get(map-get($declarations,$property),mediumDown) or null;
+      }
+      @media #{$large-down} {
+        #{$property}: map-get(map-get($declarations,$property),largeDown) or null;
+      }
+      @media #{$sm-only} {
+        #{$property}: map-get(map-get($declarations,$property),smOnly) or null;
+      }
+      @media #{$xs-only} {
+        #{$property}: map-get(map-get($declarations,$property),xsOnly) or null;
+      }
+      @media #{$medium-only} {
+        #{$property}: map-get(map-get($declarations,$property),xMediumOnly) or null;
+      }
+      @media #{$md-only} {
+        #{$property}: map-get(map-get($declarations,$property),mediumOnly) or null;
+      }
+      @media #{$large-only} {
+        #{$property}: map-get(map-get($declarations,$property),xLargeOnly) or null;
+      }
+      @media #{$lg-only} {
+        #{$property}: map-get(map-get($declarations,$property),largeOnly) or null;
+      }
+      @media #{$large-up} {
+        #{$property}: map-get(map-get($declarations,$property),largeUp) or null;
+      }
+      @media #{$tablet-mobile} {
+        #{$property}: map-get(map-get($declarations,$property),tabletMobile) or null;
+      }
+      @media #{$desktop} {
+        #{$property}: map-get(map-get($declarations,$property),desktopOnly) or null;
+      }
+    }
+    @else{
+        @include checkPropertyMixin($property, $value);
+    }
+}
+}
+
+// moved from FP
+//@include font-properties($letsBeGlyphs,$localFontInfo);
+@mixin font-properties($globalFont, $localFontInfo: null) {
+  font-family : $globalFont;
+  @if ($localFontInfo) {
+    @each $lang, $fontprop in $localFontInfo {
+      &:lang(#{$lang}) {
+        @each $cssprop, $cssval in $fontprop {
+          #{$cssprop} : $cssval;
+        }
+      }
+    }
+  }
+}
+@each $space in $spaceamounts {
+  @each $prefix, $value in $sides {
+    $property: if($prefix == '', '', -#{$value});
+    .m#{$prefix}-#{$space} {
+      margin#{$property}: #{$space}px;
+    }
+    .p#{$prefix}-#{$space} {
+      padding#{$property}: #{$space}px;
+    }
+  }
+}

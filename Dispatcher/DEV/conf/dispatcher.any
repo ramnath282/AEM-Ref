@@ -1,0 +1,25 @@
+# name of the dispatcher
+/name "internet-server"
+
+# each farm configures a set of (load-balanced) renders
+/farms
+  {
+	$include "author-farm.any"
+
+
+	$include "publish-farm.any"
+  }
+/filter {
+   /0001 { 
+    /type "deny" /glob "*"
+   }    
+   /0002 { 
+    /type "allow" /url "/content*"
+   }
+   /0003 { 
+    /type "allow" /url "/etc/designs*"
+   }
+   /0004 { 
+    /type "allow" /url "/etc/clientlibs*"
+   }	   
+}

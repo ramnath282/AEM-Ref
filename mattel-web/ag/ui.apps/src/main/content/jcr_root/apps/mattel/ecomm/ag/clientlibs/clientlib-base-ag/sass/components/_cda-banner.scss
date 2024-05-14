@@ -1,0 +1,98 @@
+.cda-banner{
+    position: relative;
+    .carousel-slides{
+        li{
+            position: relative;
+            outline: none;
+        }
+    }
+    .slick-slider{
+        margin-bottom:0;
+    } 
+    .banner-copy{
+        padding: em(25);
+        @media #{$small-up}{
+            @include position-center();
+            h2{
+              margin-top:0;
+            }
+        }
+    }
+    img{
+      display: block;
+      margin: auto;
+    }
+}
+.banner-copy{
+    &[class*='top-'],
+     &[class*='bottom-']{
+        transform: none;
+        -webkit-transform: none;
+        -ms-transform: none;
+        top: auto;
+        left: auto;
+    }
+    &.top-left{
+        left: 5%;
+        top: 8%
+    }
+    &.top-right{
+        right: 5%;
+        top: 8%
+    }
+    &.bottom-left{
+        left: 5%;
+        bottom: 8%
+    }
+    &.bottom-right{
+        right: 5%;
+        bottom: 8%
+    }
+    &.top-center{
+      @media #{$small-up}{
+        left: 5.686274509803922%;
+        top: 50%;
+        transform: translateY(-50%);
+        -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+      }
+    }
+   @media #{$small-up}{
+      .banner-copy{
+          &.bottom-center {
+            left: 50%;
+            bottom: 8%;
+            transform: translateX(-50%); 
+         }
+         &.v-center {
+          left: 50%;
+          top: 50%;
+          transform: translateX(-50%) translateY(-50%);
+        }  
+      }
+    }
+    &.no-bg {
+      @media #{$small-up}{
+        background: transparent;
+      }
+    }
+    @media #{$small-only}{
+      text-align:center;
+    }
+    a{
+      display: inline-block;
+    }
+}
+.heroImageBanner{
+  .cda-banner{
+    text-align: center;
+    .crm-container{
+        // display: inline-block;
+        position: relative;
+        text-align: left;
+        img{
+          width: 100%;
+        }
+    }
+  }
+}

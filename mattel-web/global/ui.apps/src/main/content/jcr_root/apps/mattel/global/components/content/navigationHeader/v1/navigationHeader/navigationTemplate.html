@@ -1,0 +1,16 @@
+<template data-sly-template.navItemsList="${@ navItemsList}">
+    <sly data-sly-test="${navItemsList.isRedirect}">
+        <a href="${navItemsList.pageUrl}" target="${navItemsList.urlTarget}" class="${navItemsList.pageActive ? 'active' : ''}" data-site-selection="${navItemsList.adobeTrackingNameForPage}" data-tracking-id="header-click|${navItemsList.adobeTrackingNameForPage}||Navigation Header" data-link-name="${navItemsList.linkingName @i18n}">
+            <sly data-sly-test="${navItemsList.thumbnailImg}">
+                <img class="header-img" alt="" src="${navItemsList.thumbnailImg}" />
+            </sly><span>${navItemsList.pageName @i18n}</span>
+        </a>
+    </sly>
+    <sly data-sly-test="${!navItemsList.isRedirect}">
+        <a href="${navItemsList.pageUrl}" class="active" class="${navItemsList.pageActive ? 'active' : ''}" data-site-selection="${navItemsList.adobeTrackingNameForPage}" data-tracking-id="header-click|${navItemsList.adobeTrackingNameForPage}||Navigation Header" data-link-name="${navItemsList.linkingName @i18n}">
+            <sly data-sly-test="${navItemsList.thumbnailImg}">
+                <img class="header-img" alt="" src="${navItemsList.thumbnailImg}" />
+            </sly><span>${navItemsList.pageName @i18n}</span>
+        </a>
+    </sly>
+</template>

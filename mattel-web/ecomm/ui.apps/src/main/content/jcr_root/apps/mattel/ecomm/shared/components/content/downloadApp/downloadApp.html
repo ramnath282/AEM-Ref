@@ -1,0 +1,139 @@
+<sly data-sly-test="${wcmmode.edit}">${'Configure App Gallery' @ i18n}</sly>
+<sly data-sly-use.downloadL="com.mattel.ecomm.core.models.DownloadAppModel">
+	<div class="fpDownloadapps-module">
+		<sly data-sly-test="${(properties.downloadBgImage == null && properties.downloadBgColor == null )|| (properties.downloadBackOption =='image' && properties.downloadBgImage == null ) || (properties.downloadBackOption =='color' && properties.downloadBgColor == null )}">
+			<div class="play-tiles-gallery play-download ${properties.styleFor}" id="${properties.linkNavigationCheck?properties['linkNavOption']:''}" data-link-attribute="${properties.linkNavigationCheck?properties['linkNavOption']:''}" data-height-sync=".gallery-image">
+		</sly>
+		<sly data-sly-test="${properties.downloadBackOption =='image' && properties.downloadBgImage != null }">
+			<div class="play-tiles-gallery play-download ${properties.styleFor}" id="${properties.linkNavigationCheck?properties['linkNavOption']:''}" data-link-attribute="${properties.linkNavigationCheck?properties['linkNavOption']:''}" data-height-sync=".gallery-image" style="background: transparent url('${properties.downloadBgImage @ context='styleString'}') 0 0;">
+		</sly>
+		<sly data-sly-test="${properties.downloadBackOption =='color' && properties.downloadBgColor != null }">
+			<div class="play-tiles-gallery play-download ${properties.styleFor}" id="${properties.linkNavigationCheck?properties['linkNavOption']:''}" data-link-attribute="${properties.linkNavigationCheck?properties['linkNavOption']:''}" data-height-sync=".gallery-image" style="background-color:${properties.downloadBgColor @ context='styleString'};">
+		</sly>
+		<div class="gallery-title">
+			<h2>${properties.title @ i18n}</h2>
+			<sly data-sly-test="${properties.description!=null}">
+				<p>${properties.description @context='html',i18n}</p>
+			</sly>
+		</div>
+		<div class="gallery-tile ${pageProperties.cq:template =='/conf/fisher-price/settings/wcm/templates/fisher-price-plp-template'? 'plp-tiles' : ''}">
+			<ul>
+				<sly data-sly-list.imageGallery="${downloadL.downloadImageGalleryList}">
+					<li class="${properties.columnLayout}">
+						<a href="" data-toggle="modal" class="config-app" data-modalid="#downloadAppModal_${imageGalleryList.index}" data-target="#downloadAppModal_${imageGalleryList.index}" data-androidappurl="${imageGallery.interstitialAndroidUrl}" data-iosappurl="${imageGallery.interstitialIosUrl}" data-tracking-id="${properties.analyticslocationname||'download-the-apps'}-click|${imageGallery.alwaysEnglish}|${imageGallery.downloadCtaLabel}|${properties.analyticslocationname||'download-the-apps'}">
+							<div class="gallery-image">
+								<img style="opacity: ${properties.enablehovering?'':'1'@context='styleString'}" src="${imageGallery.thumbnailImage}" alt="${imageGallery.altTextThumbnail @i18n}" />
+							</div>
+							<div class="character-label tile-content">
+								<h2 class="txt-truncate">${imageGallery.thumbnailTitle @ i18n}</h2>
+								<sly data-sly-test="${imageGallery.thumbnailDescription != null}">
+										<p>${imageGallery.thumbnailDescription @context='html',i18n}</p>
+								</sly>
+							</div> 
+							<span class="btn btn-primary buynow-overlay-txt" data-sly-test="${properties.enabledownload && imageGallery.downloadCtaLabel !=null}">${imageGallery.downloadCtaLabel || 'Download' @i18n}</span>
+							<span class="sr-only">${imageGallery.thumbnailTitle @i18n} ${'Opens a pop up' @ i18n}</span>
+						</a>
+					</li>
+				</sly>
+			</ul>
+			<sly data-sly-test="${properties.enableviewall}">
+				<div class="view-all" data-sly-test="${properties.viewAllOpenCtaLinksIn  =='samewindow'}"> 
+					<a class="btn btn-view-all" href="${properties.viewAllLink @ extension ='html'}" target="_self" role="button" data-tracking-id="Download Section|${imageGallery.alwaysEnglish}|${properties.viewAll || 'view all'}">${properties.viewAll || 'view all' @i18n}</a>
+				</div>
+				<div class="view-all" data-sly-test="${properties.viewAllOpenCtaLinksIn  =='newtab'}"> 
+					<a class="btn btn-view-all" href="${properties.viewAllLink @ extension ='html'}" target="_blank" role="button" data-tracking-id="Download Section|${imageGallery.alwaysEnglish}|${properties.viewAll || 'view all'}">${properties.viewAll || 'view all' @i18n}<span class="sr-only"> ${'Opens in a new tab' @ i18n}</span></a>
+				</div>
+				<div class="view-all" data-sly-test="${properties.viewAllOpenCtaLinksIn  =='newwindow'}"> 
+					<a class="btn btn-view-all" data-url="${properties.viewAllLink @ extension ='html'}" onclick="window.open(this.dataset.url,'PLAY','width=500, height=500');" role="button" data-tracking-id="Download Section|${imageGallery.alwaysEnglish}|${properties.viewAll || 'view all'}">${properties.viewAll || 'view all' @i18n}<span class="sr-only"> ${'Opens in new window' @ i18n}</span></a>
+				</div>
+				<div class="view-all" data-sly-test="${properties.viewAllOpenCtaLinksIn  =='interstitial'}"> 
+					<a class="btn btn-view-all" href="javascript:void(0);" data-toggle="modal" data-tracking-id="Download Section|${imageGallery.alwaysEnglish}|${properties.viewAll || 'view all'}" data-target="#interstitialGameRetailerModal">${properties.viewAll || 'view all' @i18n} <span class="sr-only"> ${'Opens a pop up' @ i18n}</span></a>
+				</div>
+			</sly>
+		</div>
+		<div class="show-more"> <a href="javascript:void(0);" data-component-id="Download Section|${properties.alwaysEnglish}" class="accordion" data-text-collapse="${properties.showMoreText || 'SEE MORE'}" data-text-expand="${properties.showLessText || 'SEE LESS'}" aria-expanded="false"> ${properties.showMoreText || 'SEE MORE' @i18n} </a>
+		</div>
+		</div>
+
+		<!--  module starts -->
+		<ul data-sly-list.imageGallery="${downloadL.downloadImageGalleryList}">
+			<div class="modal interstitial-modal" id="downloadAppModal_${imageGalleryList.index}" tabindex="-1" role="dialog">
+				<div class="modal-dialog" role="document">
+					<sly data-sly-test="${(properties.interstitialBgImage == null && properties.interstitialBgColor == null )||(properties.interstitialBackOption=='image'&& properties.interstitialBgImage ==null)||(properties.interstitialBackOption=='color'&& properties.interstitialBgColor ==null)}">
+						<div class="modal-content">
+					</sly>
+					<sly data-sly-test="${properties.interstitialBackOption=='color' && properties.interstitialBgColor !=null}">
+						<div class="modal-content" style="background:${properties.interstitialBgColor @ context='styleString'};">
+					</sly>
+					<sly data-sly-test="${properties.interstitialBackOption=='image'&& properties.interstitialBgImage !=null}">
+						<div class="modal-content" style="background-image: url('${properties.interstitialBgImage @ context='styleString'}'); background-size: cover;">
+					</sly>
+					<div class="modal-header">
+						<a href="#" aria-hidden="true" class="sr-only" id="first-link">
+							<!--first link -->
+						</a>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close" data-tracking-id="download-the-apps-interstitial-click|${properties.alwaysEnglish}|Go Back|download-the-apps-interstitial"></button>
+						<h2 class="modal-title" id="interstitialModalLabel">${properties.interstitialTitle @i18n}</h2>
+					</div>
+					<div class="modal-body">
+						<p>${properties.interstitialDescription @context='html',i18n}</p>
+						<!-- retailers module starts -->
+						<div class="play-tiles-gallery play-retailers">
+							<div class="gallery-tile">
+								<ul>
+
+                                    <sly data-sly-test="${imageGallery.interstitialAndroidUrl != null}">
+                                    <sly data-sly-test="${properties.interstitialAndroidLogo != null}">
+										<li>
+											<sly data-sly-test="${properties.openURLIn =='sameWindow'}">
+												<a href="${imageGallery.interstitialAndroidUrl}" data-tracking-id="download-the-apps-interstitial-click|${properties.altTexForAndroidLogo}|${imageGallery.interstitialAndroidUrl}|download-the-apps-interstitial">
+													<img src=" ${properties.interstitialAndroidLogo}" alt="${properties.altTexForAndroidLogo @i18n}" /><span class="sr-only"> opens a new window</span> 
+												</a>
+											</sly>
+											<sly data-sly-test="${properties.openURLIn =='tabWindow'}">
+												<a href="${imageGallery.interstitialAndroidUrl}" data-tracking-id="download-the-apps-interstitial-click|${properties.altTexForAndroidLogo}|${imageGallery.interstitialAndroidUrl}|download-the-apps-interstitial" target="_blank">
+													<img src=" ${properties.interstitialAndroidLogo}" alt="${properties.altTexForAndroidLogo @i18n}" /><span class="sr-only"> opens a new window</span> 
+												</a>
+											</sly>
+											<sly data-sly-test="${properties.openURLIn =='newWindow'}">
+												<a data-url="${imageGallery.interstitialAndroidUrl}" data-tracking-id="download-the-apps-interstitial-click|${properties.altTexForAndroidLogo}|${imageGallery.interstitialAndroidUrl}|download-the-apps-interstitial" onclick="window.open(this.dataset.url,'PLAY','width=500, height=500');">
+													<img src=" ${properties.interstitialAndroidLogo}" alt="${properties.altTexForAndroidLogo @i18n}" /><span class="sr-only"> opens a new window</span> 
+												</a>
+											</sly>
+										</li>
+									</sly>
+                                    </sly>
+                                     <sly data-sly-test="${imageGallery.interstitialIosUrl != null}">
+									 <sly data-sly-test="${properties.interstitialIosLogo != null}">
+										<li>
+											<sly data-sly-test="${properties.openURLIn =='sameWindow'}">
+												<a href="${imageGallery.interstitialIosUrl}" data-tracking-id="download-the-apps-interstitial-click|${properties.altTexForIOSLogo}|${imageGallery.interstitialIosUrl}|download-the-apps-interstitial">
+													<img src="${properties.interstitialIosLogo}" alt="${properties.altTexForIOSLogo @i18n}" /><span class="sr-only"> opens a new window</span> 
+												</a>
+											</sly>
+											<sly data-sly-test="${properties.openURLIn =='tabWindow'}">
+												<a href="${imageGallery.interstitialIosUrl}" target="_blank" data-tracking-id="download-the-apps-interstitial-click|${properties.altTexForIOSLogo}|${imageGallery.interstitialIosUrl}|download-the-apps-interstitial">
+													<img src="${properties.interstitialIosLogo}" alt="${properties.altTexForIOSLogo @i18n}" /><span class="sr-only"> opens a new window</span> 
+												</a>
+											</sly>
+											<sly data-sly-test="${properties.openURLIn =='newWindow'}">
+												<a data-url="${imageGallery.interstitialIosUrl}" data-tracking-id="download-the-apps-interstitial-click|${properties.altTexForIOSLogo}|${imageGallery.interstitialIosUrl}|download-the-apps-interstitial" onclick="window.open(this.dataset.url,'PLAY','width=500, height=500');">
+													<img src="${properties.interstitialIosLogo}" alt="${properties.altTexForIOSLogo @i18n}" /><span class="sr-only"> opens a new window</span> 
+												</a>
+											</sly>
+										</li>
+									</sly>
+                                    </sly>
+								</ul>
+							</div>
+						</div>
+						    <div>
+                                <a href="javascript:void(0);" data-dismiss="modal" class="go-back-btn">Go Back @i18n</a>
+                            </div>
+					</div>
+					</div>
+					</div>
+					</div>
+		</ul>
+		<!--  module End -->
+</sly>

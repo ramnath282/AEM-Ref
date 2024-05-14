@@ -1,0 +1,358 @@
+.corporate-basepage {
+    .outer-wrapper {
+        .rich-text, .textOverlayComponent, .card-component, .cta-item{
+            ul{
+                margin: 12px 0 0;
+                padding-left: 32px;
+                li{
+                    margin: 0 0 12px;
+                    list-style-type: inherit;
+                    padding: 0;
+                    position: relative;
+                    left: 13px;
+                    &:last-of-type {
+                        margin-bottom: 30px;
+                    }
+                    ul{
+                        margin: 12px 0 0;
+                        padding-left: 32px;
+                        li{
+                            margin: 0 0 12px;
+                            list-style-type: inherit;
+                            padding: 0;
+                            position: relative;
+                            left: 13px;
+                            &:last-of-type {
+                                margin-bottom: 0;
+                            }
+                        }
+                    }
+                }
+            }
+            ol{
+                margin: 12px 0 0;
+                padding-left: 32px;
+                li{
+                    list-style: outside;
+                    list-style-type: inherit;
+                    position: relative;
+                    left: 12px;
+                    margin: 0 0 12px;
+                    padding: 0;
+                        &:last-of-type {
+                            margin-bottom: 30px;
+                        }
+                    ul{
+                        margin: 12px 0 0;
+                        padding-left: 32px;
+                        li{
+                            list-style: inside;
+                            list-style-type: inherit;
+                            margin: 0 0 12px;
+                            &:last-of-type {
+                                margin-bottom: 0;
+                            }
+                        }
+                    }
+                }
+            }
+            p{
+                margin: 0 0 12px;
+                padding: 0;
+                &:last-of-type {
+                    margin-bottom: 30px;
+                }
+            }
+            h5 {
+                margin-bottom: 12px;
+            }
+            blockquote{
+                padding: 0 0 0 32px;
+                border: none;
+            } 
+        }
+    }
+} 
+
+
+.textOverlayComponent {
+    .text-overlay {
+        .text-para {
+            font-size: 16px;
+        }
+        ul, ol {
+            li {
+                font-size: 16px;
+            }            
+        }
+    }
+    p {
+        padding-bottom: inherit;
+        &:last-of-type {
+            margin-bottom: inherit;
+        }
+    }
+}
+.grid-content {
+    .textOverlayComponent {
+        .text-overlay {
+            ul,ol {
+                li {
+                    &:last-of-type {
+                        margin-bottom: inherit;
+                    }
+                }
+            }            
+        }        
+    }
+}
+.accordion-content {
+    .textOverlayComponent {
+        .text-overlay {
+           .sub-title {
+               margin-bottom: 0;
+           }           
+        }        
+    }
+}
+
+.card-component, .grid-content {
+    .text-container {
+        .text-para {
+            margin-bottom: 0;
+            p {
+                &:last-of-type {
+                    margin-bottom: 0;                    
+                }
+            }
+        }
+        .ctaItem {
+            .cta-item  {
+                margin-top: 16px;
+                @media #{$small-up} {
+                    margin-top: 24px;
+                }
+            }
+        }
+    }
+}
+
+
+.image-text-container{
+    .textOverlayComponent{
+        .text-container{
+            .text-para{
+                margin: 0;
+                p{
+                    margin: 0;
+                }
+            }
+        }
+        .desktop-bg{
+            @media #{$md-only} {
+                padding: 20px 20px 40px 20px;
+            }
+            @media #{$medium-up} {
+                padding: 0;
+            }
+            .text-overlay {
+                .text-container{                    
+                    @media #{$lg-only} {
+                        padding: 50px 60px 60px 80px;
+                    }
+                    @media #{$xl-only} {
+                        padding: 50px 60px 60px 80px;
+                    }
+                }
+            }
+        }
+    }
+    .adaptive-form-container {
+        .textOverlayComponent {
+            .desktop-bg {
+                .text-overlay {
+                    .text-container {
+                        @media #{$lg-only} {
+                            padding: 0;
+                        }
+                        @media #{$xl-only} {
+                            padding: 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .col-second {
+        .textOverlayComponent{            
+            .desktop-bg{                
+                .text-overlay {
+                    .text-container{                           
+                        @media #{$lg-only} {
+                            padding: 50px 80px 60px 60px;
+                        }
+                        @media #{$xl-only} {
+                            padding: 50px 80px 60px 60px;
+                        }
+                    }
+                }
+            }
+        }
+        .adaptive-form-container {
+            .textOverlayComponent {
+                .desktop-bg {
+                    .text-overlay {
+                        .text-container {
+                            @media #{$lg-only} {
+                                padding: 0;
+                            }
+                            @media #{$xl-only} {
+                                padding: 0;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}    
+.custom-list-icons{
+    font-family: 'Font Awesome';
+    position: absolute;
+    left: 0;
+    top: -2px;
+    width: 32px;
+	text-align:right;
+}
+.corporate-basepage {
+    .outer-wrapper {
+        .rich-text, .textOverlayComponent, .card-component, .cta-item{
+            ul, ol{
+                &.arrow-list-item{
+                    list-style-type: none;
+                    padding-left: 0;
+                    >li{
+                        position: relative;
+                        list-style-type: none;
+                        padding-left:40px;
+                        left: 0;
+                        &:before{
+                        @extend .custom-list-icons;
+                        content: "\f061";
+                        }
+                    }
+                }
+                li.arrow-list-item{
+                    position: relative;
+                    list-style-type: none;
+                    left: 0;
+                    &:before{
+                        @extend .custom-list-icons;
+                        content: "\f061";
+                    }
+                }
+            }
+            ul, ol{
+                &.angle-list-item{
+                    list-style-type: none;
+                    padding-left: 0;
+                    >li{
+                        position: relative;
+                        list-style-type: none;
+                        padding-left:40px;
+                        left: 0;
+                        &:before{
+                            @extend .custom-list-icons;
+                            content: "\f105";
+                        }
+                    }
+                }
+                li.angle-list-item{
+                    position: relative;
+                    list-style-type: none;
+                    left: 0;
+                    &:before{
+                        @extend .custom-list-icons;
+                        content: "\f105";
+                    }
+                }
+            }
+            ul, ol{
+                &.caret-list-item{
+                    list-style-type: none;
+                    padding-left: 0;
+                    >li{
+                        position: relative;
+                        list-style-type: none;
+                        padding-left:40px;
+                        left: 0;
+                        &:before{
+                            @extend .custom-list-icons;
+                            content: "\f0da";
+                        }
+                    }
+                }
+                li.caret-list-item{
+                    position: relative;
+                    list-style-type: none;
+                    left: 0;
+                    &:before{
+                        @extend .custom-list-icons;
+                        content: "\f0da";
+                    }
+                }
+            }
+            ul, ol{
+                &.long-arrow-list-item{
+                    list-style-type: none;
+                    padding-left: 0;
+                    >li{
+                        position: relative;
+                        list-style-type: none;
+                        padding-left:40px;
+                        left: 0;
+                        &:before{
+                            @extend .custom-list-icons;
+                            content: "\f30b";
+                        }
+                    }
+                }
+                li.long-arrow-list-item{
+                    position: relative;
+                    list-style-type: none;
+                    left: 0;
+                    &:before{
+                        @extend .custom-list-icons;
+                        content: "\f30b";
+                    }
+                }
+            }
+            ul,ol{
+                &.custom-h4-style{
+                    >li{
+                        font: 24px/32px $MattelCorpPrimaryFontBold;
+                        @media #{$small-down}{
+                            font: 18px/24px $MattelCorpPrimaryFontBold;
+                        }
+                    }
+                }
+                &.custom-h5-style{
+                    >li{
+                        font: 18px/24px $MattelCorpPrimaryFontBold;
+                    }
+                }
+                li{
+                    &.custom-h4-style{
+                        font: 24px/32px $MattelCorpPrimaryFontBold;
+                        @media #{$small-down}{
+                            font: 18px/24px $MattelCorpPrimaryFontBold;
+                        }
+                    }
+                    &.custom-h5-style{
+                        font: 18px/24px $MattelCorpPrimaryFontBold;
+                    }
+                }
+            }
+        }
+    }
+}

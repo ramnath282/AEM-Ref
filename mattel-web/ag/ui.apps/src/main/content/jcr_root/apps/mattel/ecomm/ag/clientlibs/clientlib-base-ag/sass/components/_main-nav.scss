@@ -1,0 +1,102 @@
+// Menu Location Dropsown Styles
+.location-dropdown {
+    @extend .btn-right-arrow;
+    outline: none;
+}
+
+header {
+    &:not(.active) {
+        .primary-nav {
+            ul {
+                li {
+                    @media #{$medium-up} {
+                        line-height: em(103);
+                    }
+                }
+            }
+        }
+    }
+}
+
+.primary-nav {
+    float: none;
+
+    ul {
+        li {
+            a {
+                color: $night-rider;
+                @include transition(all, 0.2s, ease-in-out);
+                font-size: em(16.33);
+
+                &:hover {
+                    background: $white-smoke;
+                }
+
+                &.active {
+                    color: $light-pink;
+                }
+            }
+        }
+    }
+}
+
+.brand-search {
+    float: right;
+    display: block;
+
+    @media #{$small-down} {
+        display: none;
+    }
+
+    #searchBox {
+        position: relative;
+
+        a {
+            right: 25px;
+            position: relative;
+            top: 2px;
+            height: 9px !important;
+            padding: 0 !important;
+            overflow: visible;
+            color: #666;
+            font-size: 1em;
+
+            @media #{$small-down} {
+                right: 30px;
+                position: absolute;
+            }
+        }
+
+        #SimpleSearchForm_SearchTerm {
+            background: $sky-blue;
+            border: 0;
+            border-radius: 0;
+            color: $night-rider;
+            padding: 4px 28px 4px 12px;
+            height: 34px;
+            min-width: auto;
+            font-size: em(14);
+            font-style: italic;
+            vertical-align: middle;
+            line-height: em(24);
+        }
+    }
+}
+
+
+.open {
+    .active {
+        .brand-search {
+            @media #{$small-down} {
+                display: block;
+                position: absolute;
+                right: -200px;
+                width: 200px;
+            }
+        }
+    }
+}
+
+.rfk_left_pane {
+    display: inline !important;
+}

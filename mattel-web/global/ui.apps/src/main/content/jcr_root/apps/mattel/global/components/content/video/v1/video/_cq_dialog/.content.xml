@@ -1,0 +1,391 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Video"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+        granite:class="v1-video-dialog"
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <videoSettings
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Video Settings"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <column
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <thumbnailImage
+                                        granite:class="imagefield-mandatory"
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                        allowUpload="{Boolean}false"
+                                        autoStart="{Boolean}false"
+                                        class="cq-droptarget"
+                                        fieldLabel="Video Thumbnail / Poster Image"
+                                        fileReferenceParameter="./thImage"
+                                        mimeTypes="[image/gif,image/jpeg,image/png,image/webp,image/tiff]"
+                                        multiple="{Boolean}false"
+                                        name="./thumbnailImage"
+                                        uploadUrl="${suffix.path}"
+                                        useHTML5="{Boolean}true"/>
+                                    <playVidInModal
+                                        granite:class="cq-dialog-switch-image-field"
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/switch"
+                                        fieldLabel="Play Video In Modal ?"
+                                        name="./playVidInModal">
+                                        <granite:data
+                                            jcr:primaryType="nt:unstructured"
+                                            cq-dialog-switch-img-field-target=".imagefield-mandatory"/>
+                                    </playVidInModal>
+                                    <autoPlayVideo
+                                        granite:class="cq-dialog-switch-showhide"
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/switch"
+                                        fieldLabel="Auto Play Video ?"
+                                        name="./autoPlayVideo"/>
+                                    <disableSound
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/switch"
+                                        fieldDescription="Toggle to mute video"
+                                        fieldLabel="Disable Sound?"
+                                        name="./disableSound"
+                                        uncheckedValue="false"
+                                        value="true"/>
+                                    <hidePlayerControls
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:orderBefore="disableSound"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/switch"
+                                        fieldDescription="Toggle to hide media player controls"
+                                        fieldLabel="Hide Media Player Controls?"
+                                        name="./hidePlayerControls"
+                                        uncheckedValue="true"
+                                        value="false"/>
+                                    <autoRepeatVideo
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/switch"
+                                        fieldDescription="Toggle on to trigger auto-repeat"
+                                        fieldLabel="Loop Video?"
+                                        name="./autoRepeatVideo"
+                                        uncheckedValue="false"
+                                        value="true"/>
+                                    <videoType
+                                        granite:class="video-selection"
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                        fieldLabel="Video Type"
+                                        name="./videoType">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <ooyala
+                                                jcr:primaryType="nt:unstructured"
+                                                text="Deluxe Platform Video"
+                                                value="ooyala"/>
+                                            <youtube
+                                                jcr:primaryType="nt:unstructured"
+                                                text="Video URL"
+                                                value="youtube"/>
+                                        </items>
+                                    </videoType>
+                                    <setYoutube
+                                        granite:class="youtube-options-section"
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <heading
+                                                granite:class="coral-Heading coral-Heading--4"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/heading"
+                                                level="{Long}4"
+                                                text="Video options"/>
+                                            <well
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/well">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <embedurl
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                        fieldLabel="Video URL"
+                                                        name="./embedurl"/>
+                                                </items>
+                                            </well>
+                                        </items>
+                                    </setYoutube>
+                                    <setOoyala
+                                        granite:class="ooyala-options-section"
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <heading
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/heading"
+                                                level="{Long}4"
+                                                text="Deluxe Platform Video Options"/>
+                                            <well
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/well">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <videoId
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                        fieldLabel="Deluxe Platform ID"
+                                                        name="./ooyalaVideoId"/>
+                                                    <alt
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                        fieldDescription="Textual alternative of the meaning or function of the image, for visually impaired readers."
+                                                        fieldLabel="Alternative Text for Video:"
+                                                        name="./alt"/>
+                                                    <title
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                        fieldLabel="Video title"
+                                                        name="./videoTitle"/>
+                                                    <subTitle
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                        fieldLabel="Video Subtitle"
+                                                        name="./subTitle"/>
+                                                    <description
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+                                                        fieldDescription="Enter the description of the video"
+                                                        fieldLabel="Video Description:"
+                                                        name="./videoDescription"
+                                                        useFixedInlineToolbar="{Boolean}true">
+                                                        <rtePlugins
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceSuperType="mattel/global/components/content/rtePlugins/rtePlugins"/>
+                                                        <uiSettings
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceSuperType="mattel/global/components/content/rtePlugins/uiSettings"/>
+                                                    </description>
+                                                    <copyrightInfo
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                        fieldLabel="Video Copyright Info"
+                                                        name="./copyrightInfo"/>
+                                                    <textPosition
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                        fieldLabel="Text Position"
+                                                        name="./textPosition">
+                                                        <items jcr:primaryType="nt:unstructured">
+                                                            <bottom
+                                                                jcr:primaryType="nt:unstructured"
+                                                                text="Bottom"
+                                                                value="bottom"/>
+                                                            <top
+                                                                jcr:primaryType="nt:unstructured"
+                                                                text="Top"
+                                                                value="top"/>
+                                                        </items>
+                                                    </textPosition>
+                                                </items>
+                                            </well>
+                                        </items>
+                                    </setOoyala>
+                                    <customMobile
+                                        granite:class="switch-showhide-mobile-settings"
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:orderBefore="videoType"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/switch"
+                                        fieldLabel="Custom Mobile"
+                                        name="./customMobile"
+                                        switch-showhide-mobile-settings-target=".toggle-mobile-settings">
+                                        <granite:data
+                                            jcr:primaryType="nt:unstructured"
+                                            rowresume="{Boolean}true"
+                                            switchShowHideTarget=".toggle-mobile-settings"/>
+                                    </customMobile>
+                                </items>
+                            </column>
+                        </items>
+                    </videoSettings>
+                    <mobileAssetSettings
+                        granite:class="toggle-mobile-settings"
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Mobile Asset Settings"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <column
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <mobileContainer
+                                        granite:class="toggle-mobile-settings"
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="/libs/granite/ui/components/coral/foundation/form/fieldset">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <heading
+                                                granite:class="coral-Heading coral-Heading--5"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/heading"
+                                                level="{Long}5"
+                                                text="Asset Options"/>
+                                            <well
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/well">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <mobileAssetType
+                                                        granite:class="mobile-asset-selection"
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                        fieldLabel="Asset Type"
+                                                        name="./mobileAssetType">
+                                                        <items jcr:primaryType="nt:unstructured">
+                                                            <mobileImage
+                                                                jcr:primaryType="nt:unstructured"
+                                                                text="Set Mobile Image"
+                                                                value="set-mobile-image"/>
+                                                            <mobileVideo
+                                                                jcr:primaryType="nt:unstructured"
+                                                                text="Set Mobile Video"
+                                                                value="set-mobile-video"/>
+                                                        </items>
+                                                    </mobileAssetType>
+                                                    <setMobileImage
+                                                        granite:class="mobile-image-options-section"
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                        <items jcr:primaryType="nt:unstructured">
+                                                            <heading
+                                                                granite:class="coral-Heading coral-Heading--4"
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceType="granite/ui/components/coral/foundation/heading"
+                                                                level="{Long}4"
+                                                                text="Set Mobile Image"/>
+                                                            <well
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceType="granite/ui/components/coral/foundation/well">
+                                                                <items jcr:primaryType="nt:unstructured">
+                                                                    <image
+                                                                        granite:class="imagefield-mandatory"
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                                                        allowUpload="{Boolean}true"
+                                                                        autoStart="{Boolean}false"
+                                                                        class="cq-droptarget"
+                                                                        fieldLabel="Upload Mobile Image Asset"
+                                                                        fileReferenceParameter="./mthImage"
+                                                                        mimeTypes="[image/gif,image/jpeg,image/png,image/tiff,image/svg+xml]"
+                                                                        multiple="{Boolean}false"
+                                                                        name="./mobilethumbnailImage"
+                                                                        uploadUrl="${suffix.path}"
+                                                                        useHTML5="{Boolean}true"/>
+                                                                    <alt
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                        fieldDescription="Textual alternative of the meaning or function of the image, for visually impaired readers."
+                                                                        fieldLabel="Alternative Text"
+                                                                        name="./mobileImageAlt"/>
+                                                                </items>
+                                                            </well>
+                                                        </items>
+                                                    </setMobileImage>
+                                                    <setMobileVideo
+                                                        granite:class="mobile-video-options-section"
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                        <items jcr:primaryType="nt:unstructured">
+                                                            <heading
+                                                                granite:class="coral-Heading coral-Heading--4"
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceType="granite/ui/components/coral/foundation/heading"
+                                                                level="{Long}4"
+                                                                text="Set Mobile Video"/>
+                                                            <well
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceType="granite/ui/components/coral/foundation/well">
+                                                                <items jcr:primaryType="nt:unstructured">
+                                                                    <videoType
+                                                                        granite:class="mobile-video-selection"
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                                        fieldLabel="Mobile Video Type"
+                                                                        name="./mobileVideoType">
+                                                                        <items jcr:primaryType="nt:unstructured">
+                                                                            <mobileOoyala
+                                                                                jcr:primaryType="nt:unstructured"
+                                                                                text="Deluxe Platform Video"
+                                                                                value="mobile-ooyala"/>
+                                                                            <mobileYoutube
+                                                                                jcr:primaryType="nt:unstructured"
+                                                                                text="Video URL"
+                                                                                value="mobile-youtube"/>
+                                                                        </items>
+                                                                    </videoType>
+                                                                    <setMobileYoutube
+                                                                        granite:class="mobile-youtube-options-section"
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                                        <items jcr:primaryType="nt:unstructured">
+                                                                            <heading
+                                                                                granite:class="coral-Heading coral-Heading--4"
+                                                                                jcr:primaryType="nt:unstructured"
+                                                                                sling:resourceType="granite/ui/components/coral/foundation/heading"
+                                                                                level="{Long}4"
+                                                                                text="Video options"/>
+                                                                            <well
+                                                                                jcr:primaryType="nt:unstructured"
+                                                                                sling:resourceType="granite/ui/components/coral/foundation/well">
+                                                                                <items jcr:primaryType="nt:unstructured">
+                                                                                    <mobileEmbedUrl
+                                                                                        jcr:primaryType="nt:unstructured"
+                                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                                        fieldLabel="Video URL"
+                                                                                        name="./mobileEmbedUrl"/>
+                                                                                </items>
+                                                                            </well>
+                                                                        </items>
+                                                                    </setMobileYoutube>
+                                                                    <setMobileOoyala
+                                                                        granite:class="mobile-ooyala-options-section"
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                                        <items jcr:primaryType="nt:unstructured">
+                                                                            <heading
+                                                                                granite:class="coral-Heading coral-Heading--4"
+                                                                                jcr:primaryType="nt:unstructured"
+                                                                                sling:resourceType="granite/ui/components/coral/foundation/heading"
+                                                                                level="{Long}4"
+                                                                                text="Deluxe Platform Video Options"/>
+                                                                            <well
+                                                                                jcr:primaryType="nt:unstructured"
+                                                                                sling:resourceType="granite/ui/components/coral/foundation/well">
+                                                                                <items jcr:primaryType="nt:unstructured">
+                                                                                    <videoId
+                                                                                        jcr:primaryType="nt:unstructured"
+                                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                                        fieldLabel="Deluxe Platform ID"
+                                                                                        name="./mobileOoyalaVideoId"/>
+                                                                                </items>
+                                                                            </well>
+                                                                        </items>
+                                                                    </setMobileOoyala>
+                                                                </items>
+                                                            </well>
+                                                        </items>
+                                                    </setMobileVideo>
+                                                </items>
+                                            </well>
+                                        </items>
+                                    </mobileContainer>
+                                </items>
+                            </column>
+                        </items>
+                    </mobileAssetSettings>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>

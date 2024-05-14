@@ -1,0 +1,98 @@
+.interstitialLeavingSite{
+    #interstitialModal {
+        &.interstitial-modal{
+            .modal-dialog{
+                width: auto;
+                margin: 170px 10px 0 10px !important;
+                top:0;
+                @media #{$small-up} {
+                    width: 750px;
+                    margin: 120px auto 0 auto !important;
+                }
+                .modal-content{
+                    min-height: auto;
+                    border-bottom: none;
+                    padding: 15px 20px;
+                    @media #{$small-up} {
+                        padding: 40px;
+                    }
+                    .modal-body{
+                        padding: 0;
+                        margin: 0;
+                        .modal-page-title{
+                            .main-title{
+                                font-size: 22px;
+                                color: inherit;
+                                @media #{$small-up} {
+                                    font-size: 36px;
+                                }
+                                h2{
+                                    font-size: inherit;
+                                    color: inherit;
+                                    @include font-properties($letsBeGlyphs,$localFontInfo);
+                                    padding: 0;
+                                    margin: 0;
+                                    text-align: inherit;
+                                }
+                            }
+                        }
+                        p{
+                            text-align: inherit;
+                            font-size: inherit;
+                            color: inherit;
+                            padding: 0;
+                            margin: 0;
+                        }
+                        .modal-btn-wrap{
+                            text-align: inherit;
+                            .go-back-btn,.continue-btn{
+                                background-color: transparent;
+                                background: transparent;
+                                color: inherit;
+                                @include font-properties($maaxMedium,$localFontVerdana);
+                                font-weight: 500;
+                                border-width: 0 0 2px 0;
+                                min-width: auto;
+                                padding: 0;
+                                margin:0 20px 0 0 !important;
+                                font-size: 16px;
+                                float: none;
+                                border-bottom: 2px solid #e51c06;
+                                color: $black !important;
+                                &:before{
+                                    display: none;
+                                }
+                                &:hover{
+                                    color:#e51c06 !important;
+                                    border-bottom: 3px solid #e51c06;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}  
+.dark-theme{
+    .interstitialLeavingSite{
+        #interstitialModal {
+            &.interstitial-modal{
+                .modal-dialog{
+                    .modal-content{
+                        .modal-body{
+                            .modal-btn-wrap{
+                                .go-back-btn,.continue-btn{
+                                    color: $white !important;
+                                    &:hover{
+                                        color:#e51c06 !important;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

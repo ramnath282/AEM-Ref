@@ -1,0 +1,155 @@
+.grid-lazyload-module , .explore-grid-container{
+    //font-size: 0.82em;
+    .module-title {
+        font-size: 2.5em;
+        font-weight: $fontSemiBold;
+        margin-top:em(6);
+    }
+    .article-list-wrapper {
+	 margin-top: em(30);
+	 padding-top: em(30);
+	 border-top: 2px solid $very-dim-light;
+    }
+    ul {
+        .list { 
+            margin-bottom: 1em;
+            @media #{$medium-up} {
+                margin-bottom: 6em;
+                &:nth-child(1n) {
+                    .tile-container {
+                        margin: 0 1.1em;
+                    }
+                }  
+                &:nth-child(3n+1) {
+                    .tile-container {
+                        margin: 0 2.2em 0 0;
+                    }
+                }
+                &:nth-child(3n) {
+                    .tile-container {
+                        margin: 0 0 0 2.2em;
+                    }
+                }                
+            }        
+            .tile-container {
+                box-shadow: none;
+                padding-bottom: 1.07143em;
+                .tile-clickable {
+                    position: relative;
+                    margin-bottom: 1.07143em;
+                    min-height: 36.9em;
+                    display: inline-block;
+                    &:hover {
+                        .tile-name {
+                           text-decoration: underline;
+                        }
+                    }
+                    .tile-content {
+                        padding-bottom: 1.07143em;
+                        .tile-tip {
+                            position: relative;
+                            height: 3em;
+                            span {
+                                font-size: em(18);
+                                color: $very-dim-light-grey;
+                                display: inline-block;
+                                &.tile-tip-A {
+                                    position: absolute;
+                                    left: 0;
+                                    top: 0;
+                                }
+                                &.tile-tip-B {
+                                    position: absolute;
+                                    right: 0;
+                                    top: 0;
+                                    font-style: italic;
+                                }
+                            }
+                        }
+                        .tile-name {
+                            font-size: em(30);
+                            font-weight: $fontSemiBold;
+                            color: $black;
+                            line-height: 1.3em;
+                        }                    
+                    }
+                    .read-more {
+                        display: block;
+                        position: absolute;
+                        top: 0;
+                        width: 100%;
+                        height: 100%;
+                        font-size: 1.3em;
+                        span {
+                            font-weight: 600;
+                            position: absolute;
+                            bottom: 0;
+                            margin-left: 0.9em;
+                            &:after {
+                                content: "\f054";
+                                @include font-awesome();
+                                margin-left: 5px;
+                                font-size: 0.7em;
+                            } 
+                        }
+                    }
+                }
+                .social-icons {
+                    margin-left: 1.07143em;
+                    li {
+                        display: inline-block;
+                        margin-right: 0.5em;
+                        a {
+                            color: $white;
+                            background: $dim-gray;
+                            text-align: center;
+                            width: 1.5em;
+                            height: 1.45em;
+                            border-radius: 1.5em;
+                            font-size: 1.3em;
+                            display: block;
+                            &:after {
+                                margin-top: 5px;
+                            }
+                            &.pinterest, &.twitter {
+                                color: $white;
+                                background: $dim-gray;
+                                text-align: center;
+                                width: 1.5em;
+                                height: 1.45em;
+                                border-radius: 1.5em;
+                                font-size: 1.3em;
+                                display: block;                             
+                            }
+                        }
+                       
+                    }
+                }
+            }
+        }
+    }
+    .article-show-action, .show-more {
+        border: none;
+        font-size: 1.57em;
+        font-weight: $fontRegular;
+    }
+    .article-list {
+		.tile-description {
+			font-size: em(17);
+			font-weight: 400;
+		}
+	}
+}
+
+.exit-page-modal {    
+    .modal-body {
+        border: 1px solid $light-pink;
+        border-radius: 0px;
+        h3 {
+            font-size: 1.1em;
+        }
+        a {
+            font-size: 1.1em;
+        }
+    }
+}

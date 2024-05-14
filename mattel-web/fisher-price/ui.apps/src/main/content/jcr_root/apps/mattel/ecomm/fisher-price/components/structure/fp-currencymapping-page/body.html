@@ -1,0 +1,49 @@
+<!--/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  ~ Copyright 2016 Adobe Systems Incorporated
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/-->
+<!-- skip main content link -->
+<a class="skip-main" href="#page-content">Skip to content</a>
+<sly data-sly-include="header.html"></sly>
+<!-- preloader content -->
+<div id="preloader" style="position:absolute; left:-2000%; visibility: none;">
+    <span id="preload1"></span>
+    <span id="preload2"></span>
+</div>
+<div class="outer-wrapper">
+    <div class="inner-wrapper">
+         <sly data-sly-test="${(properties.pageBgImg == null && properties.pageBgColor == null )||(properties.backOption=='image'&& properties.pageBgImg ==null)||(properties.backOption=='color'&& properties.pageBgColor ==null)}">
+                    <div class="page-view" role="main" id="pagename-home">
+                     <div class="mask"></div>
+                </sly>
+                <sly data-sly-test="${properties.backOption=='color' && properties.pageBgColor !=null}">
+                     <div class="page-view" role="main" id="pagename-home" style="background-color:${properties.pageBgColor @ context='styleString'}">
+                      <div class="mask"></div>
+                </sly>
+                <sly data-sly-test="${properties.backOption=='image'&& properties.pageBgImg !=null}">
+                    <div class="page-view" role="main" id="pagename-home" style="background: url('${properties.pageBgImg @ context='styleString'}') no-repeat;background-size: contain;">
+                     <div class="mask"></div>
+                	<style data-sly-test="${properties.pageBgImgMble}">
+                     	@media screen and (max-width:767px){
+                     		.page-view{
+                     			background-image: url('${properties.pageBgImgMble @ context='styleString'}') no-repeat !important;
+                     			background-size: 100% auto !important;
+                     		}
+                     	}
+                     </style>
+                </sly>
+            <sly data-sly-use.templatedContainer="com.day.cq.wcm.foundation.TemplatedContainer" data-sly-repeat.child="${templatedContainer.structureResources}" data-sly-resource="${child.path @ resourceType=child.resourceType, decorationTagName='div'}"></sly>
+        </div>
+    </div>  
+</div>

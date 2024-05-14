@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="GT - Doll Recommendation/Truly Me"
+    sling:resourceType="cq/gui/components/authoring/dialog"
+    extraClientlibs="[acs-commons.widgets.showhidedialogfields]">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <quizType
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title=" Component Type "
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <column
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <type
+                                        granite:class="cq-dialog-dropdown-showhide"
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                        fieldDescription="Please select the Component Type"
+                                        fieldLabel="Select the Component Type"
+                                        name="./componentType">
+                                        <granite:data
+                                            jcr:primaryType="nt:unstructured"
+                                            acs-cq-dialog-dropdown-checkbox-showhide=""
+                                            acs-cq-dialog-dropdown-checkbox-showhide-target=".gift-trunk-showhide-target"/>
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <dollRecommendation
+                                                jcr:primaryType="nt:unstructured"
+                                                text="Doll Recommendation"
+                                                value="dollRecommendation"/>
+                                            <trulyMe
+                                                jcr:primaryType="nt:unstructured"
+                                                text="Truly Me"
+                                                value="trulyMe"/>
+                                        </items>
+                                    </type>
+                                </items>
+                            </column>
+                        </items>
+                    </quizType>
+                    <dollRecommendationConfig
+                        granite:class="hide gift-trunk-showhide-target"
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Doll Recommendation Page Config"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                        margin="{Boolean}true">
+                        <granite:data
+                            jcr:primaryType="nt:unstructured"
+                            acs-dropdownshowhidetargetvalue="dollRecommendation"/>
+                        <items jcr:primaryType="nt:unstructured">
+                            <column
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <headline
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please configure the headline for Product Recommendation Page"
+                                        fieldLabel="Headline"
+                                        name="./headline"/>
+                                    <ctaText
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please enter CTA Text"
+                                        fieldLabel="CTA Text"
+                                        name="./productCTAText"/>
+                                    <ctaLink
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                        fieldDescription="Please enter link to take to Summary Page"
+                                        fieldLabel="CTA Link"
+                                        name="./summaryPageLink"
+                                        rootPath="/content/ag/en"/>
+                                    <numberOfDolls
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+                                        fieldDescription="Please configure the number of Dolls recommended to user on Page Load"
+                                        fieldLabel="Number of Dolls recommended to User on Page Load"
+                                        min="{Long}0"
+                                        name="./numberofProducts"/>
+                                    <viewallproducts
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please enter Text for hyperlink to display all products in Page"
+                                        fieldLabel="Hyperlink Text to display All Products"
+                                        name="./viewAllProductsText"/>
+                                    <showRecommended
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please enter Text for hyperlink to display only recommended products"
+                                        fieldLabel="Hyperlink Text to display only recommended products"
+                                        name="./showRecommendProductsText"/>
+                                    <categoryRecommend
+                                        cq:showOnCreate="true"
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Enter Category Query Parameters in the format category=[value]&amp;character=[value]. Based on the parameters respective products will be loaded for that category"
+                                        fieldLabel="Category Query Parameters"
+                                        name="./categoryTypeRecommend"/>
+                                    <trulyMeProductConfig
+                                        jcr:primaryType="nt:unstructured"
+                                        jcr:title="Truly Me Product Configuration"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/fieldset">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <productTitle
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Please configure the title for Truly Me Product"
+                                                fieldLabel="Product Title"
+                                                name="./trulyMeProductTitle"/>
+                                            <productDesc
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+                                                fieldDescription="Please configure the description for Truly Me Product"
+                                                fieldLabel="Product Description"
+                                                name="./trulyMeProductDesc"
+                                                useFixedInlineToolbar="{Boolean}true">
+                                                <rtePlugins
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceSuperType="mattel/global/components/content/rtePlugins/rtePlugins"/>
+                                                <uiSettings
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceSuperType="mattel/global/components/content/rtePlugins/uiSettings"/>
+                                            </productDesc>
+                                            <productImage
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                                allowUpload="{Boolean}false"
+                                                autoStart="{Boolean}false"
+                                                class="cq-droptarget"
+                                                fieldDescription="Please drag and drop image to display"
+                                                fieldLabel="Product Image"
+                                                fileReferenceParameter="./trulyMeProductImage"
+                                                mimeTypes="[image/gif,image/jpeg,image/png,image/webp,image/tiff]"
+                                                multiple="{Boolean}false"
+                                                name="./productImage"
+                                                uploadUrl="${suffix.path}"
+                                                useHTML5="{Boolean}true"/>
+                                            <productAgeRange
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Please configure the Age Range for Truly Me Product"
+                                                fieldLabel="Product Age Range"
+                                                name="./trulyMeProductAgeRange"/>
+                                            <ctaText
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Please enter CTA Text for Truly Me Product"
+                                                fieldLabel="CTA Text"
+                                                name="./trulyMeProductCTAText"/>
+                                            <ctaLink
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                fieldDescription="Please enter link to move to Truly Me Page"
+                                                fieldLabel="CTA Link"
+                                                name="./trulyMePageLink"
+                                                rootPath="/content/ag/en"/>
+                                        </items>
+                                    </trulyMeProductConfig>
+                                </items>
+                            </column>
+                        </items>
+                    </dollRecommendationConfig>
+                    <trulyMeConfig
+                        granite:class="hide gift-trunk-showhide-target"
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Truly Me Page Config"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                        margin="{Boolean}true">
+                        <granite:data
+                            jcr:primaryType="nt:unstructured"
+                            acs-dropdownshowhidetargetvalue="trulyMe"/>
+                        <items jcr:primaryType="nt:unstructured">
+                            <column
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <title
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please configure the page title for Truly Me Page"
+                                        fieldLabel="Page Title"
+                                        name="./trulyMeTitle"/>
+                                    <subtitle
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please configure the sub-title for Truly Me Page"
+                                        fieldLabel="Page Subtitle"
+                                        name="./trulyMeSubTitle"/>
+                                    <hyperlinkText
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please enter text for Hyperlink displayed at the end of the Page"
+                                        fieldLabel="Hyperlink Text"
+                                        name="./trulyMeHyperlinkText"/>
+                                    <hyperlinkUrl
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+                                        fieldDescription="Please configure the url for the Hyperlink"
+                                        fieldLabel="Hyperlink URL"
+                                        name="./trulyMeHyperlinkUrl"
+                                        rootPath="/content/ag/en"/>
+                                    <eyesText
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please configure text for eyes color"
+                                        fieldLabel="Eyes Color Text"
+                                        name="./eyesText"/>
+                                    <hairText
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please configure text for hair color"
+                                        fieldLabel="Hair Color Text"
+                                        name="./hairText"/>
+                                    <categoryType
+                                        cq:showOnCreate="true"
+                                        granite:class="category-type"
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Enter Category Query Parameters in the format category=[value]&amp;character=[value]. Based on the parameters respective products will be loaded for that category"
+                                        fieldLabel="Category Query Parameters"
+                                        name="./categoryType"/>
+									<summaryPageUrl
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+                                        fieldDescription="Please configure the url for the summary page"
+                                        fieldLabel="Summary Page URL"
+                                        name="./trulyMeSummaryPageURL"
+                                        rootPath="/content/ag/en"/>
+                                </items>
+                            </column>
+                        </items>
+                    </trulyMeConfig>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>

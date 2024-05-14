@@ -1,0 +1,79 @@
+.reusability-videos-gallery-playlist{
+    .reusability-play-tiles-gallery{
+        .reusability-play-list{
+            .reusability-playing-overlay{
+                .play-text *{
+                    padding: 0;
+                    margin: 0;
+                    font-size: inherit;
+                    line-height: normal;
+                }
+            }
+        }
+        .view-all{
+            .btn-view-all{
+                padding: 13px 32px;
+                @include font-properties($maaxMedium,$localFontVerdana);
+                font-size: 16px;
+                font-weight: 400;
+                border: 2px solid transparent;
+                background-color: $lbk-nav-blue !important;
+                color: $white;
+                &:hover, &:active{
+                    background-color: $lbk-red !important;
+                    color: $white;
+                }
+            }
+        }
+    }
+}
+.light-theme{
+    .reusability-videos-gallery-playlist{
+        .reusability-play-tiles-gallery{
+            .view-all{
+                .btn-view-all{
+                    background-color: $lbk-nav-blue !important;
+                    color: $white;
+                    &:hover,  &:active{
+                        background-color: $lbk-red !important;
+                        color: $white;
+                    }
+                }
+            }
+        }
+    }
+}
+.dark-theme{
+    .reusability-videos-gallery-playlist{
+        .reusability-play-tiles-gallery{
+            .show-more{
+                .accordion{
+                    &:hover, &:active{
+                        background-color: $lbk-red;
+                        color: $white;
+                        &:before{
+                            background-image: url($spriteLightPath);
+                        }
+                    }
+                    &.active{
+                        &:hover, &:active{
+                            &:before{
+                                background-position: -53px -52px;
+                            }
+                        }
+                    }
+                }
+            }
+            .view-all{
+                .btn-view-all{
+                    background-color: $white !important;
+                    color: $lbk-blue !important;
+                    &:hover, &:active{
+                        background-color: $lbk-red !important;
+                        color: $white !important;
+                    }
+                }
+            }
+        }
+    }
+}

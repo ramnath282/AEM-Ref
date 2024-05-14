@@ -1,0 +1,155 @@
+.aside-section{
+    @extend .col-md-3;
+    @include content-spacing(map-get($myaccountnav, myaccnavWrapper));    
+    #myAccountNav {
+        @media #{$medium-down} {
+            position:relative;
+            left:calc((100% - 100vw) / 2);
+            width:100vw;
+        }
+        &.collapse {
+            @media #{$medium-up} {
+               display:block
+            }
+        }
+        a {		
+           &.submenu{		
+            	color: mapping($myaccountnav,anchorSubmenu,color) !important;		
+            }		
+        }
+    }   
+    h2 {
+        font: mapping($myaccountnav,h2,font);
+        color: mapping($myaccountnav,h2,color);
+        border-bottom: mapping($myaccountnav,h2,Border);
+        $borderProperty: mapping($myaccountnav, h2, border);
+            @if(map-get($borderProperty, enabled)) {
+                border-#{map-get($borderProperty,position)}: (map-get($borderProperty, size) solid map-get($borderProperty, color));
+            }
+        @include content-spacing(map-get($myaccountnav, h2));     
+    }
+    .nav-header {
+        color: mapping($myaccountnav,navheader,color);
+        @media #{$medium-down} {
+             button:focus{
+                outline:0;
+            }
+           cursor:pointer;
+            background-color: mapping($myaccountnav,navheader,background);
+            color: mapping($myaccountnav,navheaderMobile,color);
+            width:100vw;
+            position:relative;
+            left:calc((100% - 100vw) / 2);
+            @include content-spacing(map-get($myaccountnav, navheader));     
+            font: mapping($myaccountnav,navheader,fontweight);
+            $borderProperty: mapping($myaccountnav, navheader, border);
+            @if(map-get($borderProperty, enabled)) {
+                border-#{map-get($borderProperty,position)}: (map-get($borderProperty, size) solid map-get($borderProperty, color));
+            }
+        }
+        button {                
+            width: 100%;
+            text-align: left;
+            cursor:default;
+            @include button-style(map-get($myaccountnav, navheaderbtn));
+            border:none;//over ride the bootsrapborder otherwise use border:null
+             @media #{$medium-down} {
+                color: mapping($myaccountnav,navheaderbtnDevice,color);
+                font: mapping($myaccountnav,navheaderbtnDevice,font);
+            }
+            span{
+                display: inline-block;
+                float: right;
+                @include content-spacing(map-get($myaccountnav, navheaderbtn));
+            }
+        }
+    }
+    nav {
+        @media #{$medium-down} {
+            position:relative;
+            left:calc((100% - 100vw) / 2);
+            width:100vw;
+            $borderProperty: mapping($myaccountnav, navheader, border);
+            @if(map-get($borderProperty, enabled)) {
+                border-#{map-get($borderProperty,position)}: (map-get($borderProperty, size) solid map-get($borderProperty, color));
+            }
+        }
+        h3 {
+            text-transform: uppercase;
+            @media #{$small-down}{
+                text-transform: capitalize;
+            }
+            &:first-child{
+                border: none;
+            }
+            &.submenu{
+                @media #{$medium-down}{
+                    cursor: pointer;
+                }
+            }
+            color: mapping($myaccountnav,h3,color);
+            font: mapping($myaccountnav,h3,font);
+            @include content-spacing(map-get($myaccountnav, h3));
+            .arrow-icon{
+                display: inline-block;
+            } 
+            @media #{$medium-down} {
+                color: mapping($myaccountnav,h3Mscreen,color);
+                font: mapping($myaccountnav,h3Mscreen,font);
+                @include content-spacing(map-get($myaccountnav, h3Mscreen));
+                background:mapping($myaccountnav,h3Mscreen,background);
+                $borderProperty: mapping($myaccountnav, h3Mscreen, border);
+                    @if(map-get($borderProperty, enabled)) {
+                        border-#{map-get($borderProperty,position)}: (map-get($borderProperty, size) solid map-get($borderProperty, color));
+                    }
+                .arrow-icon{
+                    float: right;
+                }
+                &.active{
+                    $borderProperty: mapping($myaccountnav, h3active, border);
+                    @if(map-get($borderProperty, enabled)) {
+                        border-#{map-get($borderProperty,position)}: (map-get($borderProperty, size) solid map-get($borderProperty, color));
+                    }
+                    background: mapping($myaccountnav,h3active,background);
+                }
+            }
+        }
+        ul {
+            $borderProperty: mapping($myaccountnav, anchor, border);
+            @if(map-get($borderProperty, enabled)) {
+                border-#{map-get($borderProperty,position)}: (map-get($borderProperty, size) solid map-get($borderProperty, color));
+            }
+            @include content-spacing(map-get($myaccountnav, anchor)); 
+            @media #{$medium-down} {
+                display: none;
+                border:none;
+                @include content-spacing(map-get($myaccountnav, dropmenu)); 
+            }  
+            li {
+                @media #{$medium-down} {
+                    $borderProperty: mapping($myaccountnav, dropmenuli, border);
+                    @if(map-get($borderProperty, enabled)) {
+                        border-#{map-get($borderProperty,position)}: (map-get($borderProperty, size) solid map-get($borderProperty, color));
+                    }
+                }
+                @include content-spacing(map-get($myaccountnav, anchorli));  
+                a {
+                    color: mapping($myaccountnav,anchor,color)!important;
+                    font: mapping($myaccountnav,anchor,font);
+                    @media #{$medium-down} {
+                        display: block;
+                        @include content-spacing(map-get($myaccountnav, anchor)); 
+                        font: mapping($myaccountnav,anchor,fontMedium);
+                    }
+                    &:hover {
+                        color: mapping($myaccountnav,anchor,hover)!important;
+                    }
+                    &.active {
+                        color: mapping($myaccountnav,anchor,hover)!important;
+                        font-weight: $fontSemiBold;
+                    }
+                }
+            }
+        }
+    }
+}

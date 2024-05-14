@@ -1,0 +1,28 @@
+<template data-sly-template.ctaDetails ="${@cta}">
+	<sly data-sly-test="${cta.items && cta.items.size > 0}">
+        <sly data-sly-test="${properties.entrCompClickable}">
+            <sly data-sly-list.item="${cta.items}">
+                <sly data-sly-test="${!wcmmode.edit}">
+                    <sly data-sly-test="${itemList.index < 1}">
+                        <sly data-sly-resource="${item.name @ decorationTagName='div',cssClassName=cta.items.size == 1 ? 'btn-first-cta-margin' : ''}" />
+                    </sly>
+                </sly>
+                <sly data-sly-test="${!wcmmode.edit}">
+                    <sly data-sly-test="${itemList.index >= 1}">
+                        <div data-sly-test="${item.path}" class="hidden-cta" hidden>
+                            <sly data-sly-resource="${item.path @ decorationTagName='div',cssClassName=cta.items.size == 1 ? 'btn-first-cta-margin' : ''}" />
+                        </div>
+                    </sly>
+                </sly>
+                <sly data-sly-test="${wcmmode.edit}">
+                    <sly data-sly-resource="${item.name @ decorationTagName='div',cssClassName=cta.items.size == 1 ? 'btn-first-cta-margin' : ''}" />
+                </sly>
+            </sly>
+        </sly>
+        <sly data-sly-test="${!properties.entrCompClickable}">
+            <sly data-sly-list.item="${cta.items}">
+                <sly data-sly-resource="${item.name @ decorationTagName='div',cssClassName=cta.items.size == 1 ? 'btn-first-cta-margin' : ''}" />
+            </sly>
+        </sly>
+	</sly>
+</template>

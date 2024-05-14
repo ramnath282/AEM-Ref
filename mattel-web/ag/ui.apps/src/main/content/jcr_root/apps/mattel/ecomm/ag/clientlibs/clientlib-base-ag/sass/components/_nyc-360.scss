@@ -1,0 +1,59 @@
+.nyc-360 {
+    text-align: center;
+    a {
+        cursor: pointer;
+        display:inline-block;
+        img {
+            display: block;
+            margin-right: auto;
+            margin-left: auto;
+        }
+    }
+    .content{
+        color: $night-rider;
+        h2{
+            font-size: em(30);
+            margin-bottom: em(5,30);
+        }
+        p{
+            font-size: em(16);
+            margin: 0;
+            a{
+                font-weight: 600;
+            }
+        }
+    }
+}
+
+#VRModal{
+    z-index: 11111;
+    .modal-lg{
+        @media #{$small-up}{
+            width: em(720);
+        }
+        @media #{$medium-up}{
+            width: em(940);
+        }
+        @media #{$large-up}{
+            width: em(1140);
+        }
+    }
+    .modal-body {
+        padding: 0;
+        .close {
+            position: absolute;
+            z-index: 8500;
+            top: 4px;
+            right: 4px;
+            font-size: em(50);
+        }
+        .embed-responsive{
+            border-radius: 6px;
+        }
+    }
+}
+.vr-modal-open,#VRModal{
+    @media #{$small-only}{
+        padding-right: 0 !important
+    }
+}

@@ -1,0 +1,69 @@
+
+<sly data-sly-test="${wcmmode.edit}">${'Web Collage Content here' @ i18n}</sly>
+<sly data-sly-use.webCollage="com.mattel.ecomm.core.models.WebCollageModel">
+	<sly data-sly-test="${ webCollage.disableWebCollageProductLevel != null ? !webCollage.disableWebCollageProductLevel : webCollage.enableWebCollage}">
+		<input type="hidden" id="webCollageSiteId" value=${webCollage.siteId}>
+		<input type="hidden" id="webCSkuId" value=${webCollage.productSKUId}>
+		<div class="vedio-collageContainer" id="videoCollage">
+                       <script>
+                            var siteId = document.getElementById("webCollageSiteId").value,
+                            skuId = document.getElementById("webCSkuId").value,
+                            isCollageLoaded = false;
+                            function loadReviews() {
+                                isCollageLoaded = false;
+                                if (!isCollageLoaded) {
+                                    isCollageLoaded = true;
+                                    webCollage(document,'script', 'https://content.syndigo.com/site/'+siteId+'/tag.js?cv=');
+                                }
+                            }
+                            function webCollage(s, y, n, di, go) { 
+                                di = s.createElement(y); 
+                                di.type = 'text/java'+y; 
+                                di.async = true; 
+                                di.src = n + Math.floor(Date.now() / 86400000); 
+                                di.addEventListener('load', function(){
+                                    window.SYNDI = window.SYNDI || [];  
+                                    window.SYNDI.push(skuId);
+									window.SYNDI.push({
+										"contentCallback": function(hasContent) {
+											if (hasContent) {
+												console.log("webcollage-content-available")
+											} else {
+												console.log('%c webcollage-content-not-avilable','background: #FF0000; color: #fff')
+											}
+										}
+									});
+                                });
+                                go = s.getElementsByTagName(y)[0]; 
+                                go.parentNode.insertBefore(di,go); 
+                            }
+                            loadReviews();
+
+                            /*function isScrolledIntoView(elem) {
+                                var element = $(elem);
+                                var win = $(window);
+                                var viewport = {
+                                    top: win.scrollTop(),
+                                    left: win.scrollLeft()
+                                };
+                                viewport.right = viewport.left + win.width();
+                                viewport.bottom = viewport.top + win.height();
+                                var bounds = element.offset();
+                                bounds.right = bounds.left + element.outerWidth();
+                                bounds.bottom = bounds.top + element.outerHeight();
+                                return (!(viewport.right < bounds.left || viewport.left > bounds.right || viewport.bottom < bounds.top || viewport.top > bounds.bottom));
+                            }*/
+                        </script>
+
+			<!-- <div class="col-lg-9 hidden-lg hidden-sm hidden-md" data-sly-test="${!webCollage.disableWCMobile}">
+				<div id="wc-power-page"></div>
+			</div> -->
+			<div class="col-lg-9">
+				<div id="syndi_inline"></div>
+			</div>
+		</div>
+	</sly>
+</sly>
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
+	<sly data-sly-call="${clientlib.js @ categories='ecomm.bazaarVoice'}"/>
+</sly>

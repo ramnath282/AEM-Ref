@@ -1,0 +1,1644 @@
+/*
+** videos.scss
+*/
+
+// ooyala player ***
+.video-player-wrapper {
+    height: 100%;
+    z-index: 1;
+    margin: 0;
+    width: 100%;
+    position: relative;
+    padding-bottom: if(mapping($youtubevideosLanding, player, paddingBottom), mapping($youtubevideosLanding, player, paddingBottom), 56.25%);
+}
+
+.video-player {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+
+    .oo-player {
+        padding-top: 56.25%;
+    }
+
+    &.oo-player-container {
+        .oo-action-icon-pause {
+            &.oo-animate-pause {
+                opacity: 0.8;
+            }
+        }
+
+        .oo-state-screen {
+            .oo-action-icon {
+                top: if(mapping($youtubevideosLanding, playerIcon, posTop), mapping($youtubevideosLanding, playerIcon, posTop), 50%);
+
+                &:before {
+                    content: '';
+                    background-image: url($spriteImgPath);
+                    background-repeat: no-repeat;
+                    display: block;
+                    width: 166px;
+                    height: 166px;
+                    background-position: 0px -171px;
+                    text-indent: -999px;
+
+                    @media #{$small-down} {
+                        width: 63px;
+                        height: 63px;
+                        background-position: 0px -78px;
+                    }
+                }
+
+                .oo-icon-play-slick {
+                    display: none;
+                }
+            }
+        }
+    }
+
+    .oo-control-bar {
+        .oo-control-bar-items-wrapper {
+            button {
+                &.oo-control-bar-item {
+                    background: none;
+
+                    .oo-icon-topmenu-share {
+                        display: none
+                    }
+                }
+            }
+
+            /* hide ooyala logo from player */
+            .oo-watermark {
+                display: none;
+            }
+        }
+    }
+
+    @if mapping($youtubevideosLanding, ooActionIcon, playIcon)==false {}
+
+    @else {
+        .oo-action-icon {
+            background: none;
+            border: none;
+
+            .oo-icon-play,
+            .oo-icon-upnext-replay {
+                color: transparent;
+
+                @if mapping($youtubevideosLanding, playIcon, playIconBefore) {
+                    &:before {
+                        content: ' ';
+                        background-color: if(mapping($youtubevideosLanding, playIcon, beforeBgColor), mapping($youtubevideosLanding, playIcon, beforeBgColor), #fbd635);
+                        width: if(mapping($youtubevideosLanding, mainPlayIcon, width), mapping($youtubevideosLanding, mainPlayIcon, width), 115px);
+                        height: if(mapping($youtubevideosLanding, mainPlayIcon, height), mapping($youtubevideosLanding, mainPlayIcon, height), 64px);
+                        border-radius: if(mapping($youtubevideosLanding, mainPlayIcon, borderRadius), mapping($youtubevideosLanding, mainPlayIcon, borderRadius), 100px);
+                        text-align: if(mapping($youtubevideosLanding, mainPlayIcon, textCenter), mapping($youtubevideosLanding, mainPlayIcon, textCenter), center);
+                        opacity: if(mapping($youtubevideosLanding, mainPlayIcon, opacity), mapping($youtubevideosLanding, mainPlayIcon, opacity), 0.7);
+                        position: if(mapping($youtubevideosLanding, mainPlayIcon, pos), mapping($youtubevideosLanding, mainPlayIcon, pos), absolute);
+                        left: if(mapping($youtubevideosLanding, mainPlayIcon, left), mapping($youtubevideosLanding, mainPlayIcon, left), 50%);
+                        top: if(mapping($youtubevideosLanding, mainPlayIcon, top), mapping($youtubevideosLanding, mainPlayIcon, top), calc(50% - 46px));
+                        @include transform(translate(-50%));
+
+                        @media #{$small-down} {
+                            width: mapping($youtubevideosLanding, mainPlayIcon, mobWidth);
+                            height: mapping($youtubevideosLanding, mainPlayIcon, mobHeight);
+                            top: mapping($youtubevideosLanding, mainPlayIcon, mobTop);
+                        }
+
+                    }
+                }
+
+                &:after {
+                    content: if(mapping($youtubevideosLanding, playIcon, content), mapping($youtubevideosLanding, playIcon, content), "\f04b");
+                    font-size: if(mapping($youtubevideosLanding, playIcon, playerIconFntSize), mapping($youtubevideosLanding, playIcon, playerIconFntSize), 26px);
+                    font-family: if(mapping($youtubevideosLanding, playIcon, contentFntFamily), mapping($youtubevideosLanding, playIcon, contentFntFamily), $fontAwesome);
+
+                    color: mapping($youtubevideosLanding, playIcon, color);
+
+                    background-color: if(mapping($youtubevideosLanding, playIcon, bgnd), mapping($youtubevideosLanding, playIcon, bgnd), #ee3824);
+                    background-image: mapping($youtubevideosLanding, playIcon, bgndImg);
+                    background-size: mapping($youtubevideosLanding, playIcon, bgndSize);
+                    background-repeat: mapping($youtubevideosLanding, playIcon, bgndRepeat);
+
+                    border-radius: if(mapping($youtubevideosLanding, playIcon, bdrRadius), mapping($youtubevideosLanding, playIcon, bdrRadius), 30px);
+
+                    padding: if(mapping($youtubevideosLanding, playIcon, pad), mapping($youtubevideosLanding, playIcon, pad), 15px);
+                    position: if(mapping($youtubevideosLanding, playIcon, pos), mapping($youtubevideosLanding, playIcon, pos), absolute);
+                    left: if(mapping($youtubevideosLanding, playIcon, posLeft), mapping($youtubevideosLanding, playIcon, posLeft), 50%);
+                    top: if(mapping($youtubevideosLanding, playIcon, posTop), mapping($youtubevideosLanding, playIcon, posTop), 4px);
+                    @include transform(translate(-50%));
+
+                    @media #{$small-down} {
+                        font-size: mapping($youtubevideosLanding, playIcon, mobFont);
+                        top: mapping($youtubevideosLanding, playIcon, mobTop);
+                    }
+                }
+            }
+
+            .oo-icon-upnext-replay {
+                &:after {
+                    content: mapping($youtubevideosLanding, replayplayIcon, contentReplay);
+                    padding: mapping($youtubevideosLanding, replayplayIcon, replayIconPadding);
+                }
+            }
+        }
+    }
+}
+
+// ***ooyala player
+.video-page-title {
+    padding: em(70) em(325) em(54) em(55);
+
+    @if mapping($youtubevideosLanding, main, isAlignmentDefined)==true {
+        padding: mapping($youtubevideosLanding, videoPageTitle, pad);
+
+        @media #{$medium-down} {
+            padding: mapping($youtubevideosLanding, videoPageTitle, padTab);
+        }
+
+        @media #{$small-down} {
+            padding: mapping($youtubevideosLanding, videoPageTitle, padMob);
+        }
+    }
+
+    display: block;
+
+    @if mapping($youtubevideosLanding, homePage, isBgnd)==false {
+        background-image: none;
+        background-color: if(mapping($youtubevideosLanding, videoTitle, bgColor), mapping($youtubevideosLanding, videoTitle, bgColor), $white);
+
+    }
+
+    @else {
+        background-image: url('../img/sunglasses.jpg');
+        background-color: if(mapping($youtubevideosLanding, videoTitle, bgColor), mapping($youtubevideosLanding, videoTitle, bgColor), $white);
+        background-position: 90% center;
+        background-size: 15em;
+        background-repeat: no-repeat;
+    }
+
+    @media #{$medium-down} {
+        padding: em(62) em(270) em(60) em(50);
+
+    }
+
+    @media #{$small-down} {
+        padding: em(30) em(20);
+        background-image: none;
+    }
+
+    h2 {
+        @if mapping($youtubevideosLanding, heading, isDefaultHeadingFont)==true {
+            font-size: mapping($youtubevideosLanding, heading, fontSize);
+        }
+
+        @else {
+            font-family: mapping($youtubevideosLanding, heading, fontFamily);
+            font-weight: mapping($youtubevideosLanding, heading, fontWeight);
+            font-size: if(mapping($youtubevideosLanding, heading, fontSize), mapping($youtubevideosLanding, heading, fontSize), em(38.76));
+        }
+
+        @if mapping($youtubevideosLanding, heading, isDefaultHeadingFont)==true {
+            display: if(mapping($youtubevideosLanding, heading, disp), mapping($youtubevideosLanding, heading, disp), inline-block);
+            border-radius: em(50);
+
+            @media #{$small-down} {
+                border-radius: 0.8em;
+            }
+        }
+
+        @media #{$medium-down} {
+            font-size: mapping($youtubevideosLanding, heading, tabFontSize);
+        }
+
+        @media #{$small-down} {
+            font-size: mapping($youtubevideosLanding, heading, mobFontSize);
+        }
+
+        background-color: mapping($youtubevideosLanding, heading, bgColor);
+        padding: mapping($youtubevideosLanding, heading, padding);
+
+        @media #{$small-down} {
+            padding: mapping($youtubevideosLanding, heading, paddingxs);
+        }
+
+        color:if(mapping($youtubevideosLanding, heading, color), mapping($youtubevideosLanding, heading, color), $violet);
+        margin:if(mapping($youtubevideosLanding, heading, margin), mapping($youtubevideosLanding, heading, margin), 0 0 21px 0);
+        text-align: if(mapping($youtubevideosLanding, heading, align), mapping($youtubevideosLanding, heading, align), left);
+        text-transform: if(mapping($youtubevideosLanding, heading, transform), mapping($youtubevideosLanding, heading, transform), none);
+        line-height: if(mapping($youtubevideosLanding, heading, lineHeight), mapping($youtubevideosLanding, heading, lineHeight), 1);
+        letter-spacing: if(mapping($youtubevideosLanding, heading, letterSpacing), mapping($youtubevideosLanding, heading, letterSpacing), 1px);
+        font-size: 26px;
+    }
+
+    p {
+        font-family: if(mapping($youtubevideosLanding, description, fontFamily), mapping($youtubevideosLanding, description, fontFamily), "Arial");
+        font-weight: if(mapping($youtubevideosLanding, description, fontWeight), mapping($youtubevideosLanding, description, fontWeight), 300);
+        background-color: mapping($youtubevideosLanding, description, bgColor);
+        padding: if(mapping($youtubevideosLanding, description, padding), mapping($youtubevideosLanding, description, padding), 0);
+        font-size: if(mapping($youtubevideosLanding, description, fontSize), mapping($youtubevideosLanding, description, fontSize), 1.35714em);
+        color: if(mapping($youtubevideosLanding, description, color), mapping($youtubevideosLanding, description, color), $pink);
+        margin: if(mapping($youtubevideosLanding, description, margin), mapping($youtubevideosLanding, description, margin), 0);
+        text-align: if(mapping($youtubevideosLanding, description, align), mapping($youtubevideosLanding, description, align), left);
+
+        @media #{$medium-down} {
+            font-size: mapping($youtubevideosLanding, description, tabFontSize);
+        }
+
+        @media #{$small-down} {
+            font-size: mapping($youtubevideosLanding, description, mobFontSize);
+        }
+    }
+}
+
+.video-playicon-extnd {
+    position: relative;
+    background-color: mapping($youtubevideosLanding, videoVerticalPlaylist, libgColor);
+
+    @if mapping($youtubevideosLanding, main, isRoundedPlayIcon)==true {
+        &:after {
+            content: if(mapping($youtubevideosLanding, playIcon, contentIcon), mapping($youtubevideosLanding, playIcon, contentIcon), "\f04b");
+
+            @if mapping($youtubevideosLanding, playIcon, isRoundedCircle)==true {
+                border-radius: if(mapping($youtubevideosLanding, playIcon, borderRadius), mapping($youtubevideosLanding, playIcon, borderRadius), 60px);
+                padding: if(mapping($youtubevideosLanding, playIcon, padding), mapping($youtubevideosLanding, playIcon, padding), .5em 0.5em .5em .7em);
+            }
+
+            color: mapping($youtubevideosLanding, playIcon, color);
+            background-color: mapping($youtubevideosLanding, playIcon, bgnd);
+            background-image: mapping($youtubevideosLanding, playIcon, bgndImg);
+            background-size: mapping($youtubevideosLanding, playIcon, bgndSize);
+            background-repeat: mapping($youtubevideosLanding, playIcon, bgndRepeat);
+            @include transform(translate(-50%));
+            position: if(mapping($youtubevideosLanding, playIcon, pos), mapping($youtubevideosLanding, playIcon, pos), absolute);
+            left: if(mapping($youtubevideosLanding, playIcon, posLeft), mapping($youtubevideosLanding, playIcon, posLeft), 50%);
+            font-size: mapping($youtubevideosLanding, playIcon, fontSize);
+            z-index: mapping($youtubevideosLanding, playIcon, zindexAfter);
+
+            @if mapping($youtubevideosLanding, playIcon, isTop)==false {
+                top: 51%;
+            }
+
+            @else {
+                top: mapping($youtubevideosLanding, playIcon, topVal);
+            }
+
+            opacity: if(mapping($youtubevideosLanding, playIcon, opacityAfter), mapping($youtubevideosLanding, playIcon, opacityAfter), .9);
+            @include font-awesome();
+
+            @media #{$small-up} {
+                font-size: mapping($youtubevideosLanding, playIcon, tabFontSize);
+
+                @if mapping($youtubevideosLanding, playIcon, isTop)==false {
+                    top: 51%;
+                }
+
+                @else {
+                    // top: calc(50% - #{mapping($youtubevideosLanding, playIcon, mobFontSize)-7px});
+                }
+            }
+
+            @media #{$medium-up} {
+                font-size: mapping($youtubevideosLanding, playIcon, fontSize);
+
+                @if mapping($youtubevideosLanding, playIcon, isTop)==false {
+                    top: 51%;
+                }
+
+                @else {
+                    // top: calc(50% - #{mapping($youtubevideosLanding, playIcon, mobFontSize)-7px});
+                }
+            }
+        }
+
+        @if mapping($youtubevideosLanding, playIcon, playIconBefore)==false {}
+
+        @else {
+            &:before {
+                content: '';
+                background: if(mapping($youtubevideosLanding, playIcon, beforeBgColor), mapping($youtubevideosLanding, playIcon, beforeBgColor), #fbd635);
+                position: if(mapping($youtubevideosLanding, playIcon, pos), mapping($youtubevideosLanding, playIcon, pos), absolute);
+                top: if(mapping($youtubevideosLanding, playIcon, posCal), mapping($youtubevideosLanding, playIcon, posCal), calc(50% - 35px));
+                left: if(mapping($youtubevideosLanding, playIcon, posLeft), mapping($youtubevideosLanding, playIcon, posLeft), 50%);
+                width: 115px;
+                height: 64px;
+                @include border-radius(100px);
+                @include transform(translate(-50%));
+                opacity: mapping($youtubevideosLanding, playIcon, opacityBefore);
+                z-index: mapping($youtubevideosLanding, playIcon, zindexBefore);
+                // @media #{$medium-up}{
+                // 	height: 72px;
+                //  }
+                //  @media #{$medium-up}{
+                // 	height: 80px;
+                //  }
+            }
+        }
+    }
+}
+
+.video-player-container {
+    @extend .col-md-12;
+    display: block;
+    z-index: mapping($youtubevideosLanding, videosDetail, zIndex);
+
+    @if mapping($youtubevideosLanding, main, isAlignmentDefined)==true {
+        padding: mapping($youtubevideosLanding, videosDetail, padDesk);
+
+        @media #{$medium-down} {
+            padding: mapping($youtubevideosLanding, videosDetail, padTab);
+        }
+
+        @media #{$small-down} {
+            padding: mapping($youtubevideosLanding, videosDetail, padMob);
+        }
+    }
+
+    @else {
+        padding: em(55) em(54);
+    }
+
+    @media #{$medium-down} {
+        padding: em(50);
+
+        @if mapping($youtubevideosLanding, videosDetail, isAfterBgnd)==true {
+            display: inline-block;
+            width: 100%;
+        }
+
+        @else {
+            overflow: hidden;
+        }
+    }
+
+    @media #{$small-down} {
+        padding: em(20);
+    }
+
+    background-color: none;
+
+    @if mapping($youtubevideosLanding, heading, isDefaultHeadingFont)==true {
+        background-position: center center;
+    }
+
+    @else {
+        background-position: center center;
+        padding-bottom: 50px;
+    }
+
+    .video-player-in {
+        @extend .col-md-9;
+        //@extend .col-md-12;
+        padding: 0;
+        background-color: mapping($youtubevideosLanding, player, bgndColor);
+
+        @if mapping($youtubevideosLanding, main, isFpVideoGal)==true {
+            @extend .col-md-12;
+        }
+    }
+
+    .video-player-label {
+        @extend .col-md-12;
+        margin: mapping($youtubevideosLanding, playerBar, margin);
+        border-radius: mapping($youtubevideosLanding, playerBar, borderRadius);
+        -webkit-border-radius: mapping($youtubevideosLanding, playerBar, borderRadius);
+        -moz-border-radius: mapping($youtubevideosLanding, playerBar, borderRadius);
+        -ms-border-radius: mapping($youtubevideosLanding, playerBar, borderRadius);
+        background-color: if(mapping($youtubevideosLanding, main, playerBarBgnd), mapping($youtubevideosLanding, main, playerBarBgnd), $violet);
+        color: $white;
+        padding: if(mapping($youtubevideosLanding, playerBar, pad), mapping($youtubevideosLanding, playerBar, pad), 20px);
+        display: block;
+        min-height: if(mapping($youtubevideosLanding, main, playerBarHeight), mapping($youtubevideosLanding, main, playerBarHeight), 102px);
+    }
+
+    @if mapping($youtubevideosLanding, videosDetail, isAfterBgnd)==true {
+        margin: mapping($youtubevideosLanding, videosDetail, isAfterMgn);
+
+        @media #{$medium-down} {
+            padding-bottom: mapping($youtubevideosLanding, videosDetail, paddingMobBtm);
+        }
+
+        &:after {
+            content: "";
+            background-image: mapping($youtubevideosLanding, videosDetail, isAfterBgndUrl);
+            background-repeat: mapping($youtubevideosLanding, videosDetail, isAfterBgndRepeat);
+            background-position: mapping($youtubevideosLanding, videosDetail, bgPosition);
+            height: mapping($youtubevideosLanding, videosDetail, isAfterBgndHeight);
+            display: inline-block;
+            width: 100%;
+            background-size: mapping($youtubevideosLanding, videosDetail, isAfterBgndSize);
+            position: absolute;
+            bottom: mapping($youtubevideosLanding, videosDetail, isAfterBgndBtm);
+            left: mapping($youtubevideosLanding, videosDetail, isAfterBgndLft);
+            z-index: mapping($youtubevideosLanding, videosDetail, isAfterBgndIndx);
+
+            @media #{$medium-down} {
+                height: mapping($youtubevideosLanding, videosDetail, isAfterBgndtabHeight);
+            }
+
+            @media #{$small-down} {
+                background-image: mapping($youtubevideosLanding, videosDetail, isAfterBgndMobUrl);
+                height: mapping($youtubevideosLanding, videosDetail, isAfterBgndMobHeight);
+            }
+        }
+    }
+}
+
+.video-vertical-playlist-container {
+    @extend .col-md-3;
+    padding: if(mapping($youtubevideosLanding, verticalPlaylist, pad), mapping($youtubevideosLanding, verticalPlaylist, pad), em(20));
+    padding-bottom: 0;
+    //background-color:#5fbee6;
+    background-color: if(mapping($youtubevideosLanding, videosDetail, pageBgnd), mapping($youtubevideosLanding, videosDetail, pageBgnd), $outline-blue);
+
+    @media #{$medium-down} {
+        display: none;
+    }
+
+    .video-play-option {
+        background: if(mapping($youtubevideosLanding, autoPlay, bgColor), mapping($youtubevideosLanding, autoPlay, bgColor), $light-blue);
+        color: $white;
+        font-family: Arial, Helvetica, sans-serif;
+        letter-spacing: 1px;
+        padding: em(6) em(7) em(6) em(11);
+        min-height: 43px;
+        position: relative;
+        overflow: hidden;
+
+        input {
+            float: right;
+        }
+    }
+
+    .title-block {
+        padding: em(14) 0;
+
+        h2 {
+            font-size: if(mapping($youtubevideosLanding, verticalPlaylist, headingSize), mapping($youtubevideosLanding, verticalPlaylist, headingSize), em(24));
+            font-weight: mapping($youtubevideosLanding, verticalPlaylist, fontWeight);
+            letter-spacing: if(mapping($youtubevideosLanding, verticalPlaylist, headingSpacing), mapping($youtubevideosLanding, verticalPlaylist, headingSpacing), 1.5px);
+            margin: 0;
+            text-align: mapping($youtubevideosLanding, verticalPlaylist, txtAlign);
+            color: mapping($youtubevideosLanding, verticalPlaylist, color);
+
+
+        }
+    }
+
+    .video-play-list-area {
+        //  height:523.969px;
+        @extend .col-md-12;
+        overflow-y: scroll;
+        padding: 0;
+
+        &::-webkit-scrollbar-thumb {
+            @include box-shadow(inset 0 0 6px rgba(0, 0, 0, 0.3));
+            @include border-radius(em(4));
+            background-color: if(mapping($youtubevideosLanding, verticalPlaylist, scrollThumbColor), mapping($youtubevideosLanding, verticalPlaylist, scrollThumbColor), $violet);
+        }
+
+        &::-webkit-scrollbar {
+            width: em(10);
+            background-color: if(mapping($youtubevideosLanding, verticalPlaylist, scrollBarColor), mapping($youtubevideosLanding, verticalPlaylist, scrollBarColor), rgba(0, 0, 0, 0.1));
+            height: em(2);
+        }
+
+        ul {
+            margin: if(mapping($youtubevideosLanding, verticalPlaylist, tileMargin), mapping($youtubevideosLanding, verticalPlaylist, tileMargin), 0);
+
+            &>li {
+                position: relative;
+                margin-bottom: if(mapping($youtubevideosLanding, verticalPlaylist, tileTitleMargin), mapping($youtubevideosLanding, verticalPlaylist, tileTitleMargin), em(20));
+
+                &:last-child {
+                    margin-bottom: 0;
+                }
+
+                a {
+                    display: block;
+
+                    &:link {
+                        color: $white;
+                    }
+
+                    .gallery-image {
+                        &:hover {
+                            background-color: mapping($youtubevideosLanding, listOverlay, overlaybg);
+
+                            img {
+                                opacity: mapping($youtubevideosLanding, listOverlay, imgopacity);
+                            }
+                        }
+
+                        @if mapping($youtubevideosLanding, verticalPlaylist, playIcon)==true {
+                            @extend .video-playicon-extnd;
+                        }
+                    }
+
+                    span {
+                        padding: if(mapping($youtubevideosLanding, videoVerticalPlaylistGallery, padding), mapping($youtubevideosLanding, videoVerticalPlaylistGallery, padding), 10px);
+                        width: 100%;
+                        display: block;
+                        background-color: if(mapping($youtubevideosLanding, videoVerticalPlaylistGallery, bgColor), mapping($youtubevideosLanding, videoVerticalPlaylistGallery, bgColor), $violet);
+                        text-align: if(mapping($youtubevideosLanding, videoVerticalPlaylistGallery, txtAlign), mapping($youtubevideosLanding, videoVerticalPlaylistGallery, txtAlign), center);
+                        text-transform: if(mapping($youtubevideosLanding, videoVerticalPlaylistGallery, txtCase), mapping($youtubevideosLanding, videoVerticalPlaylistGallery, txtCase), none);
+                        font-family: if(mapping($youtubevideosLanding, videoVerticalPlaylistGallery, fontFamily), mapping($youtubevideosLanding, videoVerticalPlaylistGallery, fontFamily), Arial);
+                        font-weight: mapping($youtubevideosLanding, videoVerticalPlaylistGallery, fontWeight);
+                        line-height: mapping($youtubevideosLanding, videoVerticalPlaylistGallery, lineHeight);
+                        font-size: if(mapping($youtubevideosLanding, videoVerticalPlaylistGallery, fontSize), mapping($youtubevideosLanding, videoVerticalPlaylistGallery, fontSize), 1em);
+                        letter-spacing: if(mapping($youtubevideosLanding, videoVerticalPlaylistGallery, letterSpacing), mapping($youtubevideosLanding, videoVerticalPlaylistGallery, letterSpacing), 1px);
+                        color: if(mapping($youtubevideosLanding, videoVerticalPlaylistGallery, color), mapping($youtubevideosLanding, videoVerticalPlaylistGallery, color), $white);
+                        position: mapping($youtubevideosLanding, listTitle, position);
+                        z-index: mapping($youtubevideosLanding, listTitle, zindex);
+                    }
+
+                    &:hover {
+                        .playing-overlay {
+                            display: mapping($youtubevideosLanding, main, hoverDisplay);
+                        }
+                    }
+
+                    .playing-overlay {
+                        display: block;
+                        position: absolute;
+                        top: 0;
+                        bottom: 0;
+                        left: 0;
+                        right: 0;
+                        background-color: transparent;
+
+                        &:hover {
+                            background-color: mapping($youtubevideosLanding, overlay, overlaybgColor);
+                        }
+
+                        span {
+                            position: absolute;
+                            z-index: 1;
+
+                            &.play-icon {
+                                @if mapping($youtubevideosLanding, main, isRoundedPlayIcon)==true {
+                                    display: none;
+                                }
+
+                                @else {
+                                    top: 30%;
+                                }
+
+                                left: 50%;
+                                @include transform(translateX(-50%));
+                                opacity: 0.9;
+                                font-family: $fontAwesome;
+                                background: transparent;
+                                color: $white;
+                                padding: 0;
+                                font-size: 45px;
+                                line-height: 1;
+                            }
+
+                            &.play-text {
+                                display: none;
+                            }
+                        }
+                    }
+
+
+                }
+
+                &.active {
+                    a {
+                        .gallery-image {
+                            background-color: if(mapping($gallery, gallerytileImage, bgnd), mapping($gallery, gallerytileImage, bgnd), transparent);
+                        }
+
+                        .playing-overlay {
+                            &:hover {
+                                background-color: mapping($youtubevideosLanding, overlay, activeoverlaybgColor);
+                            }
+
+                            display: block;
+
+                            @if mapping($youtubevideosLanding, listOverlay, isOverlayImgAlone)==true {}
+
+                            @else {
+                                background-color: rgba(0, 0, 0, 0.1);
+                            }
+
+                            span {
+                                &.play-icon {
+                                    display: none;
+                                }
+
+                                &.play-text {
+                                    display: inline-block;
+                                    font-size: if(mapping($youtubevideosLanding, nowPlaying, fontSize), mapping($youtubevideosLanding, nowPlaying, fontSize), 1em);
+                                    @include font-properties($maaxMedium,$localFontVerdana);
+                                    font-weight: mapping($youtubevideosLanding, nowPlaying, fontWeight);
+                                    color: if(mapping($youtubevideosLanding, nowPlaying, color), mapping($youtubevideosLanding, nowPlaying, color), $violet);
+                                    background-color: if(mapping($youtubevideosLanding, nowPlaying, backgroundColor), mapping($youtubevideosLanding, nowPlaying, backgroundColor), $white);
+                                    border-color: mapping($youtubevideosLanding, nowPlaying, borderColor);
+                                    padding: if(mapping($youtubevideosLanding, nowPlaying, padding), mapping($youtubevideosLanding, nowPlaying, padding), em(7));
+                                    margin: mapping($youtubevideosLanding, nowPlaying, margin);
+                                    @include border-radius(if(mapping($youtubevideosLanding, nowPlaying, borderRadius), mapping($youtubevideosLanding, nowPlaying, borderRadius), 0));
+                                    top: if(mapping($youtubevideosLanding, nowPlaying, top), mapping($youtubevideosLanding, nowPlaying, top), 7px);
+                                    left: if(mapping($youtubevideosLanding, nowPlaying, left), mapping($youtubevideosLanding, nowPlaying, left), 7px);
+                                    right: mapping($youtubevideosLanding, nowPlaying, right);
+                                    white-space: if(mapping($youtubevideosLanding, nowPlaying, whiteSpace), mapping($youtubevideosLanding, nowPlaying, whiteSpace), nowrap);
+                                    letter-spacing: if(mapping($youtubevideosLanding, nowPlaying, letterSpacing), mapping($youtubevideosLanding, nowPlaying, letterSpacing), 1px);
+                                    text-shadow: mapping($youtubevideosLanding, nowPlaying, textShadow);
+                                    text-align: mapping($youtubevideosLanding, nowPlaying, align);
+                                    text-transform: mapping($youtubevideosLanding, nowPlaying, textTransform);
+                                    line-height: mapping($youtubevideosLanding, nowPlaying, lineHeight);
+                                    -webkit-text-stroke-width: mapping($youtubevideosLanding, nowPlaying, strokeWidth);
+                                    -webkit-text-stroke-color: mapping($youtubevideosLanding, nowPlaying, strokeColor);
+                                    width: mapping($youtubevideosLanding, nowPlaying, width);
+
+                                }
+                            }
+                        }
+
+                        .gallery-image {
+                            img {
+
+                                opacity: if(mapping($gallery, gallerytileImage, opac), mapping($gallery, gallerytileImage, opac), 0.5);
+                                background-color: mapping($gallery, gallerytileImage, bgColorhover);
+
+                            }
+
+                            &:before,
+                            &:after {
+                                content: none
+                            }
+                        }
+                    }
+
+                }
+
+
+            }
+        }
+    }
+}
+
+.video-category-filter {
+    h2 {
+        @media #{$small-up} {
+            display: none;
+        }
+
+        font-size:mapping($youtubevideosLanding, categoryFilterTitle, fontSize);
+        color:mapping($youtubevideosLanding, categoryFilterTitle, txtColor);
+        text-align:mapping($youtubevideosLanding, categoryFilterTitle, txtAlign);
+        padding:mapping($youtubevideosLanding, categoryFilterTitle, pad);
+        margin:mapping($youtubevideosLanding, categoryFilterTitle, margin);
+        letter-spacing:mapping($youtubevideosLanding, categoryFilterTitle, letterSpacing);
+        line-height: mapping($youtubevideosLanding, categoryFilterTitle, lineHeight);
+    }
+
+    @extend .col-md-12;
+    padding: if(mapping($youtubevideosLanding, categoryFilter, pad), mapping($youtubevideosLanding, categoryFilter, pad), em(30) em(54));
+
+    @media #{$medium-down} {
+        padding: if(mapping($youtubevideosLanding, categoryFilter, padTab), mapping($youtubevideosLanding, categoryFilter, padTab), em(30) em(20));
+        z-index: mapping($youtubevideosLanding, navSlidesLink, zIndex);
+
+        .enable-carousel-nav {
+            padding: 0;
+        }
+    }
+
+    @media #{$small-down} {
+        padding: if(mapping($youtubevideosLanding, categoryFilter, padMob), mapping($youtubevideosLanding, categoryFilter, padMob), em(30) em(20));
+    }
+
+    .cda-banner {
+        background: transparent;
+
+        @media #{$small-only} {
+            display: inline-block;
+            width: 100%;
+            margin-bottom: -5px;
+        }
+
+        .category-drpdown-display {
+            @media #{$small-down} {
+                &.open {
+                    background: mapping($youtubevideosLanding, categoryDrop, bgColor);
+
+                    span {
+                        &:before {
+                            content: mapping($youtubevideosLanding, categoryDrop, content);
+                            font-family: mapping($youtubevideosLanding, categoryDrop, font);
+                            border: mapping($youtubevideosLanding, categoryDrop, border);
+                            color: mapping($youtubevideosLanding, categoryDrop, color);
+                            margin-top: mapping($youtubevideosLanding, categoryDrop, marginTop);
+
+                        }
+                    }
+                }
+            }
+
+            @media #{$small-only} {
+                margin-bottom: 0;
+            }
+        }
+
+        @if mapping($youtubevideosLanding, filterArrows, isExtendArrow)==true {
+            .nav-carousel-slides {
+                padding: 0;
+
+                &:not(.slider-nav-loaded) {
+                    width: 100%;
+
+                    .owl-prev,
+                    .owl-next {
+                        display: none;
+                    }
+                }
+
+                &.slider-nav-loaded {
+                    width: if(mapping($youtubevideosLanding, categoryFilter, sliderNavLoadWidth), mapping($youtubevideosLanding, categoryFilter, sliderNavLoadWidth), calc(100% - 70px));
+                    margin: auto;
+                }
+            }
+
+            .owl-prev {
+                left: -35px;
+            }
+
+            .owl-next {
+                right: -35px;
+            }
+
+            .owl-prev,
+            .owl-next {
+                position: absolute;
+                top: 0;
+
+                &.disabled {
+                    opacity: .5;
+                    display: if(mapping($youtubevideosLanding, owlNavButton, owlNavBtnDisplay), mapping($youtubevideosLanding, owlNavButton, owlNavBtnDisplay), none);
+                }
+            }
+        }
+    }
+
+    .nav-carousel-slides {
+        padding: if(mapping($youtubevideosLanding, filterBlock, pad), mapping($youtubevideosLanding, filterBlock, pad), em(10) em(40));
+        background-color: $filter-nav-carousel-bg;
+
+        .slick-next,
+        .slick-prev {
+            width: auto;
+            height: auto;
+            background-color: $litviolet;
+            padding: 5px 16px;
+            @include border-radius(50%);
+
+            &:before {
+                color: $white;
+                font-size: 35px;
+                opacity: 1;
+                padding: 0;
+            }
+        }
+
+        .owl-nav {
+            height: mapping($youtubevideosLanding, owlNavButton, owlNavhiddenHeight);
+
+            button {
+                &:before {
+                    @if mapping($youtubevideosLanding, owlNavButton, owlNav)==false {
+                        color: $filter-nav-arrow-color;
+                    }
+
+                    @else {
+                        font-size: if(mapping($youtubevideosLanding, owlNavButton, fntSize), mapping($youtubevideosLanding, owlNavButton, fntSize), 45px);
+                        position: absolute;
+                        top: if(mapping($youtubevideosLanding, owlNavButton, top), mapping($youtubevideosLanding, owlNavButton, top), 20px);
+                        font-family: $fontAwesome;
+                        color: if(mapping($youtubevideosLanding, owlNavColor, color), mapping($youtubevideosLanding, owlNavColor, color), $filter-nav-arrow-color);
+                    }
+
+                    @media #{$small-down} {
+                        display: if(mapping($youtubevideosLanding, owlNavColor, dispMob), mapping($youtubevideosLanding, owlNavColor, dispMob), mapping($categarynav, categaryslickprevNext, dispMob));
+                    }
+
+                }
+            }
+
+            @if mapping($youtubevideosLanding, owlNavButton, owlNav)==false {}
+
+            @else {
+                .owl-prev:before {
+                    content: if(mapping($youtubevideosLanding, owlNavButton, contentPrev), mapping($youtubevideosLanding, owlNavButton, contentPrev), "\f359");
+                    left: if(mapping($youtubevideosLanding, owlNavButton, owlNavBtnLeft), mapping($youtubevideosLanding, owlNavButton, owlNavBtnLeft), -15px);
+
+                }
+
+                .owl-next:before {
+                    content: if(mapping($youtubevideosLanding, owlNavButton, contentNext), mapping($youtubevideosLanding, owlNavButton, contentNext), "\f35a");
+                    right: if(mapping($youtubevideosLanding, owlNavButton, owlNavBtnRight), mapping($youtubevideosLanding, owlNavButton, owlNavBtnRight), -25px);
+
+                }
+            }
+        }
+
+        li {
+            width: auto;
+            margin-right: 0;
+
+            a {
+                @if mapping($youtubevideosLanding, categoryFilter, sameAsThemeBtn3)==true {}
+
+                @else {
+                    position: relative;
+                    z-index: 1;
+                    background-color: if(mapping($youtubevideosLanding, navSlidesLink, bgColor), mapping($youtubevideosLanding, navSlidesLink, bgColor), $filter-nav-carousel-link-bg);
+                    border: if(mapping($youtubevideosLanding, navSlidesLink, border), mapping($youtubevideosLanding, navSlidesLink, border), 4px solid $filter-nav-carousel-link-border);
+                    color: mapping($youtubevideosLanding, navSlidesLink, color);
+                    text-transform: mapping($youtubevideosLanding, navSlidesLink, transform);
+                    font-family: if(mapping($youtubevideosLanding, navSlidesLink, fontFamily), mapping($youtubevideosLanding, navSlidesLink, fontFamily), 'Swis');
+                    font-weight: if(mapping($youtubevideosLanding, navSlidesLink, fontWeight), mapping($youtubevideosLanding, navSlidesLink, fontWeight), $fontRegular);
+                    font-size: if(mapping($youtubevideosLanding, navSlidesLink, fontSize), mapping($youtubevideosLanding, navSlidesLink, fontSize), em(19));
+
+                    @media #{$small-down} {
+                        font-size: mapping($youtubevideosLanding, navSlidesLink, mobFontSize);
+                    }
+
+                    letter-spacing: normal;
+                    min-width:100px;
+                    width:auto;
+                    @include border-radius(em(50, 19));
+                    padding: if(mapping($youtubevideosLanding, navSlidesLink, pad), mapping($youtubevideosLanding, navSlidesLink, pad), em(10, 19) em(25, 19));
+
+                    &:hover,
+                    &:focus,
+                    &.active {
+                        color: if(mapping($youtubevideosLanding, navSlidesHover, color), mapping($youtubevideosLanding, navSlidesHover, color), $filter-nav-carousel-link-bg);
+                        background-color: $filter-nav-carousel-link-hover-bg;
+                    }
+
+                    &.active,
+                    &:hover {
+                        &:before {
+                            content: "";
+                            position: absolute;
+                            background-color: $yellow;
+                            left: 0%;
+                            right: 0;
+                            height: 22px;
+                            top: 44%;
+                            width: 100%;
+                            z-index: -1;
+
+                            @media #{$small-down} {
+                                left: 5%;
+                                width: 90%;
+                                height: 18px;
+                            }
+
+                        }
+                    }
+                }
+
+            }
+        }
+    }
+}
+
+.video-play-list-area {
+    .playing-overlay {
+        display: none;
+    }
+}
+
+.videos-gallery-playlist {
+    @extend .col-md-12;
+    padding: if(mapping($youtubevideosLanding, videosGallery, pad), mapping($youtubevideosLanding, videosGallery, pad), 0);
+    background: mapping($youtubevideosLanding, videosGallery, bgColor);
+
+    @media #{$small-up} {
+        display: inline-block;
+    }
+
+    @media #{$small-down} {
+        display: inline-block;
+        padding: mapping($youtubevideosLanding, videosGallery, mobPad);
+    }
+
+    @media #{$mobile-down-only} {
+        display: inline-block;
+        padding: mapping($youtubevideosLanding, videosGallery, mobOnly);
+    }
+
+    h2 {
+        font-family: mapping($youtubevideosLanding, thumbnailHeading, fontFamily);
+        font-weight: mapping($youtubevideosLanding, thumbnailHeading, fontWeight);
+        background-color: mapping($youtubevideosLanding, thumbnailHeading, bgColor);
+        padding: if(mapping($youtubevideosLanding, thumbnailHeading, padding), mapping($youtubevideosLanding, thumbnailHeading, padding), 20px 54px 0);
+        font-size: if(mapping($youtubevideosLanding, thumbnailHeading, fontSize), mapping($youtubevideosLanding, thumbnailHeading, fontSize), em(24));
+        color: if(mapping($youtubevideosLanding, thumbnailHeading, color), mapping($youtubevideosLanding, thumbnailHeading, color), $violet);
+        margin: if(mapping($youtubevideosLanding, thumbnailHeading, margin), mapping($youtubevideosLanding, thumbnailHeading, margin), 0);
+        text-align: mapping($youtubevideosLanding, thumbnailHeading, align);
+        text-transform: if(mapping($youtubevideosLanding, thumbnailHeading, transform), mapping($youtubevideosLanding, thumbnailHeading, transform), none);
+
+        @media #{$medium-down} {
+            padding: if(mapping($youtubevideosLanding, thumbnailHeading, tabPadding), mapping($youtubevideosLanding, thumbnailHeading, tabPadding), 0 em(20));
+        }
+
+        @media #{$small-down} {
+            padding: if(mapping($youtubevideosLanding, thumbnailHeading, mobPadding), mapping($youtubevideosLanding, thumbnailHeading, mobPadding), 0 em(10));
+            font-size: mapping($youtubevideosLanding, thumbnailHeading, mobFontSize);
+            margin: mapping($youtubevideosLanding, thumbnailHeading, mobMargin);
+            line-height: mapping($youtubevideosLanding, thumbnailHeading, mobLineHeight);
+        }
+    }
+
+    .video-heading {
+        color: $violet;
+    }
+
+    .play-tiles-gallery {
+        .gallery-tile {
+            padding: if(mapping($youtubevideosLanding, galleryTile, tilePadding), mapping($youtubevideosLanding, galleryTile, tilePadding), 0 2.14286em 1.07143em);
+
+            @media #{$medium-down} {
+                padding: if(mapping($youtubevideosLanding, galleryTile, tabTilePadding), mapping($youtubevideosLanding, galleryTile, tabTilePadding), 0 2.14286em 1.07143em);
+            }
+
+            @media #{$small-down} {
+                padding: if(mapping($youtubevideosLanding, galleryTile, mobTilePadding), mapping($youtubevideosLanding, galleryTile, mobTilePadding), 0 1.42857em);
+            }
+
+            h2 {
+                padding: 0 25px;
+
+                @media #{$medium-down} {
+                    padding: 0 25px;
+                }
+
+                @media #{$small-down} {
+                    padding: 0;
+                }
+            }
+
+            .view-all {
+                margin-right: 25px;
+            }
+
+            ul {
+                padding: 0 0;
+
+                &>li {
+                    padding: if(mapping($youtubevideosLanding, galleryTileList, listPadding), mapping($youtubevideosLanding, galleryTile, listPadding), em(25));
+
+                    @media #{$small-down} {
+                        padding: em(10) 0;
+                    }
+
+                    &.active {
+                        .gallery-image {
+                            background-color: mapping($gallery, gallerytileImage, bgnd);
+                        }
+
+                        .playing-overlay {
+                            &:hover {
+                                background-color: mapping($youtubevideosLanding, overlay, activeoverlaybgColor);
+                            }
+                        }
+                    }
+
+                    .gallery-image {
+                        @if mapping($youtubevideosLanding, listOverlay, isOverlayImgAlone)==false {}
+
+                        @else {
+                            &:before {
+                                content: "";
+                                position: absolute;
+                                left: 0;
+                                right: 0;
+                                top: 0;
+                                bottom: 0;
+                                background-color: mapping($youtubevideosLanding, listOverlay, backgroundColor);
+                            }
+                        }
+                    }
+
+                    a {
+                        .gallery-image {
+                            overflow: hidden;
+
+                            &:hover {
+                                background-color: mapping($youtubevideosLanding, listOverlay, overlaybg);
+
+                                img {
+                                    opacity: mapping($youtubevideosLanding, listOverlay, imgopacity);
+                                }
+                            }
+
+                            @extend .video-playicon-extnd;
+                        }
+
+                        span {
+                            color: mapping($youtubevideosLanding, listTitle, color);
+                            text-align: if(mapping($youtubevideosLanding, listTitle, align), mapping($youtubevideosLanding, listTitle, align), center);
+                            @include font-properties($maaxMedium,$localFontVerdana);
+                            font-size: if(mapping($youtubevideosLanding, listTitle, fontSize), mapping($youtubevideosLanding, listTitle, fontSize), 1em);
+                            text-transform: if(mapping($youtubevideosLanding, listTitle, transform), mapping($youtubevideosLanding, listTitle, transform), none);
+                            letter-spacing: if(mapping($youtubevideosLanding, listTitle, letterSpacing), mapping($youtubevideosLanding, listTitle, letterSpacing), 1px);
+                            padding: if(mapping($youtubevideosLanding, listTitle, padding), mapping($youtubevideosLanding, listTitle, padding), em(12));
+                            margin: mapping($youtubevideosLanding, listTitle, margin);
+                            font-weight: mapping($youtubevideosLanding, listTitle, fontWeight);
+                            border-radius: mapping($youtubevideosLanding, listTitle, borderRadius);
+                            line-height: mapping($youtubevideosLanding, listTitle, lineHeight);
+                            -webkit-border-radius: mapping($youtubevideosLanding, listTitle, borderRadius);
+                            -moz-border-radius: mapping($youtubevideosLanding, listTitle, borderRadius);
+                            -ms-border-radius: mapping($youtubevideosLanding, listTitle, borderRadius);
+
+                            @media #{$small-down} {
+                                height: auto;
+                                font-size: if(mapping($youtubevideosLanding, listTitle, mobFontSize), mapping($youtubevideosLanding, listTitle, mobFontSize), inherit);
+                                text-align: if(mapping($youtubevideosLanding, listTitle, mobAlign), mapping($youtubevideosLanding, listTitle, mobAlign), center);
+                                line-height: mapping($youtubevideosLanding, listTitle, mobLineHeight);
+                            }
+
+                            position: mapping($youtubevideosLanding, listTitle, position);
+                            z-index: mapping($youtubevideosLanding, listTitle, zindex);
+                            background-color: mapping($youtubevideosLanding, listTitle, bgColor);
+                        }
+
+                        &:hover {
+                            .playing-overlay {
+                                display: if(mapping($youtubevideosLanding, main, hoverDisplay), mapping($youtubevideosLanding, listTitle, hoverDisplay), block);
+                            }
+                        }
+
+                        .playing-overlay {
+                            display: block;
+                            position: absolute;
+                            top: 0;
+                            bottom: 0;
+                            left: 0;
+                            right: 0;
+                            background-color: transparent;
+
+                            &:hover {
+                                background-color: mapping($youtubevideosLanding, overlay, overlaybgColor);
+                            }
+
+                            span {
+                                position: absolute;
+                                z-index: 1;
+
+                                &.play-icon {
+                                    @if mapping($youtubevideosLanding, main, isRoundedPlayIcon)==true {
+                                        display: none;
+                                    }
+
+                                    @else {
+                                        top: 30%;
+                                    }
+
+                                    left: 50%;
+                                    @include transform(translateX(-50%));
+                                    opacity: 0.9;
+                                    font-family: $fontAwesome;
+                                    background: transparent;
+                                    color: $white;
+                                    padding: 0;
+                                    font-size: 45px;
+                                    line-height: 1;
+                                }
+
+                                &.play-text {
+                                    display: none;
+                                }
+                            }
+                        }
+                    }
+
+                    &.active {
+                        a {
+                            .gallery-image {
+                                img {
+                                    opacity: if(mapping($youtubevideosLanding, gallerytileImageActive, opac), mapping($gallery, gallerytileImage, opac), 0.5);
+                                    background-color: mapping($youtubevideosLanding, gallerytileImageActive, bgColorhover);
+                                }
+
+                                @if mapping($youtubevideosLanding, main, isRoundedPlayIcon)==true {
+
+                                    &:after,
+                                    &:before {
+                                        content: none;
+                                    }
+                                }
+
+                                .playing-overlay {
+                                    display: flex;
+                                    width: 100%;
+                                    align-items: center;
+                                    justify-content: center;
+                                    background-color: rgba(0, 0, 0, 0.1);
+
+                                    span {
+                                        &.play-text {
+                                            display: inline-block;
+                                            font-size: if(mapping($youtubevideosLanding, nowPlaying, fontSize), mapping($youtubevideosLanding, nowPlaying, fontSize), 1em);
+                                            font-family: if(mapping($youtubevideosLanding, nowPlaying, fontFamily), mapping($youtubevideosLanding, nowPlaying, fontFamily), "Arial");
+                                            font-weight: mapping($youtubevideosLanding, nowPlaying, fontWeight);
+                                            color: if(mapping($youtubevideosLanding, nowPlaying, color), mapping($youtubevideosLanding, nowPlaying, color), $violet);
+                                            background-color: if(mapping($youtubevideosLanding, nowPlaying, backgroundColor), mapping($youtubevideosLanding, nowPlaying, backgroundColor), $white);
+                                            border-color: mapping($youtubevideosLanding, nowPlaying, borderColor);
+                                            padding: if(mapping($youtubevideosLanding, nowPlaying, padding), mapping($youtubevideosLanding, nowPlaying, padding), em(7));
+                                            //margin: mapping($youtubevideosLanding, nowPlaying, margin);
+                                            @include border-radius(if(mapping($youtubevideosLanding, nowPlaying, borderRadius), mapping($youtubevideosLanding, nowPlaying, borderRadius), 0));
+                                            top: if(mapping($youtubevideosLanding, nowPlaying, top), mapping($youtubevideosLanding, nowPlaying, top), 7px);
+                                            left: if(mapping($youtubevideosLanding, nowPlaying, left), mapping($youtubevideosLanding, nowPlaying, left), 7px);
+                                            right: mapping($youtubevideosLanding, nowPlaying, right);
+                                            white-space: if(mapping($youtubevideosLanding, nowPlaying, whiteSpace), mapping($youtubevideosLanding, nowPlaying, whiteSpace), nowrap);
+                                            letter-spacing: if(mapping($youtubevideosLanding, nowPlaying, letterSpacing), mapping($youtubevideosLanding, nowPlaying, letterSpacing), 1px);
+                                            text-shadow: mapping($youtubevideosLanding, nowPlaying, textShadow);
+                                            text-align: mapping($youtubevideosLanding, nowPlaying, align);
+                                            text-transform: mapping($youtubevideosLanding, nowPlaying, textTransform);
+                                            line-height: mapping($youtubevideosLanding, nowPlaying, lineHeight);
+                                            -webkit-text-stroke-width: mapping($youtubevideosLanding, nowPlaying, strokeWidth);
+                                            -webkit-text-stroke-color: mapping($youtubevideosLanding, nowPlaying, strokeColor);
+                                            width: mapping($youtubevideosLanding, nowPlaying, width);
+                                            margin: 0px;
+                                        }
+                                    }
+                                }
+                            }
+
+                            .playing-overlay {
+                                display: block;
+                                //display: flex;
+                                width: 100%;
+                                align-items: center;
+                                justify-content: center;
+
+                                @if mapping($youtubevideosLanding, listOverlay, isOverlayImgAlone)==true {}
+
+                                @else {
+                                    background-color: rgba(0, 0, 0, 0.1);
+                                }
+
+                                span {
+                                    &.play-icon {
+                                        display: none;
+                                    }
+
+                                    &.play-text {
+                                        display: inline-block;
+                                        font-size: if(mapping($youtubevideosLanding, nowPlaying, fontSize), mapping($youtubevideosLanding, nowPlaying, fontSize), 1em);
+                                        font-family: if(mapping($youtubevideosLanding, nowPlaying, fontFamily), mapping($youtubevideosLanding, nowPlaying, fontFamily), "Arial");
+                                        font-weight: mapping($youtubevideosLanding, nowPlaying, fontWeight);
+                                        color: if(mapping($youtubevideosLanding, nowPlaying, color), mapping($youtubevideosLanding, nowPlaying, color), $violet);
+                                        background-color: if(mapping($youtubevideosLanding, nowPlaying, backgroundColor), mapping($youtubevideosLanding, nowPlaying, backgroundColor), $white);
+                                        border-color: mapping($youtubevideosLanding, nowPlaying, borderColor);
+                                        padding: if(mapping($youtubevideosLanding, nowPlaying, padding), mapping($youtubevideosLanding, nowPlaying, padding), em(7));
+                                        //margin: mapping($youtubevideosLanding, nowPlaying, margin);
+                                        @include border-radius(if(mapping($youtubevideosLanding, nowPlaying, borderRadius), mapping($youtubevideosLanding, nowPlaying, borderRadius), 0));
+                                        top: if(mapping($youtubevideosLanding, nowPlaying, top), mapping($youtubevideosLanding, nowPlaying, top), 7px);
+                                        left: if(mapping($youtubevideosLanding, nowPlaying, left), mapping($youtubevideosLanding, nowPlaying, left), 7px);
+                                        right: mapping($youtubevideosLanding, nowPlaying, right);
+                                        white-space: if(mapping($youtubevideosLanding, nowPlaying, whiteSpace), mapping($youtubevideosLanding, nowPlaying, whiteSpace), nowrap);
+                                        letter-spacing: if(mapping($youtubevideosLanding, nowPlaying, letterSpacing), mapping($youtubevideosLanding, nowPlaying, letterSpacing), 1px);
+                                        text-shadow: mapping($youtubevideosLanding, nowPlaying, textShadow);
+                                        text-align: mapping($youtubevideosLanding, nowPlaying, align);
+                                        text-transform: mapping($youtubevideosLanding, nowPlaying, textTransform);
+                                        line-height: mapping($youtubevideosLanding, nowPlaying, lineHeight);
+                                        -webkit-text-stroke-width: mapping($youtubevideosLanding, nowPlaying, strokeWidth);
+                                        -webkit-text-stroke-color: mapping($youtubevideosLanding, nowPlaying, strokeColor);
+                                        width: mapping($youtubevideosLanding, nowPlaying, width);
+                                        margin: 10px 0 0 10px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+@if mapping($youtubevideosLanding, arrows, sameAsCDAArrow)==true {
+    .video-player-in {
+
+        .cd-next,
+        .cd-prev {
+            top: 40%;
+            z-index: 1024;
+            text-align: if(mapping($youtubevideosLanding, arrows, txtAlign), mapping($youtubevideosLanding, arrows, txtAlign), center);
+
+            @media #{$small-down} {
+                top: 35%;
+
+                @if mapping($youtubevideosLanding, arrows, isHideMobile)==true {
+                    display: none;
+                }
+            }
+        }
+
+        .cd-prev {
+            @extend .slick-prev;
+        }
+
+        .cd-next {
+            @extend .slick-next;
+        }
+
+        @extend .arrow-styles;
+    }
+}
+
+@else {
+
+    .cd-prev,
+    .cd-next {
+        top: if(mapping($youtubevideosLanding, playerArrows, posTop), mapping($youtubevideosLanding, playerArrows, posTop), 40%);
+        z-index: 1024;
+        width: auto;
+        height: if(mapping($youtubevideosLanding, playerArrows, bgHeight), mapping($youtubevideosLanding, playerArrows, bgHeight), auto);
+        background-color: mapping($youtubevideosLanding, playerArrows, bgndColor);
+
+        &:hover,
+        &:focus,
+        &:active {
+            background-color: mapping($youtubevideosLanding, playerArrows, hoverBgndColor);
+        }
+
+        @media #{$small-down} {
+            top: if(mapping($youtubevideosLanding, playerArrows, mobPosTop), mapping($youtubevideosLanding, playerArrows, mobPosTop), 35%);
+            height: auto;
+
+            @if mapping($youtubevideosLanding, arrows, isHideMobile)==true {
+                display: none;
+            }
+
+            background-color:mapping($youtubevideosLanding, playerArrows, bgndColorMob);
+        }
+
+        &:before {
+            font-family: $fontAwesome;
+
+            @if mapping($youtubevideosLanding, arrows, isRoundBgnd)==false {
+                color: mapping($youtubevideosLanding, arrows, color);
+                background: none;
+            }
+
+            @else {
+                background-color: if(mapping($youtubevideosLanding, playerArrows, arwbgndColor), mapping($youtubevideosLanding, playerArrows, arwbgndColor), $litviolet);
+                @include border-radius(50%);
+                padding: if(mapping($youtubevideosLanding, playerArrows, pad), mapping($youtubevideosLanding, playerArrows, pad), 15px 23px);
+            }
+
+            content: if(mapping($youtubevideosLanding, playerArrows, arwContent), mapping($youtubevideosLanding, playerArrows, arwContent), mapping($youtubevideosLanding, arrows, arrowContent));
+            color:mapping($youtubevideosLanding, playerArrows, arwColor);
+            opacity: if(mapping($youtubevideosLanding, arrows, opacity), mapping($youtubevideosLanding, arrows, opacity), 0.9);
+            font-size: if(mapping($youtubevideosLanding, arrows, fontSize), mapping($youtubevideosLanding, arrows, fontSize), 36px);
+
+            @media #{$small-down} {
+                background-color: if(mapping($youtubevideosLanding, arrows, bgColor), mapping($youtubevideosLanding, arrows, bgColor), transparent);
+                color: if(mapping($youtubevideosLanding, arrows, mobColor), mapping($youtubevideosLanding, arrows, mobColor), $litviolet);
+                padding: if(mapping($youtubevideosLanding, arrows, mobPad), mapping($youtubevideosLanding, arrows, mobPad), 0);
+                font-size: mapping($youtubevideosLanding, arrows, mobFontSize);
+            }
+        }
+
+        &:after {
+            display: none;
+
+            @if mapping($youtubevideosLanding, arrows, isArrowAfter)==false {
+                content: '';
+            }
+
+            @else {
+                content: '';
+                width: 25px;
+                height: 25px;
+                background-color: $white;
+                position: absolute;
+                left: 15px;
+                top: 12px;
+                z-index: -1;
+            }
+
+            @media #{$small-down} {
+                content: none;
+            }
+        }
+    }
+
+    .cd-prev {
+        @extend .slick-prev;
+
+        &:before {
+            content: if(mapping($youtubevideosLanding, arrows, leftBefore), mapping($youtubevideosLanding, arrows, leftBefore), "\f053");
+        }
+
+        left:if(mapping($youtubevideosLanding, arrows, leftPos), mapping($youtubevideosLanding, arrows, leftPos), 9px);
+    }
+
+    .cd-next {
+        @extend .slick-next;
+
+        &:before {
+            content: if(mapping($youtubevideosLanding, arrows, RightBefore), mapping($youtubevideosLanding, arrows, RightBefore), "\f054");
+        }
+
+        right:if(mapping($youtubevideosLanding, arrows, rightPos), mapping($youtubevideosLanding, arrows, rightPos), 9px);
+    }
+
+}
+
+#pagename-videos {
+    .video-player-container {
+        padding: mapping($youtubevideosLanding, videoContainer, pad);
+
+        @media #{$small-down} {
+            padding: mapping($youtubevideosLanding, videoContainer, padMob);
+        }
+
+        margin: mapping($youtubevideosLanding, videoContainer, margin);
+    }
+
+    .videos-gallery-playlist {
+        background: mapping($youtubevideosLanding, videosPage, galleryBgnd);
+
+        @media #{$small-down} {
+            display: inline-block;
+        }
+
+        .play-tiles-gallery {
+            .gallery-tile {
+                ul {
+                    &>li {
+                        padding: mapping($youtubevideosLanding, videosPage, gallerylistpad);
+
+                        @media #{$small-down} {
+                            padding: mapping($youtubevideosLanding, videosPage, gallerylistpadMob);
+                        }
+
+                        display: block;
+                    }
+                }
+            }
+        }
+    }
+
+    #videos-gallery {
+        .gallery-tile {
+            .play-text {
+                background-color: mapping($youtubevideosLanding, nowPlaying, backgroundColorDetail);
+            }
+        }
+    }
+
+    #video-player-component .videos-gallery-playlist h2 {
+        color: mapping($youtubevideosLanding, videosDetail, thumbHeadingColorDetail);
+    }
+}
+
+//checkbox
+/**
+* Checkbox Three
+*/
+
+.autoplay-label {
+    float: left;
+    padding: if(mapping($youtubevideosLanding, autoPlayLabel, padding), mapping($youtubevideosLanding, autoPlayLabel, padding), 6px 0 0 0);
+    font-family: if(mapping($youtubevideosLanding, autoPlayLabel, fontFamily), mapping($youtubevideosLanding, autoPlayLabel, fontFamily), "Arial-Rounded");
+    font-weight: mapping($youtubevideosLanding, autoPlayLabel, fontWeight);
+
+    @if mapping($youtubevideosLanding, autoPlayLabel, isDefaultHeadingFont)==true {
+        //@extend .page-heading-default;
+    }
+
+    @else {
+        font-family: if(mapping($youtubevideosLanding, autoPlayLabel, fontFamily), mapping($youtubevideosLanding, autoPlayLabel, fontFamily), "Arial-Rounded");
+        font-weight: 700;
+    }
+
+    font-size: if(mapping($youtubevideosLanding, autoPlayLabel, txtFontSize), mapping($youtubevideosLanding, autoPlayLabel, txtFontSize), em(20));
+    color: if(mapping($youtubevideosLanding, autoPlayLabel, color), mapping($youtubevideosLanding, autoPlayLabel, color), $violet);
+    line-height: mapping($youtubevideosLanding, autoPlayLabel, lineHeight);
+    letter-spacing: mapping($youtubevideosLanding, autoPlayLabel, letterSpacing);
+}
+
+.autoplay-checkbox {
+    width: 62px;
+    height: 30px;
+    background: if(mapping($youtubevideosLanding, autoPlayCheckBox, bgColor), mapping($youtubevideosLanding, autoPlayCheckBox, bgColor), $violet);
+    margin: 0;
+    @include border-radius(50px);
+    position: relative;
+    float: right;
+
+    @if mapping($youtubevideosLanding, autoPlayCheckBox, isAbsoluteElem)==true {
+        transform: translateY(-50%);
+        -webkit-transform: translateY(-50%);
+        -moz-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        position: absolute;
+        top: 50%;
+        right: 10px;
+    }
+
+    @if mapping($youtubevideosLanding, autoPlayCheckBox, isDefaultHeadingFont)==true {
+        //@extend .page-heading-default;
+    }
+
+    /**
+    * Create the text for the On position
+    */
+    &:before,
+    &:after {
+        position: absolute;
+        top: if(mapping($youtubevideosLanding, autoPlayLabel, topVal), mapping($youtubevideosLanding, autoPlayLabel, topVal), 8px);
+        height: 2px;
+        text-transform: mapping($youtubevideosLanding, autoPlayLabel, transform);
+        font-size: if(mapping($youtubevideosLanding, autoPlayLabel, fontSize), mapping($youtubevideosLanding, autoPlayLabel, fontSize), 11px);
+        padding: mapping($youtubevideosLanding, autoPlayLabel, padding);
+    }
+
+    &:before {
+        content: 'On';
+        left: if(mapping($youtubevideosLanding, autoPlayLabel, leftVal), mapping($youtubevideosLanding, autoPlayLabel, leftVal), 6px);
+        color: $white;
+        text-indent: -9999px;
+    }
+
+    &.checked-true {
+        &:after {
+            content: none;
+        }
+
+        &:before {
+            text-indent: inherit;
+        }
+
+    }
+
+    &.checked-false {
+        &:before {
+            content: none;
+        }
+
+        &:after {
+            text-indent: inherit;
+        }
+    }
+
+    /**
+    * Create the label for the off position
+    */
+    &:after {
+        content: 'Off';
+        right: if(mapping($youtubevideosLanding, autoPlayLabel, rightVal), mapping($youtubevideosLanding, autoPlayLabel, rightVal), 6px);
+        color: if(mapping($youtubevideosLanding, autoPlayOnOffTxt, color), mapping($youtubevideosLanding, autoPlayOnOffTxt, color), $litviolet);
+    }
+
+    label {
+        width: 22px;
+        height: 22px;
+        @include border-radius(em(22));
+        @include transition(all .5s ease);
+        cursor: pointer;
+        position: absolute;
+        top: 4px;
+        z-index: 1;
+        left: 4px;
+        background: if(mapping($youtubevideosLanding, autoPlayOnOffButton, bgColor), mapping($youtubevideosLanding, autoPlayOnOffButton, bgColor), $litviolet);
+        margin: 0;
+    }
+
+    /**
+    * Create the checkbox event for the label
+    */
+    input[type=checkbox]:checked+label {
+        left: 36px;
+        background: if(mapping($youtubevideosLanding, autoPlayOnOffButton, activeBgnd), mapping($youtubevideosLanding, autoPlayOnOffButton, activeBgnd), $white);
+    }
+
+    input[type=checkbox] {
+        opacity: 0;
+    }
+}
+
+.videos-gallery-playlist {
+    .gallery-tile-list {
+        ul {
+            li {
+                display: block;
+
+                @media #{$medium-up} {
+                    &.column-3 {
+                        width: 33.33333%;
+                    }
+
+                    &.column-4 {
+                        width: 25%;
+                    }
+                }
+
+                @if mapping($youtubevideosLanding, main, isFpVideoGal)==true {
+                    @extend .col-sm-12;
+                    @extend .col-xs-12;
+                    @extend .col-md-12;
+                    @extend .col-lg-12;
+
+                    a {
+                        span {
+                            @extend .col-sm-6;
+                            @extend .col-xs-6;
+                            padding: 0 0 0 12px;
+                        }
+
+                        .gallery-image {
+                            @extend .col-sm-6;
+                            @extend .col-xs-6;
+                            padding: 0;
+                        }
+
+                        @media #{$small-up} {
+                            .gallery-image {
+                                width: 100%;
+                            }
+
+                            span {
+                                width: 100%;
+                                padding: 16px 0 0;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+#videos-gallery {
+    .gallery-tile-list {
+        @extend .gallery-extnd-tile;
+    }
+}
+//videos page
+#video-player-component {
+    margin-top: mapping($youtubevideosLanding, videosPage, marginTop);
+    background: if(mapping($youtubevideosLanding, videosPage, pgBgnd), mapping($youtubevideosLanding, videosPage, pgBgnd), mapping($youtubevideosLanding, videosDetail, pageBgnd));
+    background-size: mapping($youtubevideosLanding, videosPage, pgBgndsize);
+
+    @media #{$small-down} {
+        background: if(mapping($youtubevideosLanding, videosPage, pgBgndMob), mapping($youtubevideosLanding, videosPage, pgBgndMob), mapping($youtubevideosLanding, videosDetail, pageBgnd));
+        background-size: mapping($youtubevideosLanding, videosPage, pgBgndsize);
+    }
+
+    @if mapping($youtubevideosLanding, videosDetail, isclearDiv)==true {
+        @extend .clearDiv;
+    }
+
+    .videos-gallery-playlist {
+        h2 {
+            color: mapping($youtubevideosLanding, videosDetail, thumbHeadingColor);
+        }
+    }
+
+}
+
+.videopage-baby {
+    background: url('#{$brandImgPath}/FP-Kids_patt_Baby.jpg');
+}
+.reusability-videos-gallery-playlist {
+    .reusability-play-tiles-gallery {
+        .reusability-play-list {
+            li {
+                a {
+                    .reusability-gallery-image {
+                        .reusability-playing-overlay {
+                            .play-text {
+                                @include font-properties($maaxBold,$localFontVerdana);
+                                font-weight: 700;
+                            }
+                        }
+                    }
+                    .reusability-video-title-section {
+                        span {
+                            @include font-properties($maaxMedium,$localFontVerdana);
+                            font-weight: 500;
+                        }
+                    }
+                }
+            }
+        }
+        .show-more-accordian {
+            .accordion {
+                @include font-properties($maaxMedium,$localFontVerdana);
+                font-weight: 500;
+            }
+        }
+    }
+}

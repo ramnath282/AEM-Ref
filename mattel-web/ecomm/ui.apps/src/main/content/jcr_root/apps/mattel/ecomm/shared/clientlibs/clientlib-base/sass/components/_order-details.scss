@@ -1,0 +1,206 @@
+.order-details{
+    @include content-spacing(map-get($myorderDetails, orderDetails));
+    @media #{$small-down} {
+        width: 100vw;
+        position: relative;
+        left: calc((100% - 100vw) / 2);
+        h1 {
+            @include content-spacing(map-get($myorderDetails, headerGap));
+        }
+    }
+    .back-icon {
+        @media #{$small-down}{
+            @include content-spacing(map-get($myorderDetails, minGap)); 
+        }
+        &:before {
+            content: "\f053";
+            @include font-awesome();
+            @include content-spacing(map-get($myorderDetails, backIcon));
+        }
+    }
+    .back-link{
+        font: mapping($myorderDetails,backlinkText,font);
+        @include content-spacing(map-get($myorderDetails, backlinkText));
+    }
+    .my-order-details {
+        @media #{$small-up}{
+            @include content-spacing(map-get($myorderDetails, smallDetails));
+        }
+        .user-info-wrapper {
+            .orderBrief{
+                @media #{$small-down}{
+                @include content-spacing(map-get($myorderDetails, minGap));
+                }
+                p{
+                    color: mapping($myorderDetails,orderBriefCol,color);
+                }
+            } 
+            @media #{$small-down}{
+                &.visible-xs {
+                    padding: 0;
+                    $borderProperty: mapping($myorderDetails,headerGap,border);                    
+                    &.sm-border {
+                        @if(map-get($borderProperty, enabled)) {
+                            border-#{map-get($borderProperty,position)}: (map-get($borderProperty, size) solid map-get($borderProperty, color));
+                        }
+                    }
+                }
+                &.no-wrapper{
+                    border-top: none;
+                    padding-bottom: 0;
+                }
+            }
+        }
+        #orderDetailsData {
+            .order-tracking {
+                font: mapping($myorderDetails,fontDetails,font);
+            }
+            .sku {
+                font:mapping($myorderDetails,fontSKU,font);
+            }
+            table {
+                tr {
+                    @media #{$small-up}{
+                    $borderProperty: mapping($myorderDetails,tableContent,border); 
+                    @if(map-get($borderProperty, enabled)) {
+                        border-#{map-get($borderProperty,position)}: (map-get($borderProperty, size) solid map-get($borderProperty, color));
+                    }                
+                    th,td{
+                        @include content-spacing(map-get($myorderDetails, tdGap));
+                            &:nth-child(1), &:nth-child(2){width:31%}
+                            &:nth-child(3), &:nth-child(5){width:13%}
+                            &:nth-child(4){width:12%}
+                            color: mapping($myorderDetails,tableContent,color);
+                            border-bottom: none;
+                        }
+                    }
+                    @media #{$small-down}{
+                    display: table-row;
+                    }
+                    td{ 
+                        .prod-item-desc {
+                            @media #{$small-down}{
+                                @include content-spacing(map-get($myorderDetails, prodItemGap));
+                            }
+                            .product-image {
+                                height: mapping($myorderDetails,imgSize,height);
+                                width: mapping($myorderDetails,imgSize,width);
+                                @include content-spacing(map-get($myorderDetails, imgSize));
+                                @media #{$small-down}{
+                                    height: mapping($myorderDetails,imgSmall,height);
+                                }
+                            }
+                            .prodName {
+                                @media #{$small-down}{
+                                    height: auto;
+                                }
+                                @media #{$small-up}{
+                                    line-height: mapping($myorderDetails,divLineHeight,line-height);
+                                    p{
+                                        color: mapping($myorderDetails,divLineHeight,color);
+                                     }
+                                }
+                                .prodSpec{
+                                    font: mapping($myorderDetails,fontProduct,font);
+                                    @media #{$small-up}{
+                                        @include content-spacing(map-get($myorderDetails, orderDetails));
+                                    }
+                                    @media #{$small-down}{
+                                        float: left;
+                                        width: mapping($myorderDetails,imgSmall,width);
+                                    }
+                                }
+                                .doll-price {
+                                    font: mapping($myorderDetails,fontProduct,font);
+                                    @media #{$small-down}{
+                                        color: mapping($myorderDetails,fontProduct,color);
+                                    }
+
+                                }
+
+                            }
+                            .short-details{
+                                @media #{$small-down}{
+                                    float: left;
+                                    .sku-sm {
+                                        color:mapping($myorderDetails,fontSKU,color); 
+                                    }
+                                }
+                                @media #{$medium-down}{
+                                    margin-bottom: 2.5em;
+                                }
+                            } 
+                            a{
+                                @media #{$small-down}{
+                                    position: relative;
+                                    height: mapping($myorderDetails,arrow,height) !important;
+                                    &:after{
+                                        top:0;
+                                    }
+                                }
+                            } 
+                        }                        
+                    }
+                    a {
+                        &.visible-xs {
+                            &.order-tracking {
+                                float: left;
+                            }
+                        }
+                    }
+                    
+                }
+            }
+            .user-info-wrapper {
+                .billingInfo {
+                    @media #{$small-up}{
+                        @include content-spacing(map-get($myorderDetails, billGap));
+                    }
+                    @media #{$small-down}{
+                        @include content-spacing(map-get($myorderDetails, minGap));
+                        .billAddress {
+                            @include content-spacing(map-get($myorderDetails, billAddressGap));
+                        }
+                        .billMethod {
+                            .rightSpace {
+                                padding: 0;
+                            }
+                        }
+                    }
+                    .bill-amount {
+                        @media #{$small-up}{
+                            float: right;
+                        }
+                    }
+                }
+                .shipInfo {
+                    @media #{$small-down}{
+                        @include content-spacing(map-get($myorderDetails, minShipGap));
+                    }
+                }
+                .rightSpace {
+                    @include content-spacing(map-get($myorderDetails, rightGap));
+                }  
+                &.shippingInfo {
+                    border: none;
+                } 
+            }
+            .gapFix {
+                ul{
+                    font: mapping($myorderDetails,gap,font);
+                }
+                @include content-spacing(map-get($myorderDetails, gap));
+                width: mapping($myorderDetails,gap,width);  
+                @media #{$small-down}{
+                    float: left !important;
+                }          
+            }      
+            .remember-me {
+                @media #{$small-down}{
+                    text-align: left;
+                }                
+            }
+        }
+    }
+
+}

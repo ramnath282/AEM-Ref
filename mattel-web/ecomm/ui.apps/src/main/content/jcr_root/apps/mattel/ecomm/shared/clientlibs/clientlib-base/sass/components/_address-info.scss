@@ -1,0 +1,195 @@
+.address-info-body{
+    input{
+        &.add-new-address {
+            width: 158px;
+            padding: 0px;
+        }
+    }
+    .user-info-wrapper {
+         .theme-btn {
+                @include content-spacing(map-get($addressinfo, button));
+            }
+        .add-new-address-can{
+            @include content-spacing(map-get($addressinfo, button));
+            // $borderProperty: mapping($addressinfo, cancelButton, border);
+            // @if(map-get($borderProperty, enabled)) {
+            //     border-#{map-get($borderProperty,position)}: (map-get($borderProperty, size) solid map-get($borderProperty, color));
+            // }
+            border:  mapping($addressinfo,cancelButton,border);
+            color: mapping($addressinfo,cancelButton,color);
+        }
+        form{
+            fieldset{
+                .optionCheck {
+                    ~label{
+                        color:mapping($addressinfo,defaultCheckbox,color);
+                        font: mapping($addressinfo,defaultCheckbox,font);
+                    }
+                }
+                ul{
+                    li{
+                        .default-state, .select-country {
+                            select {
+                                @media #{$screen-tab-min} and #{$small-only} {
+                                    max-width: 40.75em;
+                                }
+                            }                                
+                        }
+                        display: inline-block;
+                        @media #{$small-down} {
+                            width: 100%;
+                        }
+                        @include content-spacing(map-get($addressinfo, fieldsetli));
+                        .input-field {
+                            .form-input{
+                                &.small-input{
+                                     width:19.75em;
+                                    @include content-spacing(map-get($addressinfo, input));
+                                    @media #{$small-down} {
+                                         width: 100%;
+                                    }
+                                }
+                                &.long-input{
+                                    width:19.75em;  
+                                    @media #{$small-down} {
+                                        width: 100%;
+                                    }     
+                                }
+                            }
+                        }
+                    }
+                }
+                .input-field {
+                    .form-input{
+                        &.long-input{
+                            max-width:40.75em;
+                            width: 100%; 
+                            @media #{$small-down} {
+                                max-width:auto;
+                                width: 100%;
+                            }        
+                        }
+                    }
+                }
+                &.select-picker-wrapper{
+                    ul {
+                        li {
+                            &:last-child {
+                                @media #{$small-down} {
+                                    margin-top: em(10);
+                                }
+                                @media #{$small-up} {
+                                    width: 50%;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .transparent-btn{
+               @include button-style(map-get($layout, transparentButton))
+            }
+            .theme-btn{
+                @include content-spacing(map-get($addressinfo, transparentButton));
+            }
+        }
+        .details-list{
+            .details-list-item{
+                .address-info-details{
+                    p{
+                        .value-label {
+                            em{
+                                font-weight: mapping($addressinfo,italicSize,font-weight);
+                            } 
+                        }
+                    }   
+                }
+                vertical-align: top;
+                .shipping-method{
+                    ul{
+                        li {
+                            width: 100%;
+                            label{
+                                @include content-spacing(map-get($addressinfo, shippingLabel));
+                                color: mapping($addressinfo,shippingLabel,color);
+                                font: mapping($addressinfo,defaultCheckbox,font);
+                            }
+                        }
+                    }
+                }
+            }
+        } 
+    }
+}
+#addressStdModal {
+    .modal-dialog {
+        @media #{$medium-up} {
+            width: mapping($addressinfo,addressStadardization,width); 
+        }
+        p,span {
+            font-weight: $fontRegular;
+            font-size: em(15);
+        }
+        .modal-header {
+            border: none;
+            padding-bottom: 0;
+            .header-label {
+                font-weight: $fontSemiBold;
+            }
+        }
+        .close {
+            opacity: 1;
+            color: $theme-color;
+        }
+        .user-info-wrapper {
+            border: none;
+            padding: 0;
+            .details-list{
+                .details-list-item{                
+                    vertical-align: top;
+                    padding:em(10);
+                    .address-details {
+                        border: mapping($addressinfo,addressStadardization,border);
+                        padding: 1em;
+                        min-height: mapping($addressinfo,addressStadardization,addressMinHeight);
+                        position: relative; 
+                        .address-link {
+                            position: absolute;
+                            bottom: em(15);
+                            font-size: em(16);
+                            font-weight: $fontSemiBold;
+                            @media #{$xsmall-down} {
+                                position: static;
+                            }
+                            &.use-this-address {
+                                right: em(15);
+                            }
+                        }
+                        .value-label {
+                            margin-bottom: em(5);
+                            .highlight {
+                                color : mapping($addressinfo,addressStadardization,highlightColor);
+                                font-weight: $fontRegular;
+                            }
+                        }
+                    }
+                    #user-input {
+                        .use-usps-address {
+                            display: none;
+                        }
+                    }
+                    #usps-input {
+                        .in-care-of, .correct-address, .use-this-address {
+                            display: none;
+                        }
+                        
+                    }
+                    
+                    .error-tip {
+                        margin-bottom: em(20);
+                    }
+                }
+            }
+        }  
+    }         
+}

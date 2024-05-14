@@ -1,0 +1,222 @@
+<sly data-sly-test="${wcmmode.edit}">${'Edit Email subscription Component' @i18n}</sly>
+
+<sly data-sly-use.emailLightBox="com.mattel.ecomm.core.models.EmailLightboxModel">
+
+<div class="email-lightboxpopup-comp email-lightboxpopup-extension-comp ${properties.modal ? '' : 'email-lightbox-form'} ecomm-wrapper" data-is-modal="${properties.modal ? 'true' : 'false'}" data-modal-type="${properties.modal ? 'onload-modal' : 'form'}" >
+    <div class="oops-popup gem-wrapper">
+        <div class="modal" id="emailLightBoxModal" data-backdrop="${properties.modal ? '' : 'static'}" data-keyword="${properties.modal ? '' : 'false'}" tabindex="-1" role="dialog" aria-labelledby="selectLocationModalLabel1" data-emailSignUpDelay="${properties.delayEmailSignUpTime}">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content" style="background-color:${properties.backgroundColor @context='html'};">
+                    <div class="loading-wrapper">
+                        <span class="loader-content">Loading...</span>
+                    </div>
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" value="x">
+                        </button>
+                        <h1>${properties.formHeader}</h1>
+                    </div>
+                    <div class="modal-body" id="selectLocationModalLabel1">
+                        <div class="gem-email-sub-container" style="background-color:${properties.backgroundColor @context='html'};">
+                            <div class="gem-email">
+                                <div class="form-component crmContainer">
+                                    <div class="popover_window" style="display:none;" id="email_popup">
+
+                                        <!---popuptext - start -->
+												${properties.emailBubblePopUpText @context='html'}
+                                        <!--popuptext - end -->
+
+                                        <div class="popover-close">
+                                        </div>
+                                    </div>
+                                    <div class="email_form_cont hide">
+                                        <div class="child-info-form">
+                                            <fieldset class="child-details-fieldset">
+                                                <legend class="hide">TELL US ABOUT YOU CHILD</legend>
+                                                <div class="form_input_field form_Child_name col-xs-12 form-group no-padding input-field required">
+                                                    <input type="text" id="childName" name="childName" data-attr="childName" aria-describedby="childName" class="input_field form-input long-input child-input-val"
+                                                        aria-required="true" data-key="ChildName" value="" required="" autocomplete="off">
+                                                    <label class="placeholder-label" for="childName">${properties.childnamePlaceholder}</label>
+                                                    <div id="childNameError" class="help-block form-message"></div>
+                                                    <div class="help-block form-error" id=""></div>
+                                                    <div class="help-block api-error"></div>
+                                                </div>
+                                                <fieldset class="sub-fieldset select-picker-wrapper">
+                                                    <ul>
+                                                        <li>
+                                                            <div class="input-field required select-wrapper">
+                                                                <select data-type="month" aria-describedby="month" aria-required="true" class="form-input small-input dob-select child-input-val monthCont"
+                                                                    name="childBirthMonth" id="month" data-attr="childBirthMonth" data-key="ChildDOB"> </select>
+                                                                <label class="placeholder-label" for="month">${properties.monthPlaceholder}</label>
+                                                                <div class="help-block form-message"></div>
+                                                            </div>
+                                                        </li>
+
+                                                        <li>
+                                                            <div class="input-field required select-wrapper">
+                                                                <select name="childBirthDay" aria-describedby="day" aria-required="true" class="form-input small-input dob-select child-input-val dayCont"
+                                                                    id="day" data-attr="childBirthDay" data-key="ChildDOB">
+                                                                    <option value=""></option>
+                                                                </select>
+                                                                <label class="placeholder-label" for="day">${properties.dayPlaceholder}</label>
+                                                                <div class="help-block form-message"></div>
+                                                                <div class="help-block custom-error-message dateInvalidCont"></div> 
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="input-field required select-wrapper">
+                                                                <select data-type="year" aria-describedby="year" aria-required="true" class="form-input small-input dob-select child-input-val yearCont"
+                                                                    name="childBirthYear" id="year" data-attr="childBirthYear" data-key="ChildDOB"></select>
+                                                                <label class="placeholder-label" for="year">${properties.yearPlaceholder}</label>
+                                                                <div class="help-block form-message"></div>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                    <div id="birthFormatError" class="help-block form-message"></div>
+                                                </fieldset>
+                                                <fieldset class="sub-fieldset child-wrapper" aria-describedby="genderError">
+                                                	<sly data-sly-test="${emailLightBox.genderOptionsList.size != 0}">
+                                                        <legend>${properties.genderLabel}</legend>
+                                                        <div class="input-field child-data child-gender">
+                                                            <ul class="radio" data-sly-list.genderkey="${emailLightBox.genderOptionsList}">
+                                                                <li>
+                                                                    <input type="radio" value="${genderkey}" data-key="ChildGender" data-attr="childOption" name="childOption" class="child-input-val" id="${genderkey}" required="" aria-required="true">
+                                                                    <label for="${genderkey}">${emailLightBox.genderOptionsList[genderkey]}</label>
+                                                                </li>
+                                                            </ul>
+                                                            <div id="genderError" class="help-block form-message custom-error-message"></div>
+                                                        </div>
+                                                    </sly>
+                                                </fieldset>
+                                                <fieldset class="sub-fieldset guardian-wrapper" aria-describedby="guardianError">
+                                                	<sly data-sly-test="${emailLightBox.relationOptionsList.size != 0}">
+                                                        <legend>${properties.relationLabel}</legend>
+                                                        <div class="input-field child-data child-relation">
+                                                            <ul class="radio" data-sly-list.relationkey="${emailLightBox.relationOptionsList}">
+                                                                <li>
+                                                                    <input type="radio" value="${relationkey}" data-attr="relationship" data-key="Relationship" name="guardianOption" class="child-input-val" id="${relationkey}" aria-required="true" required="">
+                                                                    <label for="${relationkey}">${emailLightBox.relationOptionsList[relationkey]}</label>
+                                                                </li>
+                                                            </ul>
+                                                            <div id="guardianError" class="help-block form-message custom-error-message"></div>
+                                                        </div>
+                                                     </sly>
+                                                </fieldset>
+                                                <div class="remove-child-analytics">
+                                                    <div class="remove-child">
+                                                        <a href="javascript:void(0);">
+                                                            <strong>${properties.removeText}</strong>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                    </div>
+
+                                    <form id="emailLightboxForm">
+                                        <div class="email-heading">
+                                            ${properties.childInfoDesc @ context='html'}
+                                        </div>
+                                        <div class="form_input_field form_email col-xs-12 form-group no-padding input-field required">
+                                            <input class="input_field form-input email_field" type="email" name="emailId" id="emailId" data-attr="emailId" autocomplete="off" maxlength="320" aria-describedby="emailId"
+                                                aria-required="true" data-key="EmailAddress">
+                                                <label class="placeholder-label" for="emailId">${properties.emailIdFillText}</label>
+                                                <div class="help-block form-error"></div>
+                                                <div class="help-block form-message"></div>
+                                                <div class="help-block api-error"></div>
+                                        </div>
+                                        <sly data-sly-test="${properties.childInfo == 'true'}">
+	                                        <div class="child-container">
+	                                            <div class="child-info-heading">
+	                                                <h2>${properties.sectionTitle}</h2>
+	                                                <a href="${emailLightBox.privacyLinkUrl }" class="privacy-statement" target="_blank">${properties.privacyLinkText}</a>
+	                                            </div>
+												<div class="child-info-text">
+													${properties.childInfoDescription @ context='html'}
+												</div>
+	                                            <div class="result_cont form-row" id="child-details-wrapper" data-max-children="4" data-child="1"></div>
+	                                            <div class="child-info-icon addChildCont">
+	                                                <a href="javascript:void(0);">
+	                                                    <strong>${properties.addChildText}</strong>
+	                                                    <i class="fa fa-plus" aria-hidden="true"></i>
+	                                                </a>
+	                                            </div>
+	                                        </div>
+                                        </sly>
+                                        <div class="form-row form-action-btn" data-content="Please try again.">
+                                            <div class="form-submit">
+                                                <button class="btn theme-btn btn-arrow-right email-signup-account" type="button" data-formname="#emailLightboxForm" data-type="emailLightBoxButton">${properties.signUpButtonText}</button>
+												<div class="form-disclaimer-text">
+													${properties.disclaimerText @ context='html'}
+												</div>
+                                            </div>
+                                        </div>
+                                    
+                                    </form>
+
+                                    <input id="isEmailLightbox" value="true" type="hidden">
+                                    
+                                    <input type="hidden" id="excludekeywords" value="${emailLightBox.excudeKeywords}" />
+                                    <input type="hidden" id="excludePages" value="${emailLightBox.excudePages}" />
+                                    <input type="hidden" id="elbModalDetails" data-modal-value="${properties.modalCount}" data-is-modal="${properties.modal}" />
+                                    
+                                    <input type="hidden" id="sourceId" data-default-source-id="${properties.defaultSourceId}" 
+                                    data-footerversion-source-id="${properties.footerSourceId}" data-hamburgerversion-source-id="${properties.hamburgerSourceId}" 
+                                    data-onloadversion-source-id="${properties.onLoadSourceId}" />
+
+                                    <input type="hidden" id="subscriptionId" data-primarysubscription-id="${properties.primarySubscriptionId}" 
+                                    data-secondarysubscription-id="${emailLightBox.secondarySubscriptionIds}" data-nosubscription-id="${properties.nosubscriptionId}" />
+                                     
+                                    <input type="hidden" id="consumerinfoApiDetails" class="cm-api-config" data-api-key="${emailLightBox.cmKey}" data-api-url="${emailLightBox.cmEndpoint}"/>
+                                    <input type="hidden" id="emaillightboxLocale" data-country-code="${properties.countryCode}" data-country-locale="${properties.locale}"/>
+
+                                </div>
+                            </div>
+                            <a href="#" class="btn btn-default yes-btn retailer-yes-btn">${properties.errorCloseButton}</a>
+                        </div>
+                    </div>
+                </div>
+                <div id="formSubmitMsg" class="modal-content thankyou-modal hide" style="background-color:${properties.backgroundColor @context='html'};">
+                    <div class="modal-header">
+                        <div class="display-success-title hide">${properties.thankyouTitle}</div>
+                        <div class="display-error-title hide">${properties.errorTitle}</div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="display-success-msg hide">${properties.thankyouSubTitle}</div>
+                        <div class="display-error-msg hide">${properties.errorSubTitle}</div>
+                    </div>
+                    <div class="btn_cont">
+                        <button type="button" class="theme-btn update-info" id="closeInfoDiv">${properties.errorCloseButton}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="thankyou-modal">
+    <div class="modal ecomm-modal " role="alert" data-timeout="10" aria-atomic="true" id="myThankyou" tabindex="-1">
+        <div class="modal-dialog modal-md">
+            <div class="modal-content" id="thankyou">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><em
+                        class="fa fa-times fa-lg"><span class="sr-only">close</span></em></button>
+                    <div class="display-success-title hide">${properties.thankyouTitle}</div>
+                    <div class="display-error-title hide">${properties.errorTitle}</div>
+                </div>
+                <div class="modal-footer">
+                    <div class="display-success-msg hide">${properties.thankyouSubTitle}</div>
+                    <div class="display-error-msg hide">${properties.errorSubTitle}</div>
+                </div>
+                <div class="btn_cont">
+                    <button type="button" class="theme-btn update-info pull-left" id="close" data-dismiss="modal">${properties.errorCloseButton}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<sly data-sly-use.baseModel="com.mattel.ag.ecomm.core.model.BasePageModel">
+ <sly data-sly-test="${!baseModel.disableClientLibs}"> 
+   <sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html"></sly>
+   <sly data-sly-call="${clientlib.js @ categories='ecomm.aemecomemailsubscription'}"></sly>
+ </sly>
+</sly>
+</sly>

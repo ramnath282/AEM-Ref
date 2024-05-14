@@ -1,0 +1,71 @@
+<sly data-sly-test="${wcmmode.edit}">${'Column Control Component' @i18n}</sly>
+<div class="image-text-container">
+    <h2 data-sly-test="${properties.header}">${properties.header @i18n}</h2>
+    <div data-sly-test="${properties.layoutStructure == 'three'}">
+        <div class="col-3">
+            <div class="col-first">
+                <sly data-sly-resource="${'columnOne' @ resourceType='wcm/foundation/components/parsys'}"></sly>
+            </div>
+            <div class="col-second">
+                <sly data-sly-resource="${'columnTwo' @ resourceType='wcm/foundation/components/parsys'}"></sly>
+            </div>
+            <div class="col-third">
+                <sly data-sly-resource="${'columnThree' @ resourceType='wcm/foundation/components/parsys'}"></sly>
+            </div>
+        </div>
+    </div>
+    <div data-sly-test="${properties.layoutStructure == 'two'}">
+        <div class="col-2">
+            <div class="col-first">
+                <sly data-sly-resource="${'columnOne' @ resourceType='wcm/foundation/components/parsys'}"></sly>
+            </div>
+            <div class="col-second">
+                <sly data-sly-resource="${'columnTwo' @ resourceType='wcm/foundation/components/parsys'}"></sly>
+            </div>
+        </div>
+    </div>
+    <div data-sly-test="${properties.layoutStructure == 'fivenseven'}" data-sly-unwrap>
+        <div class="col-md-5">
+            <sly data-sly-resource="${'columnone' @ resourceType='wcm/foundation/components/parsys'}"></sly>
+        </div>
+        <div class="col-md-7">
+            <sly data-sly-resource="${'columntwo' @ resourceType='wcm/foundation/components/parsys'}"></sly>
+        </div>
+    </div>
+    <div data-sly-test="${properties.layoutStructure == 'onethree'}" data-sly-unwrap>
+        <div class="col-md-3 aside-section">
+            <sly data-sly-resource="${'columnone' @ resourceType='wcm/foundation/components/responsivegrid'}"></sly>
+        </div>
+        <div class="col-md-9 main-section">
+            <sly data-sly-resource="${'columntwo' @ resourceType='wcm/foundation/components/responsivegrid'}"></sly>
+        </div>
+    </div>
+    <div data-sly-test="${properties.layoutStructure == 'plplayout'}" data-sly-unwrap>
+        <div class="col-md-3">
+            <div class="category-aside-section">
+                <sly data-sly-resource="${'columnone' @ resourceType='wcm/foundation/components/responsivegrid'}"></sly>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <sly data-sly-resource="${'columntwo' @ resourceType='wcm/foundation/components/responsivegrid'}"></sly>
+        </div>
+    </div>
+    <div data-sly-test="${properties.layoutStructure == 'articlelayout'}" data-sly-unwrap>
+        <div class="content-wrapper">
+            <div class="content-inner-wrapper">
+                <div class="col-md-9 left-wrapper">
+                    <div class="left-wrapper-content">
+                        <sly data-sly-resource="${'columnone' @ resourceType='wcm/foundation/components/responsivegrid'}"></sly>
+                    </div>
+                </div>
+
+                <div class="col-md-3 right-wrapper">
+                    <sly data-sly-resource="${'columntwo' @ resourceType='wcm/foundation/components/responsivegrid'}"></sly>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+</div>

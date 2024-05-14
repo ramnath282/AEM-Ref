@@ -1,0 +1,112 @@
+.store-page {
+    .hero-banner {
+        section {
+            margin-top: 0 !important;
+        }
+    }
+}
+
+.hero-banner {
+    color: $white;
+    margin-left: 0;
+    margin-right: 0;
+
+    &[data-src] {
+        section {
+            background: rgba($black, .8);
+
+            @media #{$small-down} {
+                background: transparent;
+            }
+
+            &.secondary-box-content {
+                font-size: 1.0235em;
+                background: rgba($black, .5);
+
+                @media #{$small-down} {
+                    background: transparent;
+                }
+            }
+
+            &.transparent-bgnd {
+                background: none;
+
+                p {
+                    font-weight: 300;
+                    font-size: em(24.085);
+                    margin: 0;
+                    line-height: normal;
+                    color: $white;
+                }
+
+                h1 {
+                    font-size: em(48.1719);
+                    font-weight: 600;
+                    margin: 0;
+                    padding: 0;
+                    max-width: none;
+                    line-height: normal;
+                }
+            }
+        }
+
+        &.secondary {
+            section {
+                background: rgba($black, .5);
+            }
+        }
+
+        &:not(.secondary):after {
+            content: none;
+            @extend .absolute-style;
+
+            @media #{$small-only} {
+                content: "";
+                background-color: rgba($black, .5);
+            }
+        }
+    }
+
+    &>div {
+        section {
+            &.secondary-box-content {
+                max-width: 51.65em;
+                padding: 2.15em 1.07143em;
+				 @media #{$medium-only} {
+                    max-width: 54.45em;
+                }
+
+                h1 {
+                    font-size: em(27);
+                    padding-bottom: em(30, 27);
+                }
+
+                button {
+                    max-width: 28.7em;
+                    outline: none;
+                }
+            }
+
+            max-width: em(600);
+            background: rgba($black, .5);
+            text-align: center;
+            padding: em(25) 0 em(35);
+
+            @media #{$small-down} {
+                background: transparent;
+            }
+
+            h1 {
+                width: 100%;
+                max-width: 25.65em;
+                padding: 0 0 em(25, 30);
+                margin: 0 auto;
+                color: $white;
+                font-size: em(30);
+                text-align: center;
+            }
+        }
+    }
+}
+
+@import '_rotating-banner';

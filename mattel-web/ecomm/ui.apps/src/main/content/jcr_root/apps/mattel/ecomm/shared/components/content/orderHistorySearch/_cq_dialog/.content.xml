@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+          jcr:primaryType="nt:unstructured"
+          jcr:title="Order Detail"
+          sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <column
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="granite/ui/components/coral/foundation/container">
+                <items jcr:primaryType="nt:unstructured">
+                    <orderHistoryTitle
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                            fieldDescription="Please enter order history title"
+                            fieldLabel="Order History Title"
+                            name="./orderHistoryTitle"/>
+                    <orderNumberLabel
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                            fieldDescription="Please enter label for Order Number column header"
+                            fieldLabel="Order Number Header"
+                            name="./orderNumberLabel"/>
+                    <orderDateLabel
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                            fieldDescription="Please enter label for Order Date column header"
+                            fieldLabel="Order Date Header"
+                            name="./orderDateLabel"/>
+                    <orderStatusLabel
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                            fieldDescription="Please enter label for Order Status column header"
+                            fieldLabel="Order Status Header"
+                            name="./orderStatusLabel"/>
+                    <orderTypeLabel
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                            fieldDescription="Please enter label for Order Type column header"
+                            fieldLabel="Order Type Header"
+                            name="./orderTypeLabel"/>
+                    <totalPriceLabel
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                            fieldDescription="Please enter label for Total Price column header"
+                            fieldLabel="Total Price Header"
+                            name="./totalPriceLabel"/>
+                    <noOrderText
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                            fieldDescription="Please enter no order text"
+                            fieldLabel="No Order Text"
+                            name="./noOrderText"/>
+                    <orderDetailPageLink
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                            fieldDescription="Please select the link for Order Detail Page"
+                            fieldLabel="CTA link for Order Detail Page"
+                            name="./orderDetailPageLink"
+                            rootPath="/content"/>
+                    <maxNoOfLines
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+                            fieldDescription="Please enter maximum number of orders to be shown in one page"
+                            fieldLabel="Maximum Number Of Order Lines"
+                            min="{Long}1"
+                            name="./maxNoOfLines"/>
+                </items>
+            </column>
+        </items>
+    </content>
+</jcr:root>

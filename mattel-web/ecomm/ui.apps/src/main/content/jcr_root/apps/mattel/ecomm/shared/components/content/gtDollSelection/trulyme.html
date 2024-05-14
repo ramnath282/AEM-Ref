@@ -1,0 +1,68 @@
+<template data-sly-template.template>
+  <script id="trulyMe-template" type="text/x-handlebars-template">
+                     {{#each this}}
+						 {{#ifNotEquals ../availability 'noLongerAvailable'}}
+						{{#ifNotEquals ../this.availability 'Unavailable'}}
+                          <div class="col-xs-6 col-sm-3 col-md-2 product-card" href="${properties.trulyMeSummaryPageURL @context='unsafe'}.html">
+                           <div class="product-card-wrapper">
+                              <div class="product-image" data-binder-name="gt-product-doll-image"><img alt=""  src="{{../this.imageLink}}{{../this.layerCompParams}}"></div>
+                              <div class="mobile-view">
+                               <span class="product-id" data-binder-name="gt-product-doll-id">{{{../this.PartNumber}}}</span>
+								<span class="product-TrunkPlaypacks" data-binder-name="gt-product-TrunkPlaypacks">{{../this.TrunkPlaypacks}}</span>
+							   <span class="product-character" data-binder-name="gt-product-doll-character">{{../this.Character}}</span>
+								<span class="product-pricing" data-binder-name="gt-product-doll-pricing">{{../this.targetPricing}}</span>
+								 <span class="product-safetyMsg" data-binder-name="gt-product-doll-safetyMsg">{{../this.SafetyMessage}}</span>
+                                <h3 class="product-title" data-binder-name="gt-product-doll-name">{{{../this.auxDesc1}}}</h3>
+                                <span class="product-small-price" data-binder-name="trunk-pricerange">{{{../this.SmallTrunkLowPrice}}}</span>
+                                <span class="product-large-price" data-binder-name="trunk-large-pricerange">{{{../this.LargeTrunkLowPrice}}}</span>
+                                   <span class="product-eye-color" data-binder-name="gt-product-eye-color">{{{../this.DollEyeColor}}} ${properties.eyesText @context='scriptString'}</span>
+                                {{#ifEquals ../this.DollHairColor 'No Hair' }}
+                                   <span class="product-hair-type" data-binder-name="gt-product- hair-type">{{{../this.DollHairColor}}}</span>
+                                     {{else}}
+                                      <span class="product-hair-type" data-binder-name="gt-product- hair-type">{{{../this.DollHairColor}}} ${properties.hairText @context='scriptString'}</span>
+                                 {{/ifEquals}}
+                                                                 
+                                 <div class="product-status"> 
+								   {{#ifEquals ../this.availability 'Backorderable'}}
+                                   <span class="status-detail">Backordered</span> until 
+                                   <span class="status-date backorder-date" data-binder-name="gt-product-doll-backorder-date">{{getMMDDYYYY ../this.backorder_date}}</span>			
+								   {{/ifEquals}}
+                                   </div>
+                                  
+                              </div>
+                           </div> 
+                           </div>
+                        </div>
+                        {{/ifNotEquals}} 
+                        {{/ifNotEquals}}
+                  {{/each}}
+
+</script>
+
+<!-- product recommend starts -->
+<div id="gt-trulyme-wrapper" data-snp-param="${properties.categoryType}"
+       class="gt-common-holder gt-product-trulyme-wrapper">
+       <div class="gt-trulyme-titlewrap">
+       		  <h1 class="sr-only">Truly Me Dolls</h1>
+       		  <sly data-sly-test="${author}">
+	                     	<h2 data-sly-test="${properties.trulyMeTitle}">${properties.trulyMeTitle}</h2>
+	                     </sly>
+	                     <sly data-sly-test="${!author}">
+                        	<sly data-sly-use.ecommUtil="${'com.mattel.ecomm.core.utils.EcomUtil' @ template=properties.trulyMeTitle}">
+						       	 	<h2> ${ecommUtil.getDynamicTemplate @ context='html'} </h2>			      	
+						     </sly>
+               </sly>
+              
+              <h3 data-sly-test="${properties.trulyMeSubTitle}">${properties.trulyMeSubTitle}</h3>
+       </div>
+       <div id="trulyMeDollList" class="row gt-trulyme-prdholder"></div>
+       <div class="text-center">
+       		<a href="${properties.trulyMeHyperlinkUrl}.html" class="gt-link hide"><i class="fas fa-chevron-left"></i> ${properties.trulyMeHyperlinkText}</a>
+	   </div> 
+</div>
+<!-- product recommend ends -->
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
+       <sly data-sly-call="${clientlib.js @ categories=['ecomm.truelyMe']}"/>
+</sly> 
+
+</template>

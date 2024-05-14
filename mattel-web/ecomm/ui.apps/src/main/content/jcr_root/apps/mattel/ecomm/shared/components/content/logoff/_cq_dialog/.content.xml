@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+          jcr:primaryType="nt:unstructured"
+          jcr:title="Log Off"
+          sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="granite/ui/components/coral/foundation/tabs">
+                <items jcr:primaryType="nt:unstructured">
+
+                    <logOff
+                            jcr:primaryType="nt:unstructured"
+                            jcr:title="Log Off Section"
+                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <logoffTitle
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldDescription="Please enter title for Log Off"
+                                    fieldLabel="Log Off Title :"
+                                    name="./logoffTitle"/>
+                            <logOffSuccessPath
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+                                    fieldDescription="Please enter success page path"
+                                    fieldLabel="Success Page Path"
+                                    name="./logOffsuccessPath"
+                                    required="{Boolean}true"/>
+                            <loginTitle
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldDescription="Please enter title for Log In"
+                                    fieldLabel="Log In Title :"
+                                    name="./loginTitle"/>
+                            <loginSuccessPath
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+                                    fieldDescription="Please enter Login page path"
+                                    fieldLabel="Login Page Path"
+                                    name="./loginSuccessPath"
+                                    required="{Boolean}true"/>
+                            <disableLogoffSection
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                    name="./disableLogoffSection"
+                                    text="Disable Logoff Section"
+                                    uncheckedValue="false"
+                                    value="true"/>
+                        </items>
+                    </logOff>
+                    <cartSection
+                            jcr:primaryType="nt:unstructured"
+                            jcr:title="Cart  Section"
+                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <cartPageUrl
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+                                    name="./cartPageUrl"
+                                    fieldLabel="Cart Page Url"/>
+                            <disableCartSection
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                    name="./disableCartSection"
+                                    text="Disable Cart Section"
+                                    uncheckedValue="false"
+                                    value="true"/>
+                        </items>
+                    </cartSection>
+                    <sessionTimeOut
+                            jcr:primaryType="nt:unstructured"
+                            jcr:title="Session Timeout PopUp"
+                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <title
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldDescription="Please enter the title"
+                                    fieldLabel="Title:"
+                                    name="./title"/>
+                            <description
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+                                    fieldDescription="Please enter description"
+                                    fieldLabel="Description:"
+                                    name="./description"
+                                    useFixedInlineToolbar="{Boolean}true">
+                                <rtePlugins
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceSuperType="mattel/global/components/content/rtePlugins/rtePlugins"/>
+                                <uiSettings
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceSuperType="mattel/global/components/content/rtePlugins/uiSettings"/>
+                            </description>
+                            <emailAddressLabel
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldDescription="Please enter label for the Email Address Input Box "
+                                    fieldLabel="Email Address Label:"
+                                    name="./emailAddressLabel"/>
+                            <passwordLabel
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldDescription="Please enter label for the Password Input Box "
+                                    fieldLabel="Password Label:"
+                                    name="./passwordLabel"/>
+                            <forgotPasswordLabel
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldDescription="Please enter label for the Forgot Password Link "
+                                    fieldLabel="Forgot Password Label:"
+                                    name="./forgotPasswordLabel"/>
+                            <forgotPasswordPath
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+                                    fieldDescription="Please enter the Forgot Password Path"
+                                    fieldLabel="Forgot Password Path:"
+                                    name="./forgotPasswordPath"/>
+                            <createAccountLabel
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldDescription="Please enter label for create account link"
+                                    fieldLabel="Create Account Label:"
+                                    name="./createAccountLabel"/>
+                            <createAccountPath
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+                                    fieldDescription="Please enter path to navigate user for creating a new account"
+                                    fieldLabel="Create Account Path"
+                                    name="./createAccountPath"/>
+                            <signInButtonLabel
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldDescription="Please enter label for the Sign In Button "
+                                    fieldLabel="Sign In Button Label:"
+                                    name="./signInButtonLabel"
+                                    required="{Boolean}true"/>
+                            <successpath
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+                                    fieldDescription="Please enter the Success Path"
+                                    fieldLabel="Success Path:"
+                                    name="./successPath"/>
+                            <signInRedirectPath
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+                                    fieldDescription="Please enter the Redirect Path for modal close event"
+                                    fieldLabel="Redirect Path:"
+                                    name="./signInRedirectPath"/>
+                        </items>
+                    </sessionTimeOut>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>

@@ -1,0 +1,81 @@
+.game-player-area-component{
+    .game-player-area-content{
+        // padding-bottom: 0;
+    }
+    .title-block{
+        // padding: 0;
+        padding:if(mapping($gamescomponent,heading, padding), mapping($gamescomponent,heading, padding), em(50) em(55));
+        h2{
+            // text-align: mapping($gamescomponent,heading, align);
+            // font-size: mapping($gamescomponent,heading, fontSize);
+            //test
+            // color: $white;
+            // text-transform: uppercase;
+            // padding: .5em 0 1em 0;
+        }
+        p:empty{
+            display: none;
+        }
+    }
+    .aem-GridColumn {
+        padding: 0 0;
+    }
+    .play-character-landing-block{
+        .gallery-tile{
+            #play-game{
+                h2{
+                    // padding:40px 55px 25px 55px;
+                }
+                ul{
+                    &.play-list{
+                        // padding:0 35px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.game-player-area-content{
+    background-image: url($game-bg-path);
+    background-repeat:repeat;
+    padding:em(50) 0;
+		@media #{$medium-down}{
+       	 	padding:em(50);
+   		 }
+    	@media #{$small-down}{
+         	padding:em(40) em(20) em(20) em(20);
+    	} 
+    .game-player-area-container{
+        @extend .container;
+        margin:0 auto;
+        position:relative;
+        padding:0;
+        @media #{$medium-down}{
+            @if mapping($gamescomponent,iframe, responsive) == true {
+                width: 100% !important;
+                height: 0 !important;
+                padding-bottom: 58.5%;
+            }
+        }
+        @media #{$small-up}{
+            width: 700px;
+            height: 513px;
+        }
+        //width and height for mobile devices 
+        @media #{$small-down}{
+            width: 325px;
+            height: 238px;
+        }
+        
+        .game_frame{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100% !important;
+            height: 100% !important;
+            max-width:100%;
+            border: none;
+        }
+    }
+}

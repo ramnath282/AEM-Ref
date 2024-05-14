@@ -1,0 +1,649 @@
+$mobileItem: mapping($videoGallery, playListLi, mobileVisibleChild);
+$desktopItem: mapping($videoGallery, playListLi, desktopVisibleChild);
+.corporate-basepage{
+    .reusability-video-component {
+        float: mapping($videoGallery, VideoWrapper, float);
+        @include content-spacing(map-get($videoGallery, VideoWrapper));
+    }
+
+    .reusability-video-page-title {
+        @include content-spacing(map-get($videoGallery, videoPageTitle));
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p {
+            @include content-spacing(map-get($videoGallery, PageTitle));
+        }
+        .main-title {
+            @include content-spacing(map-get($videoGallery, mainTitle));
+        }
+        .sub-title {
+            @include content-spacing(map-get($videoGallery, subtitle));
+        }
+        .text-para {
+            @include content-spacing(map-get($videoGallery, textPara));
+        }
+    }
+
+    .reusability-video-player-container {
+        @include content-spacing(map-get($videoGallery, videoPlayerContainer));
+        text-align: mapping($videoGallery, videoPlayerContainer, textLeft);
+        .reusability-video-player-wrapper {
+            position: mapping($videoGallery, videoPlayerWrapper, position);
+            float: mapping($videoGallery, videoPlayerWrapper, float);
+            width: mapping($videoGallery, videoPlayerWrapper, width);
+            .video-player {
+                position: mapping($videoGallery, videoPlayer, position);
+                .innerWrapper {
+                    &>div {
+                        z-index: mapping($videoGallery, innerWrapperDiv, zIndex) !important;
+                    }
+                }
+            }
+            .cd-prev {
+                background: mapping($videoGallery, cdPrev, bgColor) !important;
+                z-index: mapping($videoGallery, cdPrev, zIndex) !important;
+                width: mapping($videoGallery, cdPrev, width) !important;
+                height: mapping($videoGallery, cdPrev, height) !important;
+                position: mapping($videoGallery, cdPrev, position);
+                top: mapping($videoGallery, cdPrev, top) !important;
+                left: mapping($videoGallery, cdPrev, left);
+                transform: mapping($videoGallery, cdPrev, cdtransform);
+                display: mapping($videoGallery, cdPrev, dnone);
+                @media #{$lg-only} {
+                    display: mapping($videoGallery, cdPrev, dblock);
+                }
+                @media #{$xl-only} {
+                    display: mapping($videoGallery, cdPrev, dblock);
+                }
+                &:before {
+                    content: mapping($videoGallery, cdPrevAfter, content);
+                    position: mapping($videoGallery, cdPrevAfter, position);
+                    background: mapping($videoGallery, cdPrevAfter, bgImgLight) !important;
+                    width: mapping($videoGallery, cdPrevAfter, width);
+                    height: mapping($videoGallery, cdPrevAfter, height);
+                    background-position: mapping($videoGallery, cdPrevAfter, bgposition);
+                    left: mapping($videoGallery, cdPrevAfter, pleft);
+                    color: mapping($videoGallery, cdPrevAfter, color) !important;
+                    padding: mapping($videoGallery, cdPrevAfter, bgpadding) !important;
+                    background-color: mapping($videoGallery, cdPrevAfter, bgcolor) !important;
+                }
+            }
+            .cd-next {
+                @extend .cd-prev;
+                left: mapping($videoGallery, cdnext, left) !important;
+                &:before {
+                    transform: mapping($videoGallery, cdnext, transform);
+                }
+            }
+            .oo-player-container {
+                @media #{$mobile-down-only} {
+                    min-width: mapping($videoGallery, ooPlayerContainer, minWidth);
+                }
+                .oo-state-screen {
+                    .oo-action-icon {
+                        &:before {
+                            content: "";
+                            background-image: mapping($videoGallery, ooActionIcon, bgImgLight);
+                            position: mapping($videoGallery, ooActionIcon, position);
+                            width: mapping($videoGallery, ooActionIcon, mwidth);
+                            height: mapping($videoGallery, ooActionIcon, mheight);
+                            background-position: mapping($videoGallery, ooActionIcon, mbackgroundPosition);
+                            top: mapping($videoGallery, ooActionIcon, mtop);
+                            left: mapping($videoGallery, ooActionIcon, mleft);
+                            @media #{$mobile-up-only} {
+                                width: mapping($videoGallery, ooActionIcon, width);
+                                height: mapping($videoGallery, ooActionIcon, height);
+                                background-position: mapping($videoGallery, ooActionIcon, backgroundPosition);
+                                top: mapping($videoGallery, ooActionIcon, top);
+                                left: mapping($videoGallery, ooActionIcon, left);
+                            }
+                        }
+                        span {
+                            &.oo-icon {
+                                font-size: mapping($videoGallery, spanooIcon, fontSize);
+                                opacity: mapping($videoGallery, spanooIcon, opacity) !important;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .reusability-video-player-label {
+            background: mapping($videoGallery, videoPlayerLabel, vplBackground);
+            float: mapping($videoGallery, videoPlayerLabel, float);
+            width: mapping($videoGallery, videoPlayerLabel, width);
+            @include content-spacing(map-get($videoGallery, videoPlayerLabel));
+            h3 {
+                font-size: mapping($videoGallery, videoPlayerLabelH3, fontSize);
+                @include content-spacing(map-get($videoGallery, videoPlayerLabelH3));
+                @media #{$mobile-up-only} {
+                    font-size: mapping($videoGallery, videoPlayerLabelH3, mufontSize);
+                }
+            }
+            p {
+                font-size: mapping($videoGallery, videoPlayerLabelP, fontSize);
+                @include content-spacing(map-get($videoGallery, videoPlayerLabelP));
+                @media #{$mobile-up-only} {
+                    font-size: mapping($videoGallery, videoPlayerLabelP, mufontSize);
+                }
+            }
+        }
+    }
+
+    .reusability-videos-gallery-playlist {
+        width: mapping($videoGallery, videoGalleryPlaylist, width);
+        float: mapping($videoGallery, videoGalleryPlaylist, float);
+        text-align: mapping($videoGallery, videoGalleryPlaylist, textLeft);
+        @include content-spacing(map-get($videoGallery, videoGalleryPlaylist));
+        &::-webkit-scrollbar {
+            width: mapping($videoGallery, webkitScroll, width);
+            background: mapping($videoGallery, webkitScroll, webkitBackgroundColor);
+        }
+        &::-webkit-scrollbar-thumb {
+            background: mapping($videoGallery, webkitScroll, webkitColor);
+        }
+        .reusability-play-tiles-gallery {
+            .reusability-play-list {
+                display: mapping($videoGallery, playList, display);
+                flex-wrap: mapping($videoGallery, playList, flexWrap);
+                @include content-spacing(map-get($videoGallery, playList));
+                width: mapping($videoGallery, playList, width);
+                li {
+                    background: mapping($videoGallery, playListLi, bgLi);
+                    list-style: mapping($videoGallery, playListLi, listChild);
+                    float: mapping($videoGallery, playListLi, float);
+                    @include content-spacing(map-get($videoGallery, playListLi));
+                    @media #{$mobile-down-only} {
+                        width:100%;
+                        &:nth-of-type(1n + #{$mobileItem + 1}) {
+                            display: mapping($videoGallery, playListLi, dnone);
+                        }
+                    }
+                    @media #{$mobile-up-only} {
+                        &:nth-of-type(1n + #{$desktopItem + 1}) {
+                            display: mapping($videoGallery, playListLi, dnone);
+                        }
+                    }
+                    a {
+                        display: mapping($videoGallery, playListA, display);
+                        color: mapping($videoGallery, playListA, plAcolor);
+                        text-decoration: mapping($videoGallery, playListA, textDecoration);
+                        @media #{$mobile-up-only} {
+                            display: mapping($videoGallery, playListA, mudisplay);
+                        }
+                        .reusability-gallery-image {
+                            width: mapping($videoGallery, galleryImg, width);
+                            position: mapping($videoGallery, galleryImg, position);
+                            display: mapping($videoGallery, galleryImg, display);
+                            justify-content: mapping($videoGallery, galleryImg, justifyContent);
+                            align-items: mapping($videoGallery, galleryImg, alignItems);
+                            @include content-spacing(map-get($videoGallery, galleryImg));
+                            @media #{$mobile-up-only} {
+                                width: mapping($videoGallery, galleryImg, muwidth);
+                            }
+                            img {
+                                width: mapping($videoGallery, galleryImgImg, width);
+                                border: mapping($videoGallery, galleryImgImg, border);
+                            }
+                            .reusability-playing-overlay {
+                                position: mapping($videoGallery, playingOverlay, position);
+                                display: mapping($videoGallery, playingOverlay, dnone);
+                                @if mapping($videoGallery, playingOverlay, position)=='absolute' {
+                                    top: 50%;
+                                    left: 50%;
+                                    @include transform(translate(-50%, -50%));
+                                }
+                                .play-icon {
+                                    display: mapping($videoGallery, playIcon, display);
+                                }
+                                .play-text {
+                                    background: $black;
+                                    border-radius: mapping($videoGallery, playText, borderRadius);
+                                    padding: 7px 12.5px 2px;
+                                    font-size: mapping($videoGallery, playText, fontSize);
+                                    font-family: mapping($videoGallery, playText, fontfamily);
+                                    letter-spacing: mapping($videoGallery, playText, letterSpacing);
+                                    color: $white;
+                                    display:inline-block;
+                                    text-align: center;
+                                    p{
+                                        font-size: 14px;
+                                        margin: 0;
+                                        line-height: 15px;
+                                    }
+                                }
+                            }
+                            &:after {
+                                content: "";
+                                background-image: mapping($videoGallery, galleryImgAfter, bgImgLight);
+                                position: mapping($videoGallery, galleryImgAfter, position);
+                                width: mapping($videoGallery, galleryImgAfter, width);
+                                height: mapping($videoGallery, galleryImgAfter, height);
+                                background-position: mapping($videoGallery, galleryImgAfter, backgroundPosition);
+                                top: mapping($videoGallery, galleryImgAfter, top);
+                                left: mapping($videoGallery, galleryImgAfter, left);
+                            }
+                        }
+                        .reusability-video-title-section {
+                            width: mapping($videoGallery, videoTitleSection, width);
+                            display: mapping($videoGallery, videoTitleSection, display);
+                            align-self: mapping($videoGallery, videoTitleSection, alignSelf);
+                            @media #{$mobile-up-only} {
+                                width: mapping($videoGallery, videoTitleSection, muwidth);
+                            }
+                            .hidden {
+                                display: mapping($videoGallery, videoTitleSectionHidden, display);
+                            }
+                            span {
+                                width: mapping($videoGallery, videoTitleSectionspan, width);
+                                font-size: mapping($videoGallery, videoTitleSectionspan, fontSize);
+                                font-family: mapping($videoGallery, videoTitleSectionspan, fontFamily);
+                                @include content-spacing(map-get($videoGallery, videoTitleSectionspan));
+                                @media #{$mobile-up-only} {
+                                    font-size: mapping($videoGallery, videoTitleSectionspan, mufontSize);
+                                    line-height: mapping($videoGallery, videoTitleSectionspan, lineHeight);
+                                }
+                            }
+                        }
+                        &:hover {
+                            text-decoration: mapping($videoGallery, playListAHover, textdecoration);
+                        }
+                    }
+                    &.active {
+                        a {
+                            .reusability-gallery-image {
+                                img {
+                                    @media #{$mobile-up-only} {
+                                        width: mapping($videoGallery, activeGalleryImgImg, muwidth);
+                                    }
+                                }
+                                .reusability-playing-overlay {
+                                    display: mapping($videoGallery, activeAlayingOverlay, dblock);
+                                }
+                                &:after {
+                                    display: mapping($videoGallery, activeGalleryImgAfter, display);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .show-more-accordian {
+                display: mapping($videoGallery, showMoreAccordian, display);
+                width: mapping($videoGallery, showMoreAccordian, width);
+                justify-content: mapping($videoGallery, showMoreAccordian, justifyContent);
+                .accordion {
+                    @include content-spacing(map-get($videoGallery, accordion));
+                    display: mapping($videoGallery, accordion, display);
+                    justify-content: mapping($videoGallery, accordion, textCenter);
+                    text-decoration: mapping($videoGallery, accordion, textDeco);
+                    min-width: mapping($videoGallery, accordion, width);
+                    font-family: mapping($videoGallery, accordion, fontFamily);
+                    font-weight: mapping($videoGallery, accordion, fontWeight);
+                    font-size: mapping($videoGallery, accordion, fontSize);
+                    &:before {
+                        display: none;
+                    }
+                    &.active {
+                        border: 2px solid $primaryTextColor;
+                        &:before {
+                           display: none;
+                        }
+                    }
+                }
+            }
+            .show-more {
+                display: none;
+                @media #{$mobile-down-only} {
+                    display: block;
+                }
+            }
+        }
+    }
+
+
+
+    .dark-theme {
+            .play-video{
+                float: left;
+                width: 100%;
+            }
+        .reusability-video-player-container {
+            .reusability-video-player-wrapper {
+                .cd-prev {
+                    &:before {
+                        background: mapping($videoGallery, cdPrevAfter, bgImgDark) !important;
+                    }
+                }
+                .oo-player-container {
+                    .oo-state-screen {
+                        .oo-action-icon {
+                            &:before {
+                                background-image: mapping($videoGallery, ooActionIcon, bgImgDark);
+                            }
+                        }
+                    }
+                }
+            }
+            .reusability-video-player-label{
+                background-color:rgba(43, 43, 43, 0.7);
+            }
+        }
+        .reusability-videos-gallery-playlist {
+            &::-webkit-scrollbar {
+                width: 12px;
+                background: rgba(43, 43, 43, 0.7);
+            }
+            &::-webkit-scrollbar-thumb {
+                background: $white;
+            }
+            .reusability-play-tiles-gallery {
+                .reusability-play-list {
+                    li {
+                        background: rgba(43, 43, 43, 0.7);
+                        border-radius: 0;
+                        a {
+                            .reusability-gallery-image {
+                                &:after {
+                                    background-image: mapping($videoGallery, galleryImgAfter, bgImgDark);
+                                    background-position: mapping($videoGallery, galleryImgAfter, backgroundPositionDark);
+
+                                }
+                            }
+                        }
+                    }
+                }
+                .show-more {
+                    .accordion {
+                        border: 2px solid transparent;
+                        color: $black;
+                        &:hover{
+                            border: 2px solid $primaryTextColor;
+                            color: $primaryTextColor;
+                        }
+                        &:before {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+        &.youtube, &.videogallery-single-column-layout{
+            .reusability-videos-gallery-playlist{
+                .reusability-play-tiles-gallery{
+                    .reusability-play-list{
+                        li{
+                            &.active{
+                                a{
+                                    .reusability-gallery-image{
+                                        img{
+                                            border: 4px solid $white;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .light-alt-theme {
+        .play-video{
+            float: left;
+            width: 100%;
+        }
+        .reusability-video-player-container {
+            .reusability-video-player-wrapper {
+                .cd-prev {
+                    &:before {
+                        background: mapping($videoGallery, cdPrevAfter, bgImgLightAlt) !important;
+                    }
+                }
+                .oo-player-container {
+                    .oo-state-screen {
+                        .oo-action-icon {
+                            &:before {
+                                background-image: mapping($videoGallery, ooActionIcon, bgImgLightAlt);
+                            }
+                        }
+                    }
+                }
+            }
+            .reusability-video-player-label{
+                background-color:rgba(248, 246, 245, 0.7);
+            }
+        }
+        .reusability-videos-gallery-playlist {
+            &::-webkit-scrollbar {
+                width: 12px;
+                background: rgba(248, 246, 245, 0.7);
+            }
+            &::-webkit-scrollbar-thumb {
+                background: $black;
+            }
+            .reusability-play-tiles-gallery {
+                .reusability-play-list {
+                    li {
+                        background: rgba(248, 246, 245, 0.7);
+                        border-radius: 0;
+                        a {
+                            .reusability-gallery-image {
+                                &:after {
+                                    background-image: mapping($videoGallery, galleryImgAfter, bgImgLightAlt);
+                                    background-position: mapping($videoGallery, galleryImgAfter, backgroundPositionLightAlt);
+                                }
+                            }
+                        }
+                    }
+                }
+                .show-more {
+                    .accordion {
+                        border: 2px solid $primaryTextColor;
+                        color: $black;
+                        &:hover{
+                            border: 2px solid $primaryTextColor;
+                            color: $primaryTextColor;
+                        }
+                        &:before {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+        &.videogallery-single-column-layout, &.youtube{
+            .reusability-videos-gallery-playlist{
+                .reusability-play-tiles-gallery{
+                    .reusability-play-list{
+                        li{
+                            &.active{
+                                a{
+                                    .reusability-gallery-image{
+                                        img{
+                                            border: 4px solid #000000;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .youtube, .videogallery-single-column-layout {
+        float: mapping($videoGallery, youtubeWrapper, float);
+        .reusability-video-component {
+            @include content-spacing(map-get($videoGallery, youtubeWrapper));
+        }
+        .reusability-video-page-title {
+            @include content-spacing(map-get($videoGallery, youtubeVideoPageTitle));
+        }
+        .reusability-video-player-container {
+            float: mapping($videoGallery, youtubeVideoPlayerContainer, float);
+            width: mapping($videoGallery, youtubeVideoPlayerContainer, width);
+            @include content-spacing(map-get($videoGallery, youtubeVideoPlayerContainer));
+            @media #{$mobile-up-only} {
+                width: mapping($videoGallery, youtubeVideoPlayerContainer, muwidth);
+            }
+            .reusability-video-player-wrapper {
+                .cd-prev,
+                .cd-next {
+                    @media #{$mobile-up-only} {
+                        display: mapping($videoGallery, youtubecdPrevNext, display);
+                    }
+                }
+                .oo-player-container {
+                    .oo-state-screen {
+                        .oo-action-icon {
+                            &:before {
+                                @media #{$md-only} {
+                                    width: mapping($videoGallery, ooActionIcon, mwidth);
+                                    height: mapping($videoGallery, ooActionIcon, mheight);
+                                    background-position: mapping($videoGallery, ooActionIcon, mbackgroundPosition);
+                                    top: mapping($videoGallery, ooActionIcon, mtop);
+                                    left: mapping($videoGallery, ooActionIcon, mleft);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .reusability-video-player-label {
+                @include content-spacing(map-get($videoGallery, youtubeVideoPlayerLabel));
+                h2 {
+                    @include content-spacing(map-get($videoGallery, youtubeVideoPlayerLabelH2));
+                    font-size: 18px;
+                    line-height: 24px;
+                }
+                h5 {
+                    @include content-spacing(map-get($videoGallery, youtubeVideoPlayerLabelH2));
+                }
+                p {
+                    @include content-spacing(map-get($videoGallery, youtubeVideoPlayerLabelP));
+                }
+            }
+        }
+        .reusability-videos-gallery-playlist {
+            @include content-spacing(map-get($videoGallery, youtubeVideoGalleryPlaylist));
+            @media #{$mobile-up-only} {
+                width: mapping($videoGallery, youtubeVideoGalleryPlaylist, Lwidth);
+                overflow-y: mapping($videoGallery, youtubeVideoGalleryPlaylist, overFlowY);
+            }
+            .reusability-play-tiles-gallery {
+                .reusability-play-list {
+                    @include content-spacing(map-get($videoGallery, youtibePlayList));
+                    width: mapping($videoGallery, youtibePlayList, width);
+                    li {
+                        width: mapping($videoGallery, youtibePlayListLi, width);
+                        @include content-spacing(map-get($videoGallery, youtibePlayListLi));
+                        left: 0;
+                        @media #{$mobile-up-only} {
+                            &:nth-of-type(1n+#{$mobileItem+1}) {
+                                display: mapping($videoGallery, playListLi, dblock);
+                            }
+                        }
+                        a {
+                            display: mapping($videoGallery, youtubePlayListA, display);
+                            .reusability-gallery-image {
+                                width:100%;
+                                @media #{$medium-up} {
+                                    max-width: 167px;
+                                }
+                                @media #{$medium-only} {
+                                    max-width: 116px;
+                                }
+                                @media #{$small-only} {
+                                    max-width: 164px;
+                                }
+                                @media #{$xsmall-only} {
+                                    max-width: 130px;
+                                }
+                            }
+                            .reusability-video-title-section {
+                                width: mapping($videoGallery, youtubeVideoTitleSection, muwidth);
+                                span {
+                                    @include content-spacing(map-get($videoGallery, youtubeVideoTitleSectionspan));
+                                }
+                            }
+                        }
+                        &.active {
+                            a {
+                                .reusability-gallery-image {
+                                    img {
+                                        border: mapping($videoGallery, youtubeaActiveGalleryImg, imgBorder);
+                                        @media #{$mobile-up-only} {
+                                            width: mapping($videoGallery, youtubeaActiveGalleryImg, muwidth);
+                                            border: mapping($videoGallery, youtubeaActiveGalleryImg, imgBorder);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .videogallery-single-column-layout{
+        float: left;
+        @media #{$small-up} {
+            .reusability-video-player-container, .reusability-videos-gallery-playlist{
+                width: 100%;
+            }
+            .reusability-video-component{
+                @include content-spacing(map-get($videoGallery, youtubeSingleColumnWrapper));
+            }
+            .reusability-video-player-container{
+                @include content-spacing(map-get($videoGallery, singleColumnVideoPlayerContainer));
+            }
+            .reusability-videos-gallery-playlist{
+                @include content-spacing(map-get($videoGallery, singleColumnVideoGalleryPlaylist));
+                height: auto!important;
+                overflow: auto;
+                .reusability-play-tiles-gallery{
+                    .reusability-play-list{
+                        margin-right: 0;
+                        li{
+                            &:nth-of-type(1n+3){
+                                display: none;
+                            }
+                            a{
+                                .reusability-gallery-image {
+                                    img{
+                                        border: 8px solid transparent;
+                                    }
+                                }
+                            }
+                            &.active{
+                                a {
+                                    .reusability-gallery-image {
+                                        img{
+                                            margin: 4px;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .show-more{
+                        display: block;
+                    }
+                }
+            }
+        }
+    }
+
+}
+.play-video{
+    display: block;
+    float: left;
+    width: 100%;
+}

@@ -1,0 +1,25 @@
+<sly data-sly-use.responsiveTabModel="com.mattel.global.master.core.model.ResponsiveTabModel" />
+<sly data-sly-use.backgroundTabModel="com.mattel.global.master.core.model.BackgroundTabModel" />
+<sly data-sly-use.lib="mattel/global/components/content/dynamicMedia/v1/dynamicMedia/imageblock.html" />
+<sly data-sly-use.model="com.mattel.global.master.core.model.AccordionContainerModel" />
+<sly data-sly-test="${wcmmode.edit}">${'Edit Accordion Container Component' @i18n}</sly>
+<div data-toggle-close="${model.autoClose == 'true' ? 'true' : 'false'}" class="accordion-item autoclose-${model.autoClose == 'true' ? 'on' : 'of'} ${properties.image || properties.mobileImage ? 'bg_wrapperImg dynamic-media-wrapper' : 'bg_color'}">
+    <div class="dynamicMedia" data-sly-test="${properties.image || properties.mobileImage}">
+
+        <div class="desktop-bg ${!properties.customMobile || !properties.mobileImage ? 'customMobileoff' : ' '}" data-sly-test="${properties.image}" data-sly-call="${lib.imageVideoSection @ imageDetail='image'}"></div>
+        <div class="mobile-bg" data-sly-test="${properties.mobileImage && properties.customMobile}" data-sly-call="${lib.imageVideoSection @ imageDetail='mobileImage'}"></div>
+    </div>
+    <div class="accordion ${properties.image || properties.mobileImage ? 'dynamic-media-container' : ''}" style="background-color:${properties.backgroundOption=='color' ? properties.backgroundColor : ''  @context='html'}">
+ 
+    <div class="accordion-page-title" data-sly-test="${model.title || model.subTitle || model.description}">
+        <div class="main-title" data-sly-test="${model.title}">${model.title @context='html',i18n}</div>
+        <div class="sub-title" data-sly-test="${model.subTitle}">${model.subTitle @context='html',i18n}</div>
+        <div class="text-para" data-sly-test="${model.description}">${model.description @context='html',i18n}</div>
+    </div>
+
+    <sly data-sly-include="/apps/mattel/global/master/components/core/content/v1/content/content.html"></sly>
+</div>
+</div>
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
+    <sly data-sly-call="${clientlib.js @ categories='accordion.container'}"/>
+</sly>

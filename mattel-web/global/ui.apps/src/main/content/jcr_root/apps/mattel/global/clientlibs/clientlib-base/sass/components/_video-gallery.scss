@@ -1,0 +1,1445 @@
+$mobileVisibleLi: if(variable-exists(videoGallery) and map-has-key($videoGallery, playListLi), mapping($videoGallery, playListLi, mobileVisibleChild), 2);
+$desktopVisibleLi: if(variable-exists(videoGallery) and map-has-key($videoGallery, playListLi), mapping($videoGallery, playListLi, desktopVisibleChild), 6);
+.reusability-video-component {
+    @include print-css(
+        map-merge((
+            float: left,
+            padding: (
+                largeUp: 40px 15px 40px 15px,
+                largeOnly: 40px 17px 40px 17px,
+                mediumOnly: 40px 15px 40px 15px,
+                smOnly: 30px 20px 40px 20px,
+                defaultVal: 30px 20px 40px 20px
+            )
+        ), 
+        if(variable-exists(videoGallery) and map-has-key($videoGallery, VideoWrapper), 
+            map-get($videoGallery,VideoWrapper), ()
+        )
+    ));
+}
+
+.reusability-video-page-title {
+    @include print-css(
+        map-merge((
+            margin: (
+                largeUp: 0 15px,
+                largeOnly: 0 15px,
+                mediumOnly: 0 15px,
+                smOnly: 0,
+                defaultVal: 0
+            )
+        ), 
+        if(variable-exists(videoGallery) and map-has-key($videoGallery, videoPageTitle), 
+            map-get($videoGallery,videoPageTitle), ()
+        )
+    ));
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p {
+        @include print-css(
+            map-merge((
+                margin: (
+                    largeUp: 0,
+                    largeOnly: 0,
+                    mediumOnly: 0,
+                    smOnly: 0,
+                    defaultVal: 0
+                ),
+                padding: (
+                    largeUp: 0,
+                    largeOnly: 0,
+                    mediumOnly: 0,
+                    smOnly: 0,
+                    defaultVal: 0
+                ),
+            ), 
+            if(variable-exists(videoGallery) and map-has-key($videoGallery, PageTitle), 
+                map-get($videoGallery,PageTitle), ()
+            )
+        ));
+    }
+    .main-title {
+        @include print-css(
+            map-merge((
+                margin: (
+                    largeUp: 0 0 10px 0,
+                    largeOnly: 0 0 10px 0,
+                    mediumOnly: 0 0 10px 0,
+                    smOnly: 0 0 10px 0,
+                    defaultVal: 0 0 10px 0
+                )
+            ), 
+            if(variable-exists(videoGallery) and map-has-key($videoGallery, mainTitle), 
+                map-get($videoGallery,mainTitle), ()
+            )
+        ));
+    }
+    .sub-title {
+        @include print-css(
+            map-merge((
+                margin: (
+                    largeUp: 0 0 10px 0,
+                    largeOnly: 0 0 10px 0,
+                    mediumOnly: 0 0 10px 0,
+                    smOnly: 0 0 10px 0,
+                    defaultVal: 0 0 10px 0
+                )
+            ), 
+            if(variable-exists(videoGallery) and map-has-key($videoGallery, subtitle), 
+                map-get($videoGallery,subtitle), ()
+            )
+        ));
+    }
+    .text-para {
+        @include print-css(
+            map-merge((
+                margin: (
+                    largeUp: 0 0 20px 0,
+                    largeOnly: 0 0 20px 0,
+                    mediumOnly: 0 0 20px 0,
+                    smOnly: 0 0 10px 0,
+                    defaultVal: 0 0 10px 0
+                )
+            ), 
+            if(variable-exists(videoGallery) and map-has-key($videoGallery, textPara), 
+                map-get($videoGallery,textPara), ()
+            )
+        ));
+    }
+}
+
+.reusability-video-player-container {
+    @include print-css(
+        map-merge((
+            margin: (
+                largeUp: 0 15px 0,
+                largeOnly: 0 15px 0,
+                mediumOnly: 0 15px 0,
+                smOnly: 0,
+                defaultVal: 0
+              ),
+              text-align: left,
+        ), 
+        if(variable-exists(videoGallery) and map-has-key($videoGallery, videoPlayerContainer), 
+            map-get($videoGallery,videoPlayerContainer), ()
+        )
+    ));
+    .reusability-video-player-wrapper {
+        @include print-css(
+            map-merge((
+                position: relative,
+                float: left,
+                width: 100%
+            ), 
+            if(variable-exists(videoGallery) and map-has-key($videoGallery, videoPlayerWrapper), 
+                map-get($videoGallery,videoPlayerWrapper), ()
+            )
+        ));
+        .video-player {
+            @include print-css(
+                map-merge((
+                    position: relative
+                ), 
+                if(variable-exists(videoGallery) and map-has-key($videoGallery, videoPlayer), 
+                    map-get($videoGallery,videoPlayer), ()
+                )
+            ));
+            .innerWrapper {
+                &>div {
+                    @include print-css(
+                        map-merge((
+                            z-index: 9 !important
+                        ), 
+                        if(variable-exists(videoGallery) and map-has-key($videoGallery, innerWrapperDiv), 
+                            map-get($videoGallery,innerWrapperDiv), ()
+                        )
+                    ));
+                }
+            }
+        }
+        .cd-prev {
+            @include print-css(
+                map-merge((
+                    background: none !important,
+                    z-index: 10 !important,
+                    width: 50px !important,
+                    height: 50px !important,
+                    position: absolute,
+                    top: calc(50% - 25px) !important,
+                    left: 12px,
+                    transform: translate(0),
+                    display: (
+                        defaultVal: none,
+                        largeOnly: block,
+                        largeUp: block
+                    ),
+                ), 
+                if(variable-exists(videoGallery) and map-has-key($videoGallery, cdPrev), 
+                    map-get($videoGallery,cdPrev), ()
+                )
+            ));
+            &:before {
+                @include print-css(
+                    map-merge((
+                        content: "",
+                        position: absolute,
+                        background: url($spriteLightPath) !important,
+                        width: 50px,
+                        height: 50px,
+                        background-position: 0px 0px,
+                        left: 0,
+                        color: transparent !important,
+                        padding: 0 !important,
+                        background-color: transparent !important,
+                    ), 
+                    if(variable-exists(videoGallery) and map-has-key($videoGallery, cdPrevAfter), 
+                        map-get($videoGallery,cdPrevAfter), ()
+                    )
+                ));
+            }
+        }
+        .cd-next {
+            @include print-css(
+                map-merge((
+                    left: calc(100% - 62px) !important
+                ), 
+                if(variable-exists(videoGallery) and map-has-key($videoGallery, cdnext), 
+                    map-get($videoGallery,cdnext), ()
+                )
+            ));
+            @extend .cd-prev;
+            &:before {
+                @include print-css(
+                    map-merge((
+                        transform: rotate(180deg),
+                    ), 
+                    if(variable-exists(videoGallery) and map-has-key($videoGallery, cdnextBefore), 
+                        map-get($videoGallery,cdnextBefore), ()
+                    )
+                ));
+            }
+        }
+        .oo-player-container {
+            @include print-css(
+                map-merge((
+                    min-width: (
+                        smallDown: auto,
+                    )
+                ), 
+                if(variable-exists(videoGallery) and map-has-key($videoGallery, ooPlayerContainer), 
+                    map-get($videoGallery,ooPlayerContainer), ()
+                )
+            ));
+            .oo-state-screen {
+                .oo-action-icon {
+                    &:before {
+                        @include print-css(
+                            map-merge((
+                                content: "",
+                                background-image: url($spriteLightPath),
+                                position: absolute,
+                                width: (
+                                    defaultVal: 63px,
+                                    mediumOnly: 63px,
+                                    smallUp: 167px
+                                ),
+                                height: (
+                                    defaultVal: 63px,
+                                    mediumOnly: 63px,
+                                    smallUp: 166px
+                                ),
+                                background-position: (
+                                    defaultVal: 0px -74px,
+                                    mediumOnly: 0px -74px,
+                                    smallUp: 0px -137px,
+                                ),
+                                top: (
+                                    defaultVal: calc(50% - 32px),
+                                    mediumOnly: calc(50% - 32px),
+                                    smallUp: calc(50% - 82px)
+                                ),
+                                left: (
+                                    defaultVal: calc(50% - 32px),
+                                    mediumOnly: calc(50% - 32px),
+                                    smallUp: calc(50% - 82px),
+                                ),
+                                
+                            ), 
+                            if(variable-exists(videoGallery) and map-has-key($videoGallery, ooActionIcon), 
+                                map-get($videoGallery,ooActionIcon), ()
+                            )
+                        ));
+                    }
+                    span {
+                        &.oo-icon {
+                            @include print-css(
+                                map-merge((
+                                    font-size: 112px,
+                                    opacity: 0 !important
+                                ), 
+                                if(variable-exists(videoGallery) and map-has-key($videoGallery, spanooIcon), 
+                                    map-get($videoGallery,spanooIcon), ()
+                                )
+                            ));
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .reusability-video-player-label {
+        @include print-css(
+            map-merge((
+                background: $videoLabelBg,
+                float: left,
+                width: 100%,
+                padding: (
+                    largeUp: 12px 20px 16px 20px,
+                    largeOnly: 12px 20px 16px 20px,
+                    mediumOnly: 12px 20px 16px 20px,
+                    smOnly: 12px,
+                    defaultVal: 12px
+                )
+            ), 
+            if(variable-exists(videoGallery) and map-has-key($videoGallery, videoPlayerLabel), 
+                map-get($videoGallery,videoPlayerLabel), ()
+            )
+        ));
+        h3 {
+            @include print-css(
+                map-merge((
+                    font-size: (
+                        defaultVal: 16px,
+                        smallUp: 18px
+                    ),
+                    margin: (
+                        largeUp: 0 0 4px 0,
+                        largeOnly: 0 0 4px 0,
+                        mediumOnly: 0 0 4px 0,
+                        smOnly: 0 0 4px 0,
+                        defaultVal: 0 0 4px 0
+                    )
+                ), 
+                if(variable-exists(videoGallery) and map-has-key($videoGallery, videoPlayerLabelH3), 
+                    map-get($videoGallery,videoPlayerLabelH3), ()
+                )
+            ));
+        }
+        p {
+            @include print-css(
+                map-merge((
+                    font-size: (
+                        defaultVal: 16px,
+                        smallUp: 18px
+                    ),
+                    margin: (
+                        largeUp: 0,
+                        largeOnly: 0,
+                        mediumOnly: 0,
+                        smOnly: 0,
+                        defaultVal: 0
+                    )
+                ), 
+                if(variable-exists(videoGallery) and map-has-key($videoGallery, videoPlayerLabelP), 
+                    map-get($videoGallery,videoPlayerLabelP), ()
+                )
+            ));
+        }
+    }
+}
+
+.reusability-videos-gallery-playlist {
+    @include print-css(
+        map-merge((
+            width: 100%,
+            float: left,
+            text-align: left,
+            margin: (
+                largeUp: 30px 0 0 0,
+                largeOnly: 30px 0 0 0,
+                mediumOnly: 30px 0 0 0,
+                smOnly: 8px 0 0 0,
+                defaultVal: 8px 0 0 0
+            )
+        ), 
+        if(variable-exists(videoGallery) and map-has-key($videoGallery, videoGalleryPlaylist), 
+            map-get($videoGallery,videoGalleryPlaylist), ()
+        )
+    ));
+    &::-webkit-scrollbar {
+        @include print-css(
+            map-merge((
+                width: 10px,
+                background: $webkitScrollBg,
+            ), 
+            if(variable-exists(videoGallery) and map-has-key($videoGallery, webkitScroll), 
+                map-get($videoGallery,webkitScroll), ()
+            )
+        ));
+    }
+    &::-webkit-scrollbar-thumb {
+        @include print-css(
+            map-merge((
+                background: $webkitScrollColor
+            ), 
+            if(variable-exists(videoGallery) and map-has-key($videoGallery, webkitScrollThumb), 
+                map-get($videoGallery,webkitScrollThumb), ()
+            )
+        ));
+    }
+    .reusability-play-tiles-gallery {
+        .reusability-play-list {
+            @include print-css(
+                map-merge((
+                    width: 100%,
+                    display: flex,
+                    flex-wrap: wrap,
+                    padding: (
+                      largeUp: 0,
+                      largeOnly: 0,
+                      mediumOnly: 0,
+                      smOnly: 0,
+                      defaultVal: 0
+                    ),
+                    margin: (
+                      largeUp: 0,
+                      largeOnly: 0,
+                      mediumOnly: 0,
+                      smOnly: 0,
+                      defaultVal: 0
+                    )
+                ), 
+                if(variable-exists(videoGallery) and map-has-key($videoGallery, playList), 
+                    map-get($videoGallery,playList), ()
+                )
+            ));
+            li {
+                @include print-css(
+                    map-merge((
+                        background: $videoLabelBg,
+                        width:(
+                            smallDown: 100%
+                        ),
+                        list-style: none,
+                        float: left,
+                        margin: (
+                            largeUp: 0 15px 30px 15px,
+                            largeOnly: 0 15px 30px 15px,
+                            mediumOnly: 0 15px 30px 15px,
+                            smOnly: 0 0 10px 0,
+                            defaultVal: 0 0 10px 0
+                        )
+                    ), 
+                    if(variable-exists(videoGallery) and map-has-key($videoGallery, playListLi), 
+                        map-get($videoGallery,playListLi), ()
+                    )
+                ));
+                @media #{$small-down} {
+                    &:nth-of-type(1n + #{$mobileVisibleLi + 1}) {
+                        display: none;
+                    }
+                }
+                @media #{$small-up} {
+                    &:nth-of-type(1n + #{$desktopVisibleLi + 1}) {
+                        display: none;
+                    }
+                }
+                a {
+                    @include print-css(
+                        map-merge((
+                            display: (
+                                defaultVal: flex,
+                                smallUp: block
+                            ),
+                            color: inherit,
+                            text-decoration: none
+                        ), 
+                        if(variable-exists(videoGallery) and map-has-key($videoGallery, playListA), 
+                            map-get($videoGallery,playListA), ()
+                        )
+                    ));
+                    .reusability-gallery-image {
+                        @include print-css(
+                            map-merge((
+                                width: (
+                                    defaultVal: 30%,
+                                    smallUp: 100%
+                                ),
+                                position: relative,
+                                display: flex,
+                                justify-content: center,
+                                align-items: center,
+                                margin: (
+                                    largeUp: 0,
+                                    largeOnly: 0,
+                                    mediumOnly: 0,
+                                    smOnly: 8px 0 8px 8px,
+                                    defaultVal: 8px 0 8px 8px
+                                )
+                            ), 
+                            if(variable-exists(videoGallery) and map-has-key($videoGallery, galleryImg), 
+                                map-get($videoGallery,galleryImg), ()
+                            )
+                        ));
+                        img {
+                            @include print-css(
+                                map-merge((
+                                    width: 100%,
+                                    border: 5px solid transparent,
+                                ), 
+                                if(variable-exists(videoGallery) and map-has-key($videoGallery, galleryImgImg), 
+                                    map-get($videoGallery,galleryImgImg), ()
+                                )
+                            ));
+                        }
+                        .reusability-playing-overlay {
+                            @include print-css(
+                                map-merge((
+                                    position: absolute,
+                                    display: none,
+                                    top: 50%,
+                                    left: 50%,
+                                    transform: translate(-50%, -50%)
+                                ), 
+                                if(variable-exists(videoGallery) and map-has-key($videoGallery, playingOverlay), 
+                                    map-get($videoGallery,playingOverlay), ()
+                                )
+                            ));
+                            @if (variable-exists(videoGallery) and map-has-key($videoGallery, playingOverlay)){
+                                @if mapping($videoGallery, playingOverlay, position)=='absolute' {
+                                    top: 50%;
+                                    left: 50%;
+                                    @include transform(translate(-50%, -50%));
+                                }
+                            }
+                            .play-icon {
+                                @include print-css(
+                                    map-merge((
+                                        display:none
+                                    ), 
+                                    if(variable-exists(videoGallery) and map-has-key($videoGallery, playIcon), 
+                                        map-get($videoGallery,playIcon), ()
+                                    )
+                                ));
+                            }
+                            .play-text {
+                                @include print-css(
+                                    map-merge((
+                                        background: $playText,
+                                        border-radius: 10px,
+                                        font-size: 14px,
+                                        font-family: $maaxBold,
+                                        letter-spacing: 0.2px,
+                                        color: $white,
+                                        padding: (
+                                            largeUp: 3px 15px,
+                                            largeOnly: 3px 15px,
+                                            mediumOnly: 3px 15px,
+                                            smOnly: 3px 15px,
+                                            defaultVal: 3px 15px
+                                        ),
+                                        display:inline-block,
+                                        text-align: center,
+                                    ), 
+                                    if(variable-exists(videoGallery) and map-has-key($videoGallery, playText), 
+                                        map-get($videoGallery,playText), ()
+                                    )
+                                ));
+                                p{
+                                    @include print-css(
+                                        map-merge((
+                                            margin: 0,
+                                            font-size: (
+                                                smallDown: 10px
+                                            )
+                                        ), 
+                                        if(variable-exists(videoGallery) and map-has-key($videoGallery, playTextP), 
+                                            map-get($videoGallery,playTextP), ()
+                                        )
+                                    ));
+                                }
+                            }
+                        }
+                        &:after {
+                            @include print-css(
+                                map-merge((
+                                    content: "",
+                                    position: absolute,
+                                    width: 40px,
+                                    height: 40px,
+                                    background-position: -63px -74px,
+                                    top: calc(50% - 20px),
+                                    left: calc(50% - 20px),
+                                    background-image: url($spriteLightPath)
+                                ), 
+                                if(variable-exists(videoGallery) and map-has-key($videoGallery, galleryImgAfter), 
+                                    map-get($videoGallery,galleryImgAfter), ()
+                                )
+                            ));
+                        }
+                    }
+                    .reusability-video-title-section {
+                        @include print-css(
+                            map-merge((
+                                width: (
+                                    defaultVal: 70%,
+                                    smallUp: 100%
+                                ),
+                                display: flex,
+                                align-self: center,
+                                padding:(
+                                    defaultVal: 0 20px
+                                )
+                            ), 
+                            if(variable-exists(videoGallery) and map-has-key($videoGallery, videoTitleSection), 
+                                map-get($videoGallery,videoTitleSection), ()
+                            )
+                        ));
+                        .hidden {
+                            @include print-css(
+                                map-merge((
+                                    display: none,
+                                ), 
+                                if(variable-exists(videoGallery) and map-has-key($videoGallery, videoTitleSectionHidden), 
+                                    map-get($videoGallery,videoTitleSectionHidden), ()
+                                )
+                            ));
+                        }
+                        span {
+                            @include print-css(
+                                map-merge((
+                                    width: 100%,
+                                    font-size: (
+                                        defaultVal: 16px,
+                                        smallUp: 18px
+                                    ),
+                                    font-family: $maaxMedium,
+                                    line-height:(
+                                        smallUp: 20px
+                                    ),
+                                    padding: (
+                                        largeUp: 12px 16px 16px 16px,
+                                        largeOnly: 12px 16px 16px 16px,
+                                        mediumOnly: 12px 16px 16px 16px,
+                                        smOnly: 0 12px,
+                                        defaultVal: 0 12px
+                                    )
+                                ), 
+                                if(variable-exists(videoGallery) and map-has-key($videoGallery, videoTitleSectionspan), 
+                                    map-get($videoGallery,videoTitleSectionspan), ()
+                                )
+                            ));
+                        }
+                    }
+                    &:hover {
+                        @include print-css(
+                            map-merge((
+                                text-decoration: none,
+                            ), 
+                            if(variable-exists(videoGallery) and map-has-key($videoGallery, playListAHover), 
+                                map-get($videoGallery,playListAHover), ()
+                            )
+                        ));
+                    }
+                }
+                &.active {
+                    a {
+                        .reusability-gallery-image {
+                            img {
+                                @include print-css(
+                                    map-merge((
+                                        width: (
+                                            smallUp: 100%
+                                        ),
+                                    ), 
+                                    if(variable-exists(videoGallery) and map-has-key($videoGallery, activeGalleryImgImg), 
+                                        map-get($videoGallery,activeGalleryImgImg), ()
+                                    )
+                                ));
+                            }
+                            .reusability-playing-overlay {
+                                @include print-css(
+                                    map-merge((
+                                        display: block,
+                                    ), 
+                                    if(variable-exists(videoGallery) and map-has-key($videoGallery, activeAlayingOverlay), 
+                                        map-get($videoGallery,activeAlayingOverlay), ()
+                                    )
+                                ));
+                            }
+                            &:after {
+                                @include print-css(
+                                    map-merge((
+                                        display: none,
+                                    ), 
+                                    if(variable-exists(videoGallery) and map-has-key($videoGallery, activeGalleryImgAfter), 
+                                        map-get($videoGallery,activeGalleryImgAfter), ()
+                                    )
+                                ));
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .show-more-accordian {
+            @include print-css(
+                map-merge((
+                    display: flex,
+                    width: 100%,
+                    justify-content: center
+                ), 
+                if(variable-exists(videoGallery) and map-has-key($videoGallery, showMoreAccordian), 
+                    map-get($videoGallery,showMoreAccordian), ()
+                )
+            ));
+            .accordion {
+                @include print-css(
+                    map-merge((
+                        padding: (
+                            largeUp: 12px 32px,
+                            largeOnly: 12px 32px,
+                            mediumOnly: 12px 32px,
+                            smOnly: 12px 32px,
+                            defaultVal: 12px 32px
+                        ),
+                        margin: (
+                            largeUp: 10px 0 0 0,
+                            largeOnly: 10px 0 0 0,
+                            mediumOnly: 10px 0 0 0,
+                            smOnly: 10px 0 0 0,
+                            defaultVal: 10px 0 0 0
+                        ),
+                        display: flex,
+                        text-decoration: none,
+                        width: auto,
+                        font-family: $maaxMedium,
+                        font-weight: 400,
+                        font-size: 16px,
+                    ), 
+                    if(variable-exists(videoGallery) and map-has-key($videoGallery, accordion), 
+                        map-get($videoGallery,accordion), ()
+                    )
+                ));
+                &:before {
+                    @include print-css(
+                        map-merge((
+                            content: "",
+                            margin: (
+                                largeUp: 0 5px 0 0,
+                                largeOnly: 0 5px 0 0,
+                                mediumOnly: 0 5px 0 0,
+                                smOnly: 0 5px 0 0,
+                                defaultVal: 0 5px 0 0
+                            ),
+                            width: 21px,
+                            height: 21px,
+                            background-position: -77px -52px,
+                            background-image: url($spriteLightPath),
+                        ), 
+                        if(variable-exists(videoGallery) and map-has-key($videoGallery, accordionBefore), 
+                            map-get($videoGallery,accordionBefore), ()
+                        )
+                    ));
+                }
+                &.active {
+                    &:before {
+                        @include print-css(
+                            map-merge((
+                                background-position: -53px -52px,
+                            ), 
+                            if(variable-exists(videoGallery) and map-has-key($videoGallery, accordionActiveBefore), 
+                                map-get($videoGallery,accordionActiveBefore), ()
+                            )
+                        ));
+                    }
+                }
+            }
+        }
+        .show-more {
+            @include print-css(
+                map-merge((
+                    display: block,
+                ), 
+                if(variable-exists(videoGallery) and map-has-key($videoGallery, showMore), 
+                    map-get($videoGallery,showMore), ()
+                )
+            ));
+        }
+    }
+}
+
+.four-column {
+    .reusability-videos-gallery-playlist {    
+        .reusability-play-tiles-gallery {
+            .reusability-play-list {
+                li {
+                    @media #{$mobile-up-only} {
+                        &:nth-of-type(-n + 8) {
+                            display: block;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+.dark-theme {
+    .reusability-video-player-container {
+        .reusability-video-player-wrapper {
+            .cd-prev {
+                &:before {
+                    @include print-css(
+                        map-merge((
+                            background: url($spriteDarkPath) !important
+                        ), 
+                        if(variable-exists(videoGallery) and map-has-key($videoGallery, cdPrevAfterDark), 
+                            map-get($videoGallery,cdPrevAfterDark), ()
+                        )
+                    ));
+                }
+            }
+            .oo-player-container {
+                .oo-state-screen {
+                    .oo-action-icon {
+                        &:before {
+                            @include print-css(
+                                map-merge((
+                                    background-image: url($spriteDarkPath)
+                                ), 
+                                if(variable-exists(videoGallery) and map-has-key($videoGallery, ooActionIconDark), 
+                                    map-get($videoGallery,ooActionIconDark), ()
+                                )
+                            ));
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .reusability-videos-gallery-playlist {
+        .reusability-play-tiles-gallery {
+            .reusability-play-list {
+                li {
+                    a {
+                        .reusability-gallery-image {
+                            &:after {
+                                @include print-css(
+                                    map-merge((
+                                        background-image: url($spriteDarkPath)
+                                    ), 
+                                    if(variable-exists(videoGallery) and map-has-key($videoGallery, galleryImgAfterDark), 
+                                        map-get($videoGallery,galleryImgAfterDark), ()
+                                    )
+                                ));
+                            }
+                        }
+                    }
+                }
+            }
+            .show-more {
+                .accordion {
+                    @include print-css(
+                        map-merge((
+                            background-color: $videoAccordionColor,
+                            color: $videoccordionBg
+                        ), 
+                        if(variable-exists(videoGallery) and map-has-key($videoGallery, darkTheamAccordian), 
+                            map-get($videoGallery,darkTheamAccordian), ()
+                        )
+                    ));
+                    &:before {
+                        @include print-css(
+                            map-merge((
+                                background-image: url($spriteDarkPath)
+                            ), 
+                            if(variable-exists(videoGallery) and map-has-key($videoGallery, accordionBeforeDark), 
+                                map-get($videoGallery,accordionBeforeDark), ()
+                            )
+                        ));
+                    }
+                }
+            }
+        }
+    }
+}
+
+.light-alt-theme {
+    .reusability-video-player-container {
+        .reusability-video-player-wrapper {
+            .cd-prev {
+                &:before {
+                    @include print-css(
+                        map-merge((
+                            background: url($spriteLightAltPath) !important
+                        ), 
+                        if(variable-exists(videoGallery) and map-has-key($videoGallery, cdPrevAfterLightAlt), 
+                            map-get($videoGallery,cdPrevAfterLightAlt), ()
+                        )
+                    ));
+                }
+            }
+            .oo-player-container {
+                .oo-state-screen {
+                    .oo-action-icon {
+                        &:before {
+                            @include print-css(
+                                map-merge((
+                                    background-image: url($spriteLightAltPath)
+                                ), 
+                                if(variable-exists(videoGallery) and map-has-key($videoGallery, ooActionIconLightAlt), 
+                                    map-get($videoGallery,ooActionIconLightAlt), ()
+                                )
+                            ));
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .reusability-videos-gallery-playlist {
+        .reusability-play-tiles-gallery {
+            .reusability-play-list {
+                li {
+                    a {
+                        .reusability-gallery-image {
+                            &:after {
+                                @include print-css(
+                                    map-merge((
+                                        background-image: url($spriteLightAltPath)
+                                    ), 
+                                    if(variable-exists(videoGallery) and map-has-key($videoGallery, galleryImgAfterLightAlt), 
+                                        map-get($videoGallery,galleryImgAfterLightAlt), ()
+                                    )
+                                ));
+                            }
+                        }
+                    }
+                }
+            }
+            .show-more {
+                .accordion {
+                    @include print-css(
+                        map-merge((
+                            background-color: $videoAccordionColor,
+                            color: $videoccordionBg
+                        ), 
+                        if(variable-exists(videoGallery) and map-has-key($videoGallery, darkTheamAccordian), 
+                            map-get($videoGallery,darkTheamAccordian), ()
+                        )
+                    ));
+                    &:before {
+                        @include print-css(
+                            map-merge((
+                                background-image: url($spriteLightAltPath)
+                            ), 
+                            if(variable-exists(videoGallery) and map-has-key($videoGallery, accordionBeforeLightAlt), 
+                                map-get($videoGallery,accordionBeforeLightAlt), ()
+                            )
+                        ));
+                    }
+                }
+            }
+        }
+    }
+}
+
+.youtube, .videogallery-single-column-layout {
+    float: left;
+    .reusability-video-component {
+        @include print-css(
+            map-merge((
+                padding: (
+                    largeUp: 40px 30px 40px 30px,
+                    largeOnly: 40px 30px 40px 30px,
+                    mediumOnly: 40px 30px 40px 30px,
+                    smOnly: 30px 20px 40px 20px,
+                    defaultVal: 30px 20px 40px 20px
+                )
+            ), 
+            if(variable-exists(videoGallery) and map-has-key($videoGallery, youtubeWrapperDiv), 
+                map-get($videoGallery,youtubeWrapperDiv), ()
+            )
+        ));
+    }
+    .reusability-video-page-title {
+        @include print-css(
+            map-merge((
+                margin: (
+                    largeUp: 0,
+                    largeOnly: 0,
+                    mediumOnly: 0,
+                    smOnly: 0,
+                    defaultVal: 0
+                )
+            ), 
+            if(variable-exists(videoGallery) and map-has-key($videoGallery, youtubeVideoPageTitle), 
+                map-get($videoGallery,youtubeVideoPageTitle), ()
+            )
+        ));
+    }
+    .reusability-video-player-container {
+        @include print-css(
+            map-merge((
+                padding: (
+                    largeUp: 0 15px 0 0,
+                    largeOnly: 0 15px 0 0,
+                    mediumOnly: 0 15px 0 0,
+                    smOnly: 0,
+                    defaultVal: 0
+                ),
+                margin: (
+                    largeUp: 0,
+                    largeOnly: 0,
+                    mediumOnly: 0,
+                    smOnly: 0,
+                    defaultVal: 0
+                ),
+                width: (
+                    defaultVal: 100%,
+                    smallUp: 50%,
+                ),
+                float: left
+            ), 
+            if(variable-exists(videoGallery) and map-has-key($videoGallery, youtubeVideoPlayerContainer), 
+                map-get($videoGallery,youtubeVideoPlayerContainer), ()
+            )
+        ));
+        .reusability-video-player-wrapper {
+            .cd-prev,
+            .cd-next {
+                @include print-css(
+                    map-merge((
+                        display: (
+                            smallUp: none
+                        )
+                    ), 
+                    if(variable-exists(videoGallery) and map-has-key($videoGallery, youtubecdPrevNext), 
+                        map-get($videoGallery,youtubecdPrevNext), ()
+                    )
+                ));
+            }
+            .oo-player-container {
+                .oo-state-screen {
+                    .oo-action-icon {
+                        &:before {
+                           // merged with parent style
+                        }
+                    }
+                }
+            }
+        }
+        .reusability-video-player-label {
+            @include print-css(
+                map-merge((
+                    padding: (
+                        largeUp: 12px 20px 16px 20px,
+                        largeOnly: 12px 20px 16px 20px,
+                        mediumOnly: 12px 20px 16px 20px,
+                        smOnly: 12px,
+                        defaultVal: 12px    
+                    )
+                ), 
+                if(variable-exists(videoGallery) and map-has-key($videoGallery, youtubeVideoPlayerLabel), 
+                    map-get($videoGallery,youtubeVideoPlayerLabel), ()
+                )
+            ));
+            h2 {
+                @include print-css(
+                    map-merge((
+                        margin: (
+                            largeUp: 0 0 4px 0,
+                            largeOnly: 0 0 4px 0,
+                            mediumOnly: 0 0 4px 0,
+                            smOnly: 0 0 4px 0,
+                            defaultVal: 0 0 4px 0
+                        )
+                    ), 
+                    if(variable-exists(videoGallery) and map-has-key($videoGallery, youtubeVideoPlayerLabelH2), 
+                        map-get($videoGallery,youtubeVideoPlayerLabelH2), ()
+                    )
+                ));
+            }
+            p {
+                @include print-css(
+                    map-merge((
+                        margin: (
+                            largeUp: 0,
+                            largeOnly: 0,
+                            mediumOnly: 0,
+                            smOnly: 0,
+                            defaultVal: 0
+                        )
+                    ), 
+                    if(variable-exists(videoGallery) and map-has-key($videoGallery, youtubeVideoPlayerLabelP), 
+                        map-get($videoGallery,youtubeVideoPlayerLabelP), ()
+                    )
+                ));
+            }
+        }
+    }
+    .reusability-videos-gallery-playlist {
+        @include print-css(
+            map-merge((
+                padding: (
+                    largeUp: 0 0 0 15px,
+                    largeOnly: 0 0 0 15px,
+                    mediumOnly: 0 0 0 15px,
+                    smOnly: 0,
+                    defaultVal: 0
+                ),
+                margin: (
+                    largeUp: 0,
+                    largeOnly: 0,
+                    mediumOnly: 0,
+                    smOnly: 8px 0 0 0,
+                    defaultVal: 8px 0 0 0
+                ),
+                width: (
+                    smallUp: 50%,
+                ),
+                overflow-y: (
+                    smallUp: scroll
+                )
+            ), 
+            if(variable-exists(videoGallery) and map-has-key($videoGallery, youtubeVideoGalleryPlaylist), 
+                map-get($videoGallery,youtubeVideoGalleryPlaylist), ()
+            )
+        ));
+        .reusability-play-tiles-gallery {
+            .reusability-play-list {
+                @include print-css(
+                    map-merge((
+                        width: auto,
+                        margin: (
+                          largeUp: 0 10px 0 0,
+                          largeOnly: 0 10px 0 0,
+                          mediumOnly: 0 8px 0 0,
+                          smOnly: 0,
+                          defaultVal: 0
+                        )
+                    ), 
+                    if(variable-exists(videoGallery) and map-has-key($videoGallery, youtibePlayList), 
+                        map-get($videoGallery,youtibePlayList), ()
+                    )
+                ));
+                li {
+                    @include print-css(
+                        map-merge((
+                            width: 100%,
+                            margin: (
+                                largeUp: 0 0 10px 0,
+                                largeOnly: 0 0 10px 0,
+                                mediumOnly: 0 0 10px 0,
+                                smOnly: 0 0 10px 0,
+                                defaultVal: 0 0 10px 0
+                            ),
+                        ), 
+                        if(variable-exists(videoGallery) and map-has-key($videoGallery, youtibePlayListLi), 
+                            map-get($videoGallery,youtibePlayListLi), ()
+                        )
+                    ));
+                    &:last-child {
+                        @include print-css(
+                            map-merge((
+                                margin-bottom: (
+                                    smallUp: 0
+                                ),
+                            ), 
+                            if(variable-exists(videoGallery) and map-has-key($videoGallery, youtibePlayListLiLastChild), 
+                                map-get($videoGallery,youtibePlayListLiLastChild), ()
+                            )
+                        ));
+                        }
+                    @media #{$mobile-up-only} {
+                        &:nth-of-type(1n+#{$mobileVisibleLi+1}) {
+                            display: block;
+                        }
+                    }
+                    a {
+                        @include print-css(
+                            map-merge((
+                                display: flex
+                            ), 
+                            if(variable-exists(videoGallery) and map-has-key($videoGallery, youtubePlayListA), 
+                                map-get($videoGallery,youtubePlayListA), ()
+                            )
+                        ));
+                        .reusability-gallery-image {
+                            @include print-css(
+                                map-merge((
+                                    width: (
+                                        smallUp: 30%
+                                    )
+                                ), 
+                                if(variable-exists(videoGallery) and map-has-key($videoGallery, youtubeGalleryImg), 
+                                    map-get($videoGallery,youtubeGalleryImg), ()
+                                )
+                            ));
+                        }
+                        .reusability-video-title-section {
+                            @include print-css(
+                                map-merge((
+                                    width: 70%,
+                                ), 
+                                if(variable-exists(videoGallery) and map-has-key($videoGallery, youtubeVideoTitleSection), 
+                                    map-get($videoGallery,youtubeVideoTitleSection), ()
+                                )
+                            ));
+                            span {
+                                @include print-css(
+                                    map-merge((
+                                        padding: (
+                                            largeUp: 0 20px,
+                                            largeOnly: 0 20px,
+                                            mediumOnly: 0 8px,
+                                            smOnly: 0 12px,
+                                            defaultVal: 0 12px
+                                        )
+                                    ), 
+                                    if(variable-exists(videoGallery) and map-has-key($videoGallery, youtubeVideoTitleSectionspan), 
+                                        map-get($videoGallery,youtubeVideoTitleSectionspan), ()
+                                    )
+                                ));
+                            }
+                        }
+                    }
+                    &.active {
+                        a {
+                            .reusability-gallery-image {
+                                img {
+                                    @include print-css(
+                                        map-merge((
+                                            width: (
+                                                smallUp: 100%,
+                                            ),
+                                            border: (
+                                                smallUp: 5px solid $activeGalleryImg
+                                            )
+                                        ), 
+                                        if(variable-exists(videoGallery) and map-has-key($videoGallery, youtubeaActiveGalleryImg), 
+                                            map-get($videoGallery,youtubeaActiveGalleryImg), ()
+                                        )
+                                    ));
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.videogallery-single-column-layout{
+    float: left;
+    @media #{$small-up} {
+        .reusability-video-player-container, .reusability-videos-gallery-playlist{
+            width: 100%;
+        }
+        .reusability-video-component{
+            @include print-css(
+                map-merge((
+                    padding: (
+                        largeUp: 40px 0px 50px 0px,
+                        largeOnly: 40px 0px 50px 0px,
+                        mediumOnly: 40px 0px 50px 0px,
+                        smOnly: 20px 20px 40px 20px,
+                        defaultVal: 20px 20px 40px 20px
+                    )
+                ), 
+                if(variable-exists(videoGallery) and map-has-key($videoGallery, youtubeSingleColumnWrapper), 
+                    map-get($videoGallery,youtubeSingleColumnWrapper), ()
+                )
+            ));
+        }
+        .reusability-video-player-container{
+            @include print-css(
+                map-merge((
+                    margin: (
+                        largeUp: 0,
+                        largeOnly: 0,
+                        mediumOnly: 0,
+                        smOnly: 0,
+                        defaultVal: 0
+                    ),
+                    padding: (
+                        largeUp: 0,
+                        largeOnly: 0,
+                        mediumOnly: 0,
+                        smOnly: 0,
+                        defaultVal: 0
+                    )
+                ), 
+                if(variable-exists(videoGallery) and map-has-key($videoGallery, singleColumnVideoPlayerContainer), 
+                    map-get($videoGallery,singleColumnVideoPlayerContainer), ()
+                )
+            ));
+        }
+        .reusability-videos-gallery-playlist{
+            @include print-css(
+                map-merge((
+                    height: auto !important,
+                    overflow: auto,
+                    margin: (
+                        largeUp: 8px 0 0 0,
+                        largeOnly: 8px 0 0 0,
+                        mediumOnly: 8px 0 0 0,
+                        smOnly: 8px 0 0 0,
+                        defaultVal: 8px 0 0 0
+                    ),
+                    padding: (
+                        largeUp: 0,
+                        largeOnly: 0,
+                        mediumOnly: 0,
+                        smOnly: 0,
+                        defaultVal: 0
+                    )
+                ), 
+                if(variable-exists(videoGallery) and map-has-key($videoGallery, singleColumnVideoGalleryPlaylist), 
+                    map-get($videoGallery,singleColumnVideoGalleryPlaylist), ()
+                )
+            ));
+            .reusability-play-tiles-gallery{
+                .reusability-play-list{
+                    margin-right: 0;
+                    li{
+                        &:nth-of-type(1n+3){
+                            display: none;
+                        }
+                        a{
+                            .reusability-gallery-image {
+                                img{
+                                    border: 8px solid transparent;
+                                }
+                            }
+                        }
+                        &.active{
+                            a {
+                                .reusability-gallery-image {
+                                    img{
+                                        margin: 4px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                .show-more{
+                    display: block;
+                }
+            }
+        }
+    }
+}
+
+.three-column {
+    .reusability-videos-gallery-playlist {
+        .reusability-play-tiles-gallery {
+            .reusability-play-list {
+                li {
+                    @include print-css(
+                        map-merge((
+                            width: (
+                                smallUp: calc(33.33% - 30px)
+                            )
+                        ), 
+                        if(variable-exists(videoGallery) and map-has-key($videoGallery, threeColumnPlayListLi), 
+                            map-get($videoGallery,threeColumnPlayListLi), ()
+                        )
+                    ));
+                }
+            }
+        }
+    }
+}
+
+.four-column {
+    .reusability-videos-gallery-playlist {
+        .reusability-play-tiles-gallery {
+            .reusability-play-list {
+                li {
+                    @include print-css(
+                        map-merge((
+                            width: (
+                                smallUp: calc(25% - 30px)
+                            )
+                        ), 
+                        if(variable-exists(videoGallery) and map-has-key($videoGallery, fourColumnPlayListLi), 
+                            map-get($videoGallery,fourColumnPlayListLi), ()
+                        )
+                    ));
+                }
+            }
+        }
+    }
+}
+
+.accordion-content {
+    .reusability-video-component {
+        @include print-css(
+            map-merge((
+                padding: (
+                    largeUp: 0,
+                    largeOnly: 0,
+                    mediumOnly: 0,
+                    smOnly: 0,
+                    defaultVal: 0
+                )
+            ), 
+            if(variable-exists(videoGallery) and map-has-key($videoGallery, accordionWrapper), 
+                map-get($videoGallery,accordionWrapper), ()
+            )
+        ));
+    }
+}
+
+.videoGallery {
+    &.youtube, &.videogallery-single-column-layout {
+        &:after {
+            content: "";
+        }
+    }
+    .dynamic-media-wrapper{
+        .play-video{
+            &.dynamic-media-container{
+                z-index: 0;
+                .dynamicMedia{
+                    z-index: -1;
+                }
+            }
+        }    
+    }
+}
+#video-player-component {
+    .vjs-poster{
+        background-size: cover;
+    }
+	#video-youtube-player {
+		width: 100%;
+		padding-top: 56.25%;
+		height: auto;
+		position: relative;
+		#youtube_player,[id^=youtube_player-], video.html5video {
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			left: 0;
+            top: 0;
+            border: 0;
+		}
+	}
+	.video-player-wrapper {
+		padding-top: 0;
+		padding-bottom: 0;
+		.video-player {
+			position: relative;
+		}
+	}
+}

@@ -1,0 +1,115 @@
+.slidein {
+    padding: 15px;
+    width: 242px;
+    right: -300px;
+    position: fixed;
+    // right: 10px;
+    box-shadow: rgba(0, 0, 0, 0.5) 0 0 10px;
+    background-color: $white;
+    font-size: 100%;
+    font-style: normal;
+    z-index: 11111;
+    box-sizing: content-box;
+    max-height: 442px;
+    // right: 1px;
+    overflow-x: hidden;
+    top: 40px;
+    @include transition(all .5s linear);
+    @media #{$mobile-up-only} {
+        padding: 20px;
+        width: em(345, 18);
+        right: -(em(345+50, 18));
+        bottom: 40px;
+        top: auto;
+        height: 403px;
+    }
+    .aem-GridColumn {
+        padding: 0;
+    }
+    .close {
+        opacity: 1;
+        position: -webkit-sticky; /* Safari */
+        position: sticky;
+        right: 0;
+        top: 7px;
+        font-size: 14px;
+        z-index: 1;
+        button {
+            opacity: 1;
+            position: absolute;
+            left: -7px;
+            top: -20px;
+            background-image: url($spriteImgPath);
+            background-repeat: no-repeat;
+            width: em(24);
+            height: em(24);
+            background-position: -180px -78px;
+            background-color: transparent;
+            border: none;
+        }
+    }
+    .main-title>h2 {
+        padding-right: 30px;
+        span {
+            font-family: inherit;
+        }
+    }
+    .extend-field-style {
+        display: block;
+        width: em(400);
+        max-width: 100%;
+        min-width: 0;
+    }
+    .adaptive-form {
+        .radio-field .sub-input-field {
+            margin-left: 0;
+            @extend .extend-field-style;
+            min-width: auto !important;
+        }
+    }
+	
+	.generic-api-message {
+			margin:0;
+			.sub-title{
+				font-size:em(14) !important;                
+                margin-top: -10px !important;
+                i{
+                    font-family: $maaxMediumItalic;
+                }
+            }
+            ul {
+                margin: 0;
+            }
+		}
+
+    &.active{
+        @include transition(all .5s linear);
+        right: 0;
+    }
+    .button-group {
+        line-height: normal;
+        .cta-item {
+            margin-bottom: 10px !important;
+            p {
+                position: relative;
+                top: 5px;
+                &:before {
+                    position: relative;
+                    top: 4px;
+                }
+            }
+        }
+    }
+    .mobile-bg {
+        line-height: normal;
+    }
+	.dynamicMedia {
+        margin-left: -20px;
+        margin-top:  -20px;
+        @media #{$small-down} {
+            margin-left: -15px;
+            margin-top:  -15px;
+        }
+    }
+}
+ 

@@ -1,0 +1,83 @@
+<sly data-sly-test="${wcmmode.edit}">${'Bazaar Voice Content here' @ i18n}</sly>
+<sly data-sly-use.bazarVoice="com.mattel.ecomm.core.models.BazaarVoiceModel">
+
+    <sly data-sly-test="${bazarVoice.productSKUId}">
+        <sly data-sly-test="${properties.bazarVoiceFor == 'customerReview'}">
+            <sly data-sly-test="${bazarVoice.pageEnablecustReview || bazarVoice.enableCustomerReview}">
+                <sly data-sly-test="${bazarVoice.pageCustReviewScript || bazarVoice.custReviewScript}">
+                    <div class="product-features ${bazarVoice.pageDisablecustReviewMobile || bazarVoice.disableCustReviewMobile ? 'hidden-sm hidden-xs' : ''}" id="bvReviewHeading">
+                        <div class="product-title">
+                            <h2>${bazarVoice.pageCustReviewTitle || bazarVoice.custReviewTitle ||'Customer Ratings & Review' @i18n}</h2>
+                        </div>
+                    </div>
+                    <div id="BVRRContainer" class="${bazarVoice.pageDisablecustReviewMobile || bazarVoice.disableCustReviewMobile ? 'hidden-sm hidden-xs' : ''}"> </div>
+
+                    <sly data-sly-test.custReviewScript="${bazarVoice.pageCustReviewScript || bazarVoice.custReviewScript}">
+                        <script type='text/javascript' src="${custReviewScript @context='html'}"></script>
+                    </sly>
+
+                    <script type="text/javascript">
+                       $(document).ready(function(){
+                           var isReviewsLoaded = false;
+                           window.addEventListener('scroll', loadReviews);
+
+                           function loadReviews() {
+                               if (!isReviewsLoaded && isScrolledIntoView('#BVRRContainer')) {
+                                   isReviewsLoaded = true;
+                                   $BV.ui("rr", "show_reviews", {
+                                      productId: "${bazarVoice.productSKUId @context='html'}"
+                                   });
+                               }
+
+                           }; 
+                      });
+                    </script>
+                </sly>
+            </sly>
+        </sly>
+
+        <sly data-sly-test="${properties.bazarVoiceFor == 'quetionAnswers'}">
+            <sly data-sly-test="${bazarVoice.pageEnablequestAnswer || bazarVoice.enableQuestAnswer}">
+                <sly data-sly-test="${bazarVoice.pageQuestAnswScript || bazarVoice.questAnsScript}">
+                    <div class="product-features ${bazarVoice.pagedisableQuenAnsMobile || bazarVoice.disableQuenAnsMobile ? 'hidden-sm hidden-xs' : ''}">
+                        <div class="product-title">
+                            <h2>${bazarVoice.pageQuestAnswTitle || bazarVoice.questAnswTitle ||'Questions & Answers' @i18n}</h2>
+                        </div>
+                    </div>
+                    <div id="BVQAContainer" class="${bazarVoice.pagedisableQuenAnsMobile || bazarVoice.disableQuenAnsMobile ? 'hidden-sm hidden-xs' : ''}"> </div>
+
+                    <sly data-sly-test.questAnswScript="${bazarVoice.pageQuestAnswScript || bazarVoice.questAnsScript}">
+                        <script type='text/javascript' src="${questAnswScript @context='html'}"></script>
+                    </sly>
+
+                    <script type="text/javascript">
+                        var isQALoaded = false;
+                        window.addEventListener('scroll', loadQA);
+
+                        function loadQA() {
+                            if (isScrolledIntoView('#BVQAContainer') && !isQALoaded) {
+                                isQALoaded = true;
+                                $BV.ui("qa", "show_questions", {
+                                    productId: "${bazarVoice.productSKUId @context='html'}",
+                                    subjectType: "product"
+                                });
+                            }
+
+                        };
+                        /*document.addEventListener('DOMContentLoaded', function() {
+                            $BV.ui("qa", "show_questions", {
+                                productId: "${bazarVoice.productSKUId @context='html'}",
+                                subjectType: "product"
+                            });
+
+                        });*/
+                    </script>
+
+                </sly>
+            </sly>
+        </sly>
+    </sly>
+</sly>
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
+    <sly data-sly-call="${clientlib.js @ categories='ecomm.bazaarVoice'}" />
+</sly>

@@ -1,0 +1,40 @@
+<sly data-sly-test="${wcmmode.edit}">${'Image Block with Text Component' @i18n}</sly>
+<div class="imageblock-txt-wrapper" style="background-color: ${properties.backgroundColor @context='html'}; background-image: url(${properties.backgroundImage @context='html'});">
+    <div>
+        ${properties.heading @context='html'}
+    </div>
+    <div class="grid-module no-action-item" data-height-sync=".tile-name">
+        <sly data-sly-use.imageText="com.mattel.global.core.model.ImageBlockWithTextModel">
+            <ul class="imgtxt-list ${properties.textBackground ? 'li-bg-white' : ''}" data-sly-list.imageWithText="${imageText.imageWithTextPojos}">
+                <li>
+                    <div>
+                        <sly data-sly-test="${'imageWithText.imageLink'}">
+                            <sly data-sly-test="${imageWithText.targetUrl =='sameWindow'}">
+                                <a href="${imageWithText.ctaExternal ? imageWithText.imageLink : imageWithText.imageLink @extension='html'}" data-tracking-id="Image-Click|ImageBlockWithtext|${imageWithText.imageAltText}">
+                            </sly>
+                            <sly data-sly-test="${imageWithText.targetUrl =='tabWindow'}">
+                                <a href="${imageWithText.ctaExternal ? imageWithText.imageLink : imageWithText.imageLink @extension='html'}" target="_blank" data-tracking-id="Image-Click|ImageBlockWithtext|${imageWithText.imageAltText}">
+                            </sly>
+                            <sly data-sly-test="${imageWithText.targetUrl =='newWindow'}">
+                                <a data-url="${imageWithText.ctaExternal ? imageWithText.imageLink : imageWithText.imageLink @extension='html'}" onclick="window.open(this.dataset.url,'AG','width=500, height=500');" style="cursor: pointer;" data-tracking-id="Image-Click|ImageBlockWithtext|${imageWithText.imageAltText}">
+                            </sly>
+                        </sly>
+                        <img src="${imageWithText.imageUrl}" alt="${imageWithText.imageAltText}">
+                        <sly data-sly-test="${'imageWithText.imageLink'}">
+                            </a>
+                        </sly>
+                        <sly data-sly-test="${imageWithText.title || imageWithText.description}">
+                            <div class="tile-content">
+                                ${imageWithText.title @context='html'}
+
+                                <sly data-sly-test="${imageWithText.description}">
+                                    <div class="tile-description">${imageWithText.description @context='html'}</div>
+                                </sly>
+                            </div>
+                        </sly>
+                    </div>
+                </li>
+            </ul>
+        </sly>
+    </div>
+</div>

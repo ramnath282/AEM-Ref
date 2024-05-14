@@ -1,0 +1,851 @@
+.enhanced-layout {
+    .enhanced-content-inner {
+        @include print-css(
+            map-merge((
+                margin: (
+                    defaultVal: 0,
+                    smOnly: 0,
+                    largeUp: 0,
+                    mediumOnly: 0,
+                    largeOnly: 0
+                ),
+                padding: (
+                    defaultVal: 0,
+                    smOnly: 0,
+                    largeUp: 0,
+                    mediumOnly: 0,
+                    largeOnly: 0
+                )
+            ), 
+            if(variable-exists(enhancedlayout) and map-has-key($enhancedlayout, enhancedlayoutspacingCont), 
+                map-get($enhancedlayout,enhancedlayoutspacingCont), ()
+            )
+        ));
+    }
+    @media #{$xl-only} {
+        &.enhanced-xl-1 {
+            .enhanced-content {
+                width: 100%;
+            }
+        }
+        &.enhanced-xl-2 {
+            .enhanced-content {
+                width: 50%;
+            }
+        }
+        &.enhanced-xl-3 {
+            .enhanced-content {
+                width: 33.33%;
+            }
+        }
+        &.enhanced-xl-4 {
+            .enhanced-content {
+                width: 25%;
+            }
+        }
+        &.enhanced-xl-5 {
+            .enhanced-content {
+                width: 20%;
+            }
+        }
+        &.enhanced-xl-6 {
+            .enhanced-content {
+                width: 16.66%;
+            }
+        }
+        &.enhanced-xl-7 {
+            .enhanced-content {
+                width: 14.28%;
+            }
+        }
+        &.enhanced-xl-8 {
+            .enhanced-content {
+                width: 12.5%;
+            }
+        }
+        &.enhanced-xl-9 {
+            .enhanced-content {
+                width: 11.11%;
+            }
+        }
+        &.enhanced-xl-10 {
+            .enhanced-content {
+                width: 10%;
+            }
+        }
+        &.enhanced-xl-11 {
+            .enhanced-content {
+                width: 9.09%;
+            }
+        }
+        &.enhanced-xl-12 {
+            .enhanced-content {
+                width: 8.33%;
+            }
+        }
+    }
+    @media #{$lg-only} {
+        &.enhanced-lg-1 {
+            .enhanced-content {
+                width: 100%;
+            }
+        }
+        &.enhanced-lg-2 {
+            .enhanced-content {
+                width: 50%;
+            }
+        }
+        &.enhanced-lg-3 {
+            .enhanced-content {
+                width: 33.33%;
+            }
+        }
+        &.enhanced-lg-4 {
+            .enhanced-content {
+                width: 25%;
+            }
+        }
+        &.enhanced-lg-5 {
+            .enhanced-content {
+                width: 20%;
+            }
+        }
+        &.enhanced-lg-6 {
+            .enhanced-content {
+                width: 16.66%;
+            }
+        }
+        &.enhanced-lg-7 {
+            .enhanced-content {
+                width: 14.28%;
+            }
+        }
+        &.enhanced-lg-8 {
+            .enhanced-content {
+                width: 12.5%;
+            }
+        }
+        &.enhanced-lg-9 {
+            .enhanced-content {
+                width: 11.11%;
+            }
+        }
+        &.enhanced-lg-10 {
+            .enhanced-content {
+                width: 10%;
+            }
+        }
+        &.enhanced-lg-11 {
+            .enhanced-content {
+                width: 9.09%;
+            }
+        }
+        &.enhanced-lg-12 {
+            .enhanced-content {
+                width: 8.33%;
+            }
+        }
+    }
+    @media #{$md-only} {
+        &.enhanced-md-1 {
+            .enhanced-content {
+                width: 100%;
+            }
+        }
+        &.enhanced-md-2 {
+            .enhanced-content {
+                width: 50%;
+            }
+        }
+        &.enhanced-md-3 {
+            .enhanced-content {
+                width: 33.33%;
+            }
+        }
+        &.enhanced-md-4 {
+            .enhanced-content {
+                width: 25%;
+            }
+        }
+        &.enhanced-md-5 {
+            .enhanced-content {
+                width: 20%;
+            }
+        }
+        &.enhanced-md-6 {
+            .enhanced-content {
+                width: 16.66%;
+            }
+        }
+        &.enhanced-md-7 {
+            .enhanced-content {
+                width: 14.28%;
+            }
+        }
+        &.enhanced-md-8 {
+            .enhanced-content {
+                width: 12.5%;
+            }
+        }
+        &.enhanced-mdd-9 {
+            .enhanced-content {
+                width: 11.11%;
+            }
+        }
+        &.enhanced-md-10 {
+            .enhanced-content {
+                width: 10%;
+            }
+        }
+        &.enhanced-md-11 {
+            .enhanced-content {
+                width: 9.09%;
+            }
+        }
+        &.enhanced-md-12 {
+            .enhanced-content {
+                width: 8.33%;
+            }
+        }
+    }
+    @media #{$sm-only} {
+        &.enhanced-sm-1 {
+            .enhanced-content {
+                width: 100%;
+            }
+        }
+        &.enhanced-sm-2 {
+            .enhanced-content {
+                width: 50%;
+            }
+        }
+        &.enhanced-sm-3 {
+            .enhanced-content {
+                width: 33.33%;
+            }
+        }
+        &.enhanced-sm-4 {
+            .enhanced-content {
+                width: 25%;
+            }
+        }
+        &.enhanced-sm-5 {
+            .enhanced-content {
+                width: 20%;
+            }
+        }
+        &.enhanced-sm-6 {
+            .enhanced-content {
+                width: 16.66%;
+            }
+        }
+        &.enhanced-sm-7 {
+            .enhanced-content {
+                width: 14.28%;
+            }
+        }
+        &.enhanced-sm-8 {
+            .enhanced-content {
+                width: 12.5%;
+            }
+        }
+        &.enhanced-sm-9 {
+            .enhanced-content {
+                width: 11.11%;
+            }
+        }
+        &.enhanced-sm-10 {
+            .enhanced-content {
+                width: 10%;
+            }
+        }
+        &.enhanced-sm-11 {
+            .enhanced-content {
+                width: 9.09%;
+            }
+        }
+        &.enhanced-sm-12 {
+            .enhanced-content {
+                width: 8.33%;
+            }
+        }
+    }
+    @media #{$xs-only} {
+        &.enhanced-xs-1 {
+            .enhanced-content {
+                width: 100%;
+            }
+        }
+        &.enhanced-xs-2 {
+            .enhanced-content {
+                width: 50%;
+            }
+        }
+        &.enhanced-xs-3 {
+            .enhanced-content {
+                width: 33.33%;
+            }
+        }
+        &.enhanced-xs-4 {
+            .enhanced-content {
+                width: 25%;
+            }
+        }
+        &.enhanced-xs-5 {
+            .enhanced-content {
+                width: 20%;
+            }
+        }
+        &.enhanced-xs-6 {
+            .enhanced-content {
+                width: 16.66%;
+            }
+        }
+        &.enhanced-xs-7 {
+            .enhanced-content {
+                width: 14.28%;
+            }
+        }
+        &.enhanced-xs-8 {
+            .enhanced-content {
+                width: 12.5%;
+            }
+        }
+        &.enhanced-xs-9 {
+            .enhanced-content {
+                width: 11.11%;
+            }
+        }
+        &.enhanced-xs-10 {
+            .enhanced-content {
+                width: 10%;
+            }
+        }
+        &.enhanced-xs-11 {
+            .enhanced-content {
+                width: 9.09%;
+            }
+        }
+        &.enhanced-xs-12 {
+            .enhanced-content {
+                width: 8.33%;
+            }
+        }
+    }
+    .card {
+        .card-component {
+            .text-container{
+                .ctaContainer{
+                    @include print-css(
+                        map-merge((
+                            overflow: auto
+                        ), 
+                        if(variable-exists(enhancedlayout) and map-has-key($enhancedlayout, enhancedcardCtaCss), 
+                            map-get($enhancedlayout,enhancedcardCtaCss), ()
+                        )
+                    ));     
+                }
+            }
+        }
+    }
+  }
+  .enhanced-30-70 {
+    @include print-css(
+        map-merge((
+            display: flex,
+            width: 100%,
+            flex-direction: row
+        ), 
+        if(variable-exists(enhancedlayout) and map-has-key($enhancedlayout, enhanced3070Layout), 
+            map-get($enhancedlayout,enhanced3070Layout), ()
+        )
+    ));
+    .enhanced-layout {
+        @include print-css(
+            map-merge((
+                float: left,
+                width: 100%
+            ), 
+            if(variable-exists(enhancedlayout) and map-has-key($enhancedlayout, enhanced3070LayoutDeafultCss), 
+                map-get($enhancedlayout,enhanced3070LayoutDeafultCss), ()
+            )
+        ));
+      .bg_color {
+        .inner-container {
+            @include print-css(
+                map-merge((
+                    display: (
+                        defaultVal: flex,
+                        xsOnly:flex,
+                        smOnly: flex,
+                        mediumOnly: flex
+                    ),
+                    flex-direction: (
+                        defaultVal: row,
+                        xsOnly:column,
+                        smOnly: column,
+                        mediumOnly: column
+                    ),
+                    margin: (
+                        xsOnly: 0 0 20px 0,
+                        smOnly: 0 0 20px 0,
+                    ),
+                ), 
+                if(variable-exists(enhancedlayout) and map-has-key($enhancedlayout, enhancedinnerConatiner), 
+                    map-get($enhancedlayout,enhancedinnerConatiner), ()
+                )
+            ));
+        }
+      }
+    }
+    .card {
+      .image-container {
+        @include print-css(
+                map-merge((
+                    margin: 0,
+                ), 
+                if(variable-exists(enhancedlayout) and map-has-key($enhancedlayout, enhancedimageContSpacing), 
+                    map-get($enhancedlayout,enhancedimageContSpacing), ()
+                )
+        ));
+      }
+      .card-component {
+          .text-para {
+            @include print-css(
+                map-merge((
+                    margin: (
+                        xsOnly: 16px 0 0,
+                        smOnly: 16px 0 0
+                    )
+                ), 
+                if(variable-exists(enhancedlayout) and map-has-key($enhancedlayout, enhancedcardTextSpacing), 
+                    map-get($enhancedlayout,enhancedcardTextSpacing), ()
+                )
+            ));
+          }
+          .cta-item {
+            @include print-css(
+                map-merge((
+                    margin: (
+                        xsOnly: 20px 0 0,
+                        smOnly: 20px 0 0
+                    )
+                ), 
+                if(variable-exists(enhancedlayout) and map-has-key($enhancedlayout, enhancedcardCtaSpacing), 
+                    map-get($enhancedlayout,enhancedcardCtaSpacing), ()
+                )
+            ));
+          }
+      }
+      &:first-child {
+        @media #{$sm-only}{
+            -webkit-box-ordinal-group: 2;
+            -moz-box-ordinal-group: 2;
+            -ms-flex-order: 2;
+            -webkit-order: 2;
+        }
+        @include print-css(
+            map-merge((
+                margin: 0,
+                flex: (
+                    defaultVal:0 0 30%,
+                    mediumOnly:  0 0 100%,
+                    xsOnly:  0 0 100%,
+                    smOnly:  0 0 100%
+                ),
+                width: (
+                    defaultVal:30% !important,
+                    mediumOnly: 100% !important,
+                    xsOnly: 100% !important,
+                    smOnly: 100% !important
+                ),
+                padding: (
+                    defaultVal:0,
+                    mediumOnly: 0,
+                    xsOnly: 0,
+                    smOnly: 0
+                ),
+                order: (
+                    mediumOnly: 2,
+                    xsOnly: 2,
+                    smOnly: 2
+                ),
+            ), 
+            if(variable-exists(enhancedlayout) and map-has-key($enhancedlayout, enhanced3070cardFisrtChildCss), 
+                map-get($enhancedlayout,enhanced3070cardFisrtChildCss), ()
+            )
+        ));
+      }
+      &:last-child {
+        @media #{$sm-only} {
+            -webkit-box-ordinal-group: 1;
+            -moz-box-ordinal-group: 1;
+            -ms-flex-order: 1;
+            -webkit-order: 1;
+        }
+        @include print-css(
+            map-merge((
+                flex: (
+                    defaultVal:0 0 70%,
+                    mediumOnly:  0 0 100%,
+                    xsOnly:  0 0 100%,
+                    smOnly:  0 0 100%
+                ),
+                width: (
+                    defaultVal:70% !important,
+                    mediumOnly: 100% !important,
+                    xsOnly: 100% !important,
+                    smOnly: 100% !important
+                ),
+                display: flex,
+                flex-direction: column,
+                order: (
+                    mediumOnly: 1,
+                    xsOnly: 1,
+                    smOnly: 1
+                ),
+            ), 
+            if(variable-exists(enhancedlayout) and map-has-key($enhancedlayout, enhanced3070cardLastChildCss), 
+                map-get($enhancedlayout,enhanced3070cardLastChildCss), ()
+            )
+        ));
+      }
+    }
+    .card.default-container{
+        .image-container {
+            @include print-css(
+                map-merge((
+                    margin: 0,
+                    padding:(
+                        defaultVal:30px 20px 0 20px,
+                        mediumUp:40px 30px 0 30px
+                    )
+                ), 
+                if(variable-exists(enhancedlayout) and map-has-key($enhancedlayout, enhanced3070ImageCont), 
+                    map-get($enhancedlayout,enhanced3070ImageCont), ()
+                )
+            ));
+        }
+        .text-container {
+            @include print-css(
+                map-merge((
+                    margin: 0 !important,
+                    padding:(
+                        defaultVal:10px 20px 30px 20px,
+                        mediumUp:10px 30px 40px 30px
+                    )
+                ), 
+                if(variable-exists(enhancedlayout) and map-has-key($enhancedlayout, enhanced3070TextCont), 
+                    map-get($enhancedlayout,enhanced3070TextCont), ()
+                )
+            ));
+        }
+      }
+  }
+  .enhanced-layout-reverse {
+      flex-direction: row-reverse;
+  }
+  .enhanced-40-60 {
+    @include print-css(
+        map-merge((
+            display: flex,
+            width: 100%,
+            flex-direction: row
+        ), 
+        if(variable-exists(enhancedlayout) and map-has-key($enhancedlayout, enhanced4060Conatiner), 
+            map-get($enhancedlayout,enhanced4060Conatiner), ()
+        )
+    ));
+    .enhanced-layout {
+        @include print-css(
+            map-merge((
+                float: left,
+                width: 100%
+            ), 
+            if(variable-exists(enhancedlayout) and map-has-key($enhancedlayout, enhanced4060layoutDefaultCss), 
+                map-get($enhancedlayout,enhanced4060layoutDefaultCss), ()
+            )
+        ));
+      .bg_color {
+        .inner-container {
+            @include print-css(
+                map-merge((
+                    display: (
+                        defaultVal: flex,
+                        xsOnly:flex,
+                        smOnly: flex,
+                    ),
+                    flex-direction: (
+                        defaultVal: row,
+                        xsOnly:column,
+                        smOnly: column,
+                    )
+                ), 
+                if(variable-exists(enhancedlayout) and map-has-key($enhancedlayout, enhanced4060innerConatiner), 
+                    map-get($enhancedlayout,enhanced4060innerConatiner), ()
+                )
+            ));
+        }
+      }
+    }
+    .card {
+      .image-container {
+        margin: 0;
+      }
+      .text-container {
+        margin: 0;
+      }
+      &:first-child {
+        @media #{$sm-only}{
+            -webkit-box-ordinal-group: 2;
+            -moz-box-ordinal-group: 2;
+            -ms-flex-order: 2;
+            -webkit-order: 2;
+        }
+        @include print-css(
+            map-merge((
+                margin: 0,
+                flex: (
+                    defaultVal:0 0 40%,
+                    xsOnly:  0 0 100%,
+                    smOnly:  0 0 100%
+                ),
+                width: (
+                    defaultVal:40% !important,
+                    xsOnly: 100% !important,
+                    smOnly: 100% !important
+                ),
+                padding: (
+                    defaultVal:0,
+                    xsOnly: 0,
+                    smOnly: 0
+                ),
+                order: (
+                    xsOnly: 2,
+                    smOnly: 2
+                ),
+            ), 
+            if(variable-exists(enhancedlayout) and map-has-key($enhancedlayout, enhancedcard4060FisrtChildCss), 
+                map-get($enhancedlayout,enhancedcard4060FisrtChildCss), ()
+            )
+        ));
+      }
+      &:last-child {
+        @media #{$sm-only} {
+            -webkit-box-ordinal-group: 1;
+            -moz-box-ordinal-group: 1;
+            -ms-flex-order: 1;
+            -webkit-order: 1;
+        }
+        @include print-css(
+            map-merge((
+                margin: 0,
+                flex: (
+                    defaultVal:0 0 60%,
+                    xsOnly:  0 0 100%,
+                    smOnly:  0 0 100%
+                ),
+                width: (
+                    defaultVal: 60% !important,
+                    xsOnly: 100% !important,
+                    smOnly: 100% !important
+                ),
+                display: flex,
+                flex-direction: column,
+                padding: (
+                    defaultVal:0 0 0 30px,
+                    xsOnly: 0 20px 30px,
+                    smOnly: 0 20px 30px
+                ),
+                order: (
+                    xsOnly: 1,
+                    smOnly: 1
+                ),
+            ), 
+            if(variable-exists(enhancedlayout) and map-has-key($enhancedlayout, enhancedcard4060LastChildCss), 
+                map-get($enhancedlayout,enhancedcard4060LastChildCss), ()
+            )
+        ));
+      }
+    }
+    .card.default-container{
+        .image-container {
+            @include print-css(
+                map-merge((
+                    margin: 0,
+                    padding:(
+                        defaultVal:30px 20px 0 20px,
+                        mediumUp:40px 30px 0 30px
+                    )
+                ), 
+                if(variable-exists(enhancedlayout) and map-has-key($enhancedlayout, enhanced4060ImageCont), 
+                    map-get($enhancedlayout,enhanced4060ImageCont), ()
+                )
+            ));
+        }
+        .text-container {
+            @include print-css(
+                map-merge((
+                    margin: 0,
+                    padding:(
+                        defaultVal:10px 20px 30px 20px,
+                        mediumUp:10px 30px 40px 30px
+                    )
+                ), 
+                if(variable-exists(enhancedlayout) and map-has-key($enhancedlayout, enhanced4060TextCont), 
+                    map-get($enhancedlayout,enhanced4060TextCont), ()
+                )
+            ));
+        }
+    }
+  }
+  .enhanced-layout-reverse {
+    flex-direction: row-reverse;
+  }
+  .enhanced-70-30 {
+    @include print-css(
+        map-merge((
+            display: flex,
+            width: 100%,
+            flex-direction: row
+        ), 
+        if(variable-exists(enhancedlayout) and map-has-key($enhancedlayout, enhanced7030Conatiner), 
+            map-get($enhancedlayout,enhanced7030Conatiner), ()
+        )
+    ));
+    .enhanced-layout {
+        @include print-css(
+            map-merge((
+                float: left,
+                width: 100%
+            ), 
+            if(variable-exists(enhancedlayout) and map-has-key($enhancedlayout, enhanced7030layoutDefaultCss), 
+                map-get($enhancedlayout,enhanced7030layoutDefaultCss), ()
+            )
+        ));
+      .bg_color {
+        .inner-container {
+            @include print-css(
+                map-merge((
+                    display: (
+                        defaultVal: flex,
+                        xsOnly:flex,
+                        smOnly: flex,
+                        mediumOnly: flex
+                    ),
+                    flex-direction: (
+                        defaultVal: row,
+                        xsOnly:column,
+                        smOnly: column,
+                        mediumOnly: column
+                    )
+                ), 
+                if(variable-exists(enhancedlayout) and map-has-key($enhancedlayout, enhanced7030innerConatiner), 
+                    map-get($enhancedlayout,enhanced7030innerConatiner), ()
+                )
+            ));
+        }
+      }
+    }
+    .card {
+      .image-container {
+        margin: 0;
+      }
+      .text-container {
+        margin: 0;
+      }
+      &:first-child {
+        @include print-css(
+            map-merge((
+                margin: 0,
+                flex:(
+                    defaultVal: 0 0 70%,
+                    xsOnly: 0 0 100%,
+                    smOnly: 0 0 100%,
+                    mediumOnly: 0 0 100%
+                ),
+                width:(
+                    defaultVal: 70% !important,
+                    xsOnly: 100% !important,
+                    smOnly: 100% !important,
+                    mediumOnly: 100% !important
+                )
+            ), 
+            if(variable-exists(enhancedlayout) and map-has-key($enhancedlayout, enhanced7030layoutDefaultCss), 
+                map-get($enhancedlayout,enhanced7030layoutDefaultCss), ()
+            )
+        ));
+      }
+      &:last-child {
+        @include print-css(
+            map-merge((
+                display: flex,
+                flex-direction: column,
+                flex:(
+                    defaultVal: 0 0 30%,
+                    xsOnly: 0 0 100%,
+                    smOnly: 0 0 100%,
+                    mediumOnly: 0 0 100%
+                ),
+                width:(
+                    defaultVal: 30% !important,
+                    xsOnly: 100% !important,
+                    smOnly: 100% !important,
+                    mediumOnly: 100% !important
+                ),
+                padding:(
+                    defaultVal: 0,
+                    xsOnly: 0,
+                    smOnly: 0,
+                    mediumOnly: 0
+                )
+            ), 
+            if(variable-exists(enhancedlayout) and map-has-key($enhancedlayout, enhanced7030layoutDefaultCss), 
+                map-get($enhancedlayout,enhanced7030layoutDefaultCss), ()
+            )
+        ));
+      }
+    }
+    .card.default-container{
+        .image-container {
+            @include print-css(
+                map-merge((
+                    margin: 0,
+                    padding:(
+                        defaultVal:30px 20px 0 20px,
+                        mediumUp:40px 30px 0 30px
+                    )
+                ), 
+                if(variable-exists(enhancedlayout) and map-has-key($enhancedlayout, enhanced7030ImageCont), 
+                    map-get($enhancedlayout,enhanced7030ImageCont), ()
+                )
+          ));
+        }
+        .text-container {
+            @include print-css(
+                map-merge((
+                    margin: 0,
+                    padding:(
+                        defaultVal:10px 20px 30px 20px,
+                        mediumUp:10px 30px 40px 30px
+                    )
+                ), 
+                if(variable-exists(enhancedlayout) and map-has-key($enhancedlayout, enhanced7030TextCont), 
+                    map-get($enhancedlayout,enhanced7030TextCont), ()
+                )
+          ));
+        }
+    }
+  }
+.enhanced-30-70 .card .text-container {
+    @include print-css(
+    map-merge((
+        margin: (
+            smallDown: 10px 20px 30px 20px !important
+        )
+    ), 
+        if(variable-exists(enhancedlayout) and map-has-key($enhancedlayout, enhanced3070textSpacing), 
+            map-get($enhancedlayout,enhanced3070textSpacing), ()
+        )
+    ));
+}

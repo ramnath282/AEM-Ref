@@ -1,0 +1,291 @@
+.main-section {
+    @extend .col-md-9;
+    @include content-spacing(map-get($myaccount, myaccBody));
+
+    @media #{$medium-up} {
+        $borderProperty: mapping($myaccount, myaccBody, border);
+
+        @if(map-get($borderProperty, enabled)) {
+            border-#{map-get($borderProperty,position)}: (map-get($borderProperty, size) solid map-get($borderProperty, color));
+        }
+    }
+
+    h1 {
+        @include font-style(map-get($myaccount, heading));
+        @include content-spacing(map-get($myaccount, heading));
+        color: mapping($myaccount, heading, color);
+
+    }
+
+    h2 {
+        font: mapping($myaccount, subheading, font);
+        color: mapping($myaccount, subheading, color);
+        @include content-spacing(map-get($myaccount, subheading));
+
+        em {
+            font: mapping($myaccount, headingItalic, font);
+        }
+    }
+
+    
+
+    .add-float {
+        float: left;
+        margin-right: em(20) !important;
+    }
+
+    .view-recent-order {
+        position: relative;
+        top: 5px;
+    }
+
+    .header-label {
+        font: mapping($myaccount, headingLabel, font);
+        display: block;
+        @include content-spacing(map-get($myaccount, headingLabel));
+        color: mapping($myaccount, headingLabel, color);
+        &.store-interest {
+            @include content-spacing(map-get($myaccount, storeSpace))
+        }
+    }
+
+    .value-label {
+        font: mapping($myaccount, valueLabel, font);
+        color: mapping($myaccount, valueLabel, color);
+        display: block;
+    }
+
+    .user-info-wrapper {
+        display: inline-block;
+        width: 100%;
+        @include content-spacing(map-get($myaccount, userWrapper));
+        $borderProperty: mapping($myaccount, userWrapper, border);
+
+        @if(map-get($borderProperty, enabled)) {
+            border-#{map-get($borderProperty,position)}: (map-get($borderProperty, size) solid map-get($borderProperty, color));
+        }
+
+        .details-list {
+            display: inline-block;
+            width: 100%;
+            @include content-spacing(map-get($myaccount, detailsList));
+
+            .details-list-item {
+                @include content-spacing(map-get($myaccount, list));
+                @extend .col-md-6;
+                @media #{$medium-up}{
+                    width: 49.7%;
+                    float: none;
+                    display: inline-block;
+                }
+
+                a {
+                    @include content-spacing(map-get($myaccount, listAnchor));
+                    display: inline-block
+                }
+
+                label {
+                    font: mapping($myaccount, listLabel, font);
+                }
+            }
+        }
+
+        &.col-1-set {
+            .details-list {
+                .details-list-item {
+                    @extend .col-md-12;
+                    @include content-spacing(map-get($myaccount, colOne));
+                }
+            }
+        }
+
+        &.col-3-set {
+            .details-list {
+                .details-list-item {
+                    @extend .col-md-4;
+                    @include content-spacing(map-get($myaccount, colThree));
+                }
+            }
+        }
+
+        &.col-4-set {
+            .details-list {
+                .details-list-item {
+                    @extend .col-sm-3;
+                    @include content-spacing(map-get($myaccount, colFour));
+
+                    label {
+                        font: mapping($myaccount, colFour, font);
+                        color: mapping($myaccount, colFour, color);
+                        @include content-spacing(mapping($myaccount, colFour, label));
+                    }
+                }
+            }
+        }
+        .my-order-summary{
+             @include content-spacing(map-get($myaccount, orderHistory));
+        }
+        select {
+            @include content-spacing(map-get($myaccount, myaccSelect));
+        }
+
+        &.product-interest {
+            @include content-spacing(map-get($myaccount, myaccCheckbox));
+             border:none;
+            li {
+                @extend .col-xs-3;
+                @media #{$xsmall-down} {
+                    display: block !important;
+                    width: 100% !important;
+                }
+            }
+        }
+    }
+
+
+    .username {
+        span {
+            color: mapping($myaccount, usernameSpan, color);
+            font: mapping($myaccount, usernameSpan, font);
+            @include content-spacing(map-get($myaccount, usernameSpan));
+            $borderProperty: mapping($myaccount, usernameSpan, border);
+
+            @if(map-get($borderProperty, enabled)) {
+                border-#{map-get($borderProperty,position)}: (map-get($borderProperty, size) solid map-get($borderProperty, color));
+            }
+
+            display:inline-block;
+        }
+
+        @media #{$medium-up} {
+            float: left;
+            $borderProperty: mapping($myaccount, username, border);
+
+            @if(map-get($borderProperty, enabled)) {
+                border-#{map-get($borderProperty,position)}: (map-get($borderProperty, size) solid map-get($borderProperty, color));
+            }
+        }
+
+        @include content-spacing(map-get($myaccount, username));
+    }
+
+    .user-note {
+        color: mapping($myaccount, userNotes, color);
+
+        @media #{$medium-up} {
+            top: mapping($myaccount, userNotes, top);
+            position: relative;
+        }
+
+        @include content-spacing(map-get($myaccount, userNotes));
+    }
+
+   
+    .product-interest{
+        border:none;
+        form{
+            .input-field {
+                  select {
+                        max-width:em(274);
+                        width: 100%;
+                  }
+            }     
+        }
+    }
+
+    #rewardDetails {
+        .modal-dialog {
+            @media #{$medium-up} {
+                width: mapping($myaccount, rewardPopup, width);
+            }
+
+            .modal-content {
+                box-shadow: none;
+                @include content-spacing(map-get($myaccount, rewardPopup));
+                @include border-radius(0);
+
+                .modal-header {
+                    $borderProperty: mapping($myaccount, rewardPopup, border);
+
+                    @if(map-get($borderProperty, enabled)) {
+                        border-#{map-get($borderProperty,position)}: (map-get($borderProperty, size) solid map-get($borderProperty, color));
+                    }
+
+                    @include content-spacing(map-get($myaccount, rewardPopup));
+
+                    .close {
+                        background: mapping($myaccount, rewardpopupClose, background);
+                        width: em(16);
+                        height: em(20);
+                        opacity: 1;
+                        @include content-spacing(map-get($myaccount, rewardpopupClose));
+                    }
+
+                    .modal-title {
+                        font: mapping($myaccount, rewardpopupTitle, font);
+                        color: mapping($myaccount, rewardpopupTitle, color);
+                        @include content-spacing(map-get($myaccount, rewardpopupTitle));
+                    }
+                }
+
+                .modal-body {
+                    @include content-spacing(map-get($myaccount, rewardpopupContent));
+
+                    .reward-logo {
+                        max-width: 100%;
+                        width: mapping($myaccount, rewardpopupLogo, width);
+                        float: left;
+                        height: auto;
+                    }
+
+                    .join-rewards {
+                        float: left;
+                        @include content-spacing(map-get($myaccount, rewardpopupBody));
+
+                        p {
+                            max-width: mapping($myaccount, rewardpopupTxt, maxWidth);
+                            @include content-spacing(map-get($myaccount, rewardpopupTxt));
+                            font: mapping($myaccount, rewardpopupTxt, font);
+                            color: mapping($myaccount, rewardpopupTxt, col);
+                            line-height: em(19);
+                        }
+
+                        form {
+                            max-width: mapping($myaccount, rewardpopupInput, maxWidth);
+
+                            fieldset {
+                                @include content-spacing(map-get($myaccount, rewardpopupInput));
+
+                                .input-field {
+                                    .placeholder-label {
+                                        font: mapping($myaccount, rewardpopupPlaceholder, font);
+                                        @include content-spacing(map-get($myaccount, rewardpopupPlaceholder));
+                                    }
+
+                                    input {
+                                        &:focus {
+                                            ~.placeholder-label {
+                                                transform: none;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+
+                            .theme-btn {
+                                @include content-spacing(map-get($myaccount, rewardpopupButton));
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+.ecomm-pdp-page{
+    .root{
+        &.ecomm-wrapper{
+            position: relative;
+        }
+    }
+}

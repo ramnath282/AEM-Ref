@@ -1,0 +1,739 @@
+#esrb-modal {
+  padding: mapping($esrbmodal, main, pad);
+  .modal-dialog {
+    width: mapping($esrbmodal, modalDialog, width);
+    top: mapping($esrbmodal, modalDialog, posTop);
+    @media #{$medium-down} {
+      width: mapping($esrbmodal, modalDialog, tabWidth);
+    }
+    // margin: mapping($esrbmodal,modalDialog,margin);
+  }
+  .modal-content {
+    /*@include border-radius(0px);*/
+    @include box-shadow(mapping($esrbmodal,modalContent,boxShadow));
+    @include border-radius(mapping($esrbmodal,modalContent,borderRadius));
+    // padding: mapping($esrbmodal,modalContent,pad);
+    border: mapping($esrbmodal, modalContent, border);
+    background-color: mapping($esrbmodal, modalContent, bgndColor);
+    background-image: mapping($esrbmodal, modalContent, bgndImage);
+    background-size: mapping($esrbmodal, modalContent, bgndSize);
+    background-repeat: mapping($esrbmodal, modalContent, bgndRepeat);
+    background-position: mapping($esrbmodal, modalContent, bgndPosition);
+    min-height: if(
+      mapping($esrbmodal, modalContent, minHeight),
+      mapping($esrbmodal, modalContent, minHeight),
+      "auto"
+    );
+    @media #{$small-down} {
+      background-image: mapping($esrbmodal, modalContent, mobbgndImage);
+    }
+  }
+  .modal-header {
+    @include border-radius(mapping($esrbmodal,modalHeader,borderRadius));
+    border-bottom: mapping($esrbmodal, modalHeader, borderBottom);
+    height: if(
+      mapping($esrbmodal, modalHeader, height),
+      mapping($esrbmodal, modalHeader, height),
+      "auto"
+    );
+    @include background-clip(mapping($esrbmodal,modalHeader,bgndClip));
+    padding: 0;
+    .close {
+      opacity: mapping($esrbmodal, modalheaderClose, opacity);
+      color: mapping($esrbmodal, modalheaderClose, txtColor);
+      &:after {
+        content: mapping($esrbmodal, modalheaderClose, closeContent);
+        @include font-awesome();
+        color: mapping($esrbmodal, modalheaderClose, closetxtColor);
+        float: mapping($esrbmodal, modalheaderClose, float);
+        font-size: mapping($esrbmodal, modalheaderClose, fntSize);
+        font-weight: mapping($esrbmodal, modalheaderClose, fntWeight);
+        line-height: mapping($esrbmodal, modalheaderClose, lineHeight);
+        text-shadow: mapping($esrbmodal, modalheaderClose, textShadow);
+        opacity: mapping($esrbmodal, modalheaderClose, closeOpacity);
+      }
+      &:hover,
+      &:focus {
+        color: mapping($esrbmodal, modalheaderClose, hovertxtColor);
+        opacity: mapping($esrbmodal, modalheaderClose, closeOpacity);
+      }
+    }
+  }
+  .modal-body {
+    padding: 0;
+    h2 {
+      text-align: mapping($esrbmodal, modalbodyH2, txtAlign);
+      color: mapping($esrbmodal, modalbodyH2, txtColor);
+      font-size: mapping($esrbmodal, modalbodyH2, fntSize);
+      margin: mapping($esrbmodal, modalbodyH2, margin);
+      font-family: mapping($esrbmodal, modalbodyH2, fntFamily);
+      font-weight: mapping($esrbmodal, modalbodyH2, fntWeight);
+    }
+    @media #{$small-up} {
+      padding: mapping($esrbmodal, modalbody, mobPadding);
+    }
+    .play-retailers {
+      background: mapping($esrbmodal, playRetailer, bgndColor);
+      /*padding:em(5) em(10);*/
+      ul {
+        li {
+          /*padding-bottom:em(20);*/
+          background: mapping($esrbmodal, playretailerulList, bgnd);
+          @include border-radius(mapping($esrbmodal,playretailerulList,borderRadius));
+          &:nth-of-type(1n + 5) {
+            display: mapping($esrbmodal, playretailerulList, display);
+          }
+        }
+      }
+      .gallery-tile {
+        ul {
+          display: mapping($esrbmodal, gallerytileUl, display);
+          text-align: mapping($esrbmodal, gallerytileUl, txtAlign);
+          //   margin: mapping($esrbmodal, gallerytileUl, margin);
+          //   padding: mapping($esrbmodal, gallerytileUl, pad);
+          @media #{$small-down} {
+            // margin: mapping($esrbmodal, gallerytileUl, mobmargin);
+          }
+          li {
+            display: mapping($esrbmodal, gallerytileulList, display);
+            float: mapping($esrbmodal, gallerytileulList, float);
+            // margin: mapping($esrbmodal, gallerytileulList, margin);
+            // padding: mapping($esrbmodal, gallerytileulList, pad);
+            overflow: mapping($esrbmodal, gallerytileulList, overflow);
+            width: mapping($esrbmodal, gallerytileulList, width);
+            @media #{$small-down} {
+              width: mapping($esrbmodal, gallerytileulList, mobWidth);
+              //   margin: mapping($esrbmodal, gallerytileulList, mobMargin);
+            }
+            &:nth-of-type(1n + 5) {
+              display: mapping($esrbmodal, gallerytileulList, typeDisplay);
+            }
+            &:nth-child(1) {
+              //   margin-left: mapping($esrbmodal, gallerytileulList, marginLeft);
+            }
+            &:last-child {
+              //   margin-right: mapping($esrbmodal, gallerytileulList, marginLeft);
+            }
+          }
+        }
+      }
+    }
+    p {
+      span {
+        &:before {
+          content: mapping($esrbmodal, modalbodyP, spanContent);
+        }
+      }
+      @media #{$small-up} {
+        font-size: mapping($esrbmodal, modalbodyP, mobfntSize);
+      }
+    }
+    a {
+      text-decoration: mapping($esrbmodal, modalbodyLink, txtDecoration);
+      /*padding:em(10) em(30);*/
+      img {
+        width: mapping($esrbmodal, modalbodyLink, imgWidth);
+        height: mapping($esrbmodal, modalbodyLink, imgHeight);
+      }
+    }
+
+    .modal-btn-wrap {
+      background-image: mapping($esrbmodal, bodyBgImg, bgImg);
+      background-size: mapping($esrbmodal, bodyBgImg, bgSize);
+      background-position: mapping($esrbmodal, bodyBgImg, bgPosition);
+      background-repeat: mapping($esrbmodal, bodyBgImg, bgRepeat);
+      padding-bottom: mapping($esrbmodal, bodyBgImg, padd);
+      @media #{$small-down} {
+        padding-bottom: mapping($esrbmodal, bodyBgImg, mobPadd);
+        background-position: mapping($esrbmodal, bodyBgImg, mobbgPosition);
+      }
+      width: mapping($esrbmodal, modalbtnWrap, width);
+      display: mapping($esrbmodal, modalbtnWrap, display);
+      text-align: mapping($esrbmodal, modalbtnWrap, txtAlign);
+    }
+
+    .continue-btn,
+    .go-back-btn {
+      @if mapping($esrbmodal,modalbodycontinueBtn,sameasSecondaryBtn) == true {
+        @extend .secondary-btn;
+        @if mapping($esrbmodal,modalbodycontinueBtn,isArrowWithBtn) == false {
+          &:after {
+            content: none;
+          }
+          padding: mapping($esrbmodal, modalbodycontinueBtn, secondaryPadding);
+        }
+        @if mapping($esrbmodal,modalbodycontinueBtn,isSingleRowInMob) == true {
+          @media #{$xsmall-down} {
+            display: block !important;
+            width: auto;
+            max-width: 65%;
+            margin-left: auto !important;
+            margin-right: auto !important;
+          }
+        }
+      } @else if mapping($esrbmodal,modalbodycontinueBtn,sameasPrimaryBtn) == true {
+        @extend .secondary-btn;
+        @if mapping($esrbmodal,modalbodycontinueBtn,isArrowWithBtn) == false {
+          &:after {
+            content: none;
+          }
+          padding: mapping($esrbmodal, modalbodycontinueBtn, secondaryPadding);
+        }
+        @if mapping($esrbmodal,modalbodycontinueBtn,isSingleRowInMob) == true {
+          @media #{$xsmall-down} {
+            display: block !important;
+            width: auto;
+            max-width: 65%;
+            margin-left: auto !important;
+            margin-right: auto !important;
+          }
+        }
+      } @else {
+        text-align: mapping($esrbmodal, modalbodygobackcontinueBtn, txtAlign);
+        padding: mapping($esrbmodal, modalbodygobackcontinueBtn, pad);
+        display: mapping($esrbmodal, modalbodygobackcontinueBtn, display);
+        border: mapping($esrbmodal, modalbodygobackcontinueBtn, borderColor);
+        @include border-radius(mapping($esrbmodal,modalbodygobackcontinueBtn,borderRadius));
+        font-size: mapping($esrbmodal, modalbodygobackcontinueBtn, fntSize);
+        font-family: mapping($esrbmodal, modalbodygobackcontinueBtn, fntFamily),
+          Sans-serif;
+        font-weight: mapping($esrbmodal, modalbodygobackcontinueBtn, fntWeight);
+        @include transition(mapping($esrbmodal,modalbodygobackcontinueBtn,transition));
+      }
+    }
+    .continue-btn {
+      margin: mapping($esrbmodal, modalbodycontinueBtn, margin);
+      @if mapping($esrbmodal,modalbodycontinueBtn,sameasSecondaryBtn) == true {
+      } @else {
+        color: mapping($esrbmodal, modalbodycontinueBtn, txtColor);
+        background: mapping($esrbmodal, modalbodycontinueBtn, bgnd);
+        &:hover,
+        &:focus,
+        &:active {
+          background: mapping($esrbmodal, modalbodycontinueBtn, hoverBgnd);
+          color: mapping($esrbmodal, modalbodycontinueBtn, hovertxtColor);
+          border: mapping($esrbmodal, modalbodycontinueBtn, hoverborderColor);
+        }
+      }
+    }
+    .go-back-btn {
+      margin: mapping($esrbmodal, modalbodygobackBtn, margin);
+      @if mapping($esrbmodal,modalbodycontinueBtn,sameasSecondaryBtn) == true {
+      } @else {
+        display: mapping($esrbmodal, modalbodygobackBtn, display);
+        color: mapping($esrbmodal, modalbodygobackBtn, txtColor);
+        background: mapping($esrbmodal, modalbodygobackBtn, bgnd);
+        &:hover,
+        &:focus,
+        &:active {
+          color: mapping($esrbmodal, modalbodygobackBtn, hovertxtColor);
+          background: mapping($esrbmodal, modalbodygobackBtn, hoverBgnd);
+          border: mapping($esrbmodal, modalbodygobackBtn, hoverborderColor);
+        }
+      }
+    }
+    /*@media(max-width:$screen-sm-max) {
+            padding:0;
+            width:75%;
+        }*/
+    @media (max-width: $screen-xs-max) {
+      padding: mapping($esrbmodal, modalbody, tabPadding);
+      width: mapping($esrbmodal, modalbody, tabWidth);
+      float: mapping($esrbmodal, modalbody, tabFloat);
+      margin: mapping($esrbmodal, modalbody, tabMargin);
+      background-size: mapping($esrbmodal, modalbody, tabbgndSize);
+    }
+    p {
+      text-align: mapping($esrbmodal, modalbodyP, txtAlign);
+      color: mapping($esrbmodal, modalbodyP, txtColor);
+      font-size: mapping($esrbmodal, modalbodyP, fntSize);
+      margin: mapping($esrbmodal, modalbodyP, margin);
+      font-weight: mapping($esrbmodal, modalbodyP, fntWeight);
+      padding-bottom: mapping($esrbmodal, modalbodyP, paddingBottom);
+      font-family: mapping($esrbmodal, modalbodyP, fntFamily);
+      line-height: mapping($esrbmodal, modalbodyP, lineHeight);
+      /*margin:0;
+            font-family:"Arial",Sans-serif;
+            font-weight:$fontBold;
+            margin-bottom:30px;
+            @media (max-width:$screen-xs-max) {
+                margin-bottom:20px;
+            }*/
+    }
+    .close-btn {
+      //float:left;
+      margin-right: mapping($esrbmodal, modalheaderClose, marginRight);
+    }
+  }
+  .modal-footer {
+    border-top: mapping($esrbmodal, modalFooter, borderTop);
+    background: mapping($esrbmodal, modalFooter, bgnd);
+  }
+  /*.modal-backdrop {
+        background-color:$modal-opacity-bg;
+    }
+    .modal-backdrop.in {
+        opacity:0.65;
+    }*/
+}
+.interstitial-modal {
+  @extend #esrb-modal;
+
+  .modal-title {
+    text-align: if(
+      mapping($esrbmodal, heading, txtAlign),
+      mapping($esrbmodal, heading, txtAlign),
+      center
+    );
+    color: if(
+      mapping($esrbmodal, heading, txtColor),
+      mapping($esrbmodal, heading, txtColor),
+      $white
+    );
+    font-size: if(
+      mapping($esrbmodal, heading, fntSize),
+      mapping($esrbmodal, heading, fntSize),
+      em(38)
+    );
+    margin: if(
+      mapping($esrbmodal, heading, margin),
+      mapping($esrbmodal, heading, margin),
+      em(35, 38) 0 0
+    );
+    font-family: mapping($esrbmodal, heading, fntFamily);
+    font-weight: mapping($esrbmodal, heading, fntWeight);
+    * {
+      font-family: inherit;
+      font-weight: inherit;
+    }
+  }
+
+  &#interstitialGameRetailerModal {
+    .modal-title {
+      color: $white;
+      text-align: center;
+    }
+  }
+
+  .modal-body {
+    .play-retailers .gallery-tile ul li {
+      @media #{$small-up} {
+        margin: 0 1.4%;
+        &:first-child {
+          margin: 0 1.4%;
+        }
+        &:nth-child(3n + 3) {
+          margin-right: 0;
+        }
+        &:nth-child(n + 4) {
+          float: left;
+          margin-top: 10px;
+        }
+      }
+    }
+    a img {
+      width: auto;
+    }
+  }
+}
+//monster high interstitial DOWNLOAD OUR APPS
+//tablet mobile and desktop view
+.modal {
+  &#interstitialGameRetailerModal {
+    .modal-dialog {
+      margin: 0 auto;
+      height: auto;
+      width: 750px;
+      top: 124px;
+      @media #{$medium-only} {
+        width: 720px;
+        top: 134px;
+      }
+      @media #{$small-only} {
+        width: 287.4px;
+        top: 66px;
+      }
+      .modal-content {
+        background-size: contain !important;
+        background-color: transparent;
+        border: none;
+         @media #{$medium-up} {
+           min-height: 520px;
+         }
+        @media #{$medium-only} {
+          min-height: 500px;
+        }
+        @media #{$small-only} {
+          background-image: url("/content/dam/monster-high/monsterhigh-play/footer/MH_Interstitial_Mobile.png") !important;
+          background-size: 100% 100% !important;
+          min-height: 416px;
+        }
+        .modal-header {
+          padding: 10px 21px 0 21px;
+           @media #{$medium-only} {
+             padding: 14px 21px 0 30px;
+           }
+          @media #{$small-only} {
+            padding: 10px 12px 0 30px;
+          }
+          .close {
+            &::after {
+              height: 40px;
+              width: 40px;
+              color: black;
+              font-size: 47px;
+              @media #{$medium-only} {
+                height: 38.46px;
+                width: 39.36px;
+                font-size: 45px;
+              }
+              @media #{$small-only} {
+                height: 25px;
+                width: 25px;
+                font-size: 29px;
+              }
+            }
+          }
+          h2 {
+            padding-top: 30px;
+            color: #ffffff;
+            font-family: "YellowBalloon";
+            font-weight: 400;
+            font-size: 33px;
+            line-height: 41px;
+            text-align: center;
+            padding-left: 37px;
+            @media #{$medium-only} {
+              padding-top: 25px;
+              padding-left: 25px;
+            }
+            @media #{$small-only} {
+              font-size: 20px;
+              line-height: 24px;
+              text-align: center;
+              padding-top: 37px;
+              padding-right: 15px;
+              padding-left: 0;
+            }
+          }
+          @media #{$small-only} {
+            position: relative;
+            z-index: 1;
+            &::before {
+              content: " ";
+              height: 39px;
+              width: 225px;
+              top: 40px;
+              position: absolute;
+              z-index: -1;
+              display: block;
+              background-position: center;
+              background-size: contain;
+              background-repeat: no-repeat;
+              background-image: url("/content/dam/monster-high/monsterhigh-play/footer/MH_Interstitial_Mobile_label.png");
+            }
+          }
+        }
+        .modal-body {
+          margin: 45px 122px 0 122px;
+          @media #{$medium-only} {
+            margin: 42px 107px 0 107px;
+          }
+          @media #{$small-only} {
+            margin: 20px 38px 0 38px;
+          }
+          p {
+            color: #000000;
+            font-family: "ff-duper-web-pro";
+            font-size: 24px;
+            line-height: 27px;
+            text-align: center;
+            padding: 0;
+            @media #{$small-only} {
+              font-size: 18px;
+              line-height: 22px;
+            }
+          }
+          .play-tiles-gallery {
+            .gallery-tile {
+              ul {
+                margin: 12px 0 0 0;
+                @media #{$medium-only} {
+                  margin: 15px 0 0 0;
+                }
+                @media #{$small-only} {
+                  margin: 14px 0 0 0;
+                }
+                padding: 0;
+                li {
+                  margin: 0;
+                  padding: 0;
+                  border-radius: 0;
+                  width: auto;
+                  background: transparent;
+                  @media #{$medium-only} {
+                  &:nth-child(1),
+                  &:nth-child(2) {
+                    margin-right: 15px;
+                  }
+                  }
+                  @media #{$medium-up} {
+                        &:nth-child(1),
+                  &:nth-child(2) {
+                    margin-right: 15px;
+                  }
+                  &:nth-child(1) {
+                  a {
+                    img {
+                      height: 40px;
+                      width: auto;
+                      max-width: 118px;
+                  }
+                  }
+                  }
+                  &:nth-child(2), &:nth-child(3) {
+                     a {
+                    img {
+                      height: 40px;
+                      width: auto;
+                      max-width: 135px;
+                  }
+                  }
+                  }
+                  }
+                   @media #{$medium-only} {
+                  &:nth-child(1) {
+                  a {
+                    img {
+                      height: 40px;
+                      width: auto;
+                      max-width: 115px;
+                  }
+                  }
+                  }
+                  &:nth-child(2), &:nth-child(3) {
+                     a {
+                    img {
+                      height: 40px;
+                      width: auto;
+                      max-width: 130px;
+                  }
+                  }
+                  }
+                  }
+                   @media #{$small-only} {
+                       margin: 0;
+                    width: auto;
+                  &:nth-child(1) {
+                  a {
+                    img {
+                      height: 40px;
+                      width: auto;
+                      max-width: 120px;
+                  }
+                  }
+                  }
+                  &:nth-child(2), &:nth-child(3) {
+                    margin: 10px 0 0 0;
+                     a {
+                    img {
+                      height: 40px;
+                      width: auto;
+                      max-width: 135px;
+                  }
+                  }
+                  }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+//monster high interstitial WHERE TO BUY
+.modal {
+  &#interstitialModal {
+    .modal-dialog {
+      margin: 0 auto;
+      height: auto;
+      width: 750px;
+      top: 154px;
+      @media #{$medium-only} {
+        width: 720px;
+        top: 163px;
+      }
+      @media #{$small-only} {
+        width: 312px;
+        top: 91px;
+      }
+      .modal-content {
+        background-size: 100% 100%;
+        background-color: transparent;
+        border: none;
+        min-height: 460px;
+        @media #{$small-only} {
+          background-image: url("/content/dam/monster-high/monsterhigh-play/footer/MH_Interstitial_Mobile.png") !important;
+          background-position: top;
+          min-height: 357px;
+        }
+        @media #{$medium-only} {
+          min-height: 442px;
+        }
+      }
+      .modal-header {
+        .close {
+          margin: 10px 21px 0 0;
+          @media #{$medium-only} {
+            margin: 10px 21px 0 0;
+          }
+          @media #{$small-only} {
+            margin: 6px 12px 0 0;
+          }
+          &::after {
+            height: 40px;
+            width: 40px;
+            font-size: 46px;
+            color: black;
+            @media #{$medium-only} {
+              height: 38px;
+              width: 38px;
+            }
+            @media #{$small-only} {
+              height: 25px;
+              width: 25px;
+              font-size: 29px;
+            }
+          }
+        }
+      }
+      .modal-body {
+        top: -13px;
+        margin-right: 63px;
+        margin-left: 63px;
+        @media #{$small-only} {
+          position: relative;
+          z-index: 1;
+          top: -7px;
+          margin-left: 40px;
+          margin-right: 40px;
+          &::before {
+            content: " ";
+            height: 57px;
+            width: 225px;
+            margin-left: 2px;
+            position: absolute;
+            z-index: -1;
+            display: block;
+            background-position: inherit;
+            background-size: contain;
+            background-repeat: round;
+            background-image: url("/content/dam/monster-high/monsterhigh-play/footer/MH_Interstitial_Mobile_label.png");
+          }
+        }
+        h2 {
+          color: #ffffff;
+          font-family: "YellowBalloon";
+          font-weight: 400;
+          font-size: 33px;
+          line-height: 41px;
+          text-align: center;
+          @media #{$small-only} {
+            font-size: 20px;
+            line-height: 24px;
+            margin: 0 38px;
+            padding-top: 4px;
+          }
+        }
+        p {
+          color: #000000;
+          font-family: "ff-duper-web-pro";
+          font-size: 24px;
+          line-height: 27px;
+          text-align: center;
+          margin: 35px 49px 25px 49px;
+          padding: 0;
+          @media #{$medium-only} {
+            margin: 28px 45px 23px 45px;
+          }
+          @media #{$small-only} {
+            margin: 22px 9px;
+            font-size: 18px;
+            line-height: 22px;
+          }
+        }
+        .modal-btn-wrap {
+          .go-back-btn {
+            margin: 0 15px 0 0;
+            height: 50px;
+            width: 235px;
+            color: #000000;
+            font-family: "YellowBalloon";
+            font-weight: 400;
+            font-size: 24px;
+            line-height: 29px;
+            text-align: center;
+            padding-top: 11px;
+            background-color: #EC008C;
+            @media #{$medium-only} {
+              height: 48px;
+              width: 226px;
+              padding-top: 12px;
+            }
+            @media #{$small-only} {
+              height: 42px;
+              width: 196px;
+              margin: 0 0 15px 0;
+              padding: 7px 0 0 0;
+            }
+          }
+          .continue-btn {
+            margin: 0;
+            height: 50px;
+            width: 235px;
+            color: #000000;
+            font-family: "YellowBalloon";
+            font-weight: 400;
+            font-size: 24px;
+            line-height: 29px;
+            text-align: center;
+            padding-top: 11px;
+            background-color: #00AEEF;
+            @media #{$medium-only} {
+              height: 48px;
+              width: 226px;
+              padding-top: 12px;
+            }
+            @media #{$small-only} {
+              height: 42px;
+              width: 196px;
+              padding: 7px 0 0 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+// games page monster high
+.game-player-area-component{
+    .game-player-area-content{
+.game-player-area-container{
+    .game_frame {
+            .container{
+                 height: 100% !important;
+                 width: 100% !important;
+             canvas {
+                 @media #{$small-only} {
+                 height: 188px !important;
+                 width: 320px !important;
+             }   
+             }
+            }
+    }
+}
+    }
+}

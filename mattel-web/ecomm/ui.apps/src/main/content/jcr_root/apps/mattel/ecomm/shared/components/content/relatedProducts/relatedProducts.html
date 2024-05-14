@@ -1,0 +1,18 @@
+<sly data-sly-test="${wcmmode.edit}">${'Related Product Configuration' @ i18n}</sly>
+<sly data-sly-use.relatedProduct="com.mattel.ecomm.core.models.RelatedProductModel"/>
+<div class="related-grid-lists hide">
+    <h2 id="related-title" data-popular-records-title="${relatedProduct.popularRecordsTitle || 'Popular Products'}"></h2>
+    <span class="view-all-datas">
+        <a class="track-view-all-article" href="${relatedProduct.landingPageUrl}">${properties.viewAllButtonLabel || 'View All'@ i18n}</a>
+    </span>
+    <ul id="relatedGridLists" data-item-to-show="${properties.dataItems}" data-product-viewall="${relatedProduct.landingPageUrl}" data-article-viewall="${relatedProduct.articlePageUrl}" data-product-title="${relatedProduct.relatedProductHeading}" data-article-title="${relatedProduct.relatedArticleHeading}"
+        class="grid-col-4" data-truncate=".grid-title"></ul>
+    <sly data-sly-use.view="/apps/mattel/ecomm/ag/components/content/socialSharetemplate/socialSharetemplate.html" data-sly-call="${view.socialShare @ title = 'Social',
+         									 description = 'SocialMedia',
+                                             mediaUrl = '',
+                                             pageUrl = currentPage.path,
+                                             componentName = 'ArticleGrid',
+                                             ulId='socialIconUl',
+                                             ulClasses='hide'}" />
+</div>
+<div data-sly-resource="${'interstitialModal' @ resourceType='/apps/mattel/ecomm/ag/components/content/interstitialModal'}"></div>

@@ -1,0 +1,83 @@
+ .hero-banner {
+   @extend .row;
+   position: relative;
+   &[data-src] {
+    height: 42.428em;
+    &:not(.bgnd-repeat){
+      background-repeat: repeat-x;
+      background-position: center top;
+      background-size: cover;
+    }
+    &.custom-height{
+      height: auto !important;
+      padding: em(50) 0;
+      overflow: hidden;
+      section{
+        position: static;
+        @include transform(none);
+        padding: 0;
+        max-width: none;
+      }
+    }
+     section {
+      //  position: relative;
+       @media #{$small-up} {
+         top: 50%;
+       }
+       .theme-btn-primary {
+          @media #{$xsmall-down} {
+            max-width: 90%;
+          }
+       }
+     }
+   }
+   &>div {
+     height: 100%;
+     img{
+       width: 100%;
+     }
+     section {
+       display: block;
+       width: 100%;
+       margin: 0 auto;
+       position: absolute;
+       z-index: 1;
+       top: 50%;
+       left: 0;
+       right: 0;
+       transform: translateY(-50%);
+       &.align-bottom {
+         top: auto;
+         right: auto;
+         bottom: 0;
+         transform: none;
+         padding: 1em 0;
+         max-width: 100%;
+         text-align: left;
+         h2,p{
+          @extend .container;
+           margin: 0 auto;
+           font-size:em(28);
+         }
+       }
+       &>p{
+        font-size: 1.8em;
+       }
+       h1 {
+         p {
+           margin: 0;
+         }
+       }
+       .btn {
+         margin: 0 auto;
+         &:after {
+           @extend .pull-right;
+           @include font-awesome;
+           content: "\f054";
+           top: em(4, 22.086);
+           position: relative;
+         }
+       }
+     }
+   }
+ }

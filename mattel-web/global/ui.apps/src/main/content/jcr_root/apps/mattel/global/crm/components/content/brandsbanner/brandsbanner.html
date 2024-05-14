@@ -1,0 +1,58 @@
+<sly data-sly-test="${wcmmode.edit}">${'Mattel Brands Banner' @i18n}</sly>
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
+    <div class="crm-brand-banner" style="background-color: ${properties.backgroundColor @context='html'}; background-image: url(${properties.backgroundImage @context='html'});">
+        <div class="row">
+            <ul class="module-image ${properties.logoAlignment}">
+                <sly data-sly-use.brandmodel="com.mattel.global.core.model.BrandsBannerModel">
+                    <sly data-sly-list.brand="${brandmodel.brandBanners}">
+                        <sly data-sly-test="${brand.brandlogolink != null }">
+                            <sly data-sly-test="${brand.renderoption =='sameWindow'}">
+                                <li data-sly-test="${brand.external}">
+                                    <a href="${brand.brandlogolink}" data-tracking-id="Image-Click|brandsbanner|${brand.alttext @i18n}" >
+                                        <img src="${brand.logoImage}" alt="${brand.alttext @i18n}">
+                                        <span data-sly-test="${brand.title}">${brand.title}</span>
+                                    </a>
+                                </li>
+                                <li data-sly-test="${!brand.external}">
+                                    <a href="${brand.brandlogolink @extension='html'}" data-tracking-id="Image-Click|brandsbanner|${brand.alttext @i18n}" >
+                                        <img src="${brand.logoImage}" alt="${brand.alttext @i18n}">
+                                        <span data-sly-test="${brand.title}">${brand.title}</span>
+                                    </a>
+                                </li>
+                            </sly>
+                            <sly data-sly-test="${brand.renderoption =='tabWindow'}">
+                                <li data-sly-test="${brand.external}">
+                                    <a href="${brand.brandlogolink}" target="_blank" data-tracking-id="Image-Click|brandsbanner|${brand.alttext @i18n}">
+                                        <img src="${brand.logoImage}" alt="${brand.alttext @i18n}">
+                                        <span data-sly-test="${brand.title}">${brand.title}</span>
+                                    </a>
+                                </li>
+                                <li data-sly-test="${!brand.external}">
+                                    <a href="${brand.brandlogolink @extension='html'}" target="_blank" data-tracking-id="Image-Click|brandsbanner|${brand.alttext @i18n}">
+                                        <img src="${brand.logoImage}" alt="${brand.alttext @i18n}">
+                                        <span data-sly-test="${brand.title}">${brand.title}</span>
+                                    </a>
+                                </li>
+                            </sly>
+                            <sly data-sly-test="${brand.renderoption =='newWindow'}">
+                                <li data-sly-test="${brand.external}">
+                                    <a data-url="${brand.brandlogolink}" onclick="window.open(this.dataset.url,'AG','width=500, height=500');" style="cursor: pointer;" data-tracking-id="Image-Click|brandsbanner|${brand.alttext @i18n}">
+                                        <img src="${brand.logoImage}" alt="${brand.alttext @i18n}">
+                                        <span data-sly-test="${brand.title}">${brand.title}</span>
+                                    </a>
+                                </li>
+                                <li data-sly-test="${!brand.external}">
+                                    <a data-url="${brand.brandlogolink @extension='html'}" onclick="window.open(this.dataset.url,'AG','width=500, height=500');" style="cursor: pointer;" data-tracking-id="Image-Click|brandsbanner|${brand.alttext @i18n}">
+                                        <img src="${brand.logoImage}" alt="${brand.alttext @i18n}">
+                                        <span data-sly-test="${brand.title}">${brand.title}</span>
+                                    </a>
+                                </li>
+                            </sly>
+                        </sly>
+                    </sly>
+                </sly>
+            </ul>
+        </div>
+    </div>
+    <sly data-sly-call="${clientlib.js @ categories='crm.brandsBanner'}"></sly>
+</sly>

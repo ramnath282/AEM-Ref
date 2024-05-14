@@ -1,0 +1,41 @@
+<sly data-sly-test="${wcmmode.edit}">${'Configure Retailer Interstitial Component' @ i18n}</sly>
+<div class="modal interstitial-modal" id="interstitialRetailerModal" tabindex="-1" role="dialog" aria-labelledby="retailerinterstitialModalLabel">
+    <div class="modal-dialog" role="document">
+        <sly data-sly-test="${(properties.interstitialBgImage == null && properties.interstitialBgColor == null )||(properties.interstitialBackOption=='image'&& properties.interstitialBgImage ==null)||(properties.interstitialBackOption=='color'&& properties.interstitialBgColor ==null)}">
+			<div class="modal-content" id="retailerinterstitialModalLabel">
+		</sly>
+		<sly data-sly-test="${properties.interstitialBackOption=='color' && properties.interstitialBgColor !=null}">
+			<div class="modal-content" id="retailerinterstitialModalLabel" style="background:${properties.interstitialBgColor @ context='styleString'};">
+		</sly>
+        <sly data-sly-test="${properties.interstitialBackOption=='image'&& properties.interstitialBgImage !=null}">
+            <div class="modal-content" id="retailerinterstitialModalLabel" style="background: url('${properties.interstitialBgImage @ context='styleString'}'); background-size: cover;">
+        </sly>
+            <div class="modal-header">
+                <a href="#" aria-hidden="true" class="sr-only" id="interstitial-first-link">
+                    <!--/* first link */-->
+                </a>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" retailer-data-tracking-id="Retailer Section Clicks|${properties.alwaysEnglish}|Model Close|Retailer Interstitial" > </button>
+            </div>
+            <div class="modal-body">
+					<div class="modal-page-title" data-sly-test="${properties.interstitialTitle || properties.interstitialSubTitle || properties.interstitialDescription}">
+						<div class="main-title" data-sly-test="${properties.interstitialTitle}">
+							<h2>${properties.interstitialTitle @ context='html',i18n}</h2>
+						</div>
+                        <div class="sub-title" data-sly-test="${properties.interstitialSubTitle}">${properties.interstitialSubTitle @ context= 'html',i18n}</div>
+						<div class="text-para" data-sly-test="${properties.interstitialDescription}">
+							<p>${properties.interstitialDescription @ context='html',i18n}</p>
+						</div>
+					</div>
+					<input type="hidden" value="${properties.alwaysEnglish}" id="retailerIntAlwaysEnglish" />
+                    <div class="gallery-tile">                        
+                        <ul  class="retailer-list" id="retailerInterstitial">
+                        </ul>
+                    </div>
+					<div class="modal-footer-goback text-primary" data-sly-test="${properties.ctaGoBack}">
+						<a class="go-back-btn btn-cta-item" retailer-data-tracking-id="Retailer Section Clicks|${properties.alwaysEnglish}|${properties.ctaGoBack}|Retailer Interstitial" >${properties.ctaGoBack @ i18n}</a>
+                        <a href="#" aria-hidden="true" class="sr-only" id="last-link"><!--/* Last link */--></a>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Dolls Registration and Registered Dolls"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <registeredDollsView
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Registered Dolls config"
+                        sling:resourceType="granite/ui/components/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <registeredDollTitle
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Please enter Title for registered dolls section"
+                                fieldLabel="Registered Dolls Section Title"
+                                name="./registeredDollsTitle"
+                                required="{Boolean}true"/>
+                            <productLineColumnHeading
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Please enter heading text for product line"
+                                fieldLabel="Productline Column Header"
+                                name="./productLineColumnHeading"
+                                required="{Boolean}true"/>
+                            <purchasedFromColumnHeading
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Please enter heading text for purchased from"
+                                fieldLabel="Purchased From Column Header"
+                                name="./purchasedFromColumnHeading"
+                                required="{Boolean}true"/>
+                            <purchasedDateColumnHeading
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Please enter heading text for purchased date"
+                                fieldLabel="Purchased Date Column Header"
+                                name="./purchasedDateColumnHeading"
+                                required="{Boolean}true"/>
+                            <recipientsColumnHeading
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Please enter heading text for recipients column"
+                                fieldLabel="Recipients Column Header"
+                                name="./recipientsColumnHeading"
+                                required="{Boolean}true"/>
+                            <createCertificateLinkLabel
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Please enter label for create certificate"
+                                fieldLabel="Create Certificate Link Label"
+                                name="./createCertificateLinkLabel"
+                                required="{Boolean}true"/>
+                            <removeLinkLabel
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Please enter label for remove link"
+                                fieldLabel="Remove Link Label"
+                                name="./removeLinkLabel"
+                                required="{Boolean}true"/>
+                            <dataNotFoundText
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Please enter data not found text"
+                                fieldLabel="Data Not Found Text"
+                                name="./dataNotFoundText"
+                                required="{Boolean}true"/>
+                            <createCertificateURL
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Please enter create certificate URL"
+                                fieldLabel="Create Certificate URL"
+                                name="./createCertificateURL"
+                                required="{Boolean}true"/>
+                        </items>
+                    </registeredDollsView>
+                    <dollRegisteration
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Doll Registration config"
+                        sling:resourceType="granite/ui/components/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <registrationPageTitle
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Please enter Title for Doll Registration Page"
+                                fieldLabel="Doll Registration Page Title"
+                                name="./dollRegPageTitle"
+                                required="{Boolean}true"/>
+                            <registrationSectionTitle
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Please enter Title for Doll Registration Section"
+                                fieldLabel="Doll Registration Section Title"
+                                name="./dollRegSectionTitle"
+                                required="{Boolean}true"/>
+                            <productlineText
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Please enter product line text"
+                                fieldLabel="Product Line Text"
+                                name="./productlineText"
+                                required="{Boolean}true"/>
+                            <productlinePlaceholderText
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Please enter product line placeholder text"
+                                fieldLabel="Product Line Dropdown Placeholder Text"
+                                name="./productlinePlaceholderText"
+                                required="{Boolean}true"/>
+                            <productlineRequiredMessage
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Please enter product line required message"
+                                fieldLabel="Product Line Required Message"
+                                name="./productlineRequiredMessage"
+                                required="{Boolean}true"/>
+                            <productLines
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                composite="{Boolean}true"
+                                fieldLabel="Product Lines">
+                                <field
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/fieldset"
+                                    name="./productlines">
+                                    <items jcr:primaryType="nt:unstructured">
+                                        <column
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                                            <items jcr:primaryType="nt:unstructured">
+                                                <productline
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldLabel="Product Line"
+                                                    name="./productline"
+                                                    required="{Boolean}true"/>
+                                            </items>
+                                        </column>
+                                    </items>
+                                </field>
+                            </productLines>
+                            <retailerText
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Please enter retailer text"
+                                fieldLabel="Retailer Text"
+                                name="./retailerText"
+                                required="{Boolean}true"/>
+                            <retailerPlaceholderText
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Please enter retailer placeholder text"
+                                fieldLabel="Retailer Dropdown Placeholder Text"
+                                name="./retailerPlaceholderText"
+                                required="{Boolean}true"/>
+                            <retailerRequiredMessage
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Please enter retailer required message"
+                                fieldLabel="Retailer Required Message"
+                                name="./retailerRequiredMessage"
+                                required="{Boolean}true"/>
+                            <retailers
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                composite="{Boolean}true"
+                                fieldLabel="Retailers">
+                                <field
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/fieldset"
+                                    name="./retailers">
+                                    <items jcr:primaryType="nt:unstructured">
+                                        <column
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                                            <items jcr:primaryType="nt:unstructured">
+                                                <retailer
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldLabel="Retailer"
+                                                    name="./retailer"
+                                                    required="{Boolean}true"/>
+                                            </items>
+                                        </column>
+                                    </items>
+                                </field>
+                            </retailers>
+                            <purchaseDateLabel
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Please enter Purchase Date Label"
+                                fieldLabel="Purchase Date Label"
+                                name="./purchaseDateLabel"
+                                required="{Boolean}true"/>
+                            <forWhomPlaceholder
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Please enter For Whom Textbox Placeholder"
+                                fieldLabel="For Whom Textbox Placeholder Text"
+                                name="./forWhomPlaceholder"
+                                required="{Boolean}true"/>
+                            <purchaseReason
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Please enter purchase reason text"
+                                fieldLabel="Purchase Reason Text"
+                                name="./purchaseReason"
+                                required="{Boolean}true"/>
+                            <purchaseReasonPlaceholderText
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Please enter purchase reason placeholder text"
+                                fieldLabel="Purchase Reason Dropdown Placeholder Text"
+                                name="./purchaseReasonPlaceholderText"
+                                required="{Boolean}true"/>
+                            <purchaseReasons
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                composite="{Boolean}true"
+                                fieldLabel="Purchase Reasons">
+                                <field
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/fieldset"
+                                    name="./purchaseReasons">
+                                    <items jcr:primaryType="nt:unstructured">
+                                        <column
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                                            <items jcr:primaryType="nt:unstructured">
+                                                <purchaseReasons
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldLabel="Purchase Reason"
+                                                    name="./purchaseReason"
+                                                    required="{Boolean}true"/>
+                                            </items>
+                                        </column>
+                                    </items>
+                                </field>
+                            </purchaseReasons>
+                            <regDollCTALabel
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Please enter label for register doll CTA"
+                                fieldLabel="Register Doll CTA Label"
+                                name="./regDollCTALabel"
+                                required="{Boolean}true"/>
+                            <dateText
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Please enter date field text"
+                                fieldLabel="Date Field Text"
+                                name="./dateText"
+                                required="{Boolean}true"/>
+                            <datePlaceholderText
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Please enter date placeholder text"
+                                fieldLabel="Date Placeholder Text"
+                                name="./datePlaceholderText"
+                                required="{Boolean}true"/>
+                            <dateRequiredMessage
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Please enter day required message"
+                                fieldLabel="Day Required Message"
+                                name="./dayRequiredMessage"
+                                required="{Boolean}true"/>
+                            <monthText
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Please enter monthfield text"
+                                fieldLabel="Month Field Text"
+                                name="./monthText"
+                                required="{Boolean}true"/>
+                            <monthPlaceholderText
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Please enter month placeholder text"
+                                fieldLabel="Month Placeholder Text"
+                                name="./monthPlaceholderText"
+                                required="{Boolean}true"/>
+                            <monthRequiredMessage
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Please enter month required message"
+                                fieldLabel="Month Required Message"
+                                name="./monthRequiredMessage"
+                                required="{Boolean}true"/>
+                            <yearText
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Please enter yearfield text"
+                                fieldLabel="Year Field Text"
+                                name="./yearText"
+                                required="{Boolean}true"/>
+                            <yearPlaceholderText
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Please enter year placeholder text"
+                                fieldLabel="Year Placeholder Text"
+                                name="./yearPlaceholderText"
+                                required="{Boolean}true"/>
+                            <yearRequiredMessage
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Please enter year required message"
+                                fieldLabel="Year Required Message"
+                                name="./yearRequiredMessage"
+                                required="{Boolean}true"/>
+                        </items>
+                    </dollRegisteration>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>

@@ -1,0 +1,39 @@
+<sly data-sly-test="${wcmmode.edit}">${'Brand & Category Listing' @ i18n}</sly>
+<div class="brand-container" data-sly-use.bncModel="com.mattel.ecomm.core.models.BrandAndCategoryListingModel">
+    <sly data-sly-test="${properties.paddingType=='showTopPadding' && properties.sectionTitle}">
+        <div class="brand-header custom-padd-margn" data-sly-test="${properties.sectionTitle}">
+            <span class="brand-title">${properties.sectionTitle @ i18n}</span>
+        </div>
+    </sly>
+    <sly data-sly-test="${properties.paddingType=='hideTopPadding' && properties.sectionTitle}">
+        <div class="brand-header" data-sly-test="${properties.sectionTitle}">
+            <span class="brand-title">${properties.sectionTitle @ i18n}</span>
+        </div>
+    </sly>
+    <sly data-sly-test="${properties.listingFor=='brand'}">
+        <ul class="brandlist tablist mobilelist brand-images" id="brand-items" data-sly-list.bncList="${bncModel.pagesList}">
+            <li>
+                <a href="${bncList.pageUrl}"data-track-brandListing="${bncList.pageName}|${properties.analyticsText}">
+                    <div class="brand-img">
+                        <img  src="${bncList.thumbnailImg}" alt="${bncList.thumbnailAltText @ i18n}"/>
+                    </div>
+                </a>
+            </li>
+        </ul>
+    </sly>
+    <sly data-sly-test="${properties.listingFor=='category'}">
+        <ul class="brandlist tablist mobilelist" id="brand-items" data-sly-list.bncList="${bncModel.pagesList}">
+            <li>
+                <a href="${bncList.pageUrl}" data-track-brandListing="${bncList.pageName}|${properties.analyticsText}">
+                    <div class="brand-img">
+                        <img  src="${bncList.thumbnailImg}" alt="${bncList.thumbnailAltText @ i18n}"/>
+                    </div>
+                    <div class="brand-title">${bncList.pageName @context='html', i18n}</div>
+                </a>
+            </li>
+        </ul>
+    </sly>
+    <div class="brand-more show-moreButton" data-sly-test="${properties.showMoreText }">
+        <a href="javascript:void(0);" class="accordion" data-text-collapse="${properties.showMoreText}" data-text-expand="${properties.showLessText}" aria-expanded="false">${properties.showMoreText @ i18n}</a>
+    </div>
+</div>

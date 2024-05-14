@@ -1,0 +1,47 @@
+<sly data-sly-test="${wcmmode.edit}">${'Edit Store and Product Interest Component' @i18n}</sly>
+
+<div class="user-info-wrapper col-4-set product-interest">
+    <form>
+        <fieldset>
+            <legend class="header-label">${properties.productInterestHeaderLabel}</legend>
+            <ul class="details-list row" id="productInterestList"></ul>
+        </fieldset>
+        <script id="productInterestListTmpl" type="text/x-handlebars-script">
+                {{#each item}}
+                <li class="details-list-item">            
+                   {{#if selected}}
+                        <input type="checkbox" id="{{id}}" checked>
+                    {{else}}
+                         <input type="checkbox" id="{{id}}">
+                    {{/if}}
+                    <label for="{{id}}">{{val}} </label>
+                </li> 
+                {{/each}}
+            </script>
+        <h2 class="header-label store-interest">${properties.storeInterestHeaderLabel}</h2>
+        <div class="input-field">
+            <label class="sr-only"  for="eventInterestList">Store interests select</label>
+            <script id="eventInterestListTmpl" type="text/x-handlebars-script">
+                    <option value="">${properties.storeListDefaultOption @context='scriptString'}</option>
+                    {{#each item}}
+                    {{#if selected}}
+                        <option value="{{val}}" selected>{{id}}</option>
+                    {{else}}
+                        <option value="{{val}}">{{id}}</option>
+                    {{/if}}
+                    {{/each}}
+                </script>
+            <select class="form-input no-placeholder-label" id="eventInterestList">
+
+            </select>
+        </div>
+        <fieldset>
+            <legend class="sr-only">${properties.storeInterestHeaderLabel}</legend>
+            <ul class="details-list row" id="locationInterestList"></ul>
+        </fieldset>
+        <input class="theme-btn no-bg-btn update-interest-btn" type="submit" value="${properties.updateInterestButtonText}" />
+    </form>
+</div>
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
+    <sly data-sly-call="${clientlib.js @ categories='ecomm.storeAndProductInterest'}"/>
+</sly>

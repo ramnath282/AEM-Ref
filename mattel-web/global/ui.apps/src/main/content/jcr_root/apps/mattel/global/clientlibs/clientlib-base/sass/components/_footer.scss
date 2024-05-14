@@ -1,0 +1,77 @@
+footer {
+  background: $dim-gray;
+  color: $white;
+  .mega-footer {
+    @extend .container;
+    .socials,
+    .footer-links,
+    .footer-form {
+      @extend .col-xs-12;
+      @extend .col-md-4;
+      margin-bottom: em(35);
+    }
+	.socials {
+		ul {
+		     li {
+			  display:block;
+			  float:left;
+			}
+		  }
+	}
+    .footer-links {
+      ul {
+        li {
+          margin-bottom: em(15);
+          a {
+            font-weight: 300;
+            color: $white;
+            text-decoration: none;
+            font-size: em(20);
+            margin-bottom: em(15, 20);
+          }
+        }
+      }
+    }
+    .footer-form {
+      h2 {
+        font-size: em(22);
+        color: $white;
+        margin-bottom: em(15, 22);
+        display: block;
+        margin-top: 0;
+        font-weight: 300;
+      }
+      form {
+        .form-group {
+          label {
+            // @media #{$small-up} {
+            //   float: left;
+            //   width: 30%;
+            //   text-align: right;
+            //   padding-right: em(13);
+            //   // line-height: em(34);
+            //   font-weight: normal;
+            // }
+          }
+          input,textarea {
+            // width: 70%;
+            // float: left;
+            @include placeholders {
+              color:$dark-grey;
+            }
+          }
+        }
+      }
+    }
+  }
+  .copyright {
+    font-weight: 300;
+    padding: em(15) 0;
+    background: $mortar;
+    font-size: em(14);
+    text-align: center;
+  }
+}
+
+@import '_form';
+@import '_social-icons';

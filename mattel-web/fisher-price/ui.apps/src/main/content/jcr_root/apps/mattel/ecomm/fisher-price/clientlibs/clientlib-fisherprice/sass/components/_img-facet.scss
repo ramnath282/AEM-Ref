@@ -1,0 +1,181 @@
+.facetContainer {
+    float: mapping($imgFacts, main, floatCon);
+    width: mapping($imgFacts, main, maxWidth);
+    margin-bottom: mapping($imgFacts, main, containMar);
+    .facetHeading {
+        br {
+            display: none;
+        }
+        text-align: mapping($imgFacts, main, textAlignCenter);
+        margin: mapping($imgFacts, main, margin);
+        background-color:mapping($imgFacts, main, headBackground);
+        padding:mapping($imgFacts, main, headPadding);
+        @media #{$medium-down} {
+            margin: mapping($imgFacts, main, tabMargin);
+        }
+        h2 {
+            font-weight: mapping($imgFacts, heading, fontStyle);
+            letter-spacing: mapping($imgFacts, heading, letterSpacing);
+            text-indent: mapping($imgFacts, heading, textIndent);
+            text-shadow: mapping($imgFacts, heading, textShadow);
+            text-transform: mapping($imgFacts, heading, textTransform);
+            vertical-align: mapping($imgFacts, heading, verticalAlign);
+            white-space: mapping($imgFacts, heading, whiteSpace);
+            color: mapping($imgFacts, heading, color);
+            @include font-properties($letsBeGlyphs,$localFontInfo);
+            line-height: mapping($imgFacts, heading, lineHeight);
+            font-size: mapping($imgFacts, heading, fontSize);
+            margin: mapping($imgFacts, heading, margin);
+            @media #{$medium-down} {
+                font-size: mapping($imgFacts, heading, mobfontSize);
+                line-height: mapping($imgFacts, heading, tabLineHeight);
+            }
+        }
+    }
+    .faveListContainer {
+        .field-section {
+            text-align: mapping($imgFacts, main, textAlignCenter);
+            .facet-list {
+                margin: mapping($imgFacts, main, ulMrgin);
+                li {
+                    &.active {
+                        background: mapping($imgFacts, colorList, activeBg);
+                        border: mapping($imgFacts, colorList, activeBrd);
+                        pointer-events: none;
+                    }
+                    list-style-type: mapping($imgFacts, colorList, listStyleType);
+                    display: mapping($imgFacts, colorList, displayInline);
+                    text-align: mapping($imgFacts, colorList, textAlign);
+                    width: mapping($imgFacts, colorList, width);
+                    padding: mapping($imgFacts, colorList, imageMar);
+                    position: mapping($imgFacts, colorList, divPosition);
+                    @media #{$medium-down} {
+                        width: mapping($imgFacts, colorList, widthTab);
+                        padding: mapping($imgFacts, colorList, tabMargin);
+                    }
+                    @media #{$small-down} {
+                        width: mapping($imgFacts, colorList, widthMobile);
+                    }
+                    .facetImgCaption {
+                        font-size: mapping($imgFacts, faceCaption, captionFontSize);
+                      
+                        color: mapping($imgFacts, faceCaption, fontColor);
+                        display: mapping($imgFacts, faceCaption, captionDisplay);
+                        line-height: mapping($imgFacts, faceCaption, captionLineheight);
+                        width: mapping($imgFacts, faceCaption, captionWidth);
+                        @media #{$medium-down} {
+                            font-size: mapping($imgFacts, faceCaption, mobFontSize);
+                            line-height: mapping($imgFacts, faceCaption, mobcaptionLineheight);
+                        }
+
+                        > span {
+                                display: mapping($imgFacts, hoverBorder, display);
+                                @include font-properties($maaxMedium,$localFontVerdana);
+                       }
+                    }
+                    input[type="checkbox"] {
+                        position: mapping($imgFacts, inputSection, inputPosition);
+                        top: mapping($imgFacts, inputSection, inputTop);
+                        left: mapping($imgFacts, inputSection, inputLeft);
+                        right: mapping($imgFacts, inputSection, inputRight);
+                        width: mapping($imgFacts, inputSection, inputWidth);
+                        display: mapping($imgFacts, inputSection, inputDisplay);
+                        bottom: mapping($imgFacts, inputSection, inputBottom);
+                        cursor: mapping($imgFacts, inputSection, inputCursor);
+                        height: 84%;
+                        -webkit-appearance: none;
+                        -moz-appearance: none;
+                        -ms-appearance: none;
+                        border: none;
+                        &:active,
+                        &:focus {
+                            outline: none;
+                            border: none
+                        }
+               
+                    }
+                    @media #{$medium-down} {
+                        &:nth-child(4)~li {
+                            display: none
+                        }
+                    }
+                    .FaveImg {
+                        margin: mapping($imgFacts, facetImg, marginBottom);
+                        @media #{$medium-down} {
+                            margin: mapping($imgFacts, facetImg, MobmarginBottom);
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .imageFacetColor {
+        &.active {
+            background: mapping($imgFacts, colorList, activeBg);
+            border: mapping($imgFacts, colorList, activeBrd);
+            pointer-events: none;
+            user-select: none;
+        }
+    }
+    &.facet-tablist {
+        .facet-list {
+            li {
+                display: inline-block !important;
+            }
+        }
+    }
+    .seemoreBtn {
+        text-align: center
+    }
+}
+
+.facetBtn {
+    display: none;
+    margin-top: 0;
+    padding: 12px 42px 12px 58px;
+    background-color: $lbk-blue;
+    @include font-properties($maaxMedium,$localFontVerdana);
+    font-weight: 500;
+    text-transform: inherit;
+    position: relative;
+    font-size: 16px;
+    color: #fff;
+    border: none;
+    &.show-btn {
+        @media #{$medium-down} {
+            display: inline-block;
+        }
+    }
+    &:before {
+        content: '';
+        // content: "\f055";
+        background-image: url($spriteImgPath);
+        margin-right: 7px;
+        background-position: -185px -142px;
+        width: 22px;
+        height: 22px;
+        position: absolute;
+        left: 33px;
+    }
+    &.less {
+        &:before {
+            background-position: -162px -141px;
+        }
+    }
+    @media #{$large-up} {
+        &:hover {
+            background-color: #E51C06;
+        }
+    }
+    @media #{$large-down} {
+        &:active {
+            background-color: #E51C06;
+        }
+    }
+}
+
+.imageFacetColor:hover  span {
+      color:mapping($imgFacts, hoverBorder, color);
+      border-bottom: mapping($imgFacts, hoverBorder, borderHover);
+}
+

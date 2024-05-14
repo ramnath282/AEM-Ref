@@ -1,0 +1,116 @@
+/*
+**_error-page.scss
+*/
+.page-error-component {
+    @extend .row;
+    margin: 0;
+    background: if(mapping($errorpagecomponent, main, bgImage), mapping($errorpagecomponent, main, bgImage), none);
+	background-size: mapping($errorpagecomponent, main, bgSize);
+    padding-top: if(mapping($errorpagecomponent, main, topPad), mapping($errorpagecomponent, main, topPad), em(40));
+	background-repeat: mapping($errorpagecomponent, main, bgRepeat);
+    position: relative;
+
+    @media #{$medium-down} {
+        padding-top: if(mapping($errorpagecomponent, main, tabPortraitTopPad), mapping($errorpagecomponent, main, tabPortraitTopPad), em(80));
+    }
+
+    @media #{$small-down} {
+        padding-top: if(mapping($errorpagecomponent, main, mobTopPad), mapping($errorpagecomponent, main, mobTopPad), em(40));
+    }
+
+    .image-block {
+        @extend .col-md-6;
+        @extend .col-sm-12;
+        @extend .col-xs-12;
+        padding: if(mapping($errorpagecomponent, imgBlock, pad), mapping($errorpagecomponent, imgBlock, pad), 0);
+
+        @media #{$medium-down} {
+            padding: if(mapping($errorpagecomponent, imgBlock, tabPortraitPad), mapping($errorpagecomponent, imgBlock, tabPortraitPad), 0 em(50));
+        }
+
+        @media #{$small-down} {
+            padding: if(mapping($errorpagecomponent, imgBlock, mobPad), mapping($errorpagecomponent, imgBlock, mobPad), 0 em(20));
+        }
+    }
+
+    .text-block {
+        @extend .col-md-6;
+        @extend .col-sm-12;
+        @extend .col-xs-12;
+
+        @media #{$medium-up} {
+            padding: if(mapping($errorpagecomponent, txtBlock, pad), mapping($errorpagecomponent, txtBlock, pad), em(55));
+            @include transform(translateY(-50%));
+            position: absolute;
+            top: 50%;
+            right: 0;
+        }
+
+        @media #{$medium-down} {
+            padding: if(mapping($errorpagecomponent, txtBlock, tabPortraitPad), mapping($errorpagecomponent, txtBlock, tabPortraitPad), em(50));
+        }
+
+        @media #{$small-down} {
+            padding: if(mapping($errorpagecomponent, txtBlock, mobPad), mapping($errorpagecomponent, txtBlock, mobPad), em(20));
+        }
+
+        h2 {
+            color: if(mapping($errorpagecomponent, txtBlockH2, fntColor), mapping($errorpagecomponent, txtBlockH2, fntColor), $violet);
+            font-size: if(mapping($errorpagecomponent, txtBlockH2, fntSize), mapping($errorpagecomponent, txtBlockH2, fntSize), em(38.95));
+            margin: if(mapping($errorpagecomponent, txtBlockH2, margin), mapping($errorpagecomponent, txtBlockH2, margin), 0);
+			line-height: mapping($errorpagecomponent, txtBlockH2, lineHeight);
+        }
+
+        p {
+            color: if(mapping($errorpagecomponent, txtBlockP, fntColor), mapping($errorpagecomponent, txtBlockP, fntColor), $pink);
+            font-family: if(mapping($errorpagecomponent, txtBlockP, fntFamily), mapping($errorpagecomponent, txtBlockP, fntFamily), "Arial-Rounded"), Arial, sans-serif;
+			margin-top: mapping($errorpagecomponent, txtBlockP, marginTop);
+			line-height: mapping($errorpagecomponent, txtBlockP, lineHeight)
+            span{
+                line-height: mapping($errorpagecomponent, txtBlockSpan, lineHeight)
+            }
+		}
+
+        .error-cta {
+            margin-top: if(mapping($errorpagecomponent, errorCTA, marginTop), mapping($errorpagecomponent, errorCTA, marginTop), em(16));
+            display: if(mapping($errorpagecomponent, errorCTA, display), mapping($errorpagecomponent, errorCTA, display), block);
+
+            a {
+                &.btn-cta {
+                    @if mapping($errorpagecomponent, errorCTA, sameasPrimaryBtn) == true {
+                        @extend .btn;
+                       @extend .theme-btn;
+                    } @else if mapping($errorpagecomponent, errorCTA, sameasSecondaryBtn) == true {
+                        @extend .btn;
+                        @extend .secondary-btn;
+                    }
+
+                    @else {
+                        display: if(mapping($errorpagecomponent, errorCTAAnchor, display), mapping($errorpagecomponent, errorCTAAnchor, display), inline-block);
+                        color: if(mapping($errorpagecomponent, errorCTAAnchor, fntColor), mapping($errorpagecomponent, errorCTAAnchor, fntColor), $white);
+                    }
+
+                    @if mapping($errorpagecomponent, errorCTA, isArrowWithBtn) == false {
+                        &:after {
+                            content: none;
+                        }
+
+                        padding: mapping($errorpagecomponent, errorCTA, padding);
+                    }
+                }
+            }
+        }
+
+        &.full-width {
+            @extend .col-md-12;
+            @extend .col-sm-12;
+            @extend .col-xs-12;
+
+            @media #{$medium-up} {
+                padding: if(mapping($errorpagecomponent, fullWidth, pad), mapping($errorpagecomponent, fullWidth, pad), em(60));
+                padding-top: if(mapping($errorpagecomponent, fullWidth, topPad), mapping($errorpagecomponent, fullWidth, topPad), em(40));
+                @include transform(translateY(0));
+            }
+        }
+    }
+}

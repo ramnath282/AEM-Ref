@@ -1,0 +1,145 @@
+<sly data-sly-test="${wcmmode.edit}">${'Configure Image/Video and Text with CTA button' @ i18n}</sly>
+<sly data-sly-include="/apps/mattel/global/components/content/globalVideoConfig/globalVideoConfig.html"/>
+<sly data-sly-use.videoDetail="com.mattel.play.core.model.VideoImageText">
+<sly data-sly-test="${videoDetail.ooyalaId == null}"></sly>
+<input type="hidden"  value="${videoDetail.ooyalaId}" />
+<input type="hidden" id="videotext-always-english" value="${properties.imageTextAnalticsText}" />
+<sly data-sly-test="${properties.imageTextBackOption}">
+    <sly data-sly-test="${properties.imageTextBackOption == 'color'}">
+        <sly data-sly-test="${properties.imageTextBackgroundColor != null}">
+
+            <div id="${videoDetail.ooyalaId ? 'image-text-video-gallery-player-component' : ''}"  class="image-text-component ${videoDetail.ooyalaId ? 'with-video-player' : ''}" id="${properties.linkNavigationCheck?properties['linkNavOption']:''}" data-link-attribute="${properties.linkNavigationCheck?properties['linkNavOption']:''}"  style="background-color:${properties.imageTextBackgroundColor @ context='styleString'}">
+
+        </sly>
+        <sly data-sly-test="${properties.imageTextBackgroundColor == null}">
+            <div id="${videoDetail.ooyalaId ? 'image-text-video-gallery-player-component' : ''}"  class="image-text-component ${videoDetail.ooyalaId ? 'with-video-player' : ''}" id="${properties.linkNavigationCheck?properties['linkNavOption']:''}" data-link-attribute="${properties.linkNavigationCheck?properties['linkNavOption']:''}" >
+        </sly>
+    </sly>
+
+    <sly data-sly-test="${properties.imageTextBackOption == 'image'}">
+        <sly data-sly-test="${properties.imageTextFileReferenceBgImg != null}">
+            <div id="${videoDetail.ooyalaId ? 'image-text-video-gallery-player-component' : ''}"  class="image-text-component ${videoDetail.ooyalaId ? 'with-video-player' : ''}" id="${properties.linkNavigationCheck?properties['linkNavOption']:''}" data-link-attribute="${properties.linkNavigationCheck?properties['linkNavOption']:''}"  style="background-image: url('${properties.imageTextFileReferenceBgImg @ context='styleString'}');">
+        </sly>
+        <sly data-sly-test="${properties.imageTextFileReferenceBgImg == null}">
+            <div id="${videoDetail.ooyalaId ? 'image-text-video-gallery-player-component' : ''}"  class="image-text-component ${videoDetail.ooyalaId ? 'with-video-player' : ''}" id="${properties.linkNavigationCheck?properties['linkNavOption']:''}" data-link-attribute="${properties.linkNavigationCheck?properties['linkNavOption']:''}" >
+        </sly>
+    </sly>
+</sly>
+<sly data-sly-test="${properties.imageTextBackOption == null}">
+    <div id="${videoDetail.ooyalaId ? 'image-text-video-gallery-player-component' : ''}"  class="image-text-component ${videoDetail.ooyalaId ? 'with-video-player' : ''}" id="${properties.linkNavigationCheck?properties['linkNavOption']:''}" data-link-attribute="${properties.linkNavigationCheck?properties['linkNavOption']:''}" >
+</sly>
+
+	<sly data-sly-test="${properties.mainSectionTitle != null}">
+	<div class="title-block">
+		<h2>${properties.mainSectionTitle @context='html',i18n}</h2>
+	</div>
+	</sly>
+
+<sly data-sly-test="${properties.imageTextWidthRatio == null}">
+<div id="${videoDetail.ooyalaId ? 'image-text-video-gallery-player-component' : ''}"  class="image-text-container ${videoDetail.ooyalaId ? 'media-50-50' : 'media-70-30'} ${properties.imageSectionAlignment == 'right' ? 'row-reverse' : ''}">
+</sly>
+<sly data-sly-test="${properties.imageTextWidthRatio != null}">
+<div id="${videoDetail.ooyalaId ? 'image-text-video-gallery-player-component' : ''}"  class="image-text-container ${videoDetail.ooyalaId ? 'media-50-50' : properties.imageTextWidthRatio} ${properties.imageSectionAlignment == 'right' ? 'row-reverse' : ''}">
+</sly>
+    <sly data-sly-test.detailsAuthored="${properties.imageFileReferenceMainImageDesktop || properties.imageFileReferenceMainImageMobile || videoDetail.ooyalaId}" data-sly-unwrap>
+	<sly data-sly-use.lib="imageblock.html">
+		<sly data-sly-test="${properties.imageBackOption}">
+			<sly data-sly-test="${properties.imageBackOption == 'color'}">
+				<sly data-sly-test="${properties.imageBackgroundColor != null}">
+					<div class="image-block ${properties.imageSectionAlignment == 'right' ? 'pull-right' : ''} " style="background-color:${properties.imageBackgroundColor @ context='styleString'}">
+						<div data-sly-call="${lib.imageVideoSection @ videoDetail=videoDetail}" data-sly-unwrap></div>
+				    </div>
+				</sly>
+				<sly data-sly-test="${properties.imageBackgroundColor == null}">
+					<div class="image-block ${properties.imageSectionAlignment == 'right' ? 'pull-right' : ''} ">
+						<div data-sly-call="${lib.imageVideoSection @ videoDetail=videoDetail}" data-sly-unwrap></div>
+				    </div>
+				</sly>
+			</sly>
+
+			<sly data-sly-test="${properties.imageBackOption == 'image'}">
+				<sly data-sly-test="${properties.imageFileReferenceBgImg != null}">
+					<sly data-sly-test="${properties.imageBackgroundColor == null}">
+						<div class="image-block ${properties.imageSectionAlignment == 'right' ? 'pull-right' : ''}" style="background: transparent url('${properties.imageFileReferenceBgImg @ context='styleString'}');">
+							<div data-sly-call="${lib.imageVideoSection @ videoDetail=videoDetail}" data-sly-unwrap></div>
+						</div>
+					</sly>
+				</sly>
+				<sly data-sly-test="${properties.imageFileReferenceBgImg == null}">
+					<sly data-sly-test="${properties.imageBackgroundColor == null}">
+						<div class="image-block ${properties.imageSectionAlignment == 'right' ? 'pull-right' : ''}">
+							<div data-sly-call="${lib.imageVideoSection @ videoDetail=videoDetail}" data-sly-unwrap></div>
+						</div>
+					</sly>
+				</sly>
+			</sly>
+		</sly>
+		<sly data-sly-test="${properties.imageBackOption == null}">
+			<sly data-sly-test="${properties.imageBackgroundColor == null}">
+				<div class="image-block ${properties.imageSectionAlignment == 'right' ? 'pull-right' : ''}">
+					<div data-sly-call="${lib.imageVideoSection @ videoDetail=videoDetail}" data-sly-unwrap></div>
+				</div>
+			</sly>
+		</sly>
+	</sly>
+    </sly>
+		 
+ <sly data-sly-test.imageExists="${properties.imageFileReferenceMainImageDesktop == null && properties.imageFileReferenceMainImageMobile == null}" />
+		<sly data-sly-test="${properties.textBackOption}">
+			<sly data-sly-test="${properties.textBackOption == 'color'}">
+				<sly data-sly-test="${properties.textBackgroundColor != null}">
+					<div class="${imageExists?'text-component':'text-block'}" style="background-color:${properties.textBackgroundColor @ context='styleString'}">
+				</sly>
+				<sly data-sly-test="${properties.textBackgroundColor == null}">
+					<div class="${imageExists?'text-component':'text-block'}">
+				</sly>
+			</sly>
+
+			<sly data-sly-test="${properties.textBackOption == 'image'}">
+				<sly data-sly-test="${properties.textFileReferenceBgImg != null}">
+					<div class="${imageExists?'text-component':'text-block'}" style="background: transparent url('${properties.textFileReferenceBgImg @ context='styleString'}');">
+				</sly>
+				<sly data-sly-test="${properties.textFileReferenceBgImg == null}">
+					<div class="${imageExists?'text-component':'text-block'}">
+				</sly>
+			</sly>
+		</sly>
+		<sly data-sly-test="${properties.textBackOption == null}">
+			<div class="${properties.imageExists?'text-component':'text-block'}">
+		</sly>
+
+
+			<sly data-sly-test="${properties.brandLogoImg}"> 
+            <a href="" class="txtcomp-brand-logo"><img src="${properties.brandLogoImg}" alt="${properties.brandLogoImageAlt}"></a>
+           </sly>
+           <sly data-sly-test="${properties.textSectionTitle}"><h2>${properties.textSectionTitle @i18n}</h2></sly>
+			<sly data-sly-test="${properties.textSectionDescription}"><p>${properties.textSectionDescription @context='html',i18n}</p></sly>
+			 <sly data-sly-test="${properties.imageTextCtaButtonText}">
+				<div class="cta-btn">
+                 	<sly data-sly-test.myVar="${properties.imageTextCtaButtonLink}" data-sly-use.info="${'com.mattel.play.core.helper.PlayHelper' @ text= myVar}">
+                        <sly data-sly-test="${properties.imageTextCtaOption =='samewindow'}">
+                            <a class="btn btn-view-all ${properties.enableScroll ? 'shopNowFocus ' : ''} fp-email-btn" href="${info.pathURL}" data-tracking-id="${properties.locationName==null ? 'Text Image Section': [properties.locationName,'starts'] @join='-'}|${properties.alwaysEnglishForTitle}|${properties.imageTextAnalticsText}|${properties.locationName || properties.alwaysEnglishForTitle}"  role="button">${properties.imageTextCtaButtonText @i18n}</a>
+                        </sly>
+                        <sly data-sly-test="${properties.imageTextCtaOption =='newtab'}">
+                            <a class="btn btn-view-all ${properties.enableScroll ? 'shopNowFocus ' : ''} fp-email-btn" href="${info.pathURL}" data-tracking-id="${properties.locationName==null ? 'Text Image Section': [properties.locationName,'starts'] @join='-'}|${properties.alwaysEnglishForTitle}|${properties.imageTextAnalticsText}|${properties.locationName || properties.alwaysEnglishForTitle}"  role="button"  target="_blank">${properties.imageTextCtaButtonText @i18n}<span class="sr-only">${'Opens in a new tab' @ i18n}</span></a>
+                        </sly>
+                        <sly data-sly-test="${properties.imageTextCtaOption =='newwindow'}">
+                        	<a class="btn btn-view-all ${properties.enableScroll ? 'shopNowFocus ' : ''} fp-email-btn" data-url="${info.pathURL}" data-tracking-id="${properties.locationName==null ? 'Text Image Section': [properties.locationName,'starts'] @join='-'}|${properties.alwaysEnglishForTitle}|${properties.imageTextAnalticsText}|${properties.locationName || properties.alwaysEnglishForTitle}"  role="button"  onclick="window.open(this.dataset.url,'PLAY','width=500, height=500');">${properties.imageTextCtaButtonText @i18n}<span class="sr-only"> ${'Opens in new window' @ i18n}</span></a>
+                        </sly>
+                    </sly>
+				</div>
+			</sly>
+		</div>
+	</div>
+</div>
+</sly>
+
+
+
+<sly data-sly-test="${videoDetail.ooyalaId}" data-sly-use.clientlibImageAndText="/libs/granite/sightly/templates/clientlib.html">
+    <sly data-sly-call="${clientlibImageAndText.js @ categories='global.mattelVideoPlayer'}" />
+</sly>
+
+
+
+

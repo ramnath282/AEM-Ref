@@ -1,0 +1,441 @@
+.error-style-extend{
+	display: block;
+	margin: 0;
+}
+.dagger-symbol-extend{
+  content: "\2020";
+  font-family: arial, sans-serif;
+  font-size: 7px;
+}
+.form-component{
+  position:relative;
+  overflow:hidden;
+  font-size: 110%;
+  &.data-loading{
+	  #crm-form{
+		  &:after{
+			  content:"";
+		  }
+	  }
+  }
+  h2{
+	  padding: 0 15px;
+  }
+  #crm-form{
+	  position: relative;
+	  overflow:hidden;
+	  &:after{
+		  content: none;
+		  background: url(../../../../global/crm/clientlibs/clientlib-fp/resources/img/loading-icon-red.gif) no-repeat center center;
+		  background-size: 100px 100px;
+		  background-color: rgba(0,0,0,.015);
+		  position: absolute;
+		  left: 0;
+		  right: 0;
+		  top: 0;
+		  bottom: 0;
+		  z-index: 1;
+	  }
+	  .child-details-fieldset {
+		&:nth-child(1) {
+			.edit-and-delete-wrapper {
+				display: none;
+			}				
+		}
+		.required {
+				.input_label{
+						&:after{
+							@extend .dagger-symbol-extend;
+						}
+				}
+		}
+	}
+	  .form-group{
+		  margin-bottom: em(20);
+	  }
+	  .required{
+		  .input_label{
+			  &[for="child_due"]{
+				  &:after{
+					  @extend .dagger-symbol-extend;
+				  }
+			  }
+		  }
+	  }
+	  .has-required-error{
+		  &.required{
+			  .form-error.empty-field+.form-error{
+				  display: none;
+			  }
+		  }
+	  }
+	  .has-error {
+		  &:not(.has-required-error){
+			  .form-error.empty-field{
+				  display: none;
+			  }
+		  }
+		  .form-error{
+			@extend .error-style-extend;
+			  display: block;
+			  margin: 0;
+		  }
+	  }
+	  input[type="text"],select,input[type="email"],input[type="tel"]{
+		  width:100%;
+	  }
+	  input,select{
+		  border: 1px solid;
+		  padding: 8px 8px;
+	  }
+	  input{
+		  &[type=number]::-webkit-inner-spin-button, 
+		  &[type=number]::-webkit-outer-spin-button { 
+			  -webkit-appearance: none;
+			  -moz-appearance: none;
+			  appearance: none;
+			  margin: 0; 
+		  }
+		  &:focus{
+			  @include placeholders{
+				  color:transparent;
+			  }
+		  }
+	  }
+	  select{
+		  padding-top: 6.8px;
+		  padding-bottom: 6.8px;
+	  }
+	  textarea{
+		  box-shadow: none;
+		  &:focus{
+			  border-color: $outline-blue;
+			  border-width: 2px;
+		  }
+	  }
+	  .form-error,
+		  .api-error{
+			  display: none;
+	  }
+	  .country-code-dropdown{
+		  min-width: em(100);
+		  width: auto;
+		  float: none;
+		  display: inline-block;
+		  padding-right:0;
+		  vertical-align: top;
+		  &+.form-group{
+			  @extend .country-code-dropdown;
+		  }
+		  .relative-dropdown-container{
+			  position: relative;
+			  margin-top: 7px;
+			  padding: em(5) em(10);
+			  width: 80%;
+			  &:focus-within {
+				  border-color: #6891d4 !important;
+			  }
+			  #shortCountryCode{
+				  position: absolute;
+				  opacity: 0;
+				  top: 0;
+			  }
+			  .arrow{
+				  position: absolute;
+				  right: .5em;
+				  border: solid .35em;
+				  pointer-events: none;
+				  top: 65%;
+				  transform: translateY(-50%);
+			  }
+		  }
+	  }
+	  .form-row {
+			float: left;
+		  // overflow: hidden;
+		  width: 100%;
+	  }
+	  .input_label{
+		  display: block;
+		  margin-bottom:em(10,12);
+		  &.invisible{
+			  @media #{$small-only}{
+				  display: none;
+			  }
+		  }
+	  }
+	  #stateField{
+		  select, input{
+			  display: none;
+		  }
+		  &[data-country-selected="US"]{
+			  #US-states{display:block;}
+		  }
+		  &[data-country-selected="CA"]{
+			  #CA-states{display:block;}
+		  }
+		  &:not([data-country-selected="CA"]):not([data-country-selected="US"]){
+			  input{display:block;}
+		  }
+		  &:not(.dropdown-inactive){
+			input{
+				display: none;
+			}
+		} 
+		.dropdown-inactive {
+			select{
+				display: none;
+			}
+		}
+	  }
+	  #child-details-wrapper	{
+		  fieldset{
+			  &:not(.sub-fieldset){
+				  >legend{
+					  width:auto;
+					  float:left;
+				  }
+			  }
+			  .edit-and-delete-wrapper{
+				float:left;	
+				clear: both;
+				.edit-child-option {
+					display: block;
+					margin: 0 0 1em 1em;
+				}
+			  }
+		  }
+	  }
+	  input[type="radio"]{
+		  opacity: 0; 
+		  position: absolute;
+	  
+		  &+ label:before {
+			  display: inline-block;
+			  vertical-align: middle;
+			  left: 0;
+			  content: '';
+			  border-radius: 50px;
+			  width: 15px;
+			  height: 15px;
+			  margin-right: 6px;
+			  margin-left: 0;
+		  }
+		  &:checked + label:before {
+			   border-color: $navy-blue;
+		  }
+	  }
+	  .has-api-error{
+		  .api-error{	
+			  @extend .error-style-extend;
+		  }
+	  }
+	  .add-child-option{
+			margin: 0 0 1em 1em;
+		  a{
+			  color: inherit;		
+			  &:before{
+				  content: "+";
+				  width: 0px;
+				  margin-right: em(25,28);
+				  display: inline-block;
+				  font-weight: inherit;
+				  font-size: 2em;
+				  vertical-align: sub;
+			  }
+		  }
+	  }
+	  .checkbox.terms{
+		  @include make-xs-column(12);
+		  label{
+			  padding-left: 25px;
+			  color: inherit;
+			  input[type="checkbox"]{
+				  width: 16px;
+				  height: 16px;
+				  margin-top: 2px;
+				  margin-left: -25px;
+			  }
+		  }
+		  .help-block{
+			  padding-left: 25px;
+		  }
+		  &+.checkbox.terms{
+			  margin-top: em(5);
+		  }
+	  }
+	  span.terms{
+		  p{
+			  margin-top:0;
+			  margin-bottom:0;
+		  }
+		  input[type="checkbox"]{
+			  top: 0;
+			  bottom: 0;
+			  margin-top: auto;
+			  margin-bottom: auto;
+		  }
+	  }
+	  fieldset{
+		  &:not(.sub-fieldset){
+			  >legend{
+				  margin-bottom:em(15,16);
+				  margin-left:em(15,16);
+				  margin-right:em(15,16);
+			  }
+		  }
+		  legend{
+			  border:none;
+		  }
+		  &.sub-fieldset{
+			  legend{
+				  margin-bottom:em(10);
+			  }			  
+		  }
+	  }
+	  .edit-child-option,
+		  .update-child-option,
+		  .remove-child-option{
+			  // @extend .crm-form-buttons;
+			  color: $light-red;	
+			  clear: both;	
+	  }
+	  .child-data-saved{
+		  input{
+			  border:none;
+			  box-shadow: none;
+			  pointer-events: none;
+		  }
+		  .edit-child-option{
+			  display: inline-block;
+		  }
+		  .input-group-addon{
+			  opacity: 0;
+		  }
+		  .item-list{
+			  label{
+				  margin: em(7) 0;
+			  }
+			  input[type="radio"]{
+				  display:none;
+				  &:not(:checked)+label{
+					  display:none;
+				  }
+			  }
+		  }
+	  }
+	  .form-action-btn{
+		  @include make-xs-column(12);
+		  &.api-fails:before{
+			  content: attr(data-content);
+			  margin-top: 10px;
+			  display: block;
+			  text-align: center;
+		  }
+	  }
+	  .form-submit,.form-reset{
+		  display: inline-block;
+		  margin-bottom: em(20);
+		  margin-top: em(20);
+		  width: auto;
+	  }
+	  .form-reset{
+		  margin-left: em(15);
+	  }
+	  #crm-form-submit,
+		  #crm-form-reset{
+			  @extend .theme-btn;
+	  }
+  }
+  .loading-wrapper{   
+	  display:none;
+	  &:after{
+		  content: "";
+		  position: absolute;
+		  z-index:999;
+		  pointer-events: none;
+		  background-color: #000;
+		  opacity: .3;
+		  filter: alpha(opacity=30);
+		  width: 100%;
+		  height: 100%;
+	  }
+	  .loader-content{
+		  width: em(250);
+		  height: 50px;
+		  background-color: $white;
+		  position: absolute;
+		  top: 50%;
+		  left: 50%;
+		  margin-left: -125px;
+		  margin-top: -30px;
+		  text-align: center;
+		  padding: 10px 0px;
+		  z-index:1000;
+		  &:before{
+			  content: "";
+			  margin-right:10px;
+			  vertical-align:middle;
+			  -webkit-animation: rotation 1s infinite linear;
+			  -ms-animation: rotation 1s infinite linear;
+			  -ms-animation-duration: 1s;
+			  -ms-animation-timing-function: linear;
+			  -ms-animation-name:rotation;
+			  -ms-animation-iteration-count: infinite;
+			  -moz-animation-name: rotation;
+				-moz-animation-duration: 1s;
+				-moz-animation-iteration-count: infinite;
+				-moz-animation-timing-function: linear;
+				-o-animation-name: rotation;
+				-o-animation-duration: 1s;
+				-o-animation-iteration-count: infinite;
+				-o-animation-timing-function: linear;
+				animation-name: rotation;
+				animation-duration: 1s;
+				animation-iteration-count: infinite;
+				animation-timing-function: linear;
+			  background: url(https://user.mattel.com/Content/images/spriteBlack.png) no-repeat -241px -25px;
+			  width: 12px;
+			  height: 12px;
+			  display: inline-block;
+		  }
+	  }
+  }
+  .date-picker.active{
+	  max-width:em(264,15.4);
+  }
+  .thanks-content-wrapper{
+	  overflow: hidden;
+	  margin-bottom: 2em;
+	  margin-top: 1em;
+	  h3{
+		  font-size: em(24);
+		  margin-bottom: 0;
+	  }
+	  .thanks-social-media{
+		  margin: 1em 0;
+		  .social-heading{
+			  text-align: right;
+		  }
+		  ul{
+			  li{
+				  float: left;
+				  padding: 0 3px;
+				  &:first-child{
+					  padding-left: 0;
+				  }
+				  a{
+					  font-size: em(25);
+					  color: #0a8ee1;
+					  background: #fff;
+					  width: em(45,25);
+					  height: em(45,25);
+					  line-height: em(45,25);
+					  display: block;
+					  @include border-radius(50%);
+				  }
+			  }
+		  }
+	  }
+  }
+}

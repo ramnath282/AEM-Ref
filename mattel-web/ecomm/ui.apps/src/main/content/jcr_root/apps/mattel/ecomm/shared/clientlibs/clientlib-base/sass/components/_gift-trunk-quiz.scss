@@ -1,0 +1,329 @@
+section {
+    //@extend .col-xs-12;
+    //@extend .col-sm-10;
+    //@extend .col-sm-offset-1;
+    //@extend .col-lg-8;
+    //@extend .col-lg-offset-2;
+    position: relative;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+    width: 100%;
+    @media #{$small-up} {
+        width: 83.33333333%;
+        margin-left: 8.33333333%;
+    }
+    @media #{$large-up} {
+        width: 66.66666667%;
+        margin-left: 16.66666667%;
+    }
+    text-align: center;
+    padding: 0;
+    min-height: em(750);
+    display: none;
+    &.active {
+        display: block;
+    }
+    h2 {
+        color: $headingColor;
+        font-size: em(30);
+        margin: 0 0 em(3);
+        padding: 0 em(15);
+        word-break: break-word;
+        &:not(:first-child) {
+            margin: em(10) 0 em(0);
+        }
+        @media #{$small-up} {
+            font-size: em(35);
+            padding: 0 em(25);
+        }
+        @media #{$medium-up} {
+            font-size: em(50);
+        }
+    }
+    h3 {
+        color: $headingColor;
+        font-size: em(14);
+        margin: 0;
+        padding: 0;
+        @media #{$small-up} {
+            font-size: em(18);
+        }
+    }
+    p {
+        color: $headingColor;
+        font-size: em(24);
+        margin: 0;
+        padding: em(2) 0 em(12);
+        span {
+            font-weight: 400;
+            &.gt-quiz-display-attr,
+            &.gt-quiz-display-aspire {
+                text-transform: lowercase;
+            }
+            small {
+                font-size: em(14);
+                font-weight: 300;
+            }
+        }
+    }
+    form {
+        margin: 0;
+        padding: 0;
+    }
+    .gt-quiz-input-holder {
+        width: 100%;
+        text-align: center;
+        height: 155px;
+        @media #{$small-down} {
+            height: 125px;
+            margin-top: 30px;
+        }
+        input[type=text] {
+            border: none;
+            border-bottom: $borderColor 1px solid;
+            padding: em(5) em(2) em(5);
+            outline: none;
+            width: em(182);
+            font-size: em(30);
+            text-align: center;
+            color: $theme-color; //text-transform: capitalize; 
+            @media #{$small-down} {
+                font-size: em(25);
+            }
+            @media (max-width: 320px) {
+                font-size: em(21);
+            }
+            @media #{$medium-up} {
+                font-size: em(50);
+            }
+			&:focus {
+            border-radius: 10px !important;
+            border-color: #9ecaed !important;
+            box-shadow: 0px 0px 8px rgba(82, 168, 236, .8) !important;
+          }
+        }
+        ::-webkit-input-placeholder {
+            text-transform: initial;
+        }
+        :-moz-placeholder {
+            text-transform: initial;
+        }
+        ::-moz-placeholder {
+            text-transform: initial;
+        }
+        :-ms-input-placeholder {
+            text-transform: initial;
+        }
+        small {
+            display: none;
+            color: $gtErrorRed;
+            font-size: em(14);
+            font-weight: 600;
+            padding: em(4);
+            &:before {
+                content: "\f00d";
+                @include font-awesome();
+                color: $errorColor;
+                font-size: em(14);
+                padding-right: 6px;
+                line-height: 1.1em;
+                vertical-align: bottom;
+                font-weight: 600;
+            }
+        }
+        span {
+            display: none;
+            color: $gtErrorRed;
+            font-size: em(14);
+            font-weight: 600;
+            padding: em(4);
+            &:before {
+                content: "\f00d";
+                @include font-awesome();
+                color: $errorColor;
+                font-size: em(14);
+                padding-right: 6px;
+                line-height: 1.1em;
+                vertical-align: bottom;
+                font-weight: 600;
+            }
+        }
+    }
+    .gt-quiz-input-holder input:-ms-input-placeholder {
+        color: $color-grey;
+    }
+    .gt-quiz-input-holder input::-webkit-input-placeholder {
+        color: $color-grey;
+    }
+    .gt-quiz-input-holder input::-moz-placeholder {
+        color: $color-grey;
+    }
+    .gt-quiz-input-holder input::-ms-clear {
+        display: none;
+    }
+    .retail-btns {
+        margin-left: 25px;
+        @media #{$small-only} {
+            margin: 0 auto;
+            display: block !important;
+        }
+    }
+    .gt-btn {
+        //@extend .btn;
+			display: inline-block;
+            padding: 6px 12px;
+            margin-bottom: 0;
+            font-size: 14px;
+            font-weight: normal;
+            line-height: 1.42857143;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: middle;
+            -ms-touch-action: manipulation;
+                touch-action: manipulation;
+            cursor: pointer;
+            -webkit-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                    user-select: none;
+            background-image: none;
+            border: 1px solid transparent;
+            border-radius: 4px;
+            &:focus{
+                outline: 5px auto -webkit-focus-ring-color;
+                outline-offset: -2px;
+                color: #333;
+                text-decoration: none;
+                &:active{
+                    outline: 5px auto -webkit-focus-ring-color;
+                    outline-offset: -2px;
+                }
+            }
+
+        background-color: $theme-color;
+        color: $background-color !important;
+        font-size: em(20);
+        font-weight: 600;
+        @include border-radius(10px !important);
+        margin-top: 30px;
+        display: inline-block;
+        padding: 15px 45px;
+        line-height: 25px;
+        &:after {
+            font-family: inherit;
+            font-weight: normal;
+            display: inline-block;
+            line-height: normal;
+            font-size: 0;
+            margin-left: 0;
+            content: "";
+        }
+        &:active {
+            outline: none !important;
+            border-radius: 10px !important;
+            border-color: #9ecaed !important;
+            box-shadow: 0px 0px 8px rgba(82, 168, 236, .8) !important;
+        }
+        &.summary {
+            margin-top: em(25);
+        }
+        &.disabled {
+            background-color: $borderColor;
+            pointer-events: none;
+        }
+        @media #{$small-down} {
+            font-size: em(16);
+            line-height: em(20);
+            padding: 10px 30px;
+        }
+    }
+    @media #{$small-down} {
+        button.gt-btn.online-purchase {
+            padding: 10px 42px;
+        }
+    }
+    .gt-link {
+        color: $theme-color;
+        font-size: em(20);
+        font-weight: 600;
+        display: inline-block;
+        margin-top: em(20);
+        @media #{$small-down} {
+            font-size: em(16);
+            line-height: 20px !important;
+            margin-top: 20px;
+        }
+        &:before {
+            content: "\f053";
+            @include font-awesome();
+            font-size: em(12);
+            font-weight: 600;
+            padding-right: 6px;
+        }
+    }
+    .gt-quiz-option-group {
+        width: 100%;
+        text-align: center;
+        input[type=radio],
+        input[type=checkbox] {
+            visibility: visible;
+            position: absolute;
+            &+label {
+                width: 220px;
+                height: 84px;
+                border: $borderColor 1px solid;
+                background-color: $background-color;
+                @include border-radius(6px);
+                margin: em(15) em(7) 0;
+                font-size: em(18);
+                padding: 0;
+                position: relative;
+                &:before {
+                    width: 0;
+                    height: 0;
+                    border: none;
+                }
+                @media #{$small-down} {
+                    height: 58px;
+                    font-size: em(14);
+                }
+                @media #{$xsmall-down} {
+                    width: 45%;
+                    font-size: em(12);
+                }
+                span {
+                    width: 100%;
+                    display: inline-block;
+                    position: absolute;
+                    top: 50%;
+                    transform: translate(-50%, -50%);
+                    font-size: inherit;
+                    color: $headingColor;
+                    cursor: pointer;
+                    font-weight: 400;
+                   @media all and (-ms-high-contrast: none) , (-ms-high-contrast: active) {
+                        left: 50%;
+                    }  
+                }
+            }
+            &:checked+label {
+                border: $theme-color 1px solid;
+                &:after {
+                    width: 0;
+                    height: 0;
+                    border: none;
+                }
+                span {
+                    color: $theme-color;
+                }
+                &.disabled {
+                    border: $borderColor 1px solid;
+                    span {
+                        color: $headingColor;
+                    }
+                }
+            }
+        }
+    }
+}

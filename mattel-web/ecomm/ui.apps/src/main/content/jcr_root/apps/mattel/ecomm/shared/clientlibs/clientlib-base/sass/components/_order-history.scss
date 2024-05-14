@@ -1,0 +1,159 @@
+.orderHistorySearch {
+    &.aem-GridColumn {
+        @include content-spacing(map-get($myorderhis, gridGap)); 
+    }
+}
+.my-order-summary{
+    &.request-pending {
+        height: em(100);
+    }
+    // @include content-spacing(map-get($myorderhis, order));
+     .user-info-wrapper {
+         select {
+            @include content-spacing(map-get($myorderhis, wrapperSelect));
+         }
+         &.search-section {
+            @include content-spacing(map-get($myorderhis, tableSpaceTop)); 
+            @media #{$small-down}{
+                width: 100vw;
+                position: relative;
+                left: calc((100% - 100vw) / 2);
+                @include content-spacing(map-get($myorderhis, noMargin));
+                form {
+                    @include content-spacing(map-get($myorderhis, formGap));
+                }
+            }
+         }
+        @media #{$small-down}{
+            &.searchLine-bottom {
+                width: 100vw;
+                position: relative;
+                left: calc((100% - 100vw) / 2);
+                @include content-spacing(map-get($myorderhis, noMargin));
+            }
+        }
+         .details-list {
+             .details-list-item {
+                 @media #{$medium-up}{
+                    &.findOrder {
+                        width: mapping($myorderhis,selectSection,width)
+                    }
+                    &.searchOrderNum {
+                        width: mapping($myorderhis,searchSection,width);
+                        .serchUserOrder {
+                            input {
+                                max-width: mapping($myorderhis,searchMaxWidth,width);
+                            }
+                        }
+                    }                    
+                 }
+                 vertical-align: top;
+                 @include content-spacing(map-get($myorderhis, noMargin));
+                 .serchUserOrder {
+                    input{
+                        @include content-spacing(map-get($myorderhis, input));
+                        max-width: mapping($myorderhis,maxWidth,width);
+                        height: mapping($myorderhis,inputHeight,height);                    
+                    }
+                }
+                 label {
+                     font: mapping($myorderhis,orderhislabel,font);
+                     @include content-spacing(map-get($myorderhis, orderhislabel));
+                     @media #{$small-down}{
+                        @include content-spacing(map-get($myorderhis, orderhislabelSmall));
+                     }
+                 }                 
+                 input[type=number]::-webkit-inner-spin-button, 
+                 input[type=number]::-webkit-outer-spin-button { 
+                     -webkit-appearance: none; 
+                     margin: 0; 
+                 }
+                 fieldset {
+                     a {
+                         &.search-icon {
+                             position: absolute;
+                             top: em(7);
+                             right: em(15);
+                             color: mapping($myorderhis,link,color) !important
+                         }
+                     }
+                     .input-field {
+                         select {
+                            height: mapping($myorderhis,inputHeight,height); 
+                            width: mapping($myorderhis,selectBox,width) !important;
+                            min-width: mapping($myorderhis,selectBox,min-width);
+                            border: mapping($myorderhis,selectBox,border); 
+                            @include content-spacing(map-get($myorderhis, selectGap));
+                            @media #{$small-down}{
+                                 float: right;
+                            }
+                         }
+                         .form-input {
+                             border: mapping($myorderhis,selectBox,border); 
+                             &.long-input:focus {
+                               border: 0 !important;                                                              
+                             }
+                         }
+                         ::-webkit-input-placeholder {
+                             font-style: italic;
+                          }
+                          :-moz-placeholder {
+                             font-style: italic;  
+                          }
+                          ::-moz-placeholder {
+                             font-style: italic;  
+                          }
+                          :-ms-input-placeholder {  
+                             font-style: italic; 
+                          }
+                     }
+                 }
+     
+             }
+         }
+         
+     }
+     #orderSummary{
+         table{
+             thead{
+                 tr{
+                     background: mapping($myacctable,ordertable,background);
+                 }
+             }
+             tr{
+                $borderProperty: mapping($myorderhis, tableSpaceBottom,border);
+                    @if(map-get($borderProperty, enabled)) {
+                    border-#{map-get($borderProperty,position)}: (map-get($borderProperty, size) solid map-get($borderProperty, color));
+                }
+                @media #{$small-down}{
+                    display: table-row;
+                    td {
+                        &:first-child {
+                            @include content-spacing(map-get($myorderhis, tableSpaceTop));
+                        }
+                        &:last-child {
+                            @include content-spacing(map-get($myorderhis, tableSpaceBottom));
+                        }
+                        .order-info {
+                            font: mapping($myorderhis,orderhislabelSmall,font);
+                        }
+                    }
+                    
+                }
+                
+                 th,td{
+                    $borderProperty: mapping($myorderhis, tableSpaceBottom, border);
+                     color: mapping($myorderhis,link,color);
+                     border-#{map-get($borderProperty,position)}: none;
+                     @media #{$small-up}{
+                         width: 20%;                         
+                     }
+                     vertical-align: middle;
+                     a {
+                        font: mapping($myorderhis,orderhislabelSmall,font);
+                     }
+                 }
+             } 
+         }
+     }
+ }

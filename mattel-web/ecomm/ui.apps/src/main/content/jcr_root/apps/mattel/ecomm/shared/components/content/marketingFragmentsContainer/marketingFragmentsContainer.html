@@ -1,0 +1,11 @@
+<sly data-sly-test.author="${wcmmode.edit}">
+	${'Edit Marketing Fragments Container Component'  @i18n}
+	<sly data-sly-test.editModeClass="show"></sly>
+</sly>
+<sly data-sly-use.marketingFragmentObj="com.mattel.ecomm.core.models.MarketingContentModel">
+	  <sly data-sly-test="${marketingFragmentObj.experienceFragmentPath}">
+	      <sly data-sly-list.expFragmentList="${marketingFragmentObj.experienceFragmentPath}">
+	          <article data-sly-resource="${expFragmentList @ wcmmode='disabled'}" data-sly-unwrap></article>
+	      </sly>
+	  </sly>
+</sly>

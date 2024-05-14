@@ -1,0 +1,67 @@
+.dh-basicinfo-block {
+    .sub-brand-logo {
+        text-align: center;
+        &:empty {
+            display: none;
+        }
+        img {
+            padding: 5px 15px;
+        }
+    }
+    .welcome-text {
+        text-align: center;
+        background: #d3d3d3;
+        padding: 10px;
+        h2 {
+            margin: 0;
+            padding: 0;
+            color: $light-blue;
+            font: ($fontSemiBold em(20) "Source Sans Pro", sans-serif);
+        }
+        p {
+            color: $charcoal;
+            font: ($fontRegular em(14) "Source Sans Pro", sans-serif);
+        }
+    }
+    .content {
+        text-align: center;
+        padding: 0 5px;
+            @media #{$small-down}{
+                padding: 0 6px;
+            }
+        h2,
+        h1 {
+            color: $color-dark-grey;
+            padding: 15px;
+            padding-bottom: 19px;
+            margin-top: 15px;
+            font: ($fontLight em(30) "Source Sans Pro", sans-serif);
+            @media #{$small-up} {
+                font-size: em(35);
+            }
+            @media #{$medium-up} {
+                font-size: em(50);
+            }
+        }
+        img {
+            border-radius: 10px;
+            @media #{$small-down}{
+                min-height: 270px;
+                object-fit: cover;
+            }
+            @media #{$small-up}{
+                width: 777px;
+                min-height: unset;
+                background-size: cover;
+            }
+        }
+    }
+}
+
+.col-size-1 {
+    button {
+        min-width: em(320, 16);
+        padding-top: 10px !important;
+        padding-bottom: 10px !important;
+    }
+}

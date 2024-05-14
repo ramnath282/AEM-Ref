@@ -1,0 +1,17 @@
+<sly data-sly-test="${wcmmode.edit}">${'Edit Text Field Component' @i18n}</sly>
+
+<div class="input-field ${properties.required ? 'required' : ''}">
+    <label data-sly-test="${properties.title}" for="${properties.elementName @i18n}">${properties.title @i18n}</label>
+	<sly data-sly-test="${properties.tooltipMessage}">
+		<button type="button" class="fp-tooltip" data-toggle="popover" data-trigger="hover" data-placement="top" title="${properties.tooltipMessage}"> </button>
+	</sly>
+	<p data-sly-test="${properties.description}" class="input-description">${properties.description @i18n}</p>
+    <sly data-sly-test="${properties.allowMultipleLines != 'true'}">
+        <input id="${properties.elementName}" type="text" placeholder="${properties.placeHolderText @i18n}" name="${properties.elementName}" aria-required="${properties.required ? 'true' : ''}">
+    </sly>
+    <sly data-sly-test="${properties.allowMultipleLines == 'true'}">
+        <textarea id="${properties.elementName}" type="text" placeholder="${properties.placeHolderText @i18n}" name="${properties.elementName}" aria-required="${properties.required ? 'true' : ''}"></textarea>
+    </sly>
+    <span data-sly-test="${properties.requiredMessage}" class="form-message err-msg custom-message">${properties.requiredMessage @i18n}</span>
+    <span class="application-message err-msg"></span>
+</div>

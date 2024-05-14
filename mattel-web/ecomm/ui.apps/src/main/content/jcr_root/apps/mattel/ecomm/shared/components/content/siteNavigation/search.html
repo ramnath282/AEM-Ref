@@ -1,0 +1,23 @@
+<div class="brand-search">
+<sly data-sly-test.searchPagePath="${properties.searchResultsPage}" data-sly-use.info="${'com.mattel.ecomm.core.utils.EcomUtil' @ url= searchPagePath}" /> 
+    <form id="searchBox" name="CatalogSearchForm" class="searchForm_AG" method="get" action="${info.pageUrl ? info.pageUrl : '//www.americangirl.com/shop/SearchDisplay'}">
+        <input id="categoryId" name="categoryId" type="hidden" autocomplete="off">
+        <input name="storeId" value="10651" type="hidden" autocomplete="off">
+        <input name="catalogId" value="10601" type="hidden" autocomplete="off">
+        <input name="langId" value="-1" type="hidden" autocomplete="off">
+        <input name="sType" value="SimpleSearch" type="hidden" autocomplete="off">
+        <input name="resultCatEntryType" value="2" type="hidden" autocomplete="off">
+        <input name="showResultsPage" value="true" type="hidden" autocomplete="off">
+        <input name="searchSource" value="Q" type="hidden" autocomplete="off">
+        <input name="pageView" value="" type="hidden" autocomplete="off">
+        <input name="beginIndex" value="0" type="hidden" autocomplete="off">
+        <input name="pageSize" value="36" type="hidden" autocomplete="off">
+		<label class="sr-only" for="SimpleSearchForm_SearchTerm">Search</label>
+        <input style="height: 30px;margin-left: 20px;" type="text" name="searchTerm" autocomplete="off" id="SimpleSearchForm_SearchTerm" class="input-search" onblur="if($.trim(this.value) == ''){this.value = '';}" onfocus="if ($.trim(this.value) == '') { this.value = ''; } " value="" placeholder="Search" data-rfkid="rfkid_6"
+			data-storeid="10651" data-categoryid="10601" data-langid="-1" data-pagesize="${properties.initialLoadCount}">
+
+        <a href="javascript:{}" title="Search for products" class="search-icon" role="button">
+				<i class="fa fa-search"> </i>
+        </a>
+    </form>
+</div>

@@ -1,0 +1,259 @@
+/* not to be used for actual page implementation. only for this test page */
+        
+        /* s7 container */
+        @media only screen and (min-width: 992px) {
+            .product-slider {
+                margin-top: 0px;
+                padding-left: 0px;
+            }
+        }
+        #s7viewerCont {
+            position: relative !important;
+            margin-bottom: 40px;
+        }
+        @media only screen and (min-width: 768px) and (max-width: 991px) {
+            #s7viewerCont {
+                margin-bottom: 100px;
+            }
+        }
+        @media only screen and (min-width: 992px) {
+            #s7viewerCont {
+                margin-bottom: 20px;
+            }
+        }
+        .s7container {
+            height: 500px;
+        }
+        
+        @media only screen and (min-width: 1300px) {
+            .s7container {
+                left: 0;
+                top: 0;
+                width: 600px;
+                height: 600px;
+                margin: 0px !important;
+            }
+        }
+        @media only screen and (min-width: 1200px) and (max-width: 1299px) {
+            .s7container {
+                left: 0;
+                top: 0;
+                width: 560px;
+                height: 600px;
+                margin: 0px !important;
+            }
+        }
+        @media only screen and (min-width: 992px) and (max-width: 1199px) {
+            .s7container {
+                left: 0;
+                top: 0;
+                width: 440px;
+                height: 500px;
+                margin: 0px !important;
+            }
+        }
+        /* s7 Fullscreen */
+        
+        .s7fullscreenbutton {
+            display: none;
+        }
+        /* s7 Big Image */
+        
+        /* @media only screen and (min-width: 1200px) {
+            .s7zoomview {
+                left: 140px;
+            }
+        } */
+        .s7zoomview {
+            outline: none;
+        }
+        @media only screen and (min-width: 992px) {
+            .s7zoomview {
+                left: 115px;
+            }
+        }
+        /* swatch configuration */
+        
+        .s7swatches {
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 15px;
+            background-color: transparent;
+            text-align: center;
+            outline: none !important;
+        }
+        
+        @media only screen and (max-width: 767px) {
+            .s7swatches {
+                bottom: -55px !important;
+                height: 50px;
+            }
+        }
+        
+        @media only screen and (min-width: 768px) and (max-width: 992px) {
+            .s7swatches {
+                bottom: -75px !important;
+                height: 70px;
+            }
+        }
+        
+        @media only screen and (min-width: 992px) {
+            .s7swatches {
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: auto;
+                width: 120px !important;
+            }
+        }
+        
+        .s7swatches .s7thumb {
+            border-color: #666666 !important;
+            width: 60px;
+            height: 60px;
+            cursor: pointer;
+            outline: none !important;
+        }
+
+        .s7swatches .s7thumbcell {            
+            outline: none !important;
+        }
+        
+        @media only screen and (min-width: 992px) {
+            .s7swatches .s7thumb {
+                width: 90px;
+               height: 90px;
+            }
+            .s7swatches .s7thumbcell {
+                left: 0 !important;
+            }
+            .s7swatches>div,
+            .s7swatches>div>div {
+                width: 94px;
+            }
+        }
+        
+        @media only screen and (max-width: 767px) {
+            .s7swatches .s7thumb {
+                outline: none;
+                border-radius: 100%;
+                width: 12px;
+                height: 12px;
+                background-image: none !important;
+                background-color: #cacaca;
+                border-color: #cacaca !important;
+            }
+            .s7swatches .s7thumb[state="selected"] {
+                outline: none;
+                margin: 0;
+                background-color: #c70a4c;
+            }
+        }
+        
+        @media only screen and (min-width: 992px) {
+            .s7swatches > div {
+                position: relative !important;
+                left: auto !important;
+                top: auto !important;
+                margin: 0 auto;
+                margin-top: 78px;
+            }
+            .s7swatches > div.s7button {
+                margin-top: 13px;
+            }
+            .s7swatches .s7scrollupbutton {
+                position: absolute !important;
+                left: 50% !important;
+                transform: translateX(-50%);
+                top: 2px !important;
+            }
+        }
+        
+        .s7swatches .s7thumb[state="selected"] {
+            border-color: #c70a4c !important;
+            border-width: 2px;
+            margin: 0;
+        }
+        
+        .s7swatches .s7scrollleftbutton,
+        .s7swatches .s7scrollrightbutton,
+        .s7swatches .s7scrollupbutton,
+        .s7swatches .s7scrolldownbutton {
+            background-image: none !important;
+            height: 54px;
+            width: 54px;
+            background-color: #f1f1f1;
+            border-radius: 100%;
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .s7swatches .s7scrollleftbutton,
+        .s7swatches .s7scrollrightbutton {
+            top: 65% !important;
+            transform: translateY(-60%);
+        }
+		@media only screen and (max-width: 767px) {
+			.s7swatches .s7scrollleftbutton,
+			.s7swatches .s7scrollrightbutton {
+				display: none;
+			}
+		}
+        
+        .s7swatches .s7scrollrightbutton::after {
+            content: "\f054";
+            display: inline-block;
+            font-family: FontAwesome, sans-serif;
+            font-size: 24px;
+            text-rendering: auto;
+            -webkit-font-smoothing: antialiased;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            color: #666666;
+        }
+        
+        .s7swatches .s7scrollleftbutton::after {
+            content: "\f053";
+            display: inline-block;
+            font-family: FontAwesome, sans-serif;
+            font-size: 24px;
+            text-rendering: auto;
+            -webkit-font-smoothing: antialiased;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            color: #666666;
+        }
+        
+        .s7swatches .s7scrolldownbutton::after {
+            content: "\f078";
+            display: inline-block;
+            font-family: FontAwesome, sans-serif;
+            font-size: 24px;
+            text-rendering: auto;
+            -webkit-font-smoothing: antialiased;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            color: #666666;
+        }
+        
+        .s7swatches .s7scrollupbutton::after {
+            content: "\f077";
+            display: inline-block;
+            font-family: FontAwesome, sans-serif;
+            font-size: 24px;
+            text-rendering: auto;
+            -webkit-font-smoothing: antialiased;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            color: #666666;
+            margin-top: -2px;
+        }

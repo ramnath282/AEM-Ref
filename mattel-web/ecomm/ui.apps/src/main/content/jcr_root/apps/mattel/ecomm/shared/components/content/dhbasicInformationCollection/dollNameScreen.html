@@ -1,0 +1,58 @@
+<sly data-sly-test.author="${wcmmode.edit}">
+    <sly data-sly-test.active="active"></sly>
+</sly>
+
+<sly data-sly-use.model="com.mattel.ecomm.core.models.BasicInformationModel">
+    <div class="wellnessUserTag hide" data-offerType="${model.treatmentSkuId}" data-dollType="${model.dollType}"
+        data-productName="${model.treatmentProductName}"></div>
+</sly>
+
+<section class="animated ${properties.containerAnimation} delay-1s form-section ${active}" data-page="2">
+    <div class="sub-brand-logo">
+        <picture>
+            <sly data-sly-test="${properties.subBrandLogoImageParameterMobileForDollName @ context='unsafe'}">
+                <source srcset="${properties.subBrandLogoImageParameterMobileForDollName @ context='unsafe'}"
+                    media="(max-width:768px)" />
+            </sly>
+            <img alt="Doll Hospital logo"
+                src="${properties.subBrandLogoImageParameterForDollName @ context='unsafe'}" />
+        </picture>
+    </div>
+    <h2>${properties.questionForDollName}</h2>
+    <sly data-sly-test="${properties.helperPopoverTextForDollName}">
+        <p class="helper-text" data-toggle="popover" data-position-lg="${properties.locationforDollName}"
+            data-position-sm="${properties.locationforDollNameMobile}"
+            data-content="${properties.helperPopoverCopyForDollName}">${properties.helperPopoverTextForDollName}<i
+                class="fa fa-info-circle" tabindex="0"><span class="sr-only">Info</span></i></p>
+    </sly>
+    <div class="main-content-section">
+        <div class="main-inner-content">
+            <form>
+                <div class="dh-basicinfo-input-holder input-field" data-control-type="input"
+                    data-binder-name="dh-doll-name">
+                    <label for="dollLabel" class="sr-only" >${properties.placeholderName}</label>
+                    <input type="text" class="doll-name" id="dollLabel" name="dollName" placeholder="${properties.placeholderName}"
+                        maxlength="${properties.recipientMaxAllowedChars}" data-mandate="true" aria-required="true">
+                    <span class="err-msg format-message"
+                        aria-live="polite">${properties.dollNameAllowedCharTypeErr}</span>
+                    <span class="err-msg maxlimit-message"
+                        aria-live="polite">${properties.dollNameMaxAllowedCharsErr}</span>
+                    <span class="err-msg restrict-message" aria-live="polite">${properties.dollNameProfanityErr}</span>
+                </div>
+                <sly data-sly-test="${properties.noOfButtons == 'singleButton'}">
+                    <div class="dh-btn-span" style="background-color: ${properties.backgroundColor @ context='unsafe'}">
+                        <button type="submit" class="dh-next-btn disabled"
+                            aria-disabled="true">${properties.nextButtonText}</button>
+                    </div>
+                </sly>
+                <sly data-sly-test="${properties.noOfButtons == 'twoButtons'}">
+                    <div class="dh-btn-span" style="background-color: ${properties.backgroundColor @ context='unsafe'}">
+                        <button type="reset" class="dh-back-btn">${properties.backButtonText}</button><button
+                            type="submit" class="dh-next-btn disabled"
+                            aria-disabled="true">${properties.nextButtonText}</button>
+                    </div>
+                </sly>
+            </form>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,3552 @@
+//title
+$col : (1: 100%,
+    2: 50%,
+    3: 33.33%,
+    4: 25%,
+    5: 20%,
+    6: 20%,
+    7: 20%,
+    8: 20%,
+    9: 20%,
+    10: 20%,
+    11: 20%,
+    12: 20%,
+);
+
+
+.gallery-headings {
+    padding: if(mapping($layout, main, titleMargin), mapping($layout, main, titleMargin), em(55) em(65) em(50) em(65));
+
+    @media #{$medium-down} {
+        padding: mapping($layout, main, tabTitleMargin);
+    }
+
+    @media #{$small-down} {
+        padding: mapping($layout, main, mobTitleMargin);
+    }
+
+    @if mapping($gallery, heading, isDefinedgalleryTitle)==true {
+        padding: mapping($gallery, heading, definedTitlePad);
+
+        @media #{$medium-down} {
+            padding: mapping($gallery, heading, definedTitlePadTab);
+        }
+
+        @media #{$small-down} {
+            padding: mapping($gallery, heading, definedTitlePadMob);
+        }
+    }
+
+    h2 {
+        @if mapping($gallery, heading, isDefaultHeadingFont)==true {
+            // font-size: mapping($gallery, heading, fontSize);
+            font-size: 48px;
+        }
+
+        @else {
+            font-family: mapping($gallery, heading, fontFamily);
+            font-size: if(mapping($gallery, heading, fontSize), mapping($gallery, heading, fontSize), em(38));
+            font-weight: mapping($gallery, heading, fontWeight);
+        }
+
+        @media #{$medium-down} {
+            font-size: mapping($gallery, heading, tabFontSize);
+            color: if(mapping($gallery, heading, tabColor), mapping($gallery, heading, tabColor), mapping($gallery, heading, colorOpt));
+        }
+
+        @media #{$small-down} {
+            font-size: mapping($gallery, heading, mobFontSize);
+            color: mapping($gallery, heading, colorOpt);
+        }
+
+        color: if(mapping($gallery, heading, color), mapping($gallery, heading, color), $page-title);
+        text-transform: if(mapping($gallery, heading, transform), mapping($gallery, heading, transform), none);
+        margin:if(mapping($gallery, heading, margin), mapping($gallery, heading, margin), 0 0 21px 0);
+        text-align: if(mapping($gallery, heading, align), mapping($gallery, heading, align), left);
+        display: block;
+        line-height: if(mapping($gallery, heading, lineHeight), mapping($gallery, heading, lineHeight), 1);
+
+
+    }
+
+    p {
+        @if mapping($gallery, description, isDefaultDesFont)==true {
+            font-size: mapping($gallery, description, fontSize);
+        }
+
+        @else {
+            font-family: if(mapping($gallery, description, fontFamily), mapping($gallery, description, fontFamily), "Arial");
+            font-size: if(mapping($gallery, description, fontSize), mapping($gallery, description, fontSize), 1.35714em);
+            font-weight: if(mapping($gallery, description, fontWeight), mapping($gallery, description, fontWeight), 300);
+
+        }
+
+        @media #{$medium-down} {
+            font-size: mapping($gallery, description, tabFontSize);
+        }
+
+        @media #{$small-down} {
+            font-size: mapping($gallery, description, mobFontSize);
+        }
+
+        color: if(mapping($gallery, description, color), mapping($gallery, description, color), $page-sub-title);
+        text-align: if(mapping($gallery, description, align), mapping($gallery, description, align), left);
+        margin: if(mapping($gallery, description, descMargin), mapping($gallery, description, descMargin), 10px 0 0);
+    }
+
+    i,
+    em {
+        font-weight: mapping($gallery, description, italicfontWeight);
+    }
+}
+
+.gallery-extnd-tile {
+    padding: if(mapping($gallery, homepageGallery, pad), mapping($gallery, homepageGallery, pad), mapping($layout, main, sectionMargin));
+
+    @media #{$medium-down} {
+        padding: if(mapping($gallery, homepageGallery, tabPadding), mapping($gallery, homepageGallery, tabPadding), mapping($layout, main, tabSectionMargin));
+
+    }
+
+    @media #{$small-down} {
+        padding: if(mapping($gallery, homepageGallery, mobilePadding), mapping($gallery, homepageGallery, mobilePadding), mapping($layout, main, mobSectionMargin));
+
+    }
+
+    @if(map-get($gallery, defaultListCol)) {
+        ul {
+            &>li {
+                position: relative;
+                min-height: 1px;
+                padding-left: 15px;
+                padding-right: 15px;
+                padding-bottom: mapping($gallery, defaultListCol, pad);
+                padding-top: mapping($gallery, defaultListCol, padTop);
+                width: map-get($col, mapping($gallery, defaultListCol, mobItem));
+
+                @media #{$small-down} {
+                    padding-left: mapping($gallery, defaultListCol, mobPadLft);
+                    padding-right: mapping($gallery, defaultListCol, mobPadRit);
+                    padding-bottom: mapping($gallery, defaultListCol, mobPadBtm);
+                }
+
+                @media #{$small-up} {
+                    width: map-get($col, mapping($gallery, defaultListCol, tabItem));
+                }
+
+                @media #{$large-up} {
+                    width: map-get($col, mapping($gallery, defaultListCol, desItem));
+                }
+
+                @if mapping($gallery, defaultListCol, listShowCSS)==false {}
+
+                @else {
+                    @media #{$small-up} {
+                        @media #{$large-down} {
+                            $tabItem: if(mapping($gallery, defaultListCol, tabItemToShow), mapping($gallery, defaultListCol, tabItemToShow), mapping($gallery, defaultListCol, itemToShow));
+
+                            &:nth-of-type(1n+#{$tabItem+1}) {
+                                display: none;
+                            }
+                        }
+                    }
+
+                    @media #{$large-up} {
+                        &:nth-of-type(1n+#{mapping($gallery, defaultListCol, itemToShow)+1}) {
+                            display: none;
+                        }
+                    }
+
+                    @media #{$small-down} {
+                        $mobItem: if(mapping($gallery, defaultListCol, mobItemToShow), mapping($gallery, defaultListCol, mobItemToShow), mapping($gallery, defaultListCol, itemToShow));
+
+                        &:nth-of-type(1n+#{$mobItem+1}) {
+                            display: none;
+                        }
+                    }
+                }
+
+                @if (mapping($layout, main, isFisherPriceNav)==true) {
+                    clear: none !important;
+
+                    @media #{$small-down} {
+                        width: 100%;
+                        display: inline-block;
+                        padding: 10px 0;
+                    }
+
+                    @media #{$medium-up} {
+                        &.column-2 {
+                            width: 50%;
+                        }
+
+                        &.column-3 {
+                            width: 33.33333%;
+
+                            @media #{$small-up} {
+                                @media #{$large-down} {
+                                    $tabItem: if(mapping($gallery, defaultListCol, tabItemToShow), mapping($gallery, defaultListCol, tabItemToShow), mapping($gallery, defaultListCol, itemToShow));
+
+                                    &:nth-of-type(1n+#{$tabItem}) {
+                                        display: none;
+                                    }
+                                }
+                            }
+
+                            @media #{$large-up} {
+                                &:nth-of-type(1n+#{mapping($gallery, defaultListCol, itemToShow)}) {
+                                    display: none;
+                                }
+                            }
+
+                            @media #{$small-down} {
+                                $mobItem: if(mapping($gallery, defaultListCol, mobItemToShow), mapping($gallery, defaultListCol, mobItemToShow), mapping($gallery, defaultListCol, itemToShow));
+
+                                &:nth-of-type(1n+#{$mobItem}) {
+                                    display: none;
+                                }
+                            }
+                        }
+
+                        &.column-4 {
+                            width: 25%;
+
+                            @media #{$small-up} {
+                                @media #{$large-down} {
+                                    $tabItem: if(mapping($gallery, defaultListCol, tabItemToShow), mapping($gallery, defaultListCol, tabItemToShow), mapping($gallery, defaultListCol, itemToShow));
+
+                                    &:nth-of-type(1n+#{$tabItem+1}) {
+                                        display: none;
+                                    }
+                                }
+                            }
+
+                            @media #{$large-up} {
+                                &:nth-of-type(1n+#{mapping($gallery, defaultListCol, itemToShow)+1}) {
+                                    display: none;
+                                }
+                            }
+
+                            @media #{$small-down} {
+                                $mobItem: if(mapping($gallery, defaultListCol, mobItemToShow), mapping($gallery, defaultListCol, mobItemToShow), mapping($gallery, defaultListCol, itemToShow));
+
+                                &:nth-of-type(1n+#{$mobItem+1}) {
+                                    display: none;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .view-all {
+        @if mapping($gallery, defaultListCol, isViewAllHide)==true {
+            display: none !important;
+        }
+    }
+}
+
+//list structure
+.gallery-tile-list {
+    ul {
+        @extend .row;
+
+        .row:before,
+        .row:after {
+            display: none !important;
+        }
+
+        display:block;
+        width: if(mapping($gallery, galleryWrapper, width), mapping($gallery, galleryWrapper, width), 100%);
+        margin: if(mapping($gallery, galleryWrapper, margin), mapping($gallery, galleryWrapper, margin), 0);
+
+        @media #{$medium-down} {
+            width: mapping($gallery, galleryWrapper, tabWidth);
+        }
+
+        &>li {
+            @extend .col-sm-3;
+            @extend .col-md-3;
+            @extend .col-lg-3;
+            text-align: if(mapping($gallery, galleryTileList, txtAlign), mapping($gallery, galleryTileList, txtAlign), center);
+            //padding:10px;
+            padding: 0;
+            margin: 0;
+            position: relative;
+
+            &:nth-of-type(1n+5) {
+                display: none;
+            }
+            &:nth-child(odd){
+                a{
+                    @media #{$small-down} {
+                        margin-right: 5px;
+                    }
+                }
+            }
+            &:nth-child(even){
+                a{
+                    @media #{$small-down} {
+                        margin-left: 5px;
+                    }
+                }
+            }
+            @media #{$medium-down} {
+                width: 50%;
+            }
+
+            @media #{$small-down} {
+                width: 50%;
+                display: inline-block;
+
+                @if mapping($layout, main, isFisherPriceNav)==true {
+                    /* width: 49.4%;*/
+                    padding-top: 0;
+                    //padding-bottom: 30px;
+                    float: left;
+                }
+            }
+
+            @media #{$medium-up} {
+                @if (mapping($layout, main, isRescueHeroes)==true) or (mapping($layout, main, isFisherPriceNav)==true) {
+                    &.column-2 {
+                        //width:50%;
+                        width: 49.95%;
+
+                        &:nth-of-type(1n+3) {
+                            display: mapping($gallery, defaultListCol, dispNth);
+                        }
+                    }
+                }
+
+                &.column-3 {
+                    width: 33.25%;
+                }
+
+                &.column-4 {
+                    width: 24.95%;
+                }
+
+                @if (mapping($layout, main, isfisherprice)==true) or (mapping($layout, main, isRescueHeroes)==true) or (mapping($layout, main, isFisherPriceNav)==true) {
+
+                    &.column-3 {
+                        width: 33.25%;
+
+                        &:nth-of-type(1n+#{mapping($gallery, defaultListCol, itemToShowCol3)+1}) {
+                            display: mapping($gallery, defaultListCol, dispNth);
+                        }
+                    }
+
+                    &.column-4 {
+                        width: 24.95%;
+
+                        &:nth-of-type(1n+#{mapping($gallery, defaultListCol, itemToShowCol4)+1}) {
+                            display: mapping($gallery, defaultListCol, dispNth);
+                        }
+                    }
+                }
+            }
+
+            //character Name
+            a {
+                display: block;
+                position: relative;
+                margin: if(mapping($gallery, gallerytilelink, linkMargin), mapping($gallery, gallerytilelink, linkMargin), em(15));
+
+                @if (mapping($layout, main, isFisherPriceNav)==true) {
+                    text-align: mapping($gallery, gallerytilelink, txtAlign);
+                }
+
+                @if (mapping($layout, main, isFisherPriceNav)==true) or (mapping($layout, main, isRescueHeroes)==true) {
+                    @media #{$medium-down} {
+                        margin: mapping($gallery, gallerytilelink, linkMarginTab);
+                    }
+
+                    @media #{$small-down} {
+                        margin: mapping($gallery, gallerytilelink, linkMarginMob);
+                    }
+                }
+
+                &.btn-primary {
+                    color: red;
+                }
+
+                &:hover,
+                &:focus,
+                &.active {
+                    img {
+                        @if mapping($gallery, galleryImg, isHoverEffect)==true {
+
+                            //opacity: mapping($gallery,galleryImg,hoverOpac);
+                            @media #{$small-down} {
+                                opacity: mapping($gallery, galleryImg, mobhoverOpac);
+                            }
+                        }
+                    }
+
+                    &.gallery-image {
+                        img {
+                            opacity: 1;
+                        }
+                    }
+                }
+
+                /* @if mapping($layout,main,isRescueHeroes) == true{  
+                    &:focus{
+                        img{
+                            opacity: 1 !important;
+                        }
+                    }
+                } */
+
+                .gallery-image {
+                    background-color: if(mapping($gallery, gallerytileImage, bgndColor), mapping($gallery, gallerytileImage, bgndColor), $white);
+                    position: relative;
+                    @extend .grid-border-style;
+
+                    @if mapping($layout, main, isRescueHeroes)==true {
+                        display: inline;
+                        overflow: hidden;
+                    }
+
+                    img {
+                        // max-height: 100%;
+                        max-width: 100%;
+                        width: 100%;
+                        display: block;
+                        border: mapping($gallery, galleryImg, imgBdr);
+
+                        @media #{$small-down} {
+                            width: mapping($gallery, galleryImg, width);
+                        }
+
+                        .image-container {
+                            &:hover {
+                                opacity: 1;
+                            }
+                        }
+
+                        @if mapping($layout, main, isWhyPlay)==true {
+                            height: 285px !important;
+
+                            @media #{$medium-down} {
+                                height: 147px !important;
+                            }
+
+                            @media #{$small-down} {
+                                height: 159px !important;
+                            }
+                        }
+                    }
+                }
+
+                span {
+                    @if mapping($gallery, listTitle, isBgnd)==false {
+                        background: none;
+                        @include border-radius(0);
+                    }
+
+                    @else {
+                        background-color: $character-label-bg;
+                    }
+
+                    @include transition(350ms ease);
+                    text-transform: none;
+                    //font-size: em(28.01);
+                    padding: 0 em(2.5);
+                    //color: $character-label;
+                    display: block;
+                    letter-spacing: em(1);
+                    font-family: mapping($gallery, listTitle, fontFamily);
+                    text-align:if(mapping($gallery, listTitle, align), mapping($gallery, listTitle, align), left);
+                    font-size:if(mapping($gallery, listTitle, fontSize), mapping($gallery, listTitle, fontSize), em(28.01));
+                    font-weight: mapping($gallery, listTitle, fontWeight);
+                    color: if(mapping($gallery, listTitle, color), mapping($gallery, listTitle, color), $character-label);
+                    color: #000 !important;
+
+                    &.btn-primary {
+                        @if mapping($gallery, main, sameasDefaultBtn)==true {
+                            @extend .theme-btn;
+                        }
+
+                        @else {
+                            @extend .btn-primary;
+                            font-size: em(14);
+                            text-align: center;
+                            padding: 10px 5px;
+                            display: inline-block;
+                        }
+                    }
+                }
+
+                .title {
+                    font-size: 30px;
+                    font-weight: 500;
+                    letter-spacing: 0.26px;
+                    line-height: 40px;
+                    font-family: $mattelGamesPrimaryFontMedium;
+                }
+
+                .readmore {
+                    border-radius: 120px 100px 100px 0;
+                    background-color: #EE0024;
+                    width: auto;
+                    display: inline-block;
+                    padding: 15px 30px;
+                    color: #fff !important;
+
+                    &:hover,
+                    &:focus,
+                    &.active {
+                        background-color: #c5001e !important;
+                    }
+
+                    &::after {
+                        content: "\f0a9";
+                        font-family: "Font Awesome", sans-serif;
+                        font-weight: 900;
+                        -webkit-font-smoothing: antialiased;
+                        display: inline-block;
+                        font-style: normal;
+                        font-variant: normal;
+                        text-rendering: auto;
+                        // line-height: 1;
+                        vertical-align: middle;
+                        line-height: 24px !important;
+                        position: absolute;
+                        top: 12px;
+                        margin-left: 0;
+                        background: 0 0;
+                        float: right;
+                        font-size: 18px;
+                        right: 11px;
+                    }
+                }
+            }
+
+            &.active {
+                a {
+                    .gallery-image {
+                        background-color: mapping($gallery, gallerytileImage, bgnd);
+                    }
+                }
+            }
+        }
+    }
+}
+
+.gallery-image {
+
+    &:hover,
+    &:focus,
+    &.active {
+        &::after {
+            top: 0;
+            content: "";
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #FBD635;
+            opacity: 0.22;
+        }
+
+        img {
+            // opacity: if(mapping($gallery, gallerytileImage, opac), mapping($gallery, gallerytileImage, opac),0.5);
+            // background-color: mapping($gallery, gallerytileImage, bgColorhover);
+            // filter: brightness(0.7);
+            // -webkit-filter: brightness(0.7);
+            // -moz-filter: brightness(0.7);
+            // -ms-filter: brightness(0.7);
+            // -o-filter: brightness(0.7);
+            // filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50); 
+            // -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)"; 
+        }
+
+        &.image-container {
+            opacity: 1;
+        }
+    }
+
+}
+
+.view-all {
+    display: block;
+    text-align: center;
+    margin: em(20) 0;
+
+    @media #{$small-down} {
+        text-align: center;
+    }
+
+    a {
+        font-size: 16px;
+        border-radius: 120px 100px 100px 0 !important;
+        background-color: #ee0024 !important;
+        width: auto !important;
+        display: inline-block !important;
+        padding: 10px 30px !important;
+        color: #fff !important;
+        margin-top: 0;
+
+        &:hover,
+        &:focus,
+        &.active {
+            background-color: #c5001e !important;
+        }
+
+        &::after {
+            content: "\f0a9";
+            font-family: "Font Awesome", sans-serif;
+            font-weight: 900;
+            -webkit-font-smoothing: antialiased;
+            display: inline-block;
+            font-style: normal;
+            font-variant: normal;
+            text-rendering: auto;
+            line-height: 1;
+            vertical-align: middle;
+            line-height: 20px !important;
+            position: relative;
+            top: 0;
+            margin-left: 7px;
+            background: 0 0;
+            float: right;
+            font-size: 18px;
+        }
+    }
+
+}
+
+.show-more {
+    display: none;
+    width: 100%;
+    text-align: center;
+    padding: if(mapping($gallery, showMoreDiv, pad), mapping($gallery, showMoreDiv, pad), em(24));
+    position: relative;
+    z-index: 1;
+
+    a {
+        @if mapping($gallery, primaryBtn, isExtendSecondaryBtn)==true {
+            @extend .secondary-btn;
+        }
+
+        @else if mapping($gallery, primaryBtn, isExtendPrimaryBtn)==true {
+            @extend .theme-btn;
+        }
+
+        @else {
+            @extend .btn-show-more;
+        }
+    }
+}
+
+.margin-LR0 {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
+.tiles-center {
+    padding: em(6);
+}
+
+//common structure
+.play-tiles-gallery {
+    padding: 0;
+    width: 100%;
+    margin: 0 auto !important;
+    background-color: $white;
+    @extend .margin-LR0;
+
+    .gallery-title {
+        @extend .gallery-headings;
+    }
+
+    .gallery-tile {
+        @extend .gallery-tile-list;
+
+        &.plp-tiles {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        ul {
+            display: flex;
+            flex-wrap: wrap;
+        }
+    }
+
+    @media #{$medium-down} {
+        width: 100%;
+    }
+
+}
+
+//dont include any class into this
+.play-tiles-gallery {
+
+    // overflow: hidden;
+    @if mapping($gallery, main, bgnd)==true {
+        background: url(mapping($gallery, main,bgnd));
+    }
+
+    @else {
+        background-color: #F7F7F7;
+    }
+
+    &.play-character-landing-block {
+
+        ul {
+            li {
+                display: block !important;
+            }
+
+            .playing-overlay {
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+
+                span {
+                    position: absolute;
+                    top: 7px;
+                    left: 7px;
+                    font-size: 1em;
+                    font-family: "Arial", sans-serif;
+                    white-space: nowrap;
+                    display: inline-block;
+                    padding: em(7);
+                    color: $character-label;
+                    background-color: $character-label-bg;
+                    z-index: 1;
+                    letter-spacing: 1px;
+                }
+            }
+        }
+    }
+
+    &#play-game {
+        background:null //url($game-gallery-bg) 0 0 repeat;
+
+        .gallery-tile {
+            h2 {
+                //Jansi
+                //padding:40px 55px 25px 55px;
+                color: #000000;
+                margin: 0;
+                padding: 20px 54px 0;
+                font-size: 48px;
+                text-transform: none;
+                text-align: center;
+                letter-spacing: 0.41px;
+                font-weight: 500;
+
+                @media #{$small-down} {
+                    font-size: 32px;
+                }
+            }
+        }
+
+        ul {
+            padding: 0 40px 35px 40px;
+
+            li {
+                padding: em(15);
+            }
+        }
+    }
+}
+
+//retailers
+.play-retailers {
+    margin: 0px auto;
+    overflow: mapping($gallery, retailers, fpnavoverflow);
+    background-color: mapping($gallery, retailers, fpbgColor);
+
+    @if mapping($gallery, retailers, isImageAfter)==true {
+        position: relative;
+
+        &:after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            top: mapping($gallery, retailers, afterBgndTop);
+            bottom: mapping($gallery, retailers, afterBgndBottom);
+            height: mapping($gallery, retailers, afterBgndHght);
+            background: mapping($gallery, retailers, afterBgnd);
+            background-size: mapping($gallery, retailers, afterBgndSize);
+            z-index: mapping($gallery, retailers, afterBgndZindx);
+
+            @media #{$medium-down} {
+                background-size: mapping($gallery, retailers, afterBgndSizeMob);
+            }
+        }
+    }
+
+    .gallery-title {
+        @if mapping($gallery, retailers, isImageAfter)==true {
+            position: relative;
+            z-index: 1;
+        }
+
+        h2 {
+            text-align: center;
+            color: mapping($gallery, retailers, titleTxtColor);
+            font-size: 20px;
+
+            @if mapping($gallery, main, isCurlnHead)==true {
+
+                &::after,
+                &::before {
+                    background: url('#{$brandImgPath}/curls-right.png') no-repeat;
+                    content: " ";
+                    height: 35px;
+                    width: 320px;
+                    display: inline-block;
+                    vertical-align: middle;
+                    margin-left: 10px;
+                }
+
+                &::before {
+                    background: url('#{$brandImgPath}/curls-left.png') no-repeat;
+                    margin-right: 10px;
+                }
+            }
+        }
+    }
+
+    .gallery-tile {
+        @if mapping($gallery, retailers, isImageAfter)==true {
+            position: relative;
+            z-index: 1;
+        }
+
+        text-align: mapping($gallery, retailers, tileAlign);
+        margin-bottom: mapping($gallery, retailers, marginBottom);
+
+        ul {
+            background: mapping($gallery, retailers, tileBgnd);
+            display: mapping($gallery, retailers, tileDisplay);
+            width: mapping($gallery, retailers, tilewidth);
+
+            @media #{$large-down} {
+                display: mapping($gallery, retailers, tabtileDisplay);
+            }
+
+            @media #{$medium-down} {
+                width: mapping($gallery, retailers, mobTilewidth);
+            }
+
+            margin: mapping($gallery, retailers, tileMargin);
+
+            @media #{$small-down} {
+                margin: mapping($gallery, retailers, mobtileMargin);
+            }
+
+            border-radius: mapping($gallery, retailers, borderRadius);
+
+            @if mapping($gallery, retailers, applyBordrToParnt)==true {
+                @extend .grid-border-style;
+
+                @media #{$small-only} {
+                    padding: if(mapping($gallery, retailers, mobPadd), mapping($gallery, retailers, mobPadd), 0 15px);
+                    background: transparent;
+                    @include border-radius(0);
+                    border: 0;
+                }
+            }
+
+            // @media #{$small-up} {
+            //     padding: if(mapping($gallery,retailers,paddingRetailers), mapping($gallery,retailers,paddingRetailers),0 em(50));
+            // }
+            //  @media #{$large-only} {
+            // 	 padding: mapping($gallery, retailers, largeOnlypadding);
+            //  }
+
+            &>li {
+
+                @if mapping($gallery, retailers, isColConfigTrue)==true and map-get($gallery, retailersListCol) {
+
+                    position: relative;
+                    min-height: 1px;
+                    padding-left: 15px;
+                    padding-right: 15px;
+                    // width: map-get($col,mapping($gallery, retailersListCol, mobItem));
+                    float: mapping($gallery, retailersListCol, float);
+
+                    @media #{$small-up} {
+                        width: map-get($col, mapping($gallery, retailersListCol, tabItem));
+                    }
+
+                    @media #{$large-up} {
+                        /*width: map-get($col,mapping($gallery, retailersListCol, desItem));*/
+                        width: 24.95%;
+                    }
+
+                    @if mapping($gallery, retailers, applyBordrToParnt)==true {
+                        @media #{$small-only} {
+                            margin: 15px 0;
+                            border-radius: 10px;
+                            background: mapping($gallery, retailers, tileBgnd);
+                        }
+                    }
+                }
+
+                @else {
+                    &:nth-of-type(1n+5) {
+                        display: block;
+                    }
+
+
+                    @media #{$small-up} {
+                        padding: 0 em(25);
+                    }
+
+                    @media #{$small-down} {
+                        width: 50%;
+                        float: left;
+                        margin: 0;
+                    }
+                }
+
+                @if mapping($gallery, retailersListCol, showAllList)==true {
+                    // display: block !important;
+                }
+
+                margin:0px auto;
+
+                @if mapping($layout, main, isFisherPriceNav)==true {
+                    width: mapping($gallery, retailersListCol, fpnItem);
+                    display: mapping($gallery, retailersListCol, fpnDisplay);
+                    vertical-align: mapping($gallery, retailersListCol, fpnVericalAlign);
+                    float: mapping($gallery, retailersListCol, fpnfloat);
+
+                    @media #{$large-down} {
+                        padding: mapping($gallery, retailersListCol, fpnpadd);
+                    }
+
+                    @media #{$large-up} {
+
+                        /*width: mapping($gallery, retailersListCol, fpndesItem);*/
+                        &.fp-brands-1 {
+                            width: 100%
+                        }
+
+                        &.fp-brands-2 {
+                            width: 50%
+                        }
+
+                        &.fp-brands-3 {
+                            width: 30%
+                        }
+
+                        &.fp-brands-4,
+                        &.fp-brands-5 {
+                            width: 20%
+                        }
+
+                        &.fp-brands-6 {
+                            width: 16%
+                        }
+
+                        &.fp-brands-7 {
+                            width: 14%
+                        }
+
+                        &.fp-brands-8 {
+                            width: 12%
+                        }
+
+                    }
+
+                    @media #{$large-down} {
+                        width: 48%;
+                    }
+
+                    img {
+                        width: auto !important;
+                        margin: 0px auto;
+
+                    }
+
+                }
+
+                //enchantimals margin:0px auto 20px; 
+                a {
+                    margin: 0;
+
+                    span {
+                        display: inline;
+
+                        &.sr-only {
+                            padding: 0;
+                            margin: 0;
+                        }
+                    }
+
+                    .gallery-image {
+                        background-color: transparent;
+
+                        @if mapping($gallery, retailers, applyBordrToParnt)==true {
+                            border: 0;
+                            @include border-radius(0);
+                        }
+                    }
+                }
+            }
+        }
+
+        .view-all {
+            display: none !important;
+        }
+    }
+}
+
+
+//character-gallery
+.play-characters {
+    background: mapping($gallery, playCharacters, bgnd);
+
+    @if mapping($gallery, characters, isclearDiv)==true {
+        @extend .clearDiv;
+    }
+
+    .gallery-title {
+        h2 {
+            margin: mapping($gallery, characters, headingMgn);
+        }
+    }
+
+    .gallery-tile {
+        @if mapping($gallery, retailers, isImageAfter)==true {
+            position: relative;
+            z-index: 1;
+        }
+
+        @if mapping($gallery, characters, isDefaultMargin)==true {
+            padding: mapping($layout, main, sectionMargin);
+
+            @media #{$medium-down} {
+                padding: mapping($layout, main, tabSectionMargin);
+            }
+
+            @media #{$small-down} {
+                padding: mapping($layout, main, mobSectionMargin);
+                text-align: mapping($gallery, characters, imgAlign);
+            }
+        }
+
+        ul {
+            &>li {
+                padding: if(mapping($gallery, characters, tilePadding), mapping($gallery, characters, tilePadding), 0px);
+                margin: mapping($gallery, characters, tileMargin);
+                background-color: if(mapping($gallery, characters, bgnd), mapping($gallery, characters, bgnd), $character-bg);
+                max-width: mapping($gallery, characters, tileMaxWidth);
+
+                @media #{$medium-down} {
+                    max-width: mapping($gallery, characters, maxWidthMob);
+                }
+
+                a {
+                    margin: 0;
+
+                    .gallery-image {
+                        background: mapping($gallery, characters, listBgnd)
+                    }
+
+                    span {
+                        @if mapping($gallery, characters, isStickyTitle)==false {
+                            background: mapping($gallery, characters, tileBgnd);
+                            color: mapping($gallery, characters, tileTitleColor);
+                            display: mapping($gallery, characters, tileTitleDisplay);
+                            font-size: mapping($gallery, characters, tileTitleSize);
+                            font-family: mapping($gallery, characters, tileTitleFamily);
+                            font-weight: mapping($gallery, characters, tileTitleWeight);
+                            padding: mapping($gallery, characters, tileTitlePadding);
+                            text-align: mapping($gallery, characters, tileAlign);
+                            width: mapping($gallery, characters, tileWidth);
+                            margin: mapping($gallery, characters, tileMargin);
+                            text-transform: mapping($gallery, characters, transform);
+
+                            @media #{$small-down} {
+                                font-size: mapping($gallery, characters, mobFontSize);
+                            }
+                        }
+
+                        @else {
+                            z-index: 1024;
+                            width: auto;
+                            position: absolute;
+                            margin: 0 auto;
+                            left: 50%;
+                            bottom: em(20);
+                            @include transform(translateX(-50%));
+                            // line-height: normal;
+                            @include border-radius(8px);
+                            display: block;
+                            text-align: center;
+                            text-transform: none;
+                            line-height: 26px;
+                            padding: em(8);
+                            font-size: em(26);
+                            letter-spacing: normal;
+                            display: none;
+
+                            @if mapping($gallery, main, isCharTitleForEnchantimals)==true {
+                                color: mapping($gallery, charListTitle, txtColor);
+                                background-color: mapping($gallery, charListTitle, bgnd);
+                                position: mapping($gallery, charListTitle, pos);
+                                bottom: mapping($gallery, charListTitle, posBtm);
+                                text-align: mapping($gallery, charListTitle, align);
+                                text-transform: mapping($gallery, charListTitle, txtCase);
+                                font-size: mapping($gallery, charListTitle, fontSize);
+                                line-height: mapping($gallery, charListTitle, lineHeight);
+                                font-weight: mapping($gallery, charListTitle, fontWeight);
+                                margin: mapping($gallery, charListTitle, margin);
+                                padding: mapping($gallery, charListTitle, padding);
+                            }
+                        }
+                    }
+
+                    &:hover,
+                    &:focus,
+                    &.active {
+                        img {
+                            opacity: if(mapping($gallery, gallerytileImage, opac), mapping($gallery, gallerytileImage, opac), 0.7);
+                        }
+                    }
+                }
+
+                &>span {
+                    background: mapping($gallery, characters, tileBgnd);
+                    color: mapping($gallery, characters, tileTitleColor);
+                    display: mapping($gallery, characters, tileTitleDisplay);
+                    font-size: mapping($gallery, characters, tileTitleSize);
+                    font-family: mapping($gallery, characters, tileTitleFamily);
+                    font-weight: mapping($gallery, characters, tileTitleWeight);
+                    padding: mapping($gallery, characters, tileTitlePadding);
+                    text-align: mapping($gallery, characters, tileAlign);
+                    width: mapping($gallery, characters, tileWidth);
+                    margin: mapping($gallery, characters, tileMargin);
+
+                    @media #{$medium-only} {
+                        min-height: mapping($gallery, characters, tabHeight);
+                    }
+
+                    @media #{$small-down} {
+                        font-size: mapping($gallery, characters, mobFontSize);
+                        margin-top: mapping($gallery, characters, mobtileMargin);
+                    }
+                }
+            }
+        }
+
+        @if mapping($gallery, characters, isColConfigTrue)==true {
+
+            //@extend .gallery-extnd-tile;
+            ul {
+                &>li {
+                    @if(map-get($gallery, charactersListCol)) {
+                        position: relative;
+                        min-height: 1px;
+                        padding-left: 15px;
+                        padding-right: 15px;
+                        width: map-get($col, mapping($gallery, charactersListCol, mobItem));
+
+                        @media #{$small-up} {
+                            width: map-get($col, mapping($gallery, charactersListCol, tabItem));
+                        }
+
+                        @media #{$large-up} {
+                            width: map-get($col, mapping($gallery, charactersListCol, desItem));
+                        }
+
+                        @media #{$small-up} {
+                            @media #{$large-down} {
+                                $tabItem: if(mapping($gallery, charactersListCol, tabItemToShow), mapping($gallery, charactersListCol, tabItemToShow), mapping($gallery, charactersListCol, itemToShow));
+
+                                &:nth-of-type(1n+#{$tabItem+1}) {
+                                    display: none;
+                                }
+                            }
+                        }
+
+                        @media #{$large-up} {
+                            &:nth-of-type(1n+#{mapping($gallery, charactersListCol, itemToShow)+1}) {
+                                display: none;
+                            }
+                        }
+
+                        @media #{$small-down} {
+                            $mobItem: if(mapping($gallery, charactersListCol, mobItemToShow), mapping($gallery, charactersListCol, mobItemToShow), mapping($gallery, charactersListCol, itemToShow));
+
+                            &:nth-of-type(1n+#{$mobItem+1}) {
+                                display: none;
+                            }
+                        }
+                    }
+
+                    @media #{$large-down} {
+                        margin: mapping($gallery, characters, tileMarginTab);
+                    }
+
+                    @media #{$small-down} {
+                        padding: mapping($gallery, characters, tilePaddingMob);
+                        max-width: mapping($gallery, characters, maxWidthMob);
+                    }
+                }
+            }
+        }
+    }
+
+    @if mapping($gallery, characters, isImageBefore)==true {
+        position: relative;
+        display: inline-block;
+        width: 100%;
+        padding: mapping($gallery, characters, padding);
+
+        @media #{$medium-down} {
+            padding: mapping($gallery, characters, paddingTab);
+        }
+
+        @media #{$small-only} {
+            padding: mapping($gallery, characters, paddingMobOnly);
+        }
+
+        @media #{$small-down} {
+            padding: mapping($gallery, characters, paddingMob);
+        }
+
+        &:before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            top: mapping($gallery, characters, beforeBgndTop);
+            height: mapping($gallery, characters, beforeBgndHght);
+            background: mapping($gallery, characters, beforeBgnd);
+            background-size: mapping($gallery, characters, beforeBgndSize);
+
+            @media #{$medium-down} {
+                background-size: mapping($gallery, characters, beforeBgndSizeTab);
+                height: mapping($gallery, characters, beforeBgndHghtTab);
+            }
+
+            @media #{$medium-down} {
+                background-size: mapping($gallery, characters, beforeBgndSizeMob);
+                top: mapping($gallery, characters, beforeBgndTopTab);
+            }
+
+            @media #{$small-down} {
+                top: mapping($gallery, characters, beforeBgndTopMob);
+            }
+        }
+    }
+
+    @if mapping($gallery, characters, isImageAfter)==true {
+        &:after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            top: mapping($gallery, characters, afterBgndTop);
+            height: mapping($gallery, characters, afterBgndHght);
+            background: mapping($gallery, characters, afterBgnd);
+            background-size: mapping($gallery, characters, afterBgndSize);
+            z-index: mapping($gallery, characters, afterBgndZindx);
+
+            @media #{$medium-down} {
+                background-size: mapping($gallery, characters, afterBgndSizeMob);
+            }
+        }
+    }
+
+    .show-more {
+        background-color: if(mapping($gallery, characters, showMoreBgnd), mapping($gallery, characters, showMoreBgnd), $show-more-block-bg);
+        margin: mapping($gallery, characters, ctaMargin);
+
+        @media #{$small-down} {
+            margin: mapping($gallery, characters, ctaMarginMob);
+        }
+    }
+
+    &::after {
+        @if mapping($layout, waveBorder, isWaveBtmBdr)==true {
+            content: "";
+            background: mapping($layout, waveBorder, waveBdrPurple);
+            background-repeat: mapping($layout, waveBorder, waveBdrbgndRptX);
+            width: mapping($layout, waveBorder, waveBdrWidth);
+            height: mapping($layout, waveBorder, waveBdrHeight);
+            display: mapping($layout, waveBorder, waveBdrDisplay);
+            position: mapping($layout, waveBorder, waveBdrPosition);
+            background-size: mapping($layout, waveBorder, waveBdrsize);
+        }
+    }
+}
+
+.page-view {
+    >div.play-characters+div.play-characters {
+        background: mapping($gallery, playCharacters, othersCharBgnd);
+
+        .gallery-tile {
+            ul {
+                li {
+                    a {
+                        span {
+                            text-align: mapping($gallery, playCharacters, txtAlignLeft);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+div.play-characters:nth-child(2) {
+    &::after {
+        display: none;
+    }
+}
+
+.character {
+    .play-category-details-component {
+
+        //background-color: $enchanpurple;
+        .play-page-title {
+            h1 {
+                color: if(mapping($gallery, heading, color), mapping($gallery, heading, color), $page-title);
+            }
+        }
+
+        &::after {
+            @if mapping($layout, waveBorder, isWaveBtmBdr)==true {
+                content: "";
+                background: mapping($layout, waveBorder, waveBdrPurple);
+                background-repeat: mapping($layout, waveBorder, waveBdrbgndRptX);
+                width: mapping($layout, waveBorder, waveBdrWidth);
+                height: mapping($layout, waveBorder, waveBdrHeight);
+                display: mapping($layout, waveBorder, waveBdrDisplay);
+                position: mapping($layout, waveBorder, waveBdrPosition);
+                background-size: mapping($layout, waveBorder, waveBdrsize);
+            }
+        }
+    }
+
+    .play-characters {
+        @if mapping($gallery, charactersPage, isEnchantCharacterPageGallery)==true {
+            .play-page-title {
+                h1 {
+                    color: $enchanpurple;
+                }
+            }
+
+            background: mapping($gallery, charactersPage, bgnd);
+            @include box-shadow(inset 0px -450px 100px -300px #BBE0FF);
+
+            .gallery-title {
+                h2 {
+                    color: mapping($gallery, charactersPage, galHeadingColor);
+                }
+            }
+
+            .gallery-tile {
+                ul {
+                    li {
+                        a {
+                            span {
+                                text-align: mapping($gallery, charactersPage, txtAlignLeft);
+                                color: mapping($gallery, charactersPage, txtColor);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .enable-carousel-nav {
+        .char-tiles {
+            display: none;
+
+            &.slick-initialized {
+                display: block;
+            }
+
+            .slick-track {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            li {
+                a.active {
+                    img {
+                        opacity: mapping($gallery, charactersPage, activeOpacity);
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+//products-gallery
+.play-products {
+
+    //enchantimals_req
+    //background-image: if(mapping($gallery, playProducts, bgnd), mapping($gallery, playProducts, bgnd), $product-gallery-bg-path);
+    .gallery-title {
+        background-color: if(mapping($gallery, retailerSection, titleBgnd), mapping($gallery, retailerSection, titleBgnd), transparent); //$white);
+
+        h2 {
+            font-weight: if(mapping($gallery, retailerSection, fntweight), mapping($gallery, retailerSection, fntweight), $fontLight);
+            color: mapping($gallery, playProducts, titleColor);
+        }
+
+    }
+
+    .gallery-tile {
+        padding: if(mapping($layout, main, sectionMargin), mapping($layout, main, sectionMargin), em(50) em(30) em(16));
+
+        @media #{$medium-down} {
+            padding: mapping($layout, main, tabSectionMargin);
+        }
+
+        @media #{$small-down} {
+            padding: mapping($layout, main, mobSectionMargin);
+        }
+
+        ul {
+            &>li {
+                margin-bottom: em(10);
+
+                a {
+                    background-color: if(mapping($gallery, playProducts, imgBgnd), mapping($gallery, playProducts, imgBgnd), 'transparent');
+
+                    .gallery-image {
+                        @if mapping($gallery, retailerSection, isRounded)==false {
+                            @include border-radius(0);
+                        }
+
+                        @else {
+                            @include border-radius(50%);
+                        }
+
+                        overflow: hidden;
+                        background-color: if(mapping($gallery, playProducts, imgBgnd), mapping($gallery, playProducts, imgBgnd), $white);
+                        outline: none;
+                        padding:if(mapping($gallery, playProducts, imgPad), mapping($gallery, playProducts, imgPad), 0);
+
+                        &:hover {
+                            img {
+                                opacity: 1;
+                            }
+                        }
+                    }
+
+                    span {
+                        margin-top: em(15);
+                        @include border-radius(8px);
+                        display: inline-block;
+                        text-align: center;
+                        font-weight: 500;
+                        line-height: 26px;
+                        padding: 8px;
+                        font-size: 25px;
+                        font-family: $mattelGamesPrimaryFontMedium;
+                        letter-spacing: normal;
+                        background-color: transparent;
+
+                        @if mapping($gallery, main, isDefaulTitleForRetailer)==true {
+                            color: mapping($gallery, defaultListTitle, color);
+                            // font-family: mapping($gallery,listTitle,fontFamily);
+                            text-align: mapping($gallery, listTitle, align);
+                            text-transform: mapping($gallery, listTitle, txtCase);
+                            // font-size:mapping($gallery,listTitle,fontSize);
+                            line-height: mapping($gallery, listTitle, fontSize);
+                            margin: mapping($gallery, listTitle, margin);
+                            padding: mapping($gallery, listTitle, padding);
+                            display: mapping($gallery, listTitle, display);
+                            float: if(mapping($gallery, listTitle, float), mapping($gallery, listTitle, float), left);
+                        }
+
+                        @media #{$small-down} {
+                            font-size: 18px;
+                        }
+                    }
+
+                    @media #{$small-up} {
+                        margin-top: 8px;
+                        margin-bottom: 8px;
+                    }
+                }
+            }
+        }
+
+        @extend .gallery-extnd-tile;
+    }
+}
+
+
+//image-gallery
+.play-image-gallery {
+    .gallery-tile {
+        background-color: $litviolet;
+        padding: em(10) em(20);
+
+        ul {
+            &>li {
+                text-align: left;
+
+                a {
+                    span {
+                        width: 100%;
+                        padding: 0;
+                    }
+                }
+            }
+        }
+    }
+}
+
+//image-gallery with download button
+.play-download {
+    position: relative;
+
+    @if mapping($layout, main, isFisherPriceNav)==true {
+        position: static;
+    }
+
+    .gallery-tile {
+        @if mapping($layout, main, isFisherPriceNav)==true {
+            ul>li {
+                a {
+                    span.btn-primary {
+                        &.buynow-overlay-txt {
+                            margin-bottom: 15px;
+
+                            @media #{$small-down} {
+                                margin-bottom: 0;
+                                min-width: 50%;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        @if mapping($layout, main, isRescueHeroes)==true {
+            ul>li {
+                a {
+                    span.btn-primary {
+                        &.buynow-overlay-txt {
+                            background-color: #ed4323 !important;
+                            transform: translate(50%, -50%);
+                            -webkit-transition: 350ms ease;
+                            -o-transition: 350ms ease;
+                            transition: 350ms ease;
+                            text-transform: none;
+                            padding: 21px 50px;
+                            display: none !important;
+                            border-radius: 50px !important;
+                            letter-spacing: .07143em;
+                            text-align: left;
+                            font-size: 1.14286em;
+                            font-weight: 700;
+                            width: auto;
+                            max-width: max-content;
+                            min-width: 50px;
+                            content: "";
+                            position: absolute;
+                            bottom: 50%;
+                            right: 50%;
+                        }
+                    }
+
+                    &:hover {
+                        span.btn-primary.buynow-overlay-txt {
+                            display: block !important;
+
+                            @media #{$small-down} {
+                                display: none !important;
+                            }
+                        }
+                    }
+
+                }
+            }
+        }
+
+        .character-label {
+            @extend .gallery-headings;
+            padding: if(mapping($gallery, download, LabelWrapPad), mapping($gallery, download, LabelWrapPad), em(3) em(0));
+
+            h2 {
+                // font-size: if(mapping($gallery, download, labelSize), mapping($gallery, download, labelSize), em(21));
+                font-size: 30px !important;
+                height: if(mapping($gallery, download, labelHeight), mapping($gallery, download, labelHeight), 32px);
+                // margin: if(mapping($gallery, download, labelMargin), mapping($gallery, download, labelMargin), em(0));
+                margin: 5px 0 20px;
+                text-overflow: if(mapping($gallery, download, LabelTextOverflow), mapping($gallery, download, LabelTextOverflow), ellipsis);
+                overflow: if(mapping($gallery, download, LabelOverflow), mapping($gallery, download, LabelOverflow), hidden);
+                width: if(mapping($gallery, download, LabelWidth), mapping($gallery, download, LabelWidth), 100%);
+                white-space: if(mapping($gallery, download, LabelWhiteSpace), mapping($gallery, download, LabelWhiteSpace), nowrap);
+                padding: if(mapping($gallery, download, LabelPadding), mapping($gallery, download, LabelPadding), em(3) em(0));
+                text-align: mapping($gallery, download, LabelTxtAlign);
+                text-overflow: mapping($gallery, download, LabelTextOverflow);
+                white-space: mapping($gallery, download, LabelWhiteSpace);
+                overflow: visible;
+
+                @media #{$small-down} {
+                    // font-size:mapping($gallery,download,labelMobSize);
+                    font-size: 18px !important;
+                }
+
+                @if mapping($layout, main, isRescueHeroes)==true {
+                    color: mapping($gallery, downloadTileTitle, txtColor);
+                    font-size: mapping($gallery, downloadTileTitle, txtFontSize);
+                    margin: mapping($gallery, downloadTileTitle, titleMargin);
+                    padding: mapping($gallery, downloadTileTitle, titlePad);
+                    height: mapping($gallery, downloadTileTitle, titleHeight);
+                    max-height: mapping($gallery, downloadTileTitle, titleMaxHeight);
+                }
+            }
+
+            //height variables
+            $font-size:1em;
+            $line-height:1.4;
+            $lines-to-show:3;
+
+            p {
+                display: none;
+
+                &:first-child {
+                    display: block;
+                    /* Fallback for non-webkit */
+                    display: -webkit-box;
+                    width: 100%;
+
+                    @if (mapping($layout, main, isRescueHeroes)==true) or (mapping($layout, main, isFisherPriceNav)==true) {
+                        height: auto
+                    }
+
+                    @else {
+                        height: $font-size*$line-height*$lines-to-show;
+                    }
+
+                    /* Fallback for non-webkit */
+                    margin: 0 auto;
+                    font-size: $font-size;
+                    line-height: $line-height;
+                    -webkit-line-clamp: $lines-to-show;
+                    -webkit-box-orient: vertical;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+
+                @if (mapping($layout, main, isFisherPriceNav)==true) or (mapping($layout, main, isRescueHeroes)==true) {
+                    color: mapping($gallery, downloadTileDesc, txtColor);
+                    display: mapping($gallery, downloadTileDesc, txtDisp);
+
+                    @media #{$small-down} {
+                        display: none !important;
+                    }
+
+                    font-size:mapping($gallery, downloadTileDesc, txtFontSize);
+                    margin:mapping($gallery, downloadTileDesc, margin);
+                }
+            }
+
+            ul {
+                &>li {
+                    margin-bottom: em(10);
+
+                    a {
+                        margin: 5px;
+                        color: $white;
+
+                        @media #{$medium-down} {
+                            margin: 0;
+                        }
+
+                        .gallery-image {
+                            background-color: transparent;
+                        }
+                    }
+
+                    .hover-overlay {
+                        position: absolute;
+                        top: 0em;
+                        left: 0;
+                        bottom: 0;
+                        right: 0;
+                        background: rgba(95, 37, 159, .5);
+                        z-index: 99;
+                        opacity: 0; //@include css3(transform, scale(1.1));
+                        // border-radius:50%;
+                        width: 100%;
+                        margin: auto;
+                        @include transition(350ms ease);
+
+                        button {
+                            //@include center();
+                            -webkit-transform: translate(-50%, -50%);
+                            -moz-transform: translate(-50%, -50%);
+                            -ms-transform: translate(-50%, -50%);
+                            -o-transform: translate(-50%, -50%);
+                            transform: translate(-50%, -50%);
+                            top: 50%;
+                            left: 50%;
+                            position: absolute;
+                            padding: .5em;
+                            font-family: ArialBold, Arial, sans-serif;
+                            font-size: em(12);
+                            letter-spacing: 1px;
+                        }
+                    }
+
+                    &:hover {
+                        .hover-overlay {
+                            opacity: 1;
+                        }
+                    }
+                }
+            }
+
+            @if mapping($layout, main, isFisherPriceNav)==true {
+                background-color: mapping($gallery, download, labelBgColor);
+
+                h2 {
+                    color: mapping($gallery, download, labelColor);
+                    font-size: mapping($gallery, download, labelFontSize);
+                    //font-family: mapping($gallery,download,labelFontFamily);
+                    font-weight: mapping($gallery, download, LabelFontWeight);
+                    line-height: mapping($gallery, download, LabelLineHeight);
+
+                    @media #{$medium-up} {
+                        font-size: mapping($gallery, download, labelFontSizeDesk);
+                        font-weight: mapping($gallery, download, LabelFontWeightDesk);
+                    }
+                }
+            }
+        }
+
+        @if mapping($gallery, download, isImageWidthAuto)==true {
+            .gallery-image {
+                display: inline-block;
+
+                img {
+                    width: auto;
+                }
+            }
+        }
+
+        @if mapping($gallery, download, isColConfigTrue)==true {
+
+            //@extend .gallery-extnd-tile;
+            ul {
+                &>li {
+
+                    // clear: none !important;
+                    @if(map-get($gallery, downloadListCol)) {
+                        position: relative;
+                        min-height: 1px;
+                        padding-left: 15px;
+                        padding-right: 15px;
+                        z-index: 1;
+                        width: map-get($col, mapping($gallery, downloadListCol, mobItem));
+
+                        @media #{$small-up} {
+                            width: map-get($col, mapping($gallery, downloadListCol, tabItem));
+                        }
+
+                        @media #{$large-up} {
+                            width: map-get($col, mapping($gallery, downloadListCol, desItem));
+                        }
+
+                        @media #{$small-up} {
+                            @media #{$large-down} {
+                                $tabItem: if(mapping($gallery, downloadListCol, tabItemToShow), mapping($gallery, downloadListCol, tabItemToShow), mapping($gallery, downloadListCol, itemToShow));
+
+                                &:nth-of-type(1n+#{$tabItem+1}) {
+                                    display: none;
+                                }
+                            }
+                        }
+
+                        @media #{$large-up} {
+                            &:nth-of-type(1n+#{mapping($gallery, downloadListCol, itemToShow)+1}) {
+                                display: none;
+                            }
+                        }
+
+                        @media #{$small-down} {
+                            $mobItem: if(mapping($gallery, downloadListCol, mobItemToShow), mapping($gallery, downloadListCol, mobItemToShow), mapping($gallery, downloadListCol, itemToShow));
+
+                            &:nth-of-type(1n+#{$mobItem+1}) {
+                                display: none;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        &.plp-tiles {
+            ul>li {
+                text-align: mapping($gallery, plpDownload, tileLiTxtAlign);
+
+                @media #{$small-down} {
+                    width: mapping($gallery, plpDownload, widthMob);
+                    padding-left: mapping($gallery, plpDownload, imgPadLeft);
+                    padding-right: mapping($gallery, plpDownload, imgPadRight);
+                }
+
+                .character-label {
+                    padding: mapping($gallery, plpDownload, charLablPad);
+
+                    h2 {
+                        font-size: mapping($gallery, plpDownload, titleFontSize);
+                        text-align: mapping($gallery, plpDownload, titleTxtAlign);
+                        padding: mapping($gallery, plpDownload, titlePad);
+                        margin: 15px 0px 8px 0px;
+
+                        @media #{$small-up} {
+                            font-size: mapping($gallery, plpDownload, titleFontSizeDesk);
+                            line-height: mapping($gallery, plpDownload, titleLineHeightDesk);
+                        }
+
+                        @media #{$small-down} {
+                            margin-bottom: mapping($gallery, plpDownload, mobTitleMargin);
+                        }
+                    }
+
+                    p {
+                        @if mapping($layout, main, isFisherPriceNav)==true {
+                            margin: 0;
+                        }
+
+                        margin:mapping($gallery, plpDownload, descMargin);
+                        text-align:mapping($gallery, plpDownload, descTxtAlign);
+
+                        @media #{$small-down} {
+                            display: mapping($gallery, plpDownload, descDisp);
+                        }
+                    }
+                }
+
+                .btn-primary {
+                    min-width: 150px;
+                    margin-top: 10px;
+
+                    @if mapping($layout, main, isFisherPriceNav)==true {
+                        margin-bottom: 0px;
+                    }
+                }
+            }
+        }
+
+        padding: 25px 20px 0;
+
+        @media #{$small-down} {
+            padding-top: 30px;
+        }
+    }
+
+    .gallery-title {
+        @if mapping($layout, main, isFisherPriceNav)==true {
+            background-color: mapping($gallery, download, fpDownloadTitleBgColor);
+            padding: em(9) em(40);
+            margin-bottom: em(20);
+
+            @media #{$small-down} {
+                margin-bottom: 0;
+            }
+        }
+
+        h2 {
+            @if mapping($gallery, download, isDefaultHeadingFont)==true {
+                @extend .page-heading-font;
+            }
+
+            -webkit-text-stroke-width: mapping($gallery, download, strokeWidth);
+            -webkit-text-stroke-color: mapping($gallery, download, strokeColor);
+
+            /*@if mapping($gallery,download,istextShadow){
+                    text-shadow: 4px 0 0 #001f3f, -3.2px 0 0 #343479, 0 2.5px 0 #343479, 0 -2.5px 0 #343479, 1.5px 1.5px 0 #343479, -1.5px -1.5px 0 #343479, 1.5px -1.5px 0 #343479, -1.5px 1.5px 0 #343479;
+                }*/
+            @media #{$small-down} {
+                -webkit-text-stroke-width: mapping($gallery, download, strokeMobWidth);
+            }
+
+        }
+
+        p {
+            @if mapping($gallery, download, isDefaultHeadingFont)==true {
+                @extend .page-heading-font;
+            }
+        }
+
+        &+.gallery-tile {
+            padding-top: 0;
+        }
+    }
+}
+
+.play-tiles-gallery {
+    &.play-download {
+        @if mapping($layout, main, isRescueHeroes)==true {
+            &.global-causes {
+                background-color: mapping($globalCauses, main, wrapBgColor);
+
+                .gallery-title {
+                    margin: mapping($globalCauses, titleblk, titleBlkMargin);
+
+                    h2 {
+                        color: mapping($globalCauses, title, titleTxtColor);
+                    }
+
+                    p {
+                        color: mapping($globalCauses, desc, descTxtColor);
+                        line-height: 1.42857em;
+
+                        @media #{$small-down} {
+                            margin: mapping($globalCauses, desc, descMargin);
+                        }
+                    }
+                }
+
+                .gallery-tile {
+                    ul>li {
+                        a {
+                            background-color: mapping($globalCauses, listlink, liAnchorBgColor);
+                            margin: mapping($globalCauses, listlink, liAnchorMargin);
+
+                            @media #{$small-down} {
+                                margin: mapping($globalCauses, listlink, liAnchorMarginMob);
+                            }
+
+                            padding:mapping($globalCauses, listlink, liAnchorPadding);
+                            border-radius:mapping($globalCauses, listlink, liAnchorBorderRadius);
+
+                            .gallery-image {
+                                background-color: mapping($globalCauses, ListLinkImage, imgBlkBgcolor);
+
+                                img {
+                                    max-width: mapping($globalCauses, ListLinkImage, imgMaxWidth);
+                                    width: mapping($globalCauses, ListLinkImage, imgWidth);
+                                    display: mapping($globalCauses, ListLinkImage, imgDisplay);
+                                }
+                            }
+
+                            .character-label {
+                                &.tile-content {
+                                    h2 {
+                                        font-size: mapping($globalCauses, listlinkLabel, titleFontSize);
+                                        height: mapping($globalCauses, listlinkLabel, titleHeight);
+                                        line-height: mapping($globalCauses, listlinkLabel, titleLineheight);
+                                        margin: mapping($globalCauses, listlinkLabel, titleMargin);
+                                        padding: mapping($globalCauses, listlinkLabel, titlePadding);
+                                        color: mapping($globalCauses, listlinkLabel, titleColor);
+                                    }
+
+                                    p {
+                                        font-size: mapping($globalCauses, listlinkLabel, descFontSize);
+                                        height: mapping($globalCauses, listlinkLabel, descHeight);
+                                        line-height: mapping($globalCauses, listlinkLabel, descLineheight);
+                                        color: mapping($globalCauses, listlinkLabel, descPadding);
+                                        margin: mapping($globalCauses, listlinkLabel, descColor);
+                                    }
+
+                                }
+                            }
+
+                            &:hover,
+                            &:focus,
+                            &.active {
+                                img {
+                                    opacity: 1 !important;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            padding:mapping($gallery, downloadGalWrapper, pad);
+
+            @media #{$medium-down} {
+                padding: mapping($gallery, downloadGalWrapper, padTab);
+            }
+
+            @media #{$small-down} {
+                padding: mapping($gallery, downloadGalWrapper, padMob);
+
+                .show-more {
+                    padding-top: 20px;
+                }
+            }
+
+            &.global-team {
+                padding: 0;
+
+                .gallery-title {
+                    padding: 100px 0 40px;
+                    background-image: url('#{$brandImgPath}/bg-image/GlobalTeamBG.jpg');
+                    background-repeat: no-repeat;
+                    background-position: center center;
+                    background-size: cover;
+                }
+
+                .gallery-tile {
+                    background: $black;
+                    padding: 0 10px;
+
+                    @media #{$medium-down} {
+                        padding: 0;
+                    }
+
+                    ul>li {
+                        @media #{$small-down} {
+                            border-bottom: 4px solid #f7f7f7;
+
+                            &:nth-child(4n) {
+                                border-bottom: 0px;
+                            }
+
+                            &:nth-child(5n) {
+                                border-top: 4px solid #f7f7f7;
+                            }
+
+                            &:last-child {
+                                border-bottom: 0px;
+                            }
+                        }
+
+                        a {
+                            margin: 20px 10px;
+
+                            @media #{$medium-down} {
+                                margin: 20px;
+                            }
+
+                            .character-label {
+                                h2 {
+                                    color: $white;
+                                }
+
+                                p {
+                                    color: $white;
+                                }
+                            }
+
+                            &:hover,
+                            &:focus,
+                            &.active {
+                                img {
+                                    opacity: 1 !important;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .show-more {
+                    background-color: #212B31;
+                    padding: 40px 0;
+                }
+            }
+
+        }
+
+        .gallery-title {
+            h2 {
+                font-size: mapping($gallery, download, labelMobSize);
+            }
+        }
+    }
+}
+
+.play-games {
+    .gallery-tile {
+        ul {
+            padding: 30px;
+
+            &>li {
+                padding: 25px;
+
+                a {
+                    margin: 0;
+
+                    span {
+                        text-align: center;
+                        background-color: $violet;
+                        color: $white;
+                        font-size: em(14);
+                        font-family: "Arial", sans-serif;
+                        padding: em(12);
+                    }
+                }
+            }
+        }
+    }
+}
+
+.play-tiles-gallery {
+    .gallery-tile {
+        .play-list {
+            li {
+                a {
+                    margin: 0;
+                    /*&:hover{
+						.gallery-image{
+							img{  
+								opacity: mapping($gallery, gallerytileImage, playOpacity);
+								background-color: mapping($gallery, gallerytileImage, playBgColor);
+							}
+						}
+					} */
+
+                    span {
+                        font-size: 1em;
+                        font-family: "Arial", sans-serif;
+                        padding: em(12);
+                        color: $white;
+                        background-color: $violet;
+                    }
+
+                    .playing-overlay {
+                        background-color: rgba(0, 0, 0, 0.7);
+
+                        span {
+                            color: $violet;
+                            background-color: $white;
+                            padding: em(7);
+                        }
+
+                        // .play-icon{
+                        //     i{
+
+                        //     }
+                        // }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.videos-gallery-playlist {
+    @if mapping($layout, main, isfisherprice)==true {
+        background: mapping($gallery, fpVideoGal, bgnd);
+    }
+
+    .play-tiles-gallery .gallery-tile {
+        @extend .gallery-extnd-tile;
+
+    }
+}
+
+.videos-gallery,
+#videos-gallery {
+    .play-tiles-gallery .gallery-tile li {
+        @media #{$medium-only} {
+            @if mapping($gallery, defaultListCol, tabItem)==5 {
+                width: 50%;
+            }
+
+        }
+    }
+}
+
+.play-tiles-gallery {
+    .gallery-title {
+
+        h2,
+        h1 {
+            color: #000000;
+            font-size: 48px;
+            font-weight: 500;
+            line-height: 29px;
+            text-align: center;
+            margin-top: .5em;
+            margin-bottom: .5em;
+            font-family: $mattelGamesPrimaryFontMedium;
+
+            @media #{$small-down} {
+                font-size: 28px;
+                text-align: center;
+            }
+        }
+    }
+}
+
+.products-gallery-list {
+    .play-tiles-gallery {
+        .show-more {
+            a {
+                border-radius: 120px 100px 100px 0 !important;
+                background-color: #ee0024 !important;
+                width: auto !important;
+                display: inline-block !important;
+                padding: 15px 30px !important;
+                color: #fff !important;
+
+                &:hover,
+                &:focus,
+                &.active {
+                    background-color: #c5001e !important;
+                }
+            }
+        }
+
+        .category-title {
+            &.filtered-heading-name {
+                padding: 40px 40px 0;
+
+                @media #{$small-down} {
+                    padding: 30px 20px 0;
+                }
+
+                h2 {
+                    color: #000000;
+                    font-family: $mattelGamesPrimaryFontMedium;
+                    font-size: 30px;
+                    font-weight: 500;
+                    letter-spacing: 0.26px;
+                    line-height: 40px;
+                    text-align: left;
+                    display: block !important;
+                    margin: 0;
+
+                    &:empty {
+                        display: none !important;
+                    }
+
+                    @media #{$small-down} {
+                        font-size: 28px;
+                        letter-spacing: 0.24px;
+                        line-height: 33px;
+                        text-align: center;
+                    }
+                }
+            }
+        }
+
+        .gallery-tile {
+            @media #{$small-up} {
+                padding-left: 40px;
+                padding-right: 40px;
+            }
+        }
+    }
+}
+
+.video-page-title {
+    h2 {
+        color: #000000;
+        font-size: 48px;
+        font-weight: 500;
+        letter-spacing: 0.41px;
+        line-height: 56px;
+        text-align: center;
+        font-family: $mattelGamesPrimaryFontMedium;
+
+        @media #{$small-down} {
+            font-size: 22px;
+        }
+    }
+}
+
+.videos-gallery-playlist {
+    .play-tiles-gallery {
+        .gallery-tile {
+            ul>li {
+                a {
+                    span {
+                        color: #000000;
+                        font-size: 30px;
+                        font-weight: 500;
+                        letter-spacing: 0.26px;
+                        line-height: 40px;
+                        background-color: #fff;
+                        padding-left: 10px;
+                    }
+
+                    .gallery-image:before {
+                        content: "";
+                        background: white;
+                        position: absolute;
+                        top: calc(50% - 35px);
+                        left: 50%;
+                        width: 115px;
+                        height: 64px;
+                        -webkit-transform: translate(-50%);
+                        transform: translate(-50%);
+                        opacity: 1;
+                        border-radius: 74px 100px 100px 0;
+                    }
+                }
+
+            }
+
+        }
+    }
+}
+
+.footer-wrapper {
+    .play-tiles-gallery {
+        .gallery-title {
+            h2 {
+                font-size: 20px;
+            }
+        }
+    }
+}
+
+.product-gallery-module {
+    .product-content-wrapper {
+        .product-description {
+            font-family: "neue-haas-unica", sans-serif;
+
+            .retailers-list {
+                border-radius: 120px 100px 100px 0 !important;
+                background-color: #ee0024 !important;
+                width: auto !important;
+                display: inline-block !important;
+                padding: 15px 40px 15px 28px !important;
+                color: #fff !important;
+                font-family: Arial;
+                font-size: 18px;
+                text-transform: initial;
+                line-height: 21px !important;
+                margin-top: 30px;
+                min-width: 188px;
+                text-align: left;
+                position: relative;
+
+                &.theme-btn {
+                    margin-top: 20px;
+
+                    @media #{$small-down} {
+                        margin-bottom: 0;
+                    }
+                }
+
+                @media #{$medium-down} {
+                    font-size: 16px;
+                }
+
+                &:hover,
+                &:focus,
+                &.active {
+                    background-color: #c5001e !important;
+                }
+
+                &::after {
+                    content: "\f0a9";
+                    font-family: "Font Awesome", sans-serif;
+                    font-weight: 900;
+                    -webkit-font-smoothing: antialiased;
+                    display: inline-block;
+                    font-style: normal;
+                    font-variant: normal;
+                    text-rendering: auto;
+                    vertical-align: middle;
+                    line-height: 18px !important;
+                    position: relative;
+                    top: 0;
+                    background: 0 0;
+                    font-size: 18px;
+                    position: absolute;
+                    right: 11px;
+                    top: 48%;
+                    transform: translateY(-50%);
+                }
+            }
+        }
+    }
+}
+
+.categoryFilter {
+    background-color: #FBD635;
+
+    .nav-carousel-slides {
+        .owl-stage {
+            width: auto !important;
+
+            li {
+                a {
+                    font-size: 16px;
+                    font-family: $mattelGamesPrimaryFontMedium;
+                    border-radius: 100px 100px 100px 0;
+                    background-color: #FFFFFF;
+                    padding: 10px 25px;
+                    color: #000000;
+                    line-height: 18px;
+
+                    &:hover,
+                    &:focus,
+                    &.active {
+                        //@debug: #000;                        
+                        color: #fff;
+                        background: #000;
+
+                        @media #{$small-down} {
+                            color: #000;
+                            background: #E8E8E8;
+                        }
+                    }
+                }
+
+
+            }
+        }
+    }
+}
+
+.play-tiles-gallery {
+    .show-more {
+        a {
+            border-radius: 120px 100px 100px 0 !important;
+            background-color: #ee0024 !important;
+            width: auto !important;
+            display: inline-block !important;
+            padding: 15px 30px !important;
+            color: #fff !important;
+
+            &:hover,
+            &:focus,
+            &.active {
+                background-color: #c5001e !important;
+            }
+        }
+    }
+}
+
+.interstitialApp{
+    .modal{
+        padding-right: 0 !important;
+    }
+    .modal-dialog{
+        @media #{$large-up} {
+            width: 825px;
+        }
+        @media #{$small-down} {
+            margin: 50px 10px;
+        } 
+    }
+}
+.retailerInterstitial {
+    .modal-dialog{
+        @media #{$large-up} {
+            width: 825px !important;
+        }
+        .play-retailers .gallery-tile ul>li{
+            @media #{$large-down} {
+                 width: 100%;
+                 padding: 0 20px !important;
+                 text-align: center;
+            }
+        }
+    }
+    .modal-content {
+        border-radius: 0;
+        border: 0;
+
+        .modal-header {
+            border: 0;
+
+            .modal-title {
+                font-size: 1.5em;
+                text-align: center;
+            }
+
+            .close {
+                margin-top: -10px;
+                // color: #fff;
+                // background-color: #ff0000;
+                background: url("/content/dam/toy-box/mattel-games/global/Mattel-Games_interstitial_X.png");
+                background-repeat: no-repeat;
+                opacity: 1;
+                width: 30px;
+                height: 30px;
+                font-size: 19px;
+                border-radius: 20px;
+
+                &::after {
+                    // content: "\f00d";
+                    content : "";
+                    font-family: 'Font Awesome', sans-serif;
+                    font-weight: 900;
+                    -webkit-font-smoothing: antialiased;
+                    display: inline-block;
+                    font-style: normal;
+                    font-variant: normal;
+                    text-rendering: auto;
+                    line-height: 1;
+                    vertical-align: middle;
+                    color: #fff;
+                    font-size: 20px;
+                    // font-weight: 400;
+                    text-shadow: none;
+                    opacity: 1;
+                }
+            }
+
+        }
+
+        .modal-body {
+            border-bottom: 10px solid #FBD635;
+            padding-top: 0;
+
+            p {
+                text-align: center;
+                @media #{$large-down} {
+                    margin: 0 25px;
+                    line-height: 33px;
+                    
+                }
+
+                strong {
+                    color: #000000;
+                    font-family: $mattelGamesPrimaryFontMedium;
+                    font-size: 30px;
+                    font-weight: 500;
+                    letter-spacing: 0.26px;
+                    line-height: 40px;
+                    text-align: center;
+                }
+            }
+
+            .play-retailers {
+                background-color: #fff !important;
+
+                .gallery-tile {
+                    @media #{$large-up} {
+                        margin-top: 20px;
+                    }
+
+                    ul {
+                        padding: 0 1em !important;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.play-tiles-gallery {
+    .gallery-tile {
+        ul>li a {
+            span.btn-primary {
+                font-size: 18px;
+
+                @media #{$small-down} {
+                    font-size: 16px;
+                }
+
+                border-radius: 120px 100px 100px 0 !important;
+                background-color: #ee0024 !important;
+                width: auto !important;
+                font-family: Arial !important;
+                text-transform: initial !important;
+                min-width: 198px;
+                font-weight: bold;
+                line-height: 21px;
+
+                &:hover,
+                &:focus,
+                &.active {
+                    background-color: #C5001E !important;
+                    color: #fff !important;
+                    border: 0px;
+                }
+
+                &::after {
+                    content: "\f0a9";
+                    font-family: "Font Awesome", sans-serif;
+                    font-weight: 900;
+                    -webkit-font-smoothing: antialiased;
+                    display: inline-block;
+                    font-style: normal;
+                    font-variant: normal;
+                    text-rendering: auto;
+                    // line-height: 1;
+                    vertical-align: middle;
+                    line-height: 18px !important;
+                    position: absolute;
+                    top: 11px;
+                    margin-left: 0;
+                    background: 0 0;
+                    float: right;
+                    font-size: 18px;
+                    right: 11px;
+                }
+
+            }
+        }
+    }
+
+}
+
+/*Cards Page Show All*/
+#page-content {
+    .play-tiles-gallery .gallery-tile ul>li.column-4:nth-of-type(1n+5) {
+        display: block;
+    }
+
+    .cards-gallery.more-games {
+        .play-tiles-gallery .gallery-tile ul>li.column-4:nth-of-type(1n+5) {
+            display: none;
+        }
+    }
+}
+
+/*Extra nav below filter*/
+.owl-nav {
+    display: none;
+}
+
+#pagename-home {
+    .downloadImageGallery {
+        &:nth-child(1n) {
+            .gallery-tile {
+                li {
+                    @media #{$small-down} {
+                        padding: 10px 0px;
+                    }
+                    &>a{
+                        @media #{$small-down} {
+                            display: flex;
+                            flex-direction: column;
+                            height: 100%;
+                        }
+                        span.btn-primary.buynow-overlay-txt{
+                            @media #{$small-down} {
+                                margin-top: auto;
+                            }
+                        }
+                    }
+                }
+
+                .tile-content {
+                    h2 {
+                        font-size: 25px;
+
+                        @media #{$small-down} {
+                            font-size: 18px;
+                        }
+
+                        /*display: none;*/
+                    }
+                    @media #{$small-down} {
+                        height: auto !important;
+                    }
+                    .character-hint {
+                        @media #{$small-down} {
+                            margin-bottom: 20px;
+                        }
+                        p {
+                            font-size: 30px !important;
+                            display: block !important;
+                            letter-spacing: 0.26px !important;
+                            line-height: 40px !important;
+                            font-weight: bold !important;
+                            font-family: $mattelGamesPrimaryFontMedium;
+                            color: #000;
+                            @media #{$small-down} {
+                                font-size: 18px !important;
+                                letter-spacing: 0.16px !important;
+                                line-height: 21px !important;
+                            }
+                        }
+                    }
+
+                }
+            }
+        }
+
+        &:nth-child(9n),
+        &:nth-child(10n) {
+            .character-label {
+                background-color: #ffffff;
+                padding: 5px 5px;
+                height: auto !important;
+
+            }
+        }
+    }
+}
+
+#pagename-play-games {
+    .downloadImageGallery {
+        .play-tiles-gallery {
+            .gallery-tile {
+                ul {
+                    li {
+                        @media #{$small-down} {
+                            padding: 10px 0px;
+                        }
+
+                    }
+                }
+            }
+        }
+    }
+}
+
+/*PDP Page Styles*/
+.online-game-download {
+    .play-tiles-gallery {
+        background: white;
+
+        .gallery-title {
+            padding-bottom: 0;
+            margin-bottom: 0;
+            background: white;
+            padding-top: 0;
+
+            h2,
+            h1 {
+                font-family: 'Mattel Founders Medium', sans-serif;
+                margin-bottom: 10px;
+                margin-top: 30px;
+
+                @media #{$small-up} {
+                    margin-bottom: 5px;
+                    margin-top: 40px;
+                }
+            }
+        }
+
+        .gallery-tile {
+            ul {
+                display: block;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+
+                li {
+                    @media #{$small-down} {
+                        width: 100%;
+                    }
+                    &:nth-of-type(2n+0) {
+                        @media #{$small-down} {
+                            padding: 10px 0 0 0;
+                        }
+
+                    }
+
+                    &:nth-of-type(2n+1) {
+                        @media #{$small-down} {
+                            padding: 0;
+                            padding-bottom: 20px;
+                        }
+                    }
+
+                    .btn.btn-primary.buynow-overlay-txt {
+                        text-align: left;
+                        line-height: 18px;
+                        font-weight: bold;
+                        min-width: 183px;
+                        padding-left: 18px;
+                        padding-right: 30px;
+                        font-size: 16px;
+                        position: relative;
+                        margin-top: 0;
+                    } 
+                    &.column-2{
+                        @media #{$small-up}{
+                            width: initial;
+
+                            a {
+                                width: 250px;
+                            }
+                        }
+
+                        &:nth-of-type(odd) {
+                            @media #{$small-up} {
+                                a {
+                                    margin-left: 0;
+                                    margin-right: 42px;
+                                }
+                            }
+                        }
+
+                        &:nth-of-type(even) {
+                            @media #{$small-up} {
+                                a {
+                                    margin-left: 42px;
+                                    margin-right: 0;
+                                }
+                            }
+                        }
+
+                        a {
+                            .character-label {
+                                height: auto !important;
+                                h2{
+                                    margin-top: 7px !important;
+                                    margin-bottom: 20px !important;
+                                    font-family: $mattelGamesPrimaryFontMedium;
+                                    font-size: 25px;
+                                    font-weight: 500;
+                                    letter-spacing: 0.22px;
+                                    line-height: 29px;
+
+                                    @media #{$small-down} {
+                                        font-size: 18px;
+                                        letter-spacing: 0.16px;
+                                        line-height: 21px;
+                                        margin-bottom: 10px !important;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.cards-gallery {
+    .play-tiles-gallery {
+        .gallery-title {
+            padding-top: 40px;
+            padding-bottom: 10px;
+            margin: 0;
+
+            @media #{$small-down} {
+                padding: 30px 20px 20px;
+            }
+
+            h2,
+            h1 {
+                margin: 0;
+            }
+        }
+
+        .gallery-tile {
+            ul {
+                .character-label.tile-content {
+                    height: auto !important;
+
+                    h2 {
+                        font-size: 25px !important;
+                        letter-spacing: 0.22px;
+                        line-height: 29px;
+                        font-weight: 500;
+                        font-family: $mattelGamesPrimaryFontMedium;
+
+                        @media #{$medium-down} {
+                            font-size: 18px !important;
+                            letter-spacing: 0.16px;
+                            line-height: 21px;
+                        }
+                    }
+
+                }
+            }
+        }
+        @media #{$small-up} {
+            padding-bottom: 25px;
+        }
+        .show-more a{
+            @media #{$small-up} {
+                margin-bottom: 15px;
+            }
+        }
+    }
+
+    .show-more {
+        display: block;
+    }
+    &+.cards-gallery{
+        .play-tiles-gallery {
+            .gallery-tile{
+                @media #{$small-up} {
+                    padding-top: 5px;
+                }
+                ul{
+                    li{
+                        a{
+                            @media #{$small-up} {
+                                margin-top: 0;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+/*Global Styles*/
+.play-tiles-gallery {
+    .gallery-title {
+
+        // background-color: #fff;
+        h2,
+        h1 {
+            font-size: 48px;
+            letter-spacing: 0.41px;
+            line-height: 56px;
+            font-family: $mattelGamesPrimaryFontMedium;
+
+            @media #{$small-down} {
+                font-size: 28px;
+                letter-spacing: 0.24px;
+                line-height: 33px;
+            }
+        }
+    }
+}
+
+.retailer {
+    &:last-child {
+        .play-tiles-gallery {
+            .gallery-title {
+                h2 {
+                    font-size: 48px;
+                    font-weight: 500;
+                    line-height: 56px;
+                    letter-spacing: 0.41px;
+
+                    @media #{$small-down} {
+                        font-size: 28px;
+                        letter-spacing: 0.24px;
+                        line-height: 33px;
+                        margin: 0;
+                    }
+                }
+
+                @media #{$small-down} {
+                    padding-bottom: 0;
+                }
+            }
+            .gallery-tile{
+                margin-bottom: 30px;
+                ul {
+                    &.image-list {
+                        display: inline-block;
+                        margin: 0;
+                        width: 100%;
+
+                        .gallery-image {
+
+                            &:hover,
+                            &:focus,
+                            &.active {
+                                &::after {
+                                    content: none;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+
+    &.card-logos {
+        .gallery-tile {
+            .image-list {
+                @media #{$small-down} {
+                    display: flex;
+                    align-items: center;
+                    max-width: 83.4375%;
+                    margin: auto;
+                    flex-wrap: wrap;
+                }
+                @media #{$large-up} {
+                    display: block;
+                    text-align: center;
+                }
+
+                .fp-brands-6 {
+                    @media #{$large-up} {
+                        width: auto;
+                        padding: 0;
+                        margin: 0 25px;
+                    }
+                    @media #{$small-down} {
+                        padding-left: 0 !important;
+                        padding-right: 0 !important;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.experiencefragment {
+
+    //Copyright Info
+    .title .play-page-title>div{
+        padding:20px 50px;
+        p{
+            margin-top: 0;
+            &+p{
+                margin-top: 10px;  
+            }
+        }
+    }
+
+    //The Mattel Family of Brands Text Styles
+    .retailer {
+        .play-tiles-gallery {
+            .gallery-title {
+
+                h2 {
+                    font-size: 20px !important;
+                    font-weight: 500;
+                    line-height: 23px;
+                    letter-spacing: 0.17px;
+                    font-family: $mattelGamesPrimaryFontMedium;
+                }
+            }
+
+            .gallery-tile {
+                ul {
+                    margin: 0 !important;
+
+                    @media #{$small-up} {
+                        padding: 0 40px;
+                    }
+
+                    @media #{$small-down} {
+                        text-align: left;
+                    }
+
+                    li {
+                        @media #{$small-up} {
+                            padding: 0 10px 20px;
+                            width: auto;
+                            max-width: 170px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.title {
+    &.shop-games-title {
+        .play-page-title {
+            border: 0;
+            background-color: #F7F7F7;
+            &.no-image {
+
+                h1,
+                h2 {
+                    color: #000000 !important;
+                    font-family: $mattelGamesPrimaryFontMedium !important;
+                    font-weight: 500 !important;
+                    letter-spacing: 0.41px !important;
+                    line-height: 56px;
+                    text-align: center !important;
+                    margin-top: 20px;
+                    margin-bottom: 0;
+
+                    @media #{$small-down} {
+                        font-size: 28px;
+                        line-height: 33px;
+                    }
+                }
+
+                p:empty {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+
+
+.shop-games {
+    .gallery-image {
+        background-color: #f7f7f7 !important;
+    }
+
+    .tile-content {
+        height: auto !important;
+        font-weight: 500 !important;
+        letter-spacing: 0.26px !important;
+        line-height: 40px !important;
+    }
+
+    .play-tiles-gallery {
+        &.play-download {
+            @media #{$small-up} {
+                padding-bottom: 20px;
+            }
+        }
+
+        .gallery-tile {
+            @media #{$small-up} {
+                padding-right: 0;
+            }
+            ul{
+                &>li{
+                    @media #{$small-down} {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+
+    &+.shop-games {
+        .play-tiles-gallery {
+            .gallery-tile {
+                @media #{$small-up} {
+                    padding-left: 0;
+                    padding-right: 20px;
+                }
+            }
+        }
+    }
+}
+
+.popular-games {
+    .play-download {
+        &::before {
+            display: table;
+            content: " ";
+        }
+
+        .gallery-title {
+            background-color: #fbd635;
+            margin-bottom: 0;
+            padding-bottom: 0;
+            padding-top: 0;
+
+            h2 {
+                margin-top: 40px;
+                margin-bottom: 5px;
+                font-weight: 500;
+                letter-spacing: 0.41px;
+                line-height: 56px;
+                font-family: $mattelGamesPrimaryFontMedium;
+
+                @media #{$small-only} {
+                    margin-top: 30px;
+                    margin-bottom: 10px;
+                    line-height: 33px;
+                    letter-spacing: 0.24px;
+                }
+            }
+        }
+
+        .gallery-tile {
+            ul {
+                li {
+                    a {
+                        .tile-content {
+                            font-weight: 500 !important;
+                            letter-spacing: 0.22px !important;
+                            line-height: 29px !important;
+                            height: auto !important;
+                            min-height: 50px;
+
+                            @media #{$small-only} {
+                                min-height: initial;
+
+                                h2 {
+                                    margin-bottom: 0;
+                                    margin-top: 3px;
+                                }
+                            }
+
+                        }
+                    }
+                }
+            }
+        }
+
+        .view-all {
+            margin-top: 0 !important;
+        }
+    }
+}
+
+.online-games-list {
+    .gallery-title {
+        background-color: #fbd635 !important;
+        margin-bottom: 0 !important;
+        padding-bottom: 0 !important; 
+        @media #{$small-down}{
+            padding-top: 20px;
+        }       
+        h2,h1{
+            line-height: 56px;
+            letter-spacing: 0.41px;
+            font-family: $mattelGamesPrimaryFontMedium;
+            font-weight: 500;
+            margin-bottom: 20px;
+            @media #{$small-down}{
+                font-size: 32px;
+                letter-spacing: 0.28px;
+                line-height: 40px;
+                margin-top: 0;
+            }
+        }
+        p{
+            &:empty{
+                display: none;
+            }
+        }
+
+    }
+
+    .gallery-tile {
+        padding: 0 30px;
+        ul{
+            li{
+                a{
+                    @media #{$small-up}{
+                        margin-top: 0;
+                        margin-bottom: 40px;
+                    }
+                }
+                @media #{$small-down}{
+                    padding-bottom: 20px !important;
+                    padding-top: 0 !important;
+                }
+            }
+        }
+        .tile-content
+        {
+            background-color: #ffffff;
+            padding: 5px 5px;
+            height: auto !important;
+            @media #{$small-down} {
+               padding-left: 11px;
+            }
+            h2 {
+                //font-family: "Mattel Founders",sans-serif !important;
+                font-family: 'Mattel Founders Medium', sans-serif !important;
+                font-size: 30px !important;
+                font-weight: 500 !important;
+                letter-spacing: 0.26px !important;
+                line-height: 40px !important;
+                margin: 0 15px !important;
+
+                @media #{$small-down} {
+                    font-size: 18px !important;
+                    letter-spacing: 0.16px !important;
+                    line-height: 21px !important;
+                    margin: 0 !important;
+                }
+            }
+        }
+    }
+    &+.online-games-list {
+        .play-tiles-gallery.play-download{
+            @media #{$small-down}{
+                padding-bottom: 10px;
+            }
+        }
+    }
+}
+
+.image-text-video-gallery-player-component {
+    .text-block {
+        p {
+            span {
+                font-weight: 500 !important;
+                letter-spacing: 0.26px !important;
+                line-height: 40px !important;
+            }
+        }
+    }
+}
+
+/*-------Old Code---------
+#pagename-uno{
+    .play-tiles-gallery{
+        .gallery-title{
+            h2{
+                font-size: 48px;
+                @media #{$small-down}{
+                    font-size: 28px;
+                }
+            }
+        } 
+    } 
+    .downloadImageGallery
+    {
+        .play-tiles-gallery 
+        {
+            .gallery-tile{
+                ul {                        
+                    .character-label.tile-content{
+                        h2{
+                            font-size: 25px;
+                            @media #{$medium-down}{
+                                font-size: 18px;
+                            }
+                        }
+                        li{                            
+                            &:nth-of-type(2n+0){
+                                @media #{$small-down}{
+                                    padding:0;
+                                }
+                                
+                            }
+                            &:nth-of-type(2n+1){
+                                @media #{$small-down}{
+                                    padding:10px 0 0 0;
+                                }                                
+                            }
+                        }
+                    }
+                }
+            } 
+        }
+    }
+    
+    .downloadImageGallery { 
+    &:nth-child(6)
+    {
+        .play-tiles-gallery 
+        {
+            .gallery-tile{
+                ul {
+                    display: block;
+                    width: 40%;
+                    margin: auto;
+                     @media #{$small-down}
+                     {
+                         width: 100%;
+                     }                    
+                }
+            } 
+        }
+    }
+    }
+}
+*/
+.products-landing-component {
+    background: #F7F7F7;
+
+    .products-gallery-list {
+        .play-products .gallery-tile ul>li a span {
+            background: transparent;
+        }
+    }
+}
+
+.mattel-home-page {
+    .retailer.card-logos {
+        &+.downloadImageGallery {
+            .play-tiles-gallery{
+                background: white;
+                .gallery-title {
+                    padding: 40px 40px 10px;
+                    margin: 0;
+                    background: white;
+                    h2,
+                    h1 {
+                        margin: 0;
+                        padding: 0;
+                    }    
+                    @media #{$small-down} {
+                        padding: 30px 20px 5px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.interstitialApp {
+    .modal-dialog {
+        .modal-content {
+            border-bottom: 10px solid #FBD635;
+
+            .modal-header {
+                padding: 0;
+                border: 0;
+
+                a {
+                    &:empty {
+                        display: none;
+                    }
+
+                    padding: 15px;
+                }
+
+                button {
+                    &.close {
+                        background: url("/content/dam/toy-box/mattel-games/global/Mattel-Games_interstitial_X.png");
+                        background-repeat: no-repeat;
+                        opacity: 1;
+                        position: absolute;
+                        right: 11px;
+                        margin-top: 0;
+                        top: 11px;
+                        height: 30px;
+                        width: 30px;
+                
+                        &::before {
+                            // content: "\f057";
+                            content: "";
+                            height: 29.07px;
+                            width: 29.07px;
+                            font-family: "Font Awesome", sans-serif;
+                            color: #EE0024;
+                            font-size: 29px;
+                        }
+                    }
+                }
+            }
+
+            .modal-body {
+                padding-top: 0;
+                margin-top: 40px;
+
+                @media #{$small-down} {
+                    margin-top: 50px;
+                }
+
+                p {
+                    @media #{$large-down} {
+                        margin: 0 40px;
+                    }
+                    margin: 0 0 10px 0;
+                    text-align: center;
+                    color: #000000;
+                    font-family: $mattelGamesSecondaryFont;
+                    font-size: 16px;
+                    line-height: 27px;
+                    text-align: center;
+                }
+
+                .play-tiles-gallery.play-retailers {
+                    background: white;
+
+                    .gallery-tile {
+                        ul {
+                            justify-content: center;
+
+                            li {
+                                width: auto;
+                                max-width: 200px;
+                                margin-left: 10px;
+                                margin-right: 10px;
+                                padding: 0 !important;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.play-download {
+    .gallery-tile {
+        .character-label {
+            h2 {
+                @media #{$large-up} {
+                    margin-top: 0 !important;
+                    margin-bottom: 0 !important;
+                }
+            }
+        }
+    }
+}
+
+.popular-games {
+    .view-all {
+        margin-bottom: 0 !important;
+
+        a.btn-view-all {
+            font-family: Arial !important;
+            font-size: 18px !important;
+        }
+    }
+}
+
+.cards-gallery {
+    .play-download {
+        .gallery-tile {
+            background-color: #f7f7f7;
+        }
+    }
+}
+
+.online-games-list {
+    .play-download {
+        margin-bottom: -1px !important;
+    }
+}
+
+.retailer {
+    .play-retailers {
+        .gallery-tile {
+            .image-list {
+                .fp-brands-4 {
+                    a {
+                        &:hover {
+                            .gallery-image {
+                                position: relative;
+
+                                &::after {
+                                    content: "";
+                                    position: absolute;
+                                    top: 0;
+                                    left: 0;
+                                    width: 100%;
+                                    height: 100px;
+                                    background-color: #000000;
+                                    opacity: 0.22;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.shop-games {
+    .gallery-tile {
+        ul {
+            li {
+                .character-label {
+                    h2 {
+                        @media #{$small-down} {
+                            font-weight: bold !important;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.products-gallery-list {
+    #play-products {
+        .gallery-tile {
+            ul.product-list {
+                li {
+                    a {
+                        .tile-content {
+                            @media #{$small-down} {
+                                padding: 0px 10px 10px 10px;
+                                height: 30px !important;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

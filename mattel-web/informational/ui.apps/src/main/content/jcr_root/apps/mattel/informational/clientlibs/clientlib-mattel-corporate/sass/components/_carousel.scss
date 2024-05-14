@@ -1,0 +1,216 @@
+.corporate-basepage {
+	.carouselContainer:not(.carousel) {    
+        &.fullbleed{
+            .flexible-carousel-component{
+                .slider-content{
+                    &.grid-column-one, &.grid-column-extra{
+                        .wrap-dots-section{
+                            bottom: 20px;
+                            @media #{$xsmall-down} {
+                                margin-bottom: 9px;
+                            }
+                            .play-pause-button {
+                                position: relative;
+                                top: 5px;
+                            }
+                        }
+                    }
+                    &.grid-column-extra{
+                        .wrap-dots-section{
+                            bottom: -30px;
+                        }
+                    }
+
+                }
+            }
+        }   
+        
+		.flexible-carousel-component {       
+			.slick-dots {
+				position: absolute;
+				bottom: 0;
+				margin: 0;         
+            }
+            .slick-slide {
+                .card-component {
+                    .image-container {
+                        margin-bottom: 0;
+                        @media #{$small-down} {
+                            margin-bottom: 8px;
+                        }
+                    }
+                }
+            }
+            .slider-content{                
+                &.grid-column-extra {
+                    .slick-slide {
+                        margin: 0 10px;
+                        /*@media #{$small-up} {
+                            margin: 0 10px;
+                        }*/
+                    }
+                    .slick-dots {
+                        bottom: -33px;
+                    }
+                }
+            }   
+            .carousel-text-container {
+                .text-container{
+                    h5 {
+                        margin-bottom: 0;
+                    }
+                    .text-para {
+                        font-size: 16px;
+                        margin-top: 0;
+                        line-height: 24px;
+                        @media #{$xsmall-down} {
+                            margin-bottom: 10px;
+                        }
+                    }
+                    p {
+                        &:last-of-type {
+                            margin-bottom: 0;
+                        }
+                    }
+                }
+                
+            }        
+		} 
+        
+        .highlight-active-slide {
+            min-height: 350px;
+            @media #{$small-up} {
+                min-height: 400px;
+            }
+            .flexible-carousel-component {
+                .slick-arrow{
+                    &.slick-prev {
+                        left: -60px;
+                        top: 40%;
+                        @media #{$tablet-mobile} {
+                            left: -35px;
+                        }
+                        @media #{$medium-down} {
+                            top: 30%;
+                        }
+                    }
+                }
+                .slick-arrow{
+                    &.slick-next {
+                        right: -60px;
+                        top: 40%;                        
+                        @media #{$tablet-mobile} {
+                            right: -35px;
+                        }
+                        @media #{$medium-down} {
+                            top: 30%;
+                        }
+                    }
+                }
+                .slick-slide {
+                    .card-component {
+                        .image-container {
+                            margin-bottom: 20px;
+                            @media #{$small-down} {
+                                margin-bottom: 8px;
+                            }
+                        }
+                        .text-container {
+                            padding: 0;
+                            margin: 0;
+                            .main-title {
+                                margin: 0 0 4px 0;
+                            }
+                        }
+                    }
+                }
+                .slick-slide:not(.active-slide) {
+                    .card-component {                        
+                        .text-container {
+                            color: #757575;
+                        }
+                    }                    
+                }
+                .slider-content{
+                    margin-bottom: 50px;
+                    @media #{$xsmall-down} {
+                        margin-bottom: 20px;
+                        margin-left: 0;
+                        margin-right: 0;
+                    }                    
+                } 
+            }
+        }
+		.play-pause-button {
+			button {
+                background-image: url($globalspriteLightPath) !important;
+            }
+		}
+		
+		.flexible-carousel-component {            
+			.slick-arrow {
+				//margin-top:mapping($carouselProp, fullbleedArrow, marginTop);
+				&.slick-prev {
+                    left: 30px;
+					background-position: -167px -171px;
+				}
+				&.slick-next {
+                    right: 30px;
+					background-position: -217px -171px;
+				}
+            }
+            .grid-column-extra{
+                .slick-arrow {
+                    //margin-top:mapping($carouselProp, fullbleedArrow, marginTop);
+                    &.slick-prev {
+                        @media #{$tablet-mobile} {
+                            left: -5px;
+                        }
+                        @media #{$desktop} {
+                            left: -80px;
+                        }
+                    }
+                    &.slick-next {
+                        @media #{$desktop} {
+                            right: -74px;
+                        }
+                        @media #{$tablet-mobile} {
+                            right: -5px;
+                        }
+                    }
+                }
+            }       
+        .slick-slide{
+            .text-container{
+                @media #{$small-down} {
+                    margin-bottom: 20px;
+                }  
+            }
+            &.active-slide{
+                .text-container{
+                    .content{
+                        opacity: 1;
+                        .sub-title{
+                            h4{
+                                span{
+                                    color:$black;
+                                }
+                            }
+                        }
+                        .text-para{
+                            p{
+                                color:$black;
+                            }
+                        }
+                    }
+                }
+            }
+        }               
+    }
+}
+}
+.highlight-active-slide {    
+    &.edit-carousel {
+        visibility: visible !important;
+    }
+}

@@ -1,0 +1,23 @@
+<sly data-sly-test="${wcmmode.edit}">${'Edit DropDown list Component' @i18n}</sly>
+<sly data-sly-use.model="com.mattel.global.core.model.CrmDropDownListModel" />
+<div class="input-field ${properties.required ? 'required' : ''}">
+    <label data-sly-test="${properties.title}" for="${properties.elementName @i18n}">${properties.title @i18n}</label>
+	<sly data-sly-test="${properties.tooltipMessage}">
+		<button type="button" class="fp-tooltip" data-toggle="popover" data-trigger="hover" data-placement="top" title="${properties.tooltipMessage}"> </button>
+	</sly>
+	<select id="${properties.elementName}" name="${properties.elementName}" aria-required="${properties.required ? 'true' : ''}" class="selectpicker" data-size="10" tabindex="-98">
+		<option value="">${properties.placeHolderText @i18n}</option>
+		<sly data-sly-test.dropDownList="${model.keyList}">
+			<sly data-sly-list.dropDown="${dropDownList}">
+				<option value="${dropDown.dropDownKey}">${dropDown.dropDownValue @i18n}</option>
+			</sly>
+		</sly>
+	</select>
+	<div class="dropdown-menu open" role="combobox">
+		<div class="inner open" role="listbox" aria-expanded="false" tabindex="-1">
+			<ul class="dropdown-menu inner "></ul>
+		</div>
+	</div>
+    <span data-sly-test="${properties.requiredMessage}" class="form-message err-msg custom-message">${properties.requiredMessage @i18n}</span>
+    <span class="application-message err-msg"></span>
+</div>

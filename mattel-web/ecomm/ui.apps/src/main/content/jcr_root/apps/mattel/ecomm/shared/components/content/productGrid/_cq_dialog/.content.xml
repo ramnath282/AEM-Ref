@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Configure Product Grid"
+    sling:resourceType="cq/gui/components/authoring/dialog"
+    helpPath="https://www.adobe.com/go/aem_cmp_text_v2">
+    <content
+        granite:class="cq-dialog-ag-productgrid"
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <generalConfig
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Product Grid Section"
+                        sling:resourceType="granite/ui/components/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <title
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Please Enter Product Grid Title"
+                                fieldLabel="Product Grid Title"
+                                name="./productGridTitle"/>
+                            <searchtitle
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Please Enter Search Results Title, this text will display for search results page only"
+                                fieldLabel="Search Results Title"
+                                name="./searchResultsTitle"/>
+							<seeMoreLabel
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Please Enter See More Label"
+                                fieldLabel="See More Label"
+                                name="./seeMoreLabel"/>
+                            <noresultstext
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Please Enter Text to be displayed for no search results, this text will display for search results page only"
+                                fieldLabel="No Results Text"
+                                name="./noResultsText"/>
+                            <noresutlsTitle
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Please Enter Title for grid when no search results are returned, this text will display for search results page only"
+                                fieldLabel="No Results Grid Title"
+                                name="./noResultsTitle"/>
+							<searchBoxPlaceholderText
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Please Enter placeholder text to be displayed inside search box, this text will display for search results page only"
+                                fieldLabel="Search Box Placeholder Text"
+                                name="./searchBoxPlaceholderText"/>
+                            <initialLoadCount
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Please enter initial load count. Initial load count and product load count should be multiples for each other"
+                                fieldLabel="Initial Load Count"
+                                name="./initialLoadCount"/>
+                            <productLoadCount
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Please enter product load count. Product load count and initial load count should be multiples for each other"
+                                fieldLabel="Product Load Count"
+                                name="./productLoadCount"/>
+                        </items>
+                    </generalConfig>
+					<categorySection
+						jcr:primaryType="nt:unstructured"
+						jcr:title="Category Properties"
+						sling:resourceType="granite/ui/components/coral/foundation/form/fieldset">
+						<items jcr:primaryType="nt:unstructured">
+							<categoryType
+								cq:showOnCreate="{Boolean}true"
+								jcr:primaryType="nt:unstructured"
+								sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+								fieldDescription="Enter Category Query Parameters in the format category=[value];character=[value]. Based on the parameters respective products will be loaded for that category"
+								fieldLabel="Category Query Parameters"
+								name="./categoryType"
+								granite:class="category-type"/>
+						</items>
+					</categorySection>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>

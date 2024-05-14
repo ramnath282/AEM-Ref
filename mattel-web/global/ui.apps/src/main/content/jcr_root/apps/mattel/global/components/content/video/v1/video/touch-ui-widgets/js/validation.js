@@ -1,0 +1,21 @@
+(function(a,b){
+    b.on("dialog-ready",function(){   
+        0<a(".v1-video-dialog").length&&(setTimeout(function(){
+            "ooyala"==a(".video-selection").val()?
+                (a(".youtube-options-section").hide(),a(".ooyala-options-section").show()):(a(".youtube-options-section").show(),a(".ooyala-options-section").hide())}
+                                                 ,300),a(".video-selection").change(function(){
+            "ooyala"==a(".video-selection").val()?(a(".youtube-options-section").hide(),a(".ooyala-options-section").show()):(a(".youtube-options-section").show(),a(".ooyala-options-section").hide())}
+))
+        0<a(".v1-video-dialog").length&&(setTimeout(function(){
+            "set-mobile-image"==a(".mobile-asset-selection").val()?
+                (a(".mobile-video-options-section").hide(),a(".mobile-image-options-section").show()):(a(".mobile-video-options-section").show(),a(".mobile-image-options-section").hide())}
+                                                 ,300),a(".mobile-asset-selection").change(function(){
+            "set-mobile-video"==a(".mobile-asset-selection").val()?(a(".mobile-image-options-section").hide(),a(".mobile-video-options-section").show()):(a(".mobile-image-options-section").show(),a(".mobile-video-options-section").hide())}
+))
+0<a(".v1-video-dialog").length&&(setTimeout(function(){
+            "mobile-ooyala"==a(".mobile-video-selection").val()?
+                (a(".mobile-youtube-options-section").hide(),a(".mobile-ooyala-options-section").show()):(a(".mobile-youtube-options-section").show(),a(".mobile-ooyala-options-section").hide())}
+                                                 ,300),a(".mobile-video-selection").change(function(){
+            "mobile-youtube"==a(".mobile-video-selection").val()?(a(".mobile-ooyala-options-section").hide(),a(".mobile-youtube-options-section").show()):(a(".mobile-ooyala-options-section").show(),a(".mobile-youtube-options-section").hide())}
+))
+})})($,$(document));

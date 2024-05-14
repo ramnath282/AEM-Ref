@@ -1,0 +1,20 @@
+<sly data-sly-test="${wcmmode.edit}">${'Edit Date Picker Component' @i18n}</sly>
+<div class="input-field ${properties.required ? 'required' : ''}">
+    <label data-sly-test="${properties.title}" for="${properties.elementName @i18n}">${properties.title @i18n}
+        <span class="sr-only">in ${properties.formatType @i18n} format</span>
+    </label>
+	<sly data-sly-test="${properties.tooltipMessage}">
+		<button type="button" class="fp-tooltip" data-toggle="popover" data-trigger="hover" data-placement="top" title="${properties.tooltipMessage}"> </button>
+	</sly>
+	<p data-sly-test="${properties.description}" class="input-description">${properties.description @i18n}</p>
+    <div class="input-group date date-picker">
+        <span class="sr-only">calendar icon</span>
+		<div class="date-input-picker">
+			<input id="${properties.elementName}" class="mobi-picker" type="text" name="${properties.elementName}" placeholder="${properties.placeHolderText @i18n}" aria-required="${properties.required ? 'true' : ''}" data-date-format="${properties.formatType @i18n}" readonly="">
+			<div class="input-group-addon">
+			</div>
+		</div>
+    </div>
+    <span data-sly-test="${properties.requiredMessage}" class="form-message err-msg custom-message">${properties.requiredMessage @i18n}</span>
+    <span class="application-message err-msg"></span>
+</div>

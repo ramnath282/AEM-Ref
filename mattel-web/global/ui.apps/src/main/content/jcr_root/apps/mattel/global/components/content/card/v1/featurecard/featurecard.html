@@ -1,0 +1,10 @@
+<sly data-sly-use.model="com.mattel.global.core.model.v1.CardModel"/>
+<div class="flexible-grid-component ${model.cardVariant == 'small' ? 'two-image-grid' : ''}">
+    <div class="slide-content" data-sly-test="${(!model.cardVariant) || model.cardVariant == 'small'}">
+        <sly data-sly-use.view="cardTemplate.html"
+             data-sly-call="${view.tpl @model = model}"/>
+    </div>
+    <sly data-sly-test="${model.cardVariant == 'large'}"
+         data-sly-use.view="cardTemplate.html"
+         data-sly-call="${view.tpl @model = model}"/>
+</div>

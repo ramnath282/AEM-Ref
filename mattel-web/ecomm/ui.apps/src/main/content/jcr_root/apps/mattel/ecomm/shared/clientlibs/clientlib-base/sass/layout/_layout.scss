@@ -1,0 +1,1657 @@
+/*
+** _layout.scss
+*/
+
+html {
+  font-size: 14px;
+}
+
+*,
+body {
+  font: mapping($layout, baseFonts, font);
+  //AEMECOM-9830
+  font-variant-ligatures: no-common-ligatures !important;
+}
+hr {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+a {
+  &:link,
+  &:hover,
+  &:active,
+  &:visited,
+  &:hover {
+      text-decoration: none;
+      color: inherit;
+  }
+}
+body {
+  &.ecomm-myaccount {
+    a {
+      font: mapping($layout, anchor, font);
+      @include content-spacing(map-get($layout, anchor));
+      color: mapping($layout, anchor, color) !important;
+      &:hover {
+        color: mapping($layout, anchorHover, color) !important;
+      }
+    }
+  }
+  background: mapping($layout, body, background);
+  @include content-spacing(map-get($layout, body));
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font: mapping($layout, heading, font);
+    $borderProperty: mapping($layout, heading, border);
+
+    @if (map-get($borderProperty, enabled)) {
+      border-#{map-get($borderProperty,position)}: (
+        map-get($borderProperty, size) solid map-get($borderProperty, color)
+      );
+    }
+
+    @include content-spacing(map-get($layout, heading));
+  }
+
+  p {
+    font: mapping($layout, description, font);
+    color: mapping($layout, description, color);
+    @include content-spacing(map-get($layout, description));
+  }
+
+  .rich-text:not(a) {
+    color: mapping($layout, anchor, color);
+    &:hover {
+      color: mapping($layout, anchorHover, color);
+    }
+  }
+
+  em {
+    font-style: italic;
+  }
+
+  i {
+    b {
+      font-style: italic;
+    }
+  }
+
+  button,
+  .button-primary {
+    @include button-style(map-get($layout, button));
+    // @extend .container-fluid;
+  }
+
+  .grid-col-4 {
+    @extend .row;
+
+    & > li:not(.espot-grid),
+    & > div {
+      width: 50%;
+      float: left;
+      padding: 0 em(5);
+      @media #{$small-up} {
+        padding: 0 em(45) 0 em(15);
+        width: 33.33%;
+      }
+
+      @media #{$large-up} {
+        width: 25%;
+      }
+    }
+  }
+
+  .grid-col-3 {
+    @extend .row;
+
+    & > li:not(.espot-grid),
+    & > div {
+      width: 50%;
+      padding: 0 em(15);
+      float: left;
+
+      @media #{$small-up} {
+        width: 50%;
+      }
+
+      @media #{$medium-up} {
+        width: 33.33333333%;
+      }
+    }
+  }
+
+  .ecomm-wrapper {
+    
+    button.btn-add-to-bag:disabled,
+    button.btn-add-to-bag[disabled],
+    button.btn-add-to-bag[disabled="disabled"] {
+      background: $btndisableColor !important;
+      color: $white;
+      border: none;
+    }
+    .col-first {
+      padding-right: 15px;
+    }
+    .col-second {
+      @media #{$medium-down} {
+        padding: 0;
+      }
+      .giftCard-container {
+        @media #{$medium-down} {
+          padding: 0;
+        }
+        .logo-giftCard-wrapper {
+          @media #{$medium-down} {
+            padding: 0;
+          }
+        }
+      }
+    }
+
+    @extend .container;
+
+    @if mapping($layout, container, maxWidth) {
+      @media (min-width: 1600px) {
+        margin: auto;
+      }
+    }
+
+    width: 100%;
+    @include content-spacing(map-get($layout, container));
+
+    .at-style-responsive {
+      .at-share-btn {
+        padding: 11px;
+        position: relative;
+        bottom: -10px;
+      }
+    }
+
+    .form-input {
+      font: mapping($layout, input, font);
+      height: mapping($layout, input, Height);
+      @include content-spacing(map-get($layout, input));
+      border: mapping($layout, input, border);
+      margin-bottom: 0;
+
+      // $borderProperty: mapping($layout, input, border);
+      // @if(map-get($borderProperty, enabled)) {
+      //     border-#{map-get($borderProperty,position)}: (map-get($borderProperty, size) solid map-get($borderProperty, color));
+      // }
+      &.long-input {
+        max-width: map-get(mapping($layout, input, widthSize), long);
+        width: 100%;
+        &:focus {
+          border: 0;
+          outline: 1px solid $theme-color;
+        }
+      }
+
+      &.medium-input {
+        max-width: map-get(mapping($layout, input, widthSize), medium);
+        width: 100%;
+        &:focus {
+          border: 0;
+          outline: 1px solid $theme-color;
+        }
+      }
+
+      &.small-input {
+        width: map-get(mapping($layout, input, widthSize), small);
+        @include content-spacing(map-get($layout, smallInput));
+        &:focus {
+          border: 0;
+          outline: 1px solid $theme-color;
+        }
+      }
+
+      &.no-placeholder-label {
+        @include content-spacing(map-get($layout, placeholderPadding));
+      }
+    }
+
+    .link-separator {
+      @include content-spacing(map-get($layout, linkSeperator));
+      $borderProperty: mapping($layout, linkSeperator, border);
+
+      @if (map-get($borderProperty, enabled)) {
+        border-#{map-get($borderProperty,position)}: (
+          map-get($borderProperty, size) solid map-get($borderProperty, color)
+        );
+      }
+    }
+    .global-footer {
+      @media #{$small-down} {
+        padding-bottom: 5em;
+      }
+      .email-section {
+        .signUpButton {
+          padding: 0.25em 1.5em;
+        }
+      }
+      .read-more {
+        color: $light-pink;
+      }
+      .copyright {
+        a {
+          color: $light-pink;
+        }
+      }
+      .accordion-container {
+        ul {
+          li {
+            margin: em(8) 0 0 0;
+            a {
+              font: ($fontRegular em(14) $primaryFontFamily);
+            }
+          }
+        }
+      }
+      .socials {
+        ul {
+          padding: 0;
+          li {
+            height: auto;
+            margin: 0;
+          }
+        }
+      }
+    }
+    max-width: 100%;
+    #page-content,
+    #header-wrapper .main-nav-container {
+      max-width: 1600px;
+    }
+    .xf-content-height{
+      @media #{$medium-down}{
+        margin: 0;
+      }
+
+    }
+  }
+  .hide-forcely {
+    display: none !important;
+  }
+  
+  #page-content,
+  #header-wrapper .main-nav-container {
+    @media screen and (min-width: 1400px) {
+      margin: auto;
+    }
+  }
+  .global-footer .email-section .signUpButton {
+    padding: 0.25em 1.5em;
+  }
+  &.coppa{
+    #consent_blackbar{
+        position: fixed;
+        z-index: 1111111;
+        width: 100%;
+        top: 0;
+    }
+    #teconsent{
+        position: fixed;
+        z-index: 111111;
+        min-width: 100px;
+        left: calc(50% - 50px);
+        bottom: 0;
+        text-align: center;
+    }
+  }
+  .light-theme{
+      *{
+         color: $black;
+      }
+  }
+  .dark-theme{
+      *{
+         color: $white;
+      }
+  }
+}
+
+
+.request-pending {
+  position: relative;
+
+  &:after {
+    content: "";
+    position: fixed;
+    background: rgba($black, 0.02) url(#{$imagePath}/preloader.gif) no-repeat center 30%;
+    background-size: 4.57143em;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100000;
+  }
+}
+
+.request-pending-sm {
+  position: relative;
+
+  &:after {
+    content: "";
+    position: fixed;
+    background: rgba($black, 0.02) url(#{$imagePath}/preloader.gif) no-repeat center 30%;
+    background-size: 40px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100000;
+  }
+}
+
+.request-lazy-loading {
+  // float: left;
+  // width: 100%;
+
+  &:after {
+    content: "";
+    background: transparent url(#{$imagePath}/preloader_sm.svg) no-repeat center 30%;
+    background-size: em(40);
+    width: 100%;
+    min-height: 5.71429em;
+  }
+}
+
+#preloader {
+  z-index: 9999;
+  width: 100vw;
+  height: 100vh;
+  top: 0px;
+  background: rgba($black, 0.01);
+  display: none;
+  left: 0 !important;
+  position: fixed !important;
+  visibility: visible !important;
+  &.loading {
+    display: block;
+    @extend .request-lazy-loading;
+    &:after {
+      background-position: center center;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      @include transform(none);
+    }
+  }
+}
+// overwrite ag scss changes
+.aem-GridColumn {
+  padding: 0 12px;
+  &.fullbleed{
+    padding: 0;
+  }
+}
+
+.image-loading {
+  background: transparent url(#{$imagePath}/preloader_sm.svg) no-repeat center center;
+  background-size: em(40);
+}
+
+//delete-popup-global-deign
+#confirmModal,
+#duplicateEmailModal {
+  .modal-dialog {
+    @media #{$medium-up} {
+      width: mapping($layout, deletePopup, width);
+    }
+
+    .modal-content {
+      box-shadow: none;
+      float: left;
+      width: 100%;
+      @include content-spacing(map-get($layout, deletePopup));
+      @include border-radius(0);
+      border: none;
+
+      .modal-header {
+        $borderProperty: mapping($layout, deletePopup, border);
+
+        @if (map-get($borderProperty, enabled)) {
+          border-#{map-get($borderProperty,position)}: (
+            map-get($borderProperty, size) solid map-get($borderProperty, color)
+          );
+        }
+
+        @include content-spacing(map-get($layout, deletePopup));
+
+        .close {
+          background: mapping($layout, deletePopupClose, background);
+          width: em(16);
+          height: em(20);
+          opacity: 1;
+          @include content-spacing(map-get($layout, deletePopupClose));
+        }
+
+        .modal-title {
+          font: mapping($layout, deletePopupTitle, font);
+          color: mapping($layout, deletePopupTitle, color);
+          @include content-spacing(map-get($layout, deletePopupTitle));
+        }
+      }
+
+      .modal-body {
+        @include content-spacing(map-get($layout, deletePopupContent));
+        font: mapping($layout, deletePopupContent, font);
+
+        .join-rewards {
+          float: left;
+          @include content-spacing(map-get($layout, deletePopupBody));
+
+          p {
+            max-width: mapping($layout, deletePopupTxt, maxWidth);
+            @include content-spacing(map-get($layout, deletePopupTxt));
+            font: mapping($layout, deletePopupTxt, font);
+            color: mapping($layout, deletePopupTxt, col);
+            line-height: em(19);
+          }
+
+          form {
+            max-width: mapping($layout, deletePopupInput, maxWidth);
+
+            fieldset {
+              @include content-spacing(map-get($layout, deletePopupInput));
+
+              .input-field {
+                .placeholder-label {
+                  font: mapping($layout, deletePopupPlaceholder, font);
+                  @include content-spacing(
+                    map-get($layout, deletePopupPlaceholder)
+                  );
+                }
+
+                input {
+                  &:focus {
+                    ~ .placeholder-label {
+                      transform: none;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .modal-footer {
+        border: none;
+        float: left;
+
+        @media #{$xsmall-down} {
+          width: 100%;
+        }
+
+        @include content-spacing(map-get($layout, modalfooter));
+
+        .theme-btn {
+          @include content-spacing(map-get($layout, deletePopupButton));
+          font: mapping($layout, deletePopupButton, font);
+
+          @media #{$small-down} {
+            &#confirmCancel {
+              width: auto;
+            }
+            &#confirmOk {
+              width: auto;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.basepage-ecomm {
+  .outer-wrapper {
+    .inner-wrapper {
+      .root {
+        margin: 0 auto;
+      }
+      .page-view {
+        & > div:not(.modal) {
+          margin: 0 auto;
+          @media #{$small-down} {
+            margin-left: 0;
+            margin-right: 0;
+          }
+        }
+        .pink-bg-white-txt,
+        .white-bg-pink-txt,
+        .white-bg-black-txt {
+          @extend .theme-btn;
+        }
+        #page-content {
+          .theme-btn {
+            &.pink-bg-white-txt,
+            &.white-bg-pink-txt,
+            &.white-bg-black-txt {
+              padding: em(11, 16) em(25, 16) em(12, 16) em(25, 16);
+              border: 1px solid;
+              min-width: auto;
+              vertical-align: middle;
+              @media #{$small-up} {
+                min-width: em(140, 16);
+              }
+              @media #{$large-only} {
+                min-width: auto;
+                // width: 100%;
+                max-width: calc(50% - 10px);
+              }
+              @media screen and (max-width: 325px) {
+                margin: 0 0 15px;
+                max-width: none;
+                min-width: 80% !important;
+              }
+              font: $fontSemiBold em(16) $primaryFontFamily;
+              text-align: center;
+              @include border-radius(10px);
+              height: auto;
+              &:hover{
+                border: 1px solid $light-pink !important;
+                color: $black !important;
+                background: $white !important;
+                @include transition(all .1s ease-in);
+              }
+            }
+            &.white-bg-black-txt {
+              border-color: $black;
+              color: inherit;
+              // color: $black !important;
+              background: $white;
+              &:focus {
+                outline: none;
+              }
+              @media #{$small-down}{
+                color: inherit;
+                // color: $light-pink !important;
+                background: $white !important;
+                @include transition(all .1s ease-in);
+              }
+            }
+            &.pink-bg-white-txt {
+              border-color: $light-pink;
+              color: inherit;
+              // color: $white !important;
+              background: $light-pink;
+              &:focus {
+                outline: none;
+              }
+            }
+            &.white-bg-pink-txt {
+              border-color: $light-pink;
+              color: inherit;
+              color: $light-pink;
+              background: $white;
+              &:focus {
+                outline: none;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+#sessionTimeoutModal {
+  @media #{$small-down} {
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+  &.ecomm-modal{
+    z-index: 11112;
+  }
+
+  .modal-header {
+    div {
+      p {
+        color: $color-medium-grey;
+        font: 400 15px $primaryFontFamily;
+      }
+    }
+  }
+
+  .modal-content {
+    box-shadow: none;
+    border-radius: 0px;
+    border: 1px solid #cacaca;
+    width: 791px;
+    padding: 60px;
+    @media #{$medium-down} {
+      width: 100%;
+    }
+    @media #{$small-down} {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  }
+
+  .modal-body {
+    input {
+      &.theme-btn {
+        width: 150px;
+      }
+      &.theme-btn[type="submit"][disabled]{
+        border-color: transparent;
+      }
+    }
+  }
+
+  .modal-header-title {
+    border-bottom: 1px solid #cacaca;
+    margin: 0 0 0.66667em 0;
+    padding: 0 0 0.55633em 0;
+    font: 300 1.71429em $primaryFontFamily;
+  }
+
+  .modal-footer {
+    .register-account {
+      text-align: left; //left align the links for the modal
+      padding-left: 0;
+      a {
+        color: $anchorColor;
+        font: 400 15px $primaryFontFamily;
+      }
+    }
+  }
+}
+.no-padding {
+  padding: 0;
+}
+.bazaarVoice {
+  #bvReviewHeading {
+    font-size: em(30);
+    border-top: 1px solid $borderColor;
+    .product-title {
+      h1 {
+        padding: 1em 0 0 0.6em;
+        @media #{$small-down} {
+          padding: 1em 0;
+        }
+      }
+    }
+  }
+}
+.page-view {
+  padding: 0 !important;
+  margin-top: 2.5em;
+}
+.recommended-products {
+  border-top: 1px solid $borderColor;
+  #recommended-products {
+    padding: 0 em(15) em(15) em(15);
+    .owl-carousel {
+      &.owl-theme {
+        &.aem-recommend-widget {
+          .aem-recommend-item {
+            max-width: inherit;
+            border-bottom: none;
+          }
+        }
+      }
+      .owl-controls {
+        @media #{$medium-up} {
+          display: none;
+        }
+      }
+    }
+    .aem-recommend-item{
+      .quick-view{
+        display: none;
+      }
+      &.quick-view-enabled{
+        &:hover{
+          .quick-view{
+            display: block;
+          }
+        }
+      }
+    }
+  }
+}
+//10049-global-style-header-start
+.center {
+    text-align: center !important;
+}
+
+.white {
+    color: $white !important;
+}
+
+.italic {
+    font-style: italic !important;
+}
+
+.ecomm-wrapper {
+    .container-no-padding {
+        padding: 0 !important;
+    }
+    .ecomm-header-styles {
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-weight: $fontSemiBold;
+            color: $headingColor;
+            &.header-center {
+                text-align: center;
+            }
+            &.header-right {
+                text-align: right;
+            }
+            &.header-grey {
+                color: $color-extra-dark-grey;
+            }
+            &.header-berry {
+                color: $light-pink;
+            }
+            &.header-white {
+                color: $white;
+            }
+            &.header-light-font {
+                font-weight: $fontLight;
+            }
+            &.header-regular-font {
+                font-weight: $fontRegular;
+            }
+            &.header-italic-font {
+                font-style: italic;
+            }
+            &.header-semibold {
+                font-style: $fontSemiBold;
+            }
+        }
+        h1 {
+            @include font-style(map-get($layout, h1headerstyles));
+        }
+        h2 {
+            @include font-style(map-get($layout, h2headerstyles));
+        }
+        h3 {
+            @include font-style(map-get($layout, h3headerstyles));
+        }
+        h4 {
+            @include font-style(map-get($layout, h4headerstyles));
+        }
+        h5 {
+            @include font-style(map-get($layout, h5headerstyles));
+        }
+        h6 {
+            @include font-style(map-get($layout, h6headerstyles));
+        }
+        p {
+            font-weight: $fontRegular;
+            @include font-style(map-get($layout, ptextstyles));
+        }
+    }
+    .ag-header-light {
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-weight: $fontRegular;
+            color: $headingColor;
+            &.header-center {
+                text-align: center;
+            }
+            &.header-right {
+                text-align: right;
+            }
+            &.header-grey {
+                color: $color-extra-dark-grey;
+            }
+            &.header-berry {
+                color: $light-pink;
+            }
+            &.header-white {
+                color: $white;
+            }
+            &.header-light-font {
+                font-weight: $fontLight;
+            }
+            &.header-regular-font {
+                font-weight: $fontRegular;
+            }
+            &.header-italic-font {
+                font-style: italic;
+            }
+        }
+        h1 {
+            @include font-style(map-get($layout, h1headerlightstyle));
+        }
+        h2 {
+            @include font-style(map-get($layout, h2headerlightstyle));
+        }
+    }
+    .gifttrunk-text-styles{
+      h1,h2,h3,h4,h5,h6{
+          font-weight:$fontRegular;
+          color:$headingColor;
+      }
+      h1{
+          @include font-style(map-get($layout, gifttrunkH1H2));
+          font-weight: $fontLight;
+      }
+      h2{
+          @include font-style(map-get($layout, gifttrunkH1H2));
+          font-weight: $fontLight;
+      }
+      h3{
+          @include font-style(map-get($layout, h3headerstyles));
+          font-weight: $fontLight;
+      }
+      h4{
+          @include font-style(map-get($layout, h4headerstyles));
+          font-weight: $fontLight;
+      }
+      h5{
+          @include font-style(map-get($layout, gifttrunkH5));
+          font-weight: $fontLight;
+      }
+      h6{
+          @include font-style(map-get($layout, gifttrunkH6));
+          font-weight: $fontSemiBold;
+      }   
+      p{
+           @include font-style(map-get($layout, gifttrunkP));
+           font-weight:$fontRegular;
+      }
+    }
+}
+.device-view{
+    a{
+        &.quick-view{
+            display: none !important;
+        }
+    }
+}
+
+     
+.ecomm-plp-page {
+    .grid-section {
+        .productGrid {
+            &.plp-price-styles {
+                .grid-lists {
+                    li {
+                        .product-price {
+                            span {
+                                @include font-style(map-get($layout, plpprice));
+                                .actual-list-price {
+                                    @include font-style(map-get($layout, plpstrikeprice));
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            &.quickview-price-styles {
+                #quickViewModal {
+                    .product-wrapper {
+                        .product-container {
+                            .product-price {
+                                @include font-style(map-get($layout, pdpprice));
+                                .price-strike {
+                                    @include font-style(map-get($layout, pdpstrikeprice));
+                                }
+                            }
+                            .marketing-wrapper {
+                                .marketing-component {
+                                    .marketing-addons {
+                                        .addon-option {
+                                            .addon-price {
+                                                @include font-style(map-get($layout, pdpprice));
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.plp-price-styles {
+    .aem-recommend-widget {
+        .product-price {
+            span {
+                @include font-style(map-get($layout, plpprice));
+            }
+        }
+    }
+}
+
+.ecomm-pdp-page {
+    .pdpproduct {
+        &.pdp-price-styles {
+            .product-wrapper {
+                .product-container {
+                    .product-price {
+                        @include font-style(map-get($layout, pdpprice));
+                        .price-strike {
+                            @include font-style(map-get($layout, pdpstrikeprice));
+                        }
+                    }
+                }
+                .associations-addons {
+                    .addon-option {
+                        .addon-price {
+                            @include font-style(map-get($layout, pdpprice));
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+//10049-global-style-header-end
+//10050-PDP-banner-style-start
+.pdp-espot-text-styles {
+    .heroImageBanner {
+        .cda-banner {
+            .crm-container {
+                .banner-copy {
+                    h3 {
+                        p {
+                            font-weight: $fontRegular;
+                            color: $headingColor;
+                            @include font-style(map-get($layout, cdabannerH3));
+                        }
+                    }
+                    h1,
+                    h2,
+                    h4,
+                    h5,
+                    h6 {
+                        p {
+                            font-weight: $fontSemiBold;
+                            color: $headingColor;
+                        }
+                    }
+                    h1 {
+                        @include font-style(map-get($layout, h1headerstyles));
+                    }
+                    h2 {
+                        @include font-style(map-get($layout, h2headerstyles));
+                    }
+                    h4 {
+                        @include font-style(map-get($layout, h4headerstyles));
+                    }
+                    h5 {
+                        @include font-style(map-get($layout, h5headerstyles));
+                    }
+                    h6 {
+                        @include font-style(map-get($layout, h6headerstyles));
+                    }
+                    .legal {
+                        p {
+                            font-weight: $fontRegular;
+                            color: $headingColor;
+                            font-style: italic;
+                            @include font-style(map-get($layout, cdalegalText));
+                        }
+                    }
+                    @media all and (device-width: 768px) and (device-height: 1024px) and (orientation:portrait) {
+                        h3 {
+                            p {
+                                font-size: em(12);
+                            }
+                        }
+                        .legal {
+                            p {
+                                font-size: em(11);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.heroImageBanner {
+    &.cta-arrow-lg {
+        .cda-banner {
+            .crm-container {
+                .banner-btn {
+                    a {
+                        background-color: transparent;
+                        border: none;
+                        p {
+                            @include font-style(map-get($layout, ctaarrowLG));
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &.cta-arrow-sm {
+        .cda-banner {
+            .crm-container {
+                .banner-btn {
+                    a {
+                        background-color: transparent;
+                        border: none;
+                        p {
+                            @include font-style(map-get($layout, ctaarrowSM));
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &.cta-solid-lg {
+        .cda-banner {
+            .crm-container {
+                .banner-btn {
+                    a {
+                        background-color: $light-pink;
+                        padding: em(5) em(15);
+                        p {
+                            @include font-style(map-get($layout, ctasolidLG));
+                            @media all and (device-width: 768px) and (device-height: 1024px) and (orientation:portrait) {
+                                font-size: 12px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &.cta-solid-sm {
+        .cda-banner {
+            .crm-container {
+                .banner-btn {
+                    a {
+                        background-color: $light-pink;
+                        padding: em(5) em(10);
+                        p {
+                            @include font-style(map-get($layout, ctasolidSM));
+                            @media all and (device-width: 768px) and (device-height: 1024px) and (orientation:portrait) {
+                                font-size: 12px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &.cta-outline-lg {
+        .cda-banner {
+            .crm-container {
+                .banner-btn {
+                    a {
+                        background-color: transparent;
+                        padding: em(5) em(15);
+                        border: 1px solid $light-pink;
+                        p {
+                            @include font-style(map-get($layout, ctasolidLG));
+                            @media all and (device-width: 768px) and (device-height: 1024px) and (orientation:portrait) {
+                                font-size: 12px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &.cta-outline-sm {
+        .cda-banner {
+            .crm-container {
+                .banner-btn {
+                    a {
+                        background-color: transparent;
+                        padding: em(5) em(10);
+                        border: 1px solid $light-pink;
+                        p {
+                            @include font-style(map-get($layout, ctasolidLG));
+                            @media all and (device-width: 768px) and (device-height: 1024px) and (orientation:portrait) {
+                                font-size: 12px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+//10050-PDP-banner-style-end
+//10051-PLP-banner-style-start
+.plpbanner-text-styles {
+    .image-text-component {
+        .banner-image-text-container {
+            .text-block {
+                h1 {
+                    span {
+                        font-weight: $fontSemiBold;
+                        @include font-style(map-get($layout, plpbannerH1));
+                        @media all and (device-width: 768px) and (device-height: 1024px) and (orientation:portrait) {
+                            font-size: 26px;
+                        }
+                    }
+                }
+                h2 {
+                    span {
+                        font-weight: $fontRegular;
+                        @include font-style(map-get($layout, plpbannerH2));
+                        @media all and (device-width: 768px) and (device-height: 1024px) and (orientation:portrait) {
+                            font-size: 14px;
+                        }
+                    }
+                }
+                h3,
+                h4,
+                h5,
+                h6 {
+                    span {
+                        font-weight: $fontSemiBold;
+                        color: $headingColor;
+                    }
+                }
+                h3 {
+                    span {
+                        @include font-style(map-get($layout, h3headerstyles));
+                    }
+                }
+                h4 {
+                    span {
+                        @include font-style(map-get($layout, h4headerstyles));
+                    }
+                }
+                h5 {
+                    span {
+                        @include font-style(map-get($layout, h5headerstyles));
+                    }
+                }
+                h6 {
+                    span {
+                        @include font-style(map-get($layout, h6headerstyles));
+                    }
+                }
+                p {
+                    span {
+                        font-weight: $fontRegular;
+                        @include font-style(map-get($layout, ptextstyles));
+                    }
+                }
+            }
+        }
+    }
+}
+
+.cta-arrow-lg {
+    .image-text-component {
+        .cta-btn {
+            button {
+                &.btn-view-all {
+                    font-weight: $fontSemiBold;
+                    color: $light-pink;
+                    @include font-style(map-get($layout, plpCtaarrowLG));
+                    background: transparent;
+                    border: none;
+                    &:before {
+                        @include font-awesome();
+                        content: "\f106";
+                        color: inherit;
+                        vertical-align: initial;
+                        margin-left: 0.2em;
+                    }
+                }
+            }
+        }
+    }
+    .plp-banner-sec {
+      .user-info-wrapper {
+        .banner-cta-desktop {
+          a {
+            font-weight: $fontSemiBold;
+            color: $light-pink;
+            @include font-style(map-get($layout, plpCtaarrowLG));
+          }
+        }
+      }
+    }
+}
+
+.cta-arrow-sm {
+    .image-text-component {
+        .cta-btn {
+            button {
+                &.btn-view-all {
+                    font-weight: $fontSemiBold;
+                    color: $light-pink;
+                    @include font-style(map-get($layout, plpCtaarrowSM));
+                    background: transparent;
+                    border: none;
+                    &:before {
+                        @include font-awesome();
+                        content: "\f106";
+                        color: inherit;
+                        vertical-align: initial;
+                        margin-left: 0.2em;
+                    }
+                }
+            }
+        }
+    }
+    .plp-banner-sec {
+      .user-info-wrapper {
+          .banner-cta-desktop {
+              a {
+                  font-weight: $fontSemiBold;
+                  color: $light-pink;
+                  @include font-style(map-get($layout, plpCtaarrowSM));
+              }
+          }
+      }
+    }
+}
+
+.cta-solid-lg {
+    .image-text-component {
+        .cta-btn {
+            button {
+                &.btn-view-all {
+                    font-weight: $fontSemiBold;
+                    color: $white;
+                    background: $light-pink;
+                    padding: 10px 30px;
+                    height: auto;
+                    min-width: auto;
+                    border: none;
+                    @include font-style(map-get($layout, plpctasolidLG));
+                }
+            }
+        }
+    }
+}
+
+.cta-solid-sm {
+    .image-text-component {
+        .cta-btn {
+            button {
+                &.btn-view-all {
+                    font-weight: $fontSemiBold;
+                    color: $white;
+                    background: $light-pink;
+                    padding: 5px 15px;
+                    height: auto;
+                    min-width: auto;
+                    border: none;
+                    @include font-style(map-get($layout, plpctasolidSM));
+                }
+            }
+        }
+    }
+}
+
+
+
+
+
+[class^="top-"],
+[class*=" top-"],
+[class^="middle-"],
+[class*=" middle-"],
+[class^="bottom-"],
+[class*=" bottom-"] {
+  .jumbotron-banner-component{
+    .flexible-cta-component .inner-section {
+      @media #{$small-up} {
+        will-change: opacity, transform;
+        -webkit-transition: 0.75s cubic-bezier(0.25, 0.46, 0.45, 0.94) opacity,
+          0.75s cubic-bezier(0.25, 0.46, 0.45, 0.94) transform;
+        transition: 0.75s cubic-bezier(0.25, 0.46, 0.45, 0.94) opacity,
+          0.75s cubic-bezier(0.25, 0.46, 0.45, 0.94) transform;
+        -webkit-transform: translateY(60px);
+        transform: translateY(60px);
+        opacity: 0;
+      }
+    }
+    &.animating,
+    &#media-banner-0 {
+      .flexible-cta-component .inner-section {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+        opacity: 1 !important;
+      }
+    }
+    .stack-layout .flexible-cta-component,
+    .stacked-layout .flexible-cta-component {
+      max-width: 95%;
+      margin-left: auto;
+      margin-right: auto;
+      width: 100%;
+    }
+  }
+}
+
+.theme-btn {
+  &.white-bg-black-txt {
+    [class^="top-"] &,
+    [class*=" top-"] &,
+    [class^="middle-"] &,
+    [class*=" middle-"] &,
+    [class^="bottom-"] &,
+    [class*=" bottom-"] & {
+      @media #{$small-up} {
+        border: 1px solid transparent !important;
+        background: rgba($white, 0.75) !important;
+        @include transition(all .1s ease-out);
+      }
+    }
+  }
+  &.pink-bg-white-txt {
+    [class^="top-"] &,
+    [class*=" top-"] &,
+    [class^="middle-"] &,
+    [class*=" middle-"] &,
+    [class^="bottom-"] &,
+    [class*=" bottom-"] & {
+      @media #{$small-up} {
+        border: 1px solid transparent !important;
+        background: rgba($light-pink, 0.75) !important;
+      }
+    }
+  }
+  &.white-bg-pink-txt {
+    [class^="top-"] &,
+    [class*=" top-"] &,
+    [class^="middle-"] &,
+    [class*=" middle-"] &,
+    [class^="bottom-"] &,
+    [class*=" bottom-"] & {
+      @media #{$small-up} {
+        border: 1px solid transparent !important;
+        background: rgba($white, 0.75) !important;
+      }
+    }
+  }
+}
+
+body:not(.header-sticky-active) .page-view,
+body:not(.header-sticky-active) #page-content,
+body:not(.header-sticky-active) .root.responsivegrid {
+  margin: 0 auto !important;
+  .navigation.aem-GridColumn {
+    overflow: hidden;
+  }
+  .navbar-fixed-top {
+    position: static;
+  }
+  > .experiencefragment {
+    margin: 0;
+      @media not all and (min-resolution:.001dpcm)
+      { @supports (-webkit-appearance:none) {
+          position: -webkit-sticky;
+          z-index: 9999991;
+      }}
+  }
+}
+
+body .outer-wrapper .inner-wrapper .page-view > .experiencefragment {
+  margin: 0;
+}
+// AEMECOM-10253
+.product-wrapper .product-container .select-size-wrapper{
+  overflow: hidden;
+}
+// AEMECOM-10289
+body.basicpage:not(.ecomm),body:not(.basicpage):not(.ecomm) {
+  .main-nav-container .header-spark-menu ul.social-icons .fa.fa-facebook-f {
+    font-family: "Font Awesome 5 Brands", sans-serif;
+    font-weight: 400;
+    &:before {
+      content: "\f39e";
+    }
+  }
+}
+//AEMECOM-10338 - r2 cart page footer
+.footer_wrapper_position{
+    footer{
+        background: $white-smoke;
+        .copyright{
+            background: transparent;
+        }
+    }
+}
+
+//R2 - paralex-banner-design
+.ecomm{
+  .ctaGroupComponent + .parallax{margin-top: 30px;}
+  .parallax-banner{
+    .rating-section{
+      @media #{$medium-up} {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      .rating-comment-cmp{
+        width: 100%;
+        max-width: 360px;
+        @media #{$medium-down} {
+            width: 43%;
+            max-width: auto;
+        }
+        @media #{$small-down} {
+            left: 0;
+            width: 97%;
+            max-width: auto;
+            margin: 0 auto;
+            right: 0;
+        }
+        .checked {
+            font-size: 1.15em;
+        }
+        p{
+        font-size: 1.3em;
+        color: $color-medium-grey;
+        margin: 0;
+        padding: 0;
+            i{
+                font-style: italic;
+            }
+        }
+        h3,h2{
+              font-size: 2em;
+              margin: 0;
+              padding: 0;
+              color: $color-medium-grey;
+              font-weight: 500;
+        }
+      }
+    }
+  }
+}
+// R2 -CTA video changes
+#VideoTargetModal {
+	top: 75px;
+	.modal-header {
+		padding-top: 10px;
+		padding-bottom: 0;
+		border-bottom: none;
+      .close{
+          height: auto;
+          font-size: 1.5em;
+          margin: 0;
+          span {
+            font-size: 1.5em;
+            font-weight: bold;
+            line-height: 1;
+          }		   
+      }
+   }
+}
+//AEMECOM-10737 fixes
+body.store-page {
+  .modal#selectLocationModal {
+    z-index: 111111;
+  }
+  .hero-banner p{
+    color: #fff;
+  }
+  .hero-banner > div section.align-bottom h2,
+  .hero-banner > div section.align-bottom p {
+    margin: 0 auto;
+    font-size: 2em;
+  }
+}
+//AEMECOM-10742 fixes
+body.article-page{
+    .articleBannerComponent.aem-GridColumn {
+        padding: 0;
+    }
+    .grid-article-module .full-width-container{
+        @media screen and (min-width: 767px){
+            left: -15px;
+        }
+    }
+}
+
+// AEMECOM-11032 :: Discover character page issues :: fixes
+body.character-landing-page {
+  .hc-content-section {
+    .navigation.aem-GridColumn {
+      position: relative;
+      left: calc((100% - 100vw) / 2);
+      width: 100vw !important;
+      .main-nav-container {
+        max-width: 1600px;
+      }
+    }
+    .articleBannerComponent {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+  // AEMECOM-11032 :: Discover character page issues v2 :: fixes
+  .promo-column-wrapper{
+    .enable-text-carousel{
+      max-width: 100%;
+    }
+  }
+}
+ @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 2){
+  body.character-landing-page {
+  .hc-content-section {
+    padding: 0;
+    .brand-logo{
+      picture{
+        line-height: 59.84px;
+      }
+    }
+      .image-text-container,
+      .divider .separator {
+        overflow: hidden;
+      }
+
+      .xf-content-height {
+        margin: 0;
+      }
+      #page-content {
+        max-width: 100%;
+        overflow: hidden;
+      }
+      .aem-Grid.aem-Grid--12.aem-Grid--default--12.aem-Grid--tablet--12.aem-Grid--phone--12 {
+        overflow: hidden;
+      }
+  }
+}   
+ }
+@supports (-webkit-overflow-scrolling: touch) {
+body.character-landing-page {
+  .hc-content-section {
+    padding: 0;
+      .image-text-container,
+      .divider .separator {
+        overflow: hidden;
+      }
+
+      .xf-content-height {
+        margin: 0;
+      }
+      #page-content {
+        max-width: 100%;
+        overflow: hidden;
+      }
+      .aem-Grid.aem-Grid--12.aem-Grid--default--12.aem-Grid--tablet--12.aem-Grid--phone--12 {
+        overflow: hidden;
+      }
+  }
+}
+}
+
+// AEMECOM-11201 fixes
+div.modal#selectLocationModal{
+  @media #{$medium-down}{
+    z-index: 111111;
+  }
+}
+body.hamburger-on{
+  overflow-y: hidden;
+}
+.targetRecommendations{
+  .targetRecommendations{
+    .recommended-products{
+      border: none;
+    }
+  }
+}
+
+.lightBoxContainer {
+  .modal {
+    z-index: 9999991!important;
+    .close {
+      @media #{$large-up} {
+        margin-top: 15px;
+      }
+      button {
+        &:hover {
+          background-color: transparent;
+        }
+      }
+    }
+  }
+}
+
+.ecomm {
+  &.modal-open {
+    .mbsc-fr {
+      z-index: 9999992;
+    }
+  }
+}
+
+.ecomm-wrapper {
+  .lightBoxContainer {
+    .modal {
+      form {
+        &:not(.bv-form) [type=checkbox] {
+          &:checked+label {
+            &:after {
+              left: -3px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

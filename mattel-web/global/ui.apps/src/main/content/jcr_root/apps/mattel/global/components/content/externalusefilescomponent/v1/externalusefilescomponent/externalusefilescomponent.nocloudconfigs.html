@@ -1,0 +1,36 @@
+<!--/****************************************************************************
+  * ADOBE CONFIDENTIAL
+  * __________________
+  *
+  * Copyright 2016 Adobe Systems Incorporated
+  * All Rights Reserved.
+  *
+  * NOTICE:  All information contained herein is, and remains
+  * the property of Adobe Systems Incorporated and its suppliers,
+  * if any.  The intellectual and technical concepts contained
+  * herein are proprietary to Adobe Systems Incorporated and its
+  * suppliers and are protected by trade secret or copyright law.
+  * Dissemination of this information or reproduction of this material
+  * is strictly forbidden unless prior written permission is obtained
+  * from Adobe Systems Incorporated.
+  ************************************************************************** */-->
+<sly data-sly-use.data="externalusefilescomponent.js" data-sly-unwrap>
+    <sly data-sly-test="${!data.filesToAdd}">
+        <div data-sly-test="${(wcmmode.edit || wcmmode.preview)}"
+             class="cq-placeholder "
+             data-emptytext="${component.properties.jcr:title}${emptyTextAppend && ' - '}${emptyTextAppend}">
+        </div>
+    </sly>
+    <!--/*** Added for External Headers...specifially for WCS Pages via Target or other option */-->
+    <sly data-sly-test=${data.filesToAdd}>
+        <sly data-sly-list=${data.filesToAdd}>                	
+        	<link rel="stylesheet" href="${item}" type="text/css">
+    	</sly>
+    </sly>
+    <sly data-sly-test=${data.jsFilesToAdd}>
+        <sly data-sly-list=${data.jsFilesToAdd}>
+            <script src="${item}"></script>
+        </sly>
+    </sly>
+</sly>
+

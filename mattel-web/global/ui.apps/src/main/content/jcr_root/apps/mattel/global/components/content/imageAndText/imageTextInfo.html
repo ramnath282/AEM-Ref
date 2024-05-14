@@ -1,0 +1,43 @@
+<div data-sly-test="${properties.imageTextBackOption}" data-sly-unwrap>
+	<div data-sly-test="${properties.imageTextBackOption == 'color'}" data-sly-unwrap>
+		<div data-sly-test="${properties.imageTextBackgroundColor != null}" data-sly-unwrap>
+			<div class="image-text-component" style="background-color:${properties.imageTextBackgroundColor @ context='styleString'}">
+				<sly data-sly-include="imageTextWrapper.html"/>
+			</div>
+		</div>
+		<div data-sly-test="${properties.imageTextBackgroundColor == null}" data-sly-unwrap>
+			<div class="image-text-component">
+				<sly data-sly-include="imageTextWrapper.html"/>
+			</div>
+		</div>
+	</div>
+	<div data-sly-test="${properties.imageTextBackOption == 'image'}" data-sly-unwrap>
+		<div data-sly-test="${properties.imageTextFileReferenceBgImg != null}" data-sly-unwrap>
+			<div class="image-text-component banner-bg-image" style="background-image: url('${properties.imageTextFileReferenceBgImg @ context='styleString'}');">
+				<sly data-sly-include="imageTextWrapper.html"/>
+			</div>
+		</div>
+		<div data-sly-test="${properties.imageTextFileReferenceBgImg == null}" data-sly-unwrap>
+			<div class="image-text-component">
+				<sly data-sly-include="imageTextWrapper.html"/>
+			</div>
+		</div>
+	</div>
+	<div data-sly-test="${properties.imageTextBackOption == 'gradient'}" data-sly-unwrap>
+		<div data-sly-test="${properties.mainSecBackGradient != null}" data-sly-unwrap>
+			<div class="image-text-component" style="background-image: ${properties.mainSecBackGradient @ context='styleString'}">
+				<sly data-sly-include="imageTextWrapper.html"/>
+			</div>
+		</div>
+		<div data-sly-test="${properties.mainSecBackGradient == null}" data-sly-unwrap>
+			<div class="image-text-component">
+				<sly data-sly-include="imageTextWrapper.html"/>
+			</div>
+		</div>
+	</div>
+</div>
+<div data-sly-test="${properties.imageTextBackOption == null}" data-sly-unwrap>
+	<div class="image-text-component">
+		<sly data-sly-include="imageTextWrapper.html"/>
+	</div>
+</div>

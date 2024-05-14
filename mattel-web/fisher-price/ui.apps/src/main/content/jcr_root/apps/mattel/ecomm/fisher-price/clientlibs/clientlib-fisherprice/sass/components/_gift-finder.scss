@@ -1,0 +1,156 @@
+.gift-finder {
+    float: mapping($giftFinder, giftContainer, giftContainerFlt);
+    padding: mapping($giftFinder, giftContainer, giftContainerPad);
+    width: mapping($giftFinder, giftContainer, giftContainerWidth);
+    display: mapping($giftFinder, giftContainer, giftContainerDis);
+
+    @media #{$medium-down} {
+        display: mapping($giftFinder, giftContainer, MobContainerDis);
+        padding: mapping($giftFinder, giftContainer, MobContainerPad);
+    }
+
+    p {
+        white-space: normal;
+        text-align: mapping($giftFinder, giftPara, giftParaAlign);
+        margin: mapping($giftFinder, giftPara, giftParaMar);
+        font-style: mapping($giftFinder, giftPara, giftParaFontstyle);
+        color: mapping($giftFinder, giftPara, giftParaColor);
+        line-height: mapping($giftFinder, giftPara, giftParaLine);
+        font-size: mapping($giftFinder, giftPara, giftParaSize);
+    }
+
+    .middle-ele {
+        background: mapping($giftFinder, middleContainer, middleContainerBG);
+    }
+
+    .no-pad {
+        padding: mapping($giftFinder, middleContainer, inhiritePad);
+        flex: 1;
+
+        a {
+            cursor: mapping($giftFinder, giftContainerA, cursor);
+
+            img {
+                width: 100%;
+            }
+        }
+    }
+
+    .gift-heading {
+        color: mapping($giftFinder, giftHeader, giftHeaderColor);
+        text-align: mapping($giftFinder, giftHeader, giftHeaderAlign);
+        padding: mapping($giftFinder, giftHeader, giftHeaderPad);
+        font-size: mapping($giftFinder, giftHeader, giftHeaderFont);
+        font-weight: mapping($giftFinder, giftHeader, giftHeaderWeight);
+        line-height: mapping($giftFinder, giftHeader, giftHeaderLine);
+
+        img {
+            width: mapping($giftFinder, giftHeader, iconWidth);
+            height: mapping($giftFinder, giftHeader, iconHeight);
+            margin-right: mapping($giftFinder, giftHeader, iconMar);
+        }
+
+        span {
+            margin-left: mapping($giftFinder, giftHeader, iconTexLeft);
+        }
+    }
+
+    .gift-form-container {
+        padding: mapping($giftFinder, fomContainer, fomContainerPad);
+
+        @media #{$medium-down} {
+            padding: mapping($giftFinder, fomContainer, mobFormContainerPad);
+        }
+
+        .gift_finder_form {
+            button {
+                &:focus {
+                    outline: mapping($giftFinder, fomContainer, btnFocusBorder);
+                }
+            }
+        }
+    }
+
+    .form-group {
+        .selectLabel {
+            float: mapping($giftFinder, fomContainer, lableFloat);
+            text-align: mapping($giftFinder, fomContainer, lableAlign);
+            display: mapping($giftFinder, fomContainer, lableDis);
+            width: mapping($giftFinder, fomContainer, lableWidth);
+            font-size: mapping($giftFinder, fomContainer, lableFont);
+            margin-top: mapping($giftFinder, fomContainer, lableMarTop);
+        }
+
+        .column-input {
+            padding-left: mapping($giftFinder, columnInput, leftPad);
+            position: relative;
+
+            &::before {
+                position: absolute;
+                content: mapping($giftFinder, columnInput, arrowsmb);
+                @include font-awesome;
+                color: mapping($giftFinder, columnInput, arrowColor);
+                top: mapping($giftFinder, columnInput, arrowTop);
+                right: mapping($giftFinder, columnInput, arrowRight);
+                height: mapping($giftFinder, columnInput, arrowHeight);
+                width: mapping($giftFinder, columnInput, arrowWidth);
+            }
+
+            >select {
+                background-color: mapping($giftFinder, fomContainer, selectBoxBg);
+                font-weight: mapping($giftFinder, fomContainer, selectBoxWeight);
+                border: mapping($giftFinder, fomContainer, selectBoxBorder);
+                height: mapping($giftFinder, fomContainer, selectBoxHeight);
+                font-size: mapping($giftFinder, fomContainer, selectBoxFont);
+                margin: mapping($giftFinder, fomContainer, selectBoxMar);
+                text-transform: mapping($giftFinder, fomContainer, selectBoxText);
+                padding: mapping($giftFinder, fomContainer, selectBoxPad);
+                font-style: mapping($giftFinder, fomContainer, selectBoxStyle);
+                -webkit-box-sizing: mapping($giftFinder, fomContainer, selectBoxSize);
+                -moz-box-sizing: mapping($giftFinder, fomContainer, selectBoxSize);
+                box-sizing: mapping($giftFinder, fomContainer, selectBoxSize);
+                -webkit-appearance: none;
+                -moz-appearance: none;
+
+                option {
+                    background: mapping($giftFinder, fomContainer, optionBG);
+                }
+            }
+        }
+
+        .form-control {
+            &:focus {
+                border-color: mapping($giftFinder, fomContainer, selectBoxBorColor);
+                box-shadow: mapping($giftFinder, fomContainer, selectBoxShadow);
+            }
+        }
+    }
+
+    .button-container {
+        padding-left: mapping($giftFinder, giftButton, giftButtonPadleft);
+        text-align: mapping($giftFinder, giftButton, giftButtonAlign);
+
+        span,
+        button {
+            background: mapping($giftFinder, giftButton, giftButtonBG);
+            color: mapping($giftFinder, giftButton, giftButtonColor);
+            text-transform: mapping($giftFinder, giftButton, giftButtonText);
+            border-radius: mapping($giftFinder, giftButton, giftButtonRadius);
+            font-weight: mapping($giftFinder, giftButton, giftButtonWeight);
+            font-size: mapping($giftFinder, giftButton, giftButtonFont);
+            line-height: mapping($giftFinder, giftButton, giftButtonLine);
+            white-space: mapping($giftFinder, giftButton, giftButtonWrap);
+            border: mapping($giftFinder, giftButton, giftButtonBorder);
+            display: mapping($giftFinder, giftButton, giftButtonDis);
+            margin: mapping($giftFinder, giftButton, giftButtonMar);
+            width: mapping($giftFinder, giftButton, giftButtonWidth);
+            padding: mapping($giftFinder, giftButton, giftButtonPad);
+            margin-top: mapping($giftFinder, giftButton, giftButtonMarTop);
+            letter-spacing: mapping($giftFinder, giftButton, giftButtoSpacing);
+
+            &:hover {
+                color: mapping($giftFinder, giftButton, hoverColor);
+            }
+        }
+    }
+}

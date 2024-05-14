@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Quiz Container Component"
+    sling:resourceType="cq/gui/components/authoring/dialog"
+    extraClientlibs="[acs-commons.widgets.showhidedialogfields]">
+    <content
+        granite:class="cmp-list--editor"
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <gifttrunkbackground
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Background Config"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <column
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <backgroundtype
+                                        granite:class="cq-dialog-dropdown-showhide"
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                        fieldLabel="Select a background Type"
+                                        name="./backgroundType">
+                                        <granite:data
+                                            jcr:primaryType="nt:unstructured"
+                                            acs-cq-dialog-dropdown-checkbox-showhide=""
+                                            acs-cq-dialog-dropdown-checkbox-showhide-target=".gift-trunk-container-showhide-target"/>
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <image
+                                                jcr:primaryType="nt:unstructured"
+                                                text="Image"
+                                                value="image"/>
+                                            <color
+                                                jcr:primaryType="nt:unstructured"
+                                                text="Color"
+                                                value="color"/>
+                                            <gradient
+                                                jcr:primaryType="nt:unstructured"
+                                                text="Gradient"
+                                                value="gradient"/>
+                                        </items>
+                                    </backgroundtype>
+                                    <backgroundimage
+                                        granite:class="hide gift-trunk-container-showhide-target"
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <granite:data
+                                            jcr:primaryType="nt:unstructured"
+                                            acs-dropdownshowhidetargetvalue="image"/>
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <heading
+                                                granite:class="coral-Heading coral-Heading--4"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/heading"
+                                                level="{Long}4"
+                                                text="Set Background Image"/>
+                                                <image
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                                    allowUpload="{Boolean}false"
+                                                    autoStart="{Boolean}false"
+                                                    class="cq-droptarget"
+                                                    fieldLabel="Background Image"
+                                                    fileReferenceParameter="./backgroundImage"
+                                                    mimeTypes="[image/gif,image/jpeg,image/png,image/webp,image/tiff]"
+                                                    multiple="{Boolean}false"
+                                                    name="./backgroundImg"
+                                                    uploadUrl="${suffix.path}"
+                                                    useHTML5="{Boolean}true"/>
+                                                <imgtype
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                    fieldLabel="Select a Image Type"
+                                                    name="./backgroundImgType">
+                                                    <items jcr:primaryType="nt:unstructured">
+                                                        <cover
+                                                            jcr:primaryType="nt:unstructured"
+                                                            text="Cover"
+                                                            value="cover"/>
+                                                        <repeatx
+                                                            jcr:primaryType="nt:unstructured"
+                                                            text="Repeat-X"
+                                                            value="repeat-x"/>
+                                                        <repeatboth
+                                                            jcr:primaryType="nt:unstructured"
+                                                            text="Repeat Both"
+                                                            value="repeat"/>
+                                                    </items>
+                                                </imgtype>
+                                        </items>
+                                    </backgroundimage>
+                                    <backgroundcolor
+                                        granite:class="hide gift-trunk-container-showhide-target"
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <granite:data
+                                            jcr:primaryType="nt:unstructured"
+                                            acs-dropdownshowhidetargetvalue="color"/>
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <heading
+                                                granite:class="coral-Heading coral-Heading--4"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/heading"
+                                                level="{Long}4"
+                                                text="Set Background Color"/>
+                                             <colorpicker
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/colorfield"
+                                                fieldLabel="Background Color"
+                                                freestylePaletteType="{Boolean}true"
+                                                name="./backgroundColor"
+                                                value="hex"/>
+                                        </items>
+                                    </backgroundcolor>
+                                    <backgroundgradient
+                                        granite:class="hide gift-trunk-container-showhide-target"
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <granite:data
+                                            jcr:primaryType="nt:unstructured"
+                                            acs-dropdownshowhidetargetvalue="gradient"/>
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <heading
+                                                granite:class="coral-Heading coral-Heading--4"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/heading"
+                                                level="{Long}4"
+                                                text="Set Background Gradient"/>
+                                             <colorpicker
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                                                fieldLabel="Background Gradient CSS"
+                                                freestylePaletteType="{Boolean}true"
+                                                name="./backgroundGradient"
+                                                value="hex"/>
+                                        </items>
+                                    </backgroundgradient>
+                                    <containercolor
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <heading
+                                                granite:class="coral-Heading coral-Heading--4"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/heading"
+                                                level="{Long}4"
+                                                text="Set Container Color"/>
+                                            <well
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/well">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <colorpicker
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/colorfield"
+                                                        fieldLabel="Container Color"
+                                                        freestylePaletteType="{Boolean}true"
+                                                        name="./containerColor"
+                                                        value="hex"/>
+                                                </items>
+                                            </well>
+                                        </items>
+                                    </containercolor>  
+                                </items>
+                            </column>
+                        </items>
+                    </gifttrunkbackground>                    
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>

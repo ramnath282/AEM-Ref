@@ -1,0 +1,30 @@
+.modal#selectLocationModal {
+    @extend .fade;
+    z-index: 11111;
+    &.in .modal-dialog {
+        @media #{$small-only} {
+            -webkit-transform: translate(0, 0);
+            -ms-transform: translate(0, 0);
+            -o-transform: translate(0, 0);
+            transform: translate(0, 0);
+        }
+    }
+    @media #{$small-up} {
+        .modal-open {
+            padding-right: 0 !important
+        }
+        .modal-dialog {
+            width: 100%;
+            max-width: em(700);
+            top: 50%;
+            // transform: translateY(-50%);
+            transform: none;
+            -webkit-transform: none;
+            margin: 0 auto;
+            margin-top: em(-245);
+        }
+    }
+    .modal-body {
+        @extend .row;
+    }
+}

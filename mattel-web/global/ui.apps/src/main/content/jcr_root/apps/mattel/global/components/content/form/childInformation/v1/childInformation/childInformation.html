@@ -1,0 +1,32 @@
+<sly data-sly-test="${wcmmode.edit}">${'Child Information Component' @i18n}</sly>
+<sly data-sly-test = "${properties.enableFeature == 'true'}">
+<div class="form-group" data-max-children="${properties.maximumAllowed}">
+</sly>
+<sly data-sly-test = "${properties.enableFeature != 'true'}">
+<div class="form-group" data-max-children="0">
+</sly>
+    <fieldset>
+        <legend>${properties.title @context='html',i18n}</legend>
+        <div class="sub-form-group elem-repeat child-information" id="children-item-0">
+            <sly data-sly-use.content="com.mattel.global.master.core.model.ContentTab">
+                <sly data-sly-test="${content.items && content.items.size > 0}">
+                    <sly data-sly-repeat.item="${content.items}" data-sly-resource="${item.name @ decorationTagName='div'}"></sly>
+                </sly>
+                <sly data-sly-resource="${resource.path @ resourceType='wcm/foundation/components/parsys/newpar', appendPath='/*', decorationTagName='div', cssClassName=''}" data-sly-test="${(wcmmode.edit || wcmmode.preview) && content.items.size < 1}">
+                </sly>
+            </sly>
+            <sly data-sly-test="${properties.enableFeature == 'true'}">
+                <div class="remove-sub-form-group">
+                    <a href="#"><span>${properties.removeChildTextLabel @i18n}</span></a>
+                </div>
+            </sly>
+        </div>
+    </fieldset>
+
+    <sly data-sly-test="${properties.enableFeature == 'true'}">
+        <div class="add-sub-form-group">
+            <a href="#"><span>${properties.addChildTextLabel @i18n}</span></a>
+        </div>
+    </sly>
+
+</div>

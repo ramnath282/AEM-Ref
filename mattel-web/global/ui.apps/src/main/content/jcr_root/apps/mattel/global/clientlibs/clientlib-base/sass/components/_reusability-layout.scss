@@ -1,0 +1,226 @@
+.container-bleed {
+    width: 100%;
+}
+
+.light-theme {
+    color: $light-color;
+}
+
+.light-alt-theme {
+    color: $lightAlt-color;
+}
+
+.dark-theme {
+    color: $dark-color;
+}
+
+.dark-alt-theme {
+    color: $darkAlt-color;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-top {
+    display: block;
+    align-items: flex-start;
+    justify-content: space-around;
+}
+
+// IMPORTANT given to overwrite the AEM global class style
+.text-bottom {
+    display: flex !important;
+    align-items: flex-end;
+    justify-content: space-around;
+}
+
+.text-middle {
+    display: flex !important;
+    align-items: center;
+    justify-content: space-around;
+}
+
+
+.horizontal-left {
+    text-align: left;
+}
+
+.horizontal-center {
+    text-align: center;
+}
+
+.horizontal-right {
+    text-align: right;
+}
+
+.vertical-top {
+    display: block;
+    align-items: flex-start;
+    justify-content: space-around;
+}
+
+// IMPORTANT given to overwrite the AEM global class style
+.vertical-bottom {
+    display: flex !important;
+    align-items: flex-end;
+    justify-content: space-around;
+}
+
+.vertical-middle {
+    display: flex !important;
+    align-items: center;
+    justify-content: space-around;
+}
+
+
+.default-container {
+    @media #{$xl-only} {
+        padding: 40px !important;
+    }
+    @media #{$lg-only} {
+        padding: 40px !important;
+    }
+    @media #{$md-only} {
+        padding: 40px !important;
+    }
+    @media #{$sm-only} {
+        padding: 30px 20px !important;
+    }
+    @media #{$xs-only} {
+        padding: 30px 20px !important;
+    }
+}
+
+.special-accordion {
+    @media #{$xl-only} {
+        padding: 40px 120px !important;
+    }
+    @media #{$lg-only} {
+        padding: 40px 30px !important;
+    }
+    @media #{$md-only} {
+        padding: 40px 30px !important;
+    }
+    @media #{$sm-only} {
+        padding: 30px 20px !important;
+    }
+    @media #{$xs-only} {
+        padding: 30px 20px !important;
+    }
+}
+.showFirstCtaOnly {
+    .ctaItem {
+        display: none;
+        &.first-cta {
+            display: inline-block
+        }
+    }
+}
+
+.text-off {
+    .main-title,
+    .sub-title,
+    .text-para {
+        display: none;
+    }
+}
+
+.grid-textOff {
+    .brand-title {
+        display: none;
+    }
+}
+
+.ctaOff {
+    .ctaItem {
+        display: none;
+    }
+}
+
+.stackedCTA {
+    .ctaItem {
+        width: 100%;
+        .btn-cta-item {
+            margin-top: 20px;
+        }
+    }
+}
+
+.fullbleed {
+    padding: 0;
+}
+
+.default-container,
+.fullbleed {
+    float: left;
+    width: 100%;
+    &.before {
+        content: " ";
+        display: table;
+    }
+    &.after {
+        clear: both;
+        content: " ";
+        display: table;
+    }
+}
+
+img[src=""],
+img:empty:not([src]) {
+    display: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    &:empty {
+        display: none;
+    }
+}
+
+.desktop-bg {
+    width: 100%;
+    float: left;
+    background-size: contain;
+    @media #{$sm-only} {
+        background: transparent !important;
+    }
+}
+
+.mobile-bg {
+    width: 100%;
+    float: left;
+    background-size: contain;
+    @media #{$mobile-up-only} {
+        background: transparent !important;
+    }
+}
+
+.link-element {
+    cursor: pointer;
+}
+.bg-tile-vertical{
+    background-repeat: repeat-y;
+}
+.bg-tile-horizontal{
+    background-repeat: repeat-x;
+}
+.bg-tile-fullBleed{
+    background-size: cover;
+}
+.bg-tile-rectangle{
+    background-repeat: repeat;
+}

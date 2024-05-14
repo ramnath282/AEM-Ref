@@ -1,0 +1,50 @@
+.cda-banner {
+    margin-bottom:.75rem;
+    .carousel-slides{
+        border-bottom: none;
+    }
+}
+
+.cda-banner{
+    .play-container{
+        .banner-copy{
+            color: $black;
+            text-align: center;
+            @media #{$medium-down}{
+                background-color: inherit;
+                padding: 1.25rem .975rem .625rem;
+                margin-bottom: 1.95rem;
+            }
+            .module-title{
+                color: inherit;
+                @extend .h1-tag;
+            }
+            .module-description{
+                color: inherit;
+                margin-bottom: 0;
+                @extend .body-tag;
+            }
+            a,span,.theme-btn{
+                @extend .tf-btn;
+                @media #{$small-down} {
+                    margin-top: 1.75rem;
+                }
+            }
+        }
+        .carousel-slides{
+            &.slick-initialized{
+                background-color:$pacificBlue;
+                @media #{$medium-down} {
+                    padding-bottom: 0;
+                }
+            }
+            li{
+                img{
+                    &:focus{
+                        outline: none;
+                    }
+                }
+            }
+        }
+    }
+}

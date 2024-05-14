@@ -1,0 +1,1226 @@
+//Not Condition added to avoid AG css-conflict
+.free-form-carousel-extend{
+    .outer-carousel-sec{
+        display: flex;
+        justify-content: center;
+    }
+    .slider-content{
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: auto;
+        width: auto;
+        display: flex;
+        cursor: grab;
+        margin: 0;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+        &::-webkit-scrollbar {
+            display: none;
+        }
+        li{
+            margin: 10px 6px;
+            flex: none;
+            @media #{$medium-up}{
+                margin: 18px 6px 24px 6px;
+            }
+            &:first-child{
+                @media #{$medium-down}{
+                    margin-left: 10px;
+                }
+            }
+            .card{
+                box-shadow: none;
+                .card-component {
+                    .image-container{
+                        img{
+                            width: auto !important;
+                        }
+                    }
+                    .text-container{
+                        margin: 0;
+                        padding: 0;
+                        font:13px $primaryFontFamily;
+                        color: $night-rider;
+                        @media #{$medium-up}{
+                            font:20px $primaryFontFamily;
+                        }
+                        .content{
+                            margin: 0;
+                            padding: 0;
+                            text-align: center;
+                            *{
+                                margin: 0;
+                                font: inherit;
+                                color: inherit;
+                            }
+                        }
+                    }
+                    .ctItem{
+                        .cta-item{
+                            margin: 0;
+                        }
+                        &:not(.large-cta,.medium-cta,.small-cta){
+                            .btn-cta-item{
+                                min-width: 144px;
+                                padding: 10px 15px;
+                                font:16px $primaryFontFamily;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+.carouselContainer:not(.carousel) {
+    &.aem-GridColumn{
+        padding: 0;
+    }
+    &.dots-off {
+        .slick-dots {
+            display: none !important;
+        }
+    }
+    &.arrow-off {
+        .slick-arrow {
+            display: none !important;
+        }
+    }
+    .slick-dotted {
+        &.slick-slider {
+            @include print-css(
+                map-merge((
+                    margin-bottom: 0,
+                ),
+                if(variable-exists(carousel) and map-has-key($carousel, slickSlider), 
+                map-get($carousel,slickSlider), ()
+                )
+            ));
+        }
+    }
+    .flexible-carousel-component {
+        @include print-css(
+            map-merge((
+                clear: both,
+                float: left,
+                width: 100%,
+            ),
+            if(variable-exists(carousel) and map-has-key($carousel, flexibleCarouselComponent), 
+            map-get($carousel,flexibleCarouselComponent), ()
+            )
+        ));
+        .arrowCon {
+            @include print-css(
+                map-merge((
+                    width: 50px,
+                    height: 50px,
+                ),
+                if(variable-exists(carousel) and map-has-key($carousel, arrowCon), 
+                map-get($carousel,arrowCon), ()
+                )
+            ));
+        }
+        .slider-content {
+            -webkit-overflow-scrolling: touch;
+            @include print-css(
+                map-merge((
+                ),
+                if(variable-exists(carousel) and map-has-key($carousel, sliderContent), 
+                map-get($carousel, sliderContent), ()
+                )
+            ));
+            .slick-slide {
+                @include print-css(
+                    map-merge((
+                        margin: (
+                            largeUp: 0px 15px,
+                            largeOnly: 0px 15px,
+                            mediumOnly: 0px 15px,
+                            smOnly: 0px 10px,
+                            defaultVal: 0px 10px,
+                        ),
+                        position: relative,
+                    ),
+                    if(variable-exists(carousel) and map-has-key($carousel, sliderContentSlickSlide), 
+                    map-get($carousel,sliderContentSlickSlide), ()
+                    )
+                ));
+                .container-fluid {
+                    padding: 0; // Bootstrap-class
+                    margin: 0; // Bootstrap-class
+                }
+                .inner-container {
+                    @include print-css(
+                        map-merge((
+                            position: relative,
+                            float: left,
+                            width: 100%,
+                        ),
+                        if(variable-exists(carousel) and map-has-key($carousel, innerContainer), 
+                        map-get($carousel,innerContainer), ()
+                        )
+                    ));
+                }
+                .dynamicMedia {
+                    position: relative; //AEM class
+                }
+                img {
+                    @include print-css(
+                        map-merge((
+                            width:auto
+                        ),
+                        if(variable-exists(carousel) and map-has-key($carousel, carouselImg), 
+                        map-get($carousel,carouselImg), ()
+                        )
+                    ));
+                }
+                .card-component {
+                    .text-container{
+                        @include print-css(
+                            map-merge((
+                                margin-bottom: 0,
+                                margin-left: 0,
+                                padding-bottom: 0,
+                                margin-right: 0,
+                            ),
+                            if(variable-exists(carousel) and map-has-key($carousel, textContainer), 
+                            map-get($carousel,textContainer), ()
+                            )
+                        ));
+                    }
+                }
+            }
+            .inner-container {
+                &.dynamic-media-container {
+                    @include print-css(
+                        map-merge((
+                            float: none,
+                        ),
+                        if(variable-exists(carousel) and map-has-key($carousel, dynamicMediaContainer), 
+                        map-get($carousel,dynamicMediaContainer), ()
+                        )
+                    ));
+                    .textOverlayComponent {
+                        @include print-css(
+                            map-merge((
+                                top: 0,
+                                height: 100%,
+                                width: (
+                                    defaultVal:  null,
+                                    mediumOnly: 100% !important,
+                                    smOnly: 100% !important,
+                                    xsOnly: 100% !important,
+                                ),
+                                margin: (
+                                    defaultVal:  null,
+                                    mediumOnly: 0!important,
+                                    smOnly: 0!important,
+                                    xsOnly: 0!important,
+                                ),
+                                position: (
+                                    defaultVal:  absolute,
+                                    mediumOnly: relative,
+                                    smOnly: relative,
+                                    xsOnly: relative,
+                                ),
+                            ),
+                            if(variable-exists(carousel) and map-has-key($carousel, textOverlayComponent), 
+                            map-get($carousel,textOverlayComponent), ()
+                            )
+                        ));
+                    }
+
+                    &:empty{
+                        display:none
+                    }
+                }
+            }
+        
+            &.grid-column-extra {
+              @include print-css(
+                    map-merge((
+                        margin: (
+                            largeUp: 40px -10px,
+                            largeOnly: 40px -10px,
+                            mediumOnly: 30px -10px 32px -10px,
+                            smOnly: 20px -10px 32px -10px,
+                            defaultVal: 20px -10px 32px -10px,
+                        ),
+                        padding: (
+                            defaultVal: 0,
+                        ),
+                    ),
+                    if(variable-exists(carousel) and map-has-key($carousel, gridColumnExtra), 
+                    map-get($carousel,gridColumnExtra), ()
+                    )
+                ));
+                .slick-slide {
+                    @include print-css(
+                        map-merge((
+                            margin: (
+                                largeUp: 0 15px,
+                                largeOnly: 0 15px,
+                                mediumOnly: 0 10px,
+                                smOnly: 0 10px,
+                                defaultVal: 0 10px,
+                            ),
+                        ),
+                        if(variable-exists(carousel) and map-has-key($carousel, gridColumnExtraSlickSlide), 
+                        map-get($carousel,gridColumnExtraSlickSlide), ()
+                        )
+                    ));
+                    img {
+                        @include print-css(
+                            map-merge((
+                                width: auto,
+                            ),
+                            if(variable-exists(carousel) and map-has-key($carousel, gridColumnExtraImg), 
+                            map-get($carousel,gridColumnExtraImg), ()
+                            )
+                        ));
+                    }
+                }
+            }
+
+            &.carousal-autoWidth  {
+                @include print-css(
+                        map-merge((
+                            margin: (
+                                largeUp: 40px 0px 40px 70px,
+                                largeOnly: 40px 0px 40px 70px,
+                                mediumOnly: 30px 0px 32px 70px,
+                                smOnly: 20px 0px 32px 20px,
+                                defaultVal: 20px 0px 32px 20px,
+                            )
+                        ),
+                        if(variable-exists(carousel) and map-has-key($carousel, carousalAutoWidth), 
+                        map-get($carousel, carousalAutoWidth), ()
+                        )
+                    ));
+                .slick-arrow {
+                    &.slick-prev {
+                    @include print-css(
+                        map-merge((
+                            left: -61px,
+                        ),
+                        if(variable-exists(carousel) and map-has-key($carousel, carousalAutoWidthSlickArrowPrev), 
+                        map-get($carousel, carousalAutoWidthSlickArrowPrev), ()
+                        )
+                    ));
+                    }
+                }
+            }
+            .slick-arrow {
+                &.slick-prev {
+                    @include print-css(
+                        map-merge((
+                            left: 0,
+                        ),
+                        if(variable-exists(carousel) and map-has-key($carousel, sliderContentSlickArrowPrev), 
+                        map-get($carousel,sliderContentSlickArrowPrev), ()
+                        )
+                    ));
+                }
+                &.slick-next {
+                    @include print-css(
+                        map-merge((
+                            right: 0,
+                        ),
+                        if(variable-exists(carousel) and map-has-key($carousel, sliderContentSlickArrowNext), 
+                        map-get($carousel, sliderContentSlickArrowNext), ()
+                        )
+                    ));
+                }
+                @include print-css(
+                    map-merge((
+                        display: (
+                            smallDown: none !important,
+                        ),
+                    ),
+                    if(variable-exists(carousel) and map-has-key($carousel, sliderContentSlickArrow), 
+                    map-get($carousel, sliderContentSlickArrow), ()
+                    )
+                ));
+            }
+        }
+        .slick-arrow {
+            @include print-css(
+                map-merge((
+                    z-index: 20,
+                    background-image: url($spriteLightPath),
+                    background-repeat: no-repeat,
+                    margin-top: (
+                        defaultVal: -28px,
+                        mediumOnly: -22px,
+                    ),
+                ),
+                if(variable-exists(carousel) and map-has-key($carousel, flexibleCarouselComponentSlickArrow), 
+                map-get($carousel,flexibleCarouselComponentSlickArrow), ()
+                )
+            ));
+
+            &.slick-prev {
+                @extend .arrowCon;
+                @include print-css(
+                    map-merge((
+                        left: 0,
+                        background-position: 0 0,
+                    ),
+                    if(variable-exists(carousel) and map-has-key($carousel, flexibleCarouselComponentSlickArrowPrev), 
+                    map-get($carousel,flexibleCarouselComponentSlickArrowPrev), ()
+                    )
+                ));
+                &:hover {
+                    @include print-css(
+                        map-merge((
+                            background-position: -100px 0,
+                        ),
+                        if(variable-exists(carousel) and map-has-key($carousel, flexibleCarouselComponentSlickArrowPrevHover), 
+                        map-get($carousel,flexibleCarouselComponentSlickArrowPrevHover), ()
+                        )
+                    ));
+                }
+                &:before {
+                    @include print-css(
+                        map-merge((
+                            content: none,
+                        ),
+                        if(variable-exists(carousel) and map-has-key($carousel, flexibleCarouselComponentSlickArrowPrevBefore), 
+                        map-get($carousel,flexibleCarouselComponentSlickArrowPrevBefore), ()
+                        )
+                    ));
+                }
+            }
+            &.slick-next {
+                @extend .arrowCon;
+                @include print-css(
+                    map-merge((
+                        right: 0,
+                        background-position: -50px 0,
+                    ),
+                    if(variable-exists(carousel) and map-has-key($carousel, flexibleCarouselComponentSlickArrowNext), 
+                    map-get($carousel, flexibleCarouselComponentSlickArrowNext), ()
+                    )
+                ));
+                &:hover {
+                    @include print-css(
+                        map-merge((
+                            background-position: -150px 0,
+                        ),
+                        if(variable-exists(carousel) and map-has-key($carousel, flexibleCarouselComponentSlickArrowNextHover), 
+                        map-get($carousel, flexibleCarouselComponentSlickArrowNextHover), ()
+                        )
+                    ));
+                }
+                &:before {
+                    @include print-css(
+                        map-merge((
+                            content: none,
+                        ),
+                        if(variable-exists(carousel) and map-has-key($carousel, flexibleCarouselComponentSlickArrowNextContent), 
+                        map-get($carousel, flexibleCarouselComponentSlickArrowNextContent), ()
+                        )
+                    ));
+                }
+            }
+            &.slick-disabled {
+                @include print-css(
+                    map-merge((
+                        opacity: .5,
+                    ),
+                    if(variable-exists(carousel) and map-has-key($carousel, flexibleCarouselComponentSlickArrowDisabled), 
+                    map-get($carousel, flexibleCarouselComponentSlickArrowDisabled), ()
+                    )
+                ));
+           }
+        }
+        .slick-dots {
+            @include print-css(
+                map-merge((
+                    position: static,
+                    margin: (
+                        largeUp: 32px 0 0 0,
+                        largeOnly: 32px 0 0 0,
+                        mediumOnly: 20px 0 0 0,
+                        smOnly: 20px 0 0 0,
+                        defaultVal: 20px 0 0 0,
+                    ),
+                ),
+                if(variable-exists(carousel) and map-has-key($carousel, flexibleCarouselComponentSlickDots), 
+                map-get($carousel,flexibleCarouselComponentSlickDots), ()
+                )
+            ));
+           li {
+                @include print-css(
+                    map-merge((
+                        width: 8px,
+                        height: 8px,
+                        margin: 0 0 0 12px,
+                        top: -8px,     
+                    ),
+                    if(variable-exists(carousel) and map-has-key($carousel, flexibleCarouselComponentSlickDotsLi), 
+                    map-get($carousel, flexibleCarouselComponentSlickDotsLi), ()
+                    )
+                ));
+                &.slick-active {
+                    button {
+                        @include print-css(
+                            map-merge((
+                                opacity: 1,    
+                            ),
+                            if(variable-exists(carousel) and map-has-key($carousel, flexibleCarouselComponentSlickActiveButton), 
+                            map-get($carousel, flexibleCarouselComponentSlickActiveButton), ()
+                            )
+                        ));
+                    }
+                }
+                button {
+                    @include print-css(
+                        map-merge((
+                            width: 8px,
+                            height: 8px,
+                            border-radius: 50%,
+                            background-color: $bulletLight,
+                            opacity: .2,
+                            padding: 0,
+                            margin: 0,  
+                        ),
+                        if(variable-exists(carousel) and map-has-key($carousel, flexibleCarouselCompSlickDotsLiBtn), 
+                        map-get($carousel, flexibleCarouselCompSlickDotsLiBtn), ()
+                        )
+                    ));
+                    &:before {
+                        @include print-css(
+                            map-merge((
+                                content: none,
+                            ),
+                            if(variable-exists(carousel) and map-has-key($carousel, flexibleCarouselCompSlickDotsLiBtnBefore), 
+                            map-get($carousel, flexibleCarouselCompSlickDotsLiBtnBefore), ()
+                            )
+                        ));
+                    }
+                   
+                    &:focus{
+                        @include print-css(
+                            map-merge((
+                                border-radius: 50%,
+                                outline-color:#F93822,
+                            ),
+                            if(variable-exists(carousel) and map-has-key($carousel, flexibleCarouselCompSlickDotsLiBtnFocus), 
+                            map-get($carousel, flexibleCarouselCompSlickDotsLiBtnFocus), ()
+                            )
+                        ));
+                    }
+                }
+                &:first-child {
+                    @include print-css(
+                        map-merge((
+                            margin: 0, 
+                        ),
+                        if(variable-exists(carousel) and map-has-key($carousel, flexibleCarouselCompSlickDotsLiFstChild), 
+                        map-get($carousel, flexibleCarouselCompSlickDotsLiFstChild), ()
+                        )
+                    ));
+                }
+            }
+        }
+    }
+    .carousel-text-container { 
+        @include print-css(
+            map-merge((
+                position: relative,
+                z-index: 10,
+            ),
+            if(variable-exists(carousel) and map-has-key($carousel, carouselTxtCntnr), 
+            map-get($carousel,carouselTxtCntnr), ()
+            )
+        ));
+        .main-title {
+            @include print-css(
+                map-merge((
+                    font-size: (
+                        defaultVal: 36px,
+                        smallDown: 22px,
+                    ),
+                    padding: 0,
+                    margin: (
+                        largeUp: 40px 0 10px 0,
+                        largeOnly: 40px 0 10px 0,
+                        mediumOnly: 40px 0 10px 0,
+                        smOnly: 30px 0 10px 0,
+                        defaultVal: 30px 0 10px 0,
+                    ),
+                ),
+                if(variable-exists(carousel) and map-has-key($carousel, carouselTxtCntnrMainTitle), 
+                map-get($carousel,carouselTxtCntnrMainTitle), ()
+                )
+            ));
+        }
+        .sub-title {
+            @include print-css(
+                map-merge((
+                    font-size: (
+                        defaultVal: 20px,
+                        smallDown: 18px,
+                    ),
+                    padding: 0,
+                    margin: (
+                        largeUp: 0 0 10px 0,
+                        largeOnly: 0 0 10px 0,
+                        mediumOnly: 0 0 10px 0,
+                        smOnly: 0 0 10px 0,
+                        defaultVal: 0 0 10px 0,
+                    ),
+                ),
+                if(variable-exists(carousel) and map-has-key($carousel, carouselTxtCntnrSubTitle), 
+                map-get($carousel, carouselTxtCntnrSubTitle), ()
+                )
+            ));
+        }
+        .text-para {
+            @include print-css(
+                map-merge((
+                    font-size: (
+                        defaultVal: 18px,
+                        smallDown: 16px,
+                    ),
+                    padding: 0,
+                    margin: (
+                        largeUp: 0 0 20px 0,
+                        largeOnly: 0 0 20px 0,
+                        mediumOnly: 0 0 20px 0,
+                        smOnly: 0 0 10px 0,
+                        defaultVal: 0 0 10px 0,
+                    ),
+                ),
+                if(variable-exists(carousel) and map-has-key($carousel, carouselTxtCntnrPara), 
+                map-get($carousel, carouselTxtCntnrPara), ()
+                )
+            ));
+        }
+        // Refactoring: Keeping that as is 
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p {
+            margin: 0;
+            padding: 0 
+        }
+    } // GRID SECTION
+
+ 
+        .slider-content {
+            &.grid-column-extra {
+                .slick-slide {
+                    img { 
+                        @include print-css(
+                            map-merge((
+                                width: auto,
+                            ),
+                            if(variable-exists(carousel) and map-has-key($carousel, sliderContGridClmnSlkSlideImg), 
+                            map-get($carousel, sliderContGridClmnSlkSlideImg), ()
+                            )
+                        ));
+                    }
+                }
+            }
+        }
+        
+  
+    &.fullbleed {
+        .flexible-carousel-component {
+            .carousel-text-container {
+               .main-title {
+                    @include print-css(
+                        map-merge((
+                            margin-top: 0,
+                        ),
+                        if(variable-exists(carousel) and map-has-key($carousel, fullbleedFlxiCrsCompTxtContMTitle), 
+                        map-get($carousel, fullbleedFlxiCrsCompTxtContMTitle), ()
+                        )
+                    ));
+                }
+            } 
+            .slider-content {
+                
+                &.grid-column-one, &.grid-column-extra {
+                    .wrap-dots-section{
+                        @include print-css(
+                            map-merge((
+                                position: (
+                                    defaultVal: absolute,
+                                    smOnly: static,
+                                ),
+                                bottom: (
+                                    defaultVal: 16px,
+                                    mediumOnly: 0,
+
+                                ),
+                                list-style: none,
+                                display: block,
+                                text-align: center,
+                                padding: 0,
+                                margin: 0,
+                                width: 100%,
+                                margin-bottom: (
+                                    smOnly: 16px,
+                                ),
+                            ),
+                            if(variable-exists(carousel) and map-has-key($carousel, fullbdWrapDotsSection), 
+                            map-get($carousel, fullbdWrapDotsSection), ()
+                            )
+                        ));
+                        .slick-dots {
+                            @include print-css(
+                                map-merge((
+                                    position: static,
+                                    display: inline-block,
+                                    width: auto,
+                                ),
+                                if(variable-exists(carousel) and map-has-key($carousel, fullbdWrapDotsSectionSlkDots), 
+                                map-get($carousel, fullbdWrapDotsSectionSlkDots), ()
+                                )
+                            ));                   
+                            li {
+                                @include print-css(
+                                    map-merge((
+                                        top: 0,
+                                    ),
+                                    if(variable-exists(carousel) and map-has-key($carousel, fullbdWrapDotsSectionSlkDotsLi), 
+                                    map-get($carousel, fullbdWrapDotsSectionSlkDotsLi), ()
+                                    )
+                                ));
+                            }  
+                        }
+                        .play-pause-button{
+                            button {
+                                @include print-css(
+                                    map-merge((
+                                        width: 18px,
+                                        height: 18px,
+                                        background-color: transparent,
+                                        border: none,
+                                        padding: 0,
+                                        top: 4px,
+                                        position: relative,
+                                        background-image: url($spriteLightPath),
+                                        border-radius: 100%,
+                                        margin-right: 12px,
+                                    ),
+                                    if(variable-exists(carousel) and map-has-key($carousel, fullbdWrapDotsSecPlyPauseBtn), 
+                                    map-get($carousel, fullbdWrapDotsSecPlyPauseBtn), ()
+                                    )
+                                ));
+                                &:focus{
+                                    @include print-css(
+                                        map-merge((
+                                            outline-color: transparent,
+                                        ),
+                                        if(variable-exists(carousel) and map-has-key($carousel, fullbdWrapDotsSecPlyPauseBtnFocus), 
+                                        map-get($carousel, fullbdWrapDotsSecPlyPauseBtnFocus), ()
+                                        )
+                                    ));
+                                }
+                            
+                            }
+                            // Refactoring: Background-img-position 
+                            &[data-action="play"]{
+                                button {
+                                background-position: -18px -50px;
+                                }
+                            }
+                            &[data-action="pause"]{
+                                button {
+                                background-position: 0px -50px;
+                                }
+                            }
+
+                        }
+                    }
+                }
+                &.grid-column-one {
+                    .slick-slide {
+                        @include print-css(
+                            map-merge((
+                                margin: 0,
+                            ),
+                            if(variable-exists(carousel) and map-has-key($carousel, gridClmnOneSlkSlide), 
+                            map-get($carousel, gridClmnOneSlkSlide), ()
+                            )
+                        ));
+                    }
+                    .inner-container {
+                        &.dynamic-media-container {
+                            .textOverlayComponent {
+                                @include print-css(
+                                    map-merge((
+                                        width: (
+                                            mediumOnly: 100% !important,
+                                            smOnly: 100% !important,
+                                        ),
+                                        position: (
+                                            mediumOnly: relative !important,
+                                            smOnly: relative !important,
+                                        ),
+                                        height: (
+                                            mediumOnly: auto!important,
+                                            smOnly: auto!important,
+                                        ),
+                                    ),
+                                    if(variable-exists(carousel) and map-has-key($carousel, innerCtnrDynamicMediaTxtOverlay), 
+                                    map-get($carousel, innerCtnrDynamicMediaTxtOverlay), ()
+                                    )
+                                ));
+                            }
+                        }
+                    }
+                    .slick-arrow {
+                        @include print-css(
+                            map-merge((
+                                margin-top: 0,
+                            ),
+                            if(variable-exists(carousel) and map-has-key($carousel, fullbleedSldrCtntSlkArrow), 
+                            map-get($carousel, fullbleedSldrCtntSlkArrow), ()
+                            )
+                        ));
+                        &.slick-prev {
+                            @include print-css(
+                                map-merge((
+                                    left: 12px,
+                                ),
+                                if(variable-exists(carousel) and map-has-key($carousel, fullbleedSldrCtntSlkPrv), 
+                                map-get($carousel, fullbleedSldrCtntSlkPrv), ()
+                                )
+                            ));
+                        }
+                        &.slick-next {
+                            @include print-css(
+                                map-merge((
+                                    right: 12px,
+                                ),
+                                if(variable-exists(carousel) and map-has-key($carousel, fullbleedSldrCtntSlkNxt), 
+                                map-get($carousel, fullbleedSldrCtntSlkNxt), ()
+                                )
+                            ));
+                        }
+                    }
+                }
+            }
+        }
+    } //THEME SECTION
+    &.default-container {
+        .flexible-carousel-component {
+            .slider-content {
+                .slick-arrow {
+                    @include print-css(
+                        map-merge((
+                            display: (
+                                smallDown: inline-block !important,
+                            ),
+                        ),
+                        if(variable-exists(carousel) and map-has-key($carousel, defaultCnrFlexiCompSlkArrow), 
+                        map-get($carousel,defaultCnrFlexiCompSlkArrow), ()
+                        )
+                    ));
+                }
+                .inner-container {
+                    &.dynamic-media-container {
+                        .textOverlayComponent {
+                            @include print-css(
+                                map-merge((
+                                    width: (
+                                        mediumOnly: 100% !important,
+                                        smOnly: 100% !important,
+                                    ),
+                                    position: (
+                                        mediumOnly: relative !important,
+                                        smOnly: relative !important,
+                                    ),
+                                    height: (
+                                        mediumOnly: auto!important,
+                                        smOnly: auto!important,
+                                    ),
+                                ),
+                                if(variable-exists(carousel) and map-has-key($carousel, defaultCnrFlexiCompDynamicMediaTxtOverlay), 
+                                map-get($carousel, defaultCnrFlexiCompDynamicMediaTxtOverlay), ()
+                                )
+                            ));
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &.light-theme {
+        .flexible-carousel-component {
+            .slick-arrow {
+                @include print-css(
+                    map-merge((
+                        background-image: url($spriteLightPath),
+                        background-repeat: no-repeat,
+                    ),
+                    if(variable-exists(carousel) and map-has-key($carousel, lightThemeSlickArrow), 
+                    map-get($carousel, lightThemeSlickArrow), ()
+                    )
+                ));
+            }
+        }
+    }
+    &.light-alt-theme {
+        .flexible-carousel-component {
+            .slick-arrow {
+                @include print-css(
+                    map-merge((
+                        background-image: url($spriteLightAltPath),
+                        background-repeat: no-repeat,
+                    ),
+                    if(variable-exists(carousel) and map-has-key($carousel, lightAltThemeSlickArrow), 
+                    map-get($carousel, lightAltThemeSlickArrow), ()
+                    )
+                ));
+            }
+        }
+    }
+    &.dark-theme {
+        .flexible-carousel-component {
+            .slick-arrow {
+                @include print-css(
+                    map-merge((
+                        background-image: url($spriteDarkPath),
+                        background-repeat: no-repeat,
+                    ),
+                    if(variable-exists(carousel) and map-has-key($carousel, darkThemeSlickArrow), 
+                    map-get($carousel, darkThemeSlickArrow), ()
+                    )
+                ));
+            }
+            .slick-dots {
+                li {
+                    button {
+                        background-color: $bulletDark;
+                    }
+                }
+            }
+            .slider-content .wrap-dots-section {
+            .play-pause-button{
+                button {
+                 background-image:url($spriteDarkPath)!important;
+                } 
+           }
+          }
+        }
+    }
+    &.dark-alt-theme {
+        .flexible-carousel-component {
+            .slick-arrow {
+                @include print-css(
+                    map-merge((
+                        background-image: url($spriteDarkPath),
+                        background-repeat: no-repeat,
+                    ),
+                    if(variable-exists(carousel) and map-has-key($carousel, darkAltThemeSlickArrow), 
+                    map-get($carousel, darkAltThemeSlickArrow), ()
+                    )
+                ));
+            }
+            .slick-dots {
+                li {
+                    button {
+                        @include print-css(
+                            map-merge((
+                                background-color: $bulletDark,
+                            ),
+                            if(variable-exists(carousel) and map-has-key($carousel, darkAltThemeSlickDotsLiBtn), 
+                            map-get($carousel, darkAltThemeSlickDotsLiBtn), ()
+                            )
+                        ));
+                    }
+                }
+            }
+            .slider-content .wrap-dots-section {
+                .play-pause-button {
+                    button {
+                        @include print-css(
+                            map-merge((
+                                background-image:url($spriteDarkPath),
+                            ),
+                            if(variable-exists(carousel) and map-has-key($carousel, darkAltThemePlayPauseBtn), 
+                            map-get($carousel, darkAltThemePlayPauseBtn), ()
+                            )
+                        ));
+                    } 
+                }
+            }
+        }
+    }
+    // MATRECOMP-82 fixes
+    .bg_color {
+        .flexible-carousel-component {
+            .single-carousel-section {
+                .slick-track {
+                    @include print-css(
+                        map-merge((
+                            display: flex !important,
+                        ),
+                        if(variable-exists(carousel) and map-has-key($carousel, bgClrFlexiCompSlkTrack), 
+                        map-get($carousel, bgClrFlexiCompSlkTrack), ()
+                        )
+                    ));
+                }
+                .slick-slide {
+                    @include print-css(
+                        map-merge((
+                            height: inherit !important,
+                        ),
+                        if(variable-exists(carousel) and map-has-key($carousel, bgClrFlexiCompSlkSlide), 
+                        map-get($carousel, bgClrFlexiCompSlkSlide), ()
+                        )
+                    ));
+                }
+                .bg_wrapperImg.dynamic-media-wrapper {
+                    @include print-css(
+                        map-merge((
+                            position: static,
+                        ),
+                        if(variable-exists(carousel) and map-has-key($carousel, bgClrFlexiCompDynamicMediaWrap), 
+                        map-get($carousel, bgClrFlexiCompDynamicMediaWrap), ()
+                        )
+                    ));
+                }
+                .dynamic-media-wrapper>.inner-container:first-child {
+                    @include print-css(
+                        map-merge((
+                            position: absolute,
+                            left: 0,
+                            right: 0,
+                            top: 0,
+                            width: 100%,
+                            height: 100%,
+                        ),
+                        if(variable-exists(carousel) and map-has-key($carousel, bgClrFlexiCompDynamicMediaWrapInrCtntChild), 
+                        map-get($carousel,bgClrFlexiCompDynamicMediaWrapInrCtntChild), ()
+                        )
+                    ));
+                }
+                .slick-dots {
+                    @include print-css(
+                        map-merge((
+                            position: (
+                            mediumDown: static,
+                        ),
+                        margin: (
+                            mediumDown: 15px 0,
+                        )
+                        ),
+                        if(variable-exists(carousel) and map-has-key($carousel, bgClrFlexiCompSlkDots), 
+                        map-get($carousel, bgClrFlexiCompSlkDots), ()
+                        )
+                    ));
+                }
+                .text-overlay {
+                    @include print-css(
+                        map-merge((
+                            padding-top: (
+                                mediumDown: 10px,
+                            ),
+                        ),
+                        if(variable-exists(carousel) and map-has-key($carousel, bgClrFlexiCompTxtOverlay), 
+                        map-get($carousel, bgClrFlexiCompTxtOverlay), ()
+                        )
+                    ));
+                }
+            }
+        }
+    }
+    .dynamicMedia {
+        .cq-dd-image>div[id^=content_]:empty {
+            @include print-css(
+                map-merge((
+                    min-height: 300px,
+                ),
+                if(variable-exists(carousel) and map-has-key($carousel, dynamicMediaCqDdImgEmpty), 
+                map-get($carousel, dynamicMediaCqDdImgEmpty), ()
+                )
+            ));
+        }
+    }
+    .bg_wrapperImg {
+        @include print-css(
+            map-merge((
+                float: left, 
+            ),
+            if(variable-exists(carousel) and map-has-key($carousel, bgWrapperImg), 
+            map-get($carousel, bgWrapperImg), ()
+            )
+        ));
+    }
+    
+    .flexible-carousel-component[data-auto-play="true"] {
+		.slider-content {
+			&:hover {
+				.wrap-dots-section {
+					[data-action="pause"] {
+						button {
+							background-position: -18px -50px !important;
+						}
+					}
+				}
+			}
+			.slick-arrow {
+				&:hover {
+					.wrap-dots-section {
+						[data-action="pause"] {
+							button {
+								background-position: 0 -50px !important;
+							}
+						}
+					}
+				}
+			}
+			.wrap-dots-section {
+				.play-pause-button {
+					&.carousel-dot-hover[data-action="pause"] {
+						button {
+							background-position: 0 -50px !important;
+						}
+					}
+				}
+			}
+		}
+		.slider-content {
+			&:hover {
+				.wrap-dots-section {
+					[data-action="pause"] {
+						button {
+							&:hover {
+								background-position: 0 -50px !important;
+							}
+						}
+					}
+				}
+			}
+		}
+    }
+    @media #{$xsmall-down} {
+        .flexible-carousel-component[data-auto-play="true"] {		
+            &:hover {
+                .slider-content {			
+                    .wrap-dots-section {
+                        &:hover {
+                            [data-action="pause"] {
+                                button {                                
+                                    background-position: 0 -50px !important;                            
+                                }
+                            }
+                        }
+                    }
+                }
+            }		
+        }
+    }
+    .flexible-carousel-component {
+        .inner-container {
+            .textOverlayComponent {
+                &.col-30 {
+                    @include print-css(
+                        map-merge((
+                            width: (
+                                defaultVal: 41.66666667%,
+                                largeUp: 41.66666667%,
+                                largeOnly: 41.66666667%,
+                                mediumOnly: 100%,
+                                smOnly: 100%,
+                                xsOnly: 100%,
+                            ) 
+                        ),
+                        if(variable-exists(carousel) and map-has-key($carousel, textOverlayComponentCol30), 
+                        map-get($carousel, textOverlayComponentCol30), ()
+                        )
+                    ));
+                }
+            }
+        }
+    }
+    
+    .bg_color {
+        .slick-slide {
+            .enhanced-layout .dynamicMedia {
+                @include print-css(
+                    map-merge((
+                        display: block, 
+                    ),
+                    if(variable-exists(carousel) and map-has-key($carousel, bgColorDynamicMedia), 
+                    map-get($carousel, bgColorDynamicMedia), ()
+                    )
+                ));
+            }
+        }
+    }
+    
+    //MATRECOMP-918 fixes
+    .flexible-carousel-component:not([data-free-form = "true"]) {
+        .slider-content.outer-arrows:not(.slick-initialized) {
+            li:not(:first-child) {
+                @include print-css(
+                    map-merge((
+                        max-height: 0,
+                        overflow: hidden,
+                    ),
+                    if(variable-exists(carousel) and map-has-key($carousel, flexiCompOuterArrowLi), 
+                    map-get($carousel, flexiCompOuterArrowLi), ()
+                    )
+                ));
+            }
+            li {
+                .dynamicMedia {
+                    @include print-css(
+                        map-merge((
+                            display: block,
+                            position: relative,
+                        ),
+                        if(variable-exists(carousel) and map-has-key($carousel, flexiCompOuterArrowLiDynamicMedia), 
+                        map-get($carousel, flexiCompOuterArrowLiDynamicMedia), ()
+                        )
+                    ));
+                }
+            }
+        }
+    .grid-column-one {
+        .dynamicMedia {
+            .cq-dd-image>div[id^=content_] {
+                @include print-css(
+                    map-merge((
+                        min-height: (
+                            smallUp: 300px,
+                        ),
+                    ),
+                    if(variable-exists(carousel) and map-has-key($carousel, gridColOneCqDdImg), 
+                    map-get($carousel, gridColOneCqDdImg), ()
+                    )
+                ));
+                &:empty {
+                    @include print-css(
+                    map-merge((
+                        background: transparent url(../../shared/clientlibs/clientlib-base/resources/img/preloader_sm.svg) no-repeat center center,
+                        background-size: 40px,
+                        position: relative,
+                        min-height: 500px,
+                    ),
+                    if(variable-exists(carousel) and map-has-key($carousel, gridColOneCqDdImgEmpty), 
+                    map-get($carousel, gridColOneCqDdImgEmpty), ()
+                    )
+                ));
+                }
+            }
+        }
+      }
+    }
+    .flexible-carousel-component[data-free-form="true"] {
+        @extend .free-form-carousel-extend;
+    }
+}
+
+
+

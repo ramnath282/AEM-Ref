@@ -1,0 +1,66 @@
+<sly data-sly-test="${wcmmode.edit}">${'Hero Image Banner Component' @i18n}</sly>
+<sly data-sly-use.heroImageBanner="com.mattel.global.core.model.HeroImageBannerModel">
+	<div class="cda-banner" style="background-color: ${properties.backgroundColor @context='html'}; background-image: url(${properties.backgroundImage @context='html'}); border:${properties.bgBorderWidth @context='html'}px solid ${properties.bgBorderColor @context='html'}">
+		<div class="crm-container">
+			<sly data-sly-test="${properties.imagePath}">
+				<sly data-sly-test="${'properties.imgUrl'}" >
+					<sly data-sly-test="${properties.renderoption =='sameWindow'}">
+						<a href="${heroImageBanner.imgUrl}" data-tracking-id="Click-Event|HeroImageBanner">
+					</sly>
+					<sly data-sly-test="${properties.renderoption =='tabWindow'}">
+						<a href="${heroImageBanner.imgUrl}" target="_blank" data-tracking-id="Click-Event|HeroImageBanner">
+					</sly>
+					<sly data-sly-test="${properties.renderoption =='newWindow'}">
+							<a data-url="${heroImageBanner.imgUrl}" onclick="window.open(this.dataset.url,'AG','width=500, height=500');" style="cursor: pointer;" data-tracking-id="Click-Event|HeroImageBanner">
+					</sly>
+				</sly>
+				<img src="${properties.imagePath}" class="hidden-xs" alt="${properties.imageAlttext}"/>
+				<img src="${properties.imagePath}" class="visible-xs" alt="${properties.imageAlttext}"/>
+				<sly data-sly-test="${'properties.imgUrl'}">
+					</a>
+				</sly>
+			</sly>
+			<div class="banner-copy ${properties.textPositioning} ${properties.textBackground ? 'white-bgnd' : ''}" data-sly-test="${(properties.overlayHeading || properties.overlaySubHeading ||  properties.ctaLabel) && ( properties.ctaLabel|| properties.heading || properties.subHeading )}">
+				<h2 class="module-title"  data-sly-test="${properties.overlayHeading}">${properties.heading @context='html'}</h2>
+				<h3 class="module-sub-title"  data-sly-test="${properties.overlaySubHeading}">${properties.subHeading @context='html'}</h3>
+                <sly data-sly-test="${properties.overlayLegalText}">
+					<span class="banner-marketing-text legal hidden-xs">${properties.marketingText @context='html'}</span>	
+                </sly>
+				<sly data-sly-test="${properties.ctaLabel && properties.ctaPositioning == properties.textPositioning}">
+					<sly data-sly-test="${properties.overlayLegalText}">
+						<div class="banner-marketing-text legal visible-xs">${properties.marketingText @context='html'}</div>
+					</sly>
+					<sly data-sly-test="${properties.ctaRenderoption =='sameWindow'}">
+						<a class="${properties.ctaStyling}" style="background-color: ${properties.ctaBackgroundColor @context='html'};" href="${heroImageBanner.ctaLink}" alt="${properties.ctaAltText @i18n}" data-tracking-id="Click-Event|HeroImageBanner|CTA">${properties.ctaLabel @context='html'}</a>
+					</sly>
+					<sly data-sly-test="${properties.ctaRenderoption =='tabWindow'}">
+						<a class="${properties.ctaStyling}" style="background-color: ${properties.ctaBackgroundColor @context='html'};" href="${heroImageBanner.ctaLink}" alt="${properties.ctaAltText @i18n}" target="_blank" data-tracking-id="Click-Event|HeroImageBanner|CTA">${properties.ctaLabel @context='html'}</}</a>
+					</sly>
+					<sly data-sly-test="${properties.ctaRenderoption =='newWindow'}">
+						<a class="${properties.ctaStyling}" style="cursor: pointer; background-color: ${properties.ctaBackgroundColor @context='html'};" data-ctaLink="${heroImageBanner.ctaLink}" alt="${properties.ctaAltText @i18n}" onclick="window.open(this.dataset.ctalink,'AG','width=500, height=500');" data-tracking-id="Click-Event|HeroImageBanner|CTA">${properties.ctaLabel @context='html'}</}</a>
+					</sly>
+				</sly>
+			</div>
+
+			<sly data-sly-test="${properties.ctaLabel && properties.ctaPositioning != properties.textPositioning}">
+				<sly data-sly-test="${properties.overlayLegalText}">
+				  <div class="banner-marketing-text legal visible-xs">${properties.marketingText @context='html'}</div>
+				</sly>
+				<div class="banner-btn ${properties.ctaPositioning}">
+					<sly data-sly-test="${properties.ctaRenderoption =='sameWindow'}">
+						<a class="${properties.ctaStyling}" style="background-color: ${properties.ctaBackgroundColor @context='html'};" href="${heroImageBanner.ctaLink}" alt="${properties.ctaAltText @i18n}" data-tracking-id="Click-Event|HeroImageBanner|CTA">${properties.ctaLabel @context='html'}</a>
+					</sly>
+					<sly data-sly-test="${properties.ctaRenderoption =='tabWindow'}">
+						<a class="${properties.ctaStyling}" style="background-color: ${properties.ctaBackgroundColor @context='html'};" href="${heroImageBanner.ctaLink}" alt="${properties.ctaAltText @i18n}" target="_blank" data-tracking-id="Click-Event|HeroImageBanner|CTA">${properties.ctaLabel @context='html'}</a>
+					</sly>
+					<sly data-sly-test="${properties.ctaRenderoption =='newWindow'}">
+						<a class="${properties.ctaStyling}" style="cursor: pointer; background-color: ${properties.ctaBackgroundColor @context='html'};" data-ctaLink="${heroImageBanner.ctaLink}" alt="${properties.ctaAltText @i18n}" onclick="window.open(this.dataset.ctalink,'AG','width=500, height=500');" data-tracking-id="Click-Event|HeroImageBanner|CTA">${properties.ctaLabel @context='html'}</a>
+					</sly>
+				</div>
+			</sly>
+		</div>
+	</div>
+</sly>
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
+	<sly data-sly-call="${clientlib.js @ categories=['crm.ImageBanner']}"/>
+</sly>

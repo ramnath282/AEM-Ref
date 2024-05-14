@@ -1,0 +1,28 @@
+*,
+body {
+    font-family: mapping($layout,body,font);
+    font-weight: mapping($layout,body,fontWeight);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: mapping($layout,heading,font);
+    font-weight: mapping($layout,heading,fontWeight);
+}
+
+.theme-btn{
+    font-family: mapping($layout,theme,fontWeight);
+    font-weight: mapping($layout,themeBtn,fontWeight);
+    @if mapping($layout,themeBtn,isDefaultTheme){
+        background-color: mapping($layout,themeBtn,bgndColor);
+        border-color: mapping($layout,themeBtn,borderColor);
+    }
+   &.red{
+        background-color: $red;
+        border-color: $red;
+    }
+}

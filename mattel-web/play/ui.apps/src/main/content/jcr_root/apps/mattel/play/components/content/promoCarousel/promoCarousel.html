@@ -1,0 +1,134 @@
+<sly data-sly-test="${wcmmode.edit}">${' Configuration Promo Carousel' @ i18n}</sly>
+<div class="play-products" style="display:none;"></div>
+<div data-sly-use.promoCarouselRef="com.mattel.play.core.model.PromoCarouselModel" class="cda-banner enable-carousel" data-speed="${promoCarouselRef.transitionTime}" data-slide-show="1" data-slide-scroll="1" data-dots="true" data-autoplay="true" data-arrows="true" data-next-video-autoplay="true">
+	<input type="hidden" value="Promo Carousel" id="alwaysEnglishPromCr">
+    <div class="play-container">
+        <ul class="carousel-slides has-video-carousel" data-sly-list.promoItr="${promoCarouselRef.promoCarouselList}">
+            <sly data-sly-test="${promoItr.ooyalaId}">
+                <li class="video-player-container" data-sly-test.isVideoPresent="${promoItr.ooyalaId}">
+                    <sly data-sly-test="${promoItr.openCtalinksin =='sameWindow'}">
+                        <div class="video-player-banner" data-video-id="${promoItr.ooyalaId}"></div>
+                    </sly>
+                    <sly data-sly-test="${promoItr.openCtalinksin =='tabWindow'}">
+                        <div class="video-player-banner" data-video-id="${promoItr.ooyalaId}"></div>
+                    </sly>
+                    <sly data-sly-test="${promoItr.openCtalinksin =='newWindow'}">
+                        <div class="video-player-banner" data-video-id="${promoItr.ooyalaId}"></div>
+                    </sly>
+                     <sly data-sly-test="${promoItr.openCtalinksin =='interstitial'}">
+                        <div class="video-player-banner" data-video-id="${promoItr.ooyalaId}"></div>
+                    </sly>
+                     <sly data-sly-test="${promoItr.openCtalinksin =='retailerInterstitial'}">
+                        <div class="video-player-banner" data-video-id="${promoItr.ooyalaId}"></div>
+                    </sly>
+                </li>
+            </sly>
+            <sly data-sly-test="${promoItr.carouselImage}">
+                <li>
+                    <sly data-sly-test="${promoItr.openCtalinksin =='sameWindow'}">
+                        <a href="${promoItr.ctaLink}" class="hidden-xs" data-tracking-id="Promo Carousel|${promoItr.awalysEnglish}||P${promoItrList.count}:${promoItr.awalysEnglish}">
+                            <img src="${promoItr.carouselImage}" alt="${promoItr.imageAltText}">
+                        </a>
+                    </sly>
+                    <sly data-sly-test="${promoItr.openCtalinksin =='tabWindow'}">
+                        <a href="${promoItr.ctaLink}" class="hidden-xs" target="_blank" data-tracking-id="Promo Carousel|${promoItr.awalysEnglish}||P${promoItrList.count}:${promoItr.awalysEnglish}">
+                            <img src="${promoItr.carouselImage}" alt="${promoItr.imageAltText @ i18n}"><span class="sr-only"> ${'Opens in tab window' @ i18n}</span>
+                        </a>
+                    </sly>
+                    <sly data-sly-test="${promoItr.openCtalinksin =='newWindow'}">
+                        <a data-url="${promoItr.ctaLink}" class="hidden-xs" onclick="window.open(this.dataset.url,'PLAY','width=500, height=500');" data-tracking-id="Promo Carousel|${promoItr.awalysEnglish}||P${promoItrList.count}:${promoItr.awalysEnglish}">
+                            <img src="${promoItr.carouselImage}" alt="${promoItr.imageAltText @ i18n}"><span class="sr-only"> ${'Opens in new window' @ i18n}</span>
+                        </a>
+                    </sly>
+					<sly data-sly-test="${promoItr.openCtalinksin =='retailerInterstitial'}">
+                        <a href="javascript:void(0);" data-tracking-id="Promo Carousel|${promoItr.awalysEnglish}||P${promoItrList.count}:${promoItr.awalysEnglish}" class="hidden-xs retailers-list" data-toggle="modal" data-path="${currentNode.path}"data-url="${promoItr.ctaLink}" data-target="#interstitialRetailerModal">
+                            <img src="${promoItr.carouselImage}" alt="${promoItr.imageAltText @i18n}" /><span class="sr-only">opens a pop up</span>
+                        </a>
+                    </sly>
+                    <sly data-sly-test="${promoItr.openCtalinksin =='interstitial'}">
+                        <a href="javascript:void(0);" data-tracking-id="Promo Carousel|${promoItr.awalysEnglish}||P${promoItrList.count}:${promoItr.awalysEnglish}" class="hidden-xs" data-toggle="modal" data-url="${promoItr.ctaLink}" data-target="#interstitialModal">
+                            <img src="${promoItr.carouselImage}" alt="${promoItr.imageAltText @i18n}" /><span class="sr-only">opens a pop up</span>
+                        </a>
+                    </sly>
+                    <sly data-sly-test="${promoItr.openCtalinksin =='sameWindow'}">
+                        <a href="${promoItr.ctaLink}" class="hidden-md hidden-sm hidden-lg" data-tracking-id="Promo Carousel|${promoItr.awalysEnglish}||P${promoItrList.count}:${promoItr.awalysEnglish}">
+                            <img src="${promoItr.imageUrl||promoItr.carouselImage}" alt="${promoItr.imageAltText @ i18n}">
+                        </a>
+                    </sly>
+                    <sly data-sly-test="${promoItr.openCtalinksin =='tabWindow'}">
+                        <a href="${promoItr.ctaLink}" class="hidden-md hidden-sm hidden-lg" target="_blank" data-tracking-id="Promo Carousel|${promoItr.awalysEnglish}||P${promoItrList.count}:${promoItr.awalysEnglish}">
+                            <img src="${promoItr.imageUrl||promoItr.carouselImage}" alt="${promoItr.imageAltText @ i18n}"><span class="sr-only"> ${'Opens in tab window' @ i18n}</span>
+                        </a>
+                    </sly>
+                    <sly data-sly-test="${promoItr.openCtalinksin =='newWindow'}">
+                        <a data-url="${promoItr.ctaLink}" class="hidden-md hidden-sm hidden-lg" onclick="window.open(this.dataset.url,'PLAY','width=500, height=500');" data-tracking-id="Promo Carousel|${promoItr.awalysEnglish}||P${promoItrList.count}:${promoItr.awalysEnglish}">
+                            <img src="${promoItr.imageUrl||promoItr.carouselImage}" alt="${promoItr.imageAltText @ i18n}"><span class="sr-only"> ${'Opens in new window' @ i18n}</span>
+                        </a>
+                    </sly>
+					<sly data-sly-test="${promoItr.openCtalinksin =='retailerInterstitial'}">
+                        <a href="javascript:void(0);" data-tracking-id="Promo Carousel|${promoItr.awalysEnglish}||P${promoItrList.count}:${promoItr.awalysEnglish}" class="hidden-md hidden-sm hidden-lg retailers-list" data-toggle="modal" data-path="${currentNode.path}"data-url="${promoItr.ctaLink}" data-target="#interstitialRetailerModal">
+                            <img src="${promoItr.imageUrl||promoItr.carouselImage}" alt="${promoItr.imageAltText @i18n}" /><span class="sr-only">opens a pop up</span>
+                        </a>
+                    </sly>
+                    <sly data-sly-test="${promoItr.openCtalinksin =='interstitial'}">
+                        <a href="javascript:void(0);" data-tracking-id="Promo Carousel|${promoItr.awalysEnglish}||P${promoItrList.count}:${promoItr.awalysEnglish}" class="hidden-md hidden-sm hidden-lg" data-toggle="modal" data-url="${promoItr.ctaLink}" data-target="#interstitialModal">
+                            <img src="${promoItr.imageUrl||promoItr.carouselImage}" alt="${promoItr.imageAltText @i18n}" /><span class="sr-only">opens a pop up</span>
+                        </a>
+                    </sly>
+                    <sly data-sly-test="${promoItr.openCtalinksin =='sameWindow' && promoItr.ctaLink != null}">
+                        <a href="${promoItr.ctaLink}" data-tracking-id="Promo Carousel|${promoItr.awalysEnglish}|${promoItr.adobeTrackingForCta}|P${promoItrList.count}:${promoItr.awalysEnglish}">
+                    </sly>
+                    <sly data-sly-test="${promoItr.openCtalinksin =='tabWindow' && promoItr.ctaLink != null}">
+                        <a href="${promoItr.ctaLink}" target="_blank" data-tracking-id="Promo Carousel|${promoItr.awalysEnglish}|${promoItr.adobeTrackingForCta}|P${promoItrList.count}:${promoItr.awalysEnglish}">
+						
+                    </sly>
+                    <sly data-sly-test="${promoItr.openCtalinksin =='newWindow' && promoItr.ctaLink != null}">
+                        <a data-url="${promoItr.ctaLink}" onclick="window.open(this.dataset.url,'PLAY','width=500, height=500');" data-tracking-id="Promo Carousel|${promoItr.awalysEnglish}|${promoItr.adobeTrackingForCta}|P${promoItrList.count}:${promoItr.awalysEnglish}">
+						
+                    </sly>
+                    <sly data-sly-test="${promoItr.openCtalinksin =='retailerInterstitial' && promoItr.ctaLink != null}">
+                        <a href="javascript:void(0);" class="retailers-list" data-tracking-id="Promo Carousel|${promoItr.awalysEnglish}|${promoItr.adobeTrackingForCta}|P${promoItrList.count}:${promoItr.awalysEnglish}" data-toggle="modal" data-url="${promoItr.ctaLink}" data-path="${currentNode.path}" data-target="#interstitialRetailerModal"><span class="sr-only">opens a pop up</span>
+						<span class="sr-only"> ${'Opens a pop up' @ i18n}</span>
+	                </sly>
+                    <sly data-sly-test="${promoItr.openCtalinksin =='interstitial' && promoItr.ctaLink != null}">
+                        <a href="javascript:void(0);" data-tracking-id="Promo Carousel|${promoItr.awalysEnglish}|${promoItr.adobeTrackingForCta}|P${promoItrList.count}:${promoItr.awalysEnglish}" data-toggle="modal" data-url="${promoItr.ctaLink}" data-target="#interstitialModal"><span class="sr-only">opens a pop up</span>
+						<span class="sr-only"> ${'Opens a pop up' @ i18n}</span>
+	                </sly>
+	                <sly data-sly-test="${(promoItr.blrImage == null && promoItr.backgroundColor == null )|| (promoItr.backgroundoption =='image' && promoItr.blrImage == null ) || (promoItr.backgroundoption =='color' && promoItr.backgroundColor == null )}">
+						<div class="banner-copy ${promoItr.alignment}" data-sly-test="${promoItr.title|| promoItr.description || promoItr.ctaLabel}">
+							<div class="middle-div"> 
+								<h2 class="module-title"  data-sly-test="${promoItr.title}">${promoItr.title @ i18n}</h2>
+								<div class="module-description" data-sly-test="${promoItr.description}">${promoItr.description @ context='html',i18n}</div>
+	                        	<span class="btn theme-btn" data-sly-test="${promoItr.ctaLabel != null}">${promoItr.ctaLabel @i18n}</span>
+							</div>
+						</div>
+	                </sly>
+	                <sly data-sly-test="${promoItr.backgroundoption =='image' && promoItr.blrImage != null }">
+						<div class="banner-copy ${promoItr.alignment}" style="background: transparent url('${promoItr.blrImage @ context='styleString'}') 0 0;" data-sly-test="${promoItr.title|| promoItr.description || promoItr.ctaLabel}">
+							<div class="middle-div"> 
+								<h2 class="module-title"  data-sly-test="${promoItr.title}">${promoItr.title @ i18n}</h2>
+								<div class="module-description" data-sly-test="${promoItr.description}">${promoItr.description @ context='html',i18n}</div>
+	                        	<span class="btn theme-btn" data-sly-test="${promoItr.ctaLabel != null}">${promoItr.ctaLabel @ i18n}</span>
+							</div>
+						</div>
+	                </sly>
+					<sly data-sly-test="${promoItr.backgroundoption =='color' && promoItr.backgroundColor != null }">
+						<div class="banner-copy ${promoItr.alignment}" style="background-color:${promoItr.backgroundColor @ context='styleString'};" data-sly-test="${promoItr.title|| promoItr.description || promoItr.ctaLabel}">
+							<div class="middle-div"> 
+								<h2 class="module-title"  data-sly-test="${promoItr.title}">${promoItr.title @ i18n}</h2>
+								<div class="module-description" data-sly-test="${promoItr.description}">${promoItr.description @ context='html',i18n}</div>
+	                        	<span class="btn theme-btn" data-sly-test="${promoItr.ctaLabel != null}">${promoItr.ctaLabel @ i18n}</span>
+							</div>
+						</div>
+	                </sly>
+	            </a>
+                </li>
+                </sly>
+        </ul>
+        <a href="#" class="play pause" role="button"></a>
+    </div>
+</div>
+
+<sly data-sly-test="${isVideoPresent}" data-sly-use.clientlibPromoCarousel="/libs/granite/sightly/templates/clientlib.html">
+    <sly data-sly-call="${clientlibPromoCarousel.js @ categories='play.promoCarousel'}" />
+</sly>

@@ -1,0 +1,106 @@
+<div data-sly-test="${properties.mainSectionTitle}" data-sly-unwrap>
+    <div class="title-block">
+        <h2>${properties.mainSectionTitle @context='html'}</h2>
+    </div>
+</div>
+
+<div class="banner-image-text-container media-70-30 ${properties.imageSectionAlignment == 'right' ? 'row-reverse' : ''}">
+    <div data-sly-test.detailsAuthored="${properties.imageFileReferenceMainImageDesktop || properties.imageFileReferenceMainImageMobile}" data-sly-unwrap>
+        <div data-sly-test="${properties.imageBackOption}" data-sly-unwrap>
+            <div data-sly-test="${properties.imageBackOption == 'color'}" data-sly-unwrap>
+                <div data-sly-test="${properties.imageBackgroundColor != null}" data-sly-unwrap>
+                    <div class="image-block ${properties.imageSectionAlignment == 'right' ? 'pull-right' : ''} " style="background-color:${properties.imageBackgroundColor @ context='styleString'}">
+                        <sly data-sly-include="imageblock.html"/>
+                    </div>
+                </div>
+                <div data-sly-test="${properties.imageBackgroundColor == null}" data-sly-unwrap>
+                    <div class="image-block ${properties.imageSectionAlignment == 'right' ? 'pull-right' : ''} ">
+                        <sly data-sly-include="imageblock.html"/>
+                    </div>
+                </div>
+            </div>
+
+            <div data-sly-test="${properties.imageBackOption == 'image'}" data-sly-unwrap>
+                <div data-sly-test="${properties.imageFileReferenceBgImg != null}" data-sly-unwrap>
+                    <div data-sly-test="${properties.imageBackgroundColor == null}" data-sly-unwrap>
+                        <div class="image-block ${properties.imageSectionAlignment == 'right' ? 'pull-right' : ''}" style="background: transparent url('${properties.imageFileReferenceBgImg @ context='styleString'}');">
+                            <sly data-sly-include="imageblock.html"/>
+                        </div>
+                    </div>
+                </div>
+                <div data-sly-test="${properties.imageFileReferenceBgImg == null}" data-sly-unwrap>
+                    <div data-sly-test="${properties.imageBackgroundColor == null}" data-sly-unwrap>
+                        <div class="image-block ${properties.imageSectionAlignment == 'right' ? 'pull-right' : ''}">
+                            <sly data-sly-include="imageblock.html"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div data-sly-test="${properties.imageBackOption == 'gradient'}" data-sly-unwrap>
+                <div data-sly-test="${properties.imgSecBackGradient != null}" data-sly-unwrap>
+                    <div class="image-block ${properties.imageSectionAlignment == 'right' ? 'pull-right' : ''} " style="background-image: ${properties.imgSecBackGradient @ context='styleString'}">
+                        <sly data-sly-include="imageblock.html"/>
+                    </div>
+                </div>
+                <div data-sly-test="${properties.imgSecBackGradient == null}" data-sly-unwrap>
+                    <div class="image-block ${properties.imageSectionAlignment == 'right' ? 'pull-right' : ''} ">
+                        <sly data-sly-include="imageblock.html"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div data-sly-test="${properties.imageBackOption == null}" data-sly-unwrap>
+            <div data-sly-test="${properties.imageBackgroundColor == null}" data-sly-unwrap>
+                <div class="image-block ${properties.imageSectionAlignment == 'right' ? 'pull-right' : ''}">
+                    <sly data-sly-include="imageblock.html"/>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div data-sly-test.imageExists="${properties.imageFileReferenceMainImageDesktop == null && properties.imageFileReferenceMainImageMobile == null}" data-sly-unwrap/>
+    <div data-sly-test="${properties.textBackOption}" data-sly-unwrap>
+        <div data-sly-test="${properties.textBackOption == 'color'}" data-sly-unwrap>
+            <div data-sly-test="${properties.textBackgroundColor != null}" data-sly-unwrap>
+                <div class="${imageExists?'text-component':'text-block'}" style="background-color:${properties.textBackgroundColor @ context='styleString'}">
+                    <sly data-sly-include="textBlock.html"/>
+                </div>
+            </div>
+            <div data-sly-test="${properties.textBackgroundColor == null}" data-sly-unwrap>
+                <div class="${imageExists?'text-component':'text-block'}">
+                    <sly data-sly-include="textBlock.html"/>
+                </div>
+            </div>
+        </div>
+
+        <div data-sly-test="${properties.textBackOption == 'image'}" data-sly-unwrap>
+            <div data-sly-test="${properties.textFileReferenceBgImg != null}" data-sly-unwrap>
+                <div class="${imageExists?'text-component':'text-block'}" style="background: transparent url('${properties.textFileReferenceBgImg @ context='styleString'}');">
+                    <sly data-sly-include="textBlock.html"/>
+                </div>
+            </div>
+            <div data-sly-test="${properties.textFileReferenceBgImg == null}" data-sly-unwrap>
+                <div class="${imageExists?'text-component':'text-block'}">
+                    <sly data-sly-include="textBlock.html"/>
+                </div>
+            </div>
+        </div>
+        <div data-sly-test="${properties.textBackOption == 'gradient'}" data-sly-unwrap>
+            <div data-sly-test="${properties.textSecBackGradient != null}" data-sly-unwrap>
+                <div class="${imageExists?'text-component':'text-block'}" style="background-image: ${properties.textSecBackGradient @ context='styleString'}">
+                    <sly data-sly-include="textBlock.html"/>
+                </div>
+            </div>
+            <div data-sly-test="${properties.textSecBackGradient == null}" data-sly-unwrap>
+                <div class="${imageExists?'text-component':'text-block'}">
+                    <sly data-sly-include="textBlock.html"/>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div data-sly-test="${properties.textBackOption == null}" data-sly-unwrap>
+        <div class="${imageExists?'text-component':'text-block'}">
+            <sly data-sly-include="textBlock.html"/>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,64 @@
+<sly data-sly-test="${wcmmode.edit}">${' Configure Sign Up Module' @i18n}</sly>
+<sly data-sly-test="${properties.signupFor =='header'}">
+	<div class="newsletter-sign-up" style="display: none;">
+		<h2 data-sly-test="${properties.signUpHeader}">${properties.signUpHeader @i18n}</h2>
+		<p data-sly-test="${properties.signUpText}">${properties.signUpText @context='html',i18n}</p>
+		<sly data-sly-test="${properties.signUpCtaButtonText}">
+			<sly data-sly-test.myVar="${properties.signUpCtaButtonLink}" data-sly-use.info="${'com.mattel.ecomm.core.helper.EcommHelper' @ text= myVar}">
+				<sly data-sly-test="${properties.signUpCtaOption =='samewindow'}">
+					<form action="" method="post">
+						<input type="button" value="${properties.signUpCtaButtonText}" class="btn btn-large btn-signup data-tracking-sign-up" data-url="${info.pathURL}" data-tracking-sign-up-id="newsletter-signup-header-starts|${properties.signUpAnalyticsText}|${properties.signUpCtaButtonText}|newsletter-signup-header|header" onClick="window.open(this.dataset.url, '_self'); return false;" />
+					</form>
+				</sly>
+				<sly data-sly-test="${properties.signUpCtaOption =='newtab'}">
+					<form action="" method="post">
+						<input type="button" class="btn btn-large btn-signup data-tracking-sign-up" value="${properties.signUpCtaButtonText}" data-url="${info.pathURL}" data-tracking-sign-up-id="newsletter-signup-header-starts|${properties.signUpAnalyticsText}|${properties.signUpCtaButtonText}|newsletter-signup-header|header" target="_blank" onClick="parent.open(this.dataset.url); return false;" />
+					</form>
+				</sly>
+				<sly data-sly-test="${properties.signUpCtaOption =='newwindow'}">
+					<form action="" method="post">
+						<input type="button" class="btn btn-large btn-signup data-tracking-sign-up" data-url="${info.pathURL}" value="${properties.signUpCtaButtonText}" data-tracking-sign-up-id="newsletter-signup-header-starts|${properties.signUpAnalyticsText}|${properties.signUpCtaButtonText}|newsletter-signup-header|header" role="button" onclick="window.open(this.dataset.url,'PLAY','width=500, height=500');" />
+					</form>
+				</sly>
+			</sly>
+		</sly> <button class="signup-close" aria-label="close" data-tracking-id="newsletter-signup-header-close|close|no-value|newsletter-signup-header"><i class="fas fa-times"></i></button>
+	</div>
+</sly>
+
+<sly data-sly-test="${pageProperties.cq:template !='/conf/fisher-price/settings/wcm/templates/fisher-price-cm-emailsubscription-template'}">
+	<sly data-sly-test="${properties.signupFor =='footer'}">
+		<div class="fpimage-text-component" id="about" data-link-attribute="about">
+			<div class="fpimage-text-container">
+				<div class="fpimage-block">
+					<img class="hidden-xs hidden-sm hidden-md" src="${properties.fileReferenceSignupImage}" alt="${properties.imageAltText}">
+					<img class="hidden-lg" src="${properties.fileReferenceSignupImage}" alt="${properties.imageAltText}">
+				</div>
+				<div class="fptext-block">
+					<div class="inner">
+						<h2>${properties.signUpHeader @i18n }</h2>
+						<p>${properties.signUpText @context='html',i18n}</p>
+						<div class="cta-btn">
+							<sly data-sly-test.myVar="${properties.signUpCtaButtonLink}" data-sly-use.info="${'com.mattel.ecomm.core.helper.EcommHelper' @ text= myVar}">
+								<sly data-sly-test="${properties.signUpCtaOption =='samewindow'}">
+									<a class="btn btn-view-all fp-email-btn data-tracking-sign-up" href="${info.pathURL}" role="button" data-tracking-sign-up-id="newsletter-signup-footer-starts|${properties.signUpAnalyticsText}|${properties.signUpCtaButtonText}|newsletter-signup-footer|footer">${properties.signUpCtaButtonText @i18n}</a>
+									<span class="sr-only">opens in a new window</span>
+								</sly>
+								<sly data-sly-test="${properties.signUpCtaOption =='newtab'}">
+									<a class="btn btn-view-all fp-email-btn data-tracking-sign-up" href="${info.pathURL}" target="_blank" role="button" data-tracking-sign-up-id="newsletter-signup-footer-starts|${properties.signUpAnalyticsText}|${properties.signUpCtaButtonText}|newsletter-signup-footer|footer">${properties.signUpCtaButtonText @i18n}<span class="sr-only">opens in a new window/tab</span></a>
+								</sly>
+								<sly data-sly-test="${properties.signUpCtaOption =='newwindow'}">
+									<a class="btn btn-view-all fp-email-btn data-tracking-sign-up" data-url="${info.pathURL}" onclick="window.open(this.dataset.url,'PLAY','width=500, height=500');"
+									   role="button" data-tracking-sign-up-id="newsletter-signup-footer-starts|${properties.signUpAnalyticsText}|${properties.signUpCtaButtonText}|newsletter-signup-footer|footer">${properties.signUpCtaButtonText @i18n}<span class="sr-only">opens in a new window/tab</span></a>
+								</sly>
+							</sly>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</sly>
+</sly>
+</sly>
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
+    <sly data-sly-call="${clientlib.js @ categories='ecomm.signUp'}"/>
+</sly>

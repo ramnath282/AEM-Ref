@@ -1,0 +1,143 @@
+.play-character-landing-block {
+    .play-list {
+        @extend .container;
+        padding: 0;
+        margin-bottom: 2.1875rem;
+        @media #{$small-up}{
+            @media #{$medium-down} {
+                width: 100%;
+                padding: 0 1rem;
+            }
+        }
+        .column-4, .column-3 {
+            @media #{$medium-up} {
+                margin-bottom: 10px;
+            }
+            >section {
+                @extend .tf-list;
+                @media #{$small-down} {
+                    // padding: .5625rem !important;
+                }
+                img{
+                    -webkit-animation: fadeIn 2s;
+                    animation: fadeIn 2s;
+                    margin-left: auto;
+                    margin-right: auto;
+                    @media #{$medium-down} {
+                        width: 100%;
+                    }
+                }
+            }
+
+            .charTitle {
+                @extend .tf-label;
+                @media #{$small-down} {
+                    margin-top: .5625rem;
+                }
+            }
+            
+        }
+        @media screen and (min-width: 568px){
+            @media #{$small-down} {
+                padding: 0 10px;
+                .column-4, .column-3 {
+                    width: 50%;
+                    float: left;
+                    section{
+                        border-left-width: 5px;
+                        border-right-width: 5px;
+                    }
+                }
+            }
+        }
+        .column-4{
+            @media #{$medium-up} {
+                width: 25%;
+            }
+        }
+    }
+    .play-list{
+        
+    }
+}
+
+#pagename-sodor{
+    .play-list{
+        .lazy-load{
+            >section {
+                .charTitle {
+                    background-color: $ChateauGreen;
+                }
+            }
+        }
+    }
+}
+#pagename-sodor,#pagename-characters,#pagename-engines{
+    .root.responsivegrid{
+        &:before,&:after{
+            border: 8px solid $cobaltBlue;
+            width: auto;
+            border-left: 0;
+            border-bottom: 0;
+            position: absolute;
+            bottom: 0px;
+            pointer-events: none;
+            left: 0;
+            top: 1.875rem;
+            z-index: 1;
+            right: .975rem;
+            border-radius: 0 25px 0 0;
+            content: none;
+            @media #{$medium-up} {
+                content:"";
+            }
+            @media #{$large-up} {
+                right: 2.875rem;
+            }
+        }
+        &:after{
+            border-color: $sorbusOrange;
+            right: 0;
+            @media #{$large-up} {
+                right: 1.25rem;
+            }
+            top: 0;
+            border-top-width: 0;
+            border-radius: 0;
+        }
+        .title{
+            .play-page-title{
+                @media #{$medium-up} {
+                    padding-top: 2rem;
+                }
+                &>div{
+                    padding-bottom: 5px;
+                    @media #{$small-down} {
+                        margin-top: 5px;
+                    }
+                }
+            }
+        }
+    }
+    &#pagename-characters,
+    &#pagename-engines{
+        .root.responsivegrid{
+            &:before{
+                border-color: $midnightBlue;
+                @media #{$large-up} {
+                    right: 1.875rem;
+                }
+            }
+            &:after{
+                content: none;
+            }
+            .play-character-landing-block .play-list{
+                .column-4,.column-3{
+                    .charTitle{
+                        background-color: $pacificBlue;
+                    }
+                }
+            } 
+        }
+    }
+}

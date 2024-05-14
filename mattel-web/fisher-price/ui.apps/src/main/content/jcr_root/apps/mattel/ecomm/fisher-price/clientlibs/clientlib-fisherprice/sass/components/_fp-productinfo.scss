@@ -1,0 +1,591 @@
+.showin-mobiledevices {
+    @extend .hidden-lg;
+    @extend .hidden-md;
+}
+
+.showin-largedevices {
+    @extend .hidden-xs;
+    @extend .hidden-sm;
+}
+
+$tab-landscape: "(min-width: 991px) and (max-width: 1260px)";
+
+.fpProductinfo-module {
+    @extend .col-md-12;
+
+    .half-screen-width {
+        @media #{$medium-up} {
+            width: 50%;
+            float: left;
+        }
+    }
+
+    .title-block {
+        padding: 0 20px;
+
+        @media #{$medium-only} {
+            padding: 0 40px;
+        }
+
+        @media #{$medium-up} {
+            padding: 0;
+        }
+
+        .brand-title-wrap {
+            display: none;
+        }
+
+        .brand-title {
+            display: mapping($fpProductInfo, brandTitle, brdTitleDisplay);
+            font-family: mapping($fpProductInfo, brandTitle, brdTitleFontFamily);
+            font-size: mapping($fpProductInfo, brandTitle, brdTitleFontSize);
+            font-weight: mapping($fpProductInfo, brandTitle, brdTitleFontWeight);
+            line-height: mapping($fpProductInfo, brandTitle, brdTitleLineHeight);
+            color: mapping($fpProductInfo, brandTitle, brdTitleTxtColor);
+            text-align: mapping($fpProductInfo, brandTitle, brdTitleTxtAlign);
+            text-decoration: mapping($fpProductInfo, brandTitle, brdTitleTxtDecoration);
+            margin-bottom: mapping($fpProductInfo, brandTitle, brdTitleMarginBottom);
+        }
+
+        .product-badges:not(:empty) {
+            display: mapping($fpProductInfo, productBadges, prdBadgesDisplay);
+            @include font-properties($maaxMedium,$localFontVerdana);
+            font-size: mapping($fpProductInfo, productBadges, prdBadgesFontSize);
+            font-weight: mapping($fpProductInfo, productBadges, prdBadgesFontWeight);
+            line-height: mapping($fpProductInfo, productBadges, prdBadgesLineHeight);
+            letter-spacing: mapping($fpProductInfo, productBadges, prdBadgesLetterSpacing);
+            color: mapping($fpProductInfo, productBadges, prdBadgesTxtColor);
+            background-color: mapping($fpProductInfo, productBadges, prdBadgesBackgroundColor);
+            text-align: mapping($fpProductInfo, productBadges, prdBadgesTextAlign);
+            padding: mapping($fpProductInfo, productBadges, prdBadgesPadding);
+            margin-bottom: mapping($fpProductInfo, productBadges, prdBadgesMarginBottom);
+            border: mapping($fpProductInfo, productBadges, prdBadgesBorder);
+            border-radius: mapping($fpProductInfo, productBadges, prdBadgesBorderRadius);
+
+            img {
+                //vertical-align:mapping($fpProductInfo,productBadgesImg,vericalAlign);
+                margin-right: mapping($fpProductInfo, productBadgesImg, marginRight);
+            }
+
+            @media #{$large-down} {
+                margin-bottom: mapping($fpProductInfo, productBadges, XSprdBadgesMarginBottom);
+            }
+        }
+
+        h2 {
+            display: mapping($fpProductInfo, productTitle, prdTitleDisplay);
+            font-size: mapping($fpProductInfo, productTitle, prdTitleFontSize);
+            font-weight: mapping($fpProductInfo, productTitle, prdTitleFontWeight);
+            line-height: mapping($fpProductInfo, productTitle, prdTitleLineHeight);
+            color: mapping($fpProductInfo, productTitle, prdTitleTxtColor);
+            text-align: mapping($fpProductInfo, productTitle, prdTitleTxtAlign);
+            margin-bottom: mapping($fpProductInfo, productTitle, prdTitleMarginBottom);
+            @include font-properties($letsBeGlyphs,$localFontInfo);
+            @media #{$small-up} {
+                font-size: mapping($fpProductInfo, productTitle, prdTitleFontSizeDesk);
+                line-height: mapping($fpProductInfo, productTitle, prdTitleLineHeightDesk);
+                margin-bottom: mapping($fpProductInfo, productTitle, prdTitleMarBottom);
+
+            }
+        }
+
+        h1 {
+            display: mapping($fpProductInfo, productTitle, prdTitleDisplay);
+            font-size: mapping($fpProductInfo, productTitle, prdTitleFontSize);
+            font-weight: mapping($fpProductInfo, productTitle, prdTitleFontWeight);
+            line-height: mapping($fpProductInfo, productTitle, prdTitleLineHeight);
+            color: mapping($fpProductInfo, productTitle, prdTitleTxtColor);
+            text-align: mapping($fpProductInfo, productTitle, prdTitleTxtAlign);
+            @include font-properties($letsBeGlyphs,$localFontInfo);
+            //margin: mapping($fpProductInfo, productTitle, prdTitleMarginBottom);
+
+            @media #{$small-up} {
+                font-size: mapping($fpProductInfo, productTitle, prdTitleFontSizeDesk);
+                line-height: mapping($fpProductInfo, productTitle, prdTitleLineHeightDesk);
+                margin-bottom: mapping($fpProductInfo, productTitle, prdTitleMarBottom);
+				margin-top: mapping($fpProductInfo, productTitle, prdTitleMarTop);
+            }
+        }
+    }
+
+    .product-image-block {
+        @extend .half-screen-width;
+        text-align: mapping($fpProductInfo, productImage, prdImgTxtAlign);
+        margin-bottom: mapping($fpProductInfo, productImage, prdImgMarginBottom);
+
+        @media #{$small-down} {
+            float: left;
+        }
+
+        img {
+            height: mapping($fpProductInfo, productImage, prdImgHeight);
+            width: mapping($fpProductInfo, productImage, prdImgWidth);
+        }
+    }
+
+    .social-share-icons {
+        display: block;
+        margin: em(10) 0 em(10) 42%;
+        float: left;
+
+        @media #{$medium-down} {
+            margin-left: 0px;
+        }
+
+        @media #{$small-down} {
+            margin-left: 0px;
+        }
+    }
+
+    .product-info-block {
+        @extend .half-screen-width;
+        margin-bottom: mapping($fpProductInfo, productInfoBlock, piblkMarginBottom);
+
+        @media #{$large-down} {
+            margin-bottom: 0;
+        }
+
+        padding:mapping($fpProductInfo, productInfoBlock, piblkPad);
+
+        @media #{$medium-up} {
+            padding: 0;
+        }
+
+        .recall-product-msg {
+            color: mapping($fpProductInfo, recallProductMsg, color);
+            @include font-properties($maax,$localFontVerdana);
+            font-size: mapping($fpProductInfo, recallProductMsg, fontSize);
+            line-height: mapping($fpProductInfo, recallProductMsg, lineHeight);
+        }
+
+        .product-price {
+            display: mapping($fpProductInfo, productPrice, prdPriceDisplay);
+            @include font-properties($maax,$localFontVerdana);
+            font-size: mapping($fpProductInfo, productPrice, prdPriceFontSize);
+            font-weight: mapping($fpProductInfo, productPrice, prdPriceFontWeight);
+            line-height: mapping($fpProductInfo, productPrice, prdPriceLineHeight);
+            color: mapping($fpProductInfo, productPrice, prdPriceTxtColor);
+            margin-bottom: mapping($fpProductInfo, productPrice, prdPriceMarginBottom);
+            padding-top: mapping($fpProductInfo, productPrice, prdPricePaddingTop);
+
+            @media #{$medium-down} {
+                margin-bottom: mapping($fpProductInfo, productPrice, prdPriceDeviceMarginBottom);
+                padding-top: mapping($fpProductInfo, productPrice, prdPriceDevicePaddingTop);
+                line-height: mapping($fpProductInfo, productPrice, mobPrdPriceLineHeight);
+                font-size: mapping($fpProductInfo, productPrice, mobPrdPriceFontSize);
+            }
+        }
+
+        .age-badges-tooltip {
+            position: mapping($fpProductInfo, ageBadges, ageBadgesPosition);
+            display: mapping($fpProductInfo, ageBadges, ageBadgesDisplay);
+
+            .age-badges {
+                display: mapping($fpProductInfo, ageBadges, ageBadgesDisplay);
+                font-family: mapping($fpProductInfo, ageBadges, ageBadgesFontFamily);
+                font-size: mapping($fpProductInfo, ageBadges, ageBadgesFontSize);
+                font-weight: mapping($fpProductInfo, ageBadges, ageBadgesFontWeight);
+                line-height: mapping($fpProductInfo, ageBadges, ageBadgesLineHeight);
+                letter-spacing: mapping($fpProductInfo, ageBadges, ageBadgesLetterSpacing);
+                color: mapping($fpProductInfo, ageBadges, ageBadgesTxtColor);
+                text-align: mapping($fpProductInfo, ageBadges, ageBadgesTextAlign);
+                padding: mapping($fpProductInfo, ageBadges, ageBadgesPadding);
+                margin-bottom: mapping($fpProductInfo, ageBadges, ageBadgesMarginBottom);
+                border: mapping($fpProductInfo, ageBadges, ageBadgesBorder);
+                border-radius: mapping($fpProductInfo, ageBadges, ageBadgesBorderRadius);
+                cursor: mapping($fpProductInfo, ageBadges, agecursor);
+                .badge-txt {
+                    font-family: mapping($fpProductInfo, ageBadges, ageBadgesFontFamily);
+                    font-weight: mapping($fpProductInfo, ageBadges, ageBadgesFontWeight);
+                    padding: 1px 0px;
+                }
+
+                .badge-txt,
+                .age-info-icon {
+                    border: mapping($fpProductInfo, ageBadgesInfo, border);
+                    background: mapping($fpProductInfo, ageBadgesInfo, background);
+
+                    @media #{$medium-up} {
+                        pointer-events: mapping($fpProductInfo, ageBadgesInfo, pointerEvents);
+                    }
+
+                    &:focus {
+                        outline: mapping($fpProductInfo, ageBadgesInfo, outline);
+                    }
+                }
+
+            }
+
+            .tooltiptext {
+                visibility: mapping($fpProductInfo, toolTip, toolTipTxtVisibility);
+            }
+
+            .tooltiptext.active {
+                visibility: mapping($fpProductInfo, toolTip, toolTipTxtonHover);
+            }
+
+            &:hover {
+                @media #{$medium-up} {
+                    .tooltiptext {
+                        visibility: mapping($fpProductInfo, toolTip, toolTipTxtonHover);
+                    }
+                }
+            }
+
+        }
+
+        .product-summary-block {
+            display: mapping($fpProductInfo, productSummary, prdSummaryBlkDisp);
+            width: mapping($fpProductInfo, productSummary, prdSummaryBlkWidth);
+            margin: mapping($fpProductInfo, productSummary, prdSummaryBlkMargin);
+            padding: mapping($fpProductInfo, productSummary, prdSummaryBlkPadding);
+        }
+
+        .product-summary {
+            @include font-properties($maax,$localFontVerdana);
+            font-size: mapping($fpProductInfo, productSummary, prdSummaryFontSize);
+            line-height: mapping($fpProductInfo, productSummary, prdSummaryLineHeight);
+            color: mapping($fpProductInfo, productSummary, prdSummaryTxtColor);
+            display: mapping($fpProductInfo, productSummary, prdSummaryLgDisplay);
+
+            @media #{$small-up} {
+                p {
+                    display: mapping($fpProductInfo, productSummary, prdSummaryLgParaDisplay);
+                }
+            }
+
+            @media #{$medium-down} {
+                font-size: mapping($fpProductInfo, productSummary, prdSummaryFontSizeMobTab);
+            }
+        }
+
+        .readmore {
+            display: inline;
+            color: #000;
+            @include font-properties($maax,$localFontVerdana);
+            font-size: 18px;
+            line-height: 22px;
+            border-bottom: 2px solid #f93822;
+            font-weight: 400;
+
+            @media #{$medium-down} {
+                font-size: 16px;
+            }
+            &:hover {
+                color: #e51c06;
+                border-bottom: 3px solid #f93822;
+            }
+        }
+
+        .CTAlink {
+            display: mapping($fpProductInfo, CTAlink, CTAlinkDisplay);
+            @include font-properties($maax,$localFontVerdana);
+            font-size: mapping($fpProductInfo, CTAlink, CTAlinkFontSize);
+            font-weight: mapping($fpProductInfo, CTAlink, CTAlinkFontWeight);
+            line-height: mapping($fpProductInfo, CTAlink, CTAlinkLineHeight);
+            color: mapping($fpProductInfo, CTAlink, CTAlinkTxtColor);
+            text-decoration: mapping($fpProductInfo, CTAlink, CTAlinkTxtDecoration);
+            margin: mapping($fpProductInfo, CTAlink, CTAlinkMargin);
+
+            @media #{$medium-down} {
+                font-size: 16px;
+            }
+        }
+
+        .promo-banner {
+            display: block;
+            margin-bottom: em(24);
+
+            @media #{$medium-down} {
+                //   margin-top:25px;
+            }
+        }
+
+        .warning-msg {
+            @media #{$small-down} {
+                margin-top: 20px;
+                margin-bottom: mapping($fpProductInfo, waringMsg, marginBottom);
+                display: inline-block;
+            }
+
+            @include font-properties($maax,$localFontVerdana);
+            font-size: mapping($fpProductInfo, waringMsg, warningMsgFontSize);
+            line-height: mapping($fpProductInfo, waringMsg, warningMsgLineHeight);
+            color: mapping($fpProductInfo, waringMsg, waringMsgTxtColor);
+            margin-top: 25px;
+
+            &:before {
+                content: '';
+                background-image: url($spriteImgPath);
+                background-repeat: no-repeat;
+                display: block;
+                width: 28px;
+                height: 24px;
+                background-position: -132px -24px;
+                float: left;
+                margin-right: 4px;
+                margin-top: -5px;
+
+                @media #{$medium-down} {
+                    margin-right: 6px;
+                    margin-top: 0;
+                }
+            }
+
+            .fas {
+                display: none;
+
+                &:before {
+                    content: '';
+                }
+            }
+
+        }
+    }
+}
+
+.info-tooltip {
+    position: mapping($fpProductInfo, toolTip, toolTipPosition);
+    display: mapping($fpProductInfo, toolTip, toolTipDisplay);
+
+    .tooltiptext {
+        visibility: mapping($fpProductInfo, toolTip, toolTipTxtVisibility);
+        position: mapping($fpProductInfo, toolTip, toolTipTxtPosition);
+        z-index: mapping($fpProductInfo, toolTip, toolTipTxtZindex);
+        top: mapping($fpProductInfo, toolTip, toolTipTxtTop);
+        left: mapping($fpProductInfo, toolTip, toolTipTxtLeft);
+        margin-top: mapping($fpProductInfo, toolTip, toolTipTxtMarginTop);
+        padding: mapping($fpProductInfo, toolTip, toolTipTxtPadding);
+        width: mapping($fpProductInfo, toolTip, toolTipTxtWidth);
+        display: mapping($fpProductInfo, toolTip, toolTipTxtDisplay);
+        font-family: mapping($fpProductInfo, toolTip, toolTipTxtFontFamily);
+        font-size: mapping($fpProductInfo, toolTip, toolTipTxtFontSize);
+        line-height: mapping($fpProductInfo, toolTip, toolTipTxtLineHeight);
+        background-color: mapping($fpProductInfo, toolTip, toolTipTxtBackgroundColor);
+        color: mapping($fpProductInfo, toolTip, toolTipTxtColor);
+        text-align: mapping($fpProductInfo, toolTip, toolTipTxtTextAlign);
+        text-decoration: mapping($fpProductInfo, toolTip, toolTipTxtTextDecoration);
+        white-space: mapping($fpProductInfo, toolTip, toolTipTxtWhiteSpace);
+        border: mapping($fpProductInfo, toolTip, toolTipTxtBorder);
+        border-radius: mapping($fpProductInfo, toolTip, toolTipTxtBorderRadius);
+        @include box-shadow(mapping($fpProductInfo, toolTip, toolTipTxtBoxShadow));
+
+        h3 {
+            padding: mapping($fpProductInfo, toolTip, toolTipTxtTitlePadding);
+            margin: mapping($fpProductInfo, toolTip, toolTipTxtTitleMargin);
+            display: mapping($fpProductInfo, toolTip, toolTipTxtTitleDisplay);
+            font-size: mapping($fpProductInfo, toolTip, toolTipTxtTitleFontSize);
+            line-height: mapping($fpProductInfo, toolTip, toolTipTxtTitleLineHeight);
+            color: mapping($fpProductInfo, toolTip, toolTipTxtTitleColor);
+        }
+
+        @media #{$small-up} {
+            top: mapping($fpProductInfo, toolTip, toolTipTxtMLDevicesTop);
+            left: mapping($fpProductInfo, toolTip, toolTipTxtMLDevicesLeft);
+            margin-top: mapping($fpProductInfo, toolTip, toolTipTxtMLDevicesMarginTop);
+            padding: mapping($fpProductInfo, toolTip, toolTipTxtMLDevicesPadding);
+            width: mapping($fpProductInfo, toolTip, toolTipTxtMLDevicesWidth);
+            transform: mapping($fpProductInfo, toolTip, toolTipTxtMLDevicesTransform);
+        }
+
+        @media #{$tab-landscape} {
+            width: mapping($fpProductInfo, toolTip, toolTipTxtTabLanViewWidth);
+            transform: mapping($fpProductInfo, toolTip, toolTipTxtTabLanViewTransform);
+        }
+
+        &:before,
+        &:after {
+            content: mapping($fpProductInfo, toolTip, toolTipArrowContent);
+            position: mapping($fpProductInfo, toolTip, toolTipArrowPosition);
+            left: mapping($fpProductInfo, toolTip, toolTipArrowLeft);
+            width: mapping($fpProductInfo, toolTip, toolTipArrowWidth);
+            height: mapping($fpProductInfo, toolTip, toolTipArrowHeight);
+            border: mapping($fpProductInfo, toolTip, toolTipArrowBorder);
+        }
+
+        &:before {
+            bottom: mapping($fpProductInfo, toolTip, toolTipArrowBfrBottom);
+            border-bottom-color: mapping($fpProductInfo, toolTip, toolTipArrowBfrBorderColor);
+
+            @media #{$small-up} {
+                left: mapping($fpProductInfo, toolTip, toolTipArrowBfrMLDevicesLeft);
+                bottom: mapping($fpProductInfo, toolTip, toolTipArrowMLDevicesBottom);
+                border-bottom-color: mapping($fpProductInfo, toolTip, toolTipArrowMLDevicesBorderColor);
+                border-right-color: mapping($fpProductInfo, toolTip, toolTipArrowBfrBorderColor);
+            }
+        }
+
+        &:after {
+            bottom: mapping($fpProductInfo, toolTip, toolTipArrowAftrBottom);
+            display: mapping($fpProductInfo, toolTip, toolTipArrowAftrDisplay);
+            border-bottom-color: mapping($fpProductInfo, toolTip, toolTipArrowAftrBorderColor);
+
+            @media #{$small-up} {
+                left: mapping($fpProductInfo, toolTip, toolTipArrowAftrMLDevicesLeft);
+                bottom: mapping($fpProductInfo, toolTip, toolTipArrowMLDevicesBottom);
+                border-bottom-color: mapping($fpProductInfo, toolTip, toolTipArrowMLDevicesBorderColor);
+                border-right-color: mapping($fpProductInfo, toolTip, toolTipArrowAftrBorderColor);
+            }
+        }
+    }
+}
+
+#pricespider-div {		
+    .row {
+        .ps-vanilla-button .ps-button-label {
+            @media #{$medium-only} {
+                bottom: 7px;
+                height: 45px;
+				padding: 104px 0 0;
+            }
+            @media #{$large-only} {
+                bottom: 3px;
+                height: 42px;
+				padding: 111px 0 0px;
+            }
+            @media #{$large-up} {
+                bottom: 3px;
+                height: 42px;
+				padding: 111px 0 0px;
+            }
+        }
+    }
+}
+
+.fpDownloadapps-module {
+    display: block;
+    float: left;
+}
+
+.fpDownloadapps-module,
+.vedio-collageContainer {
+    @extend .container-fluid;
+    padding: 0 !important;
+}
+
+.fpProductinfo-module {
+    @extend .container-fluid;
+    //padding: 0 0 40px!important;
+    padding: 0 !important;
+    margin-bottom: 30px;
+
+    @media #{$medium-down} {
+        margin-bottom: 0;
+    }
+
+    @media #{$large-down} {
+        //padding: 0 0 38px!important;
+        padding: 0 !important;
+    }
+
+    @media #{$medium-up} {
+        min-height: 570px;
+    }
+}
+
+@media #{$medium-up} {
+    .recall-fpProductinfo-module .product-info-block {
+        float: right;
+    }
+}
+
+@media screen and (min-width:992px) and (max-width:1225px) {
+    .fpProductinfo-module .social-share-icons {
+        margin: 10px 0 10px 44%;
+    }
+}
+
+/*Recall component CSS*/
+.fpProductinfo-module {
+    .product-info-block {
+        .recall-product-msg {
+            @media #{$small-down} {
+                clear: both;
+            }
+
+            @media #{$medium-down} {
+                clear: both;
+            }
+
+            p {
+                &:first-child {
+                    margin-top: 25px;
+                    margin-bottom: 0px;
+                }
+
+                &:nth-child(2) {
+                    margin-top: 9px;
+
+                    @media #{$small-down} {
+                        margin-top: 11px;
+                    }
+
+                    @media #{$large-down} {
+                        margin-bottom: 0;
+                    }
+                }
+
+                a {
+                    color: $black;
+                    font-size: 18px;
+                    text-decoration: none;
+                    border-bottom: 1px solid $black;
+                    @include font-properties($maax,$localFontVerdana);
+                    font-weight: normal;
+
+                    &:hover {
+                        color: #cc2229;
+                        text-decoration: none;
+                        border-bottom: 3px solid #cc2229;
+                    }
+                }
+            }
+
+            strong {
+                @include font-properties($maaxMedium,$localFontVerdana);
+                font-size: 20px;
+                font-weight: 500;
+                color: #cc2229;
+
+                @media #{$large-down} {
+                    @include font-properties($maaxMedium,$localFontVerdana);
+                    font-size: 18px;
+                    font-weight: 500;
+                }
+            }
+
+        }
+
+    }
+
+    .recall-title-block {
+        margin-top: 19px;
+
+        @media #{$large-down} {
+            margin-top: 9px;
+        }
+
+        h1 {
+            margin-top: 0px;
+        }
+    }
+}
+
+
+.bazaarVoice {
+    #BVRRContainer {
+        position: relative;
+
+        #spinner {
+            position: intial;
+        }
+    }
+
+    #BVQAContainer {
+        position: relative;
+
+        #qaspinner {
+            position: intial;
+        }
+    }
+}

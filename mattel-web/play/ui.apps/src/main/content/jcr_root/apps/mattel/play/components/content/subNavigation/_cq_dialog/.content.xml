@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Sub-Navigation with Images Config"
+    sling:resourceType="cq/gui/components/authoring/dialog"
+    height="{Long}500"
+    width="{Long}650">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <subNavBackgroundStyle
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Sub-Navigation Background Config"
+                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <subNavBackgroundcolor
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="/libs/granite/ui/components/coral/foundation/form/colorfield"
+                                                fieldLabel="Background Color"
+                                                name="./subBgColor"/>
+                                            <subNavBackgroundpattern
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                                allowUpload="{Boolean}false"
+                                                autoStart="{Boolean}false"
+                                                fieldLabel="Background Image"
+                                                fileReferenceParameter="./retBgPattern"
+                                                mimeTypes="[image/gif,image/jpeg,image/png,image/webp,image/tiff]"
+                                                multiple="{Boolean}false"
+                                                name="./subBgImage"
+                                                uploadUrl="${suffix.path}"
+                                                useHTML5="{Boolean}true"/>
+                                            <subNavBackroundoption
+                                                granite:class="cq-dialog-dropdown-showhide"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                fieldLabel="Background Option"
+                                                name="./subBackOption">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <image
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Image"
+                                                        value="image"/>
+                                                    <color
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Color"
+                                                        value="color"/>
+                                                </items>
+                                            </subNavBackroundoption>
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </subNavBackgroundStyle>
+                    <subNavDetailConfig
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Sub-Brand Details Config"
+                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <alwaysEnglish
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Always English check for Multi-Lingual  Site Tagging"
+                                fieldLabel="Adobe Tracking Name"
+                                name="./alwaysEnglish"
+                                required="{Boolean}true"/>
+                            <subNavLogos
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                class="full-width"
+                                composite="{Boolean}true"
+                                fieldLabel="Sub Brand Logo Config">
+                                <field
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/fieldset"
+                                    acs-commons-nested="JSON_STORE"
+                                    name="./subBrandList">
+                                    <items jcr:primaryType="nt:unstructured">
+                                        <column
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                                            <items jcr:primaryType="nt:unstructured">
+                                                <brandLogoDesktop
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="/libs/granite/ui/components/coral/foundation/form/pathbrowser"
+                                                    fieldDescription="Browse Logo/Image"
+                                                    fieldLabel="Sub Brand Logo For Desktop"
+                                                    name="./brandLogoD"
+                                                    rootPath="/content/dam"/>
+                                                <logoAltText
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldDescription="Textual alternative of the meaning or function of the image, for visually impaired readers."
+                                                    fieldLabel="Logo Alternative Text"
+                                                    name="./brandLogoAlt"
+                                                    wrapperClass="cmp-image--editor-alt"/>
+                                                <brandHoverDesktop
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="/libs/granite/ui/components/coral/foundation/form/pathbrowser"
+                                                    fieldDescription="Browse Logo/Image"
+                                                    fieldLabel="Sub Brand Hover Image For Desktop"
+                                                    name="./brandHoverD"
+                                                    rootPath="/content/dam"/>
+                                                <brandLogoMobile
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="/libs/granite/ui/components/coral/foundation/form/pathbrowser"
+                                                    fieldDescription="Browse Logo/Image"
+                                                    fieldLabel="Sub Brand Logo For Mobile"
+                                                    name="./brandLogoM"
+                                                    rootPath="/content/dam"/>
+                                                <brandHoverMobile
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="/libs/granite/ui/components/coral/foundation/form/pathbrowser"
+                                                    fieldDescription="Browse Logo/Image"
+                                                    fieldLabel="Sub Brand Active Image For Mobile"
+                                                    name="./brandActiveM"
+                                                    rootPath="/content/dam"/>
+                                                <brandLink
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                    allowUpload="{Boolean}false"
+                                                    autoStart="{Boolean}false"
+                                                    class="cq-droptarget"
+                                                    fieldDescription="Sub Brand URL Details"
+                                                    fieldLabel="Sub Brand Link"
+                                                    fileReferenceParameter="./brandUrlSrc"
+                                                    mimeTypes="[image/gif,image/jpeg,image/png,image/webp,image/tiff]"
+                                                    multiple="{Boolean}false"
+                                                    name="./subBrandUrl"
+                                                    rootPath="/content/"
+                                                    uploadUrl="${suffix.path}"
+                                                    useHTML5="{Boolean}true"/>
+                                                <targetUrl
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                    fieldLabel="Open URL In"
+                                                    name="./brandTarget">
+                                                    <items jcr:primaryType="nt:unstructured">
+                                                        <sameWindow
+                                                            jcr:primaryType="nt:unstructured"
+                                                            text="Same Window"
+                                                            value="sameWindow"/>
+                                                        <newTab
+                                                            jcr:primaryType="nt:unstructured"
+                                                            text="New Tab"
+                                                            value="tabWindow"/>
+                                                        <newWindow
+                                                            granite:hide="${cqDesign.disableSearch}"
+                                                            jcr:primaryType="nt:unstructured"
+                                                            text="New Window"
+                                                            value="newWindow"/>
+                                                        <interstitial
+                                                            jcr:primaryType="nt:unstructured"
+                                                            text="Interstitial - Leaving the Site"
+                                                            value="interstitial"/>
+                                                    </items>
+                                                </targetUrl>
+                                                <alwaysEnglish
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldDescription="Always English check for Multi-Lingual  Site Tagging"
+                                                    fieldLabel="Adobe Tracking Name"
+                                                    name="./alwaysEnglish"
+                                                    required="{Boolean}true"/>
+                                            </items>
+                                        </column>
+                                    </items>
+                                </field>
+                            </subNavLogos>
+                        </items>
+                    </subNavDetailConfig>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>

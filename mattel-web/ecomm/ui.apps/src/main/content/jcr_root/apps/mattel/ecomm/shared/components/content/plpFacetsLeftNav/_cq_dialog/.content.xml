@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Configure PLP Facets And Left Nav"
+    sling:resourceType="cq/gui/components/authoring/dialog"
+    helpPath="https://www.adobe.com/go/aem_cmp_text_v2">
+    <content
+        granite:class="play-cmp-list--editor"
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <generalConfig
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="PLP Facets Section"
+                        sling:resourceType="granite/ui/components/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <title
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Please enter the title"
+                                fieldLabel="Title:-"
+                                name="./title"/>
+                            <initialcategorycount
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+                                fieldDescription="Please enter number of categories to load initially"
+                                fieldLabel="Initial category load count"
+                                min="{Long}1"
+                                name="./initialCategoryCount"/>
+                            <categoryLabel
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Please provide category label"
+                                fieldLabel="category Label"
+                                name="./categoryLabel"/>
+                            <seeMoreLabel
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Please provide see more label"
+                                fieldLabel="See More Label"
+                                name="./seeMoreLabel"/>
+                            <seeLessLabel
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Please provide See less label"
+                                fieldLabel="See Less Label"
+                                name="./seeLessLabel"/>
+                            <itemsLabel
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Please provide items label"
+                                fieldLabel="Items Label"
+                                name="./itemsLabel"/>
+                            <filterLabel
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Please provide filter label"
+                                fieldLabel="Filter Label"
+                                name="./filterLabel"/>
+                            <clearAllLabel
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Please provide clear all label"
+                                fieldLabel="Clear All Label"
+                                name="./clearAllLabel"/>
+                            <applyLabel
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Please provide apply label"
+                                fieldLabel="Apply Label"
+                                name="./applyLabel"/>
+                            <sortLabel
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Please provide sort label"
+                                fieldLabel="Sort Label"
+                                name="./sortLabel"/>
+                        </items>
+                    </generalConfig>
+					<facetConfiguration
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Facet Configuration"
+                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <excludeFacets
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                composite="{Boolean}true"
+                                fieldLabel="Facets to be excluded:">
+                                <field
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/fieldset"
+                                    name="./excludedFacets">
+                                    <items jcr:primaryType="nt:unstructured">
+                                        <column
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                                            <items jcr:primaryType="nt:unstructured">
+                                                <facetName
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldLabel="Facet Label:"
+													fieldDescription="Please enter Facet Label to be excluded"
+                                                    name="./facetName"/>
+                                            </items>
+                                        </column>
+                                    </items>
+                                </field>
+                            </excludeFacets>
+                        </items>
+                    </facetConfiguration>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>

@@ -1,0 +1,155 @@
+#image-text-video-gallery-player-component {
+    .image-block {
+        width: 100%;
+        max-width: 1145px;
+        margin: auto;
+        display: block;
+        float: none;
+    }
+
+    .text-block {
+        width: auto;
+        text-align: center;
+        float: none;
+
+        .btn-view-all {
+            @extend .tf-btn;
+        }
+    }
+    &.media-50-50{
+        .image-block.pull-right{
+            @media #{$medium-up} {
+                &+.text-block{
+                    width: 50%;
+                }
+                width: 50%;
+            }
+            @media #{$medium-down} {
+                float: none !important;
+                padding: 0;
+            }
+        } 
+    }
+}
+
+.single-video-player {
+    .video-js {
+        .vjs-big-play-button{
+            background-color: transparent !important;
+            color: transparent;
+            width: 3.25rem;
+            height: 3.25rem;
+            @include transform(translate(-50%, -50%));
+            margin: 0;
+            @media #{$small-up}{
+                width: 9.0625rem;
+                height: 8.9375rem;
+            }
+            .vjs-icon-placeholder:before,
+            .vjs-icon-play:before {
+                content: "\f144";
+                color: rgba($white, .85);
+                @include font-awesome();
+                font-size: 4rem;
+                @media #{$small-up}{
+                    font-size: 9rem;
+                }
+            }
+        }
+
+        .vjs-poster {
+            background-size: cover;
+        }
+    }
+}
+#pagename-home{
+    .imageAndText{
+        position: relative;
+        background: url(#{$imagePath}/Home_Map_Gray-arrow.png) no-repeat right bottom;
+        @media #{$small-down}{
+            background-size: 9.25rem;
+        }
+        @media #{$xsmall-down}{
+            background-size: 6.25rem;
+        }
+        &:before {
+            content:"";
+            width: 100%;
+            display: inline-block;
+            margin-bottom: 1.125rem;
+            background: url(#{$imagePath}/Home_Map_Cloud_M.png) no-repeat center bottom;
+            background-size: cover;
+            height: 2.9375rem;
+            margin-top: -2.8rem;
+            @media #{$xsmall-up} {
+                background: url(#{$imagePath}/Home_Map_Cloud_Desktop.png) no-repeat center bottom;
+                background-size: cover;
+                height: 7.375rem;
+                margin-top: -7.2rem;
+            }
+            @media screen and (min-width:1441px){
+                background-size: 100% 100%;
+            }
+        }
+        .single-video-player {
+            position: relative;
+            &:before {
+                content:"";
+                background: url(#{$imagePath}/Home_Map_Dotted-arrow.png) no-repeat center bottom;
+                background-size: auto;
+                width: 14.75rem;
+                position: absolute;
+                height: 100%;
+                left: -7.25rem;
+                pointer-events: none;
+                bottom: -13%;
+                @media #{$xsmall-down} {
+                    background-size: contain;
+                    left: -6.25rem;
+                    bottom: -22%;
+                }
+            }
+        }
+        .cta-btn{
+            @media #{$small-up}{
+                margin-bottom: .5rem;
+            }
+        }
+    }
+}
+.image-text-component:not(.with-video-player) {
+    @media #{$medium-up} {
+        padding-bottom: 0;
+    }
+    .btn-view-all{
+        @extend .tf-btn;
+        margin: 1rem 0 3.125rem;
+        @media #{$small-up}{
+            margin: 1.6875rem 0 2.8125rem;
+        }
+    }
+    @media #{$medium-down} {
+        .image-block{
+            padding: 0;
+            img{
+                width: 100%;
+            }
+        }
+    }
+}
+.image-text-container{
+    &.media-50-50{
+        @media #{$medium-up} {
+            .image-block.pull-right{
+                &+.text-block{
+                    width: 50%;
+                }
+                width: 50%;
+                padding: 0;
+                img{
+                    width: 100%;
+                }
+            }
+        } 
+    }
+}

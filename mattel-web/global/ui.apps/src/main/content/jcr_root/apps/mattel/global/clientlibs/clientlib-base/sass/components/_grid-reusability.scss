@@ -1,0 +1,604 @@
+.grid-container {
+    @include print-css(
+        map-merge((
+            display: inline-block,
+            width: 100%
+        ), 
+        if(variable-exists(grid) and map-has-key($grid, gridContainer), 
+            map-get($grid,gridContainer), ()
+        )
+    ));
+    &.with-see-more {
+        li {
+            @include print-css(
+                map-merge((
+                    display: none
+                ), 
+                if(variable-exists(grid) and map-has-key($grid, seeMoreList), 
+                    map-get($grid,seeMoreList), ()
+                )
+            ));
+        }
+    }
+    .grid-page-title {
+        @include print-css(
+            map-merge((
+                display: inline-block,
+                width: 100%
+            ), 
+            if(variable-exists(grid) and map-has-key($grid, gridPageTitle), 
+                map-get($grid,gridPageTitle), ()
+            )
+        ));
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p {
+            margin: 0;
+            padding: 0;
+        }
+        .main-title {
+            @include print-css(
+                map-merge((
+                    margin: (
+                        defaultVal: 40px 0 10px 0,
+                        smOnly: 30px 0 10px 0,
+                        xsOnly: 30px 0 10px 0
+                    )
+                ), 
+                if(variable-exists(grid) and map-has-key($grid, mainTitle), 
+                    map-get($grid,mainTitle), ()
+                )
+            ));
+        }
+        .sub-title {
+            @include print-css(
+                map-merge((
+                    margin: 0 0 10px 0,
+                ), 
+                if(variable-exists(grid) and map-has-key($grid, subTitle), 
+                    map-get($grid,subTitle), ()
+                )
+            ));
+        }
+        .text-para {
+            @include print-css(
+                map-merge((
+                    margin: 0
+                ), 
+                if(variable-exists(grid) and map-has-key($grid, textPara), 
+                    map-get($grid,textPara), ()
+                )
+            ));
+        }
+        .btn-cta-item {
+            @include print-css(
+                map-merge((
+                    margin-bottom: (
+                        defaultVal: 20px,
+                        mediumOnly: 10px,
+                        smOnly: 0,
+                        xsOnly: 0
+                    ),
+                    margin-top: (
+                        defaultVal: 20px,
+                        smOnly: 10px,
+                        xsOnly: 10px
+                    )
+                ), 
+                if(variable-exists(grid) and map-has-key($grid, btnCtaItem), 
+                    map-get($grid,btnCtaItem), ()
+                )
+            ));
+        }
+    }
+    .grid-default {
+        @include print-css(
+            map-merge((
+            	padding: (
+                    largeUp: 20px 15px 0 15px,
+                    largeOnly: 20px 15px 0 15px,
+                    mediumOnly: 20px 20px 10px 20px,
+                    smOnly: 20px 10px 0 10px,
+                    defaultVal: 20px 10px 0 10px,
+                ),
+                display: flex,
+                justify-content: center,
+                flex-wrap: wrap,
+                margin-bottom: 0
+            ), 
+            if(variable-exists(grid) and map-has-key($grid, gridDefault), 
+                map-get($grid,gridDefault), ()
+            )
+        ));
+        .grid-content {
+            @include print-css(
+                map-merge((
+                    padding: (
+                        largeUp: 0 15px 30px 15px,
+                        largeOnly: 0 15px 30px 15px,
+                        mediumOnly: 0 10px 20px 10px,
+                        smOnly: 0 10px 20px 10px,
+                        defaultVal: 0 10px 20px 10px,
+                    ),
+                    float: left
+                ), 
+                if(variable-exists(grid) and map-has-key($grid, gridContent), 
+                    map-get($grid,gridContent), ()
+                )
+            ));
+        }
+        @media #{$large-up} {
+            &.grid-xl-1 {
+                .grid-content {
+                    width: 100%;
+                }
+            }
+            &.grid-xl-2 {
+                .grid-content {
+                    width: 50%;
+                }
+            }
+            &.grid-xl-3 {
+                .grid-content {
+                    width: 33.33%;
+                }
+            }
+            &.grid-xl-4 {
+                .grid-content {
+                    width: 25%;
+                }
+            }
+            &.grid-xl-5 {
+                .grid-content {
+                    width: 20%;
+                }
+            }
+            &.grid-xl-6 {
+                .grid-content {
+                    width: 16.66%;
+                }
+            }
+            &.grid-xl-7 {
+                .grid-content {
+                    width: 14.28%;
+                }
+            }
+            &.grid-xl-8 {
+                .grid-content {
+                    width: 12.5%;
+                }
+            }
+            &.grid-xl-9 {
+                .grid-content {
+                    width: 11.11%;
+                }
+            }
+            &.grid-xl-10 {
+                .grid-content {
+                    width: 10%;
+                }
+            }
+            &.grid-xl-11 {
+                .grid-content {
+                    width: 9.09%;
+                }
+            }
+            &.grid-xl-12 {
+                .grid-content {
+                    width: 8.33%;
+                }
+            }
+        }
+        @media #{$lg-only} {
+            &.grid-lg-1 {
+                .grid-content {
+                    width: 100%;
+                }
+            }
+            &.grid-lg-2 {
+                .grid-content {
+                    width: 50%;
+                }
+            }
+            &.grid-lg-3 {
+                .grid-content {
+                    width: 33.33%;
+                }
+            }
+            &.grid-lg-4 {
+                .grid-content {
+                    width: 25%;
+                }
+            }
+            &.grid-lg-5 {
+                .grid-content {
+                    width: 20%;
+                }
+            }
+            &.grid-lg-6 {
+                .grid-content {
+                    width: 16.66%;
+                }
+            }
+            &.grid-lg-7 {
+                .grid-content {
+                    width: 14.28%;
+                }
+            }
+            &.grid-lg-8 {
+                .grid-content {
+                    width: 12.5%;
+                }
+            }
+            &.grid-lg-9 {
+                .grid-content {
+                    width: 11.11%;
+                }
+            }
+            &.grid-lg-10 {
+                .grid-content {
+                    width: 10%;
+                }
+            }
+            &.grid-lg-11 {
+                .grid-content {
+                    width: 9.09%;
+                }
+            }
+            &.grid-lg-12 {
+                .grid-content {
+                    width: 8.33%;
+                }
+            }
+        }
+        @media #{$md-only} {
+            &.grid-md-1 {
+                .grid-content {
+                    width: 100%;
+                }
+            }
+            &.grid-md-2 {
+                .grid-content {
+                    width: 50%;
+                }
+            }
+            &.grid-md-3 {
+                .grid-content {
+                    width: 33.33%;
+                }
+            }
+            &.grid-md-4 {
+                .grid-content {
+                    width: 25%;
+                }
+            }
+            &.grid-md-5 {
+                .grid-content {
+                    width: 20%;
+                }
+            }
+            &.grid-md-6 {
+                .grid-content {
+                    width: 16.66%;
+                }
+            }
+            &.grid-md-7 {
+                .grid-content {
+                    width: 14.28%;
+                }
+            }
+            &.grid-md-8 {
+                .grid-content {
+                    width: 12.5%;
+                }
+            }
+            &.grid-mdd-9 {
+                .grid-content {
+                    width: 11.11%;
+                }
+            }
+            &.grid-md-10 {
+                .grid-content {
+                    width: 10%;
+                }
+            }
+            &.grid-md-11 {
+                .grid-content {
+                    width: 9.09%;
+                }
+            }
+            &.grid-md-12 {
+                .grid-content {
+                    width: 8.33%;
+                }
+            }
+        }
+        @media #{$sm-only} {
+            &.grid-sm-1 {
+                .grid-content {
+                    width: 100%;
+                }
+            }
+            &.grid-sm-2 {
+                .grid-content {
+                    width: 50%;
+                }
+            }
+            &.grid-sm-3 {
+                .grid-content {
+                    width: 33.33%;
+                }
+            }
+            &.grid-sm-4 {
+                .grid-content {
+                    width: 25%;
+                }
+            }
+            &.grid-sm-5 {
+                .grid-content {
+                    width: 20%;
+                }
+            }
+            &.grid-sm-6 {
+                .grid-content {
+                    width: 16.66%;
+                }
+            }
+            &.grid-sm-7 {
+                .grid-content {
+                    width: 14.28%;
+                }
+            }
+            &.grid-sm-8 {
+                .grid-content {
+                    width: 12.5%;
+                }
+            }
+            &.grid-sm-9 {
+                .grid-content {
+                    width: 11.11%;
+                }
+            }
+            &.grid-sm-10 {
+                .grid-content {
+                    width: 10%;
+                }
+            }
+            &.grid-sm-11 {
+                .grid-content {
+                    width: 9.09%;
+                }
+            }
+            &.grid-sm-12 {
+                .grid-content {
+                    width: 8.33%;
+                }
+            }
+        }
+        @media #{$xs-only} {
+            &.grid-xs-1 {
+                .grid-content {
+                    width: 100%;
+                }
+            }
+            &.grid-xs-2 {
+                .grid-content {
+                    width: 50%;
+                }
+            }
+            &.grid-xs-3 {
+                .grid-content {
+                    width: 33.33%;
+                }
+            }
+            &.grid-xs-4 {
+                .grid-content {
+                    width: 25%;
+                }
+            }
+            &.grid-xs-5 {
+                .grid-content {
+                    width: 20%;
+                }
+            }
+            &.grid-xs-6 {
+                .grid-content {
+                    width: 16.66%;
+                }
+            }
+            &.grid-xs-7 {
+                .grid-content {
+                    width: 14.28%;
+                }
+            }
+            &.grid-xs-8 {
+                .grid-content {
+                    width: 12.5%;
+                }
+            }
+            &.grid-xs-9 {
+                .grid-content {
+                    width: 11.11%;
+                }
+            }
+            &.grid-xs-10 {
+                .grid-content {
+                    width: 10%;
+                }
+            }
+            &.grid-xs-11 {
+                .grid-content {
+                    width: 9.09%;
+                }
+            }
+            &.grid-xs-12 {
+                .grid-content {
+                    width: 8.33%;
+                }
+            }
+        }
+    }
+    .showMoreBtn,
+    .showLessBtn {
+        .cta-item {
+            @include print-css(
+                map-merge((
+                    margin: 0
+                ), 
+                if(variable-exists(grid) and map-has-key($grid, showCtaBtn), 
+                    map-get($grid,showCtaBtn), ()
+                )
+            ));
+        }
+        .btn-cta-item {
+            @include print-css(
+                map-merge((
+                    margin-bottom: (
+                        defaultVal: 40px,
+                        smOnly: 30px,
+                        xsOnly: 30px
+                    ),
+                    margin-top: 10px,
+                    margin-right: 0
+                ), 
+                if(variable-exists(grid) and map-has-key($grid, showCtaBtnItem), 
+                    map-get($grid,showCtaBtnItem), ()
+                )
+            ));
+        }
+        display: none;
+    }
+    .viewAllBtn {
+        .cta-item {
+            @include print-css(
+                map-merge((
+                    margin: 0
+                ), 
+                if(variable-exists(grid) and map-has-key($grid, viewAllCta), 
+                    map-get($grid,viewAllCta), ()
+                )
+            ));
+        }
+        .btn-cta-item {
+            @include print-css(
+                map-merge((
+                    margin-bottom: 10px,
+                    margin-top: (
+                        defaultVal: -10px,
+                        smOnly: 10px,
+                        xsOnly: 10px
+                    ),
+                    margin-right: 0
+                ), 
+                if(variable-exists(grid) and map-has-key($grid, viewAllCtaItem), 
+                    map-get($grid,viewAllCtaItem), ()
+                )
+            ));
+        }
+        display: none
+    }
+    .slick-arrow {
+        @include print-css(
+            map-merge((
+                display: none !important
+            ), 
+            if(variable-exists(grid) and map-has-key($grid, arrowProp), 
+                map-get($grid,arrowProp), ()
+            )
+        ));
+    }
+    .slick-dots {
+        @include print-css(
+            map-merge((
+                position: inherit,
+                bottom: (
+                    defaultVal: inherit,
+                    mediumOnly: -30px
+                ),
+                margin-bottom: 32px,
+                height: 8px
+            ), 
+            if(variable-exists(grid) and map-has-key($grid, dots), 
+                map-get($grid,dots), ()
+            )
+        ));
+        li {
+            @include print-css(
+                map-merge((
+                    width: 8px,
+                    height: 8px,
+                    margin: 0 6px,
+                    display: inline-block,
+                    vertical-align: top
+                ), 
+                if(variable-exists(grid) and map-has-key($grid, dotsLi), 
+                    map-get($grid,dotsLi), ()
+                )
+            ));
+            &.slick-active {
+                button {
+                    @include print-css(
+                        map-merge((
+                            opacity: 1
+                        ), 
+                        if(variable-exists(grid) and map-has-key($grid, dotsActiveLi), 
+                            map-get($grid,dotsActiveLi), ()
+                        )
+                    ));
+                }
+            }
+            button {
+                @include print-css(
+                    map-merge((
+                        padding: 0,
+                        margin: 0,
+                        width: 8px,
+                        height: 8px,
+                        border-radius: 50%,
+                        background-color: $bulletLight,
+                        opacity: .2
+                    ), 
+                    if(variable-exists(grid) and map-has-key($grid, dotsBtn), 
+                        map-get($grid,dotsBtn), ()
+                    )
+                ));
+                &:before {
+                    @include print-css(
+                        map-merge((
+                            content: none
+                        ), 
+                        if(variable-exists(grid) and map-has-key($grid, dotsBtnBefore), 
+                            map-get($grid,dotsBtnBefore), ()
+                        )
+                    ));
+                }
+            }
+        }
+    }
+}
+
+/*MATRECOMP-909*/
+.gridContainer {
+    &.grid-with-no-inner-margins {
+        .grid-container {
+            .grid-default {
+                padding: 0;
+                .grid-content {
+                    padding: 0 0 30px 0;
+
+                    @media #{$sm-only} {
+                        padding: 0 0 20px 0;
+                    }
+
+                    @media #{$xs-only} {
+                        padding: 0 0 20px 0;
+                    }
+                }
+            }
+        } 
+    }
+}

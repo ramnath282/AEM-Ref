@@ -1,0 +1,174 @@
+.dynamic-media-wrapper{
+    @include print-css(
+        map-merge((
+            position: relative,
+            width: 100%,
+            height: 100%
+        ), 
+        if(variable-exists(dynamicMediavar) and map-has-key($dynamicMediavar, gridContainer), 
+            map-get($dynamicMediavar,gridContainer), ()
+        )
+    ));
+    &.bg_wrapperImg{
+        .dynamicMedia{
+            @include print-css(
+                map-merge((
+                    z-index: 0,
+                    position: absolute,
+                    width:100%,
+                    height:100%
+                ), 
+                if(variable-exists(dynamicMediavar) and map-has-key($dynamicMediavar, dynamicMedia), 
+                    map-get($dynamicMediavar,dynamicMedia), ()
+                )
+            ));
+            .cq-dd-image{
+                @include print-css(
+                    map-merge((
+                        height: 100%,
+                    ), 
+                    if(variable-exists(dynamicMediavar) and map-has-key($dynamicMediavar, cqddImage), 
+                        map-get($dynamicMediavar,cqddImage), ()
+                    )
+                ));
+                .s7dm-dynamic-media{
+                    @include print-css(
+                        map-merge((
+                            height:100%,
+                        ), 
+                        if(variable-exists(dynamicMediavar) and map-has-key($dynamicMediavar, s7dmDynamicMedia), 
+                            map-get($dynamicMediavar,s7dmDynamicMedia), ()
+                        )
+                    ));
+                    .s7responsiveContainer{
+                        @include print-css(
+                            map-merge((
+                                height:100%,
+                            ), 
+                            if(variable-exists(dynamicMediavar) and map-has-key($dynamicMediavar, s7responsiveContainer), 
+                                map-get($dynamicMediavar,s7responsiveContainer), ()
+                            )
+                        ));
+                        img{
+                            @include print-css(
+                                map-merge((
+                                    object-fit: cover,
+                                    height: 100%,
+                                    width: 100%,
+                                ), 
+                                if(variable-exists(dynamicMediavar) and map-has-key($dynamicMediavar, dynamicMediaImg), 
+                                    map-get($dynamicMediavar,dynamicMediaImg), ()
+                                )
+                            ));
+                        }
+                    }
+                }
+            }
+
+            .desktop-bg{
+                @include print-css(
+                    map-merge((
+                        height: 100%,
+                        display: (
+                            smallUp: block,
+                            smallDown: none,
+                        )
+                    ), 
+                    if(variable-exists(dynamicMediavar) and map-has-key($dynamicMediavar, desktopMobilebg), 
+                        map-get($dynamicMediavar,desktopMobilebg), ()
+                    )
+                ));
+                &.customMobileoff{
+                    @include print-css(
+                        map-merge((
+                            display: block
+                        ), 
+                        if(variable-exists(dynamicMediavar) and map-has-key($dynamicMediavar, customMobileBg), 
+                            map-get($dynamicMediavar,customMobileBg), ()
+                        )
+                    ));
+                }
+            }
+            .mobile-bg{
+                @include print-css(
+                    map-merge((
+                        height: 100%,
+                        display:(
+                            smallUp: none,
+                            smallDown: block
+                        )
+                    ), 
+                    if(variable-exists(dynamicMediavar) and map-has-key($dynamicMediavar, mobileBg), 
+                        map-get($dynamicMediavar,mobileBg), ()
+                    )
+                ));
+            }
+            
+        }
+        .dynamic-media-container{
+            @include print-css(
+                map-merge((
+                    position: relative
+                ), 
+                if(variable-exists(dynamicMediavar) and map-has-key($dynamicMediavar, container), 
+                    map-get($dynamicMediavar,container), ()
+                )
+            ));
+        }
+    }
+	.modal{
+        @include print-css(
+            map-merge((
+                padding: 0 !important,
+                z-index: 222223
+            ), 
+            if(variable-exists(dynamicMediavar) and map-has-key($dynamicMediavar, dynamicMediaModalWrapper), 
+                map-get($dynamicMediavar,dynamicMediaModalWrapper), ()
+            )
+        ));
+        .dynamicMedia{
+            @include print-css(
+                map-merge((
+                    display: block
+                ), 
+                if(variable-exists(dynamicMediavar) and map-has-key($dynamicMediavar, dynamicMediaModal), 
+                    map-get($dynamicMediavar,dynamicMediaModal), ()
+                )
+            ));
+        }
+        .close{
+            @include print-css(
+                map-merge((
+                    z-index: 1
+                ), 
+                if(variable-exists(dynamicMediavar) and map-has-key($dynamicMediavar, dynamicMediaClose), 
+                    map-get($dynamicMediavar,dynamicMediaClose), ()
+                )
+            ));
+            button{
+                @include print-css(
+                    map-merge((
+                        left: -15px !important,
+                        bottom: -10px !important
+                    ), 
+                    if(variable-exists(dynamicMediavar) and map-has-key($dynamicMediavar, dynamicMediabutton), 
+                        map-get($dynamicMediavar,dynamicMediabutton), ()
+                    )
+                ));
+            }
+        }
+    }
+}
+
+.bg_color{
+    .dynamicMedia{
+        @include print-css(
+            map-merge((
+                display: block
+            ), 
+            if(variable-exists(dynamicMediavar) and map-has-key($dynamicMediavar, bgColorDynamivMedia), 
+                map-get($dynamicMediavar,bgColorDynamivMedia), ()
+            )
+        ));
+    }
+}

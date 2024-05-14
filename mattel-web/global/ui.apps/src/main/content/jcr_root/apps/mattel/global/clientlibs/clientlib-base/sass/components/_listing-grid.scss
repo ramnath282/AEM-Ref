@@ -1,0 +1,237 @@
+.grid-col-4 {
+    
+}
+
+.grid-col-3 {
+    
+}
+
+// 30-70 layout
+.col-30-70 {
+    .listingFacetsContainer {
+        @include print-css(
+            map-merge((
+                padding-top: (
+                    defaultVal: 20px,
+                    smallUp: 50px
+                ),
+                padding-left: (
+                    defaultVal:0,
+                    smallDown: 0
+                ),
+                padding-right:(smallDown:0),
+                width:(xMediumOnly: 33.33333%)
+            ),
+            if(variable-exists(listGrid) and map-has-key($listGrid, col30To70),
+                map-get($listGrid, col30To70), ())));
+        @extend .col-sm-3;
+
+        .filter-heading {
+            @include print-css(
+                map-merge((
+                    margin-bottom: (
+                        defaultVal: 12px,
+                        smallUp: 30px
+                    )
+                ),
+                if(variable-exists(listGrid) and map-has-key($listGrid, col30To70Heading),
+                    map-get($listGrid, col30To70Heading), ())));
+        }
+    }
+
+    .listingComponent-container {
+        @include print-css(
+            map-merge((
+                width: (xMediumOnly: 66.66667%)
+            ),
+            if(variable-exists(listGrid) and map-has-key($listGrid, col30To70Container),
+                map-get($listGrid, col30To70Container), ())));
+        @extend .col-sm-9;
+
+        .grid-lists {
+            // @extend .grid-col-3;
+            @extend .row;
+
+            &>li,
+            &>div {
+                @include print-css(
+                    map-merge((
+                        width: (
+                            defaultVal: 100%,
+                            xSmallUp: 50%,
+                            smallUp: 50%,
+                            mediumUp: 33.33333333%,
+                            mediumOnly: 50%
+                        ),
+                        float: left,
+                        padding: 0 em(15),
+                    ),
+                    if(variable-exists(listGrid) and map-has-key($listGrid, col3),
+                        map-get($listGrid, col3), ())));
+            }
+        }
+    }
+}
+
+// 100% layout (no -facets)
+.col-100 {
+    .listingComponent-container {
+        @extend .col-md-12;
+
+        .grid-lists {
+            // @extend .grid-col-4;
+            @extend .row;
+
+            &>li,
+            &>div {
+                @include print-css(
+                    map-merge((
+                        width: (
+                            defaultVal: 100%,
+                            xSmallUp: 50%,
+                            smallUp: 50%,
+                            mediumUp: 33.33333333%,
+                            largeUp: 25%,
+                            mediumOnly: 50%
+                        ),
+                        float: left,
+                        padding: 0 em(15),
+                    ),
+                    if(variable-exists(listGrid) and map-has-key($listGrid, col4),
+                        map-get($listGrid, col4), ())));
+            }
+        }
+    }
+}
+
+.grid-lists {
+    .grid-item {
+        .listingComponent-info {
+            @include print-css(
+                map-merge((
+                    border-bottom: 2px solid
+                ),
+                if(variable-exists(listGrid) and map-has-key($listGrid, listingInfo),
+                    map-get($listGrid, listingInfo), ())));
+            .img-wrapper {
+                @include print-css(
+                    map-merge((
+                        margin: 3.57em 0 1.428em 0
+                    ),
+                    if(variable-exists(listGrid) and map-has-key($listGrid, imgWrapper),
+                        map-get($listGrid, imgWrapper), ())));
+
+                &:not(.image-loaded) {
+                    @include print-css(
+                        map-merge((
+                            position: relative
+                        ),
+                        if(variable-exists(listGrid) and map-has-key($listGrid, imgWrapperLoading),
+                            map-get($listGrid, imgWrapperLoading), ())));
+                    @include animation(shimmer 1.2s ease-in-out infinite);
+
+                    &:before {
+                        @include print-css(
+                            map-merge((
+                                display: block,
+                                content: "",
+                                width: 100%,
+                                height: 100%,
+                                background-color: #EBEBEB,
+                            ),
+                            if(variable-exists(listGrid) and map-has-key($listGrid, imgWrapperLoadingBefore),
+                                map-get($listGrid, imgWrapperLoadingBefore), ())));
+                    }
+
+                    img {
+                        @include print-css(
+                            map-merge((
+                                opacity: 0,
+                                transition: opacity .5s linear
+                            ),
+                            if(variable-exists(listGrid) and map-has-key($listGrid, imgLoading),
+                                map-get($listGrid, imgLoading), ())));
+                    }
+                }
+
+                img {
+                    @include print-css(
+                        map-merge((
+                            opacity: 1,
+                            transition: .5s linear
+                        ),
+                        if(variable-exists(listGrid) and map-has-key($listGrid, listImg),
+                            map-get($listGrid, listImg), ())));
+                }
+            }
+            .listingComponent-content {
+                @include print-css(
+                    map-merge((
+                        margin: 0.85em 0
+                    ),
+                    if(variable-exists(listGrid) and map-has-key($listGrid, listingContent),
+                        map-get($listGrid, listingContent), ())));
+            }
+
+            .listingComponent-date {
+                @include print-css(
+                    map-merge((
+                        margin: 0.85em 0
+                    ),
+                    if(variable-exists(listGrid) and map-has-key($listGrid, listingDate),
+                        map-get($listGrid, listingDate), ())));
+            }
+
+            .listingComponent-cta {
+                @include print-css(
+                    map-merge((
+                        margin: 0.85em 0 0 0
+                    ),
+                    if(variable-exists(listGrid) and map-has-key($listGrid, listingCTA),
+                        map-get($listGrid, listingCTA), ())));
+
+                & .learn-more:after {
+                    @include print-css(
+                        map-merge((
+                            content: "",
+                            width: 20px,
+                            height: 20px,
+                            display: inline-block,
+                            vertical-align: sub,
+                            background-position: -104px 0px,
+                            margin-left: -3px
+                        ),
+                        if(variable-exists(listGrid) and map-has-key($listGrid, learnMoreAfter),
+                            map-get($listGrid, learnMoreAfter), ())));
+                }
+            }
+        }
+
+        &.row-0 {
+            .img-wrapper {
+                // margin-top: 0;
+            }
+        }
+    }
+}
+
+.listingComponent-container {
+    .cta-button {
+        @include print-css(
+            map-merge((
+                margin: em(50) 0 em(20) 0
+            ),
+            if(variable-exists(listGrid) and map-has-key($listGrid, listingCTABtn),
+                map-get($listGrid, listingCTABtn), ())));
+
+        &.cta-btn-column-1 {
+            @include print-css(
+                map-merge((
+                    text-align: center
+                ),
+                if(variable-exists(listGrid) and map-has-key($listGrid, listingCTABtnFirstChild),
+                    map-get($listGrid, listingCTABtnFirstChild), ())));
+        }
+
+    }
+}

@@ -1,0 +1,118 @@
+/*
+** promotional banner.scss
+*/
+.promo-banner{
+    >.row{
+      margin-right: mapping($promotionalBanner,immediateRow,marginRight);
+      @media #{$medium-only} {
+        width:100%;
+        margin:0px;
+      }
+       @media #{$small-down} {
+        width:100%;
+        margin:0px;
+        }
+    }
+   
+}
+.promotional-banner-container {
+	width: mapping($promotionalBanner,container,width);	
+	background-color: mapping($promotionalBanner,container,bgColor);	
+	margin: mapping($promotionalBanner,container,margin);	
+	float:mapping($promotionalBanner,container,float);	
+
+	@media #{$medium-only} {	
+		width: mapping($promotionalBanner,container,tabWidth);	
+		margin: mapping($promotionalBanner,container,tabMargin);	
+	}
+
+	@media #{$small-down} {	
+		width: mapping($promotionalBanner,container,mobWidth);	
+		margin: mapping($promotionalBanner,container,mobMargin);
+	}
+
+	.promotional-image-block {
+        width: mapping($promotionalBanner,imageBlock,width);
+        float: mapping($promotionalBanner,imageBlock,float);
+        padding: mapping($promotionalBanner,imageBlock,padding);
+        background: mapping($promotionalBanner,imageBlock,background);
+        margin: mapping($promotionalBanner,imageBlock,margin);
+
+        @media #{$medium-only} {
+            padding: mapping($promotionalBanner,imageBlock,tabPadding);
+        }
+
+        @media #{$small-down} {	
+            width: mapping($promotionalBanner,imageBlock,mobWidth);
+            padding: mapping($promotionalBanner,imageBlock,mobPadding);
+            padding-bottom: mapping($promotionalBanner,imageBlock,mobPaddingBottom);
+            //padding-left: mapping($promotionalBanner,imageBlock,mobPaddingLeft);
+            text-align: mapping($promotionalBanner,imageBlock,mobTextalign);
+            
+        }   
+    
+	}
+
+	.promotional-text-block {
+        padding-top: mapping($promotionalBanner,textBlock,paddingTop);
+        float: mapping($promotionalBanner,textBlock,float);
+        width: mapping($promotionalBanner,textBlock,width);
+
+        @media #{$medium-only} {
+            width: mapping($promotionalBanner,textBlock,tabWidth);
+        }
+
+        @media #{$small-down} {
+            width: mapping($promotionalBanner,textBlock,mobWidth);
+        }
+
+        h2 {
+            font-size: mapping($promotionalBanner,heading,fontSize);
+            color: mapping($promotionalBanner,heading,color);
+            margin: mapping($promotionalBanner,heading,margin);
+            line-height: mapping($promotionalBanner,heading,lineHeight);
+        }
+
+        p {
+            font-family: mapping($promotionalBanner,description,fontFamily);
+            font-size: mapping($promotionalBanner,description,fontSize);
+            font-weight: mapping($promotionalBanner,description,fontWeight);
+            color: mapping($promotionalBanner,description,color);
+            line-height: mapping($promotionalBanner,description,lineHeight);
+            margin-top: mapping($promotionalBanner,description,marginTop);
+            margin-bottom: mapping($promotionalBanner,description,marginBottom);
+        }
+	}
+	.cta-btn {
+		@media #{$small-down} {
+            width: mapping($promotionalBanner,ctaBtn,width);
+			text-align: mapping($promotionalBanner,ctaBtn,textAlign);
+            float: mapping($promotionalBanner,ctaBtn,BtnFloat);
+			position: relative;
+            left: 34.6%;
+            
+		}
+        a{
+            @media #{$small-down} {
+            margin-right: mapping($promotionalBanner,ctaBtn,BtnMarginRight); 
+            margin-left: mapping($promotionalBanner,ctaBtn,BtnMarginLeft); 
+            }                      
+        }
+	}
+	.shop-btn {
+		margin: mapping($promotionalBanner,ctaBtn,margin);
+        background-color: mapping($promotionalBanner,ctaBtn,bgColor);
+        height: mapping($promotionalBanner,ctaBtn,height);
+        padding: mapping($promotionalBanner,ctaBtn,padding);
+        min-width: mapping($promotionalBanner,ctaBtn,min-width);
+
+		@media #{$medium-only} {
+			margin: mapping($promotionalBanner,ctaBtn,tabMargin);
+		}
+
+		@media #{$small-down} {
+			margin: mapping($promotionalBanner,ctaBtn,mobMargin);
+		}
+	}
+}
+

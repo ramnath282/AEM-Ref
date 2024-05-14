@@ -1,0 +1,269 @@
+.listingComponent-outer-wrapper{
+    .listingComponent-container{
+        @include content-spacing(map-get($listingComponent, listingComponent_container));
+        #listingComponentInfo{
+            display: mapping($listingComponent, listingComponent_info, display);
+            flex-wrap: mapping($listingComponent, listingComponent_info, flex_wrap);
+            &:before{
+                content: mapping($listingComponent, listingComponent_info, bfcontent);
+            }
+            &:after{
+                content: mapping($listingComponent, listingComponent_info, bfcontent);
+            }
+        }
+        li{
+            @include content-spacing(map-get($listingComponent, listingComponent_entity));
+            width: mapping($listingComponent, listingComponent_entity, width);
+            //float: mapping($listingComponent, listingComponent_entity, float);
+            @media #{$medium-only} {
+                width: mapping($listingComponent, listingComponent_entity_column_two, width);
+            }
+            @media #{$desktop} {
+                width: mapping($listingComponent, listingComponent_entity_column_three, width);
+            }
+            .listingComponent-info{
+                @include content-spacing(map-get($listingComponent, article_spacing));
+                display: mapping($listingComponent, article_spacing, display);
+                flex-direction: mapping($listingComponent, article_spacing, flex_direction);
+                height: mapping($listingComponent, article_spacing, height);
+                justify-content: mapping($listingComponent, article_spacing, justify_content);
+                .img-wrapper{
+                    display: mapping($listingComponent, img_wrapper, display);
+                    @media #{$desktop} {
+                        //height: mapping($listingComponent, img_wrapper, height);
+                    }
+                    img{
+                        width: mapping($listingComponent, listingComponent_image, width);
+                        @media #{$desktop} {
+                            max-height: mapping($listingComponent, listingComponent_image, max_height);
+                            max-width: mapping($listingComponent, listingComponent_image, max_width);
+                        }
+                    }
+                    .default-img{
+                        height: mapping($listingComponent, default_img, height);
+                    }
+                }
+                
+                .listingComponent-content{
+                    @media #{$desktop} {
+                        height: mapping($listingComponent, listingComponent_content_md, height);
+                    }
+                    .listingComponent-headline{
+                        @include content-spacing(map-get($listingComponent, listingComponent_headline));
+                        font: mapping($listingComponent, listingComponent_headline, font);
+                        color: mapping($listingComponent, listingComponent_headline, color);
+                        letter-spacing: mapping($listingComponent, listingComponent_headline, letter_spacing);
+                        line-height: mapping($listingComponent, listingComponent_headline, line_height);
+                        height: mapping($listingComponent, listingComponent_headline, height);
+                        max-height: mapping($listingComponent, listingComponent_headline, max_height);
+                        display: mapping($listingComponent, listingComponent_headline, display);
+                        -webkit-line-clamp: mapping($listingComponent, listingComponent_headline, webkit_line_clamp);
+                        -webkit-box-orient: mapping($listingComponent, listingComponent_headline, webkit_box_orient);
+                        overflow: mapping($listingComponent, listingComponent_headline, overflow);
+                        @media #{$desktop} {
+                            font: mapping($listingComponent, listingComponent_headline_md, font);
+                            letter-spacing: mapping($listingComponent, listingComponent_headline_md, letter_spacing);
+                            line-height: mapping($listingComponent, listingComponent_headline_md, line_height);
+                            height: mapping($listingComponent, listingComponent_headline_md, height);
+                            max-height: mapping($listingComponent, listingComponent_headline_md, max_height);
+                        }
+                    }
+                    .listingComponent-description{
+                        @include content-spacing(map-get($listingComponent, listingComponent_description));
+                        font: mapping($listingComponent, listingComponent_description, font);
+                        color: mapping($listingComponent, listingComponent_description, color);
+                        letter-spacing: mapping($listingComponent, listingComponent_description, letter_spacing);
+                        line-height: mapping($listingComponent, listingComponent_description, line_height);
+                        height: mapping($listingComponent, listingComponent_description, height);
+                        max-height: mapping($listingComponent, listingComponent_description, max_height);
+                        display: mapping($listingComponent, listingComponent_description, display);
+                        -webkit-line-clamp: mapping($listingComponent, listingComponent_description, webkit_line_clamp);
+                        -webkit-box-orient: mapping($listingComponent, listingComponent_description, webkit_box_orient);
+                        overflow: mapping($listingComponent, listingComponent_description, overflow);
+                        @media #{$desktop} {
+                            line-height: mapping($listingComponent, listingComponent_description_md, line_height);
+                            height: mapping($listingComponent, listingComponent_description_md, height);
+                            max-height: mapping($listingComponent, listingComponent_description_md, max_height);
+                        }
+                    }
+                }
+                
+                .listingComponent-date{
+                    @include content-spacing(map-get($listingComponent, date_spacing));
+                    font: mapping($listingComponent, date_spacing, font);
+                    color: mapping($listingComponent, date_spacing, color);
+                    letter-spacing: mapping($listingComponent, date_spacing, letter_spacing);
+                    line-height: mapping($listingComponent, date_spacing, line_height);
+                }
+                .listingComponent-cta{
+                    @include content-spacing(map-get($listingComponent, listingComponent_cta));
+                    display: mapping($listingComponent, listingComponent_cta, display);
+                    .learn-more{
+                        color: mapping($listingComponent, learnMore_label, color);
+                        font-size: mapping($listingComponent, learnMore_label, font_size);
+                        font-weight: mapping($listingComponent, learnMore_label, font_weight);
+                        position: mapping($listingComponent, learnMore_label, position);
+                        letter-spacing: .59px;
+                        &:after{
+                            content: mapping($listingComponent, learnMore_after, content);
+                            float: mapping($listingComponent, learnMore_after, float);
+                            cursor: mapping($listingComponent, learnMore_after, cursor);
+                            position: mapping($listingComponent, learnMore_after, position);
+                            top:mapping($listingComponent, learnMore_after, top_pos);
+                            @include font-awesome;
+                            @include content-spacing(map-get($listingComponent, learnMore_after));
+                        }
+                    }
+                }
+            }
+        }
+
+        .view-all-btn{
+            cursor: mapping($listingComponent, view_all_btn, cursor);
+            color: mapping($listingComponent, view_all_btn, color);
+            font: mapping($listingComponent, view_all_btn, font);
+            letter-spacing: mapping($listingComponent, view_all_btn, letter_spacing);
+            text-align: mapping($listingComponent, view_all_btn, text_align);
+            margin: mapping($listingComponent, view_all_btn, margin);
+            background: mapping($listingComponent, view_all_btn, background);
+            border-radius: mapping($listingComponent, view_all_btn, border_radius);
+            width: mapping($listingComponent, view_all_btn, width);
+            height: mapping($listingComponent, view_all_btn, height);
+            display: mapping($listingComponent, view_all_btn, display);
+            align-items: mapping($listingComponent, view_all_btn, align_items);
+            justify-content: mapping($listingComponent, view_all_btn, justify_content);
+        }
+    }
+}
+
+    
+.grid-column-one{
+    .listingComponent-outer-wrapper{
+        li{
+            @media #{$desktop} {
+                width: mapping($listingComponent, listingComponent_entity, width);
+            }
+        }
+    }
+}
+.grid-column-two{
+    .listingComponent-outer-wrapper{
+        li{
+            @media #{$desktop} {
+                width: mapping($listingComponent, listingComponent_entity_column_two, width);
+            }
+        }
+    }
+}
+.grid-column-three{
+    .listingComponent-outer-wrapper{
+        li{
+            @media #{$desktop} {
+                width: mapping($listingComponent, listingComponent_entity_column_three, width);
+            }
+        }
+    }
+}
+.grid-column-four{
+    .listingComponent-outer-wrapper{
+        li{
+            @media #{$desktop} {
+                width: mapping($listingComponent, listingComponent_entity_column_four, width);
+            }
+        }
+    }
+}
+.grid-column-five{
+    .listingComponent-outer-wrapper{
+        li{
+            @media #{$desktop} {
+                width: mapping($listingComponent, listingComponent_entity_column_five, width);
+            }
+        }
+    }
+}
+.grid-column-six{
+    .listingComponent-outer-wrapper{
+        li{
+            @media #{$desktop} {
+                width: mapping($listingComponent, listingComponent_entity_column_six, width);
+            }
+        }
+    }
+}
+
+.loader-outer{
+    display: mapping($listingComponent, loader_outer, display);
+    position: mapping($listingComponent, loader_outer, position);
+    top: mapping($listingComponent, loader_outer, p_top);
+    bottom: mapping($listingComponent, loader_outer, p_bottom);
+    left: mapping($listingComponent, loader_outer, p_left);
+    right: mapping($listingComponent, loader_outer, p_right);
+    z-index: mapping($listingComponent, loader_outer, z_index);
+    .loader {
+        position: mapping($listingComponent, loader, position);
+        left: mapping($listingComponent, loader, p_left);
+        top: mapping($listingComponent, loader, p_top);
+        font-size: mapping($listingComponent, loader, font_size);
+        margin: mapping($listingComponent, loader, margin);
+        text-indent: mapping($listingComponent, loader, text_indent);
+        width: mapping($listingComponent, loader, width);
+        height: mapping($listingComponent, loader, height);
+        border-radius: mapping($listingComponent, loader, border_radius);
+        @include loaderBg(left, $corpColor, 10%, $coprLoaderBg, 42%, right);
+        -webkit-animation: mapping($listingComponent, loader, webkit_animation);
+        animation: mapping($listingComponent, loader, animation);
+        -webkit-transform: mapping($listingComponent, loader, webkit_transform);
+        -ms-transform: mapping($listingComponent, loader, ms_transform);
+        transform: mapping($listingComponent, loader, transform);
+
+        &:before{
+            width: mapping($listingComponent, loader_before, width);
+            height: mapping($listingComponent, loader_before, height);
+            background: mapping($listingComponent, loader_before, background);
+            border-radius: mapping($listingComponent, loader_before, border_radius);
+            position: mapping($listingComponent, loader_before, position);
+            top: mapping($listingComponent, loader_before, p_top);
+            left: mapping($listingComponent, loader_before, p_left);
+            content: ''
+        }
+        &:after{
+            background: mapping($listingComponent, loader_after, background);
+            width: mapping($listingComponent, loader_after, width);
+            height: mapping($listingComponent, loader_after, height);
+            border-radius: mapping($listingComponent, loader_after, border_radius);
+            content: '';
+            margin: mapping($listingComponent, loader_after, margin);
+            position: mapping($listingComponent, loader_after, position);
+            top: mapping($listingComponent, loader_after, p_top);
+            left: mapping($listingComponent, loader_after, p_left);
+            bottom: mapping($listingComponent, loader_after, p_bottom);
+            right: mapping($listingComponent, loader_after, p_right);
+        }
+    }
+
+    @-webkit-keyframes load3 {
+        1% {
+            -webkit-transform: mapping($listingComponent, loader_load3, webkit_transform_1);
+            transform: mapping($listingComponent, loader_load3, transform_1);
+        }
+
+        100% {
+            -webkit-transform: mapping($listingComponent, loader_load3, webkit_transform_100);
+            transform: mapping($listingComponent, loader_load3, transform_100);
+        }
+    }
+
+    @keyframes load3 {
+        1% {
+            -webkit-transform: mapping($listingComponent, loader_load3, webkit_transform_1);
+            transform: mapping($listingComponent, loader_load3, transform_1);
+        }
+
+        100% {
+            -webkit-transform: mapping($listingComponent, loader_load3, webkit_transform_100);
+            transform: mapping($listingComponent, loader_load3, transform_100);
+        }
+    }
+}
+    

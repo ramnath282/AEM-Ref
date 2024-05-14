@@ -1,0 +1,207 @@
+.dh-treatment-block {
+    float: left;
+    width: 100%;
+    padding: 0 10px;
+    @media #{$small-up} {
+        .helper-text{
+            max-width: 630px;
+        }
+    }
+    h2{
+        @media #{$small-down} {
+            margin:11px 0 15px 0;
+        }
+    }
+    .next-disabled{
+    	pointer-events : none;
+    }
+    .main-content-section {
+        .main-inner-content {
+            max-width: 1160px;
+            .treatmentsContainer {
+                &.card-column-2,
+                &.card-column-3,
+                &.card-column-1 {
+                    &>.sku-card {
+                        @media #{$small-up} {
+                            display: inline-block;
+                            float: none;
+                        }
+                    }
+                }
+            }
+            form {
+                @media #{$small-down} {
+                    padding: 0 15px;
+                    margin-top:10px;
+                }
+            }
+            .sku-card {
+                background: transparent;
+                margin: 0 0 em(30);
+                padding: 0;
+                border-radius: 12px;
+                cursor: pointer;
+                border: 1.5px solid #ddd;
+                box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+                color: $white;
+                position: relative;
+                overflow: hidden;
+                background-image: linear-gradient(rgba(32, 156, 223, 0.8), rgba(32, 156, 223, 0.8) 100%);
+                background-size: 100% 60px;
+                background-repeat: no-repeat;
+                background-position: center bottom;
+                @media #{$small-down} {
+                    display: inline-block;
+                    float: none;
+                    width: 300px;
+                    margin: 0 auto em(30);
+                }
+                @media (max-width: 350px) {
+                    width: 280px;
+                }
+                @media #{$medium-only} {
+                    margin: em(30) em(30) 0 !important;
+                }
+                &:hover,
+                &.active {
+                    background-image: linear-gradient($DHPrimaryBlue, $DHPrimaryBlue 100%) !important;
+                    background-size: 100% 60px;
+                    background-repeat: no-repeat;
+                    background-position: center bottom;
+                    border-color:$DHPrimaryBlue !important;
+                }
+                .sku-container {
+                    min-height: 319px;
+                    padding: em(11) 0;
+                    text-align: left;
+                    @media #{$small-down} {
+                        min-height: 260px;
+                    }
+                    .sku-image {
+                        margin: 0 auto;
+                    }
+                    h3 {
+                        color: $color-dark-grey;
+                        font-size: em(18);
+                        font-weight: $fontRegular;
+                        margin: 12px auto 12px;
+                        padding: 0;
+                        text-align: center;
+                        @media #{$small-down} {
+                            font-size: em(20);
+                            margin: 11px auto 13px;
+                            font-weight: $fontSemiBold;
+                        }
+                    }
+                    .desc {
+                        color: $color-dark-grey;
+                        font-size: em(12);
+                        margin: em(14) 0;
+                        line-height: em(15);
+                        ul {
+                            margin: 10px 0 0 15px;
+                            @media #{$small-down} {
+                                margin: 10px 0 0 0;
+                                padding: 0 20px;
+                            }
+                            li {
+                                list-style-type: disc;
+                                margin: 0 0 5px 0;
+                                font:$fontRegular 14px "Source Sans Pro", sans-serif;
+                                line-height:18px;
+                                @media #{$small-down} {
+                                    font:$fontRegular 12px "Source Sans Pro", sans-serif;
+                                    line-height:15px;
+                                    list-style: none;
+                                    position: relative;
+                                    padding-left: 15px;
+                                    &:before{
+                                        content: '';
+                                        width: 4px;
+                                        height: 4px;
+                                        border-radius: 50%;
+                                        background: $color-dark-grey;
+                                        position: absolute;
+                                        left: -15px;
+                                        top: 6px;
+                                    }
+                                }
+
+                            }
+                        }
+                    }
+                    .includes {
+                        font-size: em(14);
+                        font-style: italic;
+                        margin: 0;
+                        span {
+                            font-weight: bold;
+                            font-style: italic;
+                        }
+                    }
+                }
+                .item-price {
+                    font-size:em(24);
+                    span{
+                        font-weight: $fontSemiBold;
+                        font-size:24px;
+                    }
+                    .treatment-price {
+                        font-weight: $fontSemiBold;
+                        font-size:24px;
+                    }
+                }
+                @media #{$medium-only} {
+                    max-width: 260px;
+                }
+                @media #{$large-up} {
+                    max-width: 260px;
+                }
+                @media #{$small-up} {
+                    margin: em(30) em(30) 0 0;
+                    float: none;
+                    display: inline-block;
+                }
+                @media #{$large-only} {
+                    max-width: 260px;
+                    margin:em(30) 5%;
+                }
+                &:last-child {
+                    margin-right: 0;
+                    @media #{$large-only} {
+                        margin-right: 5%;
+                    }
+                }
+                &:first-child {
+                    margin-top: em(30);
+                }
+            }
+        }
+    }
+    .cta_model_video{
+        padding-top: em(10);
+        a{
+            font: $fontSemiBold em(16) "Source Sans Pro", sans-serif;
+            color: #CB1886;
+        }
+        i{
+            font-size: em(12);
+        }
+    }
+    .dh-btn-span{
+        @media #{$small-up}{
+            padding-top: em(35);
+        }
+        .dh-back-btn{
+            @media #{$small-up} {
+                margin-top: 0;
+            }
+        }
+        .dh-next-btn{
+            @media #{$small-up} {
+                margin-top: 0;
+            }
+        }
+    }
+}

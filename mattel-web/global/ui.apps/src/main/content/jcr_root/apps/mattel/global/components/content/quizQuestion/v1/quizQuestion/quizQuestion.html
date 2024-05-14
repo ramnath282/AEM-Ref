@@ -1,0 +1,39 @@
+<sly data-sly-test="${wcmmode.edit}">${'Edit Quiz Question Component' @i18n}</sly>
+<sly data-sly-use.questionDetails="com.mattel.global.core.model.v1.QuizQuestionModel"/>
+        <!-- mini quiz question and answer containers start -->
+         <section data-sly-attribute.class="${wcmmode.edit ?  'animated fadeIn active' : (questionDetails.count == 1 ?  'animated fadeIn active' :   'animated fadeIn') }" data-screen-index="${questionDetails.count  @ context = 'attribute',i18n}" data-input-type="${questionDetails.answerSelectionType  @ context = 'attribute',i18n}">
+           <div class="mq-question-info">
+            <!-- mini quiz banner starts --> 
+            <div class="mq-banner-copy" data-sly-test="${questionDetails.bannerImage || questionDetails.bannerText}"><img src="${questionDetails.bannerImage @ context = 'attribute'}"><div class="mq-banner-text">${questionDetails.bannerText @ context = 'html'}</div></div>
+            <!-- mini quiz banner ends -->
+
+            <div class="mq-question-counter" data-question-text="${questionDetails.title}">${'Question' @ i18n} <span>${questionDetails.count  @ context = 'html',i18n}</span> ${'of' @ i18n} <span>${questionDetails.totalCount @ context = 'html',i18n}</span></div>
+            ${questionDetails.title @ context = 'html'}
+			${questionDetails.subTitle @ context = 'html'}
+            ${questionDetails.description @ context = 'html'}
+          </div>
+          <div class="mq-answer-info">
+            <div class="mq-ans-elements">
+			    <form>
+	                <div class="mq-ans-option">
+                         <fieldset>
+                            <legend class="sr-only">Questionwise legend to be given as its for screen reader</legend>
+                             <ul data-question-key="${questionDetails.tagParentDetails @ context = 'attribute',i18n}">
+                                 <sly data-sly-list="${questionDetails.tagDetails}">
+							         <li>
+                                         <input type="${questionDetails.answerSelectionType  @ context = 'attribute',i18n}" name="${questionDetails.tagParentDetails @ context = 'attribute',i18n}" id="${resource.path.hashCode @ context = 'number'}${itemList.index @ context = 'attribute'}" value="${item.tagValue @ context = 'attribute',i18n}">
+                                         <label for="${resource.path.hashCode @ context = 'number'}${itemList.index @ context = 'attribute'}">${item.tagTitle @ context = 'html',i18n}</label>
+                                    </li>
+                      	        </sly>                      
+                            </ul>
+                         </fieldset>
+                    </div>
+                    <div class="mq-ans-cta">                        
+                        <button class="btn btn-mq-fill mqbtnnext" data-tracking-cta-id="${questionDetails.trackNextCTA ? questionDetails.nextCTATrackingText : ''}" type="button" data-sly-test="${ ! wcmmode.edit ?( questionDetails.forwardButtonLabel && ! (questionDetails.count == questionDetails.totalCount)) : questionDetails.forwardButtonLabel }">${questionDetails.forwardButtonLabel @ context = 'html',i18n}</button>
+                        <button class="btn btn-mq-fill mqbtnnext" data-tracking-cta-id="${questionDetails.trackSubmitCTA ? questionDetails.submitCTATrackingText : ''}" type="button" data-sly-test="${ ! wcmmode.edit ? (questionDetails.submitButtonLabel && (questionDetails.count == questionDetails.totalCount)) : questionDetails.submitButtonLabel }">${questionDetails.submitButtonLabel @ context = 'html',i18n}</button>
+                    </div> 		   
+			    </form>             
+            </div>
+          </div>
+        </section>
+        <!-- mini quiz question and answer containers end -->   

@@ -1,0 +1,16 @@
+{{#children}}
+    <div class="details-list-item">
+        <div class="child-info-details">
+            <p>
+                <span class="value-label"><strong>${properties.cNameLabel}:</strong> {{firstName}}</span>
+                <span class="value-label"><strong>${properties.birthdateLabel}:</strong> {{dateOfBirth}}</span>
+                <span class="value-label"><strong>${properties.genderLabel}:</strong> {{genderTxt}}</span>
+                <span class="value-label"><strong>${properties.relationshipLabel}:</strong> {{relationship}}</span>                            
+            </p>
+			<a href="#" class="link-separator edit-child-info" data-update="editChildInfo{{@key}}">${properties.cEditLabel} <span class="sr-only">Child Info{{@key}}</span></a>
+            <a href="#" data-delete="{{nickName}}" data-index="{{@key}}" class="delete-info" data-update="deleteChildInfo{{@key}}">${properties.cRemoveLabel} <span class="sr-only">opens a dialog box</span></a>
+        </div>
+		<div class="child-info-edit">
+        </div>
+    </div> 
+{{/children}}

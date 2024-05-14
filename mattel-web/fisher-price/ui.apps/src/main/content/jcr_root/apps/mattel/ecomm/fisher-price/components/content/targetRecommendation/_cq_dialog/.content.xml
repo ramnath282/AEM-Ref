@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Target Recommendation"
+    sling:resourceType="cq/gui/components/authoring/dialog"
+    height="{Long}500"
+    width="{Long}600">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <column
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/container">
+                <items jcr:primaryType="nt:unstructured">
+                    <mboxValue
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        emptyOption="{Boolean}false"
+                        fieldDescription="Enter the corresponding to the appopriate Adobe Target rule."
+                        fieldLabel="Enter Mbox Value"
+                        name="./mboxValue"/>
+					<isItProductMbox
+						jcr:primaryType="nt:unstructured"
+						sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+						fieldDescription="Check this if the mbox is for product"
+						name="./isItProductMbox"
+						text="Is This a Product Mbox?"
+						uncheckedValue="false"
+						value="true"/>
+                    <entityParameters
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                        composite="{Boolean}true"
+                        fieldLabel="Entity Parameters">
+                        <field
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/fieldset"
+                            name="./entityParameters">
+                            <items jcr:primaryType="nt:unstructured">
+                                <column
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/container">
+                                    <items jcr:primaryType="nt:unstructured">
+                                        <entityKey
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                            fieldDescription="This value is taken from Salsify and defines which data set is being called in (eg. category, brand)"
+                                            fieldLabel="entity Key"
+                                            name="./entityKey"/>
+                                        <entityValue
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                            fieldDescription="This value is taken from Salsify and defines which subset of data is being pulled in (eg. sleep, Little People)"
+                                            fieldLabel="Entity Value"
+                                            name="./entityValue"/>
+                                    </items>
+                                </column>
+                            </items>
+                        </field>
+                    </entityParameters>
+                </items>
+            </column>
+        </items>
+    </content>
+</jcr:root>

@@ -1,0 +1,66 @@
+<sly data-sly-test="${wcmmode.edit}">${'Edit Contact Us Component' @i18n}</sly>
+<div>
+	<a class="footer-icon contact-us" href="${properties.callRedirectUrl}">
+		<span class="icon-wrapper">
+        <sly data-sly-test = "${properties.callUsTitle}">
+			<img src="${properties.callUsLogoImagePath}" alt="">
+        </sly>
+        <sly data-sly-test = "${!properties.callUsTitle}">
+			<img src="${properties.callUsLogoImagePath}" alt="${properties.callUsAltText @i18n}">
+        </sly>
+			</span>
+			<span>${properties.callUsTitle @i18n}</span>
+	</a>
+	<div class="col-2-md">
+		<div class="call-info">
+			<div>${properties.generalSubtitleText @i18n}</div>
+			<strong><a class="track-telephone" data-tracking-telephone = "${properties.generalSubtitleText @i18n}|footer|${properties.callUsTitle @i18n}" href="tel&#58;+1-${properties.generalPhoneNumber}">${properties.generalPhoneNumber}</a></strong>
+		</div>
+		<div class="call-info">
+			<div>${properties.retailSubtitleText}</div>
+			<strong><a class="track-telephone" data-tracking-telephone = "${properties.retailSubtitleText @i18n}|footer|${properties.callUsTitle @i18n}"  href="tel&#58;+1-${properties.retailPhoneNumber}">${properties.retailPhoneNumber}</a></strong>
+		</div>
+	</div>
+</div>
+<div>
+	<a class="footer-icon contact-us" href="${properties.emailRedirectUrl}">
+		<span class="icon-wrapper">
+        <sly data-sly-test = "${properties.emailUsTitle}">
+		<img src="${properties.emailUsLogoImagePath}" alt="">
+        </sly>
+        <sly data-sly-test = "${!properties.emailUsTitle}">
+        <img src="${properties.emailUsLogoImagePath}" alt="${properties.emailUsAltText @i18n}">
+        </sly>
+			</span>
+			<span>${properties.emailUsTitle @i18n}</span>
+	</a>
+	<div class="icon-des">${properties.emailUsSubTitle @i18n}</div>
+</div>
+<div>
+	<a class="footer-icon contact-us" href="${properties.dollCareRedirectUrl}">
+		<span class="icon-wrapper">
+		<sly data-sly-test = "${properties.dollCareTitle}">
+		<img src="${properties.dollCareLogoImagePath}" alt="">
+		</sly>
+		<sly data-sly-test = "${!properties.dollCareTitle}">
+		<img src="${properties.dollCareLogoImagePath}" alt="${properties.dollCareAltText @i18n}">
+		</sly>
+			</span>
+			<span>${properties.dollCareTitle @i18n}</span>
+	</a>
+	<div class="icon-des">${properties.dollCareSubTitle @i18n}</div>
+</div>
+<div>
+	<a class="footer-icon contact-us" href="${properties.agRewardsRedirectUrl}">
+		<span class="icon-wrapper">
+		<sly data-sly-test = "${properties.agRewardsTitle}">
+		<img src="${properties.agRewardsLogoImagePath}" alt="">
+		</sly>
+		<sly data-sly-test = "${!properties.agRewardsTitle}">
+		<img src="${properties.agRewardsLogoImagePath}" alt="${properties.agRewardsAltText @i18n}">
+		</sly>
+			</span>
+		<span>${properties.agRewardsTitle @context='html'}</span>
+	</a>
+	<div class="icon-des">${properties.agRewardsSubTitle @i18n}</div>
+</div>

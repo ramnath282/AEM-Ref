@@ -1,0 +1,40 @@
+<sly data-sly-test="${wcmmode.edit}">${'GEM Retailers Logo Component' @i18n}</sly>
+<div class="gem-retalier-logo">
+    <sly data-sly-use.retailerLogos="com.mattel.global.core.model.RetailersLogosModel">
+        <ul>
+            <sly data-sly-list.retailerLogo="${retailerLogos.retailersLogoDetailPojos}">
+                    <li>
+                        <a data-toggle="modal" data-target="#selectRetailerModal" href="${retailerLogo.retailerLogoLink}"><img src="${retailerLogo.logoImage}" alt="${retailerLogo.logoAltTxt}" analyticsKeyword="${retailerLogo.analyticsText}" ></a>
+                    </li>
+            </sly>
+        </ul>
+    
+        <div class="modal" id="selectRetailerModal" tabindex="-1" role="dialog" aria-labelledby="selectRetailerModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" value="x">
+                        </button>
+                    </div>
+                    <div class="modal-body" id="selectRetailerModalLabel">
+                        ${properties.interstitialTitle @context='html'}
+						${properties.interstitialSubTitle @context='html'}
+
+  						 <sly data-sly-test="${properties.onClickOption =='sametab'}">
+                                 <a href="#" class="btn btm-default yes-btn retailer-yes-btn">${properties.confirmationButtonText}</a>
+                         </sly>
+                         <sly data-sly-test="${properties.onClickOption=='newtab'}">
+								 <a href="#" class="btn btm-default yes-btn retailer-yes-btn" target="_blank">${properties.confirmationButtonText}</a>
+                         </sly>
+                          <sly data-sly-test="${properties.onClickOption =='newWindow'}">
+                                 <a data-url="#" onclick="window.open(this.dataset.url,'_blank','location=yes, width=500, height=500');" class="btn btm-default yes-btn retailer-yes-btn">${properties.confirmationButtonText}</a>
+                         </sly>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default cancel_btn" data-dismiss="modal"><em class="fa fa-angle-left"></em>${properties.cancelButtonText}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </sly>
+</div>

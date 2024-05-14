@@ -1,0 +1,40 @@
+<sly data-sly-use.model="com.mattel.ecomm.core.models.JumbotronContainerModel"/>
+<div class="banner-menu-scroll" id="anchor-indicators" data-sly-test="${model.jumbotronId == '0' && !wcmmode.edit}">
+	<ul data-sly-list.title="${model.jumbotronTitleList}">
+		<li>
+			<a href="#media-banner-${titleList.index}" id="nav-banner-${titleList.index}" class="scroll-to-component">
+				<span>${title}</span>
+			</a>
+		</li>
+	</ul>
+</div>
+<div class="${wcmmode.edit ? '' : 'jumbotron-banner-component' } ${model.position} ${model.mobilePosition} ${model.theme} container-fluid ${model.linkList ? 'cta-links-on' : ''} ${model.jumbotronContainerSize != model.count ? 'carat-arrow-on' : ''} ${properties.backgroundImage @ context='html' ? 'background-image-on' : ''}" id="media-banner-${model.jumbotronId}" style="background: url('${properties.backgroundImage @ context='html'}') ;background-size: cover;">
+	<style data-sly-test="${properties.backgroundImageMobile @ context='html'}">
+	@media screen and (max-width:767px){
+		#media-banner-${model.jumbotronId @ context='html'}{
+			background-image: url('${properties.backgroundImageMobile @ context='html'}') !important;
+            background-repeat: repeat;
+		}
+	}
+	
+	</style>
+	<div class="inner-section">
+		<h2 data-sly-test="${properties.containerTitle}">${properties.containerTitle}</h2>
+		<div class="content">
+			<sly data-sly-repeat.item="${model.items}"
+                 data-sly-resource="${item.name @ decorationTagName='div'}"></sly>
+			<sly data-sly-resource="${resource.path @ resourceType='wcm/foundation/components/parsys/newpar', appendPath='/*', decorationTagName='div', cssClassName='new section aem-Grid-newComponent'}"
+                 data-sly-test="${(wcmmode.edit || wcmmode.preview) && model.items.size < 1}">
+			</sly>
+		</div>
+		<div class="cta-link-component" data-sly-list.link="${model.ctaGroupDetails}">
+			<a class="${link.ctaType ? 'external-link' : 'internal-link'}" href="${link.ctaLink}" role="button">${link.ctaLabel}</a>
+		</div>
+		<!-- <a data-sly-test="${model.jumbotronContainerSize != model.count}" class="icon-down-arrow jump-next-container reveal" tabindex="0">
+			<span class="sr-only">jump to next section</span>
+		</a> -->
+	</div>
+</div>
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
+	<sly data-sly-call="${clientlib.js @ categories=['ecomm.vendor','ecomm.jumbotronContainer']}"/>
+</sly>

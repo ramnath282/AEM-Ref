@@ -1,0 +1,76 @@
+.article-section{
+    $headingColor: $dark-purple;
+    $descriptionColor: $black;
+    .headingDefaultFont{
+        font-size: em(31);
+        font-weight: $fontSemiBold;
+        text-align: center;
+    }
+    .textDefaultFont{
+        font-size: em(19.8);
+        font-weight: $fontLight;
+        line-height: 33px;
+    }
+    .article-container{
+        @extend .container;
+        max-width: 960px;
+    }
+    color: $descriptionColor;
+    @extend .pt-15;
+    @extend .pb-15;
+    em{
+        font-weight: inherit;
+    }
+    h2{
+        color: $headingColor;
+        @extend .headingDefaultFont;
+    }
+    h3 {
+		color: $light-purple;
+        font-size: em(24);
+        font-weight: $fontExtraBold;
+		text-align: center;
+    }
+    strong{
+        color: $headingColor;
+    }
+    p{
+        @extend .textDefaultFont;
+    }
+    a{
+        color: $dark-pink;
+        &:hover{
+            text-decoration: underline;
+            color:$link-blue;
+        }
+    }
+    .article-text{
+        p{
+            @extend .textDefaultFont;
+            font-size: em(20.9);
+            font-weight: $fontRegular;
+        }
+    }
+    ul{
+        li{
+            list-style-type: disc;
+            // @extend .textDefaultFont;
+        }
+    }
+    .faq{
+        strong{
+            color: inherit;
+        }
+        p{
+            @extend .textDefaultFont;
+        }
+    }
+    .col-xs-12.col-sm-6.col-md-4{
+        padding-left: 0;
+    }
+    .col-xs-12.col-sm-6.col-md-8,.col-xs-12.col-sm-6.col-md-4{
+        p{
+            margin-top: 0; 
+        }
+    }
+}

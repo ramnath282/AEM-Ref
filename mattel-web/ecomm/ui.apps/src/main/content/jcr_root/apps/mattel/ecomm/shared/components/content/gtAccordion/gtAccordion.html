@@ -1,0 +1,26 @@
+<sly data-sly-test.author="${wcmmode.edit}">
+	${'Edit Accordion Component'  @i18n}
+	<sly data-sly-test.editModeClass="show"></sly>
+</sly>
+
+<div class="option">
+	<div class="selected">
+		<span class="name" id="${properties.accordionHeadline}accordionopenAcc">${properties.accordionHeadline}</span>
+		<span class="extras-toggle">
+			<span aria-describedby="${properties.accordionHeadline}accordionopenAcc" role="link" tabindex="0" class="extras-open" aria-expanded="false">${properties.accordionCtaText}<i class="fas fa-chevron-right"></i></span>
+			<span aria-describedby="${properties.accordionHeadline}accordioncloseAcc" role="link" tabindex="0"  class="extras-close"  aria-expanded="true">${properties.accordionCloseCtaText}<i class="fas fa-chevron-right"></i></span>			
+		</span>
+	</div>
+	<div class="option-details ${editModeClass}">
+		<div class="extras-choice">
+			<sly data-sly-test="${properties.accordionProductImage}">
+				<div class="img-responsive">
+					<img alt="${properties.accordionHeadline} image" src="${properties.accordionProductImage @ context='uri'}" />
+				</div>
+			</sly>
+			<div class="trunk-desc">
+				${properties.accordionDesc @ context='html'}
+			</div>
+		</div>
+	</div>
+</div>

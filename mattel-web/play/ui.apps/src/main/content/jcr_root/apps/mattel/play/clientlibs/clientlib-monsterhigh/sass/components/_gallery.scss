@@ -1,0 +1,2704 @@
+//title
+$col: (
+  1: 100%,
+  2: 50%,
+  3: 33.33%,
+  4: 25%,
+  5: 20%,
+  6: 20%,
+  7: 20%,
+  8: 20%,
+  9: 20%,
+  10: 20%,
+  11: 20%,
+  12: 20%,
+  13:auto
+);
+
+.gallery-headings {
+  padding: if(
+    mapping($layout, main, titleMargin),
+    mapping($layout, main, titleMargin),
+    em(55) em(65) em(50) em(65)
+  );
+  @media #{$medium-down} {
+    padding: mapping($layout, main, tabTitleMargin);
+  }
+  @media #{$small-down} {
+    padding: mapping($layout, main, mobTitleMargin);
+  }
+  h2 {
+    @if mapping($gallery,heading,isDefaultHeadingFont) == true {
+      font-size: mapping($gallery, heading, fontSize);
+    } @else {
+      font-family: mapping($gallery, heading, fontFamily);
+      font-size: if(
+        mapping($gallery, heading, fontSize),
+        mapping($gallery, heading, fontSize),
+        em(38)
+      );
+      font-weight: mapping($gallery, heading, fontWeight);
+    }
+    @media #{$medium-down} {
+      font-size: mapping($gallery, heading, tabFontSize);
+    }
+    @media #{$small-down} {
+      font-size: mapping($gallery, heading, mobFontSize);
+    }
+    // color: if(mapping($gallery,heading,color),mapping($gallery,heading,color),$page-title);
+    color: #000000;
+    text-transform: if(
+      mapping($gallery, heading, transform),
+      mapping($gallery, heading, transform),
+      uppercase
+    );
+    margin: if(
+      mapping($gallery, heading, margin),
+      mapping($gallery, heading, margin),
+      0 0 21px 0
+    );
+    text-align: if(
+      mapping($gallery, heading, align),
+      mapping($gallery, heading, align),
+      left
+    );
+    display: block;
+    line-height: 41px;
+    font-size: 33px;
+    // height: 41px;
+  }
+  p {
+    @if mapping($gallery,description,isDefaultDesFont) == true {
+      font-size: mapping($gallery, description, fontSize);
+    } @else {
+      font-family: if(
+        mapping($gallery, description, fontFamily),
+        mapping($gallery, description, fontFamily),
+        "Arial"
+      );
+      font-size: if(
+        mapping($gallery, description, fontSize),
+        mapping($gallery, description, fontSize),
+        1.35714em
+      );
+      font-weight: if(
+        mapping($gallery, description, fontWeight),
+        mapping($gallery, description, fontWeight),
+        300
+      );
+    }
+    @media #{$medium-down} {
+      font-size: mapping($gallery, description, tabFontSize);
+    }
+    @media #{$small-down} {
+      font-size: mapping($gallery, description, mobFontSize);
+    }
+    color: if(
+      mapping($gallery, description, color),
+      mapping($gallery, description, color),
+      $page-sub-title
+    );
+    text-align: if(
+      mapping($gallery, description, align),
+      mapping($gallery, description, align),
+      left
+    );
+    margin: 10px 0 0;
+  }
+}
+.gallery-extnd-tile {
+  padding: if(
+    mapping($gallery, homepageGallery, pad),
+    mapping($gallery, homepageGallery, pad),
+    mapping($layout, main, sectionMargin)
+  );
+  @media #{$medium-down} {
+    padding: mapping($layout, main, tabSectionMargin);
+    @if mapping($gallery, videosGalleryPlaylist, isLazyload) == true {
+      padding: mapping($gallery, videosGalleryPlaylist, tabPad);
+    }
+  }
+  @media #{$small-down} {
+    padding: mapping($layout, main, mobSectionMargin);
+  }
+  @if (map-get($gallery, defaultListCol)) {
+    ul {
+      & > li {
+        position: relative;
+        min-height: 1px;
+        padding-left: 15px;
+        padding-right: 15px;
+        padding-bottom: mapping($gallery, defaultListCol, pad);
+        padding-top: mapping($gallery, defaultListCol, pad);
+        width: map-get($col, mapping($gallery, defaultListCol, mobItem));
+        @media #{$small-up} {
+          width: map-get($col, mapping($gallery, defaultListCol, tabItem));
+        }
+        @media #{$large-up} {
+          width: map-get($col, mapping($gallery, defaultListCol, desItem));
+        }
+        @if mapping($gallery,defaultListCol, listShowCSS) == false {
+        } @else {
+          @media #{$small-up} {
+            @media #{$large-down} {
+              $tabItem: if(
+                mapping($gallery, defaultListCol, tabItemToShow),
+                mapping($gallery, defaultListCol, tabItemToShow),
+                mapping($gallery, defaultListCol, itemToShow)
+              );
+              &:nth-of-type(1n + #{$tabItem + 1}) {
+                display: none;
+              }
+            }
+          }
+          @media #{$large-up} {
+            &:nth-of-type(1n
+                + #{mapping($gallery, defaultListCol, itemToShow)
+                + 1}) {
+              display: none;
+            }
+          }
+          @media #{$small-down} {
+            $mobItem: if(
+              mapping($gallery, defaultListCol, mobItemToShow),
+              mapping($gallery, defaultListCol, mobItemToShow),
+              mapping($gallery, defaultListCol, itemToShow)
+            );
+            &:nth-of-type(1n + #{$mobItem + 1}) {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+  }
+  .view-all {
+    @if mapping($gallery, defaultListCol,isViewAllHide) == true {
+      display: none;
+      // !important;
+    }
+  }
+}
+// list structure
+.gallery-tile-list {
+  ul {
+    @extend .row;
+    .row:before,
+    .row:after {
+      display: none !important;
+    }
+    display: block;
+    width: if(
+      mapping($gallery, galleryWrapper, width),
+      mapping($gallery, galleryWrapper, width),
+      100%
+    );
+    margin: if(
+      mapping($gallery, galleryWrapper, margin),
+      mapping($gallery, galleryWrapper, margin),
+      0
+    );
+    @media #{$medium-down} {
+      width: mapping($gallery, galleryWrapper, tabWidth);
+    }
+    & > li {
+      @extend .col-sm-3;
+      @extend .col-md-3;
+      @extend .col-lg-3;
+      text-align: center; // padding:10px;
+      padding: 0;
+      margin: 0;
+      position: relative;
+      &:nth-of-type(1n + 5) {
+        display: none;
+      }
+      @media #{$medium-down} {
+        width: 50%;
+      }
+      @media #{$small-down} {
+        width: 100%;
+        display: inline-block;
+      }
+      @media #{$medium-up} {
+        &.column-3 {
+          width: 33.33333%;
+          &:nth-of-type(1n + 4) {
+            display: none;
+          }
+        }
+        &.column-4 {
+          width: 25%;
+          &:nth-of-type(1n + 5) {
+            display: none;
+          }
+        }
+      }
+      // character Name
+      a {
+        display: block;
+        position: relative;
+        margin: em(15);
+        &.btn-primary {
+          color: $white;
+        }
+        &:hover,
+        &:focus,
+        &.active {
+          &.gallery-image {
+            img {
+              opacity: 1;
+            }
+          }
+        }
+        .gallery-image {
+          background-color: if(
+            mapping($gallery, gallerytileImage, bgndColor),
+            mapping($gallery, gallerytileImage, bgndColor),
+            $white
+          );
+          @extend .grid-border-style;
+          img {
+            // max-height: 100%;
+            max-width: 100%;
+            width: 100%;
+            @media #{$small-down} {
+              width: mapping($gallery, galleryImg, width);
+            }
+            .image-container {
+              &:hover {
+                opacity: 1;
+              }
+            }
+          }
+        }
+        span {
+          @if mapping($gallery,listTitle,isBgnd) == false {
+            background: none;
+            @include border-radius(0);
+          } @else {
+            background-color: $character-label-bg;
+          }
+          @include transition(350ms ease);
+          text-transform: uppercase;
+          // font-size: em(28.01);
+          padding: 0 em(2.5);
+          // color: $character-label;
+          display: block;
+          letter-spacing: em(1);
+          font-family: mapping($gallery, listTitle, fontFamily);
+          text-align: if(
+            mapping($gallery, listTitle, align),
+            mapping($gallery, listTitle, align),
+            left
+          );
+          font-size: if(
+            mapping($gallery, listTitle, fontSize),
+            mapping($gallery, listTitle, fontSize),
+            em(28.01)
+          );
+          font-weight: mapping($gallery, listTitle, fontWeight);
+          color: if(
+            mapping($gallery, listTitle, color),
+            mapping($gallery, listTitle, color),
+            $character-label
+          );
+          &.btn-primary {
+            color: black;
+            background-color: #ec008c !important;
+            width: 204px;
+            height: 50px;
+            float: left;
+            border-radius: 0px !important;
+            @if mapping($gallery, main, sameasDefaultBtn) == true {
+              @extend .theme-btn;
+            } @else {
+              @extend .btn-primary;
+              font-size: em(14);
+              text-align: center;
+              padding: 10px 5px;
+              display: inline-block;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.gallery-image {
+  &:hover,
+  &:focus,
+  &.active {
+    img {
+      opacity: unset;
+      &.image-container {
+        opacity: 1;
+      }
+    }
+  }
+}
+.view-all {
+  display: none;
+  text-align: right;
+  margin: em(20) 0;
+  @media #{$small-down} {
+    text-align: center;
+  }
+}
+.show-more {
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: em(24);
+  position: relative;
+  z-index: 1;
+  a {
+    height: 50px;
+    width: 235px;
+    color: black !important;
+    background-color: #ec008c;
+    @if mapping($gallery, primaryBtn, isExtendSecondaryBtn) == true {
+      // @extend .secondary-btn;
+    } @else if mapping($gallery, primaryBtn, isExtendPrimaryBtn) == true {
+      // @extend .theme-btn;
+    } @else {
+      // @extend .btn-show-more;
+    }
+    &:hover {
+      color: black !important;
+      background-color: #ec008c;
+    }
+  }
+}
+.margin-LR0 {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+.tiles-center {
+  padding: em(6);
+}
+// common structure
+.play-tiles-gallery {
+  padding: 0;
+  width: 100%;
+  margin: 0 auto !important;
+  // background-color: #EFFAFB !important;
+  float: left;
+  @extend .margin-LR0;
+  .gallery-title {
+    @extend .gallery-headings;
+  }
+  .gallery-tile {
+    @extend .gallery-tile-list;
+    ul {
+      li {
+        a {
+          .gallery-image {
+            img {
+              // max-width: 100%; // width: 100%;
+            }
+          }
+          &:hover {
+            .gallery-image {
+              img {
+                opacity: unset;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  &.default {
+  }
+  @media #{$medium-down} {
+    width: 100%;
+  }
+}
+// dont include any class into this
+.play-tiles-gallery {
+  // overflow: hidden;
+  @if mapping($gallery, main,bgnd) == true {
+    background: url(mapping($gallery, main, bgnd));
+  } @else {
+    background-color: transparent;
+  }
+  &.play-character-landing-block {
+    ul {
+      li {
+        display: block !important;
+      }
+      .playing-overlay {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        span {
+          position: absolute;
+          top: 7px;
+          left: 7px;
+          font-size: 1em;
+          font-family: "YellowBalloon";
+          white-space: nowrap;
+          display: inline-block;
+          padding: em(7);
+          color: #000;
+          background-color: #f1e300;
+          z-index: 1;
+          letter-spacing: 1px;
+        }
+      }
+    }
+  }
+  &#play-game {
+    background: url($game-gallery-bg) 0 0 repeat;
+    .gallery-tile {
+      h2 {
+        // color: $white;
+        // padding:40px 55px 25px 55px;
+        // margin: 0;
+        // padding: 20px 54px 0;
+        // font-size: 2.5em;
+        // text-align: center;
+      }
+    }
+    ul {
+      // padding: 0 40px 35px 40px;
+      li {
+        // padding: em(15);
+      }
+    }
+  }
+}
+// gallery component classes
+// default
+.default {
+  .gallery-tile {
+    ul {
+      & > li {
+      }
+    }
+  }
+}
+// retailers
+.play-retailers {
+  margin: 0px auto;
+  @if mapping($gallery,retailers, isImageAfter) == true {
+    position: relative;
+    &:after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      top: mapping($gallery, retailers, afterBgndTop);
+      bottom: mapping($gallery, retailers, afterBgndBottom);
+      height: mapping($gallery, retailers, afterBgndHght);
+      background: mapping($gallery, retailers, afterBgnd);
+      background-size: mapping($gallery, retailers, afterBgndSize);
+      z-index: mapping($gallery, retailers, afterBgndZindx);
+      @media #{$medium-down} {
+        background-size: mapping($gallery, retailers, afterBgndSizeMob);
+      }
+    }
+  }
+  .gallery-title {
+    padding-left: 0;
+    padding-right: 0;
+    @if mapping($gallery,retailers, isImageAfter) == true {
+      position: relative;
+      z-index: 1;
+    }
+    h2 {
+      text-align: center;
+      font-size: 33px;
+      color: mapping($gallery, retailers, titleTxtColor);
+      @media #{$large-only} {
+        width: 50%;
+        position: relative;
+        margin: 0 auto;
+      }
+      @if mapping($gallery,main, isCurlnHead) == true {
+        &::after,
+        &::before {
+          content: " ";
+          height: 35px;
+          width: 320px;
+          display: inline-block;
+          vertical-align: middle;
+          @media #{$medium-down} {
+            display: none;
+          }
+        }
+        &::before {
+          // background: url('#{$brandImgPath}/curls-left.png') no-repeat;
+          margin-right: 10px;
+          @media #{$large-only} {
+            left: -45%;
+            width: 45%;
+            background-size: contain;
+            background-position: center;
+            position: absolute;
+          }
+        }
+        &::after {
+          // background: url('#{$brandImgPath}/curls-right.png') no-repeat;
+          margin-left: 10px;
+          @media #{$large-only} {
+            right: -45%;
+            width: 45%;
+            background-size: contain;
+            background-position: center;
+            position: absolute;
+          }
+        }
+      }
+    }
+  }
+  .gallery-tile {
+    @if mapping($gallery,retailers, isImageAfter) == true {
+      position: relative;
+      z-index: 1;
+    }
+    text-align: mapping($gallery, retailers, tileAlign);
+    ul {
+      // background: mapping($gallery, retailers, tileBgnd);
+      display: mapping($gallery, retailers, tileDisplay);
+      width: mapping($gallery, retailers, tilewidth);
+      @media #{$small-up} {
+        display: mapping($gallery, retailers, Display);
+        text-align: center;
+        float: none;
+      }
+      @media #{$medium-down} {
+        width: mapping($gallery, retailers, mobTilewidth);
+      }
+      @media #{$small-down} {
+        width: 100%;
+      }
+      margin: mapping($gallery, retailers, tileMargin);
+      border-radius: mapping($gallery, retailers, borderRadius);
+      @if mapping($gallery, retailers, applyBordrToParnt) == true {
+        @extend .grid-border-style;
+        @media #{$small-only} {
+          padding: if(
+            mapping($gallery, retailers, mobPadd),
+            mapping($gallery, retailers, mobPadd),
+            0 15px
+          );
+          background: transparent;
+          @include border-radius(0);
+          border: 0;
+        }
+      }
+      @media #{$small-up} {
+        padding: if(
+          mapping($gallery, retailers, paddingRetailers),
+          mapping($gallery, retailers, paddingRetailers),
+          0 em(50)
+        );
+      }
+      & > li {
+        @if mapping($gallery, retailers, isColConfigTrue) == true and map-get($gallery, retailersListCol) {
+          position: relative;
+          min-height: 1px;
+          padding-left: 15px;
+          padding-right: 15px;
+          width: map-get($col, mapping($gallery, retailersListCol, mobItem));
+          float: Â left;
+          @media #{$small-down} {
+            display: inline-block !important; // width: 45%; // padding-left: 0; // padding-right: 0;
+          }
+          @media #{$small-up} {
+            width: map-get($col, mapping($gallery, retailersListCol, tabItem));
+            float: none;
+          }
+          @media #{$large-up} {
+            width: map-get($col, mapping($gallery, retailersListCol, desItem));
+          }
+          @if mapping($gallery, retailers, applyBordrToParnt) == true {
+            @media #{$small-only} {
+              margin: 15px 0;
+              border-radius: 10px;
+              background: mapping($gallery, retailers, tileBgnd);
+            }
+          }
+        } @else {
+          &:nth-of-type(1n + 5) {
+            display: block;
+          }
+          @media #{$small-up} {
+            padding: 0 em(25);
+          }
+          @media #{$small-down} {
+            width: 50%;
+            float: left;
+            margin: 0;
+          }
+        }
+        @if mapping($gallery, retailersListCol, showAllList) == true {
+          display: inline-block !important;
+        }
+        margin: 0px auto;
+        // enchantimals margin:0px auto 20px;
+        a {
+          margin: 0;
+          span {
+            display: inline;
+            &.sr-only {
+              padding: 0;
+              margin: 0;
+            }
+          }
+          .gallery-image {
+            background-color: transparent;
+            @if mapping($gallery, retailers, applyBordrToParnt) == true {
+              border: 0;
+              @include border-radius(0);
+            }
+          }
+        }
+      }
+    }
+    .view-all {
+      display: none;
+    }
+  }
+}
+// character-gallery
+.play-characters {
+  // background: mapping($gallery, playCharacters, bgnd);
+  &.main-characters {
+    // background: mapping($gallery, playMainCharacters, mainCharBg);
+    // background-color: mapping($gallery, playMainCharacters, bgndColor);
+    background-repeat: mapping($gallery, playMainCharacters, bgndRepeat);
+    background-size: mapping($gallery, playMainCharacters, bgndSize);
+    @media #{$medium-down} {
+      background-size: auto;
+    }
+    .gallery-tile {
+      ul {
+        & > li {
+          padding-left: 35px;
+          padding-right: 35px;
+        }
+      }
+    }
+    &:after {
+      display: none;
+    }
+    &::after {
+      content: "";
+      background-color: #a4ce3d;
+      background-repeat: repeat-x;
+      width: 100%;
+      height: 21px;
+      display: inline-block;
+      background-size: 150%;
+    }
+  }
+  @if mapping($gallery, characters, isclearDiv) == true {
+    @extend .clearDiv;
+  }
+  .gallery-title {
+    h2 {
+      color: mapping($gallery, characters, tileTitleColor);
+      margin: mapping($gallery, characters, headingMgn);
+      font-family: "YellowBalloon";
+      // font-size: mapping($gallery, characters, tileTitleSize);
+    }
+  }
+  .gallery-tile {
+    @if mapping($gallery,retailers, isImageAfter) == true {
+      position: relative;
+      z-index: 1;
+    }
+    @if mapping($gallery, characters, isDefaultMargin) == true {
+      padding: mapping($layout, main, sectionMargin);
+      @media #{$medium-down} {
+        padding: mapping($layout, main, tabSectionMargin);
+      }
+      @media #{$small-down} {
+        padding: mapping($layout, main, mobSectionMargin);
+        text-align: mapping($gallery, characters, imgAlign);
+      }
+    }
+    ul {
+      & > li {
+        padding: if(
+          mapping($gallery, characters, tilePadding),
+          mapping($gallery, characters, tilePadding),
+          0px
+        );
+        margin: mapping($gallery, characters, tileMargin);
+        background-color: if(
+          mapping($gallery, characters, bgnd),
+          mapping($gallery, characters, bgnd),
+          $character-bg
+        );
+        max-width: mapping($gallery, characters, tileMaxWidth);
+        @media #{$medium-down} {
+          max-width: mapping($gallery, characters, maxWidthMob);
+        }
+        a {
+          margin: 0;
+          .gallery-image {
+            background: mapping($gallery, characters, listBgnd);
+          }
+          span {
+            @if mapping($gallery, characters, isStickyTitle) == false {
+              background: mapping($gallery, characters, tileBgnd);
+              color: mapping($gallery, characters, tileTitleColor);
+              display: mapping($gallery, characters, tileTitleDisplay);
+              font-size: mapping($gallery, characters, tileTitleSize);
+              font-family: mapping($gallery, characters, tileTitleFamily);
+              font-weight: mapping($gallery, characters, tileTitleWeight);
+              padding: mapping($gallery, characters, tileTitlePadding);
+              text-align: mapping($gallery, characters, tileAlign);
+              width: mapping($gallery, characters, tileWidth);
+              margin: mapping($gallery, characters, tileMargin);
+              text-transform: mapping($gallery, characters, transform);
+              @media #{$small-down} {
+                font-size: mapping($gallery, characters, mobFontSize);
+              }
+            } @else {
+              z-index: 1024;
+              width: auto;
+              position: absolute;
+              margin: 0 auto;
+              left: 50%;
+              bottom: em(20);
+              @include transform(translateX(-50%));
+              line-height: normal;
+              @include border-radius(8px);
+              display: block;
+              text-align: center;
+              text-transform: uppercase;
+              line-height: 26px;
+              padding: em(8);
+              font-size: 20px;
+              letter-spacing: normal;
+              @if mapping($gallery, main, isCharTitleForEnchantimals) == true {
+                font-family: mapping($gallery, characters, tileTitleFamily);
+                color: mapping($gallery, charListTitle, txtColor);
+                background-color: mapping($gallery, charListTitle, bgnd);
+                position: mapping($gallery, charListTitle, pos);
+                bottom: mapping($gallery, charListTitle, posBtm);
+                text-align: mapping($gallery, charListTitle, align);
+                text-transform: mapping(
+                  $gallery,
+                  charListTitle,
+                  txtCase
+                ); // font-size:mapping($gallery,charListTitle,fontSize);
+                line-height: mapping($gallery, charListTitle, lineHeight);
+                font-weight: mapping($gallery, charListTitle, fontWeight);
+                margin: mapping($gallery, charListTitle, margin);
+                padding: mapping($gallery, charListTitle, padding);
+              }
+            }
+          }
+          &:hover,
+          &:focus,
+          &.active {
+            img {
+              opacity: if(
+                mapping($gallery, gallerytileImage, opac),
+                mapping($gallery, gallerytileImage, opac),
+                0.7
+              );
+            }
+          }
+        }
+        & > span {
+          background: mapping($gallery, characters, tileBgnd);
+          color: mapping($gallery, characters, tileTitleColor);
+          display: mapping($gallery, characters, tileTitleDisplay);
+          font-size: mapping($gallery, characters, tileTitleSize);
+          font-family: mapping($gallery, characters, tileTitleFamily);
+          font-weight: mapping($gallery, characters, tileTitleWeight);
+          padding: mapping($gallery, characters, tileTitlePadding);
+          text-align: mapping($gallery, characters, tileAlign);
+          width: mapping($gallery, characters, tileWidth);
+          margin: mapping($gallery, characters, tileMargin);
+          @media #{$medium-only} {
+            min-height: mapping($gallery, characters, tabHeight);
+          }
+          @media #{$small-down} {
+            font-size: mapping($gallery, characters, mobFontSize);
+            margin-top: mapping($gallery, characters, mobtileMargin);
+          }
+        }
+      }
+    }
+    @if mapping($gallery, characters, isColConfigTrue) == true {
+      // @extend .gallery-extnd-tile;
+      ul {
+        & > li {
+          @if (map-get($gallery, charactersListCol)) {
+            position: relative;
+            min-height: 1px;
+            padding-left: 15px;
+            padding-right: 15px;
+            width: map-get($col, mapping($gallery, charactersListCol, mobItem));
+            @media #{$small-up} {
+              width: map-get(
+                $col,
+                mapping($gallery, charactersListCol, tabItem)
+              );
+            }
+            @media #{$large-up} {
+              width: map-get(
+                $col,
+                mapping($gallery, charactersListCol, desItem)
+              );
+            }
+            @media #{$small-up} {
+              @media #{$large-down} {
+                $tabItem: if(
+                  mapping($gallery, charactersListCol, tabItemToShow),
+                  mapping($gallery, charactersListCol, tabItemToShow),
+                  mapping($gallery, charactersListCol, itemToShow)
+                );
+                &:nth-of-type(1n + #{$tabItem + 1}) {
+                  display: none;
+                }
+              }
+            }
+            @media #{$large-up} {
+              &:nth-of-type(1n
+                  + #{mapping($gallery, charactersListCol, itemToShow)
+                  + 1}) {
+                display: none;
+              }
+            }
+            @media #{$small-down} {
+              $mobItem: if(
+                mapping($gallery, charactersListCol, mobItemToShow),
+                mapping($gallery, charactersListCol, mobItemToShow),
+                mapping($gallery, charactersListCol, itemToShow)
+              );
+              &:nth-of-type(1n + #{$mobItem + 1}) {
+                display: none;
+              }
+            }
+          }
+          @media #{$large-down} {
+            margin: mapping($gallery, characters, tileMarginTab);
+          }
+          @media #{$small-down} {
+            padding: mapping($gallery, characters, tilePaddingMob);
+            max-width: mapping($gallery, characters, maxWidthMob);
+          }
+        }
+      }
+    }
+  }
+  @if mapping($gallery,characters, isImageBefore) == true {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    padding: mapping($gallery, characters, padding);
+    @media #{$medium-down} {
+      padding: mapping($gallery, characters, paddingTab);
+    }
+    @media #{$small-only} {
+      padding: mapping($gallery, characters, paddingMobOnly);
+    }
+    @media #{$small-down} {
+      padding: mapping($gallery, characters, paddingMob);
+    }
+    &:before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      top: mapping($gallery, characters, beforeBgndTop);
+      height: mapping($gallery, characters, beforeBgndHght);
+      background: mapping($gallery, characters, beforeBgnd);
+      background-size: mapping($gallery, characters, beforeBgndSize);
+      @media #{$medium-down} {
+        background-size: mapping($gallery, characters, beforeBgndSizeTab);
+        height: mapping($gallery, characters, beforeBgndHghtTab);
+      }
+      @media #{$medium-down} {
+        background-size: mapping($gallery, characters, beforeBgndSizeMob);
+        top: mapping($gallery, characters, beforeBgndTopTab);
+      }
+      @media #{$small-down} {
+        top: mapping($gallery, characters, beforeBgndTopMob);
+      }
+    }
+  }
+  @if mapping($gallery,characters, isImageAfter) == true {
+    &:after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      top: mapping($gallery, characters, afterBgndTop);
+      height: mapping($gallery, characters, afterBgndHght);
+      background: mapping($gallery, characters, afterBgnd);
+      background-size: mapping($gallery, characters, afterBgndSize);
+      z-index: mapping($gallery, characters, afterBgndZindx);
+      @media #{$medium-down} {
+        background-size: mapping($gallery, characters, afterBgndSizeMob);
+      }
+    }
+  }
+  .gallery-tile {
+    @media #{$medium-up} {
+      &.column-3 {
+        width: 33.33333%;
+        &:nth-of-type(1n + 4) {
+          display: none;
+        }
+      }
+      &.column-4 {
+        width: 25%;
+        &:nth-of-type(1n + 5) {
+          display: none;
+        }
+      }
+    }
+  }
+  .show-more {
+    display: block;
+    background-color: if(
+      mapping($gallery, characters, showMoreBgnd),
+      mapping($gallery, characters, showMoreBgnd),
+      $show-more-block-bg
+    );
+    margin: mapping($gallery, characters, ctaMargin);
+    @media #{$small-down} {
+      margin: mapping($gallery, characters, ctaMarginMob);
+    }
+  }
+  // &::after {
+  // @if mapping($layout, waveBorder, isWaveBtmBdr) == true {
+  // // content: "";
+  // background-color: #6f2e91; // background: mapping($layout,waveBorder,waveBdrPurple);
+  // background-repeat: mapping($layout, waveBorder, waveBdrbgndRptX);
+  // width: mapping($layout, waveBorder, waveBdrWidth);
+  // height: mapping($layout, waveBorder, waveBdrHeight);
+  // display: mapping($layout, waveBorder, waveBdrDisplay);
+  // position: mapping($layout, waveBorder, waveBdrPosition);
+  // background-size: mapping($layout, waveBorder, waveBdrsize);
+  // @media #{$medium-down} {
+  // background-size: 300%;
+  // margin-top: -1px;
+    }
+  // @media #{$small-down} {
+  // background-size: cover;
+// }
+// }
+// }
+// }
+.page-view {
+  > div.play-characters + div.play-characters {
+    background: mapping($gallery, playCharacters, othersCharBgnd);
+    .gallery-tile {
+      ul {
+        li {
+          a {
+            span {
+              text-align: mapping($gallery, playCharacters, txtAlignLeft);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+div.play-characters:nth-child(2) {
+  &::after {
+    display: none;
+  }
+}
+.character {
+  .play-category-details-component {
+    // background-color: $enchanpurple;
+    .play-page-title {
+      h1 {
+        color: if(
+          mapping($gallery, heading, color),
+          mapping($gallery, heading, color),
+          $page-title
+        );
+      }
+    }
+    &::after {
+      @if mapping($layout, waveBorder, isWaveBtmBdr) == true {
+        // content: ""; // background: mapping($layout,waveBorder,waveBdrPurple); // background-repeat: mapping($layout, waveBorder, waveBdrbgndRptX); // width: mapping($layout, waveBorder, waveBdrWidth); // height: mapping($layout, waveBorder, waveBdrHeight); // display: mapping($layout, waveBorder, waveBdrDisplay);
+        // position: mapping($layout, waveBorder, waveBdrPosition);
+        // background-size: mapping($layout, waveBorder, waveBdrsize);
+        @media #{$large-up} {
+          // margin-top: mapping($layout, waveBorder, wavemarginTop);
+        }
+        @media #{$medium-down} {
+          // background-size: 300%; // margin-top: -1px;
+        }
+        @media #{$small-down} {
+          // background-size: cover;
+        }
+      }
+    }
+    .cda-banner {
+      padding: 50px 40px 0 40px;
+      background-image: url("/content/dam/monster-high/monsterhigh-play/bg-images/MH_Characters_LP-Header_Mobile.png");
+      background-repeat: repeat;
+      background-size: auto;
+      @media #{$medium-only} {
+        padding: 34px 20px;
+        background-size: contain;
+      }
+      @media #{$small-down} {
+        padding: 34px 0 10px 0;
+        background-size: contain;
+      }
+      .nav-carousel-slides {
+        &.char-tiles {
+          width: auto;
+          margin: 0 50px;
+          @media #{$small-down} {
+            margin: 0;
+          }
+          li {
+            a {
+              padding: 0;
+              margin-right: 2px;
+              span {
+                margin-top: 10px;
+                color: #ffffff;
+                font-family: $secondaryFont;
+                font-size: 24px;
+                line-height: 29px;
+                transition: background-color 0.5s ease;
+                max-width: fit-content;
+                padding: 0;
+                height: auto !important;
+                @media #{$small-only} {
+                  font-size: 18px;
+                  line-height: 22px;
+                  text-align: center;
+                }
+              }
+              &:hover {
+                span {
+                  background: $monsterblue;
+                }
+              }
+            }
+          }
+          .slick-prev,
+          .slick-next {
+            @media #{$medium-up} {
+              top: 33%;
+            }
+            @media #{$medium-only} {
+              top: 29%;
+            }
+            height: 29px;
+            width: 30px;
+            &::before {
+              padding: 0;
+              color: white;
+              font-size: 30px;
+              @media #{$medium-only} {
+                font-size: 26px;
+              }
+            }
+          }
+          .slick-prev {
+            left: -50px;
+            &::before {
+              content: "\f060";
+            }
+          }
+          .slick-next {
+            right: -50px;
+            &::before {
+              content: "\f061";
+            }
+          }
+        }
+      }
+    }
+  }
+  .play-characters {
+    @if mapping($gallery, charactersPage, isEnchantCharacterPageGallery) == true {
+      .play-page-title {
+        h1 {
+          color: $enchanpurple;
+        }
+      }
+      background: mapping($gallery, charactersPage, bgnd);
+      @include box-shadow(inset 0px -450px 100px -300px #BBE0FF);
+      .gallery-title {
+        h2 {
+          color: mapping($gallery, charactersPage, galHeadingColor);
+        }
+      }
+      .gallery-tile {
+        ul {
+          li {
+            a {
+              span {
+                text-align: mapping($gallery, charactersPage, txtAlignLeft);
+                color: mapping($gallery, charactersPage, txtColor);
+                font-size: 20px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .enable-carousel-nav {
+    .char-tiles {
+      display: none;
+      &.slick-initialized {
+        display: block;
+      }
+      .slick-track {
+        margin-left: auto;
+        margin-right: auto;
+      }
+      li {
+        a.active {
+          img {
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+}
+// products-gallery
+.play-products {
+  // background: url($product-gallery-bg-path) 0 0 repeat;
+  // enchantimals_req
+  // background-image: if(mapping($gallery, playProducts, bgnd), mapping($gallery, playProducts, bgnd), $product-gallery-bg-path);
+  .gallery-title {
+    background-color: if(
+      mapping($gallery, retailerSection, titleBgnd),
+      mapping($gallery, retailerSection, titleBgnd),
+      transparent
+    );
+    // $white);
+    h2 {
+      font-weight: if(
+        mapping($gallery, retailerSection, fntweight),
+        mapping($gallery, retailerSection, fntweight),
+        $fontLight
+      );
+      color: mapping($gallery, playProducts, titleColor);
+    }
+  }
+  .gallery-tile {
+    padding: if(
+      mapping($layout, main, sectionMargin),
+      mapping($layout, main, sectionMargin),
+      em(50) em(30) em(16)
+    );
+    @media #{$medium-down} {
+      padding: mapping($layout, main, tabSectionMargin);
+    }
+    @media #{$small-down} {
+      padding: mapping($layout, main, mobSectionMargin);
+    }
+    ul {
+      & > li {
+        margin-bottom: em(10);
+        a {
+          background-color: if(
+            mapping($gallery, playProducts, imgBgnd),
+            mapping($gallery, playProducts, imgBgnd),
+            "transparent"
+          );
+          .gallery-image {
+            @if mapping($gallery,retailerSection,isRounded) == false {
+              @include border-radius(0);
+            } @else {
+              @include border-radius(50%);
+            }
+            overflow: hidden;
+            background-color: if(
+              mapping($gallery, playProducts, imgBgnd),
+              mapping($gallery, playProducts, imgBgnd),
+              $white
+            );
+            outline: none;
+            padding: if(
+              mapping($gallery, playProducts, imgPad),
+              mapping($gallery, playProducts, imgPad),
+              0
+            );
+            &:hover {
+              img {
+                opacity: 1;
+              }
+            }
+          }
+          span {
+            margin-top: em(15);
+            @include border-radius(8px);
+            display: inline-block;
+            text-align: center;
+            font-weight: $fontLight;
+            line-height: 26px;
+            padding: 8px;
+            font-size: 18px;
+            letter-spacing: normal;
+            @if mapping($gallery, main, isDefaulTitleForRetailer) == true {
+              color: mapping($gallery, defaultListTitle, color);
+              background-color: mapping($gallery, defaultListTitle, bgnd);
+              font-family: mapping($gallery, characters, tileTitleFamily);
+              text-align: mapping($gallery, listTitle, align);
+              text-transform: mapping($gallery, listTitle, txtCase);
+              font-size: mapping($gallery, listTitle, fontSize);
+              line-height: mapping($gallery, listTitle, fontSize);
+              font-weight: mapping($gallery, listTitle, fontWeight);
+              margin: mapping($gallery, listTitle, margin);
+              padding: mapping($gallery, listTitle, padding);
+              display: mapping($gallery, listTitle, display);
+              float: if(
+                mapping($gallery, listTitle, float),
+                mapping($gallery, listTitle, float),
+                left
+              );
+            }
+          }
+        }
+      }
+    }
+    @extend .gallery-extnd-tile;
+  }
+}
+// image-gallery
+.play-image-gallery {
+  .gallery-title {
+  }
+  .gallery-tile {
+    background-color: $litviolet;
+    padding: em(10) em(20);
+    ul {
+      & > li {
+        text-align: left;
+        a {
+          &:hover {
+          }
+          span {
+            width: 100%;
+            padding: 0;
+          }
+        }
+      }
+    }
+  }
+}
+// image-gallery with download button
+.play-download {
+  position: relative;
+  .gallery-tile {
+    .character-label {
+      @extend .gallery-headings;
+      // padding: 0 em(3) em(3);
+      padding: 0;
+      h2 {
+        color: #000000;
+        text-align: left;
+        font-size: 30px;
+        font-family: "YellowBalloon"; // font-size: if(mapping($gallery, download, labelSize), mapping($gallery, download, labelSize), em(21));
+
+        width: 100%; // height: if(mapping($gallery, download, labelHeight), mapping($gallery, download, labelHeight), 32px);
+        
+        margin: if(
+          mapping($gallery, download, labelMargin),
+          mapping($gallery, download, labelMargin),
+          em(0)
+        );
+        // padding: em(3) em(0); // height: 28px !important;
+        line-height: 28px;
+        @media #{$small-down} {
+          font-size: mapping($gallery, download, labelMobSize);
+        }
+      }
+      // height variables
+      $font-size: 1em;
+      $line-height: 1.4;
+      $lines-to-show: 3;
+      p {
+        display: none;
+        &:first-child {
+          display: block; /* Fallback for non-webkit */
+          display: -webkit-box;
+          width: 100%;
+          height: $font-size*$line-height*$lines-to-show; /* Fallback for non-webkit */
+          margin: 0 auto;
+          font-size: $font-size;
+          line-height: $line-height;
+          -webkit-line-clamp: $lines-to-show;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+      }
+      ul {
+        & > li {
+          margin-bottom: em(10);
+          a {
+            margin: 5px;
+            color: $white;
+            @media #{$medium-down} {
+              margin: 0;
+            }
+            .gallery-image {
+              background-color: transparent;
+            }
+          }
+          .hover-overlay {
+            position: absolute;
+            top: 0em;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: rgba(95, 37, 159, 0.5);
+            z-index: 99;
+            opacity: 0;
+            // @include css3(transform, scale(1.1));
+            // border-radius:50%;
+            width: 100%;
+            margin: auto;
+            @include transition(350ms ease);
+            button {
+              // @include center();
+              -webkit-transform: translate(-50%, -50%);
+              -moz-transform: translate(-50%, -50%);
+              -ms-transform: translate(-50%, -50%);
+              -o-transform: translate(-50%, -50%);
+              transform: translate(-50%, -50%);
+              top: 50%;
+              left: 50%;
+              position: absolute;
+              padding: 0.5em;
+              font-family: ArialBold, Arial, sans-serif;
+              font-size: em(12);
+              letter-spacing: 1px;
+            }
+          }
+          &:hover {
+            .hover-overlay {
+              opacity: 1;
+            }
+          }
+        }
+      }
+    }
+    @if mapping($gallery, download, isImageWidthAuto) == true {
+      .gallery-image {
+        display: inline-block;
+        img {
+          width: auto;
+        }
+      }
+    }
+    @if mapping($gallery, download, isColConfigTrue) == true {
+      // @extend .gallery-extnd-tile;
+      ul {
+        & > li {
+          // clear: none !important;
+          @if (map-get($gallery, downloadListCol)) {
+            position: relative;
+            min-height: 1px;
+            padding-left: 15px;
+            padding-right: 15px;
+            width: map-get($col, mapping($gallery, downloadListCol, mobItem));
+            @media #{$small-up} {
+              width: map-get($col, mapping($gallery, downloadListCol, tabItem));
+            }
+            @media #{$large-up} {
+              width: map-get($col, mapping($gallery, downloadListCol, desItem));
+            }
+            @media #{$small-up} {
+              @media #{$large-down} {
+                $tabItem: if(
+                  mapping($gallery, downloadListCol, tabItemToShow),
+                  mapping($gallery, downloadListCol, tabItemToShow),
+                  mapping($gallery, downloadListCol, itemToShow)
+                );
+                &:nth-of-type(1n + #{$tabItem + 1}) {
+                  // display: none;
+                }
+              }
+            }
+            @media #{$large-up} {
+              &:nth-of-type(1n
+                  + #{mapping($gallery, downloadListCol, itemToShow)
+                  + 1}) {
+                // display: none;
+              }
+            }
+            @media #{$small-down} {
+              $mobItem: if(
+                mapping($gallery, downloadListCol, mobItemToShow),
+                mapping($gallery, downloadListCol, mobItemToShow),
+                mapping($gallery, downloadListCol, itemToShow)
+              );
+              &:nth-of-type(1n + #{$mobItem + 1}) {
+                // display: none;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .gallery-title {
+    h2 {
+      @if mapping($gallery, download, isDefaultHeadingFont) == true {
+        @extend .page-heading-font;
+      }
+      -webkit-text-stroke-width: mapping($gallery, download, strokeWidth);
+      -webkit-text-stroke-color: mapping($gallery, download, strokeColor);
+      @media #{$small-down} {
+        -webkit-text-stroke-width: mapping($gallery, download, strokeMobWidth);
+      }
+    }
+    p {
+      @if mapping($gallery, download, isDefaultHeadingFont) == true {
+        @extend .page-heading-font;
+      }
+    }
+  }
+}
+.play-games {
+  .gallery-tile {
+    ul {
+      padding: 30px;
+      & > li {
+        padding: 25px;
+        a {
+          margin: 0;
+          span {
+            text-align: center;
+            background-color: $violet;
+            color: $white;
+            font-size: em(14);
+            font-family: "Arial", sans-serif;
+            padding: em(12);
+          }
+        }
+      }
+    }
+  }
+}
+.play-tiles-gallery {
+  .gallery-tile {
+    .play-list {
+      li {
+        a {
+          margin: 0;
+          span {
+            font-size: 1em;
+            padding: em(12);
+            color: $white;
+            background-color: $black;
+          }
+          .playing-overlay {
+            // background-color: rgba(0, 0, 0, 0.7);
+            span {
+              color: #000;
+              background-color: #f1e300;
+              padding: em(7);
+            }
+            .play-icon {
+              i {
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.videos-gallery-playlist {
+  .play-tiles-gallery .gallery-tile {
+    @extend .gallery-extnd-tile;
+  }
+}
+#videos-gallery {
+  .play-tiles-gallery .gallery-tile li {
+    @media #{$medium-only} {
+      @if mapping($gallery, defaultListCol, tabItem) == 5 {
+        width: 50%;
+      }
+    }
+  }
+}
+// monster high
+// games page redirect
+.cmp-page__redirect {
+  a {
+    color: black;
+  }
+}
+// games page content
+.game-player-area-component {
+  .game-player-area-content {
+    padding: 129px 248px 128px 249px;
+    @media #{$small-only} {
+      padding: 43px 20px 38px 20px;
+    }
+    @media #{$medium-only} {
+      padding: 103.2px 48px 91.2px 48px;
+    }
+  }
+  .title-block {
+    background-image: url("/content/dam/monster-high/monsterhigh-play/bg-images/MH_Locker-BG.png");
+    h2 {
+      font-size: 33px;
+      color: #000000 !important;
+      font-family: "YellowBalloon";
+      font-weight: 400;
+      text-transform: none;
+      text-align: center;
+      height: auto;
+      margin: 0;
+      padding: 30px 0 30px 0;
+      word-break: break-word;
+      text-transform: uppercase;
+      @media #{$medium-only} {
+        padding: 21px 0 21px 0;
+      }
+      @media #{$small-only} {
+        padding: 20px;
+        font-size: 28px;
+      }
+    }
+  }
+}
+// character height thats comes inline style
+.downloadImageGallery {
+  .play-tiles-gallery {
+    .gallery-tile {
+      ul {
+        .character-label {
+          height: auto !important;
+        }
+      }
+    }
+  }
+}
+// Home page
+.downloadImageGallery {
+  // download our apps
+  &.our-apps {
+    .play-tiles-gallery {
+      height: auto !important;
+      @media #{$small-only} {
+        // height: auto;
+      }
+      .gallery-title {
+        padding-top: 56px;
+        padding-bottom: 30px;
+        h2 {
+          height: auto;
+          font-size: 33px;
+          line-height: 41px;
+          font-family: "YellowBalloon";
+          font-weight: 400;
+          color: #000000;
+          text-align: center;
+        }
+        @media #{$small-only} {
+          padding-top: 31px;
+          padding-bottom: 20px;
+          h2 {
+            font-size: 28px;
+            line-height: 35px;
+          }
+        }
+        @media #{$medium-only} {
+          padding-top: 19px;
+          padding-bottom: 20px;
+        }
+      }
+      .gallery-tile {
+        ul {
+          li {
+            width: 100%;
+            padding: 0 90px 48px 40px;
+            @media #{$small-only} {
+              padding: 0 20px 31px 20px;
+            }
+            @media #{$medium-only} {
+              padding: 0 17px 36px 20px;
+            }
+            a {
+              margin: 0;
+              .gallery-image {
+                width: 50%;
+                float: left;
+                line-height: unset !important;
+                @media #{$small-only} {
+                  width: auto;
+                  height: auto;
+                }
+              }
+              .character-label {
+                h2 {
+                  font-size: 30px;
+                  line-height: 28px;
+                  height: auto;
+                  white-space: pre-line;
+                  color: #000000;
+                  font-family: "ff-duper-web-pro";
+                  font-weight: 400;
+                }
+                @media #{$small-only} {
+                  h2 {
+                    font-size: 26px;
+                    margin: 15px 0;
+                    text-align: center;
+                  }
+                  float: left;
+                  .character-hint {
+                    p {
+                      height: auto;
+                      -webkit-line-clamp: initial;
+                      span {
+                        font-family: "ff-duper-web-pro";
+                        font-weight: 400;
+                        padding: 0;
+                        background-color: inherit;
+                        font-size: 18px;
+                        line-height: 22px;
+                        text-align: center;
+                        text-transform: none;
+                      }
+                    }
+                  }
+                }
+                @media #{$medium-up} {
+                  h2 {
+                    font-size: 30px;
+                    margin: 0 0 15px 0;
+                  }
+                  padding: 0 0 0 57px;
+                  float: left;
+                  // width: 41.9%;
+                  width: 50%;
+                  height: auto !important;
+                  .character-hint {
+                    p {
+                      height: auto;
+                      -webkit-line-clamp: initial;
+                      span {
+                        padding: 0;
+                        background-color: inherit;
+                        font-size: 24px;
+                        color: #000000;
+                        line-height: 27px;
+                        text-transform: none;
+                        font-family: "ff-duper-web-pro";
+                        font-weight: 400;
+                      }
+                    }
+                  }
+                }
+                @media #{$medium-only} {
+                  h2 {
+                    font-size: 30px;
+                    margin: 0 0 10px 0;
+                  }
+                  padding: 0 0 0 31px;
+                  float: left;
+                  width: 50%;
+                  // width: 48%;
+                  height: auto !important;
+                  .character-hint {
+                    p {
+                      height: auto;
+                      -webkit-line-clamp: initial;
+                      span {
+                        padding: 0;
+                        background-color: inherit;
+                        font-size: 24px;
+                        color: #000000;
+                        line-height: 27px;
+                        text-transform: none;
+                        font-family: "ff-duper-web-pro";
+                        font-weight: 400;
+                      }
+                    }
+                  }
+                }
+              }
+              .btn {
+                font-family: "YellowBalloon";
+                font-weight: 400;
+                margin-top: 15px;
+                padding: 10px;
+                height: 50px;
+                width: 204px;
+                color: #000000;
+                font-size: 24px;
+                text-align: center;
+                line-height: 29px;
+                @media #{$small-only} {
+                  float: none;
+                  margin-left: 0px;
+                }
+                @media #{$medium-only} {
+                  width: 235px;
+                  float: right;
+                  margin-left: 0;
+                  margin-right: calc(50% - 266px);
+                }
+                @media #{$medium-up} {
+                  float: right;
+                  margin-left: 0;
+                  margin-right: calc(50% - 261px);
+                }
+                &:hover {
+                  color: #000000;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.downloadImageGallery {
+  // Our Games
+  &.our-games {
+    .play-tiles-gallery {
+      &.play-download {
+        .gallery-title {
+          h2 {
+            font-family: "YellowBalloon";
+            font-weight: 400;
+            color: #ffffff;
+          }
+          padding-top: 48px;
+          padding-bottom: 30px;
+          @media #{$medium-only} {
+            padding-top: 50px;
+            padding-bottom: 20px;
+          }
+          @media #{$small-only} {
+            padding-top: 50px;
+            padding-bottom: 20px;
+            h2 {
+              // height: 35px;
+              line-height: 35px;
+              font-size: 28px;
+            }
+          }
+        }
+        .gallery-tile {
+          & > ul {
+            padding: 0 40px;
+            @media #{$medium-only} {
+              padding: 0 20px;
+            }
+            @media #{$small-only} {
+              padding: 0 19.5px;
+            }
+            li {
+              padding: 0;
+              width: calc((100% - 60px)/2);
+              @media #{$medium-only} {
+                width: calc((100% - 28px)/2);
+              }
+              @media #{$small-only} {
+                width: 100%;
+              }
+              a {
+                margin: 0;
+                .gallery-image {
+                  width: 100%;
+                  line-height: 0px !important;
+                }
+                .character-label {
+                  h2 {
+                    line-height: 36px;
+                    height: auto;
+                    color: #ffffff;
+                    font-family: "ff-duper-web-pro";
+                    font-weight: 400;
+                    letter-spacing: 0.46px;
+                    font-size: 30px;
+                    margin-top: 15px;
+                    margin-bottom: 47px;
+                    @media #{$medium-only} {
+                      margin-bottom: 36px;
+                    }
+                    @media #{$small-only} {
+                      font-size: 26px;
+                      line-height: 28px;
+                      margin-top: 19px;
+                      margin-bottom: 22.4px;
+                      text-align: center;
+                    }
+                  }
+                  @media #{$small-only} {
+                    h2:nth-child(2) {
+                      margin-bottom: 37.4px;
+                    }
+                  }
+                }
+              }
+              &:nth-child(1) {
+                margin-right: 60px;
+                @media #{$medium-only} {
+                  margin-right: 28px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.downloadImageGallery {
+  // characters
+  &.characters {
+    .play-tiles-gallery {
+      background-image: url("/content/dam/monster-high/monsterhigh-play/bg-images/HW_HP_4-Characters.png");
+      &.play-download {
+        .gallery-title {
+          h2 {
+            font-family: "YellowBalloon";
+            font-weight: 400;
+            color: #000000;
+          }
+          padding-top: 50px;
+          padding-bottom: 25px;
+          @media #{$medium-only} {
+            padding-top: 50px;
+            padding-bottom: 23px;
+          }
+          @media #{$small-only} {
+            padding-top: 17px;
+            padding-bottom: 10px;
+            h2 {
+              height: auto;
+              line-height: 35px;
+              font-size: 28px;
+            }
+          }
+        }
+        .gallery-tile {
+          & > ul {
+            padding: 0 40px;
+            @media #{$medium-only} {
+              padding: 0 39px;
+            }
+            @media #{$small-only} {
+              padding: 0 11px;
+            }
+            li {
+              padding: 0;
+              width: calc((100% - 60px)/4);
+              @media #{$medium-only} {
+                width: calc((100% - 40px)/2);
+              }
+              @media #{$small-only} {
+                width: calc((100% - 11px)/2);
+              }
+              a {
+                margin: 0;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                .gallery-image {
+                  width: 100%;
+                  line-height: 0 !important;
+                  img {
+                    width: auto;
+                    image-rendering: pixelated;
+                    -ms-interpolation-mode: nearest-neighbor;
+                  }
+                }
+                .character-label {
+                  h2 {
+                    height: auto;
+                    color: #000000;
+                    text-align: center;
+                    font-family: "ff-duper-web-pro";
+                    font-weight: 400;
+                    font-size: 30px;
+                    letter-spacing: 0;
+                    line-height: 28px;
+                    margin-top: 20px;
+                    margin-bottom: 60px;
+                    margin-right: auto;
+                    margin-left: auto;
+                    display: inline-table;
+                    padding: 0 10px 0 10px;
+                    max-width: -webkit-fit-content;
+                    @media #{$medium-only} {
+                      margin-bottom: 30px;
+                      margin-top: 15px;
+                    }
+                    @media #{$small-only} {
+                      font-size: 22px;
+                      letter-spacing: 0.34px;
+                      line-height: 26px;
+                      margin-top: 10px;
+                      margin-bottom: 11px;
+                      padding: 0;
+                    }
+                  }
+                }
+                &:hover {
+                  h2 {
+                    position: relative;
+                    z-index: 1;
+                    &::before {
+                      content: "";
+                      position: absolute;
+                      background-color: $monsterblue;
+                      left: 0;
+                      right: 0;
+                      height: 85%;
+                      top: 10px;
+                      width: 100%;
+                      z-index: -1;
+                    }
+                  }
+                }
+              }
+              margin-right: 20px;
+              &:nth-child(4n) {
+                margin-right: 0;
+              }
+              @media #{$medium-only} {
+                margin-right: 40px;
+                &:nth-child(2n) {
+                  margin-right: 0;
+                }
+              }
+              @media #{$small-only} {
+                margin: 0;
+               &:nth-child(2n-1){
+                 margin-right: 7px;
+               }
+              }
+            }
+          }
+          .view-all {
+            display: block;
+            text-align: center;
+            margin: 0 0 43px 0;
+            @media #{$medium-only} {
+              margin: 0 0 27px 0;
+            }
+            @media #{$small-only} {
+              margin: 14px 0 32px 0;
+            }
+            a {
+              font-family: "YellowBalloon";
+              font-weight: 400;
+              padding: 12px 18px 11px 39px;
+              font-size: 24px;
+              height: 50px;
+              width: 235px;
+              color: black !important;
+              background-color: #ec008c;
+              &:before {
+                font-family: "Font Awesome";
+                content: "\f055";
+                float: left;
+                vertical-align: middle;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.downloadImageGallery {
+  // more fun to explore
+  &.more-fun {
+    .play-tiles-gallery {
+      @media #{$medium-up} {
+        &::before {
+          content: " ";
+          width: 100%;
+          height: 83px;
+          position: absolute;
+          background-image: url("/content/dam/monster-high/monsterhigh-play/bg-images/MH_Characters_LP-Header_pink.png");
+          background-size: 100% 100%;
+          background-repeat: no-repeat;
+        }
+      }
+      &.play-download {
+        .gallery-title {
+          h2 {
+            font-family: "YellowBalloon";
+            font-weight: 400;
+            color: #000000;
+          }
+          padding-top: 68px;
+          padding-bottom: 86px;
+          @media #{$medium-only} {
+            padding-top: 49px;
+            padding-bottom: 49px;
+          }
+          @media #{$small-only} {
+            padding: 42px 0px 20px 0px;
+            h2 {
+              height: auto;
+              line-height: 35px;
+              font-size: 28px;
+              padding: 0 75.5px 0 76.5px;
+            }
+          }
+        }
+        .gallery-tile {
+          & > ul {
+            padding: 0 75px;
+            padding-bottom: 79px;
+            @media #{$medium-only} {
+              padding: 0 68px;
+              padding-bottom: 58px;
+            }
+            @media #{$small-only} {
+              padding: 0 15px 32px 15px;
+              display: flex;
+              flex-wrap: wrap;
+            }
+            li {
+              padding: 0;
+              width: calc((100% - 226px)/4);
+              @media #{$medium-only} {
+                width: calc((100% - 99px)/2);
+              }
+              @media #{$small-only} {
+                width: calc((100% - 14px)/2);
+                padding-bottom: 20px;
+                margin-right: 0;
+              }
+              a {
+                margin: 0;
+                .gallery-image {
+                  line-height: normal !important;
+                  width: 100%;
+                  img {
+                    width: auto;
+                  }
+                }
+              }
+              @media #{$medium-up} {
+                margin-right: 75px;
+              }
+              &:nth-child(4n) {
+                margin-right: 0;
+              }
+              @media #{$medium-only} {
+                margin-right: 99px;
+                margin-bottom: 40px;
+                &:nth-child(2n) {
+                  margin-right: 0;
+                }
+              }
+              @media #{$small-only} {
+                margin: 0;
+                &:nth-child(2n-1){
+                  margin-right: 12px;
+                }
+              }
+              .character-label {
+                display: none;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+// where to buy
+.retailer {
+  .play-tiles-gallery {
+    &.play-retailers {
+      .gallery-title {
+        h2 {
+          font-family: "YellowBalloon";
+          font-weight: 400;
+          color: #000000;
+        }
+        padding-top: 66px;
+        padding-bottom: 50px;
+        @media #{$medium-only} {
+          padding-top: 49px;
+          padding-bottom: 50px;
+        }
+        @media #{$small-only} {
+          padding-top: 55px;
+          padding-bottom: 55px;
+          h2 {
+            height: auto;
+            line-height: 35px;
+            font-size: 28px;
+          }
+        }
+      }
+      .gallery-tile {
+        & > ul {
+          margin: 0;
+          padding: 0 100px;
+          padding-bottom: 102px;
+          @media #{$medium-only} {
+            padding-right: 68px;
+            padding-left: 63px;
+            padding-bottom: 59px;
+          }
+          @media #{$small-only} {
+            padding-right: 60px;
+            padding-left: 60px;
+            padding-bottom: 113.79px;
+          }
+          li {
+            padding: 0;
+            width: calc((100% - 111px)/3);
+            max-width: 250px;
+            @media #{$medium-only} {
+              width: calc((100% - 106px)/2);
+              max-width: none;
+            }
+            @media #{$small-only} {
+              margin: 0;
+              width: 100%;
+              max-width: none;
+            }
+            a {
+              margin: 0;
+              .gallery-image {
+                line-height: initial !important;
+                width: 100%;
+                img {
+                  width: auto;
+                }
+              }
+            }
+            @media #{$medium-up} {
+              padding: 0;
+              &:nth-child(1) {
+                margin-right: 66px;
+              }
+              &:nth-child(2) {
+                margin-right: 45px;
+              }
+            }
+            @media #{$medium-only} {
+              &:nth-child(1) {
+                float: left;
+                padding-bottom: 64px;
+                padding-right: 53px;
+                padding-left: 0;
+              }
+              &:nth-child(2) {
+                padding-left: 53px;
+                padding-bottom: 80px;
+              }
+              &:nth-child(3) {
+                float: left;
+              }
+            }
+            @media #{$small-only} {
+              &:nth-child(1) {
+                padding-bottom: 29.31px;
+              }
+              &:nth-child(2) {
+                padding-bottom: 28.44px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+  //home page CDA .cda-banner
+  @media #{$xlarge-up} {
+    .promoCarousel {
+        .cda-banner {
+               ul{
+                  li{
+                    min-height: auto !important;
+                    img {
+                      min-height: auto !important;
+                      height: auto !important;
+                      position: relative !important;
+                    }
+                    .banner-copy{
+                      width: 52% !important;
+                      &.middle-left {
+                        position: absolute !important;
+                      }
+                      }
+                     }
+                  }
+              }
+           }
+  }
+// characters main page
+// .title {
+// &.characters-title {
+.play-page-title {
+  &.text-center {
+    background-image: url("/content/dam/monster-high/monsterhigh-play/bg-images/MH_Characters_LP-Header_Mobile.png") !important;
+    background-repeat: repeat !important;
+    background-size: contain !important;
+    @media #{$medium-up} {
+      height: 155px;
+    }
+    div {
+      padding: 0;
+      p {
+        margin: 0;
+      }
+      h1 {
+        padding: 60px 0 38px 0;
+        font-size: 42px;
+        line-height: 52px;
+        color: #fffdfd;
+        font-family: "YellowBalloon";
+        font-weight: 400;
+        @media #{$medium-only} {
+          padding: 39px 0 39px 0;
+        }
+        @media #{$small-only} {
+          font-size: 33px;
+          line-height: 38px;
+          padding: 32px 0 20px 0;
+        }
+      }
+    }
+    @media #{$medium-up} {
+      &::after {
+        content: " ";
+        width: 100%;
+        height: 83px;
+        bottom: -5px;
+        position: relative;
+        background: url(/content/dam/monster-high/monsterhigh-play/bg-images/MH_Characters_LP-Header_pink.png);
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+      }
+    }
+  }
+    }
+// }
+// }
+// }
+// characters landing page
+.char-detials-comp {
+  .cd-next,
+  .cd-prev {
+    @media #{$medium-only} {
+      display: none;
+    }
+    @media #{$small-only} {
+      display: none;
+    }
+  }
+}
+.title {
+  .play-page-title {
+    &.text-left {
+      background-repeat: repeat !important;
+      background-size: auto !important;
+      padding: 0;
+      div {
+        padding: 0;
+        p {
+          margin: 0;
+          padding: 62px 130px 20px 130px;
+          color: #000000;
+          font-family: "ff-duper-web-pro";
+          font-size: 30px;
+          line-height: 38px;
+          @media #{$medium-only} {
+            padding: 37px 20px 30px 20px;
+          }
+          @media #{$small-only} {
+            padding: 15px 20px 9px 20px;
+            font-size: 18px;
+            line-height: 22px;
+          }
+        }
+        h1 {
+          color: #000000;
+          font-family: "YellowBalloon";
+          font-weight: 400;
+          font-size: 33px;
+          line-height: 41px;
+          padding: 30px 0 20px 0;
+          @media #{$small-only} {
+            padding: 15px 0 15px 0;
+          }
+          @media #{$medium-only} {
+            padding: 30px 0 20px 0;
+            font-size: 28px;
+            line-height: 35px;
+          }
+        }
+      }
+    }
+  }
+}
+.image-text-container {
+  background-image: url("/content/dam/monster-high/monsterhigh-play/bg-images/MH_Locker-BG.png");
+  padding: 58px 130px 26px 182.11px;
+  @media #{$medium-only} {
+    padding: 30px 19.89px 30px 72.11px;
+  }
+  @media #{$small-only} {
+    padding: 11px 20px 15px 52px;
+  }
+  .col-first,
+  .col-second {
+    padding: 0;
+    .play-page-title {
+      background: transparent !important;
+      div {
+        padding: 0;
+        p {
+          padding: 0;
+        }
+      }
+      padding: 0;
+      ul {
+        margin: 0;
+        li {
+          padding-bottom: 25px;
+          font-family: "ff-duper-web-pro";
+          font-size: 30px;
+          line-height: 38px;
+          color: #000000;
+          @media #{$small-only} {
+            font-size: 18px;
+            line-height: 22px;
+          }
+          .title {
+            font-weight: bold;
+          }
+        }
+        li::before {
+          content: " ";
+          height: 50px;
+          width: 38.33px;
+          position: absolute;
+          left: -52px;
+          margin-top: 6px;
+          background-size: cover;
+          background-image: url("/content/dam/monster-high/monsterhigh-play/bg-images/Character_Flash.png");
+          @media #{$small-only} {
+            height: 30px;
+            width: 23px;
+            left: -30px;
+            margin-top: 4px;
+          }
+        }
+      }
+    }
+  }
+  @media #{$medium-up} {
+    .col-first {
+      padding-right: 126.11px;
+    }
+  }
+}
+// games page
+.gameLandingGrid {
+  #play-game {
+    box-shadow: none;
+    padding: 0;
+    .gallery-tile {
+      margin: 0;
+      h2 {
+        font-family: "YellowBalloon";
+        font-weight: 400;
+        font-size: 33px;
+        line-height: 41px; // height: 41px;
+        color: #ffffff;
+        padding: 0;
+        margin: 44px 0 20px 0;
+        text-align: center; // @media #{$medium-only} { // margin: 26px 0 20px 0; // }
+        @media #{$medium-only} {
+          margin: 26px 0 20px 0;
+        }
+        @media #{$small-only} {
+          font-size: 28px;
+          line-height: 35px;
+          text-align: center;
+          margin: 20px 0 20px 0;
+        }
+      }
+      ul {
+        margin: 0;
+        padding: 0 40px 47px 40px;
+        @media #{$medium-only} {
+          padding: 0 20px 42px 20px;
+        }
+        @media #{$small-only} {
+          padding: 0 20px 27px 20px;
+        }
+        li {
+          padding: 0;
+          width: calc((100% - 41px)/3);
+          @media #{$medium-only} {
+            width: calc((100% - 28px)/2);
+          }
+          @media #{$small-only} {
+            width: 100%;
+          }
+          a {
+            margin: 0;
+            .gallery-image {
+              line-height: inherit !important;
+              height: auto !important;
+              width: 100%;
+            }
+            span {
+              color: #ffffff;
+              background-color: #000000;
+              font-size: 30px;
+              font-family: "ff-duper-web-pro";
+              font-weight: 400;
+              padding: 14px 0 13px 12px;
+              margin: 0;
+              text-transform: none;
+              line-height: 38px;
+              word-wrap: break-word;
+              @media #{$medium-only} {
+                padding: 7px 0 6px 10px;
+              }
+              @media #{$small-only} {
+                padding: 5.2px 0 6.2px 8px;
+                font-size: 26px;
+                line-height: 28px;
+              }
+            }
+          }
+          @media #{$medium-up} {
+            &:nth-child(1),
+            &:nth-child(2) {
+              margin-right: 20px;
+            }
+          }
+          @media #{$medium-only} {
+            &:nth-child(2n-1) {
+              // &:nth-child(3)
+              margin-right: 28px;
+            }
+            &:nth-child(3) {
+              margin-top: 20px;
+            }
+          }
+          @media #{$small-only} {
+            &:nth-child(2),
+            &:nth-child(3) {
+              margin-top: 20px;
+            }
+          }
+          &.active-grid {
+            a {
+              .playing-overlay {
+                span {
+                  background-color: #f1e300;
+                  color: #000000;
+                  font-size: 18px;
+                  padding: 3px 12px;
+                  line-height: 23px;
+                  font-family: "YellowBalloon";
+                  font-weight: 400;
+                  top: 15px;
+                  height: 30px;
+                  width: 146px;
+                  letter-spacing: 0.16px;
+                  @media #{$small-only} {
+                    top: 8px;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+// games page
+.downloadImageGallery {
+  &.explore-games {
+    .play-tiles-gallery {
+      &.play-download {
+        .gallery-title {
+          padding: 62px 0 20px 0;
+          @media #{$medium-only} {
+            padding: 50px 0 20px 0;
+          }
+          @media #{$small-only} {
+            padding: 27px 0 20px 0;
+          }
+          h2 {
+            color: #ffffff;
+            font-family: "YellowBalloon";
+            font-weight: 400;
+            font-size: 33px;
+            letter-spacing: 0;
+            line-height: 41px;
+            @media #{$small-only} {
+              font-size: 28px;
+              line-height: 35px;
+              text-align: center;
+              margin: 0 25px 0 25px;
+            }
+          }
+        }
+        .gallery-tile {
+          ul {
+            padding: 0 30px 0 30px;
+            display: flex;
+              flex-wrap: wrap;
+            @media #{$medium-only} {
+              padding: 0 6px 0 6px;
+            }
+            @media #{$small-only} {
+              padding: 0 20px 0 20px;
+            }
+            li {
+              display: block !important;
+              width: 33.33%;
+              padding: 0 10px 0 10px;
+              @media #{$medium-only} {
+                width: 50%;
+                padding: 0 14px 0 14px;
+              }
+              @media #{$small-only} {
+                width: 100%;
+              }
+              a{
+                margin: 0;
+              }
+              .gallery-image{
+                line-height: normal !important;
+                width: 100%;
+              }
+              .character-label{
+                h2 {
+                   color: #FFFFFF;
+                  font-family: "ff-duper-web-pro";
+                  font-weight: 400;
+                  font-size: 30px;
+                  letter-spacing: 0.46px;
+                  line-height: 36px;
+                  margin: 15px 0 20px 0;
+                      text-overflow: unset;
+                   white-space: normal;
+                  @media #{$small-only} {
+                    font-size: 26px;
+                    letter-spacing: 0;
+                    line-height: 28px;
+                    text-align: center;
+                  }
+                }
+              }
+            // }
+            // }
+          }
+        }
+        }
+        .show-more {
+          display: none;
+        }
+    }
+  }
+}
+}
+//last child 
+.downloadImageGallery {
+  &.explore-games {
+    &:last-child{
+    .play-tiles-gallery {
+      &.play-download {
+        .gallery-tile {
+          ul {
+            padding-bottom: 48px;
+            @media #{$medium-only} {
+              padding-bottom: 20px;
+            }
+            @media #{$small-only} {
+              padding-bottom: 98px;
+            }
+             }
+            }
+            }
+          }
+      }
+  }
+}
+//opacity
+.play-tiles-gallery {
+  .gallery-tile {
+    ul {
+      li {
+        a{
+          &:hover {
+            .gallery-image {
+              img {
+                opacity: 1 !important;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  }
+//trademark symbol
+.trade-mark-element {
+      color: #000000 !important;
+      padding: 0 !important;
+      display: inline !important;
+      background-color: transparent !important;
+      position: relative !important;
+      font-size: 20px !important;
+       top: -7px !important;
+        left: 0 !important;
+        margin: 0 !important;
+         @media #{$small-only} {
+            font-size: 18px !important;
+            top: -5px !important;
+         }
+}
+
+.slick-slide {
+  .trade-mark-element {
+    color: #ffffff !important;
+  }
+}
+.gallery{
+  .play-tiles-gallery{
+    .gallery-tile{
+      ul{
+        li{
+          a{
+            .trade-mark-element{
+              display: inline-block !important;
+              left: 7px !important;
+              &::before {
+                content: none !important;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

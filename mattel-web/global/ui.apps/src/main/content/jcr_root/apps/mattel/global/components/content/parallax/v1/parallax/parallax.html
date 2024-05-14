@@ -1,0 +1,22 @@
+<sly data-sly-test="${wcmmode.edit}">${'Parallax Component' @i18n}</sly>
+<!-- parallax banner starts -->
+<div class="parallax-banner text-center full-width-container">
+    <div class="parallax-wrapper">
+<div class="parallax-img-container container-fluid jarallax" style="background-image: url('${properties.bgImagePath @context='html'}')" data-mobileimage = "${properties.bgMobileImagePath @context='html'}">
+</div>
+<sly data-sly-test="${!properties.shortDescription}">
+<h2 class="parallax-banner-title" data-aos="fade-down">${properties.heading @context='html'}</h2>
+</sly>
+        </div>
+		<div class="rating-section" data-aos="fade-up" data-sly-test="${properties.shortDescription}" >
+			<div class="rating-comment-cmp rating-${properties.descriptionAlignment}" >
+				<span aria-label="Five Star Rating" class="fa fa-star checked"></span>
+				<span class="fa fa-star checked"></span>
+				<span class="fa fa-star checked"></span>
+				<span class="fa fa-star checked"></span>
+				<span class="fa fa-star checked"></span>
+				<p>${properties.shortDescription @context='html'}</p>
+			</div>
+		</div> 
+</div>
+<!-- parallax banner ends -->

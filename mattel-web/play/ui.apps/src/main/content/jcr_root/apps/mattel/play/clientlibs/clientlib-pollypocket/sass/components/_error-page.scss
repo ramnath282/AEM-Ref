@@ -1,0 +1,86 @@
+/*
+**_error-page.scss
+*/
+.page-error-component{
+    @extend .row;
+   margin:em(40) 0 0;  
+	position: relative; 
+    
+    @media #{$medium-down} {
+        padding-top:2.5em;
+    }
+    @media #{$small-down} {
+        padding-top:1em;
+    }
+    .image-block{
+        @extend .col-md-6;
+        @extend .col-sm-12;
+        @extend .col-xs-12;
+         //background-color:gold;
+        padding:0 0;
+        @media #{$medium-down} {
+            padding: 0 em(50);
+        }
+        @media #{$small-down} {
+            padding: 0 em(20);
+        }
+    }
+    .text-block{
+        @extend .col-md-6;
+        @extend .col-sm-12;
+        @extend .col-xs-12;
+       
+@media #{$medium-up} {
+            padding:em(55);     
+            padding-right:em(160); // optional
+            position:absolute;
+			top:50%;
+			right:0;
+			@include transform(translateY(-50%));     
+        } 
+        @media #{$medium-down} {
+            padding: em(50);
+            padding-top:0;
+        }
+        @media #{$small-down} {
+            padding:em(20);
+            padding-top:0;
+        }
+        h2{
+            color:$violet;
+            font-size:em(38.95);
+            margin:0 0;
+        }
+        p{
+            color:$pink;
+            font-family: "Arial-Rounded",Arial,sans-serif;
+        }
+        .error-cta{
+            margin-top:em(16);
+            display: block;
+            @media #{$small-down} {
+                text-align:center;
+            }
+            a{
+                &.btn-cta{
+                    display: inline-block;
+                    color:$white;
+                }
+            }
+        }
+
+        &.full-width{
+            @extend .col-md-12;
+            @extend .col-sm-12;
+            @extend .col-xs-12;
+            @media #{$medium-up} {
+                padding:em(60);
+                padding-top:em(40);
+                @include transform(translateY(0));
+            }
+        }
+    }
+}
+.error-cta a:not(:lang(en-us)){
+text-transform:none
+}

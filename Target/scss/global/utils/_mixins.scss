@@ -1,0 +1,254 @@
+/* @include border-radius(10px); */
+
+@mixin border-radius($radius) {
+  -moz-border-radius: $radius;
+  -webkit-border-radius: $radius;
+  -ms-border-radius: $radius;
+  border-radius: $radius;
+}
+
+/* max-width : applyVariableStyle(140px) */
+
+@function applyVariableStyle($value: inherit) {
+  @return $value;
+}
+
+/* @include transition(all,2s,ease-out); */
+
+@mixin transition($what: all, $time: 0.2s, $how: ease-in-out) {
+  -webkit-transition: $what $time $how;
+  -moz-transition: $what $time $how;
+  -ms-transition: $what $time $how;
+  -o-transition: $what $time $how;
+  transition: $what $time $how;
+}
+
+/* Keyframes */
+
+@mixin keyframes($name) {
+  @-webkit-keyframes #{$name} {
+    @content;
+  }
+  @-moz-keyframes #{$name} {
+    @content;
+  }
+  @keyframes #{$name} {
+    @content;
+  }
+}
+/*@include background-clip(padding-box);*/
+
+@mixin background-clip($background-clip) {
+    background-clip: $background-clip;
+    -moz-background-clip: $background-clip;
+    -webkit-background-clip: $background-clip;
+}  
+
+/* i/p placeholder style */
+
+@mixin placeholders {
+  &::-webkit-input-placeholder {@content;}
+  &:-moz-placeholder           {@content;}
+  &::-moz-placeholder          {@content;}
+  &:-ms-input-placeholder      {@content;}  
+}
+
+/* generic transform */
+
+@mixin transform($transforms) {
+  -moz-transform: $transforms;
+  -o-transform: $transforms;
+  -ms-transform: $transforms;
+  -webkit-transform: $transforms;
+  transform: $transforms;
+}
+
+/* box shadow */
+
+@mixin box-shadow($top, $left, $blur, $color, $inset: false) {
+  @if $inset {
+    -webkit-box-shadow: inset $top $left $blur $color;
+    -moz-box-shadow: inset $top $left $blur $color;
+    box-shadow: inset $top $left $blur $color;
+  }
+  @else {
+    -webkit-box-shadow: $top $left $blur $color;
+    -moz-box-shadow: $top $left $blur $color;
+    box-shadow: $top $left $blur $color;
+  }
+}
+
+/* 
+convert pixel to em
+Usage : font-size: em(32);
+*/
+
+@function em($pixels, $context: $font-size-base) {
+  @return #{$pixels/$context}em;
+}
+
+/* 
+convert pixel to rem
+Usage : font-size: rem(32);
+*/
+@function rem($pixels, $context: $font-size-base) {
+  @if (unitless($pixels)) {
+    $pixels: $pixels * 1px;
+  }
+
+  @if (unitless($context)) {
+    $context: $context * 1px;
+  }
+
+  @return $pixels / $context * 1rem;
+}
+
+@mixin nav-mobile($pos, $right: -200px) {
+  position: $pos;
+  height: 100%;
+  width: 200px;
+  top: 0;
+  right: $right;
+}
+
+@mixin font-awesome() {
+  font-family: 'Font Awesome';
+  font-weight: 900;
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  line-height: 1;
+  vertical-align: middle;
+}
+
+@mixin nth-child($n) {
+  @for $i from 0 to $n {
+    &:nth-child(#{$i + 1}) {
+      display:block;
+    }
+  }
+}
+
+
+@mixin position-center($pos : absolute){
+  position: $pos;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+
+// @include font-face("NexaBold", font-files("nexa_bold-webfont.woff", "nexa_bold-webfont.ttf", "nexa_bold-webfont.svg", "nexa_bold-webfont.eot"));
+@mixin font-face($name, $font-files, $weight: false, $eot: false, $style: false) {
+  $iefont: unquote("#{$eot}?#iefix");
+  @font-face {
+    font-family: quote($name);
+    @if $eot {
+      src: font-url($eot);
+      $font-files: font-url($iefont) unquote("format('eot')"), $font-files; 
+    }
+    src: $font-files;
+    @if $weight {
+      font-weight: $weight;
+    }
+    @if $style {
+      font-style: $style;
+    }
+  }
+}
+
+/* 
+class name for each fonts
+Usage
+@param1 - class name
+@param2 - font weight variations
+Ex: @include fontVariations('noto-',r r-i b b-i); 
+*/
+
+@mixin fontVariations($className,$fontWeights) {
+  @each $fontWeight in $fontWeights {
+    &.#{$className}#{$fontWeight}{
+      @extend '.font-#{$fontWeight}';
+    }
+  }
+}
+
+// retrieve form from $form` map ie. `form(base, primary)`
+@function mapping($mapName, $elementName, $property:null) {
+  // form variant is optional
+  @if ($property != null) {
+    // map inception
+    @return map-get(map-get($mapName, $elementName), $property);
+  } 
+}
+@mixin line-clamp($numLines : 1, $lineHeight: 1.412) {
+  overflow: hidden;
+  text-overflow: -o-ellipsis-lastline;
+  text-overflow: ellipsis;
+  display: block;
+  /* autoprefixer: off */
+  display: -webkit-box;
+  -webkit-line-clamp: $numLines;
+  -webkit-box-orient: vertical;
+  max-height: $numLines * $lineHeight + unquote('em');
+}
+
+// @include content-spacing(map-get($layout, description));
+@mixin content-spacing($spacing) {
+  $isMarginValue: type-of(map-get($spacing, margin))==map;
+  $isPaddingValue: type-of(map-get($spacing, padding))==map;
+
+  margin: $isMarginValue and map-get(map-get($spacing, margin), sm) or null;
+  padding: $isPaddingValue and map-get(map-get($spacing, padding), sm) or null;
+
+  @media #{$medium-up} {
+    margin: $isMarginValue and map-get(map-get($spacing, margin), md) or null;
+    padding: $isPaddingValue and map-get(map-get($spacing, padding), md) or null;
+  }
+
+  @media #{$large-up} {
+    margin: $isMarginValue and map-get(map-get($spacing, margin), lg) or null;
+    padding: $isPaddingValue and map-get(map-get($spacing, padding), lg) or null;
+  }
+
+}
+
+// @include button-style(map-get($layout, button));
+@mixin button-style($buttonConfig : null) {
+  @if ($buttonConfig !=null) {
+    color: map-get($buttonConfig, color);
+    background-color: map-get($buttonConfig, background);
+    border-color: map-get($buttonConfig, border);
+    font: map-get($buttonConfig, font);
+    line-height: map-get($buttonConfig, lineHeight);
+    @include border-radius(map-get($buttonConfig, borderRadius));
+
+    @if (map-get($buttonConfig, hover)) {
+      &:hover {
+        color: map-get(map-get($buttonConfig, hover), color);
+        background-color: map-get(map-get($buttonConfig, hover), background);
+      }
+    }
+
+    &.active {
+      @if(map-get($buttonConfig, hover) and map-get(map-get($buttonConfig, hover), sameForActive)) {
+        color: map-get(map-get($buttonConfig, hover), color);
+        background-color: map-get(map-get($buttonConfig, hover), background);
+      }
+
+      @else if(map-get($buttonConfig, active)) {
+        color: map-get(map-get($buttonConfig, active), color);
+        background-color: map-get(map-get($buttonConfig, active), background);
+      }
+    }
+
+    &.disabled,
+    &[disabled] {
+      // in progress
+    }
+
+    @include content-spacing($buttonConfig);
+  }
+}

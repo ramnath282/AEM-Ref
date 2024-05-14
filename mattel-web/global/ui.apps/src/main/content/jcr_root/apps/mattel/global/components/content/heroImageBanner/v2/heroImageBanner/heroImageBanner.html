@@ -1,0 +1,56 @@
+<sly data-sly-test="${wcmmode.edit}">${'Hero Image Banner Component' @i18n}</sly>
+<sly data-sly-use.lib="mattel/global/components/content/dynamicMedia/v1/dynamicMedia/imageblock.html" />
+<sly data-sly-use.componentModel="com.mattel.global.core.model.v2.HeroImageBannerModel" />
+<div class="hero-image-banner">
+    <div class="hero-wrapper" style="border:${properties.bgBorderWidth @context='html'}px solid ${properties.bgBorderColor @context='html'}">
+        <div class="${properties.image || properties.mobileImage ? 'bg_wrapperImg dynamic-media-wrapper' : 'bg_color'} ${properties.tileOption}" style="background-image:url(${properties.tileImage ? componentModel.backgroundImagePath : '' @ context='html'});">
+            <sly data-sly-test="${properties.backgroundOption !='color'}">
+                <sly data-sly-test="${!properties.tileImage}">
+                    <div class="dynamicMedia" data-sly-test="${properties.image || properties.mobileImage}">
+                        <div class="desktop-bg  ${!properties.customMobile || !properties.mobileImage ? 'customMobileoff' : ' '}" data-sly-test="${properties.image}" data-sly-call="${lib.imageVideoSection @ imageDetail='image'}"></div>
+                        <div class="mobile-bg" data-sly-test="${properties.mobileImage  && properties.customMobile}" data-sly-call="${lib.imageVideoSection @ imageDetail='mobileImage'}"></div>
+                    </div>
+                </sly>
+            </sly>
+            <div class="hero-container ${properties.backgroundOption !='color' ? 'dynamic-media-container' : ' '}" style="background-color:${properties.backgroundOption=='color' ? properties.backgroundColor : ''  @context='html'}">
+                <div class="banner-card">
+                    <div class="card-component link-element" data-element-link="${componentModel.linkUrl}" data-open-window="${properties.renderoption}" data-tracking-text="${properties.bannerImageCtaTracking ? properties.bannerImageTrackingText :''}" >
+                        <div class="image-container" data-hover-enabled="${properties.isHoverImageEnabled}" data-custom-enabled="${properties.isCustomMobileEnabled}">
+                            <div data-sly-test="${properties.bannerImage}" class="mainImage">
+								<div data-sly-call="${lib.imageVideoSection @ imageDetail='bannerImage'}" data-sly-unwrap></div>
+							</div>
+							<div data-sly-test="${properties.isHoverImageEnabled && properties.hoverImage}" class="hoverImage hide">
+								<div data-sly-call="${lib.imageVideoSection @ imageDetail='hoverImage'}" data-sly-unwrap></div>
+							</div>
+							<div data-sly-test="${properties.bannerMobileImage && properties.isCustomMobileEnabled}" class="mobileImage hide">
+							     <div data-sly-call="${lib.imageVideoSection @ imageDetail='bannerMobileImage'}" data-sly-unwrap></div>
+							 </div>
+							 <div data-sly-test="${properties.isHoverImageEnabled && properties.isCustomMobileEnabled && properties.mobileHoverImage}" class="mobileHoverImage hide">
+							     <div data-sly-call="${lib.imageVideoSection @ imageDetail='mobileHoverImage'}" data-sly-unwrap></div>
+							 </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="textOverlayComponent">
+                    <div class="text-overlay">
+                        <div class="text-container container-bleed" data-sly-test="${properties.title || properties.subTitle || properties.description}">
+                            <div class="main-title" data-sly-test="${properties.title}">${properties.title @context='html',i18n}</div>
+                            <div class="sub-title" data-sly-test="${properties.subTitle}">${properties.subTitle @context='html',i18n}</div>
+                            <div class="text-para" data-sly-test="${properties.description}">${properties.description @context='html',i18n}</div>
+                        </div>
+                    </div>
+                </div>
+                <sly data-sly-use.ctaTab="com.mattel.global.master.core.model.CTATab">
+                    <sly data-sly-test="${ctaTab.items && ctaTab.items.size > 0}">
+                        <sly data-sly-repeat.item="${ctaTab.items}" data-sly-resource="${item.name @ decorationTagName='div',cssClassName=ctaTab.items.size == 1 ? 'banner-cta' : ''}"></sly>
+                    </sly>
+                    <sly data-sly-resource="${resource.path @ resourceType='wcm/foundation/components/parsys/newpar', appendPath='/*', decorationTagName='div', cssClassName='banner-cta'}" data-sly-test="${(wcmmode.edit || wcmmode.preview) && ctaTab.items.size < 1}"></sly>
+                </sly>
+            </div>
+        </div>
+    </div>
+</div>
+
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
+	<sly data-sly-call="${clientlib.js @ categories='global.clickableComponent, global.heroimagebanner'}" />
+</sly>

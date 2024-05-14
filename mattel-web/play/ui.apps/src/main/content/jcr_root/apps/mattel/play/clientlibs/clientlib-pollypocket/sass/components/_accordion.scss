@@ -1,0 +1,42 @@
+.accordion {
+    
+    .accordion-title {
+        margin: 0px;
+        padding: 1.5em 3em;
+        font-weight: normal;
+        border-bottom: 2px solid $white-smoke;
+        color: $white;
+        background-color: $pink;
+        
+        .view {
+            font-size: 1em;
+            line-height: 200%;
+            font-weight: normal;
+            text-align: left;
+        }
+    }
+    :last-child {
+        .accordion-title {border:0px;}
+    }
+    .accordion-content {
+        display: none;
+        padding: 1em;
+        &.default {
+            display: block;
+        }
+    }
+    .arrow {
+        margin-left: 0;
+        display: inline-block;
+        position: absolute;
+        right: 0.5em;
+        color: $black;
+        cursor: pointer;
+        &.arrowUp:before {
+            content: "\2212";
+        }
+        &.arrowDown:before {
+            content: "\2b";
+        }
+    }
+}

@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Address Book"
+    sling:resourceType="cq/gui/components/authoring/dialog"
+    height="{Long}800"
+    width="{Long}600">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <adrsBookSection
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Address Book Section"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <column
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <adrsBookTitle
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please enter Title for Address Book Section"
+                                        fieldLabel="Address Book Section Title :"
+                                        name="./adrsBookTitle"/>
+                                    <newAdrsBtnLabel
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please enter Label for New Address Button"
+                                        fieldLabel="New Address Button Label :"
+                                        name="./newAdrsBtnLabel"/>
+                                    <cancelAdrsBtnLabel
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please enter Label for Cancel Address Button"
+                                        fieldLabel="Cancel Button Label :"
+                                        name="./cancelAdrsBtnLabel"/>
+                                </items>
+                            </column>
+                        </items>
+                    </adrsBookSection>
+                    <newAddBookSection
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="New Address Section"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <column
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <defAddSelLabel
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please enter Label for Selecting the Address as Default"
+                                        fieldLabel="Label for Selecting the Address as Default :"
+                                        name="./defAddSelLabel"/>
+                                    <defCheckMessage
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please enter Notification text on select default address checkbox :"
+                                        fieldLabel="Notification Text on select default address checkbox :"
+                                        name="./defCheckMessage"/>
+                                    <fNameLabel
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please enter Label for First Name"
+                                        fieldLabel="First Name Label :"
+                                        name="./fNameLabel"/>
+                                    <lNameLabel
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please enter Label for Last Name"
+                                        fieldLabel="Last Name Label :"
+                                        name="./lNameLabel"/>
+                                    <addTypeLabel
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please enter Label for Address Type"
+                                        fieldLabel="Address Type Label :"
+                                        name="./addTypeLabel"/>
+                                    <resAddLabel
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please enter Label for Residential Address"
+                                        fieldLabel="Residential Address Label :"
+                                        name="./resAddLabel"/>
+                                    <bussAddLabel
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please enter Label for Business Address"
+                                        fieldLabel="Business Address Label :"
+                                        name="./bussAddLabel"/>
+                                    <bussNameLabel
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please enter Label for Business Name"
+                                        fieldLabel="Business Name Label :"
+                                        name="./bussNameLabel"/>
+                                    <countryLabel
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please enter Label for Country/Region"
+                                        fieldLabel="Country/Region Label :"
+                                        name="./countryLabel"/>
+                                    <strtAddLabel
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please enter Label for Street Address Line 1"
+                                        fieldLabel="Street Address Line 1 Label :"
+                                        name="./strtAddLabel"/>
+                                    <strtAddTwoLabel
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please enter Label for Street Address Line 2"
+                                        fieldLabel="Street Address Line 2 Label :"
+                                        name="./strtAddTwoLabel"/>
+                                    <cityLabel
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please enter Label for City"
+                                        fieldLabel="City Label :"
+                                        name="./cityLabel"/>
+                                    <stateLabel
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please enter Label for State"
+                                        fieldLabel="State Label :"
+                                        name="./stateLabel"/>
+                                    <zipLabel
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please enter Label for ZIP/Postal Code"
+                                        fieldLabel="ZIP/Postal Code Label :"
+                                        name="./zipLabel"/>
+                                    <childIdentifyLabel
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please enter Label for Identifying a Child"
+                                        fieldLabel="Label for Identifying a Child :"
+                                        name="./childIdentifyLabel"/>
+                                    <updateAdrsButtonLabel
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please enter Label for Update Address button"
+                                        fieldLabel="Label for Update Address button :"
+                                        name="./updateAdrsButtonLabel"/>
+                                    
+                                    <addAdrsButtonLabel
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please enter Label for Add Address button"
+                                        fieldLabel="Label for Add Address button :"
+                                        name="./addAdrsButtonLabel"/>
+                                    <cancelButtonLabel
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please enter Label for Cancel button"
+                                        fieldLabel="Label for Cancel button :"
+                                        name="./cancelButtonLabel"/>
+                                </items>
+                            </column>
+                        </items>
+                    </newAddBookSection>
+                    <defAdrsSection
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Default Address Section"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <column
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <dAddLabel
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please enter Label for Default Address"
+                                        fieldLabel="Default Address Label :"
+                                        name="./dAddLabel"/>
+                                    <editLabel
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please enter Label for Edit"
+                                        fieldLabel="Label for Edit :"
+                                        name="./editLabel"/>
+                                    <deleteLabel
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please enter Label for Delete"
+                                        fieldLabel="Label for Delete :"
+                                        name="./deleteLabel"/>
+                                    <dShipMthdLabel
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please enter Label for Default Shipping Method"
+                                        fieldLabel="Default Shipping Method Label :"
+                                        name="./dShipMthdLabel"/>
+                                    <stdShipLabel
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please enter Label for Standard Shipping selection"
+                                        fieldLabel="Standard Shipping Label :"
+                                        name="./stdShipLabel"/>
+                                    <xprsShipLabel
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please enter Label for Express Shipping selection"
+                                        fieldLabel="Express Shipping Label :"
+                                        name="./xprsShipLabel"/>
+                                    <thrDaysShipLabel
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please enter Label for 3 Business Days selection"
+                                        fieldLabel="3 Business Days selection Label :"
+                                        name="./thrDaysShipLabel"/>
+                                    <twoDaysShipLabel
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please enter Label for 2 Business Days selection"
+                                        fieldLabel="2 Business Days selection Label :"
+                                        name="./twoDaysShipLabel"/>
+                                    <defAddEditLinkLabel
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please enter Add/Edit Link Label"
+                                        fieldLabel="Add/Edit Link Label :"
+                                        name="./defAddEditLinkLabel"/>
+                                </items>
+                            </column>
+                        </items>
+                    </defAdrsSection>
+                    <adtnlAdrsSection
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Additional Addresses Section"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <column
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <adtnlAddLabel
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please enter Label for Additional Addresses"
+                                        fieldLabel="Additional Addresses Label :"
+                                        name="./adtnlAddLabel"/>
+                                    <aEditLabel
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please enter Label for Edit"
+                                        fieldLabel="Label for Edit :"
+                                        name="./aEditLabel"/>
+                                    <aDeleteLabel
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please enter Label for Delete"
+                                        fieldLabel="Label for Delete :"
+                                        name="./aDeleteLabel"/>
+                                    <adtAddEditLinkLabel
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please enter Add/Edit Link Label"
+                                        fieldLabel="Add/Edit Link Label :"
+                                        name="./adtAddEditLinkLabel"/>
+                                </items>
+                            </column>
+                        </items>
+                    </adtnlAdrsSection>
+                    <deleteAddressModel
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Delete Address Model Configuration"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <column
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <modelBodyText
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please enter Delete Confirmation Model Message"
+                                        fieldLabel="Delete Confirmation Model Message"
+                                        name="./modelBodyText"/>
+                                    <confirmCancel
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please enter Delete Confirmation CANCEL Text"
+                                        fieldLabel="Delete Confirmation CANCEL Text"
+                                        name="./confirmCancel"/>
+                                    <confirmOk
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please enter Delete Confirmation OK Text"
+                                        fieldLabel="Delete Confirmation OK Text"
+                                        name="./confirmOk"/>
+                                </items>
+                            </column>
+                        </items>
+                    </deleteAddressModel>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>

@@ -1,0 +1,57 @@
+<template data-sly-template.bundletemplate="${@ properties}">
+	<script id="categorybundleDetailsTemplate" type="text/x-handlebars-template">
+			<!-- This is category bundles list -->
+			{{#each this}}
+			       {{#ifNotEquals availability 'noLongerAvailable'}}
+			              {{#ifNotEquals ../this.availability 'Unavailable'}}
+								 <div  data-choice-index={{@index}}
+								 data-sku-id="{{../this.PartNumber}}"
+								 data-price="{{../targetPricing}}"
+								 data-product-type="{{../this.product_type}}"
+								 class="choice"
+								 data-choice="{{../this.auxDesc1}}">
+			                                  <div class="img-responsive">
+			                                         <img alt="thumbnail" src="{{../this.scene7Url}}{{../this.thumbnail}}{{../this.layerCompParams}}" />
+			                                  </div>
+			                                  <div class="trunk-desc">
+			                                  <p>
+												<span class="trunk-heading">{{../this.auxDesc1}}</span>
+												<span class="trunkPricing">
+												   <span class="displayPrice"></span>
+                                                </span>
+											 </p>
+											  <p class="product-age-range">Age {{{../this.MarketingAge}}} </p>
+			                                  {{#if ../this.TrunkDescription}}
+			                               	    <p> {{{../this.TrunkDescription}}} </p>
+			                                  {{else}}
+			                                 	 <p> {{{../this.seo_metaDescription}}} </p>
+			                                  {{/if}}
+											  {{#if ../this.SafetyMessage}}
+			                                  	 <p style="display:none" class="safetyMessage">{{{../this.SafetyMessage}}}</p>
+								             {{/if}}
+
+											 {{#if ../this.targetPricing}}
+												<span style="display:none" class="gt-price">{{../this.targetPricing}}</span>
+											 {{/if}}
+											<span style="display:none" class="smallTrunkAdderPrice">{{../this.adderPriceSmallTrunk}}</span>
+											<span style="display:none" class="smallTrunkAdderDisplayPrice">{{../this.adderDisplayPriceSmallTrunk}}</span>
+											<span style="display:none" class="largeTrunkAdderPrice">{{../this.adderPriceLargeTrunk}}</span>
+											<span style="display:none" class="largeTrunkAdderDisplayPrice">{{../this.adderDisplayPriceLargeTrunk}}</span>
+											<span style="display:none" class="gt-adder-price stock-price"></span>
+			                                {{#ifEquals ../this.availability 'Backordered' }}
+			                                         <span class="product-status">
+			                                                <span class="status-detail">Backordered</span> until <span class="backorder-date">{{getMMDDYYYY ../this.backorder_date}}</span>
+			                                         </span>
+										   {{/ifEquals}}
+										   {{#ifEquals ../this.availability 'Backorderable' }}
+										   <span class="product-status">
+												  <span class="status-detail">Backordered</span> until <span class="backorder-date">{{getMMDDYYYY ../this.backorder_date}}</span>
+										   </span>
+								           {{/ifEquals}}
+			                           </div>
+			                     </div>
+			              {{/ifNotEquals}}
+			       {{/ifNotEquals}}
+			{{/each}}
+	</script>
+</template>

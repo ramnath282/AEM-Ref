@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Retail Item"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <configTab
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Config"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <column
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <selectRetailer
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                        fieldDescription="Please select the experience fragment for Retailers"
+                                        fieldLabel="Select Retailer"
+                                        name="./selectAppOrRetailer"
+                                        rootPath="/content/dam"/>
+                                    <relativeRetailPath
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please provide full/Relative url of the retailer"
+                                        fieldLabel="Full or Relative Retail Path"
+                                        name="./appOrRetailPath"/>
+                                    <ctaTrack
+                                        granite:class="cq-dialog-checkbox-showhide-items-options"
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/switch"
+                                        checked="{Boolean}true"
+                                        cq-dialog-checkbox-showhide-items-options-target=".toggleTextOption"
+                                        fieldDescription="Track this CTA"
+                                        fieldLabel="Track this CTA ?"
+                                        name="./ctaTrack"
+                                        uncheckedValue="false"
+                                        value="true">
+                                        <granite:data
+                                            jcr:primaryType="nt:unstructured"
+                                            cqDialogCheckboxShowhideTarget=".toggleTextOption"
+                                            rowresume="{Boolean}true"/>
+                                    </ctaTrack>
+                                    <trackingText
+                                        granite:class="toggleTextOption"
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please provide tracking text"
+                                        fieldLabel="Tracking Text"
+                                        name="./trackingText"/>
+                                    <linkOptions
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                        emptyOption="{Boolean}false"
+                                        fieldDescription="Please select the Card Variant"
+                                        fieldLabel="Link Options"
+                                        name="./linkOptions">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <same
+                                                jcr:primaryType="nt:unstructured"
+                                                text="same window"
+                                                value="self"/>
+                                            <newWindow
+                                                jcr:primaryType="nt:unstructured"
+                                                text="New Window"
+                                                value="blank"/>
+                                            <newTab
+                                                jcr:primaryType="nt:unstructured"
+                                                text="New Tab"
+                                                value="newTab"/>
+                                        </items>
+                                    </linkOptions>
+                                    <useInterstitial
+                                        granite:class="cq-dialog-checkbox-showhide-items-options"
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/switch"
+                                        cq-dialog-checkbox-showhide-items-options-target=".interstitialDetails"
+                                        fieldDescription="Use Interstitial"
+                                        fieldLabel="Use Interstitial ?"
+                                        name="./useInterstitial"
+                                        uncheckedValue="false"
+                                        value="true">
+                                        <granite:data
+                                            jcr:primaryType="nt:unstructured"
+                                            cqDialogCheckboxShowhideTarget=".interstitialDetails"
+                                            rowresume="{Boolean}true"/>
+                                    </useInterstitial>
+                                    <interstitialPath
+                                        jcr:primaryType="nt:unstructured"
+                                        granite:class="interstitialDetails"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+                                        fieldDescription="Please select interstitial"
+                                        fieldLabel="Choose Interstitial"
+                                        name="./interstitialPath"
+                                        rootPath="/content/experience-fragments/"/>
+                                    <fillColor
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/colorfield"
+                                        fieldLabel="Fill Color"
+                                        name="./fillColor">
+                                        <granite:rendercondition
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/renderconditions/simple"
+                                            expression="${!granite:contains(requestPathInfo.suffix, '/fisher-price')}"/>
+                                    </fillColor>
+                                </items>
+                            </column>
+                        </items>
+                    </configTab>
+                    <text
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Text"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <column
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <linkText
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+                                        fieldDescription="Provide link text"
+                                        fieldLabel="Link Text"
+                                        name="./linkText"
+                                        useFixedInlineToolbar="{Boolean}true">
+                                        <rtePlugins
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceSuperType="mattel/global/components/content/globalRtePlugins/rtePlugins"/>
+                                        <uiSettings
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceSuperType="mattel/global/components/content/globalRtePlugins/uiSettings"/>
+                                    </linkText>
+                                    <linkAltText
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please provide link alt text"
+                                        fieldLabel="Link Alt Text"
+                                        name="./linkAltText"/>
+                                </items>
+                            </column>
+                        </items>
+                    </text>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>

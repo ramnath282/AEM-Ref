@@ -1,0 +1,13 @@
+<sly data-sly-test="${wcmmode.edit}">${'Country Dropdown Component' @i18n}</sly>
+
+<sly data-sly-use.countryList="com.mattel.global.core.model.CountryDropdownModel">
+	<p class="gem-pcont">${properties.dropdownHeader} <span class="sr-only"> which opens a new window</span></p>
+    <label for="countryDropdown" class="sr-only">Country Dropdown</label>
+	<div class="country-drop-down">
+		<select class="selectpicker" name="" id="countryDropdown">
+			<sly data-sly-list.countryDetail="${countryList.countryDropdownList}">
+				<option value="${countryDetail.countrySiteUrl}">${countryDetail.countryName}</option>
+			</sly>
+		</select>
+	</div>
+</sly>

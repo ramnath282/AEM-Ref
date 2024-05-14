@@ -1,0 +1,415 @@
+.signin,
+.register {
+    @include content-spacing(map-get($signIn, main));
+
+    h1,h2 {
+        @include font-style(map-get($signIn, heading));
+        $borderProperty: mapping($signIn, heading, border);
+
+        @if(map-get($borderProperty, enabled)) {
+            border-#{map-get($borderProperty,position)}: (map-get($borderProperty, size) solid map-get($borderProperty, color));
+        }
+
+        @include content-spacing(map-get($signIn, heading));
+    }
+
+    .input-field {
+        margin: 15px 0;
+    }
+
+    fieldset {
+        margin-top: 0;
+        padding: 0;
+        z-index: 1;
+        legend{
+            color:  $descriptionColor;
+        }
+        .input-field {
+            margin: 0;
+        }
+        ul{
+            overflow: hidden;
+        }
+        li{
+            padding: 0;
+            &.col-sm-3,&.col-sm-4{
+                @media #{$small-down}{
+                    display: block;
+                    margin: 0 0 em(15);
+                }
+                select{
+                    @media #{$small-down}{
+                        width: 100% !important;
+                        max-width: 33.6em;
+                    }
+                }
+            }
+        }
+    }
+    input[type="checkbox"]+label:before,
+    input[type="checkbox"]+label:after{
+        top: 3px;
+        margin-top: 0;
+        @include border-radius(0);
+    }
+    input[type="checkbox"]:not(:checked):focus + label:after,
+    input[type="checkbox"]:checked:focus + label:after, 
+    input[type="checkbox"]:not(:checked):focus + label:before,
+    input[type="checkbox"]:checked:focus + label:before {
+        border:1px dashed $night-rider;
+    }    
+}
+
+.signin {
+    max-width: 36.6em;
+
+    p {
+        @include font-style(map-get($signIn, description));
+        @include content-spacing(map-get($signIn, description));
+    }
+    .signin-form {
+        .forgot-password {
+            @include content-spacing(map-get($signIn, bottomSpace));
+        }
+    }
+}
+
+.custom-message {
+    display: none;
+}
+
+.register {
+    .form-message {
+        display: none;
+    }
+}
+
+.create-benefits {
+    @include font-style(map-get($signIn, accountBenefits));
+    color: mapping($signIn, accountBenefits, color);
+
+    p {
+        font: inherit;
+        @include content-spacing(mapping($signIn, accountBenefits, title));
+    }
+
+    ul {
+        li {
+            font: inherit;
+            @include content-spacing(mapping($signIn, accountBenefits, list));
+
+            @if (map-get(mapping($signIn, accountBenefits, icon), enabled)) {
+                &:before {
+                    content: map-get(mapping($signIn, accountBenefits, icon), content);
+                    color: map-get(mapping($signIn, accountBenefits, icon), color);
+                    @include content-spacing(mapping($signIn, accountBenefits, icon));
+                    @include font-awesome();
+                }
+            }
+        }
+    }
+}
+
+.link-rewards-member {
+    @include content-spacing(map-get($signIn, linkRewards));
+    background: mapping($signIn, linkRewards, background);
+    overflow: hidden;
+    .reward-toggle-actions{
+        @media #{$medium-down}{
+            margin-top: em(20);
+            max-width: em(270);
+            text-align: center;
+        }
+        .theme-btn{
+             @media #{$medium-down}{
+                float: left;
+                width:100%;
+            }
+        }
+    }
+    .theme-btn {
+        display: block;
+
+        @if (map-get(mapping($signIn, linkRewards, button), lengthRestrict)) {
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        @include content-spacing(mapping($signIn, linkRewards, button));
+        font: map-get(mapping($signIn, linkRewards, button), font);
+
+        &.transparent-btn-border {
+            color: map-get(mapping($signIn, linkRewards, closeBtn), color);
+            background: map-get(mapping($signIn, linkRewards, closeBtn), background);
+            text-align: center;
+        }
+    }
+
+    .collapse-reward-form {
+        display: none;
+    }
+
+    .expand-reward-form[aria-expanded="true"] {
+        display: none;
+
+        &+.collapse-reward-form {
+            display: inline-block;
+            float: right;
+            min-width: em(142);
+        }
+    }
+
+    .link-member-content {
+        overflow: hidden;
+    }
+
+    #rewards-registration-form {
+        padding: 0 em(15);
+
+        >p {
+            $borderProperty: map-get(mapping($signIn, rewardsForm, title), border);
+
+            @if(map-get($borderProperty, enabled)) {
+                border-#{map-get($borderProperty,position)}: (map-get($borderProperty, size) solid map-get($borderProperty, color));
+            }
+
+            @include content-spacing(mapping($signIn, rewardsForm, title));
+        }
+
+        .col-md-6 {
+            padding: 0;
+        }
+        form{
+            .input-field{
+                .long-input{
+                    max-width: 100%;
+                }
+            }
+        }
+    }
+}
+
+.remember-me {
+    &.input-field {
+        margin-top: 0;
+    }
+
+    text-align: mapping($signIn, rememberMe, align);
+}
+
+.api-error-message {
+    font: mapping($signIn, apiErrorMessage, font);
+    color: mapping($signIn, apiErrorMessage, color);
+    @include content-spacing(map-get($signIn, apiErrorMessage));
+    #email-id-value{
+        font: inherit;
+        margin-right: 2px;
+    }
+}
+.find-rewards-form {
+    .input-field input{
+        @media #{$medium-up}{
+            max-width: em(270,15);
+        }
+    }
+    &.has-error{
+        .reward-success-message{
+            display: none;
+        }
+        input:not([type="submit"]){
+            border-color: $color-grey !important;
+        }
+    }
+    &.has-success{
+        .reward-success-message {
+            color: mapping($signIn, formSuccessMessage, color);
+            font-weight: $fontSemiBold;
+            display: block;
+            &:before {
+                display:none !important;
+                content: "\f00c";
+                @include font-awesome();
+                margin-right: 6px;
+                font-size: 95%;
+                margin-left: 3px;
+            }
+        }
+        .api-error-message{
+            display: none;
+        }
+    }
+    .signup-with-membership{
+        float: left;
+        fieldset{
+            margin-bottom: em(20);
+        }
+    }
+    .input-field{
+        input[type="checkbox"]+label:before,
+        input[type="checkbox"]+label:after{
+            top: 1px;
+            margin-top: 0;
+            @include border-radius(0);
+        }
+    }
+}
+.api-success-message,
+.reward-success-message {
+    font: mapping($signIn, apiSuccessMessage, font);
+    color: mapping($signIn, apiSuccessMessage, color);
+    @include content-spacing(map-get($signIn, apiSuccessMessage));
+    float: left;
+}
+
+.has-error {
+    input,
+    select,
+    .bootstrap-select {
+        border: mapping($signIn, formErrorMessage, border);
+        // color: mapping($signIn, formErrorMessage, color);
+    }
+
+    .form-message,.hint-message {
+        color: mapping($signIn, formErrorMessage, color);
+        font-weight: $fontSemiBold;
+        display: block;
+        span{
+            font: inherit;
+        }
+    }
+}
+.has-success:not(.find-rewards-form) {
+    input:not([type="submit"]),
+    select,
+    .bootstrap-select {
+        border: mapping($signIn, formSuccessMessage, border);
+        color: mapping($signIn, formSuccessMessage, color);
+    }
+    .form-message,.hint-message {
+        color: mapping($signIn, formSuccessMessage, color);
+        font-weight: $fontSemiBold;
+        display: block;
+        &:before {
+            content: "\f00c";
+            @include font-awesome();
+            margin-right: 6px;
+            font-size: 95%;
+            margin-left: 3px;
+        }
+    }
+}
+
+.expand-form {
+    &[aria-expanded="true"] {
+        display: none;
+    }
+}
+
+#rewards-modal,.ecomm-modal {
+    .modal-dialog {
+        padding: 0 em(15);
+        box-sizing: content-box;
+        -webkit-box-sizing: content-box;
+        -ms-box-sizing: content-box;
+
+        @media #{$medium-up}{
+                    width: 791px;
+                }
+        @media #{$medium-down}{
+                    width: 600px;
+                }
+        @media #{$small-down}{
+                    width: auto;
+                }
+    }
+    .modal-content {
+        padding: em(30) em(40);
+        -webkit-box-shadow: em(5) em(5) em(5) $color-grey; 
+        -moz-box-shadow: em(5) em(5) em(5) $color-grey;
+        box-shadow: em(5) em(5) em(5) $color-grey;
+        border: none;
+
+        .modal-header {
+            padding: 0;
+            border: none;
+
+            .modal-title {
+                font-size: 21px;
+                font-weight: $fontRegular;
+                padding: 0;
+            }
+
+            .close {
+                position: absolute;
+                right: 1em;
+                top: 1.5em;
+                font-size: 1.4em;
+                opacity: 1;
+
+                span:before {
+                    content: "\f00d";
+                    @include font-awesome();
+                    color: $headingColor;
+                }
+            }
+        }
+        .modal-body {
+            padding: em(10) 0 0;
+            p {
+                color: $color-medium-grey;
+                font-size: em(16);
+                a {
+                    margin-top: em(15);
+                    display: block;
+                    font-weight: $fontRegular;
+                }
+            }
+        }
+        .modal-footer{
+            border: none;
+            .transparent-btn {
+                font-weight: $fontSemiBold;
+            }
+            .no-bg-btn {
+                font-weight: $fontSemiBold;
+                padding: 0 em(32);
+            }
+        }
+    }
+}
+#rewards-modal {
+    .modal-dialog {
+        @media #{$medium-up}{
+            top: 40%;
+        }
+        @media #{$medium-down}{
+            top:62%;
+        }
+        @media #{$small-down}{
+            top:35%;
+        }
+    }
+}
+.modal-backdrop {
+    background: rgba(0,0,0,0.25);
+    opacity: 1;
+}
+#confirmRegisterModal {
+    .modal-content {
+        h2 {
+            border: none;
+            margin-bottom: em(15);
+            font-size: em(30);
+        }
+        .modal-footer {
+            padding-left: 0;
+        }
+    } 
+}
+.forgotPassword{
+    span{
+        font: mapping($signIn, forgotPassword, font);
+        color:mapping($signIn, forgotPassword, color)
+    }
+}

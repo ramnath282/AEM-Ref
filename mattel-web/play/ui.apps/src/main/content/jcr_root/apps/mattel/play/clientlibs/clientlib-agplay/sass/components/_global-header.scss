@@ -1,0 +1,50 @@
+$headerHeightXs: 50px;
+.globalHeader {
+  position: absolute;
+  background: none;
+  height: $headerHeightXs;
+  font-size: 14px;
+  border-bottom: 1px #ccc solid;
+  z-index: 112;
+  &.aem-GridColumn{
+    padding: 0 12px;
+  }
+  @media #{$small-up} {
+    position: relative;
+    background: $white;
+    height: auto;
+    z-index: 114;
+  }
+  .global-mattel-header {
+    .global-header-wrapper {
+      height: $headerHeightXs;
+      @media #{$small-up} {
+        height: em(42);
+      }
+      padding: 0;
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      align-items: center;
+      -webkit-align-items: center;
+      @media #{$small-down} {
+        justify-content: center;
+        -webkit-justify-content: center;
+      }
+      // @extend .container;
+      .toggle-brands-list {
+        display: none;
+        .outer-wrapper &{
+          display: block;
+        }
+      }
+      .logo {
+        @media #{$small-down} {
+          width: 133px;
+        }
+      }
+    }
+  }
+}

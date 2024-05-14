@@ -1,0 +1,126 @@
+.hc-content-section {
+    .enable-carousel {
+        &[data-center-mode|="true"] {
+            .slick-slide {                
+                img {
+                    opacity: 0.5;
+                    margin: 0 auto;
+                    width: 100%;
+                }
+                .text-center {
+                    display: none;
+                }
+            }
+            .slick-center {
+                img {
+                    opacity: 1;
+                }
+                .text-center {
+                    display: block;
+                }
+            }
+        }        
+        .ag-container {
+            width: 100%;
+            padding-bottom: 30px;
+            .slick-next, .slick-prev {
+                background-color: $very-dim-light;
+                border-radius: 40px;
+                width: 40px;
+                height: 40px;
+                &:before {
+                    font-size: 50px;
+                    position: relative;
+                    top: -8px;
+                }
+                &:focus {
+                    outline: 1px dotted $black;
+                }
+                @media #{$xsmall-down} {
+                    display: none !important;
+                }
+            }
+            .slick-list {
+                width: 100%;
+            }  
+            .text-center {
+                width: 90%;
+                margin:50px auto 0; 
+                a{
+                    font-weight: $fontSemiBold;
+                }
+            } 
+            .article-text {
+                width: 95%;
+                margin:50px auto 0; 
+            }
+            .slick-dots {
+                bottom: auto;
+                li {
+                    button {
+                        &:focus {
+                            outline: 1px dotted $black;
+                        }
+                    }
+                }
+            }
+            .slick-slider {
+                margin-bottom: 0;
+            }
+            .slick-slide {
+                font-size: 1em;
+                img {
+                    margin: 0 auto;
+                }            
+            }  
+            .slick_banner {
+                margin-bottom: 20px;
+            }   
+        }
+        .text-center {
+            a{
+                font-weight: $fontSemiBold;
+            }
+        } 
+    }
+    .cda-banner {
+        .ag-container {
+            .slick-next {
+                width: 59px;
+                height: 59px;
+                background-image: none;
+                background-color: transparent;
+                box-shadow: none;
+                border-radius: 50%;
+                padding: 15px 0;
+                &:hover{
+                    background-color: $fa-border-color;
+               }
+                &:before {
+                    @include font-awesome();
+                    content: "\f054";
+                    vertical-align: top;
+                    background: none;
+                    box-shadow: none;
+                    color: $light-dim-grey;
+                    font-size: 28px;
+                    opacity: 1;
+                    text-shadow: none;
+                    left:2px;
+                    top:0;
+               }
+           }
+            .slick-prev {
+                @extend .slick-next;
+                &:hover{
+                    background-color: $fa-border-color;
+               }
+                &:before {
+                    @extend .slick-next:before;
+                    content: "\f053";
+                    left:-1px;
+               }
+           }
+       }
+   }
+}

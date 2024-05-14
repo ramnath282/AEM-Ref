@@ -1,0 +1,51 @@
+<sly data-sly-use.model="com.mattel.global.master.core.model.TextOverlayModel"/>
+<sly data-sly-test="${wcmmode.edit}">${'Edit Text Overlay Component' @i18n}</sly>
+<div class="desktop-bg" style="background-color:${model.backgroundColor @ context='unsafe'}">
+    <div class="mobile-bg" style="background-color:${model.backgroundColorMob @ context='unsafe'}">
+        <div class="text-overlay ${properties.entrCompClickable ? 'link-element' : ''}" data-element-link="${model.ctaurl}" data-open-window= "${model.linkOption}" >
+
+            <div class="text-container container-bleed">
+
+                <div class="main-title" data-sly-test="${model.title}">${model.title @context='html',i18n}</div>
+                <div class="sub-title" data-sly-test="${model.subTitle}">${model.subTitle @context='html',i18n}</div>
+                <div class="text-para" data-sly-test="${model.description}">${model.description @context='html',i18n}</div>
+
+                <sly data-sly-use.cta="com.mattel.global.master.core.model.CTATab" />
+                <div class="cta-button-container">
+
+                    <sly data-sly-test="${cta.items && cta.items.size > 0}">
+                        <sly data-sly-test="${properties.entrCompClickable}">
+                            <sly data-sly-list.item="${cta.items}">
+                                <sly data-sly-test="${!wcmmode.edit}">
+                                    <sly data-sly-test="${itemList.index < 1}">
+                                        <sly data-sly-resource="${item.name @ decorationTagName='div'}" />
+                                    </sly>
+                                </sly>
+                                <sly data-sly-test="${!wcmmode.edit}">
+                                    <sly data-sly-test="${itemList.index >= 1}">
+                                        <div data-sly-test="${item.path}" class="hidden-cta" hidden>
+                                            <sly data-sly-resource="${item.path @ decorationTagName='div'}" />
+                                        </div>
+                                    </sly>
+                                </sly>
+                                <sly data-sly-test="${wcmmode.edit}">
+                                    <sly data-sly-resource="${item.name @ decorationTagName='div'}" />
+                                </sly>
+                            </sly>
+                        </sly>
+                        <sly data-sly-test="${!properties.entrCompClickable}">
+                            <sly data-sly-list.item="${cta.items}">
+                                <sly data-sly-resource="${item.name @ decorationTagName='div'}" />
+                            </sly>
+                        </sly>
+                    </sly>
+                    <sly data-sly-resource="${resource.path @ resourceType='wcm/foundation/components/parsys/newpar', appendPath='/*', decorationTagName='div', cssClassName=''}" data-sly-test="${(wcmmode.edit || wcmmode.preview) && cta.items.size < 1}">
+                    </sly>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
+    <sly data-sly-call="${clientlib.js @ categories='global.clickableComponent'}"/>
+</sly>

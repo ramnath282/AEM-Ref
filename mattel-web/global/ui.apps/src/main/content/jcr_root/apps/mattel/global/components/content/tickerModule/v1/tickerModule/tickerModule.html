@@ -1,0 +1,40 @@
+<sly data-sly-test="${wcmmode.edit}">${'Header Ribbon Banner' @i18n}</sly>
+<sly data-sly-use.lib="mattel/global/components/content/dynamicMedia/v1/dynamicMedia/imageblock.html" />
+<sly data-sly-use.ctaTab="com.mattel.global.master.core.model.CTATab"/>
+    <div class="ticker-outer-wrapper">
+        <div class="ticker-component">
+            <div class="ticker-content ${properties.image || properties.mobileImage ? 'bg_wrapperImg dynamic-media-wrapper' : 'bg_color'} ${properties.tileOption}" style="background-image:url(${properties.backgroundOption=='image' && properties.tileImage ? CTAContainerModel.backgroundImagePath : '' @ context='html' }); background-color: ${properties.backgroundOption=='color' ? properties.backgroundColor : '' @ context='html' };">
+                <sly data-sly-test="${!properties.tileImage}">
+                    <div class="dynamicMedia" data-sly-test="${properties.image || properties.mobileImage}">
+                        <div class="desktop-bg ${!properties.customMobile || !properties.mobileImage ? 'customMobileoff' : ' '}" data-sly-test="${properties.image}" data-sly-call="${lib.imageVideoSection @ imageDetail='image' }"></div>
+                        <div class="mobile-bg" data-sly-test="${properties.mobileImage && properties.customMobile}" data-sly-call="${lib.imageVideoSection @ imageDetail='mobileImage' }"></div>
+                    </div>
+                </sly>
+            	<sly data-sly-test="${properties.tickerImgFileRef}">
+                	<img class="ticker-img" src="${properties.tickerImgFileRef}" alt="${properties.tickerImgAltTxt}">
+                </sly>
+                <div class="ticker-title" data-sly-test="${properties.title}">
+                    <h3>${properties.title @context='html'}</h3></div>
+                <div class="ticker-subtitle" data-sly-test="${properties.subTitle}">
+                    <h4>${properties.subTitle @context='html'}</h4></div>
+                <div class="ticker-description" data-sly-test="${properties.description}">
+                    <p>${properties.description @context='html'}</p>
+                </div>
+
+                <div class="ticker-button" data-sly-test="${ctaTab.items && ctaTab.items.size > 0}">
+                    <sly data-sly-list.item="${ctaTab.items}">
+                        <sly data-sly-test="${itemList.index < 1}">
+                            <sly data-sly-resource="${item.name @ decorationTagName='div'}" />
+                        </sly>
+                    </sly>
+                </div>
+                <sly data-sly-resource="${resource.path @ resourceType='wcm/foundation/components/parsys/newpar', appendPath='/*', decorationTagName='div', cssClassName='grid-inner'}" data-sly-test="${(wcmmode.edit || wcmmode.preview) && ctaTab.items.size < 1}">
+                </sly>
+                <button class="ticker-close" aria-label="close"></button>
+            </div>
+        </div>
+    </div>
+
+    <sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
+        <sly data-sly-call="${clientlib.js @ categories='fp.tickerModule'}" />
+    </sly>

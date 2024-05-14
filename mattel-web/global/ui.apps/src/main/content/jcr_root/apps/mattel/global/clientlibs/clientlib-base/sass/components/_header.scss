@@ -1,0 +1,53 @@
+header {
+    background-color: $white;
+    position: relative;
+    min-height: em(60);
+    line-height: em(60);
+    >div {
+      @extend .container;
+    }
+    
+  &.sticky-header{
+      position: fixed;
+      z-index: 100;
+      width: 100%;
+      left: 0;
+      top: 0;
+      &.active {
+        min-height: em(60);
+        height: em(60);
+        line-height: em(60);
+        >div {
+          .brand-logo {
+            img {
+              max-width: em(175);
+            }
+          }
+          .hamburger {
+            display: inline-block;
+          }
+          .primary-nav {
+            @include nav-mobile(fixed);
+            width: 200px;
+            display:none;
+            ul {
+              position: relative;
+              li {
+                display: block;
+              }
+            }
+          }
+          .location-dropdown{
+            display: inline-block;
+            margin-top: .875em;
+            @media #{$small-down} {
+              display: none;
+            }
+          }
+        }
+      }      
+  }
+}
+
+@import '_logo';
+@import '_main-nav';

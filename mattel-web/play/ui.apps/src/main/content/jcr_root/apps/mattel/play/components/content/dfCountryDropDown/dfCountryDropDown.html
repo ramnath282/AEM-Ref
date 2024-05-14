@@ -1,0 +1,49 @@
+<sly data-sly-test="${wcmmode.edit}">${' Configure country dropdown Component ' @ i18n}</sly>
+
+<sly data-sly-use.scriptUrl="com.mattel.play.core.model.PlayPageModel">
+
+		      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.2/css/bootstrap-select.min.css"/>
+		          <sly data-sly-use.countryList="${'com.mattel.play.core.model.CountryDropDownModel' @ url=currentPage.Path}">
+		              <div>
+		                  <sly data-sly-test="${properties.dropdownTitle != null}">
+		                      <h4 class="accordion-action">${properties.dropdownTitle @i18n}</h4>
+		                  </sly>
+		                  <label for="fp-countryDropdown" class="sr-only">${'Country Dropdown' @i18n}</label>
+		                  <div class="country-drop-down" value="${properties.target}">
+							<select class="selectpicker" data-size="10" name="" id="fp-countryDropdown">
+                          <!--  <option value="" selected disabled hidden>Choose The Country</option>-->
+								<sly data-sly-test="${properties.countrySelectionOption == 'manual'}">
+									<sly data-sly-list.countryDetail=${countryList.countryItemsManualList}>
+										<sly data-sly-test="${countryDetail.isCurrentCountry == 'false'}">
+											<option value="${countryDetail.countryUrl}" data-tracking-id="country selection|Choose a country|${countryDetail.countryName}">${countryDetail.countryName}</option>
+										</sly>
+										<sly data-sly-test="${countryDetail.isCurrentCountry == 'true'}">
+											<option value="${countryDetail.countryUrl}" data-tracking-id="country selection|Choose a country|${countryDetail.countryName}">${countryDetail.countryName}</option>
+										</sly>
+									</sly>
+								</sly>  
+	                            <sly data-sly-test="${properties.countrySelectionOption == 'automatic'}">
+									<sly data-sly-list.countryDetail=${countryList.countryItemsList}>
+	                                	<sly data-sly-test="${countryDetail.isCurrentCountry == 'false'}">
+	                                		<option value="${countryDetail.countryUrl}" data-tracking-id="country selection|Choose a country|${countryDetail.countryName}">${countryDetail.countryName}</option>
+										</sly>
+	                                  	<sly data-sly-test="${countryDetail.isCurrentCountry == 'true'}">
+	                                		<option value="${countryDetail.countryUrl}" data-tracking-id="country selection|Choose a country|${countryDetail.countryName}">${countryDetail.countryName}</option>
+										</sly>
+									</sly>
+	                            </sly>
+							</select>
+		                   </div>
+		              </div>
+		           </sly>
+			<sly data-sly-use.clientlibCountryDropDown="/libs/granite/sightly/templates/clientlib.html">
+			<sly data-sly-call="${clientlibCountryDropDown.js @ categories='play.dfcountryDropdown'}" />
+		</sly>
+		</sly>
+</sly>
+<script type="text/javascript">
+var urlmenu = document.getElementById( 'fp-countryDropdown' );
+urlmenu.onchange = function() {
+      window.open( this.options[ this.selectedIndex ].value );
+};
+</script>

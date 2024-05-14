@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Accordion Container Component"
+    sling:resourceType="cq/gui/components/authoring/dialog"
+    extraClientlibs="[acs-commons.widgets.showhidedialogfields]">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <gifttrunkAccordion
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Accordion Config"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <column
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+									 <heading
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please enter headline copy"
+                                        fieldLabel="Heading"
+                                        name="./accordionHeading"/>
+                                     <showGuranteeTextConfig
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                        name="./showGuranteeConfig"
+                                        text="Gurantee Text"
+                                        uncheckedValue="{Boolean}false"
+                                        value="true">
+                                        <granite:data
+                                            jcr:primaryType="nt:unstructured"
+                                            acs-cq-dialog-dropdown-checkbox-showhide=""
+                                            acs-cq-dialog-dropdown-checkbox-showhide-target=".gt-gurantee-showhide-target"/>
+                                    </showGuranteeTextConfig>
+                                    <showHelpTextConfig
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                        name="./showHelpText"
+                                        text="Help Text"
+                                        uncheckedValue="{Boolean}false"
+                                        value="true">
+                                        <granite:data
+                                            jcr:primaryType="nt:unstructured"
+                                            acs-cq-dialog-dropdown-checkbox-showhide=""
+                                            acs-cq-dialog-dropdown-checkbox-showhide-target=".gt-help-showhide-target"/>
+                                    </showHelpTextConfig>
+                                </items>
+                            </column>
+                        </items>
+                    </gifttrunkAccordion>    
+                    <guranteeTextConfig
+                        granite:class="hide gt-gurantee-showhide-target"
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Gurantee Text Configuration"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                        margin="{Boolean}true">
+                        <granite:data
+                            jcr:primaryType="nt:unstructured"
+                            acs-checkboxshowhidetargetvalue="{Boolean}true"/>
+                        <items jcr:primaryType="nt:unstructured">
+                            <column
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">                                                                      
+                                     <title
+				                        jcr:primaryType="nt:unstructured"
+				                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+				                        fieldDescription="Please Our Guarantee enter the title."
+				                        fieldLabel="Title:"
+				                        name="./guranteeTitle"/>
+				                    <ourguaranteesubtitle
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please enter Our Guarantee Subtitle Text"
+                                        fieldLabel="Subtitle Text"
+                                        name="./ourGuaranteeSubtitle"/>
+				                    <description
+				                        jcr:primaryType="nt:unstructured"
+				                        sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+				                        fieldLabel="Description:"
+				                        name="./guranteeDescription"
+				                        useFixedInlineToolbar="{Boolean}true">
+				                        <rtePlugins
+				                            jcr:primaryType="nt:unstructured"
+				                            sling:resourceSuperType="mattel/global/components/content/rtePlugins/rtePlugins"/>
+				                        <uiSettings
+				                            jcr:primaryType="nt:unstructured"
+				                            sling:resourceSuperType="mattel/global/components/content/rtePlugins/uiSettings"/>
+				                    </description>
+				                    <readMoreButtonLabel
+				                        jcr:primaryType="nt:unstructured"
+				                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+				                        fieldLabel="CTA Label"
+				                        name="./guranteectaLabel"/>
+                                </items>
+                            </column>
+                        </items>
+                    </guranteeTextConfig> 
+                    <helpTextConfig
+                        granite:class="hide gt-help-showhide-target"
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Help Text Configuration"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                        margin="{Boolean}true">
+                        <granite:data
+                            jcr:primaryType="nt:unstructured"
+                            acs-checkboxshowhidetargetvalue="{Boolean}true"/>
+                        <items jcr:primaryType="nt:unstructured">
+                            <column
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">                                                                      
+                                     <title
+				                        jcr:primaryType="nt:unstructured"
+				                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+				                        fieldDescription="Please enter the title."
+				                        fieldLabel="Title:"
+				                        name="./helpTitle"/>
+				                     <helpTextsubtitle
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please enter Our Guarantee Subtitle Text"
+                                        fieldLabel="Subtitle Text"
+                                        name="./helpSubtitle"/>
+				                    <readMoreButtonLabel
+				                        jcr:primaryType="nt:unstructured"
+				                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+				                        fieldLabel="CTA Label"
+				                        name="./helpCTALabel"/>
+				                    <urlForReadMore
+				                        jcr:primaryType="nt:unstructured"
+				                        sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+				                        fieldLabel="CTA Link"
+				                        rootPath="/content/ag/en"
+				                        name="./helpCTALink"/>
+                                </items>
+                            </column>
+                        </items>
+                    </helpTextConfig>                 
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>

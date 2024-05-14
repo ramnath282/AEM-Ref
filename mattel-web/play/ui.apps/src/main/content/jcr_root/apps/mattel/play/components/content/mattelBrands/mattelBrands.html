@@ -1,0 +1,37 @@
+<sly data-sly-use.clientLib="/libs/granite/sightly/templates/clientlib.html"/>
+	<sly data-sly-test="${wcmmode.edit}">${'MattelBrands' @ i18n}</sly>
+	<sly data-sly-use.MattelBrandObj="com.mattel.play.core.model.MattelBrandModel">
+
+        <sly data-sly-test="${properties.backOption=='color' && properties.backgroundColor !=null}">
+            <div style="background-color:${properties.backgroundColor @ context='styleString'};">
+        </sly>
+        <sly data-sly-test="${properties.backOption=='image' && properties.fileReferenceBgImg !=null}">
+            <div style="background-image: url('${properties.fileReferenceBgImg @ context='styleString'}'); background-repeat:no-repeat;">
+        </sly>
+		<h2>${properties.TitleText @i18n}</h2>
+		<sly data-sly-list.mattelBrandList="${MattelBrandObj.brandsList}">
+			<sly data-sly-test="${mattelBrandList.targetURL =='sameWindow'}">
+				<li>
+					<a href="${mattelBrandList.logoURL}">
+						<img src="${mattelBrandList.logoImage}" alt="${mattelBrandList.logoAltText}-brandlogo" data-src="${mattelBrandList.logoImage}" />
+					</a>
+				</li>
+			</sly>
+			<sly data-sly-test="${mattelBrandList.targetURL == 'tabWindow'}">
+				<li>
+					<a href="${mattelBrandList.logoURL}" target="_blank">
+						<img src="${mattelBrandList.logoImage}" alt="${mattelBrandList.logoAltText}-brandlogo" data-src="${mattelBrandList.logoImage}" />
+					</a>
+				</li>
+			</sly>
+			<sly data-sly-test="${mattelBrandList.targetURL == 'newWindow'}">
+				<li>
+					<a data-url="${mattelBrandList.logoURL}" onclick="window.open(this.dataset.url,'AG','width=500, height=500');">
+						<img src="${mattelBrandList.logoImage}" alt="${mattelBrandList.logoAltText}-brandlogo" />
+					</a>
+				</li>
+			</sly>
+		</sly>
+	</sly>
+</sly>
+

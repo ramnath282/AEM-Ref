@@ -1,0 +1,19 @@
+// @include content-spacing(map-get($layout, description));
+@mixin content-spacing($spacing) {
+    $isMarginValue: type-of(map-get($spacing, margin))==map;
+    $isPaddingValue: type-of(map-get($spacing, padding))==map;
+  
+    margin: $isMarginValue and map-get(map-get($spacing, margin), sm) or null;
+    padding: $isPaddingValue and map-get(map-get($spacing, padding), sm) or null;
+  
+    @media #{$small-up} {
+      margin: $isMarginValue and map-get(map-get($spacing, margin), md) or null;
+      padding: $isPaddingValue and map-get(map-get($spacing, padding), md) or null;
+    }
+  
+    @media #{$large-up} {
+      margin: $isMarginValue and map-get(map-get($spacing, margin), lg) or null;
+      padding: $isPaddingValue and map-get(map-get($spacing, padding), lg) or null;
+    }
+  
+  }

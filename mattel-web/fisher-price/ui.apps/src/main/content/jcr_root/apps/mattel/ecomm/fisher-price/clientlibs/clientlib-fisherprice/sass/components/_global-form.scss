@@ -1,0 +1,110 @@
+.flexible-adaptive-container {
+    .form-level-error {
+        p {
+            @include font-properties($maaxMediumItalic,$localFontVerdana);
+        }
+    }
+    .title {
+        .play-page-title {
+            p {
+                @include font-properties($maax,$localFontVerdana);
+            }
+        }
+    }
+}
+.adaptive-form {
+    .textOverlayComponent {
+        .text-overlay {
+            .sub-title {
+                @include font-properties($maaxMedium,$localFontVerdana);
+                font-weight: 500;
+            }
+        }
+    }
+    .input-field {
+        .form-message,
+        .application-message {
+            @include font-properties($maaxMediumItalic,$localFontVerdana);
+        }
+    }
+    input[type=submit] {
+        @include font-properties($maaxMedium,$localFontVerdana);
+        font-weight: 500;
+    }
+    label,
+    .sub-form-group fieldset>legend {
+        @include font-properties($maaxMedium,$localFontVerdana);
+        font-weight: 500;
+    }
+    .form-group {
+        fieldset {
+            legend {
+                @include font-properties($maaxMedium,$localFontVerdana);
+                font-weight: 500;
+            }
+            .input-description{
+                @include font-properties($maaxItalic,$localFontVerdana);
+                font-style: italic;
+            }
+        }
+        .add-sub-form-group,
+        .remove-sub-form-group {
+            a {
+                span {
+                    @include font-properties($maaxMedium,$localFontVerdana);
+                    font-weight: 500;
+                }
+            }
+        }
+    }
+    .checkbox-field {
+        input[type="checkbox"] {
+            &+label {
+                @include font-properties($maax,$localFontVerdana);
+            }
+        }
+    }
+    .api-error-msg{
+        color: #E51C06;
+        font-family: $maaxMediumItalic;
+        font-size: 14px;
+        margin: 13px 0;
+        &:before{
+            top: 3px;
+            position: relative;
+        }
+    }
+}
+.modal-component {
+    &.modal {
+        .flexible-adaptive-container {
+            .adaptive-form {
+                .input-description {
+                    @include font-properties($maaxItalic,$localFontVerdana);
+                    font-weight: 500;
+                    font-style: italic;
+                }
+            }
+        }
+    }
+}
+.slidein {
+    .flexible-adaptive-container {
+        .adaptive-form {
+            .input-description {
+                @include font-properties($maaxItalic,$localFontVerdana);
+                font-weight: 500;
+                font-style: italic;
+            }
+        }
+    }
+    .generic-api-message {
+        .sub-title{
+            i{
+                @include font-properties($maaxItalic,$localFontVerdana);
+                font-weight: 500;
+                font-style: italic;
+            }
+        }
+    }
+}

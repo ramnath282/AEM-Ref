@@ -1,0 +1,83 @@
+.listingFacetsContainer {
+    .filter-heading {
+        h3 {
+            letter-spacing: 0.15px;
+        }
+    }
+    .product-filter-section {
+        #filterComponentInfo {
+            font-size: 14px;
+            // @media #{$mobile-down-only} {
+            .btn-group {
+                width: 100%;
+                .dropdown-toggle {
+                    width: 100%;
+                    text-align: left;
+                    padding-left: 28px;
+                    font-family: $MattelCorpPrimaryFontBold;
+                    font-size: 18px;
+                    @include transition(all .5s linear);
+                    #selected-value {}
+                    .caret {
+                        background-image: url(#{$spriteLightPath});
+                    }
+                }
+                .dropdown-menu {
+                    @media #{$mobile-down-only} {
+                        width: 99%;
+                        margin: -12px 0 0 0;
+                        z-index: 99;
+                        border: none;
+                        padding-top: 18px;
+                    }
+                }
+                &.solid {
+                    .btn-cta-item:active{
+                        color: $white;
+                        background-color: $primaryTextColor;
+                        border-color: $primaryTextColor;
+                    }
+                }
+                &.solid {
+                    .btn-cta-item:hover{
+                        color: $white;
+                        background-color: $primaryTextColor;
+                        border-color: $primaryTextColor;
+                    }
+                }
+            }
+            // }
+            .productTypes {
+                .products-list-item {
+                    &.list-item {
+                        input[type="radio"]:not(:checked)+label {
+                            font-weight: 400 !important;
+                            position: relative;
+                            z-index: 999;
+                        }
+                        input[type="radio"]:checked+label {
+                            color: $black;
+                            text-decoration: none;
+                            border-color: $primaryTextColor;
+                            font-family: $MattelCorpPrimaryFontBold;
+                        }
+                        label {
+							font-weight: 400;
+							font-family: $MattelCorpPrimaryFontRoman;
+							font-size: 18px;
+                            letter-spacing: 0.15px;
+                            &:hover{
+                                color: $primaryTextColor;
+                                text-decoration: underline;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .dropdown-backdrop {
+                z-index: 1;
+            }
+        }
+    }
+}

@@ -1,0 +1,50 @@
+<sly data-sly-test="${wcmmode.edit}">
+    ${'Featured Articles Component' @i18n}
+</sly>
+
+<sly data-sly-use.artcileObj="com.mattel.ag.explore.core.model.FeaturedArticlesModel">
+    <div class="grid-module grid-featured-module">
+        <sly data-sly-test="${artcileObj.articles}">
+            <div class="container">
+                <div>
+                    <ul class="article-list">
+                        <sly data-sly-list.articleList="${artcileObj.articles}">
+                            <li class="list">
+                                <div class="tile-container">
+									<div class="tile-anchor-parent">
+                                        <sly data-sly-test="${articleList.vanityUrl == null}">
+                                            <a class="tile-link" data-tracking-featured-article = "Featured article|${articleList.articleTitle}" href="${articleList.pagePath}"  style="background-image: url(${articleList.articleLandingHero @context='html'})"><img class="tile-img" src="${articleList.articleLandingHero}" alt="${articleList.articleTitle}"></a></sly>
+                                        <sly data-sly-test="${articleList.vanityUrl != null}">
+                                            <a class="tile-link" data-tracking-featured-article = "Featured article|${articleList.articleTitle}" href="${articleList.vanityUrl}"  style="background-image: url(${articleList.articleLandingHero @context='html'})"><img class="tile-img" src="${articleList.articleLandingHero}" alt="${articleList.articleTitle}"></a></sly>
+									</div>
+									<div class="tile-content">
+                                        <sly data-sly-test="${articleList.vanityUrl == null}">
+                                            <a class="tile-link" data-tracking-featured-article = "Featured article|${articleList.articleTitle}" href="${articleList.pagePath}">
+                                                <h2 class="tile-name">${articleList.articleTitle}</h2>
+                                                <sly data-sly-list.tagsList="${articleList.primaryTag}">
+                                                    <h3 class="tile-category">${tagsList.tagTitle}</h3>
+                                                </sly>
+                                            </a>
+                                        </sly>
+                                        <sly data-sly-test="${articleList.vanityUrl != null}">
+                                            <a class="tile-link" data-tracking-featured-article = "Featured article|${articleList.articleTitle}" href="${articleList.vanityUrl}">
+                                                <h2 class="tile-name">${articleList.articleTitle}</h2>
+                                                <sly data-sly-list.tagsList="${articleList.primaryTag}">
+                                                    <h3 class="tile-category">${tagsList.tagTitle}</h3>
+                                                </sly>
+                                            </a>
+                                        </sly>
+
+                                        <sly data-sly-test="${articleList.enableSocialMediaSharing=='true'}">
+                                            <sly data-sly-use.templ="/apps/mattel/ecomm/ag/components/content/socialSharetemplate/socialSharetemplate.html" data-sly-call="${templ.socialShare @ title=articleList.articleTitle, description=articleList.articleDescription, mediaUrl=articleList.articleLandingHero, pageUrl=articleList.pagePath, componentname='Featured article'}"></sly>
+                                        </sly>
+                                    </div>
+                                </div>
+                            </li>
+                        </sly>
+                    </ul>
+                </div>
+            </div>
+        </sly>
+    </div>
+</sly>

@@ -1,0 +1,116 @@
+@-webkit-keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.ag-play-home1-page,
+.ag-play-home-page,
+#pagename-home {
+    .gallery {
+        .play-characters {
+            @extend .fixed-bgnd-without-cover;
+            .gallery-tile {
+                ul {
+                    @media #{$small-up} {
+                        width: calc(97% - 15px);
+                        margin: 0 auto;
+                    }
+                }
+                li {
+                    background: inherit;
+                }
+                >ul>li {
+                    padding: 0 15px;
+                }
+                .view-all {
+                    display: block;
+                    text-align: center;
+                }
+            }
+            .show-more {
+                // display: block !important;
+            }
+        }
+    }
+}
+
+.play-characters {
+    padding: 0 0 15px 0;
+}
+
+.play-character-landing-block {
+    .lazy-load {
+        &.column-4 {
+            @media #{$large-up} {
+                width: 25%;
+            }
+        }
+    }
+}
+
+.char-detials-comp {
+    .char-details-description {
+        padding: 1.5em;
+        padding-bottom: 0;
+        overflow: hidden;
+        overflow-y: auto;
+        height: auto;
+    }
+    .cd-prev,
+    .cd-next {
+        background: #c7074c;
+        &:before {
+            // color: $black;
+        }
+    }
+}
+
+.play-character-landing-block .lazy-load,
+#play-game ul li,
+#videos-gallery .play-list li {
+    //  -webkit-animation: fadeIn 2s;
+    // animation: fadeIn 2s;
+    img {
+        -webkit-animation: fadeIn 2s;
+        animation: fadeIn 2s;
+        @media #{$medium-up} {
+            min-height: 140px;
+        }
+    }
+}
+
+.character-page {
+    .play-tiles-gallery.play-games {
+        padding-bottom: 20px;
+    }
+    .play-category-details-component .nav-carousel-slides.char-tiles {
+        .slick-arrow.slick-prev {
+            left: 0;
+        }
+        .slick-arrow.slick-next {
+            right: 0;
+        }
+    }
+}
+
+#pagename-characters,
+#pagename-games {
+    background-size: auto !important;
+    background-repeat: repeat !important;
+    .play-page-title>div p {
+        margin: 0 0 15px;
+    }
+}

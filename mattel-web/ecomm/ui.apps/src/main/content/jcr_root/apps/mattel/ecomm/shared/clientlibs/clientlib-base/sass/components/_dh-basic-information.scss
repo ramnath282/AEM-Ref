@@ -1,0 +1,308 @@
+.dhContainer.aem-GridColumn {
+    padding: 0;
+}
+
+section {
+    text-align: center;
+    display: none;
+    &.active {
+        display: block;
+    }
+    &.animated {
+        animation-fill-mode: backwards;
+        -webkit-animation-fill-mode: backwards;
+    }
+    form {
+        @media #{$small-down} {
+            margin-top: 20px;
+        }
+    }
+    .dh-basicinfo-input-holder {
+        input[type="text"] {
+            border: none;
+            border-bottom: $borderColor 1px solid;
+            padding: em(30, 50) 0 em(5, 50);
+            outline: none;
+            font-size: em(50);
+            text-align: center;
+            color: $DHPrimaryBlue;
+            background-color:transparent;
+             @media #{$small-up} {
+                max-width: 500px;
+             }
+            @media #{$small-down} {
+                font-size: em(30);
+                padding: em(50, 30) em(2, 30) em(5, 30);
+                width: auto;
+                max-width: 290px;
+            }
+            &::-webkit-input-placeholder { 
+                font:$fontLight 50px "Source Sans Pro", sans-serif;
+                color: $color-dark-grey;
+                opacity: 0.5;
+                @media #{$small-down} {
+                    font:$fontLight 30px "Source Sans Pro", sans-serif;
+                }
+              }
+            &::-moz-placeholder { 
+                font:$fontLight 50px "Source Sans Pro", sans-serif;
+                color: $color-dark-grey;
+                opacity: 0.5;
+                @media #{$small-down} {
+                    font:$fontLight 30px "Source Sans Pro", sans-serif;
+                }
+            }
+            &:-ms-input-placeholder { 
+                font:$fontLight 50px "Source Sans Pro", sans-serif;
+                color: $color-dark-grey;
+                opacity: 0.5;
+                @media #{$small-down} {
+                    font:$fontLight 30px "Source Sans Pro", sans-serif;
+                }
+            }
+        }
+        .err-msg,
+        p {
+            // display: none;
+            color: $DHerrorColor;
+            font-size: em(14);
+            font-weight: 600;
+            padding: em(10) em(5) em(5) em(5);
+            &:before {
+                content: "\f071";
+                @include font-awesome();
+                color: $DHerrorColor;
+                font-size: em(14);
+                padding-right: 6px;
+                line-height: 1.1em;
+                vertical-align: initial;
+                font-weight: 600;
+            }
+        }
+    }
+    .dh-dollType-option-group {
+        margin: auto 10%;
+        @media #{$small-up} {
+            margin: 0;
+        }
+        .rdDollTypeContainer {
+            border: $borderColor 1px solid;
+            background-color: $background-color;
+            border-radius: em(85) em(10) em(10) em(85);
+            margin: 40px em(7) 0;
+            font-size: em(14);
+            padding: 0;
+            position: relative;
+            text-align: left;
+            display: flex;
+            vertical-align: top;
+            cursor: pointer;
+            label{
+                @media #{$small-down} {
+                    display:flex !important;
+                    padding-left: 75px !important;
+                }
+                @media #{$small-up} {
+                    padding-left: 0 !important;
+                }
+            }
+            &:before,
+            &:after {
+                content: none !important;
+            }
+            @media #{$small-up} {
+                border-radius: em(10);
+                text-align: center;
+                position: relative;
+                display: inline-block;
+                width: 23.2%;
+                margin: em(28) em(20) 0;
+                font-size: em(20);
+                box-sizing: border-box;
+                min-height: 293px;
+                border: 1.5px solid transparent;
+                box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+            }
+            @media #{$medium-only} {
+                width: 30% ;
+                margin: em(28) em(5) 0;
+            }
+            @media #{$small-down} {
+                min-height: 72px;
+                flex-wrap: wrap;
+                padding: 6px 10px 6px 83px;
+                margin:40px 0 0 0;
+                align-items: center;
+                justify-content: left;
+                // display: block;
+                .rdCircle {
+                    position: absolute;
+                    top: -2px;
+                    bottom: 0;
+                    left: -2px;
+                }
+                .card-title,
+                .card-desc {
+                    padding-left: 0;
+                    margin: 0;
+                }
+            }
+            .rdCircle {
+                width: 72px;
+                height: 72px;
+                border-radius: em(0) em(85) em(85) em(0);
+                border-right: $borderColor 1px solid;
+                display: inline-block;
+                img {
+                    border-radius: em(85);
+                    width: 72px;
+                    height: 72px;
+                    object-fit: contain;
+                    @media #{$small-down} {
+                        min-width: 72px;
+                    }
+                }
+                @media #{$small-up} {
+                    position: relative;
+                    width: 72px;
+                    height: 72px;
+                    display: block;
+                    border: none;
+                    border-radius: em(85);
+                    // margin-left: -35px;
+                    // left: 50%;
+                    margin-left: auto;
+                    margin-right: auto;
+                    margin-top: 23px;
+                    background-color: $borderColor;
+                    img {
+                        width: 72px;
+                        height: 72px;
+                    }
+                }
+            }
+            @media #{$small-up} {
+                border-radius: em(10);
+            }
+            .card-title {
+                strong{
+                    font-weight: 600;
+                }
+                font-weight: 300;
+                margin: 0;
+                padding: 0;
+                display: block;
+                color: $night-rider;
+                @media #{$small-down} {
+                    font-size: 18px;
+                }
+                @media #{$small-up} {
+                    font-weight: 300;
+                    margin: 32px auto 20px auto;
+                    padding: 0 em(15);
+                    display: block;
+                    color: $night-rider;
+                }
+            }
+            .card-desc {
+                // width: 60%;
+                // margin-top: em(20, 18);
+                font: $fontRegular em(18, 20) "Source Sans Pro", sans-serif;
+                color: $night-rider;
+                display: block;
+                margin: 0;
+                padding: 0;
+                @media #{$small-down} {
+                        font-size: 14px;
+                }
+                @media #{$small-up} {
+                    max-width: 89%;
+                    margin: em(20, 18) auto 20px;
+                    padding: 0 em(15, 18);
+                }
+            }
+        }
+        input[type="radio"],
+        input[type="checkbox"] {
+                visibility: visible;
+                position: absolute;
+            &:checked+label {
+                border: $DHPrimaryBlue 1.5px solid;
+                &:after {
+                    width: 0;
+                    height: 0;
+                    border: none;
+                }
+                span {
+                    color: $DHPrimaryBlue;
+                }
+                &.disabled {
+                    border: $borderColor 1px solid;
+                    span {
+                        color: $headingColor;
+                    }
+                }
+            }
+            &:checked+.rdDollTypeContainer {
+                border-color: $DHPrimaryBlue;
+                .card-title,
+                .card-desc {
+                    color: $night-rider;
+                }
+            }
+        }
+    }
+    .dh-eye-option-group {
+            @extend .option-selection;
+            @media #{$medium-up} {
+                padding: 20px 150px 0 150px;
+            }
+            @media #{$small-down} {
+                padding-top: 5px;
+            }
+            input[type="radio"]{
+                &+label{
+                    @media #{$small-up} {
+                        width: 173px;
+                        height: 70px;
+                        margin:30px 15px 0 15px;
+                    }
+                    @media #{$small-down} {
+                        height: 58px;
+                    }
+                    span{
+                        @media #{$small-up} {
+                            min-width: 173px;
+                        }
+                    }
+                }
+            }
+        }
+        .dh-hair-option-group {
+            @extend .option-selection;
+            @media #{$medium-up} {
+                padding: 20px 150px 0 150px;
+            }
+            @media #{$small-down} {
+                padding-top: 5px;
+            }
+            input[type="radio"]{
+                &+label{
+                    @media #{$small-up} {
+                        width: 173px;
+                        height: 70px;
+                        margin:30px 15px 0 15px;
+                    }
+                    @media #{$small-down} {
+                        height: 58px;
+                    }
+                    span{
+                        @media #{$small-up} {
+                            min-width: 173px;
+                        }
+                    }
+                }
+            }
+        }
+
+}

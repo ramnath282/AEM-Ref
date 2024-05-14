@@ -1,0 +1,72 @@
+ <!-- recommended product starts -->
+ <sly data-sly-use.cta="com.mattel.global.master.core.model.CTATab" />
+      <div class="mq-recomm" data-recommendation-count="3" data-hbt-id="${resource.path.hashCode @ context = 'number'}">
+            <div class="mq-recomm-thanks-msg">
+               ${properties.title @ context = 'html'}
+			   ${properties.subTitle @ context = 'html'}
+            </div>
+            <div class="mq-recomm-block">
+              <ul id="mqPLPListElem${resource.path.hashCode @ context = 'number'}">
+              </ul>
+
+
+              <div class="mq-recomm-cta">
+				<sly data-sly-use.quizContainer="com.mattel.global.core.model.v1.QuizContainerModel" />
+					<sly data-sly-test="${quizContainer.viewAllLink && properties.viewAllText}">
+					  <div class="ctaItem">
+						<div class="cta-item">
+						  <a class="btn-cta-item mqViewAll" href="javascript:void(0)" data-target-href="${quizContainer.viewAllLink}" data-tracking-cta-id="${properties.trackViewAllCTA ? properties.trackingViewAllText : ''}" role="button">${properties.viewAllText @ context = 'html',i18n}</a>
+						</div>
+					  </div>
+					</sly>
+				</sly>
+                <sly data-sly-test="${cta.items && cta.items.size > 0}">
+                  <sly data-sly-repeat.item="${cta.items}" data-sly-resource="${item.name @ decorationTagName='div'}"></sly>
+                </sly>
+                <sly data-sly-resource="${resource.path @ resourceType='wcm/foundation/components/parsys/newpar', appendPath='/*', decorationTagName='div', cssClassName=''}" data-sly-test="${(wcmmode.edit || wcmmode.preview) && cta.items.size < 1}"></sly>
+              </div>
+
+              <!-- loader starts -->
+              <div class="loader-outer">
+                <div class="loader">Loading</div>
+              </div>
+              <!-- loader ends -->
+
+              <!-- handlebar script starts -->
+              <script type="text/x-handlebars-template" id="mqPLPTemplate${resource.path.hashCode @ context = 'number'}" >
+                {{#each this}} 
+                    <li>
+                      <a data-prod-category="{{category}}" data-prod-price="{{#if list_price}}{{list_price}}{{else}}''{{/if}}" data-prod-sku="{{PartNumber}}" data-prod-name="{{title}}" href="{{pdpLink}}" class="data-track-miniquiz product-image image-loaded">
+                        <img alt="{{title}}-Image" src="{{#if imageLink}} {{imageLink}} ?$ossmallindex$ {{else}} ./img/temp/CKK10_Viewer.jpg {{/if}}">
+                      </a>
+                      <div class="product-info">
+                        <!-- rating starts -->
+
+                        <div class="product-reviews">
+                          <span class="rating-section rating-{{changeToHyphen ProductReviewRating}}">
+                            <span class="sr-only">{{ProductReviewRating}}</span>
+                          </span>
+                          <span class="total-reviews"><span class="sr-only">reviews</span> ({{#if ProductReviewCount}} {{ProductReviewCount}} {{else}} 0 {{/if}})</span>
+                        </div>
+                        <!-- rating ends -->
+                        {{#if badge}}
+                        <span class="product-badge">{{badge}}</span>
+                        {{/if}}
+
+                        <div class="grid-title-wrapper">
+                          <a data-prod-category="{{category}}" data-prod-price="{{#if list_price}}{{list_price}}{{else}}''{{/if}}" data-prod-sku="{{PartNumber}}" data-prod-name="{{title}}" href="{{pdpLink}}" tabindex="0" class="data-track-miniquiz">{{title}}</a>
+                        </div>
+						{{#if list_price}}
+                        <div class="product-price sale_price">
+                          <span><span class="price price-currency" data-currency="{{listPriceCurrency}}"></span>{{list_price}}</span>
+                        </div>
+                        {{/if}} 
+                      </div> 
+                    </li>
+                {{/each}}
+              </script>
+              <!-- handlebar script ends -->
+
+            </div>
+          </div>
+          <!-- recommended product ends -->

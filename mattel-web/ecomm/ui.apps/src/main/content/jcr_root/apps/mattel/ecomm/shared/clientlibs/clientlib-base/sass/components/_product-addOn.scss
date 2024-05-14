@@ -1,0 +1,899 @@
+.product-addOn-modal {
+    z-index: 9999991 !important;
+    .modal-dialog {
+        .modal-content {
+            border-radius: 0;
+            .modal-header {
+                border-bottom: 1px solid $borderColor;
+                @include content-spacing(map-get($dollAddOn, modalHeader));
+                &:before {
+                    float: left;
+                    content: "\f00c";
+                    @include font-awesome();
+                    line-height: 1.5;
+                    font-size: em(20);
+                    color: mapping($dollAddOn,modalHeaderContent,color);
+                    @include content-spacing(map-get($dollAddOn, modalHeaderContent));
+                                            height: em(16.1);
+                    width: em(16.1);
+                    display:flex;
+                    justify-content: center;
+                    align-items: center; 
+                    @media #{$small-down} {
+                        line-height: 1.2;
+                        height: em(14);
+                        width: em(14);
+                        font-size: em(18);
+                    }
+                }
+                h2 {
+                    float: left;
+                    margin: 0;
+					padding: 0;
+                    color: mapping($dollAddOn,headerH2,color);
+                    // @include font-style(map-get($dollAddOn, headerH2));
+                    font: ($fontSemiBold em(20) $primaryFontFamily);
+                    @media #{$small-down} {
+                        padding: 0;
+                        font: ($fontSemiBold em(16) $primaryFontFamily);
+                    }
+                }
+                                                                
+
+                button {
+                    margin: 0;
+                    line-height: 2;
+                    width: em(17);
+                    height:em(17);
+                    &.close{
+                        opacity: 1;
+                        &:focus {
+                            outline: 1px solid $theme-color;
+                        }
+                        @media #{$small-down} {
+                            opacity: .3;
+                        }
+                    }
+                    em {
+                        &:before {
+                            font-size: em(16);
+                            width: 100%;
+                            height: 100%;
+                            justify-content: center;
+                            align-items: center;
+                            display: flex;
+                        }
+                        width: 100%;
+                        height: 100%;
+                        display: flex;
+                    }
+                }
+
+            }
+            .modal-body {
+                @include content-spacing(map-get($dollAddOn, modalBody));
+                background-color: mapping($dollAddOn,modalBody,background);
+                &.doll-added-modalBody {
+                    background-color: mapping($dollAddOn,modalBody,color); // Doll added modal
+                }
+                // Add to bag modal starts
+                h2 {
+                    margin: 0;
+                    color: $headingColor;
+                    font: ($fontRegular em(20) $primaryFontFamily);
+                    padding: em(15, 20) em(60, 20) 0;
+                    @media #{$small-down} {
+                        text-align: center;
+                        font: ($fontRegular em(16) $primaryFontFamily);
+                        padding: em(15, 16) em(15, 16) 0;
+                    }
+                }
+                                                                
+                //Cart Added Product
+                &.bag-details-modal{
+                    background-color: white;
+                }
+                .cart-added-product{
+                    margin: 0 em(30);
+                    padding: em(15) 0;
+                    display: flex;
+                    color: $night-rider;
+                    position:relative;
+                    border-bottom: 0.5px solid #CACACA;
+                    @media #{$small-down} {
+                        margin: 0 em(10);
+                    }
+                    .cart-added-image{
+                        width:em(130);
+                        height:em(130);
+                        @media #{$small-down} {
+                            width:em(100);
+                            height:em(100);
+                        }
+                        .product-img{
+                            min-width: em(130);
+                            @media #{$small-down} {
+                               min-width: em(100);
+                            }
+                        }
+                    }
+                    .cart-added-details{
+                        padding-left: em(15);
+                        h2{
+                            &.product-name{
+                                font: ($fontLight em(30) $primaryFontFamily);
+                                padding:0px;
+                                @media #{$small-down} {
+                                    font: ($fontRegular em(18) $primaryFontFamily);
+                                    text-align: left;
+                                }
+                            }
+                        }
+                        .age-category{
+                            margin-top: em(3);
+                            font: ($fontRegular em(16) $primaryFontFamily);
+                            line-height: em(20);
+                            @media #{$small-down} {
+                                font: ($fontRegular em(14) $primaryFontFamily);
+                            }
+                        }
+                        .price{
+                            margin-top: em(15);
+                            .offer-price{
+                                font: ($fontBold em(24) $secondaryFontFamily);
+                                @media #{$small-down} {
+                                    font: ($fontBold em(18) $secondaryFontFamily);
+                                }
+                                span {
+                                    &.currency {
+                                        font-weight: $fontBold;
+                                    }
+                                }
+                            }
+                            .original-price{
+                                margin: em(5, 16);
+                                font: ($fontLight em(16) $primaryFontFamily);
+                                text-decoration: line-through;
+								-webkit-text-decoration-line: line-through;
+								text-decoration-color: #999999;
+								-webkit-text-decoration-color: #999999;
+
+                                line-height: em(20);
+                                @media #{$small-down} {
+                                    font: ($fontLight em(14) $primaryFontFamily);
+                                }
+                                span {
+                                    &.currency {
+                                        font-weight: $fontLight;
+                                    }
+                                }
+                            }
+                            .you-save{
+                                font: ($fontSemiBold em(16) $primaryFontFamily);
+                                line-height: 20px;
+                                @media #{$small-down} {
+                                    font: ($fontSemiBold em(14) $primaryFontFamily);
+                                    display: block;
+                                    margin-left: 0;
+                                    width: 100%;
+                                }
+                                .yousave-title{
+                                    font-weight: $fontSemiBold;
+                                }
+                                span {
+                                    &.currency {
+                                        font-weight: $fontSemiBold;
+                                    }
+                                }
+                            }
+                        }
+                       .availability{
+                            .not-available{
+                                color: #E62605;
+                                font: ($fontSemiBold em(14) $primaryFontFamily);
+                                line-height: em(18);
+                            }
+                                                                                                                                      .available{
+                                color: #35852E;
+                                font: ($fontSemiBold em(14) $primaryFontFamily);
+                                line-height: em(18);
+                                text-transform: uppercase;
+                            }
+                            .other-available{
+                                color: #E62605;
+                                font: ($fontSemiBold em(14) $primaryFontFamily);
+                                line-height: em(18);
+                            }
+                            .available-until{
+                                //margin-left: em(5);
+                                font: ($fontRegular em(14) $primaryFontFamily);
+                                color: $color-medium-grey;
+                                line-height: em(18);
+                            }
+                        }       
+                    }
+                }
+               .product-ul{
+                    margin-bottom: 0px;
+                    li{
+                        &:last-child{
+                            &.cart-added-product{
+                                border-bottom: 0px;
+                                padding-bottom: 0px;
+                            }
+                        }
+                    }
+                }
+
+                .added-services{
+                     margin-bottom: em(15);
+                     padding: 0;
+                     @media #{$small-down} {
+                        padding: 0 em(10) 0 0; 
+                     }
+                    .added-services-title{
+                        font: ($fontSemiBold em(16) $primaryFontFamily);
+                        line-height: 20px;
+                        padding: 0;
+                        @media #{$small-down} {
+                            font: ($fontSemiBold em(14) $primaryFontFamily);
+                            padding:0px;
+                        }
+                    }
+                    .services{
+                        margin-top: em(10);
+                        .services-name{
+                            font: ($fontRegular em(16) $primaryFontFamily);
+                            line-height: 20px;
+                            @media #{$small-down} {
+                                font: ($fontRegular em(14) $primaryFontFamily);
+                            }
+                        }
+                        .services-price{
+                            font: ($fontSemiBold em(16) $primaryFontFamily);
+                            @media #{$small-down} {
+                                font: ($fontSemiBold em(14) $primaryFontFamily);
+                            }
+                            line-height: 20px;
+                            span {
+                                &.currency {
+                                    font-weight: $fontSemiBold;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .sub-total-wrapper{
+                    margin: em(15) em(60) 0;
+                    display: flex;
+                    justify-content: space-between;
+                    padding: em(0) em(15);
+                    background: #F7F7F7;
+                    height: em(43);
+                    align-items: center;
+                    @media #{$small-down} {
+                        margin: em(15) em(15) 0;
+                    }
+                    .sub-total-items{
+                        font: ($fontSemiBold em(16) $primaryFontFamily);
+                        line-height: em(20);
+                        @media #{$small-down} {
+                            font: ($fontSemiBold em(14) $primaryFontFamily);
+                        }
+                    }
+                    .sub-total-price{
+                        font: ($fontBold em(24) $secondaryFontFamily);
+                        line-height: em(33);
+                        @media #{$small-down} {
+                            font: ($fontBold em(18) $secondaryFontFamily);
+                        }
+                        span {
+                            &.currency {
+                                font-weight: $fontBold;
+                            }
+                        }
+                    }
+                }
+                .add-on-button-container {
+                    padding: em(15) em(60);
+                    overflow: hidden;
+                    @media #{$small-down} {
+                        padding: em(15) em(10);
+                    }
+                    .btn-add-to-bag,.btn-shopping-bag{
+                        font: ($fontSemiBold em(20) $primaryFontFamily);
+                        background-color: $theme-color !important;
+                        color: $white;
+                        border-color: $theme-color;
+                        width: 100%;
+                        margin: 0;
+                        padding: 0;
+                        display: block;
+                        float: left;
+                        height: em(31.5);
+                        &:focus{
+                            outline: em(2, 20) solid lightpink;
+                        }
+                        &:disabled{
+                            cursor: default;
+                            background: $btndisableColor !important;
+                            border:none !important;
+                        }
+                        @media #{$small-down} {
+                            font: ($fontSemiBold em(16) $primaryFontFamily);
+                        }
+                    }
+                    .close-product-addOns {
+                        font: ($fontSemiBold em(14) $primaryFontFamily);
+                        color: $theme-color;
+                        width: 100%;
+                        height: em(36, 14);
+                        margin: em(5, 14) 0 0 0;
+                        display: block;
+                        float: left;
+                        &:after {
+                            content: "\f054";
+                            @include font-awesome;
+                            margin: 0 0 0 em(5);
+                            font-size: em(11, 14);
+                            width: em(14);
+                            height: em(14);
+                            text-align: center;
+                            @media #{$small-down} {
+                                width: em(16.5);
+                                height: em(16.5);
+                            }
+                        }
+                        &.shopping-bag{
+                            &:after{
+                                margin-top: em(6);
+                            }
+                        }
+                    }
+                    .shopping-bag{
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                                                                                                height: em(31.5); 
+                    }
+                }
+
+                 .shipping-wrapper{
+                   margin: em(15) em(63) em(0);
+                    padding: em(15) 0 0;
+                    border-top: 0.5px solid #CACACA;
+                    @media #{$small-down} {
+                        margin: em(15) em(15) em(0);
+
+                    }
+                    .free-shipping{
+                        color: #c70a4c;
+                        font: ($fontBold em(14) $primaryFontFamily);
+                        line-height: em(18);
+                        span {
+                            &.currency {
+                                font-weight: $fontBold;
+                            }
+                        }
+                    }
+                }
+
+                //End added product
+
+
+                                                                
+                .addon-option {
+                    margin: em(15) em(60) 0;
+                    background: $white;
+                    padding: em(15);
+                    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.25);
+                    @media #{$small-down} {
+                        margin: em(15) em(10) 0;
+                    }
+                    .addon-item {
+                        position: relative;
+                        min-height: 1px;
+                        padding-right: 15px;
+                        padding-left: 15px;
+                        float: left;
+                        width: 25%;
+                        &.addon-item-single {
+                            position: relative;
+                            min-height: 1px;
+                            padding-right: 15px;
+                            padding-left: 15px;
+                            float: left;
+                            width: 16.66666667%;
+                            padding: 0;
+                            img {
+                                width: em(50, 14);
+                                height: em(50, 14);
+                                @media #{$small-down} {
+                                    height: em(30, 14);
+                                    width: em(30, 14);
+                                }
+                            }
+                        }
+                        padding: 0;
+                        margin: 0 0 em(15) 0;
+                        @media #{$small-down} {
+                            margin: 0;
+                        }
+                        label {
+                            float: left;
+                            margin: em(5) 0 0 0;
+                            
+                        }
+                        img {
+                            float: left;
+                            height: em(50, 14);
+                            width: em(50, 14);
+                            @media #{$small-down} {
+                                height: em(40, 14);
+                                width: em(40, 14);
+                            }
+                        }
+                    }
+                    .addon-info {
+                        position: relative;
+                        min-height: 1px;
+                        padding-right: 15px;
+                        padding-left: 15px;
+                        float: left;
+                        width: 50%;
+                        @media #{$small-up} {
+                            width: 58.33333333%;
+                        }
+                        &.addon-info-single{
+                            position: relative;
+                            min-height: 1px;
+                            float: left;
+                            width: 58.33333333%;
+                            @media #{$small-up} {
+                                width: 66.66666667%;
+                            }
+                            padding: 0;
+                        }
+                        padding: 0;
+                        span {
+                            font: ($fontRegular em(20) $primaryFontFamily);
+                            color: $headingColor;
+                            @media #{$small-down} {
+                                font: ($fontRegular em(16) $primaryFontFamily);
+                            }
+                        }
+                    }
+                    .addon-price {
+                        position: relative;
+                        min-height: 1px;
+                        float: left;
+                        width: 25%;
+                        @media #{$small-up} {
+                            width: 16.66666667%;
+                        }
+                        &.addon-price-single {
+                            position: relative;
+                            min-height: 1px;
+                            float: left;
+                            width: 16.66666667%;
+                            padding: 0;
+                        }
+                        padding: 0;
+                        text-align: right;
+                        .product-price {
+                            span {
+                                font: ($fontBold em(18) $primaryFontFamily);
+                                color: $headingColor;
+                                @media #{$small-down} {
+                                   font: ($fontBold em(16) $primaryFontFamily);
+                                }
+                                .price-currency {
+                                    font: ($fontBold em(18, 18) $primaryFontFamily);
+                                    color: $headingColor;
+                                    @media #{$small-down} {
+                                        font: ($fontBold em(16, 16) $primaryFontFamily);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .addon-details {
+                        position: relative;
+                        min-height: 1px;
+                        float: left;
+                        padding: 0;
+                        width: 100%;
+                        .details-icon {
+                            cursor: pointer;
+                            text-align: center;
+                            .see-details, .see-less {
+                                font: ($fontSemiBold em(14, 13) $primaryFontFamily);
+                                color: $theme-color;
+                                &:after {
+                                    content: '\f078';
+                                    @include font-awesome();
+                                    margin: 0 0 0 em(5);
+                                }
+                            }
+                            .see-less {
+                                &:after {
+                                    content: '\f077';
+                                    @include font-awesome();
+                                    margin: 0 0 0 em(5);
+                                }
+                            }
+                        }
+                        .details-container {
+                            border-top: 1px solid $borderColor;
+                            margin: em(10) -1.1em 0;
+                            p {
+                                padding: em(15, 16) em(15, 16) 0;
+                                margin: 0;
+                                font: ($fontRegular em(16) $primaryFontFamily);
+                                @media #{$small-down} {
+                                    font: ($fontRegular em(14) $primaryFontFamily);
+                                    padding: em(10, 14) em(10, 14) 0;
+                                }
+                            }
+                        }
+                    }
+                    .addon-option-container {
+                        .addon-header {
+                           position: relative;
+                            min-height: 1px;
+                            float: left;
+                            padding: 0;
+                            width: 75%;
+                            margin: 0 0 em(14) 0;
+                            span {
+                                font: ($fontRegular em(18) $primaryFontFamily);
+                                color: $headingColor;
+                                @media #{$small-down} {
+                                    font: ($fontRegular em(16) $primaryFontFamily);
+                                }
+                            }
+                        }
+                        .addon-price {
+                            position: relative;
+                            min-height: 1px;
+                            float: left;
+                            padding: 0;
+                            width: 25%;
+                        }
+                        .addon-option-wrapper {
+                            position: relative;
+                            min-height: 1px;
+                            padding: 0;
+                            width: 100%;                            
+                            display: inline-block;
+                            border: 1px solid $borderColor;
+                            margin: 0 0 em(15) 0;
+                            .addon-image {
+                                position: relative;
+                                min-height: 1px;
+                                padding-right: 15px;
+                                padding-left: 15px;
+                                float: left;
+                                width: 33.33333333%;
+                                @media #{$small-down} {
+                                    width: 25%;
+                                }
+                                label {
+                                    float: left;
+                                    margin-top: 25px;  
+                                    &.child-prod-label {
+                                        margin-top: 25px;
+                                    }                                    
+                                }
+                                img {
+                                    float: left;
+                                    height: em(50, 14);
+                                    width: em(50, 14);
+                                    @media #{$small-down} {
+                                        height: em(40, 14);
+                                        width: em(40, 14);
+                                        margin: em(5) 0 0 -5px;
+                                    }
+                                }
+                            }
+                            .addon-title {
+                                position: relative;
+                                min-height: 1px;
+                                float: left;
+                                width: 66.66666667%;
+                                @media #{$small-up} {
+                                    width: 75%;
+                                }
+                                padding: em(15) 0 0 0;
+                                @media #{$small-down} {
+                                    padding: em(10) 0 0 0;
+                                }
+                                span {
+                                    font: ($fontRegular em(18) $primaryFontFamily);
+                                    color: $headingColor;
+                                    @media #{$small-down} {
+                                        font: ($fontRegular em(16) $primaryFontFamily);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .inline-message {
+                        clear: both;
+                        margin: 0 0 em(15) 0;
+                        .inline-icon {
+                            color: $errorColor;
+                            font: ($fontSemiBold em(14) $primaryFontFamily);
+                            @media #{$small-down} {
+                                font: ($fontSemiBold em(12) $primaryFontFamily);
+                            }
+                            &:before {
+                                content: "\f071";
+                                @include font-awesome;
+                                float: left;
+                                background-color: $color-extra-light-grey;
+                                font-size: em(15);
+                                padding: 0 em(5) 0 0;
+                                @media #{$small-down} {
+                                    font-size: em(13);
+                                }
+                            }
+                        }
+                    }
+                }
+                // Add to bag modal ends
+
+                // Doll Added Modal starts
+                .doll-added-option {
+                    margin: em(15) em(30) 0;
+                    background: $white;
+                    @media #{$small-down} {
+                        margin: em(15) em(10) 0;
+                    }
+                    .doll-added-item {
+                        position: relative;
+                        min-height: 1px;
+                        float: left;
+                        padding: 0;
+                        width: 33.33333333%;
+                        @media #{$small-up} {
+                            width: 25%;
+                        }
+                        img {
+                            max-width: em(130, 14);
+                            height: em(130, 14);
+                        }
+                    }
+
+                    .doll-added-info {
+                        position: relative;
+                        min-height: 1px;
+                        float: left;
+                        padding: 0;
+                        width: 66.66666667%;
+                        @media #{$small-up} {
+                            width: 75%;
+                        }
+                        h2 {
+                            font: ($fontLight em(30) $primaryFontFamily);
+                            margin: 0 em(15, 30) em(15, 30) em(15, 30);
+                            padding: 0;
+                            color: $headingColor;
+                            @media #{$small-down} {
+                                font: ($fontRegular em(18) $primaryFontFamily);
+                                margin: 0 0 em(10, 18) 0;
+                            }
+                        }
+                        p {
+                            &.age-specification {
+                                font: ($fontRegular em(16) $primaryFontFamily);
+                                color: $headingColor;
+                                margin: 0 0 em(15, 16) em(15, 16);
+                                @media #{$small-down} {
+                                    font: ($fontRegular em(14) $primaryFontFamily);
+                                    margin: 0 0 em(5, 14) 0;
+                                }
+                            }
+                        }
+                        .product-price {
+                            margin: 0 0 em(20, 14) em(15, 14);
+                            @media #{$small-down} {
+                                margin: 0 0 em(18, 14) 0;
+                            }
+                            span {
+                                font: ($fontBold em(24) $primaryFontFamily);
+                                color: $headingColor;
+                                @media #{$small-down} {
+                                    font: ($fontBold em(18) $primaryFontFamily);
+                                }
+                                .price-currency  {
+                                    font: ($fontBold em(24, 24) $primaryFontFamily);
+                                    @media #{$small-down} {
+                                        font: ($fontBold em(18) $primaryFontFamily);
+                                    }
+                                }
+                            }
+                        }
+                        .added-services-container {
+                            .added-services-title {
+                                font: ($fontSemiBold em(16) $primaryFontFamily);
+                                color: $headingColor;
+                                margin: 0 0 em(10, 16) em(15, 16);
+                                @media #{$small-down} {
+                                    font: ($fontSemiBold em(14) $primaryFontFamily);
+                                    margin: 0 0 em(5, 14) 0;
+                                }
+                            }
+                            .added-services-text {
+                                font: ($fontRegular em(16) $primaryFontFamily);
+                                color: $headingColor;
+                                margin: 0 0 0 em(15, 16);
+                                @media #{$small-down} {
+                                    font: ($fontRegular em(14) $primaryFontFamily);
+                                    margin: 0;
+                                }
+                            }
+                            .added-services-price {
+                                margin: 0 0 em(15) em(15);
+                                @media #{$small-down} {
+                                    margin: 0 0 em(5) 0;
+                                }
+                                span {
+                                    font: ($fontBold em(16) $primaryFontFamily);
+                                    color: $headingColor;
+                                    @media #{$small-down} {
+                                        font: ($fontBold em(14) $primaryFontFamily);
+                                    }
+                                    .price-currency {
+                                        font: ($fontBold em(16, 16) $primaryFontFamily);
+                                        @media #{$small-down} {
+                                            font: ($fontBold em(14, 14) $primaryFontFamily);
+                                        }
+                                    }                                    
+                                }
+                            }
+                        }
+                    }                    
+                }
+                .doll-added-subTotal {     
+                    margin: 0 em(60) 0 em(60);
+                    padding: em(14) em(15) em(8);
+                    background-color: $color-extra-light-grey;
+                    @media #{$small-down} {
+                        margin: 0 em(10) 0 em(10);
+                    }
+                    .added-services-text {
+                        position: relative;
+                        min-height: 1px;
+                        float: left;
+                        width: 66.66666667%;
+                        font: ($fontSemiBold em(16) $primaryFontFamily);
+                        color: $headingColor;
+                        padding: 0;
+                        @media #{$small-down} {
+                            font: ($fontSemiBold em(14) $primaryFontFamily);
+                        }
+                    }
+                    .added-services-price {
+                        position: relative;
+                        min-height: 1px;
+                        float: left;
+                        width: 33.33333333%;
+                        padding: 0;
+                        text-align: right;
+                        span {                            
+                            font: ($fontBold em(24, 24) $primaryFontFamily);
+                            color: $headingColor;
+                            @media #{$small-down} {
+                                font: ($fontBold em(18, 18) $primaryFontFamily);
+                            }
+                            .price-currency {
+                                font: ($fontBold em(24, 24) $primaryFontFamily);
+                                @media #{$small-down} {
+                                    font: ($fontBold em(18, 18) $primaryFontFamily);
+                                }
+                            }
+                        }
+                        
+                    }
+                }
+                // Doll Added Modal ends
+
+
+                .addon-button-container {
+                    padding: em(15) em(60);
+                    overflow: hidden;
+                    @media #{$small-down} {
+                        padding: em(15) em(10);
+                    }
+                    .btn-add-to-bag,.btn-shopping-bag{
+                        font: ($fontSemiBold em(20) $primaryFontFamily);
+                        background-color: $theme-color !important;
+                        color: $white;
+                        border-color: $theme-color;
+                        width: 100%;
+                        margin: 0;
+                        padding: 0;
+                        display: block;
+                        float: left;
+                        height: em(31.5);
+                        &:focus{
+                            outline: em(2, 20) solid lightpink;
+                        }
+                        @media #{$small-down} {
+                            font: ($fontSemiBold em(16) $primaryFontFamily);
+                        }
+                        &:disabled{
+                            cursor: default;
+                            background: $btndisableColor !important;
+                            border:none !important;
+                        }
+                    }
+                    .close-product-addOns {
+                        font: ($fontSemiBold em(14) $primaryFontFamily);
+                        color: $theme-color;
+                        width: 100%;
+                        height: em(36, 14);
+                        margin: em(5, 14) 0 0 0;
+                        display: block;
+                        float: left;
+                        &:after {
+                            content: "\f054";
+                            @include font-awesome;
+                            margin: 0 0 0 em(5);
+                            font-size: em(14, 14);
+                        }
+                    }
+               }
+                                                                
+            }        
+        }
+         @media #{$small-down} {
+            width: em(308);
+            margin: 30px auto;
+         }
+    }
+    
+    form [type="radio"]:checked + label:after, 
+    form [type="radio"]:not(:checked) + label:after {
+    
+        left: em(3);
+    }
+}
+
+.product-addOn-modal .modal-dialog .modal-content .modal-body {
+    .addon-option{
+        .addon-info {
+            &{
+                @media #{$small-up} {
+                    width: 50.333333%;
+                }
+            }
+            &.addon-info-single{
+                @media #{$small-up} {
+                    width: 58.333333%;
+                }
+            }
+        }
+        .addon-price {
+            &.addon-price-single{
+                width: 25%;
+            }
+            &,&.addon-price-single{
+                @media #{$small-up} {
+                    width: 24.666667%;
+                }
+            }
+        }
+    }
+    .added-services .services .services-price{
+        .price-strike{
+            margin:0 em(5);
+            text-decoration: line-through;
+            .offer_price{
+                text-decoration: line-through;
+            }
+        }
+    }
+}

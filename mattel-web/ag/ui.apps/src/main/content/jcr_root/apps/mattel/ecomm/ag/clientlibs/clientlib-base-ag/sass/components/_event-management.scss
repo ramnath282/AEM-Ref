@@ -1,0 +1,328 @@
+.event-management-container {
+    .event-admin-container{
+        min-height: 550px;
+        .modal {
+            z-index : 99999 !important;
+        }
+    }
+    .modal-title {
+        font-size: 1.5em;
+        color: $green1;
+    }
+    .modal-body {
+        p {
+            font-size: 1.15em;
+            strong {
+                color: $light-pink;
+            }
+        }
+    }
+    .toggle-label {
+        &:before {
+            content: '\002B' !important;
+            color: $white;
+            font-weight: bold;
+            background-color: $light-pink;
+            float: left;
+            padding:0 5px;
+            margin-right: 5px;
+        }
+        &.active {
+            &:before {
+                content: '\2212' !important;
+            }
+        }
+    } 
+    input {
+        &:disabled {
+            background-color: $gray-white;
+        }        
+    }
+    a {
+        &.delete-date,&.delete-location {
+            &:before {
+                content: '\2212' !important;
+                padding:0 5px;
+            }
+        }
+        &.add-date {
+            &:before {
+                content: '\002B' !important;
+                padding:0 5px;
+            }
+        }
+        &.delete-location {
+            margin-right: 100px;
+        }
+    }  
+    label {
+        &.required {
+            &:after {
+                content: "*";
+                color: $light-pink;
+            }
+        }
+    }    
+    ul {
+        &.event-search-header {
+            li {
+                float: left; 
+                margin:0 1em 1em 0;    
+                .theme-btn {
+                    position: relative;
+                    bottom: -22px;
+                    left: 1em;
+                }
+                select{                    
+                    &.select-location {
+                        text-transform: capitalize;
+                        width: 200px;
+                        margin: 0;
+                    } 
+                }      
+            }
+            display: inline-block;
+        }
+    }
+    .theme-btn {
+        border: none;
+    }
+    .transparent-btn {
+        background: transparent;
+        border: 2px solid $light-pink;
+        color: $light-pink !important;
+        padding: 8px;
+        margin-right: 1em;
+    }
+    #cancelEvent,#saveEvent {
+        float: right;
+    }
+    #saveEvent {
+        margin-right: 1em;
+    }
+    .form-input, .small-form-input {
+        display: block;
+        width: 100%;
+        height: 35px;
+        padding: 6px 12px;
+        font-size: 1em;
+        line-height: 1.42857;
+        color: $dim-gray;
+        background-color: $white;
+        background-image: none;
+        border: 1px solid $very-light-grey;
+        border-radius: 4px;
+        -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+        box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+        -webkit-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+        -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+        transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    }
+
+    .nav { 
+        margin-bottom: 2em;
+        padding-bottom: 1em;
+        border-bottom: 2px solid $dim-gray;
+        li {
+            a {
+                background-color: $white;
+                color: $light-pink !important;
+                border: 2px solid $light-pink;
+                border-radius: 0;
+                &:hover {
+                    background-color: $white;
+                }
+            }
+            &.active {
+                &:after {
+                    content: '\25bc';
+                    padding-left: 45%;
+                    color: $light-pink;
+                }
+                a {
+                    background-color: $light-pink !important;
+                    color: $white !important;
+                }                
+            }
+            margin-right: 1em;
+        }
+    }
+    .data-loading {
+        opacity: 0.5;
+    }
+    .events-list-load {
+        .event-details-list {
+            width: 100%;
+            tr {
+                border-bottom: 1px solid $very-dark-gray;
+                &:nth-child(odd) {
+                    background-color: $gray-white;
+                }
+                &:nth-child(even) {
+                    background-color: $white-smoke;
+                } 
+                th {
+                    background: $very-dark-gray;
+                    font-weight: bold;
+                }  
+                th,td {                    
+                    padding: 0.5em !important;               
+                    &:nth-child(1) {
+                        @extend .col-sm-1;
+                    }
+                    &:nth-child(2) {
+                        @extend .col-sm-4;
+                    }
+                    &:nth-child(3) {
+                        @extend .col-sm-2;
+                    }
+                    &:nth-child(4) {
+                        @extend .col-sm-2;
+                        text-align: center;
+                    }
+                    &:nth-child(5) {
+                        @extend .col-sm-3;
+                    }
+                }
+                td {  
+                    background: none;
+                    border: none;
+                    line-height: 1em;                 
+                    .transparent-btn {
+                        padding:4px 8px;
+                    }
+                    .update-event {
+                        background: $white;
+                        color: $light-pink !important;
+                    }    
+                    p{
+                        text-align: center;
+                    }                        
+                }
+            }        
+        }
+    }    
+    .create-event-load {
+        display: inline-block;
+        width: 100%;
+       
+        .add-float {
+            min-width: 100px;
+            float: left;
+            margin-right: 1em;
+        }
+        .zomato-url{
+            display: inline-block;
+        }
+        select {
+            &.form-input {
+                width: 200px;
+            } 
+            &.select-location {
+                float: left;
+                margin-right: 1em;
+                text-transform: capitalize;
+            }           
+        }
+        .form-input {
+            width: 300px;
+            margin-bottom: 1em;
+            &.datedetail-input-val {
+                width: 265px;
+            }
+        }
+        .small-form-input {
+            width: 70px;
+            margin-bottom: 1em;
+        }
+        ul {
+            &.primary-event-details {
+                li {
+                    margin-bottom: 1.5em;
+                }
+                @extend .col-sm-6;
+            }
+            
+        }
+        textarea {
+            min-height: 70px;
+        }
+        .location-wrapper {
+            clear: both;
+            margin-bottom: 2em;  
+            border-bottom: 2px solid $very-light-grey;
+            .location-details {
+                padding: 1.5em 1em;
+                border-bottom: 1px solid $very-light-grey;
+                display: inline-block;
+                width: 100%;
+                .delete-location{
+                    margin-right: 27px;
+                }
+                &:nth-child(1) {
+                    .delete-location {
+                        visibility: hidden;
+                    }
+                }
+                &:nth-child(odd) {
+                    background-color: $gray-white;
+                }
+                &:nth-child(even) {
+                    background-color: $white-smoke;
+                }
+                .cost-entity {
+                    display: inline-block;
+                    li {
+                        float: left;
+                        margin-right: 3em;                        
+                        .custom-pricing-option {
+                            margin-right: 0.5em;
+                        }
+                    }
+                }
+                .time-fields-wrapper {
+                    background-color: $white;
+                    padding: 0 1em;
+                    border: 1px solid $very-light-grey;
+                    margin-bottom: 1em;
+                    .date-details {
+                        padding: 1em 0;
+                        display: inline-block;
+                        border-bottom: 1px solid $very-light-grey;
+                        width: 100%;
+                        &:nth-child(1) {
+                            .delete-date {
+                                display: none;
+                            }
+                        }
+                    }
+                    .calender-icon{
+                        position: relative;
+                        right: 40px;
+                        top: 8px;
+                    }
+                }
+            }
+        }        
+        .start-time-wrapper, .end-time-wrapper{
+            clear: both;
+            select{
+                margin-bottom: 1.5em;
+                float: left;
+                margin-right: 2em;
+            }
+            label {
+                &.short-label-width {
+                    float: left;
+                    min-width: 100px;
+                    margin-right: 1em;
+                }
+            }
+        }
+        .end-time-wrapper {
+            display: inline-block;
+            margin-top: -30px;
+        }
+    }
+    
+}

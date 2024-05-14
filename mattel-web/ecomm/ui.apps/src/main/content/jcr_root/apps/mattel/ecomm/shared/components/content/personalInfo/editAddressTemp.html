@@ -1,0 +1,136 @@
+			<div class="update-address">
+                <fieldset>
+						<sly data-sly-test="${properties.dAddressLabel}">
+                        	<h2>${properties.dAddressLabel}:</h2>
+                        </sly>
+                    <div class="input-field required">
+                        <input type="text" id="addressFirstName" aria-describedby="addressFirstNameError" data-attr="firstName" class="form-input long-input" value="{{addressInfo.addresses.0.firstName}}" required autocomplete="off" />
+							<sly data-sly-test="${properties.fNameLabel}">
+                            	<label class="placeholder-label" for="addressFirstName">${properties.fNameLabel}</label>
+                            </sly>
+                        <div id="addressFirstNameError" class="help-block form-message"></div>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <div class="input-field required">
+                        <input type="text" id="addressLastName" aria-describedby="addressLastNameError" data-attr="lastName" class="form-input long-input" value="{{addressInfo.addresses.0.lastName}}" required autocomplete="off" />
+							<sly data-sly-test="${properties.lNameLabel}">
+                            	<label class="placeholder-label" for="addressLastName">${properties.lNameLabel}</label>
+                            </sly>
+                        <div id="addressLastNameError" class="help-block form-message"></div>
+                    </div>
+                </fieldset>
+                <fieldset aria-describedby="addressTypeError">
+                    <sly data-sly-test="${properties.addTypeLabel}">
+                        <legend>${properties.addTypeLabel}:</legend>
+                    </sly>
+                    <div class="input-field">
+                        <ul>
+                            {{#if addressInfo.addresses.0.organizationUnitName}}
+                                <li>
+                                    <input type="radio" data-attr="addressType" value="residential" name="addressOption" id="resendentialAdd" required />
+                                    <label for="resendentialAdd">${properties.resAddLabel}</label>                                
+                                </li>
+                                <li>
+                                    <input type="radio" data-attr="addressType" value="Business" name="addressOption" id="businessAdd" checked required />
+                                    <label for="businessAdd">${properties.bussAddLabel}</label>
+                                </li>
+                            {{else}}
+                                <li>
+                                    <input type="radio" data-attr="addressType" value="residential" name="addressOption" id="resendentialAdd" checked required />
+                                    <label for="resendentialAdd">${properties.resAddLabel}</label>                                
+                                </li>
+                                <li>
+                                    <input type="radio" data-attr="addressType" value="Business" name="addressOption" id="businessAdd" required />
+                                    <label for="businessAdd">${properties.bussAddLabel}</label>
+                                </li>
+                            {{/if}}
+                        </ul>
+                        <div id="addressTypeError" class="help-block form-message"></div>
+                    </div>                        
+                </fieldset>
+                <fieldset class="businessnamefield hide">
+                    <div class="input-field">
+                        <input type="text" id="businessName" aria-describedby="businessNameError" name="businessName" data-attr="businessName" value="{{addressInfo.addresses.0.organizationUnitName}}" class="form-input long-input" autocomplete="off" />
+							<sly data-sly-test="${properties.bussNameLabel}">
+                            	<label class="placeholder-label" for="businessName">${properties.bussNameLabel}</label>
+                            </sly>
+                        <div id="businessNameError" class="help-block form-message"></div>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <ul>
+                        <li>
+                            <div class="input-field required">
+                                <select class="form-input small-input" aria-describedby="countryRegionError" data-attr="countryRegion" required id="countryRegion" >
+                                    {{{countrySelector}}}
+                                </select>
+									<sly data-sly-test="${properties.countryLabel}">
+                                    	<label class="placeholder-label" for="countryRegion">${properties.countryLabel}</label>
+									</sly>	
+                                <div id="countryRegionError" class="help-block form-message"></div>
+                            </div>
+                        </li>
+                    </ul>
+                </fieldset>
+                <fieldset>
+                    <div class="input-field required">
+                        <input type="text" id="streetAddress" aria-describedby="streetAddressError" data-attr="streetAddress" class="form-input long-input" value="{{addressInfo.addresses.0.adressLine.[0]}}" required autocomplete="off"/>
+							<sly data-sly-test="${properties.strtAddLabel}">
+                            	<label class="placeholder-label" for="streetAddress">${properties.strtAddLabel}</label>
+                        	</sly>
+                        <div id="streetAddressError" class="help-block form-message"></div>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <div class="input-field"> 
+                        <input type="text" id="streetAddress2" aria-describedby="streetAddress2Error" data-attr="streetAddress2" class="form-input long-input" value="{{addressInfo.addresses.0.adressLine.[1]}}" autocomplete="off" />
+							<sly data-sly-test="${properties.strtAddTwoLabel}">
+                            	<label class="placeholder-label" for="streetAddress2">${properties.strtAddTwoLabel}</label>
+                        	</sly>
+                        <div id="streetAddress2Error" class="help-block form-message"></div>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <div class="input-field required">
+                        <input type="text" id="city" aria-describedby="cityError" name="city" data-attr="city" class="form-input long-input" value="{{addressInfo.addresses.0.city}}" required autocomplete="off" />
+							<sly data-sly-test="${properties.cityLabel}">
+                            	<label class="placeholder-label" for="city">${properties.cityLabel}</label>
+                        	</sly>
+                        <div id="cityError" class="help-block form-message"></div>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <ul>
+                        <li>
+                            <div class="input-field required text-state">                                    
+                                <input class="form-input small-input" aria-describedby="stateError" autocomplete="off">
+                                	<sly data-sly-test="${properties.stateLabel}">
+										<label class="placeholder-label" for="state">${properties.stateLabel}</label>
+									</sly>
+                                <div id="stateError" class="help-block form-message"></div>
+                            </div>
+                            <div class="input-field required select-state">
+                                <select class="form-input small-input" aria-describedby="stateError" data-width="100%">
+                                    {{{stateSelector}}}
+                                </select>
+									<sly data-sly-test="${properties.stateLabel}">
+										<label class="placeholder-label" for="state">${properties.stateLabel}</label>
+									</sly>
+                                <div id="stateError" class="help-block form-message"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="input-field required">
+                                <input type="text" id="zipCode" aria-describedby="zipCodeError" name="zipCode" data-attr="zipCode" class="form-input small-input" value="{{addressInfo.addresses.0.postalCode}}" required autocomplete="off" />
+									<sly data-sly-test="${properties.zipLabel}">
+                                    	<label class="placeholder-label" for="zipCode">${properties.zipLabel}</label>
+                        			</sly>
+                                <div id="zipCodeError" class="help-block form-message"></div>
+                            </div>
+                        </li>
+                    </ul>
+                </fieldset>
+                <input id="addAdd" class="theme-btn update-info" data-formname=".update-address" type="submit" value="${properties.addButtonLabel}" />
+                <input id="cancelAddInfo" class="theme-btn transparent-btn remove-template" type="submit" value="${properties.dCancelButtonLabel}" />
+            </div>

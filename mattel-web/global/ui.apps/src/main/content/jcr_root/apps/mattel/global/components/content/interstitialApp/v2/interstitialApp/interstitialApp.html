@@ -1,0 +1,38 @@
+<sly data-sly-test="${wcmmode.edit}">
+    ${' Configure Interstitial App Model' @ i18n}</sly>
+
+<div class="modal interstitial-modal" id="interstitialGameRetailerModal" tabindex="-1" role="dialog" aria-labelledby="interstitialModalLabel">
+    <div class="modal-dialog" role="document">
+        <sly data-sly-test="${(properties.interstitialBgImage == null && properties.interstitialBgColor == null )||(properties.interstitialBackOption=='image'&& properties.interstitialBgImage ==null)||(properties.interstitialBackOption=='color'&& properties.interstitialBgColor ==null)}">
+            <div class="modal-content" id="interstitialModalLabel">
+        </sly>
+        <sly data-sly-test="${properties.interstitialBackOption=='color' && properties.interstitialBgColor !=null}">
+            <div class="modal-content" id="interstitialModalLabel" style="background:${properties.interstitialBgColor @ context='styleString'};">
+        </sly>
+        <sly data-sly-test="${properties.interstitialBackOption=='image'&& properties.interstitialBgImage !=null}">
+			<div class="modal-content" id="interstitialModalLabel" style="background-image: url('${properties.interstitialBgImage @ context='styleString'}'); background-size: cover;">
+        </sly>
+				<div class="modal-header">
+					<a href="#" aria-hidden="true" class="sr-only" id="first-link">
+						<!--/* first link /*-->
+					</a>
+					<button type="button" class="close" data-tracking-app-id="Click Events|${properties.alwaysEnglish}|Close|App Interstitial" data-dismiss="modal" aria-label="Close"> </button>
+				</div>
+				<div class="modal-body">
+					<div class="modal-page-title" data-sly-test="${properties.interstitialTitle || properties.interstitialSubTitle || properties.interstitialDescription}">
+						<div class="main-title" data-sly-test="${properties.interstitialTitle}">
+							<h2>${properties.interstitialTitle @ context='html',i18n}</h2>
+						</div>
+                        <div class="sub-title" data-sly-test="${properties.interstitialSubTitle}">${properties.interstitialSubTitle @ context='html',i18n}</div>
+						<div class="text-para" data-sly-test="${properties.interstitialDescription}">
+							<p>${properties.interstitialDescription @ context='html',i18n}</p>
+						</div>
+					</div>					
+					<div class="gallery-tile">
+						<ul class="app-list" id="appInterstitial">
+						</ul>
+					</div>
+				</div>
+			</div>
+    </div>
+</div>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Filter Articles"
+    sling:resourceType="cq/gui/components/authoring/dialog"
+    height="{Long}500"
+    width="{Long}600">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
+        <items jcr:primaryType="nt:unstructured">
+            <column
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/container">
+                <items jcr:primaryType="nt:unstructured">
+                    <headerForFilter
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        fieldLabel="Enter label for Filter:"
+                        name="./headerForFilter"/>
+                    <filterTags
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="cq/gui/components/coral/common/form/tagfield"
+                        articleMaxTagCount="15"
+                        fieldDescription="Please enter the tags with Max Count : 15"
+                        fieldLabel="Tags for Filtering:"
+                        multiple="{Boolean}true"
+                        name="./filterTags"
+                        validation="article.tag.max.count.validation.filterTags"/>
+                    <showMoreLabel
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        fieldLabel="Label for Show More Button:"
+                        name="./showMoreLabel"/>
+                    <initialNumOfDataToLoad
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        fieldLabel="Initial Number of Articles to be shown:"
+                        name="./initialNumOfDataToLoad"/>
+                    <dataLoadOnShowMore
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        fieldLabel="Number of Articles to be shown on click of Show More Button:"
+                        name="./dataLoadOnShowMore"/>
+                    <msgWhenAllDataLoaded
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        fieldLabel="Enter the message to be shown when all the data is loaded:"
+                        name="./msgWhenAllDataLoaded"/>
+                    <msgWhenNoDataFound
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        fieldLabel="Enter the message to be shown when no article is found for a tag:"
+                        name="./msgWhenNoDataFound"/>
+                    <msgWhenApiFails
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        fieldLabel="Enter the message to be shown when API is failed:"
+                        name="./msgWhenApiFails"/>
+                </items>
+            </column>
+        </items>
+    </content>
+</jcr:root>

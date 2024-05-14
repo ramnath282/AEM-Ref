@@ -1,0 +1,583 @@
+// from /global-reuse/_cta-modalcontainer.scss -- start
+.interstitial-modal {
+    padding: 0 !important;
+    .modal-dialog {
+        @include print-css(
+            map-merge((
+                width: (
+                    largeUp: 750px,
+                    largeOnly: 750px,
+                    mediumOnly: 750px,
+                    smOnly: auto,
+                    xsOnly: auto
+                ),
+                margin: (
+                    largeUp: 120px auto,
+                    largeOnly: 120px auto,
+                    mediumOnly: 120px 10px 0 10px,
+                    smOnly: 170px 10px 0 10px,
+                    xsOnly: 100px 10px 0 10px
+                ),
+            ), 
+            if(variable-exists(modalBox) and map-has-key($modalBox, modalDialog ), 
+                map-get($modalBox,modalDialog), ()
+            )
+        ));
+        .modal-content {
+            @include print-css(
+                map-merge((
+                    padding: (
+                        largeUp: 40px 40px 40px 40px,
+                        largeOnly: 40px 40px 40px 40px,
+                        mediumOnly: 40px 40px 40px 40px,
+                        smOnly: 30px 10px 40px 10px,
+                        defaultVal: 40px 40px 40px 40px
+                    ),
+                    background: #ffffff,
+                    min-height: auto,
+                    border: none,
+                    border-radius: 0,
+                    box-shadow: none,
+                    text-align: left,
+                ), 
+                if(variable-exists(modalBox) and map-has-key($modalBox, modalboxProperty ), 
+                    map-get($modalBox,modalboxProperty), ()
+                )
+            ));
+            .modal-header {
+                padding: 0;
+                border-bottom: none;
+                .close {
+                    opacity:1;
+                    position: absolute;
+                    right: 4px;
+                    width:25px;
+                    height: 25px;
+                    display: inline-block;
+                    top: 4px;
+                    background-image:url($spriteLightPath);
+                    background-position: -99px -49px;
+                 &:active,
+                 &:focus{
+                     outline: none;
+                 }
+                 &:hover{
+                     background-color: transparent;
+                 }
+                }
+            }
+            .modal-body {
+                padding: 0;
+                margin: 0;
+
+                .main-title {
+                    @include print-css(
+                        map-merge((
+                            margin: (
+                                largeUp: 0 0 10px 0,
+                                largeOnly: 0 0 10px 0,
+                                mediumOnly: 0 0 10px 0,
+                                smOnly: 0 0 10px 0,
+                                defaultVal: 0 0 10px 0,
+                            ),
+                            font-size: (
+                                defaultVal: 36px,
+                                smallDown: 22px
+                            ),
+                            padding: 0
+                        ), 
+                        if(variable-exists(modalBox) and map-has-key($modalBox, titleH2 ), 
+                            map-get($modalBox,titleH2), ()
+                        )
+                    ));
+                    
+                     h2 {
+                        font-size:inherit; 
+                      }
+                      }
+                    .sub-title {
+                        @include print-css(
+                            map-merge((
+                                fontSize: (
+                                    defaultVal: 20px,
+                                    smallDown: 18px
+                                ),
+                                padding: 0,
+                                margin: (
+                                    largeUp:  0 0 10px 0,
+                                    largeOnly:  0 0 10px 0,
+                                    mediumOnly:  0 0 10px 0,
+                                    smOnly:  0 0 10px 0,
+                                    defaultVal:  0 0 10px 0,
+                                ),
+                            ), 
+                            if(variable-exists(modalBox) and map-has-key($modalBox, subTitle ), 
+                                map-get($modalBox,subTitle), ()
+                            )
+                        ));
+                    } 
+                    .text-para {
+                        @include print-css(
+                            map-merge((
+                                fontSize: (
+                                    defaultVal: 18px,
+                                    smallDown: 16px
+                                ),
+                                padding: 0,
+                                margin: (
+                                    largeUp: 0 0 20px 0,
+                                    largeOnly: 0 0 20px 0,
+                                    mediumOnly: 0 0 20px 0,
+                                    smOnly: 0 0 10px 0,
+                                    defaultVal: 0 0 10px 0,
+                                ),
+                            ), 
+                            if(variable-exists(modalBox) and map-has-key($modalBox, textPara ), 
+                                map-get($modalBox,textPara), ()
+                            )
+                        ));
+                     }
+                    
+                    h1,
+                    h2,
+                    h3,
+                    h4,
+                    h5,
+                    h6,
+                    p {
+                      margin: 0;
+                      padding: 0
+                    }
+                  
+                 .gallery-tile {
+                        margin: 0;
+                        ul {
+                            &.app-list,
+                            &.retailer-list {
+                                .btn-cta-item {
+                                    background-color: inherit;
+                                    padding: 0;
+                                    max-width: 187px;
+                                    margin:0;
+                                }
+                            }
+                            margin: 0;
+                            width: 100%;
+                            display: block;
+                            li          {
+                                display: inline-block;
+                                .btn-app-retail-item {
+                                    @include print-css(
+                                        map-merge((
+                                            margin: (
+                                                largeUp: 0 30px 0 0px,
+                                                largeOnly: 0 30px 0 0px,
+                                                mediumOnly: 0 30px 0 0px,
+                                                smOnly: 0 20px 10px 0px,
+                                                defaultVal: 0 20px 10px 0px
+                                            ),
+                                            width:(
+                                                largeUp: auto,
+                                                largeOnly: auto,
+                                                mediumOnly: auto,
+                                                smOnly: auto,
+                                                xsOnly: 100%
+                                            ),
+                                            display: inline-block
+                                        ), 
+                                        if(variable-exists(modalBox) and map-has-key($modalBox, appBtnRetail ), 
+                                            map-get($modalBox,appBtnRetail), ()
+                                        )
+                                    ));
+                                }
+                        }
+                        .appItem,
+                        .retailItem {
+                            @include print-css(
+                                map-merge((
+                                    width:(
+                                        largeUp: auto,
+                                        largeOnly: auto,
+                                        mediumOnly: auto,
+                                        smOnly: auto,
+                                        xsOnly: 100%
+                                    ),
+                                    display: inline-block
+                                ), 
+                                if(variable-exists(modalBox) and map-has-key($modalBox, appAndRetailBtn ), 
+                                    map-get($modalBox,appAndRetailBtn), ()
+                                )
+                            ));
+                        }
+                        @media #{$sm-only} {
+                           text-align: center
+                        }
+                        @media #{$xs-only} {
+                            text-align: center
+                        }
+
+                    }
+                    }
+                    .modal-footer-goback {
+                        min-height:35px;
+                    }
+                    .text-container {
+                        padding: 0;
+                        p {
+                            @media #{$xs-only} {
+                                margin: 0;
+                            }
+                        }
+                    }
+             
+            }
+        }
+        ul {
+            padding-left: 0;
+        }
+    }
+    .cta-button-container {
+        .ctaItem {
+            @media #{$xs-only} {
+                display: block;
+                text-align: center;
+            }
+            .cta-item {
+                margin: 0;
+                .btn-cta-item {
+                    @include print-css(
+                        map-merge((
+                            margin: (
+                                largeUp: 0 30px 0 0px,
+                                largeOnly: 0 30px 0 0px,
+                                mediumOnly: 0 30px 0 0px,
+                                smOnly: 0 20px 10px 0px,
+                                defaultVal: 0 0px 10px 0px
+                            ),
+                        ), 
+                        ()
+                    ));
+                }
+            }
+        }
+    }
+
+.modal-footer-goback {
+    .btn-cta-item {
+       margin:0 20px 0 0!important;
+    }
+
+}
+}
+
+.image-cta {
+    .btn-cta-item {
+        @include print-css(
+            map-merge((
+                margin: (
+                    largeUp: 0 30px 0 0px,
+                    largeOnly: 0 30px 0 0px,
+                    mediumOnly: 0 30px 0 0px,
+                    smOnly: 0 20px 10px 0px,
+                    defaultVal: 0 0px 10px 0px
+                ),
+                background-color: inherit,
+                padding: 0,
+                max-width: 187px
+            ), 
+            if(variable-exists(modalBox) and map-has-key($modalBox, imageBtnCTA ), 
+                map-get($modalBox,imageBtnCTA), ()
+            )
+        ));
+    }
+}
+
+div.interstitial-modal {
+    background-color:  rgba(106, 209, 227, 0.7);
+   
+}
+
+
+.modal-text-left {
+    .modal-content {
+    text-align: left
+    }
+}
+
+.modal-text-center {
+    .modal-content {
+    text-align: center!important;
+    }
+}
+
+.modal-text-center {
+    .interstitial-modal {
+       .modal-dialog .modal-content .gallery-tile ul .retailItem {
+            @include print-css(
+                map-merge((
+                    margin: (
+                        largeUp: 0 15px,
+                        largeOnly: 0 15px,
+                        mediumOnly: 0 15px,
+                        smOnly: 0 10px 10px 10px,
+                        defaultVal: 0 10px 10px 10px
+                    ),
+                ), 
+                ()
+            ));
+        }
+    }
+}
+
+.dark-theme {
+    .interstitial-modal {
+        .modal-dialog{
+            .modal-content{
+                .modal-header{
+                    .close {
+                        background-image:url($spriteDarkPath);
+                    }
+                }
+            }
+        }
+    }
+}
+.light-theme {
+    .interstitial-modal {
+        .modal-dialog{
+            .modal-content{
+                .modal-header{
+                    .close {
+                        background-image:url($spriteLightPath);
+                    }
+                }
+            }
+        }
+    }
+}
+.duplicateModalContainer{
+    .interstitial-modal {
+        &.dark-theme{
+            .modal-dialog{
+                .modal-content{
+                    .modal-header{
+                        .close {
+                            background-image:url($spriteDarkPath);
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .interstitial-modal {
+        &.light-theme{
+            .modal-dialog{
+                .modal-content{
+                    .modal-header{
+                        .close {
+                            background-image:url($spriteLightPath);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// from /global-reuse/_cta-modalcontainer.scss -- end
+.interstitial-container {
+    .interstitialmodal-main {
+        -webkit-overflow-scrolling: touch;
+        @include print-css(
+            map-merge((
+                background-color: rgba($black,0.5),
+                display: none,
+                position: fixed,
+                top: 0,
+                right: 0,
+                bottom: 0,
+                left: 0,
+                z-index: 1050,
+                outline: 0
+            ), 
+            if(variable-exists(interstitialModalBox) and map-has-key($interstitialModalBox, modalMain ), 
+                map-get($interstitialModalBox,modalMain), ()
+            )
+        ));
+        .interstitialmodal-dialog {
+            @include print-css(
+                map-merge((
+                    width:(
+                        largeUp: 750px,
+                        largeOnly: 750px,
+                        mediumOnly: 750px,
+                        smOnly: auto,
+                        xsOnly: auto
+                    ),
+                    margin:(
+                        largeUp: 120px auto,
+                        largeOnly: 120px auto,
+                        mediumOnly: 120px 10px 0 10px,
+                        smOnly: 170px 10px 0 10px,
+                        xsOnly: 100px 10px 0 10px
+                    )
+                ), 
+                if(variable-exists(interstitialModalBox) and map-has-key($interstitialModalBox, modalDialog), 
+                    map-get($interstitialModalBox,modalDialog), ()
+                )
+            ));
+        }
+        .interstitialmodal-inner {
+            @include print-css(
+                map-merge((
+                    position: relative,
+                    background-color: #ffffff,
+                    padding: (
+                        largeUp: 40px 40px 40px 40px,
+                        largeOnly: 40px 40px 40px 40px,
+                        mediumOnly: 40px 40px 40px 40px,
+                        smOnly: 30px 10px 40px 10px,
+                        defaultVal: 40px 40px 40px 40px
+                    ),
+                ), 
+                if(variable-exists(interstitialModalBox) and map-has-key($interstitialModalBox, interstitialboxProperty), 
+                    map-get($interstitialModalBox,interstitialboxProperty), ()
+                )
+            ));
+            .interstitialmodal-header {
+                .interstitialmodal-close {
+                    @include print-css(
+                        map-merge((
+                            opacity: 1,
+                            background-color: transparent,
+                            border: none,
+                            position: absolute,
+                            right: 4px,
+                            width: 25px,
+                            height: 25px,
+                            display: inline-block,
+                            top: 4px,
+                            background-image: url($spriteLightPath),
+                            background-position: -99px -49px,
+                        ), 
+                        if(variable-exists(interstitialModalBox) and map-has-key($interstitialModalBox, modalClose), 
+                            map-get($interstitialModalBox,modalClose), ()
+                        )
+                    ));
+                    &:active,
+                    &:focus {
+                        outline: none;
+                    }
+                }
+            }
+            .textOverlayComponent {
+                .text-overlay {
+                    h1,
+                    h2,
+                    h3,
+                    h4,
+                    h5,
+                    h6,
+                    p {
+                        line-height: 1
+                    }
+                }
+            }
+            .cta-button-container {
+                .ctaItem {
+                    @include print-css(
+                        map-merge((
+                            display:(
+                                xsOnly: block
+                            ),
+                            text-align: (
+                                xsOnly: center
+                            )
+                        ), 
+                        if(variable-exists(interstitialModalBox) and map-has-key($interstitialModalBox, modalCtaItem), 
+                            map-get($interstitialModalBox,modalCtaItem), ()
+                        )
+                    ));
+                    .cta-item {
+                        margin: 0;
+                        .btn-cta-item {
+                            @include print-css(
+                                map-merge((
+                                    margin: (
+                                        largeUp: 0 30px 0 0px,
+                                        largeOnly: 0 30px 0 0px,
+                                        mediumOnly: 0 30px 0 0px,
+                                        smOnly: 0 20px 10px 0px,
+                                        defaultVal: 0 0px 10px 0px
+                                    ),
+                                ), 
+                                if(variable-exists(interstitialModalBox) and map-has-key($interstitialModalBox, imagePad), 
+                                    map-get($interstitialModalBox,imagePad), ()
+                                )
+                            ));
+                        }
+                    }
+                }
+            }
+            .image-cta {
+                .btn-cta-item {
+                    @include print-css(
+                        map-merge((
+                            margin: (
+                                largeUp: 0 30px 0 0px,
+                                largeOnly: 0 30px 0 0px,
+                                mediumOnly: 0 30px 0 0px,
+                                smOnly: 0 20px 10px 0px,
+                                defaultVal: 0 20px 10px 0px
+                            ),
+                            background-color: inherit,
+                            padding: 0,
+                            max-width: 187px,
+                            border:none,
+                        ), 
+                        if(variable-exists(modalBox) and map-has-key($modalBox, imagePad), 
+                            map-get($modalBox,imagePad), ()
+                        )
+                    ));
+                }
+            }
+            .gallery-tile ul li {
+                @include print-css(
+                    map-merge((
+                        margin: (
+                            largeUp: 0 15px,
+                            largeOnly: 0 15px,
+                            mediumOnly: 0 15px,
+                            smOnly: 0 10px 10px 10px,
+                            defaultVal: 0 10px 10px 10px
+                        ),
+                    ), 
+                    if(variable-exists(interstitialModalBox) and map-has-key($interstitialModalBox, centerimagePad), 
+                        map-get($interstitialModalBox,centerimagePad), ()
+                    )
+                ));
+            }
+        }
+    }
+}
+
+// merged from footer reusability scss
+.interstitialLeavingSite {
+    #interstitialModal{
+        &.interstitial-modal{
+            .modal-content{
+                @include print-css(
+                    map-merge((
+                        padding: (
+                            smOnly: 15px 20px
+                        ),
+                    ), 
+                    if(variable-exists(interstitialModalBox) and map-has-key($interstitialModalBox, leavingInterstitialPadding), 
+                        map-get($interstitialModalBox,leavingInterstitialPadding), ()
+                    )
+                ));
+                
+            }
+        }
+    } 
+}

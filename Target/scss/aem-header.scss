@@ -1,0 +1,204 @@
+// Variables and mixins
+@import '../global/utils/_variables';
+@import '../global/utils/_mixins';
+.root.responsivegrid{
+  //Bootstrap styles
+  @import '../global/vendors/bootstrap/_bootstrap';
+  //FontAwesome styles
+  //FontAwesome styles
+  @import '../global/vendors/fontawesome/fa-solid';
+  @import '../global/vendors/fontawesome/fa-regular';
+  @import '../global/vendors/fontawesome/fa-brands';
+  @import '../global/vendors/fontawesome/fontawesome';
+}
+  @import "utils/_variables";
+  @import "utils/mixins";
+  @import "utils/layout-variables";
+.root.responsivegrid{
+  @import "layout/layout";
+  .promoBannerDrawer{
+    padding:0;
+  }
+  @media #{$small-down}{
+    .navigation.aem-GridColumn {
+        padding: 0;
+    }
+  }
+}
+
+@font-face {
+  font-family: "Font Awesome";
+  font-style: normal;
+  font-weight: 900;
+  src: url("/etc.clientlibs/mattel/global/clientlibs/clientlib-base/resources/fonts/fontAwesome/fa-solid-900.eot");
+  src: url("/etc.clientlibs/mattel/global/clientlibs/clientlib-base/resources/fonts/fontAwesome/fa-solid-900.eot?#iefix")
+      format("embedded-opentype"),
+    url("/etc.clientlibs/mattel/global/clientlibs/clientlib-base/resources/fonts/fontAwesome/fa-solid-900.woff2")
+      format("woff2"),
+    url("/etc.clientlibs/mattel/global/clientlibs/clientlib-base/resources/fonts/fontAwesome/fa-solid-900.woff")
+      format("woff"),
+    url("/etc.clientlibs/mattel/global/clientlibs/clientlib-base/resources/fonts/fontAwesome/fa-solid-900.ttf")
+      format("truetype"),
+    url("/etc.clientlibs/mattel/global/clientlibs/clientlib-base/resources/fonts/fontAwesome/fa-solid-900.svg#fontawesome")
+      format("svg");
+}
+.fa,
+.fas {
+  font-family: "Font Awesome";
+  font-weight: 900;
+} /*!
+ * Font Awesome Free 5.0.13 by @fontawesome - https://fontawesome.com
+ * License - https://fontawesome.com/license (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
+ */
+@font-face {
+  font-family: "Font Awesome 5 Free";
+  font-style: normal;
+  font-weight: 400;
+  src: url("/etc.clientlibs/mattel/global/clientlibs/clientlib-base/resources/fonts/fontAwesome/fa-regular-400.eot");
+  src: url("/etc.clientlibs/mattel/global/clientlibs/clientlib-base/resources/fonts/fontAwesome/fa-regular-400.eot?#iefix")
+      format("embedded-opentype"),
+    url("/etc.clientlibs/mattel/global/clientlibs/clientlib-base/resources/fonts/fontAwesome/fa-regular-400.woff2")
+      format("woff2"),
+    url("/etc.clientlibs/mattel/global/clientlibs/clientlib-base/resources/fonts/fontAwesome/fa-regular-400.woff")
+      format("woff"),
+    url("/etc.clientlibs/mattel/global/clientlibs/clientlib-base/resources/fonts/fontAwesome/fa-regular-400.ttf")
+      format("truetype"),
+    url("/etc.clientlibs/mattel/global/clientlibs/clientlib-base/resources/fonts/fontAwesome/fa-regular-400.svg#fontawesome")
+      format("svg");
+}
+.far {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 400;
+} /*!
+ * Font Awesome Free 5.0.13 by @fontawesome - https://fontawesome.com
+ * License - https://fontawesome.com/license (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
+ */
+@font-face {
+  font-family: "Font Awesome 5 Brands";
+  font-style: normal;
+  font-weight: normal;
+  src: url("/etc.clientlibs/mattel/global/clientlibs/clientlib-base/resources/fonts/fontAwesome/fa-brands-400.eot");
+  src: url("/etc.clientlibs/mattel/global/clientlibs/clientlib-base/resources/fonts/fontAwesome/fa-brands-400.eot?#iefix")
+      format("embedded-opentype"),
+    url("/etc.clientlibs/mattel/global/clientlibs/clientlib-base/resources/fonts/fontAwesome/fa-brands-400.woff2")
+      format("woff2"),
+    url("/etc.clientlibs/mattel/global/clientlibs/clientlib-base/resources/fonts/fontAwesome/fa-brands-400.woff")
+      format("woff"),
+    url("/etc.clientlibs/mattel/global/clientlibs/clientlib-base/resources/fonts/fontAwesome/fa-brands-400.ttf")
+      format("truetype"),
+    url("/etc.clientlibs/mattel/global/clientlibs/clientlib-base/resources/fonts/fontAwesome/fa-brands-400.svg#fontawesome")
+      format("svg");
+}
+.root.responsivegrid{
+  .fab,
+  .facebook:after,
+  .fa-facebook-f,
+  .twitter:after,
+  .instagram:after,
+  .youtube:after,
+  .pinterest:after {
+    font-family: "Font Awesome 5 Brands";
+  }
+}
+
+@import 'utils/_search-bar';
+@import "utils/_search-dropdown-variables";
+@import "components/_navigation";
+@import "components/_search-dropdown";
+
+body:not(.basicpage):not(.ecomm) header.main-header{
+    border: none;
+    @include border-radius(0);
+    display: flex;
+}
+.not-target.main-header .search-container button{
+    padding: 3px 0 0 0;
+}
+.not-target.main-header .main-nav-container a:hover, .not-target.main-header .main-nav-container .main-nav-container a:hover{
+      color: inherit !important;
+      text-decoration: none;
+}
+body:not(.basicpage):not(.ecomm) .promo-header-dropdown .drawer-title{
+  font: 600 1.07143em/2.66667em "Source Sans Pro";
+}
+.not-target.main-header .main-nav-container .header-spark-menu ul li{
+  a:hover,a:focus,a:active{
+    text-decoration: none;
+  }
+}
+.not-target.main-header .main-nav-container .header-spark-menu #spark-menu-close-button{
+    padding: 0;
+}
+@media screen and (min-width: 1500px){
+  .aem-target-header{
+    .promoBannerDrawer,.navigation.aem-GridColumn {
+        position: relative;
+        left: calc((100% - 100vw) / 2);
+        width: 100vw !important;
+        .main-nav-container{
+          margin-left: auto;
+          margin-right: auto;
+        }
+    }
+  } 
+}
+///////////// non modified/////////
+.shop-cart  #quickInfoPopup{
+    z-index: 99999 !important;
+}
+
+.shop-cart #page a:hover,
+.shop-cart #page a:focus {
+    color: #c70a4c;
+    text-decoration: none;
+}
+
+.shop-cart a {
+    color: #c70a4c;
+    font-weight: inherit;
+}
+
+.ch2a-v1 #PromotionCodeForm:not(.ch-no-guarantee) input#promoCode {
+    font-weight: normal;
+    font-size: 16px;
+    -webkit-appearance: textfield;
+}
+
+@media screen and (min-width: 1024px) {
+    .ch2a-v1 body.shop-cart #page .container_content_rightsidebar .left_column #box .body #ShopCartPagingDisplay table#order_details tbody tr:not(.nested) div.ch-wrapper th.th_align_left_normal div.cart_productDetails_content_wrapper .ch-price-summary-container .ch-summary-section .ch-added-services span.ch-added-services-icon {
+        right: 4.5em;
+    }
+
+    .ch2a-v1 body.shop-cart #page .container_content_rightsidebar .left_column #box .body #ShopCartPagingDisplay table#order_details tbody tr:not(.nested) div.ch-wrapper th.th_align_left_normal div.cart_productDetails_content_wrapper div.cart_productDetails_left_wrapper .giftIt .helptoolTip {
+        display: inline-block;
+        padding-top: 1px;
+    }
+}
+@media screen and (min-width: 1400px) {
+    body:not(.basicpage):not(.ecomm) #header-wrapper .main-nav-container {
+        padding: 0 15px;
+        max-width: 1600px;
+    }
+}
+
+body:not(.basicpage):not(.ecomm) .search-container form input[type="text"] {
+    color: #666666;
+}
+
+body:not(.basicpage):not(.ecomm) #page .container_content_rightsidebar .left_column #box .body #ShopCartPagingDisplay table#order_details tbody tr:not(.nested) div.ch-wrapper th.th_align_left_normal .ch-delete-item-tooltip.ch-active a.ch-yes-btn {
+    display: block;
+}
+  .search-dropdown .search-dropdown-innerwrapper .left-tiles .search-col-1 .search_result .sr_price {
+          position: absolute;
+          bottom: 0;
+          width: 80%;
+          font: 800 1.28571em "Open Sans Condensed", sans-serif;
+          border-bottom: 1px solid #cacaca;
+          padding: 0; }
+          @media (min-width: 992px) {
+            .search-dropdown .search-dropdown-innerwrapper .left-tiles .search-col-1 .search_result .sr_price {
+              padding: 0em 0em 0.35714em 0em; } }
+/*AEMECOM-11242-wcs-address-verification-popup*/
+#AVSDialog{
+    z-index:111111 !important;
+}

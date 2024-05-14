@@ -1,0 +1,67 @@
+.global-header{
+     padding: mapping($globalheader,main,pad);
+     min-height: mapping($globalheader,main,minHeight);
+     height: mapping($globalheader,main,height);
+     top: mapping($globalheader,main,posTop);
+     background-color: mapping($globalheader,main,bgndColor);
+     .navbar-brand {
+         padding: mapping($globalheader,navbarBrand,pad);
+          line-height: mapping($globalheader,navbarBrand,lineHeight);
+         img {
+             width: mapping($globalheader,navbarBrand,imgWidth);
+             height: mapping($globalheader,navbarBrand,imgHeight);
+             float: mapping($globalheader,navbarBrand,float);
+        }
+    }
+     .navbar-nav{
+         margin: mapping($globalheader,navbarNav,margin);
+         float: mapping($globalheader,navbarNav,float);
+         li{
+             a {
+                 line-height: mapping($globalheader,navlistLink,lineHeight);
+                 color: mapping($globalheader,navlistLink,txtColor);
+                 padding: mapping($globalheader,navlistLink,pad);
+                 &:hover, &:focus{
+                     background-color: mapping($globalheader,navlistLink,hoverbgndColor);
+                     text-decoration: mapping($globalheader,navlistLink,hovertxtDecoration);
+                }
+            }
+             &.dropdown, &.gblhdr-list{
+                 a{
+                     &:hover, &:focus {
+                         text-decoration: mapping($globalheader,gblhdrlistLink,txtDecoration);
+                         background-color: mapping($globalheader,gblhdrlistLink,bgndColor);
+                    }
+                }
+                 &.open{
+                     .dropdown-menu{
+                         background-color: mapping($globalheader,dropdownMenu,bgndColor);
+                         li{
+                             a{
+                                 line-height: mapping($globalheader,dropdownMenu,lineHeight);
+                            }
+                        }
+                    }
+                }
+            }
+             .dropdown-menu, .gblhdr-list-item{
+                 top: mapping($globalheader,dropdownMenu,posTop);
+                 border-top: mapping($globalheader,dropdownMenu,borderTop);
+                 border-radius: mapping($globalheader,dropdownMenu,borderRadius);
+                 z-index: mapping($globalheader,dropdownMenu,z-index);
+                 box-shadow: mapping($globalheader,dropdownMenu,boxShadow);
+                 padding: mapping($globalheader,dropdownMenu,pad);
+                 li{
+                     height: mapping($globalheader,dropdownMenu,lstHeight);
+                     a{
+                         padding: mapping($globalheader,dropdownMenu,lnkpad);
+                         &:hover, &.hover{
+                             text-decoration: mapping($globalheader,dropdownMenu,hovertxtDecoration);
+                             background-color: mapping($globalheader,dropdownMenu,hoverbgndColor);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

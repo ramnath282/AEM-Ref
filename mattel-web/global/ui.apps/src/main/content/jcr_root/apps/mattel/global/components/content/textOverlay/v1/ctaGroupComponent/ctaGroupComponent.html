@@ -1,0 +1,32 @@
+<sly data-sly-use.ctaGroupModel="com.mattel.global.core.model.v1.CTAGroupModel">
+	<div data-sly-test.isAuthored="${(wcmmode.edit || wcmmode.preview) && !properties.ctaGroupTitle}"
+		 class="cq-placeholder cmp-image"
+		 data-emptytext="${component.properties.jcr:title}"></div>
+	<div data-sly-test="${!isAuthored}" class="container-fluid flexible-cta-component">
+		<div class="inner-section">
+			<div class="text-center">
+				<div data-sly-test="${properties.ctaGroupTitle}" class="title ${ctaGroupModel.dropShadow == true ? 'text-shadow-on' :'' }">
+					${properties.ctaGroupTitle @context='html'}
+				</div>
+				<div  class="description-content">
+					<div data-sly-test="${properties.ctaGroupDescription}" class="description ${ctaGroupModel.dropShadow == true ? 'text-shadow-on' :'' }">
+						${properties.ctaGroupDescription @context='html'}
+					</div>
+					<div class="cta-button cta-btn-column-${ctaGroupModel.buttonDetailslist.size} ${ctaGroupModel.buttonDetailslist.size ? '' : 'hide'}">
+						<sly data-sly-list.ctaGroup="${ctaGroupModel.buttonDetailslist}">
+							<sly data-sly-test="${ctaGroup.linkOptions == 'newTab' || ctaGroup.linkOptions == 'self'}" >
+								<a href="${ctaGroup.ctaLink}" role="button" class="theme-btn" data-sly-attribute.target="${ctaGroup.linkOptions == 'newTab' ? '_blank' : '_self' }">${ctaGroup.ctaLabel}</a>
+							</sly>
+							<sly data-sly-test="${ctaGroup.linkOptions == 'blank'}" >
+								<a role="button" class="theme-btn" onclick="window.open('${ctaGroup.ctaLink @ context = 'attribute'}','Mattel','width=500, height=500');">${ctaGroup.ctaLabel}</a>
+							</sly>
+							<sly data-sly-test="${ctaGroup.linkOptions == null}" >
+								<a href="${ctaGroup.ctaLink}" role="button" class="theme-btn" target="_self">${ctaGroup.ctaLabel}</a>
+							</sly>
+						</sly>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</sly>  

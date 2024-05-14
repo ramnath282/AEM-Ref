@@ -1,0 +1,404 @@
+#esrb-modal {
+    padding: mapping($esrbmodal,main,pad);
+    .modal-dialog {
+        width: mapping($esrbmodal,modalDialog,width);
+        top: mapping($esrbmodal,modalDialog,posTop);
+        @media #{$medium-down} {
+            width: mapping($esrbmodal,modalDialog,tabWidth);
+        }
+        margin: mapping($esrbmodal,modalDialog,margin);
+    }
+    .modal-content {
+        /*@include border-radius(0px);*/
+        @include box-shadow(mapping($esrbmodal,modalContent,boxShadow));
+        @include border-radius(mapping($esrbmodal,modalContent,borderRadius));
+        padding: mapping($esrbmodal,modalContent,pad);
+        border: mapping($esrbmodal,modalContent,border);
+        background-color: mapping($esrbmodal,modalContent,bgndColor);
+        background-image: mapping($esrbmodal,modalContent,bgndImage);
+        background-size: mapping($esrbmodal,modalContent,bgndSize);
+        background-repeat: mapping($esrbmodal,modalContent,bgndRepeat);
+        background-position: mapping($esrbmodal,modalContent,bgndPosition);
+        min-height:if(mapping($esrbmodal,modalContent,minHeight), mapping($esrbmodal,modalContent,minHeight), 'auto');
+        @media #{$small-down} {
+            background-image: mapping($esrbmodal,modalContent,mobbgndImage);
+        }
+        @if mapping($esrbmodal, modalContent, hasBorder) == true {
+            border-width: mapping($esrbmodal, modalContent, borderWidth);
+            border-style: mapping($esrbmodal, modalContent, borderStyle);
+            border-color: mapping($esrbmodal, modalContent, borderColor);
+    	}
+    }
+    .modal-header {
+        @include border-radius(mapping($esrbmodal,modalHeader,borderRadius));
+        border-bottom: mapping($esrbmodal,modalHeader,borderBottom);
+        height: if(mapping($esrbmodal,modalHeader,height), mapping($esrbmodal,modalHeader,height), 'auto');
+        @include background-clip(mapping($esrbmodal,modalHeader,bgndClip));
+        background-color: mapping($esrbmodal,modalHeader,bgColor);
+        padding: if(mapping($esrbmodal,modalHeader,pad), mapping($esrbmodal,modalHeader,pad),0);
+		 @if mapping($esrbmodal, modalHeaderImg, isHeadingImg) == true {
+		    background: mapping($esrbmodal,modalHeaderImg,bgImg);
+			background-size: mapping($esrbmodal,modalHeaderImg,bgSize);
+
+		}
+        @media #{$small-up} {
+            padding: mapping($esrbmodal,modalHeader,tabmobpad);
+			 @if mapping($esrbmodal, modalHeaderImg, isHeadingImg) == true {
+				padding: mapping($esrbmodal,modalHeaderImg,padding);
+			 }
+        }
+		h2{
+            color:mapping($esrbmodal,heading,txtColor);
+            text-align:mapping($esrbmodal,heading,txtAlign);
+            font-size:mapping($esrbmodal,heading,fntSize);
+            margin:mapping($esrbmodal,heading,margin);
+			 @if mapping($esrbmodal, modalHeaderImg, isHeadingImg) == true {
+				padding: mapping($esrbmodal,modalHeaderImg,H2padding);
+			 }
+        }
+        .close {
+            opacity: mapping($esrbmodal,modalheaderClose,opacity);
+            color: mapping($esrbmodal,modalheaderClose,txtColor);
+            @if mapping($layout,main,isfisherprice) == true {
+                position:mapping($esrbmodal,modalheaderClose,closePos);
+                top:mapping($esrbmodal,modalheaderClose,closePosTop);
+                right:mapping($esrbmodal,modalheaderClose,closePosRight);
+                z-index:mapping($esrbmodal,modalheaderClose,closeIndxVal);
+            }
+            &:after {
+                content: mapping($esrbmodal,modalheaderClose,closeContent);
+                @include font-awesome();
+                color: mapping($esrbmodal,modalheaderClose,closetxtColor);
+                float: mapping($esrbmodal,modalheaderClose,float);
+                font-size: mapping($esrbmodal,modalheaderClose,fntSize);
+                font-weight: mapping($esrbmodal,modalheaderClose,fntWeight);
+                line-height:mapping($esrbmodal,modalheaderClose,lineHeight);
+                text-shadow: mapping($esrbmodal,modalheaderClose,textShadow);
+                opacity: mapping($esrbmodal,modalheaderClose,closeOpacity);
+                @if mapping($esrbmodal,modalheaderClose,isPosApplied) == true{
+                    position: mapping($esrbmodal,modalheaderClose,posVal);
+                    right: mapping($esrbmodal,modalheaderClose,posRight);
+            	}
+            }
+            &:hover,
+            &:focus {
+                color: mapping($esrbmodal,modalheaderClose,hovertxtColor);
+                opacity: mapping($esrbmodal,modalheaderClose,closeOpacity);
+            }
+			&:focus {
+				outline: mapping($esrbmodal,modalheaderClose,outline);
+			}
+        }
+    }
+    .modal-body {
+        padding:if(mapping($esrbmodal,modalbody,pad), mapping($esrbmodal,modalbody,pad),0);
+        h2 {
+            text-align: mapping($esrbmodal,modalbodyH2,txtAlign);
+            color: mapping($esrbmodal,modalbodyH2,txtColor);
+            font-size: mapping($esrbmodal,modalbodyH2,fntSize);
+            margin: mapping($esrbmodal,modalbodyH2,margin);
+            font-family: mapping($esrbmodal,modalbodyH2,fntFamily);
+            font-weight: mapping($esrbmodal,modalbodyH2,fntWeight);
+            @if mapping($layout,main,isfisherprice) == true {
+                line-height: mapping($esrbmodal,modalbodyH2,lineHeight);
+                padding:mapping($esrbmodal,modalbodyH2,headingPad);
+            }
+            @media #{$small-down} {
+                font-size: mapping($esrbmodal,modalbodyH2,mobFntSize);
+            }
+
+        }
+        @media #{$small-up} {
+            padding: mapping($esrbmodal,modalbody,mobPadding);
+        }
+        .play-retailers {
+            background: mapping($esrbmodal,playRetailer,bgndColor);
+            /*padding:em(5) em(10);*/
+            ul {
+                li {
+                    /*padding-bottom:em(20);*/
+                    background: mapping($esrbmodal,playretailerulList,bgnd);
+                    @include border-radius(mapping($esrbmodal,playretailerulList,borderRadius));
+                    &:nth-of-type(1n+5) {
+                        display: mapping($esrbmodal,playretailerulList,display);
+                    }
+                }
+            }
+            .gallery-tile {
+                ul {
+                    display: mapping($esrbmodal,gallerytileUl,display);
+                    text-align: mapping($esrbmodal,gallerytileUl,txtAlign);
+                    margin: mapping($esrbmodal,gallerytileUl,margin);
+                    padding: mapping($esrbmodal,gallerytileUl,pad);
+                    @media #{$small-down} {
+                         margin: mapping($esrbmodal,gallerytileUl,mobmargin);
+                    }
+                    li {
+                        display: mapping($esrbmodal,gallerytileulList,display);
+                        float: mapping($esrbmodal,gallerytileulList,float);
+                        margin: mapping($esrbmodal,gallerytileulList,margin);
+                        padding: mapping($esrbmodal,gallerytileulList,pad);
+                        overflow: mapping($esrbmodal,gallerytileulList,overflow);
+                        width: mapping($esrbmodal,gallerytileulList,width);
+                        @media #{$small-down} {
+                            width: mapping($esrbmodal,gallerytileulList,mobWidth);
+                            margin: mapping($esrbmodal,gallerytileulList,mobMargin);
+                        }
+                        &:nth-of-type(1n+5) {
+                            display: mapping($esrbmodal,gallerytileulList,typeDisplay);
+                        }
+                        &:nth-child(1) {
+                            margin-left: mapping($esrbmodal,gallerytileulList,marginLeft);
+                        }
+                        &:last-child {
+                            margin-right: mapping($esrbmodal,gallerytileulList,marginLeft);
+                        }
+						@if mapping($layout,main,isFisherPriceNav) == true{
+							a {
+								&:focus {
+								outline: mapping($esrbmodal,gallerytileulList,outline);
+									img {
+										opacity: mapping($esrbmodal,gallerytileulList,imgOpacity);
+
+									}
+								}
+							}
+						}
+                    }
+                }
+            }
+        }
+        p {
+            font-size:mapping($esrbmodal,modalbodyP,fntSize);
+            color:mapping($esrbmodal,modalbodyP,txtColor);
+            span {
+                &:before {
+                    content: mapping($esrbmodal,modalbodyP,spanContent);
+                }
+            }
+            @media #{$small-up} {
+                font-size: mapping($esrbmodal,modalbodyP,mobfntSize);
+            }
+        }
+        a {
+            text-decoration: mapping($esrbmodal,modalbodyLink,txtDecoration);
+            /*padding:em(10) em(30);*/
+            img {
+                width: mapping($esrbmodal,modalbodyLink,imgWidth);
+                height: mapping($esrbmodal,modalbodyLink,imgHeight);
+            }
+        }
+
+        .modal-btn-wrap {
+            background-image: mapping($esrbmodal,bodyBgImg,bgImg);
+            background-size: mapping($esrbmodal,bodyBgImg,bgSize);
+            background-position: mapping($esrbmodal,bodyBgImg,bgPosition);
+            background-repeat: mapping($esrbmodal,bodyBgImg,bgRepeat);
+            padding-bottom: mapping($esrbmodal,bodyBgImg,padd);
+            @media #{$small-down} {
+                padding-bottom: mapping($esrbmodal,bodyBgImg,mobPadd);
+                background-position: mapping($esrbmodal,bodyBgImg,mobbgPosition);
+            }
+            width: mapping($esrbmodal,modalbtnWrap,width);
+            display: mapping($esrbmodal,modalbtnWrap,display);
+            text-align: mapping($esrbmodal,modalbtnWrap,txtAlign);
+        }
+
+        .continue-btn,.go-back-btn {
+            @if mapping($esrbmodal,modalbodycontinueBtn,sameasSecondaryBtn) == true {
+                @extend .secondary-btn;
+                @if mapping($esrbmodal,modalbodycontinueBtn,isArrowWithBtn) == false{
+                    &:after{
+                        content: none;
+                    }
+                    padding: mapping($esrbmodal,modalbodycontinueBtn,secondaryPadding);
+                }
+                @if mapping($esrbmodal,modalbodycontinueBtn,isSingleRowInMob) == true {
+                    @media #{$xsmall-down}{
+                        display: block !important;
+                        width: auto;
+                        max-width: 65%;
+                        margin-left: auto !important;
+                        margin-right: auto !important;
+                    }
+                }
+            }@else if mapping($esrbmodal,modalbodycontinueBtn,sameasPrimaryBtn) == true {
+                @extend .secondary-btn;
+                @if mapping($esrbmodal,modalbodycontinueBtn,isArrowWithBtn) == false{
+                    &:after{
+                        content: none;
+                    }
+                    padding: mapping($esrbmodal,modalbodycontinueBtn,secondaryPadding);
+                }
+                @if mapping($esrbmodal,modalbodycontinueBtn,isSingleRowInMob) == true {
+                    @media #{$xsmall-down}{
+                        display: block !important;
+                        width: auto;
+                        max-width: 65%;
+                        margin-left: auto !important;
+                        margin-right: auto !important;
+                    }
+                }
+            } @else{
+                text-align: mapping($esrbmodal,modalbodygobackcontinueBtn,txtAlign);
+                padding: mapping($esrbmodal,modalbodygobackcontinueBtn,pad);
+                display: mapping($esrbmodal,modalbodygobackcontinueBtn,display);
+                border: mapping($esrbmodal,modalbodygobackcontinueBtn,borderColor);
+                @include border-radius(mapping($esrbmodal,modalbodygobackcontinueBtn,borderRadius));
+                font-size: mapping($esrbmodal,modalbodygobackcontinueBtn,fntSize);
+                font-family: mapping($esrbmodal,modalbodygobackcontinueBtn,fntFamily), Sans-serif;
+                font-weight: mapping($esrbmodal,modalbodygobackcontinueBtn,fntWeight);
+                @include transition(mapping($esrbmodal,modalbodygobackcontinueBtn,transition));
+                @if mapping($layout,main,isfisherprice) == true {
+                    text-transform: mapping($esrbmodal,modalbodygobackcontinueBtn,txtCase);
+                }
+            }
+        }
+
+        @if (mapping($layout,main,isfisherprice) == true) or (mapping($layout,main,isFisherPriceNav) == true) {
+            .esrb-CTA-icon{
+                font-size:mapping($esrbmodal,goBackcontinueBtnBefore,icnSize);
+                font-family:mapping($esrbmodal,goBackcontinueBtnBefore,icnFont);
+                color:mapping($esrbmodal,goBackcontinueBtnBefore,icnColor);
+                position:mapping($esrbmodal,goBackcontinueBtnBefore,icnPos);
+                top:mapping($esrbmodal,goBackcontinueBtnBefore,icnPosTop);
+            }
+        }
+
+        .continue-btn {
+            margin: mapping($esrbmodal,modalbodycontinueBtn,margin);
+            @media #{$small-down} {
+                margin: mapping($esrbmodal,modalbodycontinueBtn,mobMargin);
+            }
+            @if mapping($esrbmodal,modalbodycontinueBtn,sameasSecondaryBtn) == true {
+
+            } @else{
+                color: mapping($esrbmodal,modalbodycontinueBtn,txtColor);
+                background: mapping($esrbmodal,modalbodycontinueBtn,bgnd);
+                &:hover,
+                &:focus,
+                &:active {
+                    background: mapping($esrbmodal,modalbodycontinueBtn,hoverBgnd);
+                    color: mapping($esrbmodal,modalbodycontinueBtn,hovertxtColor);
+                    border: mapping($esrbmodal,modalbodycontinueBtn,hoverborderColor);
+                }
+            }
+            &:after{
+                @if mapping($layout,main,isfisherprice) == true {
+                    @extend .esrb-CTA-icon;
+                    content:mapping($esrbmodal,goBackcontinueBtnBefore,continueContent);
+                    margin-left:mapping($esrbmodal,goBackcontinueBtnBefore,marginLeft);
+                }
+            }
+        }
+        .go-back-btn {
+            margin: mapping($esrbmodal,modalbodygobackBtn,margin);
+            @media #{$small-down} {
+                margin: mapping($esrbmodal,modalbodygobackBtn,mobMargin);
+            }
+            @if mapping($esrbmodal,modalbodycontinueBtn,sameasSecondaryBtn) == true {
+            } @else{
+                display: mapping($esrbmodal,modalbodygobackBtn,display);
+                color: mapping($esrbmodal,modalbodygobackBtn,txtColor);
+                background: mapping($esrbmodal,modalbodygobackBtn,bgnd);
+                &:hover,
+                &:focus,
+                &:active {
+                    color: mapping($esrbmodal,modalbodygobackBtn,hovertxtColor);
+                    background: mapping($esrbmodal,modalbodygobackBtn,hoverBgnd);
+                    border: mapping($esrbmodal,modalbodygobackBtn,hoverborderColor);
+                }
+            }
+            &:before{
+                @if (mapping($layout,main,isfisherprice) == true) or (mapping($layout,main,isFisherPriceNav) == true){
+                    @extend .esrb-CTA-icon;
+                    content:mapping($esrbmodal,goBackcontinueBtnBefore,goBackcontent);
+                    margin-right:mapping($esrbmodal,goBackcontinueBtnBefore,marginRight);
+                }
+            }
+        }
+        /*@media(max-width:$screen-sm-max) {
+            padding:0;
+            width:75%;
+        }*/
+        @media(max-width:$screen-xs-max) {
+            padding: mapping($esrbmodal,modalbody,tabPadding);
+            width: mapping($esrbmodal,modalbody,tabWidth);
+            float: mapping($esrbmodal,modalbody,tabFloat);
+            margin: mapping($esrbmodal,modalbody,tabMargin);
+            background-size: mapping($esrbmodal,modalbody,tabbgndSize);
+        }
+        p {
+            text-align: mapping($esrbmodal,modalbodyP,txtAlign);
+            color: mapping($esrbmodal,modalbodyP,txtColor);
+            font-size: mapping($esrbmodal,modalbodyP,fntSize);
+            margin: mapping($esrbmodal,modalbodyP,margin);
+            font-weight: mapping($esrbmodal,modalbodyP,fntWeight);
+            padding-bottom: mapping($esrbmodal,modalbodyP,paddingBottom);
+			/*padding: mapping($esrbmodal,modalbodyP,padding);*/
+			@media #{$large-down} {
+				/*padding: mapping($esrbmodal,modalbodyP,tabPadding);*/
+			}
+            font-family: mapping($esrbmodal,modalbodyP,fntFamily);
+            line-height: mapping($esrbmodal,modalbodyP,lineHeight);
+
+        }
+        .close-btn {
+            //float:left;
+            margin-right: mapping($esrbmodal,modalheaderClose,marginRight);
+        }
+    }
+    .modal-footer {
+        border-top: mapping($esrbmodal,modalFooter,borderTop);
+        background: mapping($esrbmodal,modalFooter,bgnd);
+    }
+
+}
+.interstitial-modal {
+    @extend #esrb-modal;
+
+    .modal-title {
+        text-align: if(mapping($esrbmodal,heading,txtAlign),mapping($esrbmodal,heading,txtAlign), center);
+        color: if(mapping($esrbmodal,heading,txtColor), mapping($esrbmodal,heading,txtColor), $white);
+        font-size: if(mapping($esrbmodal,heading,fntSize), mapping($esrbmodal,heading,fntSize), em(38));
+        margin: if(mapping($esrbmodal,heading,margin), mapping($esrbmodal,heading,margin), em(35, 38) 0 0);
+        font-family: mapping($esrbmodal,heading,fntFamily);
+        font-weight: mapping($esrbmodal,heading,fntWeight);
+        *{
+            font-family: inherit;
+            font-weight: inherit;
+        }
+    }
+
+    &#interstitialGameRetailerModal {
+        .modal-title {
+            color: $white;
+            text-align: center;
+        }
+    }
+
+    .modal-body {
+        .play-retailers .gallery-tile ul li {
+            @media #{$small-up} {
+                margin: 0 1.4%;
+                &:first-child{
+                    margin: 0 1.4%;
+                }
+                &:nth-child(3n+3) {
+                    margin-right: 0;
+                }
+                &:nth-child(n+4) {
+                    float: left;
+                    margin-top: 10px;
+                }
+            }
+        }
+        a img {
+            width: auto;
+        }
+    }
+
+    .close{
+        font-size:mapping($esrbmodal,close,fntsize);
+    }
+}

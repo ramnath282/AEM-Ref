@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Bazaar Voice Confiugration"
+    sling:resourceType="cq/gui/components/authoring/dialog"
+    height="{Long}500"
+    width="{Long}600">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <bazarVoice
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Bazar Voice"
+                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <column
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <bazarVoiceFor
+                                        granite:class="cq-dialog-dropdown-showhide"
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                        fieldLabel="Bazar Voice For"
+                                        name="./bazarVoiceFor">
+                                        <granite:data
+                                            jcr:primaryType="nt:unstructured"
+                                            cq-dialog-dropdown-showhide-target=".list-option-listfrom-showhide-target"/>
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <customerReview
+                                                granite:hide="${cqDesign.disableCustomerReview}"
+                                                jcr:primaryType="nt:unstructured"
+                                                text="Customer Ratings and Review"
+                                                value="customerReview"/>
+                                            <quetionsAndAnswers
+                                                granite:hide="${cqDesign.disableQuetionAnswers}"
+                                                jcr:primaryType="nt:unstructured"
+                                                text="Quetions &amp; Answers"
+                                                value="quetionAnswers"/>
+                                        </items>
+                                    </bazarVoiceFor>
+                                    <setQuetionAnswer
+                                        granite:class="hide list-option-listfrom-showhide-target foundation-layout-util-vmargin"
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <granite:data
+                                            jcr:primaryType="nt:unstructured"
+                                            showhidetargetvalue="quetionAnswers"/>
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <heading
+                                                granite:class="coral-Heading coral-Heading--4"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/heading"
+                                                level="{Long}4"
+                                                text=""/>
+                                            <well
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/well">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <questAnsScript
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                        fieldLabel="Questions and Answers Script"
+                                                        name="./questAnsScript"/>
+                                                    <questAnswTitle
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                        fieldLabel="Questions and Answers Title"
+                                                        name="./questAnswTitle"/>
+                                                    <enableQuestAnswer
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/foundation/form/checkbox"
+                                                        fieldDescription="Must be checked to enable Questions and Answers"
+                                                        name="./enableQuestAnswer"
+                                                        text="Enable Questions and Answers Content"
+                                                        uncheckedValue="{Boolean}false"
+                                                        value="{Boolean}true"/>
+                                                    <disableQuenAnsMobile
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/foundation/form/checkbox"
+                                                        fieldDescription="Must be checked to disable Questions and Answers in mobile view"
+                                                        name="./disableQuenAnsMobile"
+                                                        text="Disable Questions and Answers in Mobile View"
+                                                        uncheckedValue="{Boolean}false"
+                                                        value="{Boolean}true"/>
+                                                   <showDialogQnsSpinner
+				                                        jcr:primaryType="nt:unstructured"
+				                                        sling:resourceType="granite/ui/components/foundation/form/checkbox"
+				                                        fieldDescription="Display Spinner till the Content loads"
+				                                        name="./showDialogQnsSpinner"
+				                                        text="Display Spinner till the Content loads"
+				                                        uncheckedValue="{Boolean}false"
+				                                        value="{Boolean}true"/>
+                                                </items>
+                                            </well>
+                                        </items>
+                                    </setQuetionAnswer>
+                                    <setCustomerReview
+                                        granite:class="hide list-option-listfrom-showhide-target foundation-layout-util-vmargin"
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <granite:data
+                                            jcr:primaryType="nt:unstructured"
+                                            showhidetargetvalue="customerReview"/>
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <heading
+                                                granite:class="coral-Heading coral-Heading--4"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/heading"
+                                                level="{Long}4"
+                                                text=""/>
+                                            <well
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/well">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <custReviewScript
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                        fieldLabel="Customer Review and Ratings Script"
+                                                        name="./custReviewScript"/>
+                                                    <custReviewTitle
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                        fieldLabel="Customer Review and Ratings Title"
+                                                        name="./custReviewTitle"/>
+                                                    <enableCustReview
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/foundation/form/checkbox"
+                                                        fieldDescription="Must be checked to enable Customer Review and Ratings"
+                                                        name="./enableCustReview"
+                                                        text="Enable Customer Review and Ratings Content"
+                                                        uncheckedValue="{Boolean}false"
+                                                        value="{Boolean}true"/>
+                                                    <disableCustReviewMobile
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/foundation/form/checkbox"
+                                                        fieldDescription="Must be checked to disable Customer Review and Ratings in mobile view"
+                                                        name="./disableCustReviewMobile"
+                                                        text="Disable Customer Review and Ratings Content in Mobile View"
+                                                        uncheckedValue="{Boolean}false"
+                                                        value="{Boolean}true"/>
+                                                    <showDialogCRRSpinner
+				                                        jcr:primaryType="nt:unstructured"
+				                                        sling:resourceType="granite/ui/components/foundation/form/checkbox"
+				                                        fieldDescription="Display Spinner till the Content loads"
+				                                        name="./showDialogCRRSpinner"
+				                                        text="Display Spinner till the Content loads"
+				                                        uncheckedValue="{Boolean}false"
+				                                        value="{Boolean}true"/>
+                                                </items>
+                                            </well>
+                                        </items>
+                                    </setCustomerReview>
+                                    <extractPartNumberFromSelector
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/foundation/form/checkbox"
+                                        fieldDescription="Must be checked to extract Part Number/Sku Id selector. Used in AG track for product details page"
+                                        name="./extractPartNumberFromSelector"
+                                        text="Enable to extract Part Number from request uri"
+                                        defaultChecked="{Boolean}false"
+                                        uncheckedValue="{Boolean}false"
+                                        value="{Boolean}true"/>
+                                </items>
+                            </column>
+                        </items>
+                    </bazarVoice>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>

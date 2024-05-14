@@ -1,0 +1,59 @@
+
+<sly data-sly-test="${wcmmode.edit}">${'Article Grid Component' @i18n}</sly>
+<div class="grid-container article-search-grid">
+	<h3 class="module-title article-title-header" data-sly-test="${properties.articleGridTitle}">${properties.articleGridTitle @context='html'}</h3>
+	<h3 class="module-title no-result-article-title hide" data-sly-test="${properties.noResultsTitle}">${properties.noResultsTitle @context='html'}</h3>
+		<span class="view-all-articles">
+			<a href="${properties.morebuttonpath @ extension='html'}">${properties.morebuttontext}</a>
+		</span>
+	<span class="" id="aemImageUrl" data-default-img="${properties.defaultArticleImg}"></span>
+	<ul id="article-grid-list" class="grid-articles grid-col-4 article-list"
+		data-truncate=".article-title" data-initial-loadcount="${properties.initialcount ? properties.initialcount : '4'}" data-product-loadcount="${properties.productcount ? properties.productcount : '8'}">
+
+	</ul>
+
+	<script id="articleGridTemp" type="text/x-handlebars-template">
+		{{#each this}}
+			<li>
+				<a href="{{this.url}}" aria-hidden="true" class="product-image">
+					{{#if this.imageLink}}
+                        <img alt="" src="{{this.imageLink}}">
+                    {{else}}
+                        <img alt="" src="//mattel.scene7.com/is/image/Mattel/ag_fallback_image?fmt=png-alpha&qlt=70&wid=1000">
+                    {{/if}}
+				</a>
+				<div class="article-info">
+					<div class="article-label">  
+                         {{#if this.article_tags}}                          
+                                <label>{{this.article_tags}}</label>
+                         {{else}}
+                             <label>&nbsp;</label>
+                         {{/if}}
+                    </div>
+					<div class="article-title-wrapper">
+						<a href="{{this.url}}" tabindex="0" class="article-title" data-title="">
+							{{this.title}}
+						</a>
+					</div>
+					<div class="article-read-more">
+						<a href="{{this.url}}" tabindex="0">Read More</a>
+					</div>
+					<div class="social-icons-container">
+						<ul class="social-icons">
+						</ul>
+					</div>
+				</div>
+			</li>
+		{{/each}}
+	</script>
+	<sly
+		data-sly-use.view="/apps/mattel/ecomm/ag/components/content/socialSharetemplate/socialSharetemplate.html"
+		data-sly-call="${view.socialShare @ title = 'Social',
+         									 description = 'SocialMedia',
+                                             mediaUrl = '',
+                                             pageUrl = currentPage.path,
+                                             componentName = 'ArticleGrid',
+                                             ulId='socialIconUl',
+                                             ulClasses='hide'}" />
+</div>
+<div data-sly-resource="${'interstitialModal' @ resourceType='/apps/mattel/ecomm/ag/components/content/interstitialModal'}"></div>

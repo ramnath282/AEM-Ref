@@ -1,0 +1,119 @@
+footer {
+  background: mapping($footer,main,bgndColor);
+  color: mapping($footer,main,color);
+  padding: mapping($footer,main,padding);
+  font-style: mapping($footer,main,fontStyle);
+  font-size:mapping($footer,main,fontSize);
+  font-weight:mapping($footer,main,fontWeight);
+  border-top: mapping($footer,main,border);
+  @media #{$small-down} {
+    text-align:mapping($footer,main,alignMobile);
+   }
+   p {
+      margin:em(10) 0 em(10) 0;
+   }
+  .crm-mega-footer {
+    .footer-logo {      
+      img {
+        width: mapping($footer,logo,size)
+      } 
+      @media #{$medium-down} {
+          margin-bottom:mapping($footer,logo,marginB)
+      }  
+
+    }
+    .footer-links {
+      font-size: mapping($footer,text,fontSize);
+      font-family: mapping($footer,text,font);
+      display:mapping($footer,text,Display);
+      @if mapping($footer,main,isDivFloating){
+        @include make-md-column(6);
+      }
+      ul {
+        li {
+          padding:0 em(10) 0 0;
+          a {
+            color:mapping($footer,text,color);
+            text-decoration:none;  
+            font-weight: mapping($footer,text,fontWeight);
+            font-family: mapping($footer,text,fontFamily);
+          }
+        }
+      }
+      .hvr-underline-from-left {
+          box-shadow: 0 0 1px transparent;
+        &:before {
+          @if mapping($footer,text,underlineAnimation){
+            -webkit-transition-property: right;
+            transition-property: right;
+            -webkit-transition-duration: 0.3s;
+            transition-duration: 0.3s;
+            -webkit-transition-timing-function: ease-out;
+            transition-timing-function: ease-out;
+          }
+          @if mapping($footer,text,isUnderline){
+              height: mapping($footer,text,underlineSize);
+              background: mapping($footer,text,underlineColor);
+          }
+        }
+      }
+      span{
+        color:mapping($footer,text,color);
+        text-decoration:none;  
+        font-weight: mapping($footer,text,fontWeight);
+        font-family: mapping($footer,text,fontFamily);
+      }
+    }
+  .crm-socials {
+    font-style: mapping($footer,socialLink,fontStyle);
+    @if mapping($footer,main,isDivFloating){
+    	 @include make-md-column(5);
+        @media #{$medium-up} {
+          float: right;
+        }
+    }
+     padding:em(35) 0 0 0;
+      @media #{$medium-down} {
+          padding:0.5em 0 0 0;
+      }
+     .stay-in-touch {
+        font-weight: mapping($footer,socialLink,fontWeight);
+        text-align: mapping($footer,socialLink,align);
+        color:mapping($footer,socialLink,color);
+        font-family: mapping($footer,socialLink,fontFamily);
+         font-size: mapping($footer,socialLink,fontSize);
+        @if mapping($footer,socialLink,isDivFloating){
+  	       @media #{$medium-up} {
+    	    	text-align: right;
+        		min-width: 40%;
+            display: inline-block;
+          }
+	  	  } @else{
+          display: block;
+        }
+     }
+     ul {
+        @if mapping($footer,socialLink,isDivFloating){
+          display:inline-block;
+          } @else{
+            display: block;
+            text-align: mapping($footer,socialLink,align);
+          }
+         li {
+          padding-right:em(5);
+        }
+        a {
+            text-align:center;
+            background: mapping($footer,socialLink,bgndColor);
+            color: mapping($footer,socialLink,color);
+            width: mapping($footer,socialLink,width);
+            height: mapping($footer,socialLink,height);
+            border-radius: mapping($footer,socialLink,borderRadius);
+            line-height: mapping($footer,socialLink,lineHeight);
+            font-size: mapping($footer,socialLink,fontSize);
+        }
+      }
+    }
+  }
+}
+

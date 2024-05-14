@@ -1,0 +1,34 @@
+<sly data-sly-test="${wcmmode.edit}">${'Configure Search Component' @i18n}</sly>
+<form id="searchSubmit" data-sly-test.searchUrl="${properties.searchTarget}" data-sly-use.info="${'com.mattel.ecomm.core.helper.EcommHelper' @ text= searchUrl}" action="${info.pathURL}" data-sly-attribute.data-minChar-typeAhead="${properties.minCharTypeAhead}" name="searchSubmit" method="get">
+    <div class="input-group">	
+        <span class="input-group-addon" id="basic-addon1" aria-label="search" role="search" tabindex="0">
+        	<i class="fas fa-search"></i>
+        </span>
+        <input type="text" id="searchInput_field" name="searchTerm" autocomplete="off" class="form-control typeahead" placeholder="${properties.placeholderText}"  aria-label="${properties.placeholderText}" display-count="3" aria-describedby="basic-addon1">
+    </div>
+</form>
+<sly data-sly-use.search="com.mattel.ecomm.core.models.SearchModel">
+	<input data-sly-test="${search.isNotAEM}"type="hidden" id="snpAccountUrl" value="${search.snpAccountUrl}"/>
+	<input type="hidden" id="aCompleteapiUrl" value="${properties.taEP}"/>
+	<div class="search-dropdown">
+		<input type="hidden" id="prodPageUrl" value="${search.productFinderUrl}">
+		<div class="left-tiles fpsearch">
+			<div class="loader" data-sly-test="${properties.loadingLabel}">${properties.loadingLabel @i18n}</div>
+			<div class="search-header product-con" data-popular="POPULAR PRODUCT" data-related="RELATED PRODUCT"> POPULAR PRODUCT  </div>
+			<ul class="search-col-1" id="popular-product">
+			</ul>
+			<span class="viewall-list" id="viewall" data-sly-test="{properties.viewMoreTitle !=null || properties.viewMoreLink!=null}">${properties.viewMoreTitle @i18n}</span>
+		</div>
+		<div class="search-list fpsearch" id="rightsearch-con">
+			<div class="loader" data-sly-test="${properties.loadingLabel}">${properties.loadingLabel @i18n}</div>
+			<div class="search-header search-con" data-popular="${properties.topResultsLabel}" data-related="${properties.doYouMean}" data-sly-test="${properties.topResultsLabel}">${properties.topResultsLabel @i18n}</div>
+			<ul class="data-list tt-dataset" id="static-search" data-sly-list.topResult="${search.topResultList}">
+				<li data-categoryId="${topResult.categoryId}" tabindex="0" role="link" class="tt-popular"><span>${topResult.label @i18n}</span></li>
+			</ul>
+			<ul class="data-list" id="popular-search">
+			</ul>
+			<div class="popular-header "></div>
+            <ul class="data-article" id="popular-article"></ul>			
+		</div>
+	</div>
+</sly>

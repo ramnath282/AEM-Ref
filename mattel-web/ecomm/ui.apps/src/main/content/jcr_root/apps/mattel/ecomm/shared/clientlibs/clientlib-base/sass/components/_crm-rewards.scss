@@ -1,0 +1,451 @@
+.userProfileComponent.rewards-header-on{
+    &.redeem-freezed{
+        .col-inner-content:not(.redeemed-on){
+            cursor: default;
+            // pointer-events: none;
+            opacity: .6;
+            z-index: 1;
+        }
+    }
+    span:focus,a:focus,button:focus{
+        outline: none;
+    }
+    *:focus{
+        outline: none;
+    }
+    .rewards-btn{
+        border: none;
+        box-shadow: none;
+        outline: none;
+        @media #{$small-up}{
+            min-width: em(132,16);
+        }
+        span{
+            color: $light-pink;
+            letter-spacing: 0.24px;
+            font-weight: $fontBold;
+            font-size:12px;
+            padding: 2px 0;
+            display: none !important;
+            .fa{
+                margin-left:5px;
+            }
+        }
+        &:not(.state-on) .collapse-btn, &.state-on .expand-btn{
+            display:block !important;
+        }
+        @media #{$small-down}{
+            padding-bottom:0;
+            padding-top:0;
+        }
+    }
+    .special-col{
+        @media #{$medium-up}{
+            // min-width: em(280,16);
+        }
+        @media #{$large-up}{
+            min-width: em(320,16);
+        }
+    }
+    .col-inner-content{
+        &:not(.redeemed-on) .reward-redeem,&.redeemed-on .reward-applied{
+            display:inherit;
+            align-items: center;
+            margin: 0 0 0 auto;
+        }
+        .promo-description{
+            @media #{$large-up}{
+                padding-right: 20px;
+            }
+            display: inline-block;
+            .default-pts{
+                min-width: em(120,16);
+            }
+        }
+        // hiding redeem btn - adpb-9370
+        .right-col{
+            @media #{$small-up}{
+                margin: 4px 0 0 auto !important;
+            }
+            .btn-action{
+                display: none;
+            }
+            .sub-label{
+                line-height: normal;
+            }
+        }
+    }
+    .btn-action{
+        @include flex();
+        font-size: 14px;
+        align-items: center;
+        justify-content: right;
+        margin: 0 0 0 auto;
+        // padding: 0 em(5,14) 0 em(25,14);
+        padding: 0;
+        margin-bottom: 5px;
+        min-width: em(94,14);
+        @media #{$medium-up}{
+            margin-bottom:2px;
+        }
+        a:not([href]) {
+            cursor: default;
+        }
+        .fa,.fas{
+            display:inherit;
+            align-items: center;
+        }
+        .reward-redeem,.reward-applied{
+            display: none;
+        }
+        .reward-applied{
+            .appied-txt{
+                color:$green3;
+                &:before{
+                    content: "\f00c";
+                    color: inherit;
+                    @include font-awesome();
+                    margin-right: 5px;
+                    font-size: 12px;
+                }
+            }
+            button{
+                color: #252222;
+                background: transparent;
+                font-size: 12px;
+            }
+        }
+        .fa,.fas{
+            font-size: em(13,14);
+            color:$dim-gray;
+            &:before{
+                font-size:100%;
+            }
+        }
+        .btn{
+            color: $light-pink;
+            letter-spacing: 0.28px;
+            font-size: 1em;
+            font-weight: $fontMedium;
+            padding: 0 5px;
+            padding-right: 0;
+            line-height: 0.72;
+            &.fas{
+                font-size: .9em;
+            }
+            &.cta-right-arrow:after{
+                margin-right:3px;
+                vertical-align: initial;
+                margin-left: 4px;
+            }
+            &:hover{
+                text-decoration:none;
+            }
+            &.reward-tooltip{
+                padding: 0;
+                border: none;
+                background: transparent;
+                color: $color-medium-grey;
+                outline: none;
+                line-height: 1;
+            }
+        }
+    }
+    .rewards-bar{
+        padding:0 15px;
+        @media #{$medium-up}{
+            padding:0 25px;
+        }
+        width: 100%;
+        display: inline-flex;
+        justify-content: center;
+        .default-pts{
+            font-size:em(14,16);
+            display:block;
+        }
+        ul{
+            display: inherit;
+            margin-bottom: 0;
+            max-width: 100%;
+            &:not(.slick-initialized){
+                padding: 5px;
+            }
+            .slick-list{
+                max-width: calc(100% - 65px);
+                margin: 0 auto;
+                .tooltip-on &{
+                    z-index: 1;
+                }
+                // overflow hidden fixes for tooltip
+                padding-bottom: 100px;
+                margin-bottom: -100px;
+                .slick-slide{
+                    &:not(.slick-active)+.slick-active:before,&.slick-current:before{background:transparent;}
+                    // @media #{$small-up}{
+                    //     @media #{$medium-down}{
+                    //         &:not(.slick-active)+.slick-active:before{background:transparent;}
+                    //     }
+                    // }
+                    &.slick-active+.slick-current:before{background:$color-grey;}
+                }
+                .slick-track{
+                    padding: 5px 0;
+                    display: flex;
+                    align-items: center;
+                }
+            }
+            .slick-arrow{
+                width: 30px;
+                height: 30px;
+                border: 1.5px solid $light-pink;
+                @include border-radius(50%);
+                &:before{
+                    content: "\f053";
+                    @include font-awesome();
+                    color: $light-pink;
+                    opacity: 1;
+                    font-size: 15px;
+                }
+                &.slick-prev{
+                    left: 0;
+                }
+                &.slick-next{
+                    right: 0;
+                    &:before{
+                        content: "\f054";
+                    }
+                }
+                &:not(.slick-disabled):hover{
+                    background: $light-pink;
+                    &:before{
+                        color: $white;
+                    }
+                }
+                &.slick-disabled{
+                    opacity: .8;
+                    cursor: default;
+                }
+            }
+            .slick-dots{
+                justify-content: center;
+                bottom: -14px;
+                li {
+                    width: 8px;
+                    height: 8px;
+                    margin: 0 6px;
+                    button{
+                        background: $very-light-grey;
+                        width: inherit;
+                        height: inherit;
+                        padding: 0;
+                        &:before{
+                            content: none;
+                        }
+                    }
+                    &.slick-active,&:hover{
+                        button{
+                            background: $light-pink;
+                        }
+                    }
+                }
+            }
+            &.slick-initialized{
+                margin-bottom: 18px;
+                z-index: 11;
+            }
+        }
+        .rewards-content{
+            @media #{$medium-up}{
+                &.rewards-item-2 .middle-col,&.rewards-item-3 .middle-col,&.rewards-item-4 .middle-col{
+                    max-width: 100%;
+                } 
+                &.rewards-item-3 li.col{
+                    max-width: 50%;
+                } 
+                &.rewards-item-4 li.col{
+                    max-width: 33.3%;
+                } 
+            }
+        }
+        .col{
+            padding-top: 10px;
+            padding-bottom: 10px;
+            align-items: flex-start;
+            // width: auto !important;
+            @media #{$small-down}{
+                flex-wrap: wrap;
+                padding-top: 5px;
+                padding-bottom: 5px;
+                .highlight-col{
+                    justify-content: left;
+                    width: 100%;
+                    margin-bottom: 5px;
+                }
+                .middle-col{
+                    margin-bottom:0px;
+                }
+            }
+            .col-inner-content {
+                // align-items: flex-start;
+                align-items: center;
+                // @media #{$small-down}{
+                // }
+                .middle-col{
+                    .promo-description{
+                        .default-pts{
+                            @media #{$small-up}{
+                                font-size: em(18,16);
+                            }
+                            @media #{$medium-up}{
+                                // font-size: em(20,16);
+                                font-weight: $fontLight;
+                            }
+                            @media #{$large-up}{
+                                font-size: em(24,16);
+                            }
+                           min-width: 0;
+                        }
+                    }
+                }
+            }
+            &.pp-1px{
+                &:before{
+                    height: calc(100% + 0px);
+                    top: 0;
+                }
+                &:first-child{
+                    &:before{content:none;}
+                }
+                
+            }
+            .highlight-col,.middle-col{
+                align-items: inherit;
+            }
+            .highlight-col{
+                @media #{$medium-up}{
+                    margin-right:15px;
+                    line-height: 1.1;
+                } 
+             }
+             
+        }
+    }
+    .loyality-bar{
+        .default-pts{
+            @media #{$medium-up} {
+                max-width: em(180,12);
+            }
+            display: block;
+        }
+        .promo-description{
+            display: inline-block;
+            min-width: em(150,14);
+            @media #{$small-up} {
+                min-width: 0;
+                .default-pts{
+                    width: 100%;
+                    min-width: 0;
+                }
+            }
+            padding-right: 15px;
+            span{
+                min-width: 0;
+            }
+        }
+        .btn-action{
+            margin-bottom:0;
+        }  
+    }
+    .logged-user-content{
+        .enhanced-container{
+            &.collapse,&.collapsing{
+                padding: 0;
+                overflow: hidden;
+                @include transition(max-height .5s);
+                max-height: 0;
+                height: auto!important;
+                position: static;
+                &.in{
+                    max-height: 1000px;
+                    @include transition(max-height .5s);
+                    overflow: visible;
+                }
+                background: $lavenderBlush;
+            }
+            .middle-col{
+                @media #{$xsmall-down} {
+                    max-width: calc(100% - 145px);
+                }
+            }
+            @media #{$small-down}{
+                display: block;
+                .loyality-bar,.rewards-bar{
+                    padding:0;
+                    display: inherit;
+                    &:before{
+                        content:none;
+                    }
+                    .col{
+                        margin: 0;
+                        padding: 5px 15px;
+                    }
+                    .pp-1px{
+                        border-bottom: 1px solid $color-grey;
+                        &:before{
+                            content:none;
+                        }
+                        &:last-child{
+                            border-bottom: none;
+                        }
+                    }
+                }
+                .rewards-bar{
+                    .col{
+                        padding: 20px 15px;
+                    }
+                }
+                .rewards-content{
+                    padding: 0;
+                    max-height: 64vh;
+                    overflow: scroll;
+                }
+            }
+        }
+    }
+}
+.popover.rewards-popover{
+    margin-top: 15px;
+    border: 1px solid $night-rider;
+    box-shadow: 0 1px 4px 0 rgba($black,0.50);
+    z-index: 11111111;
+    &.bottom{
+        @media #{$medium-up}{
+            width: em(290,14);
+            max-width: 100%;
+        }
+        @media #{$small-up}{
+            margin-left: 55px;
+        }
+        &>.arrow{
+            border-bottom-color: $night-rider;
+            @media #{$small-up}{
+                margin-left: -66px;
+            }
+        }
+        .popover-content{
+            font-weight: $fontRegular;
+        }
+    }
+}
+.loyality-bar{
+    .progress{
+        margin: 4px 0;
+        border-radius: 3px;
+        background-color: #DBDBDB;
+        height: 10px;
+        box-shadow: none;
+        .progress-bar{
+            background: linear-gradient(270deg, #C70A4C 0%, #8C1063 99.91%);
+        }
+    }
+}

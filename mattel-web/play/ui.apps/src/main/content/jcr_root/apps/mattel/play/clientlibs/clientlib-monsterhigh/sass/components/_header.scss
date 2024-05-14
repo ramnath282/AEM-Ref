@@ -1,0 +1,106 @@
+// header
+header {
+    background: mapping($header,main,bgnd);
+    min-height: mapping($header,main,minHeight);
+	top: mapping($header,main,posTop);
+    left:mapping($header,main,posLeft);
+    z-index: mapping($header,main,zIndex);
+    position: mapping($header,main,pos);
+    width: mapping($header,main,width);
+	line-height:mapping($header,main,lineHeight);
+    background-size: mapping($header,main,mobBgndSize);
+    box-shadow: mapping($header,main,boxShadow);
+    height: 85px;
+     @media #{$small-only} {
+         height: 53px;
+         min-height: 53px;
+     }
+    @media #{$large-up} {
+        background-size: mapping($header,main,bgndSize);
+    }
+	@media #{$medium-down} {
+		background: mapping($header,main,mobBgndColor);
+    }
+    @media #{$medium-only} {
+         height: 80px;
+         min-height: 80px;
+    }
+    >div {
+        // @extend .container-fluid;
+        padding: 0;
+        width: mapping($header,childDiv,width);
+        height: 100%;
+        &::after {
+            content: ' ';
+            width: 100%;
+            height: 21px;
+            bottom: -21px;
+            position: absolute;
+            background: transparent url(/content/dam/monster-high/monsterhigh-play/bg-images/main-nav-after-icon.png) 0 0;
+            background-size: 100% auto;
+            background-repeat: no-repeat;
+            z-index: -1;
+        }
+    }
+    .brand-logo {
+        position: mapping($header,logo,pos);
+        z-index: mapping($header,logo,zIndex);
+        img {
+            // margin:mapping($header,logoImage,margin);
+            // width: mapping($header,logoImage,width);
+            @media #{$small-up} {
+                // margin:mapping($header,logoImage,mobMargin);
+                // width: mapping($header,logoImage,mobWidth);
+            }
+            @media #{$small-up} {
+                @media #{$large-down} {
+                    // width: mapping($header,logoImage,tabWidth);
+                    // margin:mapping($header,logoImage,tabMargin);
+                }
+            }
+        }
+    }
+	/*&::after {
+        @if mapping($layout, waveBorder, isWaveBtmBdr) == true {
+            content:"";
+            background-image: mapping($layout,waveBorder,waveBdrPurple);
+            background-repeat: mapping($layout,waveBorder,waveBdrbgndRptX);
+            width: mapping($layout,waveBorder,waveBdrWidth);
+            height: mapping($layout,waveBorder,waveBdrHeight);
+            display: mapping($layout,waveBorder,waveBdrDisplay);
+            position: mapping($layout,waveBorder,waveBdrPosition);
+            background-size: mapping($layout,waveBorder,waveBdrsize);
+            @media #{$large-down} {
+                bottom: -20px;
+            }
+            @media #{$medium-down} {
+                bottom: -20px;
+                background-size:300%;
+            }
+            @media #{$small-down} {
+                background-size: cover;
+            }
+        }
+    } */
+}
+.brand-logo {
+    img {
+       
+        height: 149.67px;	
+        width: 260px;
+         max-width: inherit;
+            padding-left: 45px;
+        @media #{$small-only} {
+            height: 92px;
+        	width: 160px;
+            padding-top: 0;
+            padding-left: 15px;
+        }
+        @media #{$medium-only} {
+            height: 139px;	
+            width: 200px;
+            // padding-top: 17px;
+            padding-left: 21px;
+        }
+    }
+  }

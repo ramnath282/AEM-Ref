@@ -1,0 +1,25 @@
+			<div class="update-email">
+                <fieldset>
+                    <sly data-sly-test="${properties.emailLabel}">
+                        	<h2>${properties.emailLabel}:</h2>
+                        </sly>
+                    <div class="input-field required">
+                        <input type="text" id="emailId" aria-describedby="emailIdError" data-key="email1" name="emailId"  class="form-input long-input email-field" value="{{personalInfo.email1}}" required autocomplete="off"/>
+                        <sly data-sly-test="${properties.sEmailLabel}">
+                                <label class="placeholder-label" for="emailId">${properties.sEmailLabel}</label>
+                            </sly>
+                        <div id="emailIdError" class="help-block form-message"></div>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <div class="input-field required">
+                        <input type="text" id="emailVerify" aria-describedby="emailIdVerifyError" name="verifyEmail" data-key="emailVerify" class="form-input long-input verify-email" value="" required autocomplete="off" />
+                        <sly data-sly-test="${properties.vEmailLabel}">
+                            	<label class="placeholder-label" for="emailVerify">${properties.vEmailLabel}</label>
+                            </sly>
+                        <div id="emailIdVerifyError" class="help-block form-message"></div>
+                    </div>
+                </fieldset>
+                <input class="theme-btn no-bg-btn update-info" data-val="update" data-formname=".update-email" type="submit" value="${properties.updateButtonLabel}" />
+                <input class="theme-btn transparent-btn remove-template" data-val="cancel" type="submit" value="${properties.cancelButtonLabel}" />
+            </div> 

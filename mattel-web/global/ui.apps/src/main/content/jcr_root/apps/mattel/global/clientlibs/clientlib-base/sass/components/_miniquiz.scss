@@ -1,0 +1,2217 @@
+.quizContainer {
+	.mq-wrapper {
+		padding-right: 15px;
+		padding-left: 15px;
+		margin-right: auto;
+		margin-left: auto;
+		position: relative;
+		overflow: hidden;
+		&:after, &:after{
+			content: " ";
+    		display: table;
+		}
+		position: relative;
+		overflow: hidden;
+		.mq-dynamic-media-imageholder {
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			>div {
+				display: none;
+				&.active {
+					display: block;
+				}
+			}
+		}
+		.row {
+			.mq-banner-copy {
+				@include print-css(
+					map-merge((
+						display: inline-block,
+						padding: 6px 16px 7px,
+						background-color: rgba(0,0,0,0.1),
+						min-width: 253px,
+						text-align: (
+							defaultVal: center,
+							mediumUp: left,
+						),
+					), 
+					if(variable-exists(miniquiz) and map-has-key($miniquiz, mqBannerCopy), 
+						map-get($miniquiz,mqBannerCopy), ()
+					)
+				));
+				.mq-banner-text {
+					@include print-css(
+						map-merge((
+							font-family: $maaxBold,
+							font-size: 14px,
+							text-transform: uppercase,
+							margin: 0,
+							padding: 0,
+							line-height: 24px,
+							text-align: left,
+							font-weight: $fontBold,
+							float: left,
+							width: calc(100% - 34px),
+						), 
+						if(variable-exists(miniquiz) and map-has-key($miniquiz, mqBannerText), 
+							map-get($miniquiz,mqBannerText), ()
+						)
+					));
+					h1, h2, h3, h4, h5, h6 {
+						@include print-css(
+						map-merge((
+							font-family: inherit,
+							font-size: 14px,
+							text-transform: uppercase,
+							font-weight: $fontBold,
+							margin: 0,
+							padding: 0,
+							line-height: inherit,
+						), 
+						if(variable-exists(miniquiz) and map-has-key($miniquiz, mqBannerTextHeadings), 
+							map-get($miniquiz,mqBannerTextHeadings), ()
+						)
+					));
+					}
+				}
+				img {
+					@include print-css(
+						map-merge((
+							margin: 0 12px 0 0,
+							float: left,
+						), 
+						if(variable-exists(miniquiz) and map-has-key($miniquiz, mqBannerTextImg), 
+							map-get($miniquiz,mqBannerTextImg), ()
+						)
+					));
+				}
+			}
+			.quizQuestion {
+				@include print-css(
+					map-merge((
+						position: relative,
+						max-width: 1200px,
+						margin: 0 auto,
+						padding: (
+							xSmallUp: 0 66px,
+							mediumUp: 0 45px,
+						),
+					), 
+					if(variable-exists(miniquiz) and map-has-key($miniquiz, quizQuestion), 
+						map-get($miniquiz,quizQuestion), ()
+					)
+				));
+				section {
+					@include print-css(
+						map-merge((
+							display: none,
+						), 
+						if(variable-exists(miniquiz) and map-has-key($miniquiz, quizQuestionSection), 
+							map-get($miniquiz,quizQuestionSection), ()
+						)
+					));
+					&.active {
+						@include print-css(
+							map-merge((
+								display: (
+									defaultVal: block,
+									mediumUp: flex,
+								),
+							), 
+							if(variable-exists(miniquiz) and map-has-key($miniquiz, quizQuestionSectionActive), 
+								map-get($miniquiz,quizQuestionSectionActive), ()
+							)
+						));
+					}
+					.mq-question-info {
+						position: relative;
+						min-height: 1px;
+						padding-right: 15px;
+						padding-left: 15px;
+						width: 100%;
+						float: left;
+						@media #{$small-up} {
+							width: 83.33333333%;
+							margin-left: 8.33333333%;
+						};
+						@media #{$medium-up} {
+							width: 33.33333333%;
+							margin-left: 0;
+						};
+						@media #{$large-up} {
+							width: 33.33333333%;
+							margin-left: 0;
+						};
+						text-align: center;
+						@media #{$medium-up} {
+							text-align: left;
+						}
+						>h1, >h2, >h3, >h4, >h5, >h6 {
+							@include print-css(
+								map-merge((
+									font-family: $letsBeGlyphs,
+									font-size: (
+										defaultVal: 22px,
+										smallUp: 32px,
+									),
+									font-weight: normal, 
+									margin: 0,
+									padding: (
+										defaultVal: 10px 0 5px,
+										mediumUp: 10px 0,
+									), 
+									line-height: 26px,
+								), 
+								if(variable-exists(miniquiz) and map-has-key($miniquiz, mqQuestionInfoHeadings), 
+									map-get($miniquiz,mqQuestionInfoHeadings), ()
+								)
+							));
+						}
+						p {
+							@include print-css(
+								map-merge((
+									font-size: 18px,
+									padding: 0,
+									margin: 0,
+								), 
+								if(variable-exists(miniquiz) and map-has-key($miniquiz, mqQuestionInfoPara), 
+									map-get($miniquiz,mqQuestionInfoPara), ()
+								)
+							));
+						}
+						.mq-question-counter {
+							@include print-css(
+								map-merge((
+									font-family: $maaxMedium,
+									font-size: 14px,
+									padding: 28px 0 0, 
+									font-weight: $fontBold,
+								), 
+								if(variable-exists(miniquiz) and map-has-key($miniquiz, mqQuestionCounter), 
+									map-get($miniquiz,mqQuestionCounter), ()
+								)
+							));						
+							span {
+								@include print-css(
+									map-merge((
+										font-family: $maaxMedium,
+										font-size: 14px,
+										font-weight: $fontBold,
+									), 
+									if(variable-exists(miniquiz) and map-has-key($miniquiz, mqQuestionCounterSpan), 
+										map-get($miniquiz,mqQuestionCounterSpan), ()
+									)
+								));
+							}
+						}
+					}
+					.mq-answer-info {
+						position: relative;
+						min-height: 1px;
+						padding-right: 15px;
+						padding-left: 15px;
+						width: 100%;
+						float: left;
+						@media #{$small-up} {
+							width: 83.33333333%;
+							margin-left: 8.33333333%;
+						};
+						@media #{$medium-up} {
+							width: 66.66666667%;
+							margin-left: 0;
+						};
+						@media #{$large-up} {
+							width: 66.66666667%;
+						};
+						@include print-css(
+							map-merge((
+								padding-bottom: 44px,
+								padding-top: (
+									defaultVal: 25px,
+									mediumUp: 40px,
+								)
+							), 
+							if(variable-exists(miniquiz) and map-has-key($miniquiz, mqAnsInfo), 
+								map-get($miniquiz,mqAnsInfo), ()
+							)
+						));
+						.mq-ans-elements {
+							@include print-css(
+								map-merge((
+									position: relative,
+									top: (
+										mediumUp: 50%,
+									),
+									transform: (
+										mediumUp:  translateY(-50%),
+									)
+								), 
+								if(variable-exists(miniquiz) and map-has-key($miniquiz, mqAnsElement), 
+									map-get($miniquiz,mqAnsElement), ()
+								)
+							));
+							form {
+								.mq-ans-option {
+									fieldset {
+										ul {
+											margin-right: -15px;
+											margin-left: -15px;
+											&:before, &:after{
+												display: table;
+    											content: " ";
+											}
+											list-style: none;
+											padding: 0;
+											margin-bottom: 10px;
+											li {
+												position: relative;
+												min-height: 1px;
+												padding-right: 15px;
+												padding-left: 15px;
+												width: 100%;
+												float: left;
+												@media #{$small-up} {
+													width: 50%;
+												};
+												@media #{$medium-up} {
+													width: 50%;
+												};
+												@media #{$large-up} {
+													width: 50%;
+												};
+												@include print-css(
+													map-merge((
+														min-height: 63px,
+														margin: (
+															defaultVal: 0 0 10px,
+															smallUp: 0 0 20px,
+														),
+													), 
+													if(variable-exists(miniquiz) and map-has-key($miniquiz, mqAnsOptLI), 
+														map-get($miniquiz,mqAnsOptLI), ()
+													)
+												));
+												input {
+													&[type='checkbox'],
+													&[type='radio'] {
+														visibility: visible;
+														position: absolute;
+														left: -9999px;
+													}
+													&+label {
+														@include print-css(
+															map-merge((
+																position: relative,
+																box-sizing: border-box,
+																height: 100%,
+																width: 100%,
+																border: 2px solid $white,
+																border-radius: 0 100px 100px 0,
+																display: inline-block,
+																font-size: 16px,
+																line-height: 24px,
+																padding: 15px 28px 15px 50px,
+															), 
+															if(variable-exists(miniquiz) and map-has-key($miniquiz, mqAnsOptLILabel), 
+																map-get($miniquiz,mqAnsOptLILabel), ()
+															)
+														));
+														&:after {
+															@include print-css(
+																map-merge((
+																	content: '',
+																	position: absolute,
+																	left: 16px,
+																	top: 16px,
+																	width: 24px,
+																	height: 24px,
+																	background-image: url(/content/dam/mattel/mattel-global/global/icons/quiz-control-sprite.svg),
+																), 
+																if(variable-exists(miniquiz) and map-has-key($miniquiz, mqAnsOptLILabelIcon), 
+																	map-get($miniquiz,mqAnsOptLILabelIcon), ()
+																)
+															));
+														}
+													}
+													&[type='checkbox']+label {
+														&:after {
+															@include print-css(
+																map-merge((
+																	background-position: -194px -48px,
+																	background-color: $white,
+																), 
+																if(variable-exists(miniquiz) and map-has-key($miniquiz, mqAnsOptLILabelCheckPos), 
+																	map-get($miniquiz,mqAnsOptLILabelCheckPos), ()
+																)
+															));
+														}
+													}
+													&[type='radio']+label {
+														&:after {
+															@include print-css(
+																map-merge((
+																	background-position: -66px -48px,
+																), 
+																if(variable-exists(miniquiz) and map-has-key($miniquiz, mqAnsOptLILabelRadioPos), 
+																	map-get($miniquiz,mqAnsOptLILabelRadioPos), ()
+																)
+															));
+														}
+													}
+													&[type='checkbox']:checked+label {
+														@include print-css(
+															map-merge((
+																background-color: $white,
+															), 
+															if(variable-exists(miniquiz) and map-has-key($miniquiz, mqAnsOptLILabelCheckChkd), 
+																map-get($miniquiz,mqAnsOptLILabelCheckChkd), ()
+															)
+														));
+														&:after {
+															@include print-css(
+																map-merge((
+																	background-position: -218px -48px,
+																), 
+																if(variable-exists(miniquiz) and map-has-key($miniquiz, mqAnsOptLILabelCheckChkdPos), 
+																	map-get($miniquiz,mqAnsOptLILabelCheckChkdPos), ()
+																)
+															));
+														}
+													}
+													&[type='radio']:checked+label {
+														@include print-css(
+															map-merge((
+																background-color: $white,
+															), 
+															if(variable-exists(miniquiz) and map-has-key($miniquiz, mqAnsOptLILabelRadioChkd), 
+																map-get($miniquiz,mqAnsOptLILabelRadioChkd), ()
+															)
+														));
+														&:after {
+															@include print-css(
+																map-merge((
+																	background-position: -90px -48px,
+																), 
+																if(variable-exists(miniquiz) and map-has-key($miniquiz, mqAnsOptLILabelRadioChkdPos), 
+																	map-get($miniquiz,mqAnsOptLILabelRadioChkdPos), ()
+																)
+															));
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+								.mq-ans-cta {
+									@include print-css(
+										map-merge((
+											text-align: center,
+										), 
+										if(variable-exists(miniquiz) and map-has-key($miniquiz, mqAnsCTA), 
+											map-get($miniquiz,mqAnsCTA), ()
+										)
+									));
+								}
+							}
+						}
+					}
+				}
+			}
+			.mq-thankyou {
+				@include print-css(
+					map-merge((
+						position: relative,
+						max-width: 1200px,
+						margin: 0 auto,
+						display: none,
+						overflow: hidden,
+						padding: (
+							defaultVal: 40px 10px,
+							smOnly: 40px 66px,
+							mediumUp: 40px 45px,
+						),
+					), 
+					if(variable-exists(miniquiz) and map-has-key($miniquiz, mqThankyou), 
+						map-get($miniquiz,mqThankyou), ()
+					)
+				));
+				&.active {
+					@include print-css(
+						map-merge((
+							display: block,
+						), 
+						if(variable-exists(miniquiz) and map-has-key($miniquiz, mqThankyouActive), 
+							map-get($miniquiz,mqThankyouActive), ()
+						)
+					));
+				}
+				.mq-thanks-txt-msg {
+					.card {
+						@include print-css(
+							map-merge((
+								text-align: (
+									defaultVal: center,
+									mediumUp: left,
+								),
+							), 
+							if(variable-exists(miniquiz) and map-has-key($miniquiz, mqThankMsgCard), 
+								map-get($miniquiz,mqThankMsgCard), ()
+							)
+						));
+						&.text-center {
+							@include print-css(
+								map-merge((
+									text-align: (
+										defaultVal: center,
+										mediumUp: center,
+									),
+								), 
+								if(variable-exists(miniquiz) and map-has-key($miniquiz, mqThankMsgCardCenter), 
+									map-get($miniquiz,mqThankMsgCardCenter), ()
+								)
+							));
+						}
+						&.text-left {
+							@include print-css(
+								map-merge((
+									text-align: (
+										defaultVal: left,
+										mediumUp: left,
+									),
+								), 
+								if(variable-exists(miniquiz) and map-has-key($miniquiz, mqThankMsgCardLeft), 
+									map-get($miniquiz,mqThankMsgCardLeft), ()
+								)
+							));	
+						}
+						&.text-right {
+							@include print-css(
+								map-merge((
+									text-align: (
+										defaultVal: right,
+										mediumUp: right,
+									),
+								), 
+								if(variable-exists(miniquiz) and map-has-key($miniquiz, mqThankMsgCardRight), 
+									map-get($miniquiz,mqThankMsgCardRight), ()
+								)
+							));	
+						}
+						.card-component {
+							.image-container {
+								position: relative;
+								min-height: 1px;
+								padding-right: 15px;
+								padding-left: 15px;
+								width: 100%;
+								float: left;
+								@media #{$small-up} {
+									width: 100%;
+								};
+								@media #{$medium-up} {								
+									width: 16.66666667%;
+								}
+								@media #{$large-up} {
+									width: 8.33333333%;
+								}
+								@include print-css(
+									map-merge((
+										text-align: center,
+									), 
+									if(variable-exists(miniquiz) and map-has-key($miniquiz, mqThankMsgCardImgCont), 
+										map-get($miniquiz,mqThankMsgCardImgCont), ()
+									)
+								));
+								img {
+									@include print-css(
+										map-merge((
+											width: (
+												defaultVal: 120px,
+												smOnly: 54px,
+												xMediumOnly: 88px,
+												xLargeOnly: 130px,
+												largeUp: 66px,
+											),
+											height: (
+												defaultVal: 120px,
+												smOnly: 54px,
+												xMediumOnly: 88px,
+												xLargeOnly: 130px,
+												largeUp: 66px,
+											),
+											max-width: inherit,
+										), 
+										if(variable-exists(miniquiz) and map-has-key($miniquiz, mqThankMsgCardImgContImg), 
+											map-get($miniquiz,mqThankMsgCardImgContImg), ()
+										)
+									));
+								}
+							}
+							.text-container {
+								margin: 0;
+								position: relative;
+								min-height: 1px;
+								padding-right: 15px;
+								padding-left: 15px;
+								width: 100%;
+								float: left;
+								@media #{$small-up} {								
+									width: 100%;
+								};
+								@media #{$medium-up} {
+									width: 83.33333333%;
+								};
+								@media #{$large-up} {
+									width: 91.66666667%;
+								};
+								.content {
+									position: relative;
+									min-height: 1px;
+									padding-right: 15px;
+									padding-left: 15px;
+									width: 100%;
+									float: left;
+									@media #{$small-up} {
+										width: 100%;
+									};
+									@media #{$medium-up} {
+										width: 91.66666667%;
+									};
+									@media #{$large-up} {
+										width: 91.66666667%;
+									};
+									.main-title {
+										@include print-css(
+											map-merge((
+												font-size: 32px,
+												font-family: $letsBeGlyphs,
+												font-weight: $fontRegular,
+												line-height: 36px,
+												padding-top: (
+													defaultVal: 20px,
+													mediumUp: 0,
+												),
+											), 
+											if(variable-exists(miniquiz) and map-has-key($miniquiz, mqThankMsgCardTxtContMainTitle), 
+												map-get($miniquiz,mqThankMsgCardTxtContMainTitle), ()
+											)
+										));
+									}
+									.sub-title {
+										@include print-css(
+											map-merge((
+												font-size: 22px,
+												font-family: $letsBeGlyphs,
+												font-weight: $fontRegular,
+											), 
+											if(variable-exists(miniquiz) and map-has-key($miniquiz, mqThankMsgCardTxtContSubTitle), 
+												map-get($miniquiz,mqThankMsgCardTxtContSubTitle), ()
+											)
+										));
+									}
+									.text-para {
+										margin: 0;
+										p {
+											@include print-css(
+												map-merge((
+													font-family: $maax,
+													font-size: 18px,
+													margin: (
+														defaultVal: 18px 0 20px,
+														smallUp: 18px 0 30px,
+														mediumUp: 18px 0 34px,
+													),
+												), 
+												if(variable-exists(miniquiz) and map-has-key($miniquiz, mqThankMsgCardTxtContTxtPara), 
+													map-get($miniquiz,mqThankMsgCardTxtContTxtPara), ()
+												)
+											));
+										}
+									}
+								}
+								.ctaItem {
+									.cta-item {
+										margin: 0;
+										a {
+											&.btn-cta-item {
+												@include print-css(
+													map-merge((
+														margin: (
+															defaultVal: 0 0 20px 0,
+															smallUp: 0 15px,
+														),
+													), 
+													if(variable-exists(miniquiz) and map-has-key($miniquiz, mqThankMsgCardTxtContBtnCTA), 
+														map-get($miniquiz,mqThankMsgCardTxtContBtnCTA), ()
+													)
+												));
+											}
+										}
+									}
+									&:last-child {
+										.cta-item {
+											margin: 0;
+											a {
+												&.btn-cta-item {
+													margin: 0;
+												}
+											}
+										}	
+									}
+								}
+							}
+						}
+					}
+				}
+				.mq-recomm {
+					@include print-css(
+						map-merge((
+							padding-top: 10px,
+						), 
+						if(variable-exists(miniquiz) and map-has-key($miniquiz, mqRecomm), 
+							map-get($miniquiz,mqRecomm), ()
+						)
+					));
+					.mq-recomm-thanks-msg {
+						position: relative;
+						min-height: 1px;
+						padding-right: 15px;
+						padding-left: 15px;
+						width: 100%;
+						float: left;
+						@media #{$small-up} {
+							width: 50%;
+							margin-left: 25%;
+						};
+						@media #{$medium-up} {
+							width: 25%;
+							margin-left: 0;
+						}
+						@media #{$large-up} {
+							width: 25%;
+						};
+						@include print-css(
+							map-merge((
+								text-align: (
+									defaultVal: center,
+									mediumUp: left,
+								),
+							), 
+							if(variable-exists(miniquiz) and map-has-key($miniquiz, mqRecommThnksMsg), 
+								map-get($miniquiz,mqRecommThnksMsg), ()
+							)
+						));
+						h1, h2, h3, h4, h5, h6 {
+							margin: 0;
+							padding: 0;
+						}
+						p {
+							@include print-css(
+								map-merge((
+									margin: 5px 0 25px,
+									padding: 0,
+								), 
+								if(variable-exists(miniquiz) and map-has-key($miniquiz, mqRecommThnksMsgPara), 
+									map-get($miniquiz,mqRecommThnksMsgPara), ()
+								)
+							));
+						}
+					}
+					.mq-recomm-block {
+						position: relative;
+						min-height: 1px;
+						padding-right: 15px;
+						padding-left: 15px;
+						width: 100%;
+						float: left;
+						@media #{$small-up} {
+							width: 50%;
+							margin-left: 25%;
+						};
+						@media #{$medium-up} {
+							width: 75%;
+							margin-left: 0;
+						}
+						@media #{$large-up} {
+							width: 75%;
+						}
+						ul {
+							@include print-css(
+								map-merge((
+									margin-left: -15px,
+									margin-right: -15px,
+									margin-bottom: 0,
+								), 
+								if(variable-exists(miniquiz) and map-has-key($miniquiz, mqRecommBlock), 
+									map-get($miniquiz,mqRecommBlock), ()
+								)
+							));						
+							li {
+								position: relative;
+								min-height: 1px;
+								padding-right: 15px;
+								padding-left: 15px;
+								width: 50%;
+								float: left;
+								@media #{$small-up} {
+								   width: 50%;
+								};
+								@media #{$medium-up} {
+								   width: 33.33333333%;
+								};
+								@media #{$large-up} {
+									width: 33.33333333%;
+								};
+								@include print-css(
+									map-merge((
+										height: auto,
+										padding-left: 12.5px,
+										padding-right: 12.5px,
+									), 
+									if(variable-exists(miniquiz) and map-has-key($miniquiz, mqRecommBlockLI), 
+										map-get($miniquiz,mqRecommBlockLI), ()
+									)
+								));
+								&:nth-child(n+3) {
+									@include print-css(
+										map-merge((
+											display: (
+												mediumDown: none,
+											),
+										), 
+										if(variable-exists(miniquiz) and map-has-key($miniquiz, mqRecommBlockLInth), 
+											map-get($miniquiz,mqRecommBlockLInth), ()
+										)
+									));
+								}
+								.product-image {
+									-webkit-box-align: center;
+									-webkit-box-pack: left;
+									@include print-css(
+										map-merge((
+											position: relative,
+											height: auto,
+											background-color: $white,
+											width: 100%,
+											display: flex,
+											align-items: center,
+											justify-content: left,
+										), 
+										if(variable-exists(miniquiz) and map-has-key($miniquiz, mqRecommBlockLIProdImgCont), 
+											map-get($miniquiz,mqRecommBlockLIProdImgCont), ()
+										)
+									));
+									img {
+										@include print-css(
+											map-merge((
+												max-height: 100%,
+											), 
+											if(variable-exists(miniquiz) and map-has-key($miniquiz, mqRecommBlockLIProdImgContImg), 
+												map-get($miniquiz,mqRecommBlockLIProdImgContImg), ()
+											)
+										));
+									}
+								}	
+								.product-info {
+									@include print-css(
+										map-merge((
+											padding-top: 10px,
+											padding-bottom: 20px,
+										), 
+										if(variable-exists(miniquiz) and map-has-key($miniquiz, mqRecommBlockLIProdInfo), 
+											map-get($miniquiz,mqRecommBlockLIProdInfo), ()
+										)
+									));
+									.product-reviews {
+										@include print-css(
+											map-merge((
+												padding-bottom: 6px,
+											), 
+											if(variable-exists(miniquiz) and map-has-key($miniquiz, mqRecommBlockLIProdInfoReviews), 
+												map-get($miniquiz,mqRecommBlockLIProdInfoReviews), ()
+											)
+										));
+									}
+									.product-badge {
+										@include print-css(
+											map-merge((
+												background-color: $thunderbird,
+												border-radius: 20px,
+												font-size: 14px,
+												padding: 0 15px,
+												display: inline-block,
+												color: $white,
+												font-weight: $fontBold,
+											), 
+											if(variable-exists(miniquiz) and map-has-key($miniquiz, mqRecommBlockLIProdInfoBadge), 
+												map-get($miniquiz,mqRecommBlockLIProdInfoBadge), ()
+											)
+										));
+										img {
+											@include print-css(
+												map-merge((
+													margin-top: -7px,
+													margin-right: 5px,
+												), 
+												if(variable-exists(miniquiz) and map-has-key($miniquiz, mqRecommBlockLIProdInfoBadgeImg), 
+													map-get($miniquiz,mqRecommBlockLIProdInfoBadgeImg), ()
+												)
+											));
+										}
+										&:empty {
+											display: none;
+										}
+									}
+									.grid-title-wrapper {
+										@include print-css(
+											map-merge((
+												padding-top: 10px,
+												font-size: 18px,
+												line-height: 26px,
+											), 
+											if(variable-exists(miniquiz) and map-has-key($miniquiz, mqRecommBlockLIProdInfoGridTitleWrap), 
+												map-get($miniquiz,mqRecommBlockLIProdInfoGridTitleWrap), ()
+											)
+										));
+										a {
+											@include print-css(
+												map-merge((
+													font-family: $maax,
+													font-weight: $fontRegular,
+												), 
+												if(variable-exists(miniquiz) and map-has-key($miniquiz, mqRecommBlockLIProdInfoGridTitleWrapLink), 
+													map-get($miniquiz,mqRecommBlockLIProdInfoGridTitleWrapLink), ()
+												)
+											));
+										}
+									}
+									.product-price {
+										@include print-css(
+											map-merge((
+												padding-top: 15px,
+												font-size: 18px,
+												font-weight: $fontBold,
+												font-family: $maaxBold,
+											), 
+											if(variable-exists(miniquiz) and map-has-key($miniquiz, mqRecommBlockLIProdInfoPrice), 
+												map-get($miniquiz,mqRecommBlockLIProdInfoPrice), ()
+											)
+										));
+										span {
+											@include print-css(
+												map-merge((
+													font-weight: $fontBold,
+												), 
+												if(variable-exists(miniquiz) and map-has-key($miniquiz, mqRecommBlockLIProdInfoPriceSpan), 
+													map-get($miniquiz,mqRecommBlockLIProdInfoPriceSpan), ()
+												)
+											));
+											.price-currency {
+												@include print-css(
+													map-merge((
+														font-weight: $fontBold,
+													), 
+													if(variable-exists(miniquiz) and map-has-key($miniquiz, mqRecommBlockLIProdInfoPriceSpanCurr), 
+														map-get($miniquiz,mqRecommBlockLIProdInfoPriceSpanCurr), ()
+													)
+												));
+											}
+										}
+									}
+								}
+							} 
+						}
+						.mq-recomm-cta {
+							@include print-css(
+								map-merge((
+									clear: both,
+									text-align: center,
+									margin-left: (
+										xMediumOnly: -30px,
+									),
+									margin-right: (
+										xMediumOnly: -30px,
+									),
+								), 
+								if(variable-exists(miniquiz) and map-has-key($miniquiz, mqRecommBlockCTA), 
+									map-get($miniquiz,mqRecommBlockCTA), ()
+								)
+							));
+							.ctaItem {
+								.cta-item {
+									a {
+										&.btn-cta-item {
+											@include print-css(
+												map-merge((
+													margin: (
+														smallUp: 0 15px,
+														xMediumOnly: 0 15px 20px 0,
+													),
+													min-width: (
+														xMediumOnly: 158px,
+													),
+												), 
+												if(variable-exists(miniquiz) and map-has-key($miniquiz, mqRecommBlockCTAItemBtn), 
+													map-get($miniquiz,mqRecommBlockCTAItemBtn), ()
+												)
+											));
+											&:hover {
+												@include print-css(
+													map-merge((
+														text-decoration: none,
+													), 
+													if(variable-exists(miniquiz) and map-has-key($miniquiz, mqRecommBlockCTAItemBtnHover), 
+														map-get($miniquiz,mqRecommBlockCTAItemBtnHover), ()
+													)
+												));
+											}
+										}
+									}
+								}
+							}
+						}
+						.loader-outer {
+							display: none;
+						}
+					}
+				}
+			}
+		}
+		.ctaItem {
+			.cta-item {
+				a {
+					&.btn-cta-item {
+						@include print-css(
+							map-merge((
+								font-family: $maax,
+								padding: 15px 10px,
+								text-align: center,
+								font-size: 16px,
+								min-width: 180px,
+								font-weight: $fontBold,
+								letter-spacing: 1px,
+								margin: 0 15px 20px,
+								background-color: $denim,
+								border: 2px solid $denim,
+								color: $white,
+							), 
+							if(variable-exists(miniquiz) and map-has-key($miniquiz, mqGenericCTABtn), 
+								map-get($miniquiz,mqGenericCTABtn), ()
+							)
+						));
+						&:hover {
+							@include print-css(
+								map-merge((
+									background-color: $scarlet,
+									border: 2px solid $scarlet,
+								), 
+								if(variable-exists(miniquiz) and map-has-key($miniquiz, mqGenericCTABtnHover), 
+									map-get($miniquiz,mqGenericCTABtnHover), ()
+								)
+							));
+						}
+					}
+				}
+			}
+		}
+		.btn {
+			@include print-css(
+				map-merge((
+					padding: 14px 0,
+					text-align: center,
+					font-size: 16px,
+					font-weight: $fontBold,
+					letter-spacing: 1px,
+					margin: (
+						defaultVal: 0 15px 20px,
+						smallUp: 0 15px, 
+						xMediumOnly: 0 15px 0 0,
+					),
+					min-width: (
+						defaultVal: 180px,
+						xMediumOnly: 158px,
+					),
+					background-color: $denim,
+					border: 2px solid $denim,
+					color: $white,
+				), 
+				if(variable-exists(miniquiz) and map-has-key($miniquiz, mqGenericBtn), 
+					map-get($miniquiz,mqGenericBtn), ()
+				)
+			));
+			&:hover {
+				@include print-css(
+					map-merge((
+						background-color: $scarlet,
+						border: 2px solid $scarlet,
+					), 
+					if(variable-exists(miniquiz) and map-has-key($miniquiz, mqGenericBtnHover), 
+						map-get($miniquiz,mqGenericBtnHover), ()
+					)
+				));
+			}
+		}
+	}
+}
+	.mq-outline {
+		.mq-wrapper {
+			.ctaItem {
+				.cta-item {
+					a {
+						&.btn-cta-item {
+							@include print-css(
+								map-merge((
+									background-color: $denim,
+									border: 2px solid $white,
+									color: $white,
+								), 
+								if(variable-exists(miniquiz) and map-has-key($miniquiz, mqOutCTABtn), 
+									map-get($miniquiz,mqOutCTABtn), ()
+								)
+							));
+							&:hover {
+								@include print-css(
+									map-merge((
+										border: 2px solid $scarlet,
+										color: $white,
+									), 
+									if(variable-exists(miniquiz) and map-has-key($miniquiz, mqOutCTABtnHover), 
+										map-get($miniquiz,mqOutCTABtnHover), ()
+									)
+								));								
+							}
+						}
+					}
+				}
+			}
+			.btn {
+				@include print-css(
+					map-merge((
+						background-color: $denim,
+						border: 2px solid $white,
+						color: $white,
+					), 
+					if(variable-exists(miniquiz) and map-has-key($miniquiz, mqOutBtn), 
+						map-get($miniquiz,mqOutBtn), ()
+					)
+				));
+				&:hover {
+					@include print-css(
+						map-merge((
+							border: 2px solid $scarlet,
+							color: $white,
+						), 
+						if(variable-exists(miniquiz) and map-has-key($miniquiz, mqOutBtnHover), 
+							map-get($miniquiz,mqOutBtnHover), ()
+						)
+					));
+				}
+			}
+		}
+		&.theme-dark {
+			.mq-wrapper {
+				.ctaItem {
+					.cta-item {
+						a {
+							&.btn-cta-item {
+								@include print-css(
+									map-merge((
+										background-color: $white,
+										border: 2px solid $denim,
+										color: $denim,
+									), 
+									if(variable-exists(miniquiz) and map-has-key($miniquiz, mqOutDarkCTABtn), 
+										map-get($miniquiz,mqOutDarkCTABtn), ()
+									)
+								));
+								&:hover {
+									@include print-css(
+										map-merge((
+											background-color: $scarlet,
+											border: 2px solid $scarlet,
+											color: $white,
+										), 
+										if(variable-exists(miniquiz) and map-has-key($miniquiz, mqOutDarkCTABtnHover), 
+											map-get($miniquiz,mqOutDarkCTABtnHover), ()
+										)
+									));
+								}
+							}
+						}
+					}
+				}
+				.btn {
+					@include print-css(
+						map-merge((
+							background-color: $white,
+							border: 2px solid $denim,
+							color: $denim,
+						), 
+						if(variable-exists(miniquiz) and map-has-key($miniquiz, mqOutDarkBtn), 
+							map-get($miniquiz,mqOutDarkBtn), ()
+						)
+					));
+					&:hover {
+						@include print-css(
+							map-merge((
+								background-color: $scarlet,
+								border: 2px solid $scarlet,
+								color: $white,
+							), 
+							if(variable-exists(miniquiz) and map-has-key($miniquiz, mqOutDarkBtnHover), 
+								map-get($miniquiz,mqOutDarkBtnHover), ()
+							)
+						));
+					}
+				}
+			}
+		}
+		&.theme-light-alt {
+			.mq-wrapper {
+				.ctaItem {
+					.cta-item {
+						a {
+							&.btn-cta-item {
+								@include print-css(
+									map-merge((
+										background-color: $denim,
+										border: 2px solid $white,
+										color: $white,
+									), 
+									if(variable-exists(miniquiz) and map-has-key($miniquiz, mqOutLightAltCTABtn), 
+										map-get($miniquiz,mqOutLightAltCTABtn), ()
+									)
+								));
+								&:hover {
+									@include print-css(
+										map-merge((
+											border: 2px solid $scarlet,
+											color: $white,
+										), 
+										if(variable-exists(miniquiz) and map-has-key($miniquiz, mqOutLightAltCTABtnHover), 
+											map-get($miniquiz,mqOutLightAltCTABtnHover), ()
+										)
+									));
+								}
+							}
+						}
+					}
+				}
+				.btn {
+					@include print-css(
+						map-merge((
+							background-color: $denim,
+							border: 2px solid $white,
+							color: $white,
+						), 
+						if(variable-exists(miniquiz) and map-has-key($miniquiz, mqOutLightAltBtn), 
+							map-get($miniquiz,mqOutLightAltBtn), ()
+						)
+					));
+					&:hover {
+						@include print-css(
+							map-merge((
+								border: 2px solid $scarlet,
+								color: $white,
+							), 
+							if(variable-exists(miniquiz) and map-has-key($miniquiz, mqOutLightAltBtnHover), 
+								map-get($miniquiz,mqOutLightAltBtnHover), ()
+							)
+						));
+					}
+				}
+			}
+		}
+	}
+	.theme-dark {
+		.mq-wrapper {
+			.row {
+				.mq-banner-copy {
+					@include print-css(
+						map-merge((
+							color: $white,
+						), 
+						if(variable-exists(miniquiz) and map-has-key($miniquiz, darkMqBanner), 
+							map-get($miniquiz,darkMqBanner), ()
+						)
+					));
+					.mq-banner-text {
+						@include print-css(
+							map-merge((
+								color: $white,
+							), 
+							if(variable-exists(miniquiz) and map-has-key($miniquiz, darkMqBannerTxt), 
+								map-get($miniquiz,darkMqBannerTxt), ()
+							)
+						));
+						h1, h2, h3, h4, h5, h6 {
+							@include print-css(
+								map-merge((
+									color: $white,
+								), 
+								if(variable-exists(miniquiz) and map-has-key($miniquiz, darkMqBannerHeadings), 
+									map-get($miniquiz,darkMqBannerHeadings), ()
+								)
+							));
+						}
+					}
+				}
+				.quizQuestion {
+					section {
+						.mq-question-info {
+							@include print-css(
+								map-merge((
+									color: $white,
+								), 
+								if(variable-exists(miniquiz) and map-has-key($miniquiz, darkMqQuestionInfo), 
+									map-get($miniquiz,darkMqQuestionInfo), ()
+								)
+							));
+							h2 {
+								@include print-css(
+									map-merge((
+										color: $white,
+									), 
+									if(variable-exists(miniquiz) and map-has-key($miniquiz, darkMqQuestionInfoH2), 
+										map-get($miniquiz,darkMqQuestionInfoH2), ()
+									)
+								)); 
+							}
+							p {
+								@include print-css(
+									map-merge((
+										color: $white,
+									), 
+									if(variable-exists(miniquiz) and map-has-key($miniquiz, darkMqQuestionInfoPara), 
+										map-get($miniquiz,darkMqQuestionInfoPara), ()
+									)
+								));  
+							}
+							.mq-question-counter {
+								@include print-css(
+									map-merge((
+										color: $white,
+									), 
+									if(variable-exists(miniquiz) and map-has-key($miniquiz, darkMqQuestionCounter), 
+										map-get($miniquiz,darkMqQuestionCounter), ()
+									)
+								));  
+								span {
+									@include print-css(
+										map-merge((
+											color: $white,
+										), 
+										if(variable-exists(miniquiz) and map-has-key($miniquiz, darkMqQuestionCounterSpan), 
+											map-get($miniquiz,darkMqQuestionCounterSpan), ()
+										)
+									)); 
+								}
+							}
+						}
+						.mq-answer-info {
+							.mq-ans-elements {
+								form {
+									.mq-ans-option {
+										fieldset {
+											ul {
+												li {
+													input {
+														&+label {
+															@include print-css(
+																map-merge((
+																	color: $white,
+																), 
+																if(variable-exists(miniquiz) and map-has-key($miniquiz, darkMqAnsOptLabel), 
+																	map-get($miniquiz,darkMqAnsOptLabel), ()
+																)
+															));
+															&:after {
+																@include print-css(
+																	map-merge((
+																		background-color: $white,
+																	), 
+																	if(variable-exists(miniquiz) and map-has-key($miniquiz, darkMqAnsOptLabelAfter), 
+																		map-get($miniquiz,darkMqAnsOptLabelAfter), ()
+																	)
+																));
+															}
+														}
+														&[type='radio']+label {
+															&:after {
+																@include print-css(
+																	map-merge((
+																		border-radius: 100%,
+																	), 
+																	if(variable-exists(miniquiz) and map-has-key($miniquiz, darkMqAnsOptRadioRadius), 
+																		map-get($miniquiz,darkMqAnsOptRadioRadius), ()
+																	)
+																));
+															}
+														}
+														&[type='checkbox']:checked+label,
+														&[type='radio']:checked+label {
+															@include print-css(
+																map-merge((
+																	color: $black,
+																), 
+																if(variable-exists(miniquiz) and map-has-key($miniquiz, darkMqAnsOptLabelChecked), 
+																	map-get($miniquiz,darkMqAnsOptLabelChecked), ()
+																)
+															));
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+				.mq-thankyou {
+					.mq-thanks-txt-msg {
+						.card {
+							.card-component {
+								.text-container {
+									.content {
+										@include print-css(
+											map-merge((
+												color: $white,
+											), 
+											if(variable-exists(miniquiz) and map-has-key($miniquiz, darkMqThanksContent), 
+												map-get($miniquiz,darkMqThanksContent), ()
+											)
+										));
+										.main-title {
+											@include print-css(
+												map-merge((
+													color: $white,
+												), 
+												if(variable-exists(miniquiz) and map-has-key($miniquiz, darkMqThanksMainTitle), 
+													map-get($miniquiz,darkMqThanksMainTitle), ()
+												)
+											));
+										}
+										.sub-title {
+											@include print-css(
+												map-merge((
+													color: $white,
+												), 
+												if(variable-exists(miniquiz) and map-has-key($miniquiz, darkMqThanksSubTitle), 
+													map-get($miniquiz,darkMqThanksSubTitle), ()
+												)
+											));
+										}
+										.text-para {
+											p {
+												@include print-css(
+													map-merge((
+														color: $white,
+													), 
+													if(variable-exists(miniquiz) and map-has-key($miniquiz, darkMqThanksTextPara), 
+														map-get($miniquiz,darkMqThanksTextPara), ()
+													)
+												));
+											}
+										}
+									}
+								}
+							}
+						}
+						.mq-thanks-msg-cta-container {
+							.mq-thanks-msg {
+								h2 {
+									@include print-css(
+										map-merge((
+											color: $white,
+										), 
+										if(variable-exists(miniquiz) and map-has-key($miniquiz, darkMqThanksMsgHeading), 
+											map-get($miniquiz,darkMqThanksMsgHeading), ()
+										)
+									));
+								}
+								p {
+									@include print-css(
+										map-merge((
+											color: $white,
+										), 
+										if(variable-exists(miniquiz) and map-has-key($miniquiz, darkMqThanksMsgPara), 
+											map-get($miniquiz,darkMqThanksMsgPara), ()
+										)
+									));
+								}
+							}
+						}
+					}
+					.mq-recomm {
+						.mq-recomm-thanks-msg {
+							@include print-css(
+								map-merge((
+									color: $white,
+								), 
+								if(variable-exists(miniquiz) and map-has-key($miniquiz, darkMqRecommThanksMsg), 
+									map-get($miniquiz,darkMqRecommThanksMsg), ()
+								)
+							));
+							h1, h2, h3, h4, h5, h6 {
+								@include print-css(
+									map-merge((
+										color: $white,
+									), 
+									if(variable-exists(miniquiz) and map-has-key($miniquiz, darkMqRecommThanksMsgHeadings), 
+										map-get($miniquiz,darkMqRecommThanksMsgHeadings), ()
+									)
+								));
+							}
+							p {
+								@include print-css(
+									map-merge((
+										color: $white,
+									), 
+									if(variable-exists(miniquiz) and map-has-key($miniquiz, darkMqRecommThanksMsgPara), 
+										map-get($miniquiz,darkMqRecommThanksMsgPara), ()
+									)
+								));
+							}
+						}
+						.mq-recomm-block {
+							ul {
+								li {
+									.product-info {
+										.grid-title-wrapper {
+											@include print-css(
+												map-merge((
+													color: $white,
+												), 
+												if(variable-exists(miniquiz) and map-has-key($miniquiz, darkMqRecommBlockGrid), 
+													map-get($miniquiz,darkMqRecommBlockGrid), ()
+												)
+											));
+											a {
+												@include print-css(
+													map-merge((
+														color: $white,
+													), 
+													if(variable-exists(miniquiz) and map-has-key($miniquiz, darkMqRecommBlockGridAnchor), 
+														map-get($miniquiz,darkMqRecommBlockGridAnchor), ()
+													)
+												));
+											}
+										}
+										.product-price {
+											@include print-css(
+												map-merge((
+													color: $white,
+												), 
+												if(variable-exists(miniquiz) and map-has-key($miniquiz, darkMqRecommBlockProdPrice), 
+													map-get($miniquiz,darkMqRecommBlockProdPrice), ()
+												)
+											));
+											span {
+												@include print-css(
+													map-merge((
+														color: $white,
+													), 
+													if(variable-exists(miniquiz) and map-has-key($miniquiz, darkMqRecommBlockProdPriceSpan), 
+														map-get($miniquiz,darkMqRecommBlockProdPriceSpan), ()
+													)
+												));
+												.price-currency {
+													@include print-css(
+														map-merge((
+															color: $white,
+														), 
+														if(variable-exists(miniquiz) and map-has-key($miniquiz, darkMqRecommBlockProdCurr), 
+															map-get($miniquiz,darkMqRecommBlockProdCurr), ()
+														)
+													));
+												}
+											}
+										}
+									}
+								} 
+							}
+						}
+					}
+				}
+			}
+			.ctaItem {
+				.cta-item {
+					a {
+						&.btn-cta-item {
+							@include print-css(
+								map-merge((
+									background-color: $white,
+									border: 2px solid $white,
+									color: $denim,
+								), 
+								if(variable-exists(miniquiz) and map-has-key($miniquiz, darkCTABtn), 
+									map-get($miniquiz,darkCTABtn), ()
+								)
+							));
+							&:hover {
+								@include print-css(
+									map-merge((
+										background-color: $scarlet,
+										border: 2px solid $scarlet,
+										color: $white,
+									), 
+									if(variable-exists(miniquiz) and map-has-key($miniquiz, darkCTABtnHover), 
+										map-get($miniquiz,darkCTABtnHover), ()
+									)
+								));
+							}
+						}
+					}
+				}
+			}
+			.btn {
+				@include print-css(
+					map-merge((
+						background-color: $white,
+						border: 2px solid $white,
+						color: $denim,
+					), 
+					if(variable-exists(miniquiz) and map-has-key($miniquiz, darkBtn), 
+						map-get($miniquiz,darkBtn), ()
+					)
+				));
+				&:hover {
+					@include print-css(
+						map-merge((
+							background-color: $scarlet,
+							border: 2px solid $scarlet,
+							color: $white,
+						), 
+						if(variable-exists(miniquiz) and map-has-key($miniquiz, darkBtnHover), 
+							map-get($miniquiz,darkBtnHover), ()
+						)
+					));
+				}
+			}
+		}
+	}
+	.theme-light-alt {
+		.mq-wrapper {
+			.row {
+				.quizQuestion {
+					section {
+						.mq-answer-info {
+							.mq-ans-elements {
+								form {
+									.mq-ans-option {
+										fieldset {
+											ul {
+												li {
+													input {
+														&+label {
+															@include print-css(
+																map-merge((
+																	border-color: $pampas,
+																), 
+																if(variable-exists(miniquiz) and map-has-key($miniquiz, lightAltLabel), 
+																	map-get($miniquiz,lightAltLabel), ()
+																)
+															));
+														}
+														&[type='checkbox']:checked+label,
+														&[type='radio']:checked+label {
+															@include print-css(
+																map-merge((
+																	background-color: $pampas,
+																), 
+																if(variable-exists(miniquiz) and map-has-key($miniquiz, lightAltLabelChkd), 
+																	map-get($miniquiz,lightAltLabelChkd), ()
+																)
+															));
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			.ctaItem {
+				.cta-item {
+					a {
+						&.btn-cta-item {
+							@include print-css(
+								map-merge((
+									background-color: $denim,
+									border: 2px solid $denim,
+									color: $white,
+								), 
+								if(variable-exists(miniquiz) and map-has-key($miniquiz, lightAltCTABtn), 
+									map-get($miniquiz,lightAltCTABtn), ()
+								)
+							));
+							&:hover {
+								@include print-css(
+									map-merge((
+										background-color: $scarlet,
+										border: 2px solid $scarlet,
+									), 
+									if(variable-exists(miniquiz) and map-has-key($miniquiz, lightAltCTABtnHover), 
+										map-get($miniquiz,lightAltCTABtnHover), ()
+									)
+								));
+							}
+						}
+					}
+				}
+			}
+			.btn {
+				@include print-css(
+					map-merge((
+						background-color: $denim,
+						border: 2px solid $denim,
+						color: $white,
+					), 
+					if(variable-exists(miniquiz) and map-has-key($miniquiz, lightAltBtn), 
+						map-get($miniquiz,lightAltBtn), ()
+					)
+				));
+				&:hover {
+					@include print-css(
+						map-merge((
+							background-color: $scarlet,
+							border: 2px solid $scarlet,
+						), 
+						if(variable-exists(miniquiz) and map-has-key($miniquiz, lightAltBtnHover), 
+							map-get($miniquiz,lightAltBtnHover), ()
+						)
+					));
+				}
+			}
+		}
+	}
+	.half-width-sm {
+		.col-first, .col-second  {		
+			@include print-css(
+				map-merge((
+					width: (
+						xMediumOnly: 50%,
+					)
+				), 
+				if(variable-exists(miniquiz) and map-has-key($miniquiz, halfWidthSMCol), 
+					map-get($miniquiz,halfWidthSMCol), ()
+				)
+			));
+		}
+	}
+	.half {
+		.mq-wrapper {
+			@include print-css(
+				map-merge((
+					min-height: 513px,
+				), 
+				if(variable-exists(miniquiz) and map-has-key($miniquiz, halfMqWrapper), 
+					map-get($miniquiz,halfMqWrapper), ()
+				)
+			));
+			.row {
+				.mq-banner-copy {
+					@include print-css(
+						map-merge((
+							text-align: (
+								mediumUp: center,
+							),
+						), 
+						if(variable-exists(miniquiz) and map-has-key($miniquiz, halfMqBanner), 
+							map-get($miniquiz,halfMqBanner), ()
+						)
+					));
+				}
+				.quizQuestion {
+					@include print-css(
+						map-merge((
+							max-width: inherit,
+							padding: (
+								defaultVal: 0 30px,
+								smOnly: 0 55px,
+								mediumUp: 0 30px,
+							),
+						), 
+						if(variable-exists(miniquiz) and map-has-key($miniquiz, halfQuizQuestion), 
+							map-get($miniquiz,halfQuizQuestion), ()
+						)
+					));
+					section {
+						@include print-css(
+							map-merge((
+								display: none,
+							), 
+							if(variable-exists(miniquiz) and map-has-key($miniquiz, halfQuizQuestionSection), 
+								map-get($miniquiz,halfQuizQuestionSection), ()
+							)
+						));
+						&.active {
+							@include print-css(
+								map-merge((
+									display: (
+										defaultVal: block,
+										mediumUp: inherit,
+									),
+								), 
+								if(variable-exists(miniquiz) and map-has-key($miniquiz, halfQuizQuestionSectionActive), 
+									map-get($miniquiz,halfQuizQuestionSectionActive), ()
+								)
+							));
+						}
+						.mq-question-info {
+							position: relative;
+							min-height: 1px;
+							padding-right: 15px;
+							padding-left: 15px;
+							width: 100%;
+							float: left;
+							@media #{$small-up} {
+								width: 100%;
+								margin-left: 0;
+							};
+							@media #{$medium-up} {
+								width: 83.33333333%;
+								margin-left: 8.33333333%;
+							};
+							@media #{$large-up} {
+								width: 100%;
+								margin-left: 0;
+							};
+							@include print-css(
+								map-merge((
+									text-align: (
+										mediumUp: center,
+									),
+								), 
+								if(variable-exists(miniquiz) and map-has-key($miniquiz, halfQuizQuestionInfo), 
+									map-get($miniquiz,halfQuizQuestionInfo), ()
+								)
+							));
+						}
+						.mq-answer-info {
+							position: relative;
+							min-height: 1px;
+							padding-right: 15px;
+							padding-left: 15px;
+							width: 100%;
+							float: left;
+							@media #{$small-up} {
+								width: 100%;
+								margin-left: 0;
+							};
+							@media #{$medium-up} {
+								width: 83.33333333%;
+								margin-left: 8.33333333%;
+							};
+							@media #{$large-up} {
+								width: 100%;
+								margin-left: 0;
+							};
+							.mq-ans-elements {
+								@include print-css(
+									map-merge((
+										top: (
+											mediumUp: auto,
+										),
+										transform: (
+											mediumUp: none,
+										),
+									), 
+									if(variable-exists(miniquiz) and map-has-key($miniquiz, halfQuizAnsInfoElem), 
+										map-get($miniquiz,halfQuizAnsInfoElem), ()
+									)
+								));
+								form {
+									.mq-ans-option {
+										fieldset {
+											ul {
+												li {
+													position: relative;
+													min-height: 1px;
+													padding-right: 15px;
+													padding-left: 15px;
+													width: 100%;
+													float: left;
+													@media #{$small-up} {
+													width: 100%;
+													};
+													@media #{$medium-up} {
+													width: 100%;
+													};
+													@media #{$large-up} {
+													width: 50%;
+													};
+													@include print-css(
+														map-merge((
+															min-height: 63px,
+														), 
+														if(variable-exists(miniquiz) and map-has-key($miniquiz, halfQuizAnsFormLI), 
+															map-get($miniquiz,halfQuizAnsFormLI), ()
+														)
+													));
+												}
+											}
+										}
+									}
+								}
+								.mq-ans-cta {
+									@include print-css(
+										map-merge((
+											text-align: center,
+										), 
+										if(variable-exists(miniquiz) and map-has-key($miniquiz, halfQuizAnsCTA), 
+											map-get($miniquiz,halfQuizAnsCTA), ()
+										)
+									));
+									.btn {
+										@include print-css(
+											map-merge((
+												margin: (
+													defaultVal: 0 15px 20px,
+													smallUp: 0 15px 20px,
+												),
+												clear: (
+													smallUp: both,
+												),
+											), 
+											if(variable-exists(miniquiz) and map-has-key($miniquiz, halfQuizAnsBtn), 
+												map-get($miniquiz,halfQuizAnsBtn), ()
+											)
+										));
+									}
+								}
+							}
+						}
+					}
+				}
+				.mq-thankyou {
+					display: none;
+					&.active {
+						display: block;
+					}
+					.mq-thanks-txt-msg {
+						.card {
+							@include print-css(
+								map-merge((
+									padding-top: 154px,
+								), 
+								if(variable-exists(miniquiz) and map-has-key($miniquiz, halfQuizThanksMsgCard), 
+									map-get($miniquiz,halfQuizThanksMsgCard), ()
+								)
+							));
+							.card-component {
+								.image-container {
+									position: relative;
+									min-height: 1px;
+									padding-right: 15px;
+									padding-left: 15px;
+									width: 100%;
+									float: left;
+									margin-left: 0;
+									@media #{$small-up} {
+										width: 100%;
+										margin-left: 0;
+									};
+									@media #{$medium-up} {
+										width: 100%;
+										margin-left: 0;
+									};
+									@media #{$large-up} {
+										width: 100%;
+										margin-left: 0;
+									};
+									@include print-css(
+										map-merge((
+											text-align: center,
+										), 
+										if(variable-exists(miniquiz) and map-has-key($miniquiz, halfQuizThanksMsgCardImgCont), 
+											map-get($miniquiz,halfQuizThanksMsgCardImgCont), ()
+										)
+									));
+									img {
+										@include print-css(
+											map-merge((
+												width: (
+													defaultVal: 120px,
+													smOnly: 54px,
+													xMediumOnly: 152px,
+													xLargeOnly: 58px,
+													largeUp: 71px,
+												),
+												height: (
+													defaultVal: 120px,
+													smOnly: 54px,
+													xMediumOnly: 152px,
+													xLargeOnly: 58px,
+													largeUp: 71px,
+												),
+											), 
+											if(variable-exists(miniquiz) and map-has-key($miniquiz, halfQuizThanksMsgCardImg), 
+												map-get($miniquiz,halfQuizThanksMsgCardImg), ()
+											)
+										));
+									}
+								}
+								.text-container {
+									position: relative;
+									min-height: 1px;
+									padding-right: 15px;
+									padding-left: 15px;
+									width: 100%;
+									float: left;
+									@media #{$small-up} {
+									width: 100%;
+									};
+									@media #{$medium-up} {
+									width: 100%;
+									};
+									@media #{$large-up} {
+									width: 83.33333333%;
+									margin-left: 8.33333333%;
+									};
+									@include print-css(
+										map-merge((
+											text-align: (
+												defaultVal: center,
+												mediumUp: left,
+											),
+											padding: (
+												xLargeOnly: 0,
+											),
+										), 
+										if(variable-exists(miniquiz) and map-has-key($miniquiz, halfQuizThanksMsgTextCont), 
+											map-get($miniquiz,halfQuizThanksMsgTextCont), ()
+										)
+									));
+									.content {
+										position: relative;
+										min-height: 1px;
+										padding-right: 15px;
+										padding-left: 15px;
+										width: 100%;
+										float: left;
+										@media #{$small-up} {
+											width: 100%;
+										};
+										@media #{$medium-up} {
+											width: 100%;
+										};
+										@media #{$large-up} {
+											width: 100%;
+										};
+										@include print-css(
+											map-merge((
+												text-align: center,
+											), 
+											if(variable-exists(miniquiz) and map-has-key($miniquiz, halfQuizThanksMsgContent), 
+												map-get($miniquiz,halfQuizThanksMsgContent), ()
+											)
+										));
+										.text-para {
+											margin: 0;
+											p {
+												@include print-css(
+													map-merge((
+														font-family: $maax,
+														font-size: 18px,
+														margin: (
+															defaultVal: 20px 0,
+															smallUp: 20px 0 30px,
+															mediumUp: 7px 0 34px,
+														),
+													), 
+													if(variable-exists(miniquiz) and map-has-key($miniquiz, halfQuizThanksMsgTxtPara), 
+														map-get($miniquiz,halfQuizThanksMsgTxtPara), ()
+													)
+												));
+											}
+										}
+									}
+									.ctaItem {
+										@media #{$small-up} {
+											position: relative;
+											min-height: 1px;
+											padding-right: 15px;
+											padding-left: 15px;
+											width: 100%;
+											float: left;
+										};
+										@media #{$medium-up} {
+											width: 50%;
+										};
+										.cta-item {
+											a {
+												&.btn-cta-item {
+													@include print-css(
+														map-merge((
+															margin: (
+																defaultVal: 0 auto 20px,
+																largeUp: 0 16px 0 0,
+															),
+															display: (
+																defaultVal: block,
+																largeUp: inline-block,
+															),
+														), 
+														if(variable-exists(miniquiz) and map-has-key($miniquiz, halfQuizThanksMsgBtnCTA), 
+															map-get($miniquiz,halfQuizThanksMsgBtnCTA), ()
+														)
+													));
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					.mq-recomm {
+						@include print-css(
+							map-merge((
+								padding-top: 10px,
+							), 
+							if(variable-exists(miniquiz) and map-has-key($miniquiz, halfQuizThanksMsgMqRecomm), 
+								map-get($miniquiz,halfQuizThanksMsgMqRecomm), ()
+							)
+						));
+						.mq-recomm-thanks-msg {
+							position: relative;
+							min-height: 1px;
+							padding-right: 15px;
+							padding-left: 15px;
+							width: 100%;
+							float: left;
+							@media #{$small-up} {
+								width: 100%;
+								margin-left: 0;
+							};
+							@media #{$medium-up} {
+								width: 100%;
+								margin-left: 0;
+							};
+							@media #{$large-up} {
+								width: 100%;
+							};
+							@include print-css(
+								map-merge((
+									text-align: center,
+								), 
+								if(variable-exists(miniquiz) and map-has-key($miniquiz, halfQuizThanksMsgMqRecommThanksMsg), 
+									map-get($miniquiz,halfQuizThanksMsgMqRecommThanksMsg), ()
+								)
+							));
+						}
+						.mq-recomm-block {
+							position: relative;
+							min-height: 1px;
+							padding-right: 15px;
+							padding-left: 15px;
+							width: 100%;
+							float: left;
+							@media #{$small-up} {
+								width: 100%;
+								margin-left: 0;
+							};
+							@media #{$medium-up} {
+								width: 100%;
+								margin-left: 0;
+							};
+							@media #{$large-up} {
+								width: 100%;
+							};
+							ul {							
+								li {
+									position: relative;
+									min-height: 1px;
+									padding-right: 15px;
+									padding-left: 15px;
+									width: 50%;
+									float: left;
+									@media #{$small-up} {
+										width: 50%;
+									};
+									@media #{$medium-up} {
+										width: 50%;
+									};
+									@media #{$large-up} {
+										width: 33.33333333%;
+									};
+									@include print-css(
+										map-merge((
+											padding-left: 12.5px,
+											padding-right: 12.5px,
+										), 
+										if(variable-exists(miniquiz) and map-has-key($miniquiz, halfQuizThanksMsgMqRecommBlockLI), 
+											map-get($miniquiz,halfQuizThanksMsgMqRecommBlockLI), ()
+										)
+									));
+								} 
+							}
+							.mq-recomm-cta {
+								@include print-css(
+									map-merge((
+										clear: both,
+										text-align: center, 
+									), 
+									if(variable-exists(miniquiz) and map-has-key($miniquiz, halfQuizThanksMsgMqRecommCTA), 
+										map-get($miniquiz,halfQuizThanksMsgMqRecommCTA), ()
+									)
+								));
+								.ctaItem {
+									@include print-css(
+										map-merge((
+											display: (
+												defaultVal: block,
+												largeUp: inline-block,
+											),
+										), 
+										if(variable-exists(miniquiz) and map-has-key($miniquiz, halfQuizThanksMsgMqRecommCTAItem), 
+											map-get($miniquiz,halfQuizThanksMsgMqRecommCTAItem), ()
+										)
+									));
+									.cta-item {
+										a {
+											&.btn-cta-item {
+												@include print-css(
+													map-merge((
+														margin: (
+															defaultVal: 0 auto 20px,
+															largeUp: 0 30px 20px 0,
+														),
+														display: (
+															defaultVal: block,
+															largeUp: inline-block,
+														),
+													), 
+													if(variable-exists(miniquiz) and map-has-key($miniquiz, halfQuizThanksMsgMqRecommCTAItemBtn), 
+														map-get($miniquiz,halfQuizThanksMsgMqRecommCTAItemBtn), ()
+													)
+												));
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	.zerosidepadding {
+		.col-first,
+		.col-second {
+			padding-left: 0 !important;
+			padding-right: 0 !important;
+		}
+	}

@@ -1,0 +1,64 @@
+.homepage-page {
+  .image-text-container {
+    .col-2 {
+      // border-top: 3px solid #000;
+      border-bottom: 2px solid #000;
+      background: #000;
+      @extend .col-xs-12;
+      padding: 0;
+      .col-first,
+      .col-second {
+        padding: 0;
+      }
+      .col-first {
+        @extend .col-sm-8;
+      }
+      .col-second {
+        display: none;
+        @media #{$small-up} {
+          display: block;
+        }
+        border-left: 2px solid #000;
+        @extend .col-xs-4;
+        // @extend .hidden-xs;
+      }
+      .slick-arrow,
+      .slick-dots {
+        display: none !important;
+      }
+    }
+    .carousel-slides {
+      padding-bottom: 0;
+      border: none;
+    }
+  }
+  .promoCarousel{
+    .cda-banner.enable-carousel{
+      .carousel-slides{
+        padding-bottom: 0;
+        border-bottom: 0;
+        .slick-arrow{
+          background-color:transparent;
+          &.slick-prev{
+            left: -15px;
+          }
+          &.slick-next{
+            right: -15px;
+          }
+        }
+        .slick-dots{
+          bottom: 10px;
+          @media #{$small-up}{
+            bottom: 20px;
+          }
+          li{
+            margin: 0 3px !important;
+            button{
+              @include border-radius(50px);
+            }
+          }
+        }
+      }
+    }
+  }
+}

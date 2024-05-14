@@ -1,0 +1,30 @@
+<sly data-sly-test="${wcmmode.edit}">${'Article Component' @ i18n}</sly>
+<sly data-sly-use.lib="mattel/global/components/content/dynamicMedia/v1/dynamicMedia/imageblock.html" />
+
+<sly data-sly-use.articleModel="com.mattel.fisherprice.core.models.ArticleModel">
+        <div class="article-text">
+			<div class="main-title" data-sly-test="${properties.articleTitle || articleModel.pageTitle}">
+				<h1>${properties.articleTitle || articleModel.pageTitle}</h1>
+			</div>
+			<div class="sub-title" data-sly-test="${articleModel.primaryTagTitle || articleModel.secondaryTagTitle}">
+                <h4>${articleModel.primaryTagTitle @ i18n}<sly data-sly-test="${articleModel.secondaryTagTitle}">,  ${articleModel.secondaryTagTitle @ i18n}</sly></h4>
+			</div>
+		</div>
+    <div data-sly-test="${properties.image}" class="hide">
+         	<div data-sly-call="${lib.imageVideoSection @ imageDetail='image'}" data-sly-unwrap ></div>
+    </div>
+</sly>
+
+<sly data-sly-test = "${wcmmode.edit}">
+	<div style="color:#FF0000">
+        <sly data-sly-test = "${properties.articleTitle == null}">
+            <p>${'Please author Article Title.' @ i18n}</p>
+        </sly>
+        <sly data-sly-test = "${properties.articleShortDescription == null}">
+            <p>${'Please author Article Short Description.' @ i18n}</p>
+        </sly>
+        <sly data-sly-test = "${properties.image == null}">
+            <p>${'Please author Article Image.' @ i18n}</p>
+        </sly>
+    </div>
+</sly>

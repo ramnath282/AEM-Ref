@@ -1,0 +1,208 @@
+// Hamburger Styles
+.hamburger {
+    color: $hamburger-btn-color;
+    margin: 1.35em 0 0 0;
+    float: right !important;
+    width: 42px;
+    padding: 0;
+
+    @media #{$medium-up} {
+        display: block;
+    }
+
+    @media #{$large-up} {
+        display: none;
+    }
+
+    &.open {
+        &:after {
+            content: "\f00d";
+        }
+    }
+
+    &:after {
+        font-size: em(35);
+    }
+}
+
+// Primary Navigation Styles
+.primary-nav {
+    @media #{$small-down} {
+        padding-top: 35px;
+        padding-bottom: 35px;
+    }
+
+    @media #{$large-down} {
+        display: none;
+        position: absolute;
+        left: 0;
+        top: em(70);
+        width: 100%;
+        height: auto;
+        background-color: $mob-nav-bg;
+        box-shadow: 0 0.125em 0.125em rgba(0, 0, 0, 0.25);
+        max-height: 410px;
+        overflow-y: scroll;
+        padding-top: 24px;
+        padding-bottom: 34px;
+
+        ul {
+            background-color: $mob-nav-bg;
+            /*background-image: url('/../../../../../../../../content/dam/mattel/polly-pocket/play-site/images/mobile-nav-bg.png');*/
+            background-position: 95% 90%;
+            background-size: 7em;
+            background-repeat: no-repeat;
+
+            ul {
+                background-image: none;
+            }
+        }
+    }
+
+    @media #{$large-up} {
+        float: right;
+        display: inline-block !important;
+        min-height: em(70);
+        background: transparent;
+        height: 70px;
+    }
+
+    ul {
+        margin: em(15) 0;
+
+        @media #{$medium-up} {
+            margin: em(20) 0 0 0;
+        }
+
+        @media #{$large-up} {
+            margin: 0;
+        }
+
+        @media #{$large-up} {
+            height: 100%;
+        }
+
+        li {
+            display: block;
+            position: relative;
+            vertical-align: middle;
+            /*padding: .44em 1.5625em 0px;*/
+            padding: 0 1.5625em;
+
+            @media #{$large-up} {
+                display: inline-table;
+                height: 100%;
+
+                &:hover,
+                &:focus
+                  {
+                    ul {
+                        display: block;
+                        visibility: visible;
+                    }
+                }
+
+            }
+
+            a {
+                color: $mob-nav-link-color;
+                letter-spacing: 1px;
+                line-height: 35px;
+
+                @media #{$large-up} {
+                    color: $nav-link-color;
+                    display: table-cell;
+                    vertical-align: middle;
+                    border-bottom: 10px solid transparent;
+                    padding: em(8) 0 0 0;
+
+                    &.active {
+                        border-bottom: 10px solid $nav-link-color;
+                    }
+                }
+
+                display: block;
+                /*padding: 0 1.5625em;
+                padding: 0.22em 1.5625em;*/
+                text-decoration: none;
+                font-size: em(24);
+                text-transform: uppercase;
+                padding:.4143em 0;
+                
+                span {
+                    font-family: inherit;
+                }
+
+            }
+
+            .header-img {
+                width: em(15);
+                height: em(15);
+                margin-right: em(5);
+            }
+
+            ul {
+                display: none;
+                background-color: rgba($sub-nav-link-bg, 0.8);
+                position: absolute;
+                top: em(70);
+                left: em(10);
+                min-width: em(220);
+                width: auto;
+                padding: 0 em(20);
+
+                -webkit-transition: 250ms cubic-bezier(.25, .75, .75, 1.25);
+                -o-transition: 250ms cubic-bezier(.25, .75, .75, 1.25);
+                transition: 250ms cubic-bezier(.25, .75, .75, 1.25);
+                height: auto;
+
+                li {
+                    display: block;
+                    font-size: em(10);
+
+                    a {
+                        color: $mob-nav-link-color !important;
+                        border-bottom: none;
+                        padding: em(18) 0;
+                    }
+                }
+            }
+        }
+    }
+
+    @media #{$large-down} {
+        ul {
+            li {
+                a {
+                    &.show-sub-nav {
+                        font-size: em(34);
+                        color: $mob-nav-link-color;
+                        width: 40px;
+                        height: 40px;
+                        float: right;
+                        padding: 0;
+                        line-height: normal;
+                        text-align: center;
+                        margin-top: em(4);
+                    }
+                }
+
+                ul {
+                    display: none;
+                    background-color: transparent;
+                    position: relative;
+                    top: 0;
+                    left: 0;
+                    width: auto;
+
+                    li {
+                        font-size: em(12);
+                        padding: 0;
+                        border: 0;
+                        text-indent: 1em;
+                    }
+                }
+            }
+        }
+    }
+}

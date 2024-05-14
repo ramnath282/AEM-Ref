@@ -1,0 +1,34 @@
+<sly data-sly-test="${wcmmode.edit}">${'CTA Component' @i18n}</sly>
+
+<sly data-sly-use.ctaModel="com.mattel.global.core.model.CtaModel">
+    <sly data-sly-test="${properties.ctaUrlTarget =='sameWindow'}">
+        <sly data-sly-test="${ctaModel.linkStatus == true}">
+            <a class="btn theme-btn" href="${properties.ctaUrl}" alt="CTA Button" data-tracking-id="Click-Event|HeroImageBanner|CTA">${properties.ctaText}</a>
+        </sly>
+        <sly data-sly-test="${ctaModel.linkStatus == false}">
+            <a class="btn theme-btn" href="${properties.ctaUrl @extension='html'}" alt="CTA Button" data-tracking-id="Click-Event|HeroImageBanner|CTA">${properties.ctaText}</a>
+        </sly>
+    </sly>
+    <sly data-sly-test="${properties.ctaUrlTarget=='tabWindow'}">
+            <sly data-sly-test="${ctaModel.linkStatus == true}">
+            <a class="btn theme-btn" href="${properties.ctaUrl}" alt="CTA Button" target="_blank" data-tracking-id="Click-Event|HeroImageBanner|CTA">${properties.ctaText}</a>
+        </sly>
+        <sly data-sly-test="${ctaModel.linkStatus == false}">
+            <a class="btn theme-btn" href="${properties.ctaUrl @extension='html'}" alt="CTA Button" target="_blank" data-tracking-id="Click-Event|HeroImageBanner|CTA">${properties.ctaText}</a>
+        </sly>
+    </sly>
+    
+    <sly data-sly-test="${properties.ctaUrlTarget =='newWindow'}">
+            <sly data-sly-test="${ctaModel.linkStatus == true}">
+            <a class="btn theme-btn" data-url="${properties.ctaUrl}" alt="CTA Button" onclick="window.open(this.dataset.url,'_blank','location=yes, width=500, height=500');" data-tracking-id="Click-Event|HeroImageBanner|CTA">${properties.ctaText}</a>
+        </sly>
+        <sly data-sly-test="${ctaModel.linkStatus == false}">
+            <a class="btn theme-btn" data-url="${properties.ctaUrl @extension='html'}" alt="CTA Button" onclick="window.open(this.dataset.url,'_blank','location=yes, width=500, height=500');" data-tracking-id="Click-Event|HeroImageBanner|CTA">${properties.ctaText}</a>
+        </sly>
+    </sly>
+</sly>
+
+
+
+
+

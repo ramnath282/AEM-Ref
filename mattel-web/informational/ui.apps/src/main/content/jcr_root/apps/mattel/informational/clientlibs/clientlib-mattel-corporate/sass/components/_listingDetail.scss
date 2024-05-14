@@ -1,0 +1,489 @@
+.article-component-outerWrapper {
+    .banner-wrapper {
+        background: mapping($articleComponent, banner_inner_wrapper, background);
+        .banner-inner-wrapper {
+            @include content-spacing(map-get($articleComponent, banner_inner_wrapper));
+            max-width: mapping($articleComponent, banner_inner_wrapper, width);
+            margin: 0 auto;
+            .banner-title {
+                color: mapping($articleComponent, banner_title, color);
+                font: mapping($articleComponent, banner_title, font);
+                letter-spacing: mapping($articleComponent, banner_title, letter_spacing);
+                line-height: mapping($articleComponent, banner_title, line_height);
+                margin: mapping($articleComponent, banner_title, margin);
+                @media #{$small-down} {
+                    font: bold 24px/28px $MattelCorpPrimaryFontBold;
+                }
+            }
+        }
+    }
+    .content-wrapper {
+        max-width: mapping($articleComponent, content_wrapper, maxWidth);
+        margin: mapping($articleComponent, content_wrapper, margin);
+        @media #{$lg-only} {
+            padding: 0 20px;
+        }
+        @media #{$tablet-mobile} {
+            padding: 0 20px;
+            margin: 20px auto;
+        }
+        .content-inner-wrapper {
+            @include content-spacing(map-get($articleComponent, content_inner_wrapper));
+            @media #{$small-down} {
+                padding: 0;
+            }
+            @media #{$small-up} {
+                display: mapping($articleComponent, content_inner_wrapper, display);
+            }
+            .left-wrapper {
+                width: mapping($articleComponent, left_wrapper, width_sm);
+                color: mapping($articleComponent, left_wrapper, color);
+                font-family: mapping($articleComponent, left_wrapper, fontFamily);
+                @media #{$small-up} {
+                    width: mapping($articleComponent, left_wrapper, width_md);
+                }
+                >img.media-image {
+                    display: none;
+                }
+                .bw-release-contact{
+                    h2{
+                        font-size: 18px;
+                    }
+                    .bwuline{
+                        text-decoration: none;
+                        @media #{$small-down} {
+                            font-weight: 400;
+                        }
+                    }
+                }
+                .media-image {
+                    width: mapping($articleComponent, media_image, width);
+                }
+                ul {
+                    li {
+                        margin-left: 15px;
+                        list-style-type: inherit;
+                    }
+                }
+                p {
+                    padding-bottom: 30px;
+                    color: mapping($articleComponent, left_wrapper_content_p, color);
+                    font: mapping($articleComponent, left_wrapper_content_p, font);
+                    letter-spacing: mapping($articleComponent, left_wrapper_content_p, letter_spacing);
+                    line-height: mapping($articleComponent, left_wrapper_content_p, line_height);
+                    b{
+                        font-family: $MattelCorpPrimaryFontBold;
+                    }
+                }
+                .socialLinks {
+                    @media #{$small-down} {
+                        padding-bottom: 20px;
+                    }
+                    &>p {
+                        font: bold 16px $MattelCorpPrimaryFontBold, Arial, sans-serif;
+                        @media #{$small-down} {
+                            font-family: $MattelCorpPrimaryFontRoman;
+                            font-weight: 400;
+                        }
+                        b {
+                            font: inherit;
+                        }
+                        margin-bottom: 5px;
+                        padding: 0;
+                    }
+                    a {
+                        color: mapping($articleComponent, left_wrapper_content_p, color);
+                        text-decoration: underline;
+                        &:hover{
+                            color: $primaryTextColor;
+                        }
+                    }
+                    ul {
+                        font-size: 16px;
+                        margin: 0;
+                        li{
+                            margin-left: 0;
+                        }
+                    }
+                }
+            }
+            .right-wrapper {
+                width: mapping($articleComponent, right_wrapper, width_sm);
+                @include content-spacing(map-get($articleComponent, right_wrapper));
+                @media #{$small-down} {
+                    margin-bottom: 73px;
+                }
+                @media #{$medium-up} {
+                    width: mapping($articleComponent, right_wrapper, width_md);
+                }
+                @media #{$medium-only} {
+                    width: mapping($articleComponent, right_wrapper, width_md);
+                }
+                .contact-media {
+                    border: mapping($articleComponent, contact_media, border);
+                    @include content-spacing(map-get($articleComponent, contact_media));
+                    .contact-media-header {
+                        @include content-spacing(map-get($articleComponent, contact_media_header));
+                        position: mapping($articleComponent, contact_media_header, position);
+                        font: mapping($articleComponent, contact_media_header, font);
+                        letter-spacing: mapping($articleComponent, contact_media_header, letter_spacing);
+                        line-height: mapping($articleComponent, contact_media_header, line_height);
+                        @media #{$medium-up} {
+                            font: mapping($articleComponent, contact_media_header, font_lg);
+                            letter-spacing: mapping($articleComponent, contact_media_header, letter_spacing_lg);
+                            line-height: mapping($articleComponent, contact_media_header, line_height_lg);
+                        }
+                        @media #{$medium-only} {
+                            font: mapping($articleComponent, contact_media_header, font_md);
+                            letter-spacing: mapping($articleComponent, contact_media_header, letter_spacing_md);
+                            line-height: mapping($articleComponent, contact_media_header, line_height_md);
+                        }
+                        &:after {
+                            height: mapping($articleComponent, contact_media_header_after, height);
+                            width: mapping($articleComponent, contact_media_header_after, width);
+                            background-color: mapping($articleComponent, contact_media_header_after, background_color);
+                            content: mapping($articleComponent, contact_media_header_after, content);
+                            position: mapping($articleComponent, contact_media_header_after, position);
+                            bottom: mapping($articleComponent, contact_media_header_after, p_bottom);
+                            left: mapping($articleComponent, contact_media_header_after, p_left);
+                        }
+                    }
+                    .contact-media-content {
+                        padding-top: 20px;
+                        p {
+                            @include content-spacing(map-get($articleComponent, contact_media_para));
+                            font: mapping($articleComponent, contact_media_para, font);
+                            letter-spacing: mapping($articleComponent, contact_media_para, letter_spacing);
+                            line-height: mapping($articleComponent, contact_media_para, line_height);
+                            color: mapping($articleComponent, contact_media_para, color);
+                            a {
+                                color: mapping($articleComponent, contact_media_para_anchor, color);
+                                font: mapping($articleComponent, contact_media_para_anchor, font);
+                                text-decoration: mapping($articleComponent, contact_media_para_anchor, text_decoration_default);
+                                &:hover {
+                                    text-decoration: mapping($articleComponent, contact_media_para_anchor, text_decoration);
+                                    color: $primaryTextColor;
+                                }
+                            }
+                        }
+                    }
+                }
+                .download-media {
+                    @include content-spacing(map-get($articleComponent, download_media));
+                    .download-media-header {
+                        margin: 0 0 20px 0;
+                        color: mapping($articleComponent, download_media_header, color);
+                        position: mapping($articleComponent, download_media_header, position);
+                        font: mapping($articleComponent, download_media_header, font);
+                        letter-spacing: mapping($articleComponent, download_media_header, letter_spacing);
+                        line-height: mapping($articleComponent, download_media_header, line_height);
+                        @media #{$medium-up} {
+                            font: mapping($articleComponent, download_media_header, font_lg);
+                            letter-spacing: mapping($articleComponent, download_media_header, letter_spacing_lg);
+                            line-height: mapping($articleComponent, download_media_header, line_height_lg);
+                        }
+                        @media #{$medium-only} {
+                            font: mapping($articleComponent, download_media_header, font_md);
+                            letter-spacing: mapping($articleComponent, download_media_header, letter_spacing_md);
+                            line-height: mapping($articleComponent, download_media_header, line_height_md);
+                        }
+                        &:after {
+                            height: mapping($articleComponent, download_media_header_after, height);
+                            width: mapping($articleComponent, download_media_header_after, width);
+                            background-color: mapping($articleComponent, download_media_header_after, background_color);
+                            content: mapping($articleComponent, download_media_header_after, content);
+                            position: mapping($articleComponent, download_media_header_after, position);
+                            bottom: mapping($articleComponent, download_media_header_after, p_bottom);
+                            left: mapping($articleComponent, download_media_header_after, p_left);
+                        }
+                    }
+                    .media-details {
+                        margin-bottom: 31px;
+                        padding-top: 20px;
+                        .media-content {
+                            .media-title {
+                                @include content-spacing(map-get($articleComponent, media_title));
+                                color: mapping($articleComponent, media_title, color);
+                                font: mapping($articleComponent, media_title, font);
+                                letter-spacing: mapping($articleComponent, media_title, letter_spacing);
+                                line-height: mapping($articleComponent, media_title, line_height);
+                            }
+                            .media-description {
+                                color: mapping($articleComponent, media_description, color);
+                                font: mapping($articleComponent, media_description, font);
+                                letter-spacing: mapping($articleComponent, media_description, letter_spacing);
+                                line-height: mapping($articleComponent, media_description, line_height);
+                                @media #{$medium-up} {
+                                    line-height: mapping($articleComponent, media_description, line_height_md);
+                                }
+                            }
+                            .media-button {
+                                ul {
+                                    display: flex;
+                                    li {
+                                        a {
+                                            display: inline-block;
+                                            padding-top: 25px;
+                                            color: mapping($articleComponent, media_button, color);
+                                            font: mapping($articleComponent, media_button, font);
+                                            letter-spacing: mapping($articleComponent, media_button, letter_spacing);
+                                            line-height: mapping($articleComponent, media_button, line_height);
+                                            text-decoration: mapping($articleComponent, media_button, text_decoration_default);
+                                            @media #{$medium-up} {
+                                                line-height: mapping($articleComponent, media_button, line_height_md);
+                                            }
+                                            position: mapping($articleComponent, media_button, position);
+                                            &:hover {
+                                                text-decoration: mapping($articleComponent, media_button, text_decoration);
+                                                color: $primaryTextColor;
+                                            }
+                                        }
+                                    }
+                                }
+                                &.view-and-download {
+                                    ul {
+                                        li {
+                                            a {
+                                                @include content-spacing(map-get($articleComponent, view_and_download));
+                                                &:after {
+                                                    height: mapping($articleComponent, view_and_download_after, height);
+                                                    width: mapping($articleComponent, view_and_download_after, width);
+                                                    background-color: mapping($articleComponent, view_and_download_after, background_color);
+                                                    content: mapping($articleComponent, view_and_download_after, content);
+                                                    position: mapping($articleComponent, view_and_download_after, position);
+                                                    left: mapping($articleComponent, view_and_download_after, p_left);
+                                                    bottom: mapping($articleComponent, view_and_download_after, p_bottom);
+                                                    top: mapping($articleComponent, view_and_download_after, p_top);
+                                                }
+                                            }
+                                            &:first-child {
+                                                a {
+                                                    @include content-spacing(map-get($articleComponent, view_and_download_first_child));
+                                                    &:after {
+                                                        width: mapping($articleComponent, view_and_download_first_child, width);
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+.corporate-news-article-page{
+    .experiencefragment{
+        .xf-content-height{
+            margin: 0;
+        }
+    }
+    .image-text-container{
+        .textOverlayComponent{
+            .desktop-bg{
+                padding: 0;
+                .text-overlay{
+                    .text-container{
+                        padding: 20px;
+                        @media#{$small-up}{
+                            padding: 40px 30px;
+                        }
+                    }
+                }
+            }
+        }
+    }    
+    .enhanced-layout{
+        ul{
+            display: block;
+        }
+    }
+    .enhanced-60-40{
+        .col-2{
+            display: flex;
+            width: 100%;
+            flex-direction: row;
+            @media#{$small-down}{
+                flex-direction: column;
+            }
+            .col-first{
+                margin: 0; 
+                flex: 0 0 60%;
+                width: 60%;
+                padding: 0;
+                @media#{$small-down}{
+                    margin: 0; 
+                    flex: 0 0 100%;
+                    width: 100%;
+                    padding: 0;
+                }
+            }
+            .col-second{
+                margin: 0; 
+                flex: 0 0 40%;
+                width: 40%;
+                padding: 0 1.66667em 0 1.66667em;
+                @media#{$medium-down}{
+                    padding: 0 0 0 1.66667em;
+                }
+                @media#{$small-down}{
+                    margin: 0; 
+                    flex: 0 0 100%;
+                    width: 100%;
+                    padding: 0;
+                }
+                .contact-media {
+                    border: mapping($articleComponent, contact_media, border);
+                    margin:0 0 24px 0;
+                    .contact-media-header {
+                        @include content-spacing(map-get($articleComponent, contact_media_header));
+                        position: mapping($articleComponent, contact_media_header, position);
+                        font: mapping($articleComponent, contact_media_header, font);
+                        letter-spacing: mapping($articleComponent, contact_media_header, letter_spacing);
+                        line-height: mapping($articleComponent, contact_media_header, line_height);
+                        @media #{$medium-up} {
+                            font: mapping($articleComponent, contact_media_header, font_lg);
+                            letter-spacing: mapping($articleComponent, contact_media_header, letter_spacing_lg);
+                            line-height: mapping($articleComponent, contact_media_header, line_height_lg);
+                        }
+                        @media #{$medium-only} {
+                            font: mapping($articleComponent, contact_media_header, font_md);
+                            letter-spacing: mapping($articleComponent, contact_media_header, letter_spacing_md);
+                            line-height: mapping($articleComponent, contact_media_header, line_height_md);
+                        }
+                        &:after {
+                            height: mapping($articleComponent, contact_media_header_after, height);
+                            width: mapping($articleComponent, contact_media_header_after, width);
+                            background-color: mapping($articleComponent, contact_media_header_after, background_color);
+                            content: mapping($articleComponent, contact_media_header_after, content);
+                            position: mapping($articleComponent, contact_media_header_after, position);
+                            bottom: mapping($articleComponent, contact_media_header_after, p_bottom);
+                            left: mapping($articleComponent, contact_media_header_after, p_left);
+                        }
+                    }
+                    .contact-media-content {
+                        padding-top: 20px;
+                        p {
+                            @include content-spacing(map-get($articleComponent, contact_media_para));
+                            font: mapping($articleComponent, contact_media_para, font);
+                            letter-spacing: mapping($articleComponent, contact_media_para, letter_spacing);
+                            line-height: mapping($articleComponent, contact_media_para, line_height);
+                            color: mapping($articleComponent, contact_media_para, color);
+                            a {
+                                color: mapping($articleComponent, contact_media_para_anchor, color);
+                                font: mapping($articleComponent, contact_media_para_anchor, font);
+                                text-decoration: mapping($articleComponent, contact_media_para_anchor, text_decoration_default);
+                                &:hover {
+                                    text-decoration: mapping($articleComponent, contact_media_para_anchor, text_decoration);
+                                    color: $primaryTextColor;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .card{
+        .card-component {
+            .text-container{
+                .content{
+                    padding: 0;
+                    margin: 0;
+                    background: transparent;
+                }
+            }
+        }
+    }
+    &.corporate-basepage {
+        .outer-wrapper{
+            .rich-text{
+                ul {
+                    li{
+                        margin: 0 0px 12px 13px;
+                        left: 0;
+                    }
+                }
+            }
+        }
+        .carouselContainer.fullbleed{
+            margin-bottom: 20px;
+            .flexible-carousel-component{
+                .slider-content.grid-column-one{
+                    .wrap-dots-section{
+                        bottom: -20px;
+                    }
+                }
+            }
+        }
+        .reusability-video-page-title{
+            .sub-title{
+                margin: 0 0 8px 0;
+            }
+            .text-para{
+                margin:0 0 20px 0;
+            }
+        }
+        .videogallery-single-column-layout{
+            .reusability-videos-gallery-playlist{
+                .reusability-play-tiles-gallery{
+                    .reusability-play-list{
+                        li {
+                            &.active{
+                                a{
+                                    .reusability-gallery-image{
+                                        img{
+                                            margin: 0; 
+                                        }     
+                                    }
+                                }    
+                            }
+                            a{
+                                .reusability-gallery-image{
+                                    margin: 8px;
+                                    img{
+                                        border: 0;
+                                        margin: 0; 
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        } 
+    }
+    .at-share-btn-elements{
+        .at-icon-wrapper{
+            background-color: transparent !important;
+            border-radius: 0 !important;
+            &.at-share-btn{
+                margin: 0 15px 0 0;
+                padding: 0;
+                width: 40px;
+                height: 40px;
+            }
+            &.at-svc-facebook{
+                background-image: url('/content/dam/mattel/shared-production-assets/social-icons/facebook_logo_RGB_40x40.png');
+            }
+            &.at-svc-twitter{
+                background-image: url('/content/dam/mattel/shared-production-assets/social-icons/twitter_logo_desk_40x40.png');
+            }
+            &.at-svc-pinterest_share{
+                background-image: url('/content/dam/mattel/shared-production-assets/social-icons/instagram_logo_desk_40x40.png');
+            }
+            &.at-svc-email{
+                background-image: url('/content/dam/mattel/shared-production-assets/social-icons/mail_icon_desk_40x40.png');
+            }
+            &.at-svc-linkedin{
+                background-image: url('/content/dam/mattel/shared-production-assets/social-icons/linkedin_desk_40x40.png');
+            }
+            span.at-icon-wrapper{
+                display: none;
+            }
+        }
+    } 
+}

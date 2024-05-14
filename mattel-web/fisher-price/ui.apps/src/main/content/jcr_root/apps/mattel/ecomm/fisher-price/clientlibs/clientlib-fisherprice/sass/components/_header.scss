@@ -1,0 +1,136 @@
+// header
+header {
+    background: mapping($header, main, bgnd);
+    min-height: mapping($header, main, minHeight);
+    top: mapping($header, main, posTop);
+    left: mapping($header, main, posLeft);
+    z-index: mapping($header, main, zIndex);
+    position: mapping($header, main, pos);
+    width: mapping($header, main, width);
+    line-height: mapping($header, main, lineHeight);
+    background-size: mapping($header, main, mobBgndSize);
+    box-shadow: mapping($header, main, boxShadow);
+    border-top: mapping($header, main, borderTop);
+
+    @if mapping($layout, main, isFisherPriceNav)==true {
+        border-bottom: mapping($header, main, headerBorderBottom);
+    }
+
+    @if mapping($layout, main, isfisherprice)==true {
+        @media #{$medium-down} {
+            min-height: mapping($header, main, minHeighttab);
+        }
+
+        @media #{$small-down} {
+            min-height: mapping($header, main, minHeightMob);
+        }
+    }
+
+    @if mapping($layout, main, isWhyPlay)==true {
+        @media #{$medium-down} {
+            min-height: mapping($header, main, minHeighttab);
+        }
+
+        @media #{$small-down} {
+            min-height: mapping($header, main, minHeightMob);
+        }
+    }
+
+    @media #{$large-up} {
+        background-size: mapping($header, main, bgndSize);
+        min-height: mapping($header, main, minHeight);
+    }
+
+    >div {
+        @extend .container-fluid;
+        width: mapping($header, childDiv, width);
+        padding-right: mapping($header, childDiv, padRight);
+
+        @if mapping($layout, main, isRescueHeroes)==true {
+            padding-left: mapping($header, childDiv, padLeft);
+            text-align: mapping($header, childDiv, txtAlgin);
+        }
+
+        @if mapping($layout, main, isFisherPriceNav)==true {
+            padding-left: mapping($header, childDiv, padLeft);
+            text-align: mapping($header, childDiv, txtAlgin);
+            position: mapping($header, childDiv, pos);
+        }
+
+        @if mapping($header, childDiv, whyPlayHeader) {
+            padding: mapping($header, childDiv, whyPlaypadding);
+
+            @media #{$large-down} {
+                padding: mapping($header, childDiv, whyPlaypaddingTab);
+            }
+
+            @media #{$medium-down} {
+                padding: mapping($header, childDiv, whyPlaypaddingMob);
+            }
+        }
+    }
+
+    .brand-logo {
+        @if mapping($header, logo, isNoLogo)==true {
+            display: none !important;
+        }
+
+        position: mapping($header, logo, pos);
+        z-index: mapping($header, logo, zIndex);
+        padding-top:mapping($header, logo, padTop);
+        font-size:mapping($header, logo, fontSize);
+        @media #{$medium-down} {
+            font-size:mapping($header, logo, MobTabfontSize); 
+         } 
+        @if mapping($layout, main, isFisherPriceNav)==true {
+            display: mapping($header, logo, disp);
+            padding: mapping($header, logo, pad);
+        }
+
+        img {
+            margin: mapping($header, logoImage, margin);
+            width: mapping($header, logoImage, width);
+
+            @media #{$small-up} {
+                margin: mapping($header, logoImage, mobMargin);
+                width: mapping($header, logoImage, mobWidth);
+            }
+
+            @media #{$small-up} {
+                @media #{$large-down} {
+                    width: mapping($header, logoImage, tabWidth);
+                    margin: mapping($header, logoImage, tabMargin);
+                }
+            }
+        }
+
+        &.non-selecter {
+            pointer-events: none;
+            cursor: default;
+
+        }
+    }
+
+    &::after {
+        @if mapping($layout, waveBorder, isWaveBtmBdr)==true {
+            content: "";
+            background-image: mapping($layout, waveBorder, waveBdrPurple);
+            background-repeat: mapping($layout, waveBorder, waveBdrbgndRptX);
+            width: mapping($layout, waveBorder, waveBdrWidth);
+            height: mapping($layout, waveBorder, waveBdrHeight);
+            display: mapping($layout, waveBorder, waveBdrDisplay);
+            position: mapping($layout, waveBorder, waveBdrPosition);
+            background-size: mapping($layout, waveBorder, waveBdrsize);
+        }
+    }
+}
+
+.brand-logo {
+    img {
+        max-width: mapping($header, logoImage, MaxWidth);
+
+        @media #{$small-up} {
+            max-width: mapping($header, logoImage, mobMaxWidth);
+        }
+    }
+}

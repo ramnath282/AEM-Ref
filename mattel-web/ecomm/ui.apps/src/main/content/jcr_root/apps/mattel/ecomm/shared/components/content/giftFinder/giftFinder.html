@@ -1,0 +1,77 @@
+<sly data-sly-test="${wcmmode.edit}">${'Configure Gift Finder Component' @i18n}</sly>
+<div class="gift-finder">
+	<div class="col-xs-12 col-lg-4 no-pad">
+		<sly data-sly-test.leftUrl="${properties.leftCtaLink}" data-sly-use.leftInfo="${'com.mattel.ecomm.core.helper.EcommHelper' @ text= leftUrl}">
+			<sly data-sly-test="${properties.leftUrlTarget =='sameWindow'}">
+				<a href="${leftInfo.pathURL}"> 
+					<img alt="${properties.leftAlt @ i18n}" src="${properties.leftPromoImage}">
+				</a>
+			</sly>
+			<sly data-sly-test="${properties.leftUrlTarget =='tabWindow'}">
+				<a href="${leftInfo.pathURL}" target="_blank"> 
+					<img alt="${properties.leftAlt @ i18n}" src="${properties.leftPromoImage}">
+				</a>
+			</sly>
+			<sly data-sly-test="${properties.leftUrlTarget =='newWindow'}">
+				<a data-url="${leftInfo.pathURL}" onclick="window.open(this.dataset.url,'PLAY','width=500, height=500');"> 
+					<img alt="${properties.leftAlt @ i18n}" src="${properties.leftPromoImage}"><span class="sr-only"> ${'Opens in new window' @ i18n}</span>
+				</a>
+			</sly>
+		</sly>
+		<sly data-sly-test=${!leftUrl}>
+			<img data-sly-test="${properties.leftPromoImage}" alt="${properties.leftAlt @ i18n}" src="${properties.leftPromoImage}">
+		</sly>
+	</div>
+	<div class="col-xs-12 col-lg-4 no-pad middle-ele" data-sly-use.giftFinder="com.mattel.ecomm.core.models.GiftFinderModel">
+		<div class="gift-form-container">
+			<div class="gift-heading" data-sly-test="${properties.giftFinderIcon || properties.giftFinderTitle}">
+				<img alt="${properties.giftFinderAlt @ i18n}" data-sly-test="${properties.giftFinderIcon}" class="gift_icon"  src="${properties.giftFinderIcon}">
+				<span data-sly-test="${properties.giftFinderTitle }">${properties.giftFinderTitle @ i18n}</span>
+			</div>
+			<p class="gift-instruction"data-sly-test="${properties.giftFinderDesc}">${properties.giftFinderDesc @ i18n}</p>
+			<form  data-sly-test.actionUrl="${properties.submitCtaLink ||'#'}" data-sly-use.actionInfo="${'com.mattel.ecomm.core.helper.EcommHelper' @ text= actionUrl}" action="${actionInfo.pathURL}" class="gift_finder_form">
+				<div class="form-group">
+					<label class="selectLabel" for="age_select_box" data-sly-test="${properties.ageTitle}">${properties.ageTitle @ i18n}</label>
+					<div class="column-input">
+						<select class="form-control" id="age_select_box" name="giftAge" data-sly-list.ageList="${giftFinder.ageDetailsList}">
+							<option value="${ageList.value}">${ageList.label}</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="selectLabel" for="price_select_box" data-sly-test="${properties.priceTitle}">${properties.priceTitle @ i18n}</label>
+					<div class="column-input">
+						<select class="form-control" id="price_select_box" name="giftPrice" data-sly-list.priceList="${giftFinder.priceDetailsList}">
+							<option value="${priceList.value}">${priceList.label @ i18n}</option>
+						</select>
+					</div>
+				</div>
+				<div class="button-container">
+					<span class="btn primary data-track-gf" tabindex="0" role="button" data-sly-test="${properties.ctaLabel}">${properties.ctaLabel @ i18n}</span>
+				</div>
+			</form>
+		</div>
+	</div>
+	<div class="col-xs-12  col-lg-4 no-pad">
+		<sly data-sly-test.rightUrl="${properties.rightCtaLink}" data-sly-use.rigntInfo="${'com.mattel.ecomm.core.helper.EcommHelper' @ text= rightUrl}">
+			<sly data-sly-test="${properties.rightUrlTarget =='sameWindow'}">
+				<a href="${rigntInfo.pathURL}"> 
+					<img alt="${properties.rightAlt @ i18n}" src="${properties.rightPromoImage}">
+				</a>
+			</sly>
+			<sly data-sly-test="${properties.rightUrlTarget =='tabWindow'}">
+				<a href="${rigntInfo.pathURL}" target="_blank"> 
+					<img alt="${properties.rightAlt @ i18n}" src="${properties.rightPromoImage}">
+				</a>
+			</sly>
+			<sly data-sly-test="${properties.rightUrlTarget =='newWindow'}">
+				<a data-url="${rigntInfo.pathURL}" onclick="window.open(this.dataset.url,'PLAY','width=500, height=500');"> 
+					<img alt="${properties.rightAlt @ i18n}" src="${properties.rightPromoImage}"><span class="sr-only"> ${'Opens in new window' @ i18n}</span>
+				</a>
+			</sly>
+		</sly>
+		<sly data-sly-test="${!rightUrl}">
+			<img data-sly-test="${properties.rightPromoImage}" alt="${properties.rightAlt @ i18n}" src="${properties.rightPromoImage}">
+		</sly>
+	</div>
+</div>

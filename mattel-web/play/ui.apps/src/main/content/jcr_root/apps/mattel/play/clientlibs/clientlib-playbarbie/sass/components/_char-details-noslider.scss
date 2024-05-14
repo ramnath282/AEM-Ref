@@ -1,0 +1,156 @@
+.char-detials-comp{
+    background: mapping($chardetailsslider,main,bgnd);
+    padding: mapping($chardetailsslider,main,pad);
+    position: mapping($chardetailsslider,main,pos);
+    .container{
+        background-color: mapping($chardetailsslider,container,bgndColor);
+         padding: mapping($chardetailsslider,container,pad);
+         @media #{$small-down}{
+             width: mapping($chardetailsslider,container,tabWidth);
+        }
+         @media #{$medium-only}{
+             width:mapping($chardetailsslider,container,mobWidth);   
+        }
+		@if mapping($chardetailsslider,container,isEnchanChar) == true {
+			@media #{$small-down}{
+				width: mapping($chardetailsslider,container,mobWidth);
+			}
+			 @media #{$medium-only}{
+				width:mapping($chardetailsslider,container,tabWidth);   
+			}
+		}
+    }
+    .char-detials-content{
+        @extend .row;
+        margin-left: mapping($chardetailsslider,chardetailContent,marginLeft);
+        margin-right: mapping($chardetailsslider,chardetailContent,marginRight);
+    }
+    .char-details-image{
+        @extend .col-xs-12;
+        @extend .col-sm-12;
+        @extend .col-md-6;
+        text-align: mapping($chardetailsslider,chardetailImage,txtAlign);
+        padding: mapping($chardetailsslider,chardetailImage,pad);
+        &.img-right{
+            float: mapping($chardetailsslider,chardetailImage,float);
+        }
+        @media #{$medium-only}{
+            img{
+                max-width: mapping($chardetailsslider,chardetailImage,tabmaxWidth);
+                padding-top: mapping($chardetailsslider,chardetailImage,tabpaddingTop);
+            }
+        }
+    }
+    .char-details-description{
+        @extend .col-xs-12;
+        @extend .col-sm-12;
+        @extend .col-md-6;
+        padding: mapping($chardetailsslider,chardetailDesc,pad);
+        padding-bottom: mapping($chardetailsslider,chardetailDesc,paddingBottom);
+        h1, h2{
+            color: mapping($chardetailsslider,chardetaildescH1,txtColor);
+            font-family: mapping($chardetailsslider,chardetaildescH1,fntFamily) , Sans-serif;
+            font-weight: mapping($chardetailsslider,chardetaildescH1,fntWeight);
+            margin-top: mapping($chardetailsslider,chardetaildescH1,marginTop);
+            font-size: mapping($chardetailsslider,chardetaildescH1,fntSize);
+            small{
+                color: mapping($chardetailsslider,chardetaildescH1,smalltxtColor);                
+            }
+            @media #{$small-only}{
+                font-size: mapping($chardetailsslider,chardetaildescH1,fntsmallSize);
+            }    
+        }
+        p{
+            color: mapping($chardetailsslider,chardetaildescP,txtColor);
+            font-family: mapping($chardetailsslider,chardetaildescP,fntFamily) , Sans-serif;
+            font-weight: mapping($chardetailsslider,chardetaildescP,fntWeight);
+            font-size: mapping($chardetailsslider,chardetaildescP,fntSize);
+            span {
+                font-family: mapping($chardetailsslider,chardetaildescP,fntFamily)  , Sans-serif;
+            }
+
+        }
+
+    }
+     .cd-prev { 
+        @extend .slick-prev;
+        left: mapping($chardetailsslider,cdPrev,posLeft);
+        @media (max-width: 1024px){
+            left: mapping($chardetailsslider,cdPrev,posLeft);
+        }
+        @media #{$medium-only}{
+            left: mapping($chardetailsslider,cdPrev,tabposLeft);
+        }
+        @media #{$medium-up}{
+            left:mapping($chardetailsslider,cdPrev,posLeft);
+        }
+        @media  #{$small-down}{
+            left: 0;
+        }
+        &:before {
+            content: mapping($chardetailsslider,cdPrev,prevContent);
+            margin:mapping($chardetailsslider,cdPrev,prevContentMargin);
+        }
+    }
+    .cd-next { 
+        @extend .slick-next;
+        right: mapping($chardetailsslider,cdNext,posRight);
+        @media (max-width: 1024px){
+            right: mapping($chardetailsslider,cdNext,posRight);
+        }
+        @media #{$medium-only}{
+            right: mapping($chardetailsslider,cdNext,tabposRight);
+        }
+        @media #{$medium-up}{
+            right:mapping($chardetailsslider,cdNext,posRight);              
+        }
+            @media  #{$small-down}{
+            right:0;
+        }
+        &:before {
+            content: mapping($chardetailsslider,cdNext,nextContent);
+            margin:mapping($chardetailsslider,cdNext,nextContentMargin);
+        }
+    }
+
+    .cd-prev,
+    .cd-next{
+        top: mapping($chardetailsslider,cdprevNext,posTop);
+        width: mapping($chardetailsslider,cdprevNext,width);
+        height: mapping($chardetailsslider,cdprevNext,height);
+        border-radius: mapping($chardetailsslider,cdprevNext,borderRadius);
+        padding: mapping($chardetailsslider,cdprevNext,pad);
+        background: mapping($chardetailsslider,cdprevNext,bgnd);
+        transform: translate(0,-50%);
+        &:hover, &:focus, &:active{
+            background: mapping($chardetailsslider,cdprevNext,hoverBgnd);
+        }    
+        @media #{$small-down}{
+            background: none;
+            color:$enchangreen;
+            top:20%;
+        }
+        @media #{$medium-only}{
+            top: mapping($chardetailsslider,cdprevNext,tabposTop);
+        }
+        &:before {
+            font-family: mapping($chardetailsslider,cdprevnextBefore,fntFamily);
+            background-color: mapping($chardetailsslider,cdprevnextBefore,bgndColor);
+            border-radius: mapping($chardetailsslider,cdprevnextBefore,borderRadius);
+            padding: mapping($chardetailsslider,cdprevnextBefore,pad);
+            font-size: mapping($chardetailsslider,cdprevnextBefore,fntSize);
+            opacity: mapping($chardetailsslider,cdprevnextBefore,opacity);
+            //background: mapping($chardetailsslider,cdprevnextBefore,bgnd);
+            color:$white;
+                @media #{$small-down}{
+                color:$enchangreen;
+                background: mapping($chardetailsslider,cdprevnextBefore,bgndtrns);
+            }
+        }
+        &:focus {
+                @media #{$small-down}{
+                    background: mapping($chardetailsslider,cdprevNext,bgndtrns);
+            }
+        }
+    }
+}

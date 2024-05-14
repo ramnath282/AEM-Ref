@@ -1,0 +1,232 @@
+.product-carousel-wrapper{
+    @include print-css(
+            map-merge((
+                padding: 15px 0
+            ), 
+            if(variable-exists(productCarousel) and map-has-key($productCarousel, productCarouselContainer), 
+                map-get($productCarousel,productCarouselContainer), ()
+            )
+        ));
+    .product-carousel-grid{
+        @include print-css(
+            map-merge((
+                width: (
+                    defaultVal: calc(100% - 16.66%),
+                    largeDown: 100%
+                ),
+                max-width: calc(100% - 116px),
+                margin: auto,
+                float: none
+            ), 
+            if(variable-exists(productCarousel) and map-has-key($productCarousel, productCarouselUL), 
+                map-get($productCarousel,productCarouselUL), ()
+            )
+        ));
+        &.data-loading{
+            li{
+                opacity: 0;
+            }
+        }
+        .grid-content,
+        .product-content-block{
+            @include print-css(
+                map-merge((
+                    padding: 0 12.4px
+                ), 
+                if(variable-exists(productCarousel) and map-has-key($productCarousel, productCarouselList), 
+                    map-get($productCarousel,productCarouselList), ()
+                )
+            ));
+            &:focus{
+                outline: 1px solid #CACACA;
+            }
+        }
+        .product-content-block{
+            .card{
+                @include print-css(
+                    map-merge((
+                        display: flex,
+                        justify-content: center,
+                        height: 100%,
+                        box-shadow: none
+                    ), 
+                    if(variable-exists(productCarousel) and map-has-key($productCarousel, productContentBlock), 
+                        map-get($productCarousel,productContentBlock), ()
+                    )
+                ));
+                .card-component {
+                    width: 100%;
+                    .text-container{
+                        @include print-css(
+                            map-merge((
+                                padding: 0.79571em 0,
+                                margin: 0,
+                                width:calc(100% - 25px)
+                            ), 
+                            if(variable-exists(productCarousel) and map-has-key($productCarousel, productContentText), 
+                                map-get($productCarousel,productContentText), ()
+                            )
+                        ));
+                        .cta-item{
+                            @include print-css(
+                            map-merge((
+                                margin: 0 0  0 0
+                            ), 
+                            if(variable-exists(productCarousel) and map-has-key($productCarousel, productContentTextCta), 
+                                map-get($productCarousel,productContentTextCta), ()
+                            )
+                        ));
+                        }
+                        .content + .ctaItem .cta-item{
+                            @include print-css(
+                                map-merge((
+                                    margin: 15px 0  0 0
+                                ), 
+                                if(variable-exists(productCarousel) and map-has-key($productCarousel, productContentTextCta), 
+                                    map-get($productCarousel,productContentTextCta), ()
+                                )
+                            ));
+                        }
+                    }
+                }
+                .s7responsiveContainer img{
+                    @include print-css(
+                        map-merge((
+                            object-fit: cover,
+                            object-position: top center
+                        ), 
+                        if(variable-exists(productCarousel) and map-has-key($productCarousel, productContentImg), 
+                            map-get($productCarousel,productContentImg), ()
+                        )
+                    ));
+                }
+            }
+        }
+        &[data-apply-stack="true"]{
+            @include print-css(
+                map-merge((
+                    max-width: 100%,
+                    width: 100%,
+                    padding-top: 0,
+                    float: left,
+                    display: inline-block
+                ), 
+                if(variable-exists(productCarousel) and map-has-key($productCarousel, productCarouselStackable), 
+                    map-get($productCarousel,productCarouselStackable), ()
+                )
+            ));
+            @media screen and (max-width: 374px){
+                padding-left: 0;
+                padding-right: 0;
+            }
+            li{
+                @include print-css(
+                    map-merge((
+                        margin: 25px 0 0,
+                        padding: 0 12.4px
+                    ), 
+                    if(variable-exists(productCarousel) and map-has-key($productCarousel, productCarouselStackableLi), 
+                        map-get($productCarousel,productCarouselStackableLi), ()
+                    )
+                ));
+                @media screen and (max-width: 374px){
+                    padding: 0 4.5px;
+                }
+            }
+        }
+    }
+    .slick-arrow{
+        @include print-css(
+            map-merge((
+                width: 48px,
+                height: 48px,
+                z-index: 9
+            ), 
+            if(variable-exists(productCarousel) and map-has-key($productCarousel, productCarouselArrows), 
+                map-get($productCarousel,productCarouselArrows), ()
+            )
+        ));
+        &::before{
+            content: none;
+        }
+        &.slick-disabled{
+            display: none !important;
+        }
+        &.slick-prev{
+            @include print-css(
+                map-merge((
+                    left: (
+                        defaultVal : calc(24px - 8.88%),
+                        largeDown : calc(-48px - 0px)
+                    )
+                ), 
+                if(variable-exists(productCarousel) and map-has-key($productCarousel, productCarouselArrowLeft), 
+                    map-get($productCarousel,productCarouselArrowLeft), ()
+                )
+            ));
+        }
+        &.slick-next{
+            @include print-css(
+                map-merge((
+                    right: (
+                        defaultVal : calc(24px - 8.88%),
+                        largeDown : calc(-48px - 0px)
+                    )
+                ), 
+                if(variable-exists(productCarousel) and map-has-key($productCarousel, productCarouselArrowRight), 
+                    map-get($productCarousel,productCarouselArrowRight), ()
+                )
+            ));
+        }
+    }
+    .slick-dots{
+        @include print-css(
+            map-merge((
+                bottom: -40px
+            ), 
+            if(variable-exists(productCarousel) and map-has-key($productCarousel, productCarouselDotsWrp), 
+                map-get($productCarousel,productCarouselDots), ()
+            )
+        ));
+        li{
+            button::before{
+                @include print-css(
+                    map-merge((
+                        font-size: 40px,
+                        width: 11px,
+                        height: 11px,
+                        color: #CACACA,
+                        opacity: 1
+                    ), 
+                    if(variable-exists(productCarousel) and map-has-key($productCarousel, productDotsBefore), 
+                        map-get($productCarousel,productDotsBefore), ()
+                    )
+                ));
+            }
+            &.slick-active,&:hover{
+                button::before{
+                    @include print-css(
+                        map-merge((
+                            color: #c70a4c
+                        ), 
+                        if(variable-exists(productCarousel) and map-has-key($productCarousel, productDotsActiveBefore), 
+                            map-get($productCarousel,productDotsActiveBefore), ()
+                        )
+                    ));
+                }
+            }
+        }
+    }
+    &.grid-section {
+        li{
+            @include print-css(
+                map-merge((
+                    margin: 14px 0 46px 0
+                ), 
+                if(variable-exists(productCarousel) and map-has-key($productCarousel, productCarouselgridList), 
+                    map-get($productCarousel,productCarouselgridList), ()
+                )
+            ));
+        }
+    }
+}

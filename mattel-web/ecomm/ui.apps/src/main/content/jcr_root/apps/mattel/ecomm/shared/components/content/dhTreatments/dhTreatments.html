@@ -1,0 +1,46 @@
+<sly data-sly-test.author="${wcmmode.edit}">
+	${'Edit Doll Hospital - Treatments Component'}
+
+</sly>
+<sly data-sly-test.author="${!wcmmode.edit}" data-sly-use.dhContainerModel="com.mattel.ecomm.core.models.DHContainerModel">
+   <div class="landingPage hide" data-landingPagePath="${dhContainerModel.landingPageUrl @ extension='html'}"></div>
+</sly>
+
+
+	 		<!--- Treatment Configuration Starts -->
+	 		
+		   		<sly data-sly-test="${properties.type == 'treatments' }">	
+                       <sly data-sly-include ="dollTreatments.html"></sly>
+				 </sly>
+
+			 <!--- Treatment Configuration Ends -->
+
+             <!--- Sub-Treatment Configuration Starts -->
+	 		
+		   		<sly data-sly-test="${properties.type == 'subtreatment' }">	
+                       <sly data-sly-include ="subTreatments.html"></sly>
+				 </sly>
+		   		
+			 <!--- Sub-Treatment Configuration Ends -->
+
+             <!--- Optional-Treatment Configuration Starts -->
+	 		
+		   		<sly data-sly-test="${properties.type == 'optionaltreatment' }">
+                       <sly data-sly-include ="optionalTreatments.html"></sly>
+
+				 </sly>
+		   		
+			 <!--- Optional-Treatment Configuration Ends -->
+
+             <!--- Special-Extras Configuration Starts -->
+	 		
+		   		<sly data-sly-test="${properties.type == 'specialextras' }">	
+                       <sly data-sly-include ="specialExtras.html"></sly>
+                 </sly>
+		   		
+			 <!--- Special-Extras Configuration Ends -->
+
+		     
+
+
+

@@ -1,0 +1,235 @@
+.gt-wrapper .gt-container {
+    @media #{$medium-only} {
+        padding-top: 2.5em !important;
+    }
+    //.gtDollSelection{
+     //   min-height: 600px;
+    //}
+}
+
+.product-tileWrap {
+    max-width: 1080px;
+    margin: 0 auto;
+}
+
+.product-tileWrap .col-xs-12.col-sm-4.product-tile:nth-child(3n+3) {
+    border-right: none;
+}
+
+.product-tileWrap .col-xs-12.col-sm-4.product-tile.product-truly-me {
+    border-right: none;
+}
+
+.gt-product-recommend-wrapper {
+    min-height: 400px;
+   @extend .full-width;
+    #dollrecommendList,
+    #dollrecommendList-remaining {        
+        flex-direction: row;
+        flex-wrap: wrap;
+        box-sizing: border-box;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -webkit-flex; 
+        display: flex;    
+        -webkit-flex-direction: row;
+        -moz-flex-direction: row;
+        -ms-flex-direction: row;
+        -o-flex-direction: row;     
+        -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;        
+    }
+    h2 {
+        font-size: 50px;
+        margin: 0 5% 25px;
+        text-align: center;
+        @media #{$medium-only} {
+            font-size: 2.5em;
+            padding: 0;
+            text-align: center;
+            width: 75%;
+            margin: 0 5%;
+        }
+        @media #{$small-down} {
+            font-size: 30px;
+            padding: 0;
+            margin: 0 5% 30px 5%;
+            width: 90%;
+        }
+    }
+    span.product-id,
+    span.product-TrunkPlaypacks,
+    span.product-character,
+    span.product-pricing,
+    span.product-safetyMsg,
+    span.product-price {
+        display: none;
+    }
+    span.product-small-price,
+    span.product-large-price {
+        display: none;
+        text-align: center;
+    }
+    span.status-detail {
+        font-weight: 400;
+        @media #{$medium-only} {
+            display: block;
+        }
+    }
+    span.backorder-date {
+        font-weight: 400;
+    }
+    p.product-age-range {
+        color: #666666;
+        font-weight: 400;
+        line-height: 1em;
+    }
+    .product-tile {
+        border-right: 1px solid $color-grey;
+        margin: 35px 0;
+        padding-bottom: 122px;
+        box-sizing: border-box;
+        position: relative;
+        float: left;
+        -webkit-box-flex: 1;
+        -moz-flex: 0 1 auto;
+        -ms-flex: 0 1 auto;
+        -o-flex: 0 1 auto;
+        flex: 0 1 auto;
+        @media #{$small-down} {
+            margin: 0 0 15px 0;
+            padding-bottom: 15px;
+            border-bottom: 1px solid $color-grey;
+            border-right: none;
+            min-height: auto;
+            max-height: none;
+        }
+        @media #{$medium-only} {
+            padding-bottom: 115px;
+        }
+    }
+    &:nth-child(3n+3) {
+        border-right: none;
+    }
+    .product-bottom-status {
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translate(-50%);
+        @media #{$small-only} {
+            position: relative;
+        }
+    }
+    .product-desc {
+        min-height: auto !important;
+        font-weight: 400;
+        font-size: 18px;
+        p {
+            line-height: 1.438em;
+            font-weight: 400;
+            @media #{$medium-only} {
+                padding: 0;
+                font-size: 18px;
+                margin-top: 8px;
+                margin-bottom: 11px;
+                line-height: 1.438em;
+                word-break: break-word;
+            }
+        }
+    }
+    .product-status {
+        font-weight: 400;
+        @media #{$medium-only} {
+            height: 30px;
+        }
+    }
+    .product-image {
+        img {
+            width: auto;
+            height: auto;
+        }
+    }
+    .product-title {
+        padding-top: 5px;
+        font-size: 20px;
+        @media #{$small-down} {
+            height: auto;
+            line-height: 20px;
+            padding: 0;
+            padding-top: 5px;
+            margin-top: 15px;
+            margin-bottom: 5px;
+        }
+        @media #{$medium-only} {
+            font-size: 18px;
+            line-height: 23px;
+            padding: 0;
+            padding-top: 5px;
+        }
+    }
+    .gt-btn {
+        margin-left: 50%;
+        transform: translate(-50%);
+        background-color: #fff;
+        color: $theme-color !important;
+        border: 1px solid #333333;
+        min-width: 8.25em;
+        padding: 15px 45px;
+        border-radius: em(10);
+        border-color: $theme-color;
+        @media #{$medium-down} {
+            padding: 10px 30px;
+            font-size: 16px;
+            line-height: 20px;
+        }
+        &:hover {
+            background-color: $theme-color;
+            color: #fff !important;
+            border: 1px solid transparent !important;
+        }
+        &:active {
+            background-color: $theme-color;
+            color: #fff !important;
+            border: 1px solid transparent !important;
+            outline: none !important;
+            border-radius: 10px;
+            border-color: #9ecaed !important;
+            box-shadow: 0px 0px 8px rgba(82, 168, 236, .8) !important;
+        }
+    }
+    .arrow-toggle {
+        font-size: 1.25em;
+        line-height: 1.563em;
+    }
+    .toggle-products {
+        width: auto;
+        // margin-left: 50%;
+        // transform: translate(-50%);
+        cursor: auto;
+        float: none;
+    	text-align: center; 
+        a {
+            font-size: 20px;
+            .fas {
+                margin-left: 5px;
+                font-size: 17px;
+                color: $light-pink;
+            }
+            @media #{$small-down} {
+                font-size: 16px;
+                .fas {
+                    font-size: 15px;
+                }
+            }
+        }
+        .view-all-products,
+		.show-less-products
+		{
+			float: none;
+			display: inline-block;
+    		width: auto;
+		} 
+    }
+}

@@ -1,0 +1,229 @@
+<sly data-sly-test="${wcmmode.edit}">${'Edit Payment Information Component' @i18n}</sly>
+    
+<div class="payment-info-body" id="paymentInfo"> 
+    <h1 data-sly-test="${properties.paymentInfoTitle}">${properties.paymentInfoTitle}</h1>
+    <div class="user-info-wrapper">
+        <form >
+            <input id="cancelPaymentInfo" class="theme-btn no-bg-btn add-new-card" data-val="add" type="submit" value="${properties.addNewCardLabel}" />
+            <div id="paymentInfoAddUpdateDiv" class="user-info-editMode hide">
+            
+            </div>
+            <script id="paymentInfoTemp" type="text/x-handlebars-template">
+                <div  class="update-paymentInfo">
+                    <ul class="details-list row">
+                        <li class="details-list-item">                
+                            <input type="checkbox" data-key="saveDefCard" id="myDefaultCard">
+                            <label for="myDefaultCard">${properties.defaultCardCheckLabel @context='scriptString'}</label>
+                        </li>
+                    </ul>
+                    <fieldset>
+                        <div class="input-field required">
+                            <input type="text" id="cardName{{index}}" data-key="nameOnCard" data-attr="cardName" name="cardName" aria-describedby="cardNameError{{index}}" class="form-input long-input" required autocomplete="off"/>
+                            <label class="placeholder-label" for="cardName{{index}}">${properties.nameOnCardLabel @context='scriptString'}</label>
+                            <div id="cardNameError{{index}}" class="help-block form-message"></div>
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <div class="input-field required">
+                            <input type="text" id="cardNumber{{index}}" data-key="cardNum" data-attr="maskAccount" name="cardNumber" aria-describedby="cardNumberError{{index}}" class="form-input medium-input card-number" required autocomplete="off"/>
+                            <label class="placeholder-label" for="cardNumber{{index}}">${properties.cardNumberLabel @context='scriptString'}</label>
+                            <div id="cardNumberError{{index}}" class="help-block form-message"></div>
+                        </div>
+                    </fieldset>
+                    <fieldset class="select-picker-wrapper">
+                        <ul>
+                            <li>
+                                <div class="input-field date-details required">
+                                    <select class="form-input small-input" data-key="month" data-attr="expMonth" name="cardMonth" aria-describedby="cardMonthError{{index}}" required id="cardValidMonth{{index}}">
+                                        <option value="">MM</option>
+                                        <option value="01">01</option>
+                                        <option value="02">02</option>
+                                        <option value="03">03</option>
+                                        <option value="04">04</option>
+                                        <option value="05">05</option>
+                                        <option value="06">06</option>
+                                        <option value="07">07</option>
+                                        <option value="08">08</option>
+                                        <option value="09">09</option>
+                                        <option value="10">10</option>
+                                        <option value="11">11</option>
+                                        <option value="12">12</option>
+                                    </select>
+                                    <label class="placeholder-label payment-select-label" for="cardValidMonth{{index}}"> ${properties.monthLabel @context='scriptString'}</label>
+                                    <div id="cardMonthError{{index}}" class="help-block form-message"></div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="input-field date-details required">
+                                    <select class="form-input small-input" data-key="year" data-attr="expYear" name="cardYear" aria-describedby="cardYearError{{index}}" required id="cardValidYear">                                       
+                                        <option value="">YYYY</option>
+                                    </select>
+                                    <label class="placeholder-label payment-select-label" for="cardValidYear">${properties.yearLabel @context='scriptString'}</label>
+                                    <div id="cardYearError{{index}}" class="help-block form-message"></div>
+                                </div>
+                            </li>
+                        </ul>
+                    </fieldset>
+                    <fieldset>
+						<ul class="billing-address-ul details-list row">
+							<li>
+								<p><strong>${properties.billingAddressLabel @context='scriptString'}</strong></p>
+								<p>${properties.billingAddressDescription @context='html'}</p>                  
+							</li>
+						</ul>
+					</fieldset>
+                    <fieldset class="select-picker-wrapper">                        
+						<div class="input-field address-details">
+                        {{#if address}}
+                            <select id="billingAddress{{index}}" data-key="billing_address_id" name="billingAddress" class="form-input long-input billing-address no-placeholder-label" required>
+                                {{{addressSelector}}}
+                            </select>                            
+                        {{else}}
+                            <select id="billingAddress{{index}}" data-key="billing_address_id" name="billingAddress" class="form-input long-input billing-address no-placeholder-label" required>
+                                {{#if addresses}}
+                                        {{#addresses}}
+                                            <option value="{{addressId}}">{{addressLine.[0]}}</option>
+                                        {{/addresses}}
+                                {{else}}
+                                    <option value="">No Addresses to select</option>
+                                {{/if}}
+                            </select>
+                        {{/if}}
+							<label for="billingAddress{{index}}"></label>
+							<div id="cardAddressError{{index}}" class="help-block form-message"></div>
+						</div>
+					</fieldset>
+                    <ul class="details-list row">
+                        <li class="billing-addressLi">
+                            <p></p>
+                            <p></p>
+                            <p></p>
+                        </li>
+					</ul>
+					<input class="theme-btn update-payment-info submit-button" data-formname=".update-paymentInfo" data-update="{{index}}" data-creditcardid="{{creditCardId}}" type="submit" value="${properties.addThisCardLabel @context='scriptString'}" />
+                    <input class="theme-btn update-payment-info update-button hide" data-formname=".update-paymentInfo" data-update="{{index}}" data-creditcardid="{{creditCardId}}" type="submit" value="${properties.updateThisCardLabel @context='scriptString'}" />
+                    <input class="theme-btn transparent-btn cancel-card" data-update="{{index}}" type="submit" value="${properties.cancelButtonLabel @context='scriptString'}" />
+                </div>
+            </script>
+        </form>
+    </div>
+    <div class="user-info-wrapper">
+        <h2 class="header-label">${properties.defaultCardLabel}</h2>   
+        <form>
+            <script id="defaultPaymentInfoTemp" type="text/x-handlebars-template">
+                {{#if Cards}}
+                    {{#Cards}}
+                    <ul class="details-list row">
+                        <li class="details-list-item">
+                            <p>{{cardType}} ending in {{cardNumEnd}}</p>
+                            <p>Expires: {{expMonth}}/{{expYear}}</p>
+                            <p>Name on the card: {{cardName}}</p>
+                            <a href="#" class="edit-default-payment link-separator">${properties.editLabel @context='scriptString'} </a>
+                            <a href="#" data-delete="{{creditCardId}}" data-index="{{@key}}" class="delete-cards default" data-track-delete-card>${properties.deleteLabel @context='scriptString'} <span class="sr-only">opens a dialog box</span></a>
+                        </li>
+                        <li class="details-list-item"> 
+                            <p><strong>Billing address</strong></p> 
+							{{#each address.addressLine}}
+								<p>{{this}} </p>
+							{{/each}}
+                            <p>{{address.city}} {{address.state}} {{address.zipCode}}</p>
+                        </li>
+                    </ul>
+                    {{/Cards}}
+                {{/if}}
+            </script>
+            <div id="defaultPaymentInfoDiv">
+                
+            </div>
+        </form>
+    </div>
+    <div class="user-info-wrapper">
+        <h2 class="header-label">${properties.additionalCardsLabel}</h2>   
+        <form>
+            <div id="additionalPaymentInfoDiv"></div>
+
+            <script id="additionalPaymentInfoTemp" type="text/x-handlebars-template">
+                {{#if Cards}}
+                    {{#Cards}}
+                        <ul class="details-list row">
+                            <li class="details-list-item">
+                                <p>{{cardType}} ending in {{cardNumEnd}}</p>
+                                <p>Expires: {{expMonth}}/{{expYear}}</p>
+                                <p>Name on the card: {{cardName}}</p>
+                                <a href="#" class="edit-additional-payment link-separator">${properties.editLabel @context='scriptString'}  </a>
+                                <a href="#" data-delete="{{creditCardId}}" data-index="{{@key}}" class="delete-cards">${properties.deleteLabel @context='scriptString'} <span class="sr-only">opens a dialog box</span></a>
+                            </li>
+                            <li class="details-list-item"> 
+                            <p><strong>Billing address</strong></p> 
+                         	 {{#each address.addressLine}}
+								<p>{{this}} </p>
+							 {{/each}}
+                            <p>{{address.city}} {{address.state}} {{address.zipCode}}</p> 
+                            </li> 
+
+                        </ul>
+                    {{/Cards}}
+                {{/if}}
+            </script>
+        </form>
+    </div>
+	<!-- Modal confirm -->
+    <div class="modal" id="confirmModal" style="display: none; z-index: 1050;" tabindex="-1">
+        <div class="modal-dialog modal-md">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><em class="fa fa-times fa-lg"></em></button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to remove this?
+                </div>
+                <div class="modal-footer">                        
+                    <button type="button" class="theme-btn update-info" id="confirmCancel">No</button>
+                    <button type="button" class="theme-btn update-info" id="confirmOk">Yes, remove this</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal success -->
+    <div class="modal" id="successModal" style="display: none; z-index: 1050;" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">&times;</button>
+                    <h4 class="modal-title">Modal Header</h4>
+                </div>
+                <div class="modal-body">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" id="successConfirmOk" data-dismiss="modal">Ok</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- The delete success modal -->
+    <div class="modal fade" id="deleteSuccess" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">                                            
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">&times;</button>
+                    <h4 class="modal-title">
+                        
+                    </h4>
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body" id="deleteResponseTxt">
+                    
+                </div>
+                
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" aria-label="Close">Close</button>
+                </div>
+            
+            </div>
+        </div>
+    </div>
+    <sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
+    <sly data-sly-call="${clientlib.js @ categories='ecomm.paymentInfo'}"/>
+</sly>
+</div>

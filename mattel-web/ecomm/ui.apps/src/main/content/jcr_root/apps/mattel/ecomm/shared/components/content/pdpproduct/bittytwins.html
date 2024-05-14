@@ -1,0 +1,59 @@
+<template data-sly-template.bittyTwinsInfo="${@ bittyTwinsObj}">
+	<div class="bitty-twins-section ${!bittyTwinsObj.core.product_buyable || bittyTwinsObj.core.product_buyable == '0' ? 'non-buyable-product' : ''}" data-kit-partnumbers="${bittyTwinsObj.kitComponentHiddenPartNumbers}">
+		<aside class="bitty-twin-choices choice1" data-sly-test.primaryKit="${bittyTwinsObj.primaryKit}">
+			<!--/* doll Choice */-->
+			<sly data-sly-list.hiddenParts="${bittyTwinsObj.kitComponentHiddenParts}">
+			<input type="hidden" id="bittykitcomponent-${hiddenPartsList.count}" data-partnumber="${hiddenParts.partNumber}" data-variant-id="${hiddenParts.variantId}" data-association-type="${hiddenParts.associationType}" data-product-type="${hiddenParts.productType}"/>
+			</sly>
+			<div class="bitty-twin-title">${properties.bittyBabyChoice1Label @i18n}: <span></span></div>
+			<section class="doll-choice-section">
+				<sly data-sly-list.sleeper="${primaryKit.sleepers}">
+					<ul data-sleeper-type="${sleeper.sleeperType}" class="doll-choices ${sleeper.hasFirstSequenceDoll ? '':'hide'}">
+						<sly data-sly-list.doll="${sleeper.dolls}">
+							<li data-doll-variant="${doll.variantId}" data-doll-partnumber="${doll.partNumber}" data-default-display="${doll.kitDefaultSequence}" data-doll-name="${doll.dollType}" data-doll-association-type="${doll.associationType}" data-doll-product-type="${doll.productType}" data-buyable-attr="${doll.product_buyable}"><a href="javascript:void(0)"><img src="${doll.imageURL}"></a></li>
+						</sly>
+					</ul>
+				</sly>
+			</section>
+
+			<!--/* Sleeper Choice */-->
+			<div class="bitty-twin-title">${properties.sleeperChoice1Label @i18n}: <span></span></div>
+			<section class="sleeper-choice-section">
+				<ul class="sleeper-choices" data-sly-list.sleeper="${primaryKit.sleepers}">
+					<li data-sleeper-type="${sleeper.sleeperType}">
+						<a href="javascript:void(0)" role="radio" aria-checked="true">
+							<img alt="${sleeper.sleeperType}" src="${sleeper.imageURL}"/>
+							<span></span>
+						</a>
+					</li>
+				</ul>
+			</section>
+		</aside>
+		<aside class="bitty-twin-choices choice2" data-sly-test.secondaryKit="${bittyTwinsObj.secondaryKit}">
+			<!--/* doll Choice */-->
+			<div class="bitty-twin-title">${properties.bittyBabyChoice2Label @i18n}: <span></span></div>
+			<section class="doll-choice-section">
+				<sly data-sly-list.sleeper="${secondaryKit.sleepers}">
+					<ul data-sleeper-type="${sleeper.sleeperType}" class="doll-choices ${sleeper.hasSecondSequenceDoll ? '':'hide'}">
+						<sly data-sly-list.doll="${sleeper.dolls}">
+							<li data-doll-variant="${doll.variantId}"data-doll-partnumber="${doll.partNumber}" data-default-display="${doll.kitDefaultSequence}" data-doll-name="${doll.dollType}" data-doll-association-type="${doll.associationType}" data-doll-product-type="${doll.productType}" data-buyable-attr="${doll.product_buyable}"><a href="javascript:void(0)"><img src="${doll.imageURL}"></a></li>
+						</sly>
+					</ul>
+				</sly>
+			</section>
+
+			<!--/* Sleeper Choice */-->
+			<div class="bitty-twin-title">${properties.sleeperChoice2Label @i18n}: <span></span></div>
+			<section class="sleeper-choice-section">
+				<ul class="sleeper-choices" data-sly-list.sleeper="${secondaryKit.sleepers}">
+					<li data-sleeper-type="${sleeper.sleeperType}">
+						<a href="javascript:void(0)" role="radio" aria-checked="true">
+							<img alt="${sleeper.sleeperType}" src="${sleeper.imageURL}"/>
+							<span></span>
+						</a>
+					</li>
+				</ul>
+			</section>
+		</aside>
+	</div>
+</template>

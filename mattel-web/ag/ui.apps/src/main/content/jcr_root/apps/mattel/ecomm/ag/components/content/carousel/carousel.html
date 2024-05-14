@@ -1,0 +1,29 @@
+<sly data-sly-test="${wcmmode.edit}">${'Carousel Component' @i18n}</sly>
+<sly data-sly-use.carouselModel = "com.mattel.ag.explore.core.model.CarouselModel">
+    <!-- cda banner module -->
+    <div class="cda-banner enable-carousel" data-speed="4000" data-slide-show="${carouselModel.carouselFeaturesData.slideShow}" data-slide-scroll="${carouselModel.carouselFeaturesData.slideScroll}" data-dots="${!carouselModel.carouselFeaturesData.dots @context='text'}" data-center-mode="${carouselModel.carouselFeaturesData.centerMode}" data-autoplay="${carouselModel.carouselFeaturesData.autoPlay}" data-arrows="${!carouselModel.carouselFeaturesData.arrows @context='text'}">
+        <div class="ag-container">
+            <ul class="carousel-slides" data-sly-list.carouselList="${carouselModel.carouselDetailsList}">
+                <li>
+                    <div class="slick_banner">
+                        <img tabindex="0" src="${carouselList.imgUrl}" alt="${carouselList.imageAlttext}" />
+                    </div>
+                    <div tabindex="0" class="article-text text-center">
+                        ${carouselList.description @context='html'}
+                    </div>
+                </li>
+            </ul>
+        </div>
+		<sly data-sly-test="${carouselModel.carouselFeaturesData.external}">
+        <div class="text-center" data-sly-test="${properties.seeEverythingLabel}" >
+                <a class="arrow-link data-track-carousel-link" data-tracking-carousel-link="${properties.seeEverythingLabel}|Carousel" href="${properties.seeEverythingLink @ context='unsafe'}">${properties.seeEverythingLabel}</a>
+            </div>
+		</sly>
+		<sly data-sly-test="${!carouselModel.carouselFeaturesData.external}">
+        <div class="text-center" data-sly-test="${properties.seeEverythingLabel}" >
+                <a class="arrow-link data-track-carousel-link" data-tracking-carousel-link="${properties.seeEverythingLabel}|Carousel" href="${properties.seeEverythingLink @ context='unsafe'}.html">${properties.seeEverythingLabel}</a>
+            </div>
+		</sly>
+    </div>
+    <!-- cda banner module -->
+</sly>

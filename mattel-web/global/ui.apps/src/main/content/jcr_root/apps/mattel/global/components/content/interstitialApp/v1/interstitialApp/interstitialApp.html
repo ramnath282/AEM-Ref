@@ -1,0 +1,45 @@
+<sly data-sly-test="${wcmmode.edit}">
+    ${' Configure Interstitial App Model' @ i18n}</sly>
+
+<div class="modal interstitial-modal" id="interstitialGameRetailerModal" tabindex="-1" role="dialog" aria-labelledby="interstitialModalLabel">
+    <div class="modal-dialog" role="document">
+        <sly data-sly-test="${(properties.interstitialBgImage == null && properties.interstitialBgColor == null )||(properties.interstitialBackOption=='image'&& properties.interstitialBgImage ==null)||(properties.interstitialBackOption=='color'&& properties.interstitialBgColor ==null)}">
+            <div class="modal-content" id="interstitialModalLabel">
+        </sly>
+        <sly data-sly-test="${properties.interstitialBackOption=='color' && properties.interstitialBgColor !=null}">
+            <div class="modal-content" id="interstitialModalLabel" style="background:${properties.interstitialBgColor @ context='styleString'};">
+        </sly>
+        <sly data-sly-test="${properties.interstitialBackOption=='image'&& properties.interstitialBgImage !=null}">
+            <div class="modal-content" id="interstitialModalLabel" style="background-image: url('${properties.interstitialBgImage @ context='styleString'}'); background-size: cover;">
+        </sly>
+        <div class="modal-header">
+            <a href="#" aria-hidden="true" class="sr-only" id="first-link">
+                <!--/* first link /*-->
+            </a>
+            <button type="button" class="close" data-tracking-id="Click Events|${properties.alwaysEnglish}|Close|App Interstitial" data-dismiss="modal" aria-label="Close"> </button>
+            
+<sly data-sly-test="${properties.interstitialTitle}">
+            <h2 class="modal-title">${properties.interstitialTitle @ i18n}</h2>
+</sly>
+        </div>
+        <div class="modal-body">
+            <p>${properties.description @ context='html',i18n}</p>
+            <div class="play-tiles-gallery play-retailers">
+                <div class="gallery-tile">
+                    <sly data-sly-use.interApp="com.mattel.play.core.model.InterstitialModel">
+
+                        <ul>
+                            <sly data-sly-list.interAppList="${interApp.interstitialDetailsList}">
+
+                            </sly>
+                        </ul>
+
+                    </sly>
+                </div>
+            </div>
+
+        </div>
+        </div>
+        </div>
+
+        </div>

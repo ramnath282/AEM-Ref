@@ -1,0 +1,48 @@
+<sly data-sly-test="${wcmmode.edit}">${'Anchor Navigation Configuration' @i18n}</sly>
+<sly data-sly-use.anchorNavModel="com.mattel.global.core.model.v1.AnchorNavigationModel">
+    <sly data-sly-test="${anchorNavModel.bgType=='image'}">
+        <div class="anchor-nav" style="background-image: url('${anchorNavModel.backgroundImage @ context='styleString'}'); background-size: cover;">
+    </sly>
+    <sly data-sly-test="${anchorNavModel.bgType=='color'}">
+        <div class="anchor-nav" style="background:${anchorNavModel.backgroundColor @ context='styleString'};">
+    </sly>
+    <nav class="navbar" id="scrollnav">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-toggle" aria-expanded="false" aria-controls="navbar-toggle">
+            	${anchorNavModel.mobileSubNavMenuText ? anchorNavModel.mobileSubNavMenuText : 'Menu' @i18n}
+            </button>
+            <a data-sly-test="${anchorNavModel.navigationLogo}" class="brand-logo" href="${anchorNavModel.logoNavUrl}">
+                <img src="${anchorNavModel.navigationLogo}" alt="${anchorNavModel.logoAlt}">
+            </a>
+        </div>
+        <div id="navbar-toggle" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav ">
+                <sly data-sly-list.anchorModelList="${anchorNavModel.anchorModelList}">
+                    <li data-sly-test="${anchorModelList.anchorName}">
+                        <input type="hidden" class="siteSelection" value="${anchorModelList.anchorName}">
+                        <sly data-sly-test = ${anchorModelList.anchorID}>
+                        	<a data-scroll href="${anchorModelList.anchorID}" target="_self" data-sly-attribute.data-tracking-anchor-id="${anchorModelList.trackingText}" alt="${anchorModelList.anchorNavAltText}">${anchorModelList.anchorName @ context="html",i18n}</a>
+                        </sly>
+                        <sly data-sly-test = ${!anchorModelList.anchorID}>
+                            <sly data-sly-test="${anchorModelList.linkOptions == 'newTab' || anchorModelList.linkOptions == 'self'}" >
+                            	<a data-scroll href="${anchorModelList.anchorNavUrl}" data-sly-attribute.data-tracking-anchor-id="${anchorModelList.trackingText}" alt="${anchorModelList.anchorNavAltText}" data-sly-attribute.target="${anchorModelList.linkOptions == 'newTab' ? '_blank' : '_self' }">${anchorModelList.anchorName @ context="html",i18n}</a>
+                            </sly>
+                            <sly data-sly-test="${anchorModelList.linkOptions == 'blank'}" >
+                                <a data-scroll data-sly-attribute.data-tracking-anchor-id="${anchorModelList.trackingText}" alt="${anchorModelList.anchorNavAltText}" onclick="window.open('${anchorModelList.anchorNavUrl @ context = 'attribute'}','FP','width=500, height=500');" role="button">${anchorModelList.anchorName @ context="html",i18n}</a>
+                            </sly>
+                        </sly>
+                    </li>
+                </sly>
+            </ul>
+        </div>
+    </nav>
+</div>
+    <sly data-sly-test="${wcmmode.edit}" data-sly-use.content="com.mattel.global.master.core.model.ContentTab">
+        <sly data-sly-test="${content.items && content.items.size > 0}">
+            <sly data-sly-repeat.item="${content.items}" data-sly-resource="${item.name @ decorationTagName='div'}"></sly>
+        </sly>
+        <sly data-sly-resource="${resource.path @ resourceType='wcm/foundation/components/parsys/newpar', appendPath='/*', decorationTagName='div', cssClassName=''}" data-sly-test="${(wcmmode.edit || wcmmode.preview) && content.items.size < 1}"></sly>
+    </sly>
+    <sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
+        <sly data-sly-call="${clientlib.js @ categories='global.anchor-nav'}" />
+    </sly>

@@ -1,0 +1,1940 @@
+//file-info
+//css1.header css
+//css2.main-nav css
+//css3.corporate-news-search
+//css4.news search dropdown css
+@-webkit-keyframes load3 {
+  1% {
+    -webkit-transform: rotate(1deg);
+    transform: rotate(1deg)
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg)
+  }
+}
+
+@keyframes load3 {
+  1% {
+    -webkit-transform: rotate(1deg);
+    transform: rotate(1deg)
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg)
+  }
+}
+
+.reusable-header, .informationalHeader{
+  header {
+    @include print-css(
+        map-merge((
+          left: 0,
+          z-index: 1025,
+          position: (
+            defaultVal: fixed,
+            tabletMobile: fixed
+          ),
+          width: 100%,
+          line-height: em(14),
+          background-size: (
+            defaultVal: cover,
+            desktopOnly: contain
+          ),
+          background-color: #ffffff,
+          top: 0 !important,
+          min-height: (
+            tabletMobile: 56px,
+            defaultVal: 50px,
+            desktopOnly: 57px
+          ),
+          border-bottom: (
+            tabletMobile: none,
+            desktopOnly: 1px solid #ebebeb
+          )
+        ), 
+        if(variable-exists(globalHeader) and map-has-key($globalHeader, headerDefaultCss), 
+            map-get($globalHeader,headerDefaultCss), ()
+        )
+    ));
+    >div {
+      @extend .container-fluid;
+      @include print-css(
+            map-merge((
+              width: (
+                defaultVal: auto,
+                desktopOnly: 83.33%
+              ),
+              padding: (
+                defaultVal: 2.5px,
+                desktopOnly: 0
+              ),
+              margin: (desktopOnly: 0 auto),
+              position: (
+                desktopOnly: relative
+              ),
+              max-width: (
+                desktopOnly: 1199.99px
+              ),
+              background-color:(
+                tabletMobile:transparent
+              ),
+              min-height:(tabletMobile: inherit)
+            ), 
+            if(variable-exists(globalHeader) and map-has-key($globalHeader, headernextDiv), 
+                map-get($globalHeader,headernextDiv), ()
+            )
+        ));
+    }
+
+    .brand-logo {
+      @include print-css(
+            map-merge((
+              position: absolute,
+              z-index: (
+                defaultVal: 9999,
+                desktopOnly: 1
+              ),
+              padding-left:(
+                defaultVal: 0 0 0 25px,
+                tabletMobile: 0,
+                desktopOnly: 0
+              ),
+              left: (
+                defaultVal: 8px,
+                desktopOnly: 0
+              ),
+              top:(
+                defaultVal: 15px,
+                //tabletMobile: 2.14286em,
+                desktopOnly: 0.7em
+              )
+            ), 
+            if(variable-exists(globalHeader) and map-has-key($globalHeader, brandlogoCss), 
+                map-get($globalHeader,brandlogoCss), ()
+            )
+      ));
+      img {
+        @include print-css(
+            map-merge((
+              width:(
+                defaultVal: 64px,
+                desktopOnly: 82px
+              ),
+              height:(
+                defaultVal: 64px,
+                desktopOnly: 82px
+              )
+            ), 
+            if(variable-exists(globalHeader) and map-has-key($globalHeader, brandlogoimgCss), 
+                map-get($globalHeader,brandlogoimgCss), ()
+            )
+      ));
+      }
+    }
+    .primary-nav {
+      @include print-css(
+            map-merge((
+                max-height:(
+                  tabletMobile : initial
+                ),
+            ), 
+            if(variable-exists(globalHeader) and map-has-key($globalHeader, primarynavHeight), 
+                map-get($globalHeader,primarynavHeight), ()
+            )
+      ));
+      .overlay {
+        @include print-css(
+            map-merge((
+                z-index:(
+                  tabletMobile : -1
+                ),
+                top: (tabletMobile: 50px)
+            ), 
+            if(variable-exists(globalHeader) and map-has-key($globalHeader, primarynavoverayZindx), 
+                map-get($globalHeader,primarynavoverayZindx), ()
+            )
+        ));
+      }
+
+      .pull-right {
+        @media #{$tablet-mobile} {
+          width: 100%;
+        }
+      }
+
+      &>ul {
+        &>li:last-of-type {
+          @include print-css(
+            map-merge((
+                margin-right:(
+                  desktopOnly : 16px
+                ),
+            ), 
+            if(variable-exists(globalHeader) and map-has-key($globalHeader, primarynavlastLiSpacing), 
+                map-get($globalHeader,primarynavlastLiSpacing), ()
+            )
+          ));
+          &>ul {
+            @include print-css(
+            map-merge((
+                min-width:(
+                  desktopOnly : calc(100% + 81px)
+                ),
+            ), 
+              if(variable-exists(globalHeader) and map-has-key($globalHeader, primarynavulMinWidth), 
+                  map-get($globalHeader,primarynavulMinWidth), ()
+              )
+            ));
+          }
+        }
+      }
+    }
+
+    .news-search {
+      .search-input-field {
+        @include print-css(
+            map-merge((
+              width:(
+                  tabletMobile : 100% !important
+                ),
+                right:(
+                  desktopOnly: 0
+                )
+            ), 
+            if(variable-exists(globalHeader) and map-has-key($globalHeader, newsSearchinputField), 
+                map-get($globalHeader,newsSearchinputField), ()
+            )
+      ));
+        .input-group {
+          input::-webkit-input-placeholder { 
+            color: #5c5c5c;
+          }
+          input::-moz-placeholder { 
+            color: #5c5c5c;
+          }
+          input:-ms-input-placeholder { 
+            color: #5c5c5c;
+          }
+          input:-moz-placeholder { 
+            color: #5c5c5c;
+          }
+          @include print-css(
+              map-merge((
+                top:(
+                  desktopOnly: -8px
+                ),
+                border: (
+                  tabletMobile: 1px solid transparent !important
+                ),
+                position: (
+                  tabletMobile: relative
+                ),
+                width: (
+                  tabletMobile: 92%
+                ),
+                margin: (
+                  tabletMobile: 22px auto 0 auto
+                ),
+              ), 
+              if(variable-exists(globalHeader) and map-has-key($globalHeader, newsinputGroup), 
+                  map-get($globalHeader,newsinputGroup), ()
+              )
+            ));
+          #searchInput_field {
+            &::-ms-clear {
+              display: none;
+            }
+            @include print-css(
+              map-merge((
+                padding-right:(
+                  tabletMobile :33px
+                ),
+                height: (
+                  tabletMobile: 48px !important
+                ),
+                padding: (
+                  tabletMobile: 7px 0px 0px 12px
+                ),
+                width: (
+                  tabletMobile: 85%
+                ),
+                color: #000,
+                font-size: 16px,
+                font-weight: 400 !important
+              ), 
+              if(variable-exists(globalHeader) and map-has-key($globalHeader, newsinputGroupField), 
+                  map-get($globalHeader,newsinputGroupField), ()
+              )
+            ));
+          }
+
+          .tt-menu {
+            @include print-css(
+              map-merge((
+                  left:(
+                    tabletMobile:-64px !important
+                  ),
+                  top:(
+                    tabletMobile :57px !important
+                  )
+                ), 
+                if(variable-exists(globalHeader) and map-has-key($globalHeader, newsSearchttmenuList), 
+                    map-get($globalHeader,newsSearchttmenuList), ()
+                )
+            ));
+            .tt-dataset-result {
+              @include print-css(
+                map-merge((
+                  min-height:(
+                      tabletMobile: 270px
+                    ),
+                  ), 
+                  if(variable-exists(globalHeader) and map-has-key($globalHeader, newsSearchttdatasetResult), 
+                      map-get($globalHeader,newsSearchttdatasetResult), ()
+                  )
+              ));
+            }
+          }
+        }
+      }
+    }
+
+    .hamburger {
+      @include print-css(
+          map-merge((
+            color: $black,
+            float: right !important,
+            width: 42px,
+            padding: 0,
+            display:(
+                desktopOnly: none,
+                tabletMobile: block !important
+              )
+            ), 
+            if(variable-exists(globalHeader) and map-has-key($globalHeader, headhamburgerMenu), 
+                map-get($globalHeader,headhamburgerMenu), ()
+            )
+      ));
+      &.open {
+        &:after {
+          @include print-css(
+            map-merge((
+                content: ' ',
+                background: url(#{$HeaderspriteLightPath}) no-repeat -231px -458px,
+                width: 42px,
+                height: 42px,
+                position: absolute,
+                right: 12px,
+                top: 5px
+              ), 
+              if(variable-exists(globalHeader) and map-has-key($globalHeader, headhamburgerMenuOpen), 
+                  map-get($globalHeader,headhamburgerMenuOpen), ()
+              )
+          ));
+        }
+      }
+
+      &:after {
+        @include print-css(
+            map-merge((
+                content: ' ',
+                background: url(#{$HeaderspriteLightPath}) no-repeat -231px -416px,
+                width: 42px,
+                height: 42px,
+                position: absolute,
+                right: 12px,
+                top: 5px
+              ), 
+              if(variable-exists(globalHeader) and map-has-key($globalHeader, headhamburgerafterMenu), 
+                  map-get($globalHeader,headhamburgerafterMenu), ()
+              )
+          ));
+      }
+    }
+
+    .primary-nav {
+      @include print-css(
+            map-merge((
+              padding-top:(
+                tabletMobile: 24px
+              ),
+              padding-bottom:(
+                tabletMobile: 34px
+              ),
+              display:(
+                tabletMobile: none,
+                desktopOnly: inline-block !important
+              ),
+              position:(
+                tabletMobile: absolute
+              ),
+              left:(
+                tabletMobile: 0
+              ),
+              top:(
+                tabletMobile: 50px
+              ),
+              width:(
+                tabletMobile: 100%
+              ),
+              height:(
+                tabletMobile:  calc(100vh - 50px) !important,
+                desktopOnly: 57px
+              ),
+              background-color:(
+                tabletMobile: $white
+              ),
+              box-shadow:(
+                tabletMobile: 0 0.125em 0.125em rgba(0, 0, 0, 0.25)
+              ),
+              min-height:(
+                desktopOnly: 57px
+              ),
+              max-height:(
+                tabletMobile: inherit,
+                desktopOnly: em(70)
+              ),
+              overflow-y:(
+                tabletMobile: scroll
+              ),
+              max-width:(
+                tabletMobile:280px
+              ),
+              border-top:(
+                tabletMobile:none
+              ),
+              background:(
+                desktopOnly: transparent
+              ),
+              float: (
+                desktopOnly: right
+              )
+            ), 
+            if(variable-exists(globalHeader) and map-has-key($globalHeader, primaryNavDefaultCss), 
+                map-get($globalHeader,primaryNavDefaultCss), ()
+            )
+      ));
+      &>ul {
+        @include print-css(
+            map-merge((
+                margin:(
+                  tabletMobile:80px auto 80px auto !important
+                ),
+                padding-top: (
+                  tabletMobile:0
+                ),
+                width: (tabletMobile: 92%),
+                border-top: (
+                  tabletMobile: 1px solid #d8d8d8
+                )
+              ), 
+              if(variable-exists(globalHeader) and map-has-key($globalHeader, primaryNavNextUl), 
+                  map-get($globalHeader,primaryNavNextUl), ()
+              )
+        ));
+        &>li {
+          @include print-css(
+            map-merge((
+                border-bottom:(
+                  tabletMobile:1px solid #D8D8D8
+                ),
+                margin: (
+                  tabletMobile: 0 !important
+                ),
+                padding: (
+                  tabletMobile:0 9px 0 !important,
+                  desktopOnly: 20px 0 11px 30px
+                )
+              ), 
+              if(variable-exists(globalHeader) and map-has-key($globalHeader, primaryNavNextLi), 
+                  map-get($globalHeader,primaryNavNextLi), ()
+              )
+          ));
+        }
+
+        &>.pull-right {
+          @include print-css(
+            map-merge((
+                position: (
+                  tabletMobile:absolute,
+                ),
+                top: (
+                  tabletMobile:0,
+                ),
+                left:(
+                  tabletMobile:0,
+                ),
+                width:(
+                  tabletMobile:100%
+                )
+              ), 
+              if(variable-exists(globalHeader) and map-has-key($globalHeader, PrimaryNavPullRight), 
+                  map-get($globalHeader,PrimaryNavPullRight), ()
+              )
+          ));
+          .search-input-field {
+            @include print-css(
+              map-merge((
+                  width:(
+                    tabletMobile:100%
+                  )
+                ), 
+                if(variable-exists(globalHeader) and map-has-key($globalHeader, PrimaryNavSearchInput), 
+                    map-get($globalHeader,PrimaryNavSearchInput), ()
+                )
+            ));
+          }
+        }
+
+        .search {
+          .input-group {
+            .twitter-typeahead {
+              .tt-hint {
+                @include print-css(
+                map-merge((
+                    height: (
+                      tabletMobile:48px !important
+                    ),
+                    padding-top:(
+                      tabletMobile:0
+                    ),
+                    padding-bottom:(
+                      tabletMobile:0
+                    )
+                  ), 
+                  if(variable-exists(globalHeader) and map-has-key($globalHeader, PrimaryNavSearchTypeahed), 
+                      map-get($globalHeader,PrimaryNavSearchTypeahed), ()
+                  )
+              ));
+              }
+            }
+
+            #searchInput_field {
+              @include print-css(
+                map-merge((
+                    height: (
+                      tabletMobile:53px !important
+                    ),
+                    padding-top:(
+                      tabletMobile:0
+                    ),
+                    padding-bottom:(
+                      tabletMobile:0
+                    )
+                  ), 
+                  if(variable-exists(globalHeader) and map-has-key($globalHeader, PrimaryNavSearchField), 
+                      map-get($globalHeader,PrimaryNavSearchField), ()
+                  )
+              ));
+            }
+
+            .close-icon {
+              @include print-css(
+                map-merge((
+                    top: (
+                      tabletMobile:21px!important
+                    ),
+                    right:(
+                      tabletMobile: 8px!important
+                    )
+                  ), 
+                  if(variable-exists(globalHeader) and map-has-key($globalHeader, PrimaryNavSearchCloseIcon), 
+                      map-get($globalHeader,PrimaryNavSearchCloseIcon), ()
+                  )
+              ));
+            }
+
+            pre {
+              display: none;
+            }
+          }
+        }
+      }
+      ul {
+        @include print-css(
+            map-merge((
+                background-color:(
+                  tabletMobile:$white
+                ),
+                background-image:(
+                  tabletMobile:url('/../../../../../../../../content/dam/mattel/polly-pocket/play-site/images/mobile-nav-bg.png')
+                ),
+                background-position:(
+                  tabletMobile:95% 90%
+                ),
+                background-size:(
+                  tabletMobile:7em
+                ),
+                background-repeat:(
+                  tabletMobile:no-repeat
+                )
+            ), 
+            if(variable-exists(globalHeader) and map-has-key($globalHeader, primarydefaultUl), 
+                map-get($globalHeader,primarydefaultUl), ()
+            )
+        ));
+        ul {
+          background-image: none;
+        }
+      }
+      >ul {
+        @include print-css(
+            map-merge((
+                margin:(
+                  defaultVal: em(15) 0,
+                  desktopOnly: 0
+                ),
+                height:(
+                  desktopOnly: 100%
+                )
+            ), 
+            if(variable-exists(globalHeader) and map-has-key($globalHeader, primaryNavUlCss), 
+                map-get($globalHeader,primaryNavUlCss), ()
+            )
+        ));
+        >li {
+          @include print-css(
+            map-merge((
+              display: (
+                defaultVal:block,
+                desktopOnly: inline-table
+              ),
+              position: relative,
+              vertical-align: middle,
+              padding: (
+                defaultVal:0 1.5625em,
+                desktopOnly: 20px 0 11px 30px
+              ),
+              height:(
+                desktopOnly:100%
+              )
+            ), 
+            if(variable-exists(globalHeader) and map-has-key($globalHeader, primaryNavUlLiCss), 
+                map-get($globalHeader,primaryNavUlLiCss), ()
+            )
+        ));
+        &:hover, &:focus {
+              ul {
+                @include print-css(
+                    map-merge((
+                       display:(
+                          desktopOnly: block
+                       ),
+                       visibility:(
+                         desktopOnly: visible
+                       )
+                    ), 
+                    if(variable-exists(globalHeader) and map-has-key($globalHeader, primaryNavHoverulCss), 
+                        map-get($globalHeader,primaryNavHoverulCss), ()
+                    )
+                ));
+              }
+        }
+          &:hover {
+            .show-sub-nav {
+              &::before {
+                @include print-css(
+                    map-merge((
+                      background: url(#{$HeaderspriteLightPath}) no-repeat -80px 0
+                    ), 
+                    if(variable-exists(globalHeader) and map-has-key($globalHeader, primarysubNaviconImg), 
+                        map-get($globalHeader,primarysubNaviconImg), ()
+                    )
+                ));
+              }
+            }
+          }
+
+          &:hover,
+          &:focus {
+            &>a:not(.show-sub-nav) {
+              &:after {
+                @include print-css(
+                  map-merge((
+                    display: none,
+                    content:(
+                      desktopOnly: ' '
+                    ),
+                    position:(
+                      desktopOnly: absolute
+                    ),
+                    bottom:(
+                      desktopOnly: 2
+                    ),
+                    left:(
+                      desktopOnly: 0
+                    ),
+                    right:(
+                      desktopOnly: 0
+                    ),
+                    height:(
+                      desktopOnly: 4px
+                    ),
+                    background-color:(
+                      desktopOnly:  #EE0024
+                    )
+                  ), 
+                  if(variable-exists(globalHeader) and map-has-key($globalHeader, primaryNavanchorAfterCss), 
+                      map-get($globalHeader,primaryNavanchorAfterCss), ()
+                  )
+              ));
+              }
+            }
+          }
+
+          >a {
+            @include print-css(
+                map-merge((
+                  position: relative,
+                  color: (
+                    defaultVal: $black,
+                    desktopOnly: $black
+                  ),
+                  display: (
+                    defaultVal:inline-block,
+                    desktopOnly: table-cell
+                  ),
+                  text-decoration: none,
+                  padding:(
+                    defaultVal:14px 0px 14px 0px,
+                    desktopOnly: 0,
+                    tabletMobile: 14px 0px 14px 0px
+                  ),
+                  margin:(
+                    tabletMobile: 0 35px 0 0
+                  ),
+                  letter-spacing: 0.17px,
+                  line-height: 23px,
+                  font-family: $siteMainFontBold,
+                  font-size: 16px,
+                  font-weight: 600
+                ), 
+                if(variable-exists(globalHeader) and map-has-key($globalHeader, primarynavAnchorCss), 
+                    map-get($globalHeader,primarynavAnchorCss), ()
+                )
+            ));
+          }
+
+          .show-sub-nav {
+            transform: translateY(-50%);
+            @media #{$tablet-mobile} {
+              transform: none;
+            }
+            @include print-css(
+              map-merge((
+                transition: (
+                  defaultVal: all .3s ease-in-out,
+                  tabletMobile: none
+                ),
+                display: block !important,
+                position: absolute,
+                top: (
+                  defaultVal: 50%,
+                  tabletMobile: 15px
+                ),
+                right: (
+                  defaultVal: 0,
+                  tabletMobile: -24px
+                ),
+                line-height: 0,
+                border: 0,
+                width: (
+                  defaultVal: 20px,
+                  tabletMobile: 24px
+                ),
+                height: (
+                  defaultVal: 20px,
+                  tabletMobile: 24px
+                ),
+                padding: (
+                  defaultVal: 0 0 0 20px,
+                  tabletMobile: 0 0 0 24px
+                ),
+                overflow: hidden,
+                transform-origin: center center
+              ), 
+              if(variable-exists(globalHeader) and map-has-key($globalHeader, showsubnavCss), 
+                  map-get($globalHeader,showsubnavCss), ()
+              )
+            ));
+            &:before {
+              @include print-css(
+                  map-merge((
+                    content: ' ',
+                    background: url(#{$HeaderspriteLightPath}) no-repeat -56px 0,
+                    width: 24px,
+                    height: 24px,
+                    position: absolute,
+                    right: 0,
+                    top: -1px,
+                    left: 0
+                  ), 
+                  if(variable-exists(globalHeader) and map-has-key($globalHeader, showsubnavBeforeCss), 
+                      map-get($globalHeader,showsubnavBeforeCss), ()
+                  )
+              ));
+            }
+            ~a{
+              @media #{$desktop} {
+                padding-right: 22px;
+              }
+            }
+
+            &.show-sub-nav-true {
+              @media #{$tablet-mobile}{
+                transform:rotate(180deg)
+              }
+              @include print-css(
+                  map-merge((
+                    top:(
+                      tabletMobile:12px
+                    )
+                  ), 
+                  if(variable-exists(globalHeader) and map-has-key($globalHeader, showsubnavtrueCss), 
+                      map-get($globalHeader,showsubnavtrueCss), ()
+                  )
+              ));
+              &+a,
+              &+input+a {
+                @media #{$tablet-mobile} {
+                  max-width: min-content;
+                }
+
+                &:after {
+                  @include print-css(
+                      map-merge((
+                        display:(
+                          tabletMobile: none
+                        ),
+                        content:(
+                          tabletMobile:' '
+                        ),
+                        position:(
+                          tabletMobile:absolute
+                        ),
+                        bottom:(
+                          tabletMobile:2px
+                        ),
+                        left:(
+                          tabletMobile:0
+                        ),
+                        right:(
+                          tabletMobile:0
+                        ),
+                        height:(
+                          tabletMobile:4px
+                        ),
+                        background-color:(
+                          tabletMobile:#EE0024
+                        )
+                      ), 
+                      if(variable-exists(globalHeader) and map-has-key($globalHeader, showsubnavAfter), 
+                          map-get($globalHeader,showsubnavAfter), ()
+                      )
+                  ));
+                }
+              }
+            }
+          }
+
+          .header-img {
+            @include print-css(
+                map-merge((
+                  width: em(15),
+                  height: em(15),
+                  margin-right: em(5)
+                ), 
+                if(variable-exists(globalHeader) and map-has-key($globalHeader, linavheaderImgCss), 
+                    map-get($globalHeader,linavheaderImgCss), ()
+                )
+            ));
+          }
+
+          ul {
+            transition: 250ms cubic-bezier(.25, .75, .75, 1.25);
+            @include print-css(
+                map-merge((
+                  display: none,
+                  background-color: rgba($white, 1),
+                  position: absolute,
+                  top: em(70),
+                  left: em(10),
+                  min-width: em(338),
+                  width: auto,
+                  padding:(
+                    defaultVal: em(7) 0,
+                    desktopOnly: em(7) em(20) 10px
+                  ),
+                  height: auto
+                ), 
+                if(variable-exists(globalHeader) and map-has-key($globalHeader, subnavnestedUlCss), 
+                    map-get($globalHeader,subnavnestedUlCss), ()
+                )
+            ));
+            li {
+              @include print-css(
+                map-merge((
+                  display: block,
+                  font-size: em(10)
+                ), 
+                if(variable-exists(globalHeader) and map-has-key($globalHeader, subnavnestedUlLlCss), 
+                    map-get($globalHeader,subnavnestedUlLlCss), ()
+                )
+            ));
+              a {
+                @include print-css(
+                    map-merge((
+                      color: $black,
+                      text-transform: none,
+                      border-bottom: 0,
+                      font-family: $siteSubFont,
+                      padding:(
+                        defaultVal:em(9) 0
+                      ),
+                      padding-bottom:(
+                        desktopOnly:4px
+                      ),
+                      font-size: 16px,
+                      font-weight: 300,
+                      letter-spacing: 0.16px,
+                      line-height:(
+                        desktopOnly:1.2
+                      )
+                    ), 
+                    if(variable-exists(globalHeader) and map-has-key($globalHeader, subnavnestedUlLlanchorCss), 
+                        map-get($globalHeader,subnavnestedUlLlanchorCss), ()
+                    )
+                ));
+                &.active,
+                &:hover {
+                  @include print-css(
+                      map-merge((
+                        color: #EE0024,
+                        text-decoration:underline
+                      ), 
+                      if(variable-exists(globalHeader) and map-has-key($globalHeader, subnavnestedUlLlanchorHovCol), 
+                          map-get($globalHeader,subnavnestedUlLlanchorHovCol), ()
+                      )
+                  ));
+                }
+                &.submenu-level3{
+                  span:first-child{
+                    display: inline-block;
+                    width: 85%;
+                  }
+                  span.submenu-level3-arrow{
+                    position: relative;
+                    width: 24px;
+                    float: right;
+                    &:after{
+                      background:url(#{$HeaderspriteLightPath}) no-repeat -56px 0;
+                      content:' ';
+                      position: absolute;
+                      width: 24px;
+                      height: 24px;
+                      position: absolute;
+                      right: 0;
+                      top:-4px;
+                      @media #{$tablet-mobile}{
+                        top:-5px;
+                      }
+                    }
+                  }
+                  span.submenu-level3-arrow[aria-expanded=true]{
+                    &:after{
+                      transform: rotate(180deg);
+                    }
+                  }
+                }
+                &.submenu-level3:hover{
+                  span:first-child{text-decoration: underline;}
+                }
+              }
+              ul.submenu-level3-item{
+                display: none;
+                width: auto;
+                box-shadow: none;
+                position: relative;
+                padding: 0;
+                top: 0;
+                left: 0;
+                margin: 0 0 16px;
+                padding: 0 0 0 12px;
+                  @media #{$desktop} {
+                    margin: 0 0 22px;
+                  }
+              }
+            }
+          }
+        }
+      }
+
+        ul {
+          li {
+            ul {
+              @include print-css(
+                  map-merge((
+                     display:(
+                       tabletMobile: none,
+                     ),
+                     background-color:(
+                       tabletMobile: transparent,
+                     ),
+                     position:(
+                       tabletMobile: relative,
+                     ),
+                     top:(
+                       tabletMobile: 0,
+                     ),
+                     left:(
+                       tabletMobile: 0,
+                     ),
+                     width:(
+                       tabletMobile: auto,
+                     ),
+                     min-width:(
+                       tabletMobile: initial,
+                     )
+                  ), 
+                  if(variable-exists(globalHeader) and map-has-key($globalHeader, nestednavUnorderUlCss), 
+                      map-get($globalHeader,nestednavUnorderUlCss), ()
+                  )
+              ));
+              li {
+                @include print-css(
+                    map-merge((
+                       font-size:(
+                          tabletMobile:em(12)
+                       ),
+                       padding:(
+                          tabletMobile: 0
+                       ),
+                       border:(
+                          tabletMobile: 0
+                       ),
+                       text-indent:(
+                          tabletMobile: 1em
+                       )
+                    ), 
+                    if(variable-exists(globalHeader) and map-has-key($globalHeader, nestednavUnorderListCss), 
+                        map-get($globalHeader,nestednavUnorderListCss), ()
+                    )
+                ));
+              }
+            }
+          }
+        }
+    }
+
+    .news-search {
+      .search-icon {
+        @include print-css(
+            map-merge((
+              background: transparent,
+              border: 0,
+              padding: 0,
+              outline: 0,
+              display:(
+                tabletMobile: none
+              )
+            ), 
+            if(variable-exists(globalHeader) and map-has-key($globalHeader, searchIconCss), 
+                map-get($globalHeader,searchIconCss), ()
+            )
+        ));
+        .fa-search {
+          @include print-css(
+              map-merge((
+                font-size: 24px,
+                padding: 33px 29px 21px 0,
+                margin: -8px 0 0 0
+              ), 
+              if(variable-exists(globalHeader) and map-has-key($globalHeader, searchIconFontCss), 
+                  map-get($globalHeader,searchIconFontCss), ()
+              )
+          ));
+          &:before {
+            @include print-css(
+              map-merge((
+                content: ' ',
+                background: url(#{$HeaderspriteLightPath}) no-repeat -28px -24px,
+                width: 24px,
+                height: 24px,
+                position: absolute,
+                right: 28px
+              ), 
+              if(variable-exists(globalHeader) and map-has-key($globalHeader, searchIconFontBeforeCss), 
+                  map-get($globalHeader,searchIconFontBeforeCss), ()
+              )
+          ));
+          }
+        }
+
+        &:focus {
+          i {
+            &::before {
+              @include print-css(
+            map-merge((
+              outline: 5px auto -webkit-focus-ring-color,
+              outline-offset: -2px
+            ), 
+              if(variable-exists(globalHeader) and map-has-key($globalHeader, searchIconFocusOutline), 
+                  map-get($globalHeader,searchIconFocusOutline), ()
+              )
+          ));
+            }
+          }
+        }
+      }
+
+      .search-input-field {
+        @include print-css(
+            map-merge((
+              position: absolute,
+              right: 29px,
+              width: (
+                defaultVal: 440px,
+                tabletMobile: 280px
+              ),
+              top: 16px,
+              left:(
+                tabletMobile:0
+              )
+            ), 
+            if(variable-exists(globalHeader) and map-has-key($globalHeader, searchInputFieldCss), 
+                map-get($globalHeader,searchInputFieldCss), ()
+            )
+        ));
+        .input-group {
+          @include print-css(
+            map-merge((
+              position: absolute,
+              display:(
+                tabletMobile: table !important
+              ),
+              border-bottom:(
+                tabletMobile: 1px solid #D8D8D8
+              ),
+              margin-left:(
+                tabletMobile:20px
+              )
+            ), 
+            if(variable-exists(globalHeader) and map-has-key($globalHeader, searchInputGroupCss), 
+                map-get($globalHeader,searchInputGroupCss), ()
+            )
+        ));
+          .input-group-addon {
+            @include print-css(
+                map-merge((
+                  background-color: $white,
+                  border-radius: 0,
+                  z-index: 3,
+                  position: relative,
+                  border-color:  #BFBFBF !important,
+                  border-width: 1px 0px 1px 1px,
+                  border-top-style: solid,
+                  border-right-style:  initial,
+                  border-bottom-style: solid,
+                  border-left-style: solid,
+                  border:(
+                    tabletMobile:0
+                  ),
+                  outline:(
+                    tabletMobile:0
+                  ),
+                  padding-left:(
+                    tabletMobile:0
+                  ),
+                  padding:(
+                    defaultVal: 11px 0px 6px 14px,
+                    desktopOnly: 8px 12px 0px 12px
+                  )
+                ), 
+                if(variable-exists(globalHeader) and map-has-key($globalHeader, searchInputGroupAddonCss), 
+                    map-get($globalHeader,searchInputGroupAddonCss), ()
+                )
+            ));
+           
+            .fa-search {
+              @include print-css(
+                map-merge((
+                  font-size: (
+                    defaultVal:20px,
+                    tabletMobile:24px
+                  ),
+                  color: $black,
+                  background: url(#{$HeaderspriteLightPath}) no-repeat -28px -24px,
+                  width: 24px,
+                  height: 24px,
+                ), 
+                if(variable-exists(globalHeader) and map-has-key($globalHeader, searchFaIConCss), 
+                    map-get($globalHeader,searchFaIConCss), ()
+                )
+            ));
+              &::before {
+                @include print-css(
+                  map-merge((
+                      display:(
+                        tabletMobile: none
+                      ),
+                      padding:(
+                        tabletMobile:10px
+                      ),
+                      content: "",
+                      top: (
+                        desktopOnly: 20px
+                      ),
+                      right:(
+                        desktopOnly: -14px
+                      )
+                  ), 
+                  if(variable-exists(globalHeader) and map-has-key($globalHeader, searchFaIConBeforeCss), 
+                      map-get($globalHeader,searchFaIConBeforeCss), ()
+                  )
+              ));
+              }
+            }
+          }
+
+          .close-icon {
+            @include print-css(
+              map-merge((
+                position: absolute,
+                display: (
+                  defaultVal: block,
+                  tabletMobile:none,
+                  desktopOnly: none
+                ),
+                border: 1px solid transparent,
+                background-color: transparent,
+                vertical-align: middle,
+                right: 15px,
+                outline: 0,
+                cursor: pointer,
+                top: (
+                  defaultVal: 13px,
+                  desktopOnly: 11.5px
+                ),
+                width: 20px,
+                height: 20px,
+                z-index: 50
+              ), 
+              if(variable-exists(globalHeader) and map-has-key($globalHeader, searchCloseIconCss), 
+                  map-get($globalHeader,searchCloseIconCss), ()
+              )
+          ));
+           
+            &:after {
+              @include print-css(
+                map-merge((
+                  content: ' ',
+                  background: url(#{$HeaderspriteLightPath}) no-repeat -152px 0,
+                  width: 25px,
+                  height: 25px,
+                  position: absolute,
+                  right: 0,
+                  top: (
+                    defaultVal: -11px,
+                    desktopOnly: -2px
+                  ),
+                  left: (
+                    defaultVal: -8px,
+                    desktopOnly: 1px
+                  )
+                ), 
+                if(variable-exists(globalHeader) and map-has-key($globalHeader, searchCloseIconAfterCss), 
+                    map-get($globalHeader,searchCloseIconAfterCss), ()
+                )
+            ));
+            }
+          }
+
+          #searchInput_field {
+            @include print-css(
+                map-merge((
+                  box-sizing: border-box,	
+                  height: 40px,	
+                  border: (
+                    defaultVal: 1px solid #BFBFBF,
+                    tabletMobile: 0
+                  ),	
+                  background-color: $white,
+                  border-width: 1px 1px 1px 0px,
+                  border-top-style: solid,
+                  border-right-style: solid,
+                  border-bottom-style: solid,
+                  border-left-style: initial,
+                  box-shadow: none,
+                  padding-left: 0,
+                  outline:(
+                    tabletMobile: 0,
+                  ),
+                  color:(
+                    tabletMobile: $black,
+                  ),
+                  font-size:(
+                    tabletMobile: 20px,
+                  ),
+                  font-style:(
+                    tabletMobile: italic,
+                  ),
+                  font-weight:(
+                    tabletMobile:  300,
+                  ),
+                  line-height:(
+                    tabletMobile:  23px,
+                  )
+                ), 
+                if(variable-exists(globalHeader) and map-has-key($globalHeader, searchFieldInputCss), 
+                    map-get($globalHeader,searchFieldInputCss), ()
+                )
+            ));
+          }
+
+          .form-control {
+            @include print-css(
+                map-merge((
+                  height: 40px,
+                  padding: (
+                    defaultVal: 6px 30px 6px 0,
+                    desktopOnly: 11px 30px 6px 0
+                  ),
+                  font: $fontLight 16px $neue
+                ), 
+                if(variable-exists(globalHeader) and map-has-key($globalHeader, searchFormControlCss), 
+                    map-get($globalHeader,searchFormControlCss), ()
+                )
+            ));
+          }
+
+          .type-ahead {
+            -webkit-appearance: none;
+            @include print-css(
+                map-merge((
+                ), 
+                if(variable-exists(globalHeader) and map-has-key($globalHeader, typeAheadCss), 
+                    map-get($globalHeader,typeAheadCss), ()
+                )
+            ));
+            .tt-hint {
+              @include print-css(
+                map-merge((
+                  color: #989898
+                ), 
+                if(variable-exists(globalHeader) and map-has-key($globalHeader, typeaheadHintCss), 
+                    map-get($globalHeader,typeaheadHintCss), ()
+                )
+            ));
+              
+            }
+          }
+
+          .twitter-typeahead {
+            @include print-css(
+                map-merge((
+                  display: block !important
+                ), 
+                if(variable-exists(globalHeader) and map-has-key($globalHeader, twitterTypeaheadCss), 
+                    map-get($globalHeader,twitterTypeaheadCss), ()
+                )
+            ));
+            
+
+            .tt-hint {
+              @include print-css(
+                map-merge((
+                  color: #989898 !important,
+                  left: -1px !important,
+                  font: (
+                    defaultVal: $fontLight 16px $neue,
+                    tabletMobile: $fontLight 20px $neue
+                  ),
+                  font-weight: (
+                    defaultVal: 400 !important,
+                    tabletMobile: 400 !important
+                  ),
+                  font-style: (
+                    tabletMobile: italic
+                  ),
+                  height: (
+                    tabletMobile: 48px !important
+                  ),
+                  padding: (
+                    tabletMobile: 7px 0px 0px 12px
+                  ),
+                  width: (
+                    tabletMobile: 85%
+                  )
+                ), 
+                if(variable-exists(globalHeader) and map-has-key($globalHeader, twitterTypeaheadHintCss), 
+                    map-get($globalHeader,twitterTypeaheadHintCss), ()
+                )
+            ));
+            }
+          }
+
+          .tt-menu {
+            @include print-css(
+                map-merge((
+                    background: rgb(255, 255, 255),
+                    right: 0px,
+                    height: (
+                      tabletMobile: calc(100vh - 144px)
+                    ),
+                    top: (
+                      defaultVal:40px !important,
+                      tabletMobile: 66px !important
+                    ),
+                    left: (
+                      defaultVal: -48px !important,
+                      tabletMobile: -50px !important
+                    ),
+                    z-index: 1000 !important,
+                ), 
+                if(variable-exists(globalHeader) and map-has-key($globalHeader, typeahedttMenuCss), 
+                    map-get($globalHeader,typeahedttMenuCss), ()
+                )
+            ));
+            .tt-dataset {
+              @include print-css(
+                map-merge((
+                  padding: (
+                    defaultVal:11px 31px 0 48px,
+                    tabletMobile: 11px 20px 0 20px
+                  ),
+                  background-color: $white,
+                  min-height: 194px,
+                  height: (
+                    defaultVal: 194px,
+                    tabletMobile: auto
+                  ),
+                  width: (
+                    defaultVal:438px,
+                    tabletMobile: 260px
+                  ),
+                  overflow: auto,
+                  box-shadow:(
+                    defaultVal: 0px 2px 6px 0 rgba(0,0,0,0.5),
+                    tabletMobile: none
+                  )
+                ), 
+                if(variable-exists(globalHeader) and map-has-key($globalHeader, typeahedDatasetCss), 
+                    map-get($globalHeader,typeahedDatasetCss), ()
+                )
+            ));
+              .tt-suggestion {
+                @include print-css(
+                  map-merge((
+                    display: block,
+                    color: $black,
+                    font: $fontLight 16px $neue,
+                    font-style: italic,
+                    padding: 0 0 12px 0,
+                    cursor: pointer
+                  ), 
+                  if(variable-exists(globalHeader) and map-has-key($globalHeader, typeahedSuggestCss), 
+                      map-get($globalHeader,typeahedSuggestCss), ()
+                  )
+              ));
+                .tt-highlight {
+                  @include print-css(
+                    map-merge((
+                      font: $fontBold 16px $neue,
+                      font-style: italic
+                    ), 
+                    if(variable-exists(globalHeader) and map-has-key($globalHeader, typeahedHighlightCss), 
+                        map-get($globalHeader,typeahedHighlightCss), ()
+                    )
+                ));
+                }
+              }
+            }
+          }
+        }
+      }
+      
+    }
+
+    .overlay {
+      @include print-css(
+            map-merge((
+              position: fixed,
+              left: 0,
+              background: rgba(0,0,0,0.3),
+              right: 0,
+              width: 100%,
+              top: 0,
+              bottom: 0,
+              z-index: 1
+            ), 
+            if(variable-exists(globalHeader) and map-has-key($globalHeader, searchOverlayCss), 
+                map-get($globalHeader,searchOverlayCss), ()
+            )
+      ));
+    }
+
+    .search-outer-wrapper {
+      @include print-css(
+            map-merge((
+                margin:(
+                  smOnly:0 em(25) em(80) em(26),
+                  mediumOnly:0 em(198) em(80) em(201),
+                )
+            ), 
+            if(variable-exists(globalHeader) and map-has-key($globalHeader, searchOuterWrapperSpacing), 
+                map-get($globalHeader,searchOuterWrapperSpacing), ()
+            )
+      ));
+      .search-title {
+        @include print-css(
+            map-merge((
+              color:  $black,
+              font: $fontMedium em(28) "Mattel Founders",
+              letter-spacing: em(.12),
+              line-height:  em(16.5)
+            ), 
+            if(variable-exists(globalHeader) and map-has-key($globalHeader, searchTitleCss), 
+                map-get($globalHeader,searchTitleCss), ()
+            )
+        ));
+      }
+
+      .total-search {
+        @include print-css(
+            map-merge((
+              margin: (
+                mediumOnly: em(0) em(0) em(0) em(0),
+                smOnly: em(0) em(-25) em(0) em(-26),
+            ),
+            padding: (
+              mediumOnly: em(6) em(15) em(6) em(15),
+              smOnly: em(5) em(26) em(5) em(26),
+            ),
+            color: $black,
+            font: $fontLight em(16) $neue,
+            font-style: italic,
+            letter-spacing: em(.13),
+            line-height: em(22.7),
+            background-color:  #EFEFEF
+            ), 
+            if(variable-exists(globalHeader) and map-has-key($globalHeader, searchtotalCss), 
+                map-get($globalHeader,searchtotalCss), ()
+            )
+        ));
+      }
+
+      .search-result {
+        @include print-css(
+            map-merge((
+              font-size:em(14)
+            ), 
+            if(variable-exists(globalHeader) and map-has-key($globalHeader, searchResultCss), 
+                map-get($globalHeader,searchResultCss), ()
+            )
+        ));
+       
+
+        .individual-search {
+          @include print-css(
+            map-merge((
+              padding: (
+                  mediumOnly: em(19) em(11) em(30) em(11),
+                  smOnly: em(15) em(0) em(16) em(0),
+              ),
+              border-bottom: 1px solid $medium-grey
+            ), 
+            if(variable-exists(globalHeader) and map-has-key($globalHeader, individualsearch), 
+                map-get($globalHeader,individualsearchCss), ()
+            )
+        ));
+        .news-doc-type {
+            @include print-css(
+                map-merge((
+                  color: $black,
+                  font: $fontLight em(16) $neue,
+                  letter-spacing: em(.13),
+                  line-height: em(22.7),
+                  display:  block
+                ), 
+                if(variable-exists(globalHeader) and map-has-key($globalHeader, newsdoctypeCss), 
+                    map-get($globalHeader,newsdoctypeCss), ()
+                )
+            ));
+          }
+
+          .news-title {
+            @include print-css(
+                map-merge((
+                  margin: (
+                      mediumOnly: em(9) em(0) em(0) em(0),
+                      smOnly: em(0) em(0) em(0) em(0)
+                  ),
+                  color:$black,
+                  font: (
+                    defaultVal:$fontMedium em(16) "Mattel Founders",
+                    desktopOnly:$fontMedium em(20) "Mattel Founders"
+                  ),
+                  letter-spacing: (
+                    defaultVal:em(.13),
+                    desktopOnly: em(.12)
+                  ),
+                  line-height: (
+                    defaultVal:em(19.3),
+                    desktopOnly:em(16.1)
+                  )
+                ), 
+                if(variable-exists(globalHeader) and map-has-key($globalHeader, newsTitleCss), 
+                    map-get($globalHeader,newsTitleCss), ()
+                )
+            ));
+          }
+
+          .read-more {
+            @include print-css(
+                map-merge((
+                  margin: (
+                      mediumOnly: em(9) em(0) em(0) em(0),
+                      smOnly: em(5) em(0) em(0) em(0),
+                  ),
+                  color:  #444344,
+                  font: (
+                    defaultVal: $fontLight em(16) "Noto Sans",
+                    desktopOnly: $fontLight em(14) "Noto Sans"
+                  ),
+                  letter-spacing:(
+                      defaultVal: em(.123),
+                      desktopOnly: em(.14)
+                  ),
+                  line-height:(
+                      defaultVal: em(22.8),
+                      desktopOnly: em(.14)
+                  ),
+                  display:block,
+                  text-decoration: underline
+                ), 
+                if(variable-exists(globalHeader) and map-has-key($globalHeader, readmoreCss), 
+                    map-get($globalHeader,readmoreCss), ()
+                )
+            ));
+          }
+        }
+      }
+
+      .cta-button {
+        @include print-css(
+            map-merge((
+              margin: (
+                  mediumOnly: em(35) em(0) em(0) em(0),
+                  smOnly: em(35) em(0) em(0) em(0),
+              )
+            ), 
+            if(variable-exists(globalHeader) and map-has-key($globalHeader, searchCtaBtnCss), 
+                map-get($globalHeader,searchCtaBtnCss), ()
+            )
+        ));
+        .view-all-btn {
+          @include print-css(
+            map-merge((
+              cursor: pointer,
+              color: $white,
+              font: $fontMedium em(21) "Mattel Founders",
+              letter-spacing: em(.40),
+              text-align: center,
+              margin: auto,
+              background: #EE0024,
+              border-radius:  em(25),
+              width: em(140),
+              height: em(33.3),
+              display: flex,
+              align-items: center,
+              justify-content: center
+            ), 
+            if(variable-exists(globalHeader) and map-has-key($globalHeader, searchViewallBtnCss), 
+                map-get($globalHeader,searchViewallBtnCss), ()
+            )
+        ));
+        }
+      }
+    }
+
+    .loader-outer {
+      @include print-css(
+            map-merge((
+              display: none,
+              position: fixed,
+              top: 0,
+              bottom: 0,
+              left: 0,
+              right: 0,
+              z-index: 99999
+            ), 
+            if(variable-exists(globalHeader) and map-has-key($globalHeader, loaderOuterCss), 
+                map-get($globalHeader,loaderOuterCss), ()
+            )
+      ));
+      
+
+      .loader {
+        transform: translateZ(0);
+        animation: load3 1.4s infinite linear;
+        @include print-css(
+            map-merge((
+              position: absolute,
+              left: 45%,
+              top: 28%,
+              font-size: em(10),
+              margin: em(50) auto,
+              text-indent: -9999em,
+              width: em(70),
+              height: em(70),
+              border-radius: 50%,
+            ), 
+            if(variable-exists(globalHeader) and map-has-key($globalHeader, LoaderCss), 
+                map-get($globalHeader,LoaderCss), ()
+            )
+        ));
+        &:before {
+          @include print-css(
+              map-merge((
+                width: 50%,
+                height: 50%,
+                background:  #EE0024,
+                border-radius: 100% 0 0 0,
+                position: absolute,
+                top: 0,
+                left: 0,
+                content: ''
+              ), 
+              if(variable-exists(globalHeader) and map-has-key($globalHeader, loaderBeforeCss), 
+                  map-get($globalHeader,loaderBeforeCss), ()
+              )
+          ));
+        }
+
+        &:after {
+          @include print-css(
+            map-merge((
+              background: $white,
+              width: 75%,
+              height: 75%,
+              border-radius:  50%,
+              content: '',
+              margin: auto,
+              position: absolute,
+              top: 0,
+              left: 0,
+              bottom: 0,
+              right: 0
+            ), 
+            if(variable-exists(globalHeader) and map-has-key($globalHeader, loaderAfterCss), 
+                map-get($globalHeader,loaderAfterCss), ()
+            )
+        ));
+        }
+      }
+    }
+  }
+  .navigationHeader {
+    header {
+        .overlay {
+            @media #{$tablet-mobile} {
+                background: rgba(0, 0, 0, 0.5);
+            }
+        }
+        @media #{$desktop} {
+            background-color: $white;
+        }
+        .primary-nav {
+            &.collapsing {
+                @media #{$tablet-mobile} {
+                    opacity: 0;
+                }
+            }
+            >ul {
+                >li {
+                    .show-sub-nav {
+                        &:before {
+                            @media #{$tablet-mobile} {
+                                background:url(#{$HeaderspriteLightPath}) no-repeat -200px 0;
+                            }
+                        }
+                    }
+                    &:hover {
+                        .show-sub-nav {
+                            &:before {
+                                background:url(#{$HeaderspriteLightPath}) no-repeat -56px 0;
+                                @media #{$tablet-mobile} {
+                                    background:url(#{$HeaderspriteLightPath}) no-repeat -200px 0;
+                                }
+                            }
+                        }
+                    }
+                    ul {
+                        @media #{$tablet-mobile} {
+                            padding: 0;
+                            margin-top: -4px;
+                        }
+                        @media #{$desktop} {
+                            top: 57px;
+                            min-width: auto;
+                            width: 240px;
+                            padding: 24px 20px 24px;
+                            box-shadow: 0.2px 0.2px 4px rgba(144, 144, 144, 0.5);
+                        }
+                        li {
+                            @media #{$tablet-mobile} {
+                                text-indent: 0;
+                            }
+                            &:last-child {
+                                a {
+                                    @media #{$desktop} {
+                                        padding: 0;
+                                        margin: 0;
+                                    }
+                                }
+                                ul.submenu-level3-item{
+                                  margin: 16px 0 0 0;
+                                  @media #{$desktop} {
+                                    margin: 22px 0 0 0;
+                                  }
+                                  li{
+                                    margin-bottom: 16px;
+                                    @media #{$desktop} {
+                                      margin-bottom: 22px;
+                                    }
+                                    &:last-child{
+                                      margin-bottom: 0;
+                                    }
+                                  }
+                                }
+                            }
+                            a {
+                                margin: 0 0 16px;
+                                 padding: 0;
+                                @media #{$desktop} {
+                                    margin: 0 0 22px;
+                                    padding: 0;
+                                }
+                                &:hover {
+                                    text-decoration: underline;
+                                }
+                            }
+                        }
+                    }
+                    >a {
+                        @media #{$desktop} {
+                            border-bottom: none;
+                        }
+                    }
+                }
+            }
+            .search {
+                @media #{$desktop} {
+                    position: relative;
+                    margin-left: 0;
+                }
+            }
+        }
+        .news-search {
+            .search-icon {
+                .fa-search:before {
+                    @media #{$desktop} {
+                        top: 20px;
+                        right: -14px;
+                    }
+                }
+            }
+            .search-input-field {
+                @media #{$desktop} {
+                    right: 0;
+                }
+                .input-group {
+                    @media #{$tablet-mobile} {
+                        background: #EBEBEB;
+                    }
+                    @media #{$desktop} {
+                        top: -8px;
+                    }
+                    @media #{$tablet-mobile} {
+                        border: 1px solid transparent !important;
+                        position: relative;
+                        width: 92%;
+                        margin: 22px auto 0 auto;
+                    }
+                    .input-group-addon {
+                        padding: 11px 0px 6px 14px;
+                        @media #{$tablet-mobile} {
+                            background: #EBEBEB;
+                        }
+                        @media #{$desktop} {
+                            padding: 8px 12px 0px 12px;
+                        }
+                        .fa-search {
+                            &:before {
+                                @media #{$tablet-mobile} {}
+                            }
+                        }
+                    }
+                    .tt-menu {
+                        .tt-dataset {
+                            .tt-suggestion {
+                                font-size: 16px;
+                                font-style: normal;
+                                &:hover {
+                                    text-decoration: underline;
+                                }
+                                .tt-highlight {
+                                    font-size: 16px;
+                                    font-style: normal;
+                                }
+                            }
+                        }
+                    }
+                    input {
+                        @media #{$tablet-mobile} {
+                            background: #EBEBEB !important;
+                        }
+                    }
+                    #searchInput_field {
+                        @media #{$tablet-mobile} {
+                            height: 48px !important;
+                            padding: 7px 0px 0px 12px;
+                            width: 85%;
+                        }
+                    }
+                }
+            }
+            .search-focus {
+                .input-group {
+                    @media #{$tablet-mobile} {
+                        background: #fff !important;
+                        border: 1px solid #979797 !important;
+                    }
+                    .input-group-addon {
+                        @media #{$tablet-mobile} {
+                            background: #fff !important;
+                        }
+                    }
+                    input {
+                        @media #{$tablet-mobile} {
+                            background: #fff !important;
+                        }
+                    }
+                }
+            }
+        }
+    }
+  }
+}  
+.navigationHeader {
+  @media #{$tablet-mobile} {
+    padding: 0;
+  }
+}
+
+.columnControl .spacer{
+	clear: both;
+}

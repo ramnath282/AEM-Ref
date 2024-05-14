@@ -1,0 +1,300 @@
+footer {
+  border-top: mapping($footer, main, borderTop);
+  background-size: mapping($footer, main, bgndSize);
+  background-image: url("/content/dam/monster-high/monsterhigh-play/footer/MH_Footer_D.png");
+  padding: 76px 0 24.11px 0;
+  @media #{$medium-only} {
+    background-image: url("/content/dam/monster-high/monsterhigh-play/footer/MH_Footer_Tablet.png");
+    padding: 60px 0 60px 0;
+  }
+  @media #{$small-only} {
+    background-image: url("/content/dam/monster-high/monsterhigh-play/footer/MH_Footer_Mobile.png");
+    padding: 45px 0 29px 0;
+  }
+  position: mapping($footer, main, pos);
+  background-repeat: repeat !important;
+  > div {
+    width: 100%;
+    // @extend .container;
+    padding: 0;
+    @media #{$large-up} {
+      max-width: 63.264%;
+      margin: auto;
+    }
+    > div {
+      //   padding-top: 19px;
+      @media #{$large-down} {
+        text-align: center;
+      }
+      @extend .row;
+      .play-footer-mattel-logo {
+        padding: 0;
+        @extend .col-md-1;
+        @extend .col-sm-6;
+        @extend .col-xs-6;
+        @media #{$medium-only} {
+          text-align: mapping($footer, playmattelLogo, tabtxtAlign);
+        }
+        @media #{$large-down} {
+          width: 61px;
+          float: none;
+          display: inline-block;
+          position: static;
+          margin-top: 55px;
+          margin-right: 25px;
+        }
+        @media #{$small-only} {
+          width: 72px;
+          margin-right: 20px;
+          margin-top: 46px;
+        }
+        @media #{$large-up} {
+          width: 72px;
+          padding-top: 19px;
+        }
+      }
+      .play-esrb-logo {
+        padding: 0;
+        @extend .col-md-1;
+        @extend .col-sm-6;
+        @extend .col-xs-6;
+        @extend .pull-right;
+        @media #{$large-only} {
+          right: mapping($footer, playesrbLogo, labposRight);
+          bottom: mapping($footer, playesrbLogo, labposBottom);
+          z-index: mapping($footer, playesrbLogo, labposzindex);
+        }
+        @media #{$medium-only} {
+          text-align: mapping($footer, playesrbLogo, tabtxtAlign);
+        }
+        a {
+          img {
+            height: auto;
+            @media #{$large-up} {
+              width: auto;
+              max-width: 100%;
+            }
+          }
+        }
+        @media #{$large-down} {
+          width: 44px;
+          float: none !important;
+          display: inline-block;
+          position: static;
+          margin-top: 55px;
+        }
+        @media #{$small-only} {
+          width: 55px;
+          margin-top: 46px;
+        }
+        @media #{$large-up} {
+          width: 76px;
+        }
+      }
+      .play-footer-link {
+        // @extend .col-md-10;
+        padding-top: 38.99px;
+        // padding-top: mapping($footer,playfooterLink,paddingTop);
+        text-align: mapping($footer, playfooterLink, txtAlign);
+        margin: auto;
+        p:empty {
+          display: none;
+        }
+        @media #{$medium-only} {
+          padding-top: 37px;
+          clear: mapping($footer, playfooterLink, tabClear);
+        }
+        @media #{$large-down} {
+          max-width: calc(100% - 80px);
+        }
+        @media #{$small-only} {
+          max-width: calc(100% - 40px);
+        }
+        @media #{$large-up} {
+          max-width: calc(100% - 148px);
+          padding-left: 20px;
+          padding-right: 20px;
+          padding-top: 58px;
+        }
+        ul {
+          display: mapping($footer, playfooterUL, display);
+          line-height: 22px;
+          @media #{$medium-only} {
+            margin-bottom: mapping($footer, playfooterUL, tabmarginBottom);
+          }
+          @media #{$small-only} {
+            text-align: center;
+            line-height: 22px;
+            margin: 0;
+          }
+          @media #{$large-down} {
+            display: block;
+          }
+          li {
+            display: mapping($footer, playfooterulList, display);
+            font-size: mapping($footer, playfooterulList, fntSize);
+            // padding: mapping($footer,playfooterulList,pad);
+            // padding: 0;
+            &:empty {
+              display: none;
+            }
+            @media #{$small-up} {
+              // padding: mapping($footer,playfooterulList,mobPadding);
+              display: mapping($footer, playfooterulList, mobDisplay);
+            }
+            a {
+              color: mapping($footer, playfooterulLink, txtColor);
+              font-family: "ff-duper-web-pro";
+              font-weight: 400;
+              font-size: 18px;
+              @media #{$small-only} {
+                font-size: 22px;
+              }
+            }
+            @media #{$large-down} {
+              padding-right: 30px;
+            }
+            @media #{$small-only} {
+              padding-right: 0;
+              margin-bottom: 12px;
+            }
+            @media #{$large-up} {
+              padding-right: 20px;
+              &:nth-child(1) {
+                display: block;
+                float: left;
+              }
+            }
+            @media #{$xlarge-up} {
+              padding-right: 40px;
+              &:nth-child(1) {
+                display: block;
+                float: left;
+              }
+            }
+          }
+        }
+        span {
+          font-family: "ff-duper-web-pro";
+          font-weight: mapping($footer, playfooterSpan, fntWeight);
+          font-size: 18px;
+          line-height: 22px;
+          height: 22px;
+          padding: 0;
+          display: mapping($footer, playfooterSpan, display);
+          // padding-top: mapping($footer, playfooterSpan, paddingTop);
+          @media #{$medium-up} {
+            display: mapping($footer, playfooterSpan, tabDisplay);
+            // padding-top: mapping($footer, playfooterSpan, tabpaddingTop);
+          }
+          @media #{$medium-only} {
+            margin-top: 14px;
+          }
+          @media #{$small-only} {
+            margin-top: 29px;
+            font-size: 22px;
+            line-height: 28px;
+            height: 28px;
+          }
+        }
+      }
+    }
+  }
+  .dfCountryDropDown {
+    .country-drop-down {
+      text-align: center;
+      .bootstrap-select {
+        width: 270px !important;
+        border: 2px solid $pink;
+        background-color: $monsterwhite;
+        & > .dropdown-toggle {
+          height: 40px;
+          border: 0;
+          &.bs-placeholder,
+          .filter-option {
+            color: $pink;
+            font-family: $secondaryFont;
+            font-size: 20px;
+            line-height: 29px;
+          }
+          &.bs-placeholder {
+            &:hover {
+              background-color: #fff;
+            }
+          }
+          .bs-caret {
+            display: none;
+          }
+          &:before {
+            position: absolute;
+            position: absolute;
+            height: 100%;
+            width: 60px;
+            background: $pink;
+            top: 0;
+            right: 0;
+          }
+          &:after {
+            position: absolute;
+            background: transparent;
+            content: "\f078";
+            color: white;
+            font-family: "Font Awesome";
+            font-size: 38px;
+            top: 55%;
+            transform: translateY(-45%);
+            right: 13px;
+          }
+        }
+      }
+    }
+  }
+}
+//drop down arrow rotate
+footer {
+  .dfCountryDropDown {
+    .country-drop-down {
+      .bootstrap-select {
+        &.open {
+          .dropdown-toggle {
+            &:after {
+              transform: rotate(180deg);
+              top: 5px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.btn-default {
+  &:hover {
+    background-color: white;
+    &:focus {
+      background-color: white;
+    }
+  }
+  &:focus {
+    background-color: white;
+  }
+  &:active {
+    &:focus {
+      background-color: white;
+    }
+  }
+}
+
+.open {
+  > .btn-default {
+    &.dropdown-toggle {
+      background-color: white;
+      &:hover {
+        background-color: white;
+      }
+      &:focus {
+        background-color: white;
+      }
+    }
+  }
+}

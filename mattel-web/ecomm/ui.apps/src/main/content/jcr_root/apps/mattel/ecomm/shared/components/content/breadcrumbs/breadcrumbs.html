@@ -1,0 +1,29 @@
+<sly data-sly-test="${wcmmode.edit}">${' Breadcrumb Module' @ i18n}</sly>
+<sly data-sly-test="${pageProperties.cq:template == '/conf/fisher-price/settings/wcm/templates/fp-pdp-template'}" data-sly-use.breadcrumb="com.mattel.ecomm.core.models.PDPBreadcrumbModel">
+    <div class="breadcrumb-container">
+        <div class="navBreadcrumb hidden-xs">
+            <ul class="breadcrumb" data-sly-list.breadcrumbList="${breadcrumb.list}">
+                <li data-sly-test="${breadcrumbList.title}">
+                    <a href="${breadcrumbList.pageLink}" data-tracking-id="bread-crumbs-click|${breadcrumbList.title}|no-value|bread-crumbs" >${breadcrumbList.title @context='html',i18n}</a>
+                </li>
+            </ul>
+        </div>
+        <div class="navBreadcrumb mobile-breadcrumb hidden-lg hidden-sm hidden-md">
+            <a class="bc-truncate" href="${breadcrumb.mobilePdpBreadcrumbPojo.pageLink}" aria-current=”page” data-tracking-id="bread-crumbs-click|${breadcrumb.mobilePdpBreadcrumbPojo.title}|no-value|bread-crumbs" >${breadcrumb.mobilePdpBreadcrumbPojo.title @context='html',i18n}</a>
+        </div>
+    </div>
+</sly>
+<sly data-sly-test="${pageProperties.cq:template != '/conf/fisher-price/settings/wcm/templates/fp-pdp-template'}" data-sly-use.breadcrumb="com.mattel.ecomm.core.models.BreadcrumbModel">
+    <div class="breadcrumb-container ${breadcrumb.alignBreadcrumb}">
+        <div class="navBreadcrumb hidden-xs">
+            <ul class="breadcrumb" data-sly-list.breadcrumbList="${breadcrumb.breadcrumbLinks}">
+                <li>
+                    <a href="${breadcrumbList.pageLink}" data-tracking-id="bread-crumbs-click|${breadcrumbList.title}|no-value|bread-crumbs" >${breadcrumbList.title @context='html',i18n}</a>
+                </li>
+            </ul>
+        </div>
+        <div class="navBreadcrumb mobile-breadcrumb hidden-lg hidden-sm hidden-md">
+            <a class="bc-truncate" href="${breadcrumb.mobileBreadcrumbPojo.pageLink}" aria-current=”page” data-tracking-id="bread-crumbs-click|${breadcrumb.mobileBreadcrumbPojo.title}|no-value|bread-crumbs" >${breadcrumb.mobileBreadcrumbPojo.title @context='html',i18n}</a>
+        </div>
+    </div>
+</sly>

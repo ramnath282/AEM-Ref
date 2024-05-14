@@ -1,0 +1,35 @@
+<div class="tile-content">
+    <h3 class="tile-name">${properties.hotelCardHeading @i18n}</h3>
+    <div>
+        <sly data-sly-test="${properties.hotelCardViewMoreLink != null }">
+            <sly data-sly-test="${properties.hotelCardOpenUrlIn =='sameWindow'}">
+                <a class="btn theme-btn visit-website" href="${properties.hotelCardViewMoreLink}" data-tracking-id="Click Event|click|${properties.hotelCardHeading}">${properties.hotelCardViewMoreHeading @i18n} <span class="sr-only">${properties.hotelCardHeading @i18n}</span></a>
+            </sly>
+            <sly data-sly-test="${properties.hotelCardOpenUrlIn =='tabWindow'}">
+                <a target="_blank" class="btn theme-btn visit-website" href="${properties.hotelCardViewMoreLink}" data-tracking-id="Click Event|click|${properties.hotelCardHeading}">${properties.hotelCardViewMoreHeading @i18n} <span class="sr-only">${properties.hotelCardHeading @i18n}</span></a>
+            </sly>
+            <sly data-sly-test="${properties.hotelCardOpenUrlIn =='newWindow'}">
+                <a data-url="${properties.hotelCardViewMoreLink}" class="btn theme-btn visit-website" onclick="window.open(this.dataset.url,'AG','width=500, height=500');" data-tracking-id="Click Event|click|${properties.hotelCardHeading}">${properties.hotelCardViewMoreHeading @i18n} <span class="sr-only">${properties.hotelCardHeading @i18n}</span></a>
+            </sly>
+        </sly>
+    </div>
+</div>
+<div class="tile-action">
+    <a class="action-text accordion" aria-expanded="false" href="javascript:void(0);" data-text-collapse="${properties.hotelCardShowMoreHeading @i18n}" data-text-expand="${properties.hotelCardShowLessHeading @i18n}" data-tracking-id="Click Event|click|${properties.hotelCardHeading}">
+        ${properties.hotelCardShowMoreHeading @i18n}
+    </a>
+    <div class="accordion-content">
+        ${properties.hotelCardAdditionalInformation @context='html'}
+        <sly data-sly-test="${properties.hotelCardGetDirectionHeading != null }">
+            <sly data-sly-test="${properties.hotelCardGetDirectionOpenUrlIn =='sameWindow'}">
+                <a class="btn theme-btn directions-btn" href="${properties.hotelCardGetDirectionLink}" data-tracking-id="Click Event|click|${properties.hotelCardHeading}">${properties.hotelCardGetDirectionHeading}</a>
+            </sly>
+            <sly data-sly-test=" ${properties.hotelCardGetDirectionOpenUrlIn=='tabWindow' } ">
+                <a class="btn theme-btn directions-btn" target="_blank" href="${properties.hotelCardGetDirectionLink}" data-tracking-id="Click Event|click|${properties.hotelCardHeading}">${properties.hotelCardGetDirectionHeading}</a>
+            </sly>
+            <sly data-sly-test="${properties.hotelCardGetDirectionOpenUrlIn =='newWindow'}">
+                <a class="btn theme-btn directions-btn" data-url="${properties.hotelCardGetDirectionLink}" onclick="window.open(this.dataset.url,'AG','width=500, height=500');" data-tracking-id="Click Event|click|${properties.hotelCardHeading}">${properties.hotelCardGetDirectionHeading @i18n}</a>
+            </sly>
+        </sly>
+    </div>
+</div>

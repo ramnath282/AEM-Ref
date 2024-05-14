@@ -1,0 +1,186 @@
+.s7mixedmediaviewer .s7swatches .s7thumb {
+  border: mapping($productImageGallery, Swatches, transformBorder);
+}
+
+#s7viewer {
+
+  &.s7mixedmediaviewer .s7zoomresetbutton,
+  &.s7mixedmediaviewer .s7zoomoutbutton,
+  &.s7mixedmediaviewer .s7zoominbutton {
+
+    &[state='up'],
+    &[state='over'],
+    &[state='disabled'],
+    &[state='down'] {
+      outline: none;
+      background: none;
+
+    }
+
+    &:before {
+      content: "\f00e";
+      position: absolute;
+      @include font-awesome;
+      font-size: mapping($productImageGallery, arrowIcon, arrowFontSize);
+      color: mapping($productImageGallery, arrowIcon, arrowColor);
+      left: 0;
+    }
+  }
+
+  &.s7mixedmediaviewer .s7zoomresetbutton,
+  &.s7mixedmediaviewer .s7zoominbutton,
+  &.s7mixedmediaviewer .s7zoomoutbutton {
+
+    &[state='disabled'] {
+      &:before {
+        color: mapping($productImageGallery, arrowIcon, disabledArColor);
+      }
+    }
+
+  }
+
+  &.s7mixedmediaviewer .s7zoomoutbutton {
+    &:before {
+      content: "\f010";
+    }
+  }
+
+  &.s7mixedmediaviewer .s7zoomresetbutton {
+    &:before {
+      content: "\f0e2";
+    }
+  }
+}
+
+@media #{$medium-up} {
+
+  %icon_style {
+    top: 28%;
+    font-size: mapping($productImageGallery, arrowIcon, arrowFontSize);
+    color: mapping($productImageGallery, arrowIcon, arrowColor);
+    right: 40%;
+  }
+
+  #s7viewer {
+    &.s7mixedmediaviewer {
+      width: mapping($productImageGallery, containerSize, containerWidth);
+      height: mapping($productImageGallery, containerSize, containerHeight);
+      margin-left: mapping($productImageGallery, containerSize, containerMarLeft);
+      z-index: 150;
+    }
+
+    &.s7size_medium {
+      .s7swatches {
+        top: mapping($productImageGallery, Swatches, PositionTop);
+        left: mapping($productImageGallery, Swatches, PositionLeft);
+      }
+
+      .s7swatches {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    &.s7size_small .s7swatches {
+      width: mapping($productImageGallery, Swatches, swatchWidth);
+    }
+
+    &.s7mixedmediaviewer .s7swatches .s7thumb {
+      &[state="default"] {
+        border: mapping($productImageGallery, Swatches, transformBorder);
+        background-image: initial;
+      }
+
+      &[state="selected"] {
+
+        border: mapping($productImageGallery, Swatches, imageBorder);
+        ;
+      }
+    }
+
+    &.s7size_small .s7thumbcell {
+      outline: none;
+    }
+
+    &.s7mixedmediaviewer .s7swatches .s7scrollleftbutton {
+
+      &[state="over"],
+      &[state="up"],
+      &[state="disabled"] {
+        background-image: none;
+        outline: none;
+
+        &:before {
+          content: "\f104";
+          position: absolute;
+          @include font-awesome;
+          @extend %icon_style;
+
+
+        }
+      }
+
+      &[state="disabled"] {
+        outline: none;
+
+        &:before {
+          content: "\f104";
+          position: absolute;
+          @include font-awesome;
+          @extend %icon_style;
+          color: mapping($productImageGallery, arrowIcon, disabledArColor);
+        }
+      }
+    }
+
+
+    &.s7mixedmediaviewer .s7swatches .s7scrollrightbutton {
+
+      &[state="over"],
+      &[state="up"],
+      &[state="disabled"] {
+        background-image: none;
+        outline: none;
+
+        &:before {
+          content: "\f105";
+          position: absolute;
+          @include font-awesome;
+          @extend %icon_style;
+        }
+      }
+
+      &[state="disabled"] {
+        outline: none;
+
+        &:before {
+          content: "\f105";
+          position: absolute;
+          @include font-awesome;
+          color: mapping($productImageGallery, arrowIcon, disabledArColor);
+        }
+      }
+    }
+
+    &.s7mixedmediaviewer .s7toolbarcontainer {
+      top: mapping($productImageGallery, ZoomContainer, ZoomContainerTop);
+      width: mapping($productImageGallery, ZoomContainer, ZoomContainerWidth);
+      right: mapping($productImageGallery, ZoomContainer, ZoomContainerRight);
+    }
+
+    &.s7mixedmediaviewer .s7fullscreenbutton {
+      display: mapping($productImageGallery, ZoomContainer, fullScreenIcon);
+    }
+  }
+}
+
+@media #{$small-down} {
+
+  .s7fullscreenbutton,
+  .s7toolbarcontainer,
+  .s7setindicator,
+  .s7scrollleftbutton,
+  .s7scrollrightbutton {
+    display: none;
+  }
+}

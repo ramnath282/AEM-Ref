@@ -1,0 +1,186 @@
+<sly data-sly-test="${wcmmode.edit}">${'Personal Shopper Form Component' @i18n}</sly>
+
+<div class="container mb-30 personal-shopper">
+                        <div class="instructions">
+                            <p>${properties.instructionText @context='html',i18n}</p>
+                            <!-- form components -->
+                            <div class="form-component col-xs-12 mt-15" style="background: #fff;">
+                               <h2>${properties.heading @i18n}</h2>
+                               <sly data-sly-use.shopperModel="com.mattel.ag.retail.core.model.PersonalShopperModel">
+                               <form action="${shopperModel.PersonalShopperFormBaseURL}" method="POST" id="shopper-request-form">   
+                                    <div class="row">    
+                                        <div class="col-xs-12 col-md-6 form-group">
+                                            <label for="first_name" class="sr-only">${'Adult First Name' @i18n} </label>
+                                            <input type="text" class="form-control" id="first_name" name="first_name" placeholder="${properties.placeholderForFname @i18n}" required="">
+                                            <div class="help-block form-error"></div>
+                                        </div>
+                                        
+                                        <div class="col-xs-12 col-md-6 form-group">
+                                            <label for="last_name" class="sr-only">${'Adult Last name' @i18n}</label>
+                                            <input type="text" class="form-control" id="last_name" name="last_name" placeholder="${properties.placeholderForLname @i18n}" required="">
+                                            <div class="help-block form-error"></div>
+                                        </div>
+                                        
+                                        <div class="col-xs-12 col-md-6 form-group">
+                                            <label for="email" class="sr-only">${'Email' @i18n}</label>
+                                            <input type="email" class="form-control" id="email" name="email" placeholder="${properties.placeholderForEmail @i18n}" required="" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+                                            <div class="help-block form-error"></div>
+                                        </div>
+                                        
+                                        <div class="col-xs-12 col-md-6 form-group">
+                                            <label for="phone" class="sr-only">${'phone' @i18n}</label>
+                                            <input type="tel" class="form-control" id="phone" name="phone" placeholder="${properties.placeholderForPhoneNumber @i18n}" required="">
+                                            <div class="help-block form-error"></div>
+                                        </div>
+                                        
+                                        <div class="col-xs-12 form-group">
+                                            <label for="store" class="sr-only">${'Choose a location' @i18n}</label>
+                                            <select id="store" name="store" class="form-control" required="">
+                                                <option value="" disabled="" selected="">${properties.labelForChooseLocation @i18n}</option>
+                                                <sly data-sly-use.personalShopper="com.mattel.ag.retail.core.model.PersonalShopperModel">
+													<sly data-sly-list.locations="${personalShopper.locationsList}">
+													<option value="${locations.location}">${locations.location @i18n}</option>
+                                                </sly>
+                                                </sly>
+											</select>
+                                            <div class="help-block form-error"></div>
+                                        </div>
+                                        
+                                        <div class="col-xs-12">
+                                            <fieldset>
+                                                <legend>${properties.labelForVisit @i18n}</legend>
+                                                <div class="col-xs-12 col-md-4 form-group">
+                                                    <label class="sr-only" for="month">${'Month' @i18n}</label>
+                                                    <select id="month" name="month" class="form-control" required="">
+                                                        <option value="" disabled="" selected="">${'Month' @i18n}</option>
+                                                        <option value="January">${'January' @i18n}</option>
+                                                        <option value="February">${'February' @i18n}</option>
+                                                        <option value="March">${'March' @i18n}</option>
+                                                        <option value="April">${'April' @i18n}</option>
+                                                        <option value="May">${'May' @i18n}</option>
+                                                        <option value="June">${'June' @i18n}</option>
+                                                        <option value="July">${'July' @i18n}</option>
+                                                        <option value="August">${'August' @i18n}</option>
+                                                        <option value="September">${'September' @i18n}</option>
+                                                        <option value="October">${'October' @i18n}</option>
+                                                        <option value="November">${'November' @i18n}</option>
+                                                        <option value="December">${'December' @i18n}</option>
+                                                    </select>
+                                                    <div class="help-block form-error"></div>
+                                                </div>
+                                                
+                                                <div class="col-xs-12 col-md-4 form-group">
+                                                    <label class="sr-only" for="day">${'Day' @i18n}</label>
+                                                    <select id="day" name="day" class="form-control" required="">
+                                                        <option value="" disabled="" selected="">${'Day' @i18n}</option>
+                                                        <option value="1">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                        <option value="4">4</option>
+                                                        <option value="5">5</option>
+                                                        <option value="6">6</option>
+                                                        <option value="7">7</option>
+                                                        <option value="8">8</option>
+                                                        <option value="9">9</option>
+                                                        <option value="10">10</option>
+                                                        <option value="11">11</option>
+                                                        <option value="12">12</option>
+                                                        <option value="13">13</option>
+                                                        <option value="14">14</option>
+                                                        <option value="15">15</option>
+                                                        <option value="16">16</option>
+                                                        <option value="17">17</option>
+                                                        <option value="18">18</option>
+                                                        <option value="19">19</option>
+                                                        <option value="20">20</option>
+                                                        <option value="21">21</option>
+                                                        <option value="22">22</option>
+                                                        <option value="23">23</option>
+                                                        <option value="24">24</option>
+                                                        <option value="25">25</option>
+                                                        <option value="26">26</option>
+                                                        <option value="27">27</option>
+                                                        <option value="28">28</option>
+                                                        <option value="29">29</option>
+                                                        <option value="30">30</option>
+                                                        <option value="31">31</option>
+                                                    </select>
+                                                    <div class="help-block form-error"></div>
+                                                </div>
+                                                
+                                                <div class="col-xs-12 col-md-4 form-group">
+                                                    <label class="sr-only" for="year">${'Year' @i18n}</label>
+                                                    <select id="year" name="year" class="form-control" required="">
+                                                        <option value="" disabled="" selected="">${'Year' @i18n}</option>
+                                                        <option value="2018">2018</option>
+                                                        <option value="2019">2019</option>
+                                                        <option value="2020">2020</option>
+                                                        <option value="2021">2021</option>
+                                                        <option value="2022">2022</option>
+                                                        <option value="2023">2023</option>
+                                                    </select>
+                                                    <div class="help-block form-error"></div>
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                        
+                                        <div class="col-xs-12 radio">  
+                                            <fieldset>
+                                                <legend>${properties.labelForModeofContact @i18n}</legend>
+
+												<sly data-sly-use.personalShopper="com.mattel.ag.retail.core.model.PersonalShopperModel">
+													<sly data-sly-list.contactOptions="${personalShopper.contactOptionList}">
+													<label for="${contactOptions.contactOption}" class="radio-inline">
+                                                    <sly data-sly-test="${contactOptionsList.count==1}">
+                                                    <input type="radio" name="contactGroup" id="${contactOptions.contactOption}" value="${contactOptions.contactOption}" checked=""> ${contactOptions.contactOption @i18n}
+													</sly>
+                                                    <sly data-sly-test="${contactOptionsList.count>1}">
+                                                    <input type="radio" name="contactGroup" id="${contactOptions.contactOption}" value="${contactOptions.contactOption}"> ${contactOptions.contactOption @i18n}
+													</sly>
+                                                    </label>
+                                                </sly>
+                                                </sly>
+
+                                                <div class="help-block form-error"></div>
+                                            </fieldset>
+                                        </div>
+                                        
+                                        <div class="col-xs-12 radio">
+                                            <fieldset>
+                                                <legend>${properties.labelForFirstVisit @i18n}</legend>
+                                                <sly data-sly-use.personalShopper="com.mattel.ag.retail.core.model.PersonalShopperModel">
+													<sly data-sly-list.firstVisitOptions="${personalShopper.firstVisitOptionList}">
+													<label for="${firstVisitOptions.firstVisitOption}" class="radio-inline">
+                                                    <sly data-sly-test="${firstVisitOptionsList.count==1}">
+                                                    <input type="radio" name="visitGroup" id="${firstVisitOptions.firstVisitOption}" value="${firstVisitOptions.firstVisitOption}" checked=""> ${firstVisitOptions.firstVisitOption}
+													</sly>
+                                                    <sly data-sly-test="${firstVisitOptionsList.count>1}">
+                                                    <input type="radio" name="visitGroup" id="${firstVisitOptions.firstVisitOption}" value="${firstVisitOptions.firstVisitOption}"> ${firstVisitOptions.firstVisitOption}
+													</sly>
+                                                    </label>
+
+                                                </sly>
+                                                </sly>
+
+                                                <div class="help-block form-error"></div>
+                                            </fieldset>
+                                        </div>
+                                        <div class="col-xs-12 checkbox mb-30" id="termsConditionsBox"> 
+                                            <label for="termsConditions">
+                                                <input type="checkbox" id="termsConditions" name="termsConditions" value="yes" required>
+                                                ${properties.termsAndConditionsText @i18n}
+                                            </label>
+                                            <div class="help-block form-error"></div>
+                                        </div>
+                                        
+                                        <div class="col-xs-12">
+                                            <button class="btn btn-lg btn-red" type="submit" name="action" id="submit-form">
+                                                ${properties.labelforSubmit @i18n}
+                                            </button>
+                                        </div>        
+                                    </div>
+                                </form>
+                                </sly>
+                            </div>
+                        </div>
+                    </div>

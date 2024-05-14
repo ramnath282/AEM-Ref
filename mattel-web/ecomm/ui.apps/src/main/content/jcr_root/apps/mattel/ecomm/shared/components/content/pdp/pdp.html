@@ -1,0 +1,130 @@
+<sly data-sly-test="${wcmmode.edit}">${'Product Information' @ i18n}</sly>
+<sly data-sly-use.productDetail="com.mattel.ecomm.core.models.PDPModel" data-sly-use.atproperty="com.mattel.fisherprice.core.models.ProductTargetModel">
+    <sly data-sly-test="${productDetail.productSKUId}">
+        <input type="hidden" id="s7sku" value="${productDetail.productSKUId}">
+        <div class="fpProductinfo-module ${productDetail.productRecall =='Yes' ? 'recall-fpProductinfo-module' : ''}">
+            <div class="showin-mobiledevices title-block ${productDetail.productRecall =='Yes' ? 'recall-title-block' : ''}">
+                <span class="product-badges" tabindex="0" role="button"></span>
+                <h1 data-sly-test="${productDetail.productTitle}" id="purpose">${productDetail.productTitle @context='html',i18n}</h1>
+                <div class="product-reviews" data-sly-test="${productDetail.enableCustomerReview == true && productDetail.productRecall !='Yes'}">
+                    <a href="javascript:void(0);" id="starLink">
+                        <span class="rating-section rating-${productDetail.ratingAvgSepByHyphen}">
+                            <span class="sr-only">${productDetail.analyticsRatingAvg @context='html',i18n} stars</span>
+                        </span>
+                        </a>
+                    <span class="total-reviews">(${productDetail.productReviewCount == '' ? '0' : productDetail.productReviewCount}) <span class="sr-only">${"Reviews" @i18n}</span></span>
+                </div>
+            </div>
+            <div class="product-image-block">
+                <div id="s7viewerCont" class="fp" style="position:relative"></div>
+                <div class="showin-largedevices social-share-icons" data-sly-test="${productDetail.socialIcons == true}">
+                    <article data-sly-resource="${'socialShare' @ resourceType='/apps/mattel/ecomm/shared/components/content/socialShareForProducts'}"></article>
+                </div>
+            </div>
+
+            <div class="product-info-block">
+                <div class="showin-largedevices title-block ${productDetail.productRecall =='Yes' ? 'recall-title-block' : ''}">
+                    <span class="product-badges" tabindex="0" role="button"></span>
+                    <h1 data-sly-test="${productDetail.productTitle}" id="purpose">${productDetail.productTitle @context='html',i18n}</h1>
+                    <div class="product-reviews" data-sly-test="${productDetail.enableCustomerReview == true && productDetail.productRecall !='Yes'}">
+                            <a href="javascript:void(0);" id="starLink">
+                            <span class="rating-section rating-${productDetail.ratingAvgSepByHyphen}">
+                                <span class="sr-only">${productDetail.analyticsRatingAvg @context='html',i18n} stars</span>
+                            </span>
+                            </a>
+                        <span class="total-reviews">(${productDetail.productReviewCount == '' ? '0' : productDetail.productReviewCount}) <span class="sr-only">${"Reviews" @i18n}</span></span>
+                    </div>
+                </div>
+                <sly data-sly-test="${productDetail.enableProductPrice == true && productDetail.productPrice && productDetail.productRecall !='Yes'}" data-sly-use.currencyMapping="com.mattel.ecomm.core.models.CurrencyMapping">
+                    <div class="product-price">${currencyMapping.currencyCode @context='html',i18n}${productDetail.productPrice @i18n}</div>
+                </sly>
+                <div id="pricespider-link"></div>
+                <div class="age-badges-tooltip" data-sly-test="${productDetail.enableAgeGrade == true && productDetail.ageGradeText && productDetail.productRecall !='Yes'}">
+                    <div class="age-badges">
+                        <button class="badge-txt" aria-label="info">${'AGE' @i18n}: ${productDetail.ageGradeText @ i18n}</button>
+                        <button class="fas fa-info-circle age-info-icon" data-sly-test="${productDetail.toolTipDescription}" aria-label="info"></button>
+                    </div>
+                    <div class="info-tooltip" data-sly-test="${productDetail.toolTipDescription}">
+                        <button class="tooltiptext">
+                            ${productDetail.toolTipDescription @ context='html',i18n}
+                        </button>
+                    </div>
+                </div>
+                <sly data-sly-list.prodDesc="${productDetail.productDescription}" data-sly-test="${productDetail.productRecall !='Yes'}">
+                    <div id="price-spider" class="showin-largedevices product-summary-block" data-sly-test="${prodDesc.prodFeatureDescription}">
+                        <div class="product-summary" data-truncate="275">${prodDesc.prodFeatureDescription @context='html',i18n}</div>
+                        <a href="javascript:void(0);" class="readmore" id="moreLink" data-tracking-id="link-click|Product Summary Links|read more|link" aria-describedby="purpose">${productDetail.readMore @i18n}</a></div>
+                </sly>
+                <div data-sly-test="${productDetail.productRecall !='Yes'}" id="pricespider-div">
+                    <div class="row">
+                        <div data-sly-test=${productDetail.priceSpiderConfigID} class="ps-widget price-widget" ps-config="${productDetail.priceSpiderConfigID}" ps-sku="${productDetail.productSKUId}"></div>
+                        <div data-sly-test=${productDetail.priceSpiderMoreOptionConfigID} class="ps-widget map-widget" ps-config="${productDetail.priceSpiderMoreOptionConfigID}" ps-sku="${productDetail.productSKUId}"></div>
+                    </div>
+                    <div class="row">
+                        <div data-sly-test=${productDetail.priceSpiderGetItOnSaleConfigID} class="ps-widget alert-widget" ps-config="${productDetail.priceSpiderGetItOnSaleConfigID}" ps-sku="${productDetail.productSKUId}"></div>
+                         <div class="promo-banner"> 
+			    <sly data-sly-resource="${'Promotional Banner' @ resourceType='/apps/mattel/ecomm/shared/components/content/promotionalBanner'}"></sly>
+                        </div>
+		    </div>
+                </div>
+                <sly data-sly-list.prodDesc="${productDetail.productDescription}" data-sly-test="${productDetail.productRecall !='Yes'}">
+                    <div class="showin-mobiledevices product-summary-block" data-sly-test="${prodDesc.prodFeatureDescription}">
+                        <div class="product-summary" data-truncate="275">${prodDesc.prodFeatureDescription @ context='html',i18n}</div>
+                        <a href="javascript:void(0);" class="readmore" id="moreLink" data-tracking-id="link-click|Product Summary Links|read more|link">${productDetail.readMore @i18n}</a></div>
+                </sly>
+                <sly data-sly-test="${properties.isCompatible && productDetail.productRecall !='Yes'}">
+                    <a href="${productDetail.compatibleURL}" id="CTAlink" class="CTAlink" data-tracking-id="link-click|compatibility link|${properties.isCompatible}|link">${properties.isCompatible @i18n}</a>
+                </sly>
+                <div class="showin-mobiledevices social-share-icons" data-sly-test="${productDetail.socialIcons == true && productDetail.productRecall !='Yes'}">
+                    <article data-sly-resource="${'socialShare' @ resourceType='/apps/mattel/ecomm/shared/components/content/socialShareForProducts'}"></article>
+                </div>
+                <div class="warning-msg" data-sly-test="${productDetail.warningMessage && productDetail.productRecall !='Yes'}">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <span>${productDetail.warningTitle @i18n} ${productDetail.warningMessage @i18n}</span>
+                </div>
+                <div class="recall-product-msg" data-sly-test="${productDetail.productRecall =='Yes'}">${productDetail.productRecallMessage @context='html',i18n}</div>
+            </div>
+        </div>
+    </sly>
+
+    <script id="recommendedProdTemp" type="application/ld+json">
+{
+	"entity.id" : "${productDetail.productSKUId @ context='unsafe'}_${productDetail.region @ context='unsafe'}",
+	"entity.categoryId" : "${productDetail.category @ context='unsafe'}",
+	"entity.inventory" : "",
+	"entity.value" : "${productDetail.productPrice @ context='unsafe'}",
+	"entity.name" : "${productDetail.productTitle @ context='unsafe'}",
+    "entity.atproperty" : "${atproperty.atPropertyTargetFP @ context='unsafe'}",
+	"entity.subcategory":"${productDetail.subCategory @ context='unsafe'}",
+    "entity.superCategory":"${productDetail.superCategory @ context='unsafe'}",
+    "entity.subBrand":"${productDetail.subBrand @ context='unsafe'}",
+    "entity.theme":"${productDetail.theme @ context='unsafe'}",
+    "entity.allBrands":"${productDetail.allBrands @ context='unsafe'}"
+}
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+            setRecomendedProduct();
+        });
+	function setRecomendedProduct() {
+		var recommendedProdJson = JSON.parse($("#recommendedProdTemp").html());
+		sessionStorage.setItem("recommendedProduct", JSON
+				.stringify(recommendedProdJson));
+	    }
+</script>
+
+    <!-- Analytics --> 
+    <input type="hidden" id="grs" value="${productDetail.grs}">
+    <input type="hidden" id="category" value="${productDetail.category}">
+    <input type="hidden" id="subCategory" value="${productDetail.subCategory}">
+    <input type="hidden" id="region" value="${productDetail.region}">
+    <input type="hidden" id="language" value="${productDetail.language}">
+    <input type="hidden" id="listPriceCurrency" value="${productDetail.listPriceCurrency}">
+    <input type="hidden" id="productURL" value="${productDetail.productURL}">
+    <input type="hidden" id="productListPrice" value="${productDetail.productPrice}">
+    <input type="hidden" id="averageRating" value="${productDetail.analyticsRatingAvg}">
+    <input type="hidden" id="productAge" value="${productDetail.ageGradeText}">
+    <input type="hidden" id="productBrand" value="${productDetail.analyticsBrand}">
+    <input type="hidden" id="productBadge" value="${productDetail.badge}">
+</sly>

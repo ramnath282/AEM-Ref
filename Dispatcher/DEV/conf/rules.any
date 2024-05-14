@@ -1,0 +1,20 @@
+/0000
+	{
+		# the globbing pattern to be compared against the url
+		# example: *             -> everything
+		#        : /foo/bar.*    -> only the /foo/bar documents
+		#        : /foo/bar/*    -> all pages below /foo/bar
+		#        : /foo/bar[./]* -> all pages below and /foo/bar itself
+		#        : *.html        -> all .html files
+		/glob "*"
+		/type "allow"
+ 	}
+/0001 {/glob "/libs/granite/csrf/token.json" /type "deny"}
+/0002 {/glob "/libs/granite/dispatcher/content/vanityUrls.html" /type "deny"}
+/0003 {/type "deny" /glob "/explore/data/articles.json"} 
+/0004 {/type "deny" /glob "/explore/data/filteredArticles.json"}
+/0005 {/type "deny" /glob "/explore/getSiteMapUrls.xml"}
+/0006 {/type "deny" /glob "/shop/p/*"}
+/0007 {/type "deny" /glob "*.sitemap*xml" }
+/0008 {/type "deny" /glob "*/articlefeed*.csv"} 
+/0009 {/type "deny" /glob "/bin/genericsitemap.*.xml"}

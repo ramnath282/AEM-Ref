@@ -1,0 +1,442 @@
+// Hamburger Styles
+.hamburger {
+    color: #fff;
+    //margin: 1.35em 0 0 0;
+    float: right !important;
+    width: 42px;
+    padding: 0;
+    margin-right: 10px;
+    @media #{$medium-up} {
+        display: block;
+    }
+
+    @media #{$large-up} {
+        display: none;
+    }
+    
+    &:after {
+        font-size: em(35);
+        color:#fff;
+        content: "";
+        background: url("/content/dam/toy-box/mattel-games/global/header/nav-icons/mattel-games_nav-hamburger.png");
+        background-repeat: no-repeat;
+        color:#fff;
+        position: absolute;
+        right: 18px;
+        height: 25px;
+        width: 37px;
+        background-size: cover;
+        top: 14px;
+    }
+        &.open {
+        &:after {
+            // content: "\f00d";
+            content: "";
+            background: url("/content/dam/toy-box/mattel-games/global/header/nav-icons/Mattel-games_mobile-Nav-close.png");
+            color:#fff;
+            background-size: cover;
+            background-repeat: no-repeat;
+            height: 32px;
+            width: 32px;
+            top: 9px;
+        }
+    }
+}
+
+// Primary Navigation Styles
+.primary-nav {
+    
+    @media #{$small-down} {
+        padding-top: 0px !important;
+        margin-top: 0;
+    }
+
+    @media #{$large-down} {
+        display: none;
+        position: absolute;
+        left: 0;
+        top: em(50);
+        width: 100%;
+        height: auto;
+        background-color: $mob-nav-bg;
+        box-shadow: 0 0.125em 0.125em rgba(0, 0, 0, 0.25);
+        max-height: 410px;
+        overflow-y: scroll;
+        padding-top: 24px;
+        ul {
+            background-color: $mob-nav-bg;
+            //background-image: url('/../../../../../../../../content/dam/mattel/polly-pocket/play-site/images/mobile-nav-bg.png');
+            //background-position: 95% 90%;
+            background-size: 7em;
+            background-repeat: no-repeat;
+
+            ul {
+                background-image: none;
+            }
+          
+        }
+    }
+
+    @media #{$large-up} {
+        float: right;
+        display: inline-block !important;
+        min-height: em(70);
+        background: transparent;
+        height: 70px;
+    }
+
+    ul {
+        margin: em(15) 0;
+        @media #{$small-down} {
+            background-color: #fbd635;
+            margin:0;
+        }
+        @media #{$medium-up} {
+            margin: em(20) 0 0 0;
+        }
+
+        @media #{$large-up} {
+            margin: 0;
+        }
+
+        @media #{$large-up} {
+            height: 100%;
+        }
+
+        li {
+            display: block;
+            position: relative;
+            vertical-align: top;
+            /*padding: .44em 1.5625em 0px;*/
+            padding: 0 .5em;
+            padding-right: 20px;
+            margin-right: 20px;
+            padding-bottom: 5px;
+
+            @media #{$large-up} {
+                display: inline-table;
+                top: 0;
+                padding-bottom: 0;
+                height: 100%;
+                padding-right: 0;
+                margin-right: 0;
+                padding-left: 40px;
+                &:hover,
+                &:focus
+                  {
+                    ul {
+                        display: block;
+                        visibility: visible;
+                        li {
+                            margin-right: 13px !important;
+                        }
+                    }
+                }
+                &:last-of-type{
+                    margin-right: 40px;
+                }
+            }
+
+            a {
+               color: #fff;
+                // letter-spacing: 1px;
+                // line-height: 35px;
+                border-bottom:1px solid #D8D8D8;
+                 @media #{$small-down} {
+                     color: #000;
+                     width: 85%;
+                     padding-left: 20px;
+                     border:0px;
+                 }
+                @media #{$large-up} {
+                    color: #fff;
+                    display: inline-block;
+                    vertical-align: middle;
+                    border-bottom: 4px solid #EE0024;
+                    padding: 10px 0 4px 0;
+                    &:hover,
+                    &.active {
+                        border-bottom: 4px solid #fbd635;
+                    }
+                }
+
+                display: block;
+                /*padding: 0 1.5625em;
+                padding: 0.22em 1.5625em;*/
+                text-decoration: none;
+                //text-transform: uppercase;
+                padding:14px 0px 14px 0px;
+                letter-spacing: normal !important;
+                line-height: 18px !important;
+                font-family: Arial;
+                font-size: 16px;
+                font-weight: bold !important;
+                span {
+                    font-family: Arial;
+                    font-weight: bold !important;  
+                }
+            }
+            .show-sub-nav {
+                background-repeat: no-repeat;
+                display: block !important;
+                position: absolute;
+                top: 55%;
+                right: -5px;
+                transform: translateY(-50%);
+                line-height: 0;
+                border: 0;
+                width: 20px;
+                height: 20px;
+                padding: 0 0 0 20px;
+                overflow: hidden;
+                transform-origin: center center;
+                transition: all .3s ease-in-out;
+                @media #{$large-down} {
+                    margin-top:0 !important;	
+                    right: 20px;	
+                    transform: none;
+                    top: 14px;
+                }
+                &.show-sub-nav-true{
+                    @media #{$large-up} {
+                        top: 50%;
+                    }
+                }
+                @media #{$large-up} {
+                    top: 50%;
+                    background: url("/content/dam/toy-box/mattel-games/global/header/nav-icons/icon_nav-caret.png");
+                    background-repeat: no-repeat;
+                    background-position-y: 2px;
+                }
+                &:before {
+                    // content: '\F078';
+                    content: '';
+                    font-size: 16px;
+                    line-height: 1;
+                    font-family: 'Font Awesome';
+                    color: #FFFFFF;
+                    display: block;
+                    width: 11px;
+                    height: 16px;
+                    border-bottom: 0px;
+                    transition: all .3s ease-in-out;
+                    @media #{$large-down} {
+                        display: none;
+                    }
+                    @media #{$large-up} {
+                        position: absolute;
+                        left: 5px;
+                        top: 0;
+                    }
+                }
+                &+input{
+                    &+a{
+                        @media #{$large-up} {
+                            padding-right: 20px;
+                        }
+                    }
+                }
+            }
+
+            &:hover,
+            &:focus
+                {                
+                &>a.show-sub-nav {
+                    //transform: translateY(-85%) rotate(180deg);
+                     border-bottom: 0px;
+                    @media #{$small-down} {
+                        //transform: translateY(50%) rotate(180deg);
+                        //transform: rotate(180deg);
+                    }
+                }
+                
+            }
+
+            .header-img {
+                width: auto;
+                height: auto;
+                margin-right: em(5);
+                margin-bottom: 6px;
+            }
+
+            ul {
+                display: none;
+               // background-color: rgba($sub-nav-link-bg, 0.8);
+               // position: absolute;
+                // top: em(70);
+                // left: em(10);
+                // min-width: em(220);
+                // width: auto;
+                // padding: 0 em(20);
+
+                // -webkit-transition: 250ms cubic-bezier(.25, .75, .75, 1.25);
+                // -o-transition: 250ms cubic-bezier(.25, .75, .75, 1.25);
+                // transition: 250ms cubic-bezier(.25, .75, .75, 1.25);
+                // height: auto;
+                    position: fixed;
+                    top: 70px;
+                    left: 0;
+                    background-color: #fff;
+                    width: 100%;
+                    height: auto;
+                    text-align: center;
+                     @media #{$small-down} {
+                          position: relative;
+                     }
+                     @media #{$large-up} {
+                        padding-top: 40px;
+                        padding-bottom: 3px;
+                        border-bottom: 10px solid $yellow;
+                   }
+                   @media #{$large-down} {
+                    padding-top: 10px;
+                   }
+                li {
+                    display: inline-block;
+                    font-size: em(10);
+                    width: 125px;
+                    min-height: 165px;
+                    text-align: left;
+                    @media #{$large-up} {
+                        padding-left: 0;
+                    }
+                    a {
+                        color: $mob-nav-link-color;
+                        border-bottom: none;
+                        font: bold 16px 'Mattel Founders', sans-serif;
+                        padding: em(18) 0;
+                        text-transform: initial;
+                        @media #{$large-up} {
+                            padding-top: 0;
+                            position: relative;
+                            &:hover,
+                            &:focus{
+                                border-bottom: none;
+                                    &:after{
+                                        top: 0;
+                                        content: " ";
+                                        position: absolute;
+                                        left: 0;
+                                        width: 100px;
+                                        height: 100px;
+                                        background-color: #000;
+                                        opacity: 0.22;
+                                    }
+                            }
+                       }
+                       @media #{$large-down} {
+                        text-indent: 0;
+                        padding-left: 35px;
+                        padding-top: 10px;
+                        padding-bottom: 20px;
+                       }
+                       span {
+                            font: bold 16px 'Mattel Founders', sans-serif;
+                       }
+                    }
+                }
+            }
+        }
+    }
+
+    @media #{$large-down} {
+        ul {
+            li {
+                a {
+                    &.show-sub-nav {
+                        font-size: em(34);
+                        color: $mob-nav-link-color;
+                        float: right;
+                        padding: 0;
+                        line-height: normal;
+                        text-align: center;
+                        margin-top: em(4);
+                        @if mapping($mainNav, primaryNavUlLiA, isHideSubnav)==true {
+                            display: none;
+                            position: absolute;
+                            right: 15px;
+                        }
+                    }
+                   
+                }
+
+                ul {
+                    display: none;
+                    background-color: transparent;
+                    top: 70px;
+                    li {
+                        font-size: em(12);
+                        padding: 0;
+                        text-indent: 1em;
+                        border: 0;
+                        a{
+                            border: 0;
+                            &:hover,
+                            &:focus
+                            {
+                                border: 0; 
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    @media #{$small-down} {
+        ul {
+            li {
+                    padding: 0 !important;
+                    margin: 0 !important;
+                    border-bottom: 1px solid #ffffff;
+                
+
+                a {
+                    &.show-sub-nav {
+                        font-size: em(34);
+                        color: $mob-nav-link-color;
+                        float: right;
+                        padding: 0;
+                        line-height: normal;
+                        text-align: center;
+                        margin-top: -.9em;  
+                        @if mapping($mainNav, primaryNavUlLiA, isHideSubnav)==true {
+                            display: none;
+                            position: absolute;
+                            right: 15px;
+                        }
+                    }
+                   
+                }
+
+                ul {
+                    display: none;
+                    top: 0;
+                    overflow: auto;
+                    background-color: #fff;
+                    li {
+                        font-size: em(12);
+                        padding: 0;
+                        text-indent: 1em;
+                        border: 0;
+                        display: inline-block;
+                        width: 100%;
+                        float: left;
+                        height: auto;
+                        min-height: auto;
+                        a{
+                            img{
+                                    display: none
+                           }
+                            border: 0;
+                            &:hover,
+                            &:focus
+                            {
+                                border: 0; 
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

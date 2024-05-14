@@ -1,0 +1,188 @@
+#product-category-nav {
+    @media #{$medium-up} {
+        // border-bottom: 1px solid $borderColor;
+        $borderProperty: mapping($productCategory, main, border);
+        @if(map-get($borderProperty, enabled)) {
+            border-#{map-get($borderProperty,position)}: (map-get($borderProperty, size) solid map-get($borderProperty, color));
+        }
+        width: em(250, 14);
+    }
+
+    @media #{$medium-down} {
+        position: relative;
+    }
+    .nav-header {
+        @include content-spacing(map-get($productCategory,heading));
+        @media #{$medium-down} {            
+            $borderProperty: mapping($productCategory, main, border);
+            @if(map-get($borderProperty, enabled)) {
+                border-#{map-get($borderProperty,position)}: (map-get($borderProperty, size) solid map-get($borderProperty, color));
+            }
+    
+            button {
+                font: $fontSemiBold em(18) $primaryFontFamily;
+                text-align: center;
+                cursor: pointer;
+                &:not(.collapsed) {
+                    span {
+                        em {
+                            &:before {
+                                content: "\f077" !important;
+                            }
+                        }
+                    }
+                }
+                span {
+                    font: inherit;
+                }
+                &.active-name-mob{
+                    @media #{$medium-down} {
+                        margin: em(18) 0 0 0;
+                    }
+                    padding: 0 0 em(10, 18) 0;
+                    &:focus{
+                        outline: none;
+                    }
+                }
+            }
+        }
+    }
+
+    #categoryNav {
+        height: auto !important;
+        @media #{$medium-down} {
+            left: 0px;
+            width: 100%;
+            text-align: left;
+            @include transition(none);
+            position: absolute;
+            background: $white;
+        }
+    }
+
+    nav {
+        @media #{$medium-down} {
+            padding-left: 0;
+            border: none;
+            width: auto;
+            left: 0;
+        }
+
+        li {
+            &.submenu {
+                &.sub-parent.active-list, &.active-list{
+                    color: $headingColor;
+                    &:before{
+                        content: none;
+                    }
+                }
+                @media #{$medium-down} {
+                    font-size: em(18);
+                    padding: em(10, 18) em(10, 18) 0;
+                    margin: 0;
+
+                    &:before {
+                        content: none;
+                    }
+                }
+            }
+
+            &.active-list {
+                @media #{$medium-down} {
+                    display: none;
+                }
+            }
+
+            &:not(.submenu) {
+                @media #{$medium-down} {
+                    font-size: em(16);
+                    padding: em(10, 16) em(10, 16) 0 em(20, 16);
+                }
+            }
+
+        }
+
+        .see-options,
+        .see-less {
+            margin-left: em(18.628);
+            font-weight: normal;
+
+            @media #{$medium-down} {
+                font-size: em(16);
+                padding: em(10, 16) em(10, 16) 0 em(20, 16);
+                display: inline-block;
+                margin-left: 0;
+            }
+        }
+
+        ul {
+            li:not(.submenu) {
+
+                a,
+                span {
+                    font: $fontRegular 1em $primaryFontFamily;
+                }
+
+                &.active-list span,
+                &.active-list a {
+                    font-weight: $fontSemiBold;
+                }
+            }
+        }
+    }
+    //AEMECOM-10724
+    .hide-parent-nav{
+        @media #{$medium-up}{
+            #product-category-list{
+                .active-list.skip-nav-parent{
+                    display: none !important;
+                }
+                li{
+                    margin-left: -18px;
+                }
+            }
+            nav a.link{
+                margin-left: 0;
+            }
+        }
+    }
+    #product-category-list{
+        .skip-nav-parent:not(.active-list){
+            // display: none !important;
+        }
+    }
+}
+.breadcrumb-nav{
+    nav{
+        ul{          
+            @extend .breadcrumb;
+            background-color: $white;
+            padding: 0;
+            li{
+                padding: 0 em(15, 16) em(10, 16) 0;
+                &:hover,
+                &:focus {
+                    text-decoration: underline;
+                }
+                &.active{
+                    color: $primary-color !important;
+                    text-decoration: none;
+                }
+                a{
+                    display: block;
+                    font:  ($fontLight em(16, 16) $primaryFontFamily);
+                    color: $theme-color !important;
+                }                  
+                a.active{
+                    color: $primary-color !important;
+                }
+                color: $theme-color;
+                display: block;
+                float: left;      
+            }            
+        }
+    }
+    .breadcrumb > li + li:before{
+        display: none;
+    }
+}

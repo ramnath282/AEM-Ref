@@ -1,0 +1,55 @@
+/*
+**_char-landing.scss
+*/
+.play-character-landing-block {
+    @extend .container-fluid;
+    >div {
+        @extend .row;
+        margin-left: 0;
+        margin-right: 0;
+        >div {
+            @extend .col-xs-12;
+            @extend .col-sm-6;
+            @extend .col-md-4;
+            margin-left: 0;
+            margin-right: 0;
+            padding: 0;
+            text-align: center;
+            position: relative;
+            section {
+                text-align: center;
+                position: relative;
+                img {
+                    @extend .img-responsive;
+                }
+                span {
+                    background-color: $character-label-bg;
+                    @include border-radius(8px);
+                    text-align: center;
+                    text-transform: uppercase;
+                    line-height: 26px;
+                    padding: em(8);
+                    font-size: em(26);
+                    color: $character-label;
+                    position: absolute;
+                    bottom: em(14);
+                    left: 50%;
+                    transform: translateX(-50%);
+                    height: auto !important;
+                }
+            }
+        }
+    }
+    &#play-character-landing{
+        padding-left: 0;
+        padding-right: 0;
+        background-repeat: repeat !important;
+    }
+}
+.play-category-details-component{
+    .char-tiles{
+        a span{
+            height: auto !important;
+        }
+    }
+}

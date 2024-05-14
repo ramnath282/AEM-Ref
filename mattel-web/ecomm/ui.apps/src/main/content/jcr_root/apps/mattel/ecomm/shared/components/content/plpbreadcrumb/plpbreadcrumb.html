@@ -1,0 +1,20 @@
+<sly data-sly-use.PLPBreadcrumb="com.mattel.ecomm.core.models.PLPBreadcrumbModel">
+	<div class="breadcrumb-nav">
+		<nav aria-label="breadcrumb">
+			<ul>
+				<sly data-sly-list.breadcrumbItem="${PLPBreadcrumb.breadcrumbLinks}">
+					<sly data-sly-test.isCurrPage="${currentPage.path == breadcrumbItem.pagePath && !breadcrumbItem.hideInNav}">
+						<li class="active" aria-selected="true" tabindex="0">
+							${breadcrumbItem.title}
+						</li>
+					</sly>
+					<sly data-sly-test="${!isCurrPage && !breadcrumbItem.hideInNav}">
+						<li>
+							<a href="${breadcrumbItem.pageLink}" aria-selected="false" aria-controls="${breadcrumbItem.title}">${breadcrumbItem.title}</a>
+						</li>
+					</sly>
+				</sly>
+			</ul>
+		</nav>
+	</div>
+</sly>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Column Control"
+    sling:resourceType="cq/gui/components/authoring/dialog"
+    height="{Long}500"
+    width="{Long}600">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
+        <items jcr:primaryType="nt:unstructured">
+            <column
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/container"
+                height="{Long}600"
+                width="{Long}600">
+                <items jcr:primaryType="nt:unstructured">
+                    <header
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        fieldLabel="Header for column:"
+                        name="./header"/>
+                    <layoutStructure
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/foundation/form/select"
+                        fieldLabel="Select Layout"
+                        name="./layoutStructure">
+                        <items jcr:primaryType="nt:unstructured">
+                            <two
+                                jcr:primaryType="nt:unstructured"
+                                text="Two Column"
+                                value="two"/>
+                            <three
+                                jcr:primaryType="nt:unstructured"
+                                text="Three Column"
+                                value="three"/>
+                            <fivenseven
+                                jcr:primaryType="nt:unstructured"
+                                text="Five and Seven"
+                                value="fivenseven"/>
+                            <onethree
+                                jcr:primaryType="nt:unstructured"
+                                text="One by Three"
+                                value="onethree"/>
+                            <plpLayout
+                                jcr:primaryType="nt:unstructured"
+                                text="PLP Layout"
+                                value="plplayout"/>
+                            <articleLayout
+                                jcr:primaryType="nt:unstructured"
+                                text="Article Layout"
+                                value="articlelayout"/>
+                        </items>
+                    </layoutStructure>
+                </items>
+            </column>
+        </items>
+    </content>
+</jcr:root>

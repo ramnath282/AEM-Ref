@@ -1,0 +1,96 @@
+<sly data-sly-test="${wcmmode.edit}">${'Edit Filter Articles Component' @i18n}</sly>
+<div class="explore-articles-datas">
+	<input type="hidden" id="pagePath" value="${currentPage.getPath}" />
+	<div class="container">
+		<div class="filter-articles">
+			<div class="filter-accordion-wrapper">
+				<a title="Expand Filter" aria-expanded="false" href="javascript:void(0);" class="filter-accordion active">${properties.headerForFilter @i18n}</a>
+			</div>
+			<div class="filter-tags">
+				<div>
+					<ul class="col-4-md filter-tags-list">
+						<li data-filter="all">
+							<a class="track-article-filter active" href="javascript:void(0);">
+								<span>${'View All' @i18n}</span>
+							</a>
+						</li>
+						<sly data-sly-use.filterArticle="com.mattel.ag.explore.core.model.FilterArticlesModel">
+							<sly data-sly-list.tags="${filterArticle.tagsAuthored}">
+								<li data-filter="${tags.tagID}">
+									<a class="track-article-filter" href="javascript:void(0);">
+										<span>${tags.tagTitle}</span>
+									</a>
+								</li>
+							</sly>
+						</sly>
+					</ul>
+				</div>
+			</div>
+			<div class="clear-filter-wrapper hidden">
+				<a class="clear-filter" href="javascript:void(0);">
+					<i class="far fa-times-circle"></i>
+				</a>
+				<span id="filtered-name"></span>
+			</div>
+		</div>
+		<div class="grid-module explore-grid-container">
+			<ul class="col-3 data-loading" id="explore-grid-datas" data-initial-load="${properties.initialNumOfDataToLoad || '12'}" data-next-load="${properties.dataLoadOnShowMore || '3'}" data-empty="${properties.msgWhenNoDataFound || 'No Records Found.' @i18n}"
+				data-reached="${properties.msgWhenAllDataLoaded || 'All the datas are loaded.' @i18n}" data-filter-key-name="tagID" data-fails="${properties.msgWhenApiFails || 'Please try again..' @i18n}">
+				<!-- //dynamically rendered datas -->
+			</ul>
+			<sly data-sly-test="${properties.showMoreLabel != null}">
+				<div class="col-xs-12 text-center">
+					<button class="btn btn-lg show-more theme-btn hidden" data-tracking-filter-showmore="filter articles">${properties.showMoreLabel @i18n}</button>
+				</div>
+			</sly>
+		</div>
+	</div>
+</div>
+<script type="text/template" id="explore-grid-template"><% _.each(items,function(item,key,arr) { %><% if(item.displayhomepage == "false") { %>
+<li class="list" data-index="<%= item.index %>">
+	<div class="tile-container">
+		<a class="tile-clickable" data-tracking-filtered-article = "Click-Event|click|Filtered Articles|<%= item.articleTitle %>" href=<% if(item.vanityUrl) { %><%=item.vanityUrl%><%} else {%> <%= item.pagePath %> <% } %> >
+			<img src="<%= item.articleGridImage  %>" alt="<%= item.articleTitle %>">
+			<div class="tile-content">
+				<div class="tile-tip"><% if(item.hideArticleDate != true) { %>
+					<span class="tile-tip-A"><%= item.articleDate %>
+							</span><% } %>
+					<span class="tile-tip-B"><% if(!_.isEmpty(item.primaryTag)) { %><%= item.primaryTag[0].tagTitle %><%}%>
+							</span>
+				</div>
+				<h4 class="tile-name"><%= item.articleTitle %>
+				</h4>
+				<div class="tile-description"><%= item.articleDescription %>
+				</div>
+			</div>
+		</a>
+		<a class="arrow-right read-more" data-tracking-filtered-article = "Click-Event|click|Filtered Articles|<%= item.articleTitle %>" href=<% if(item.vanityUrl) { %><%=item.vanityUrl%><%} else {%> <%= item.pagePath %> <% } %> >
+			<span>Read more</span>
+			<span class="sr-only"><%= item.articleTitle %>
+					</span>
+		</a>
+		<ul class="social-icons">
+			<li>
+				<a href="javascript:void(0);" class="facebook track-social-share" data-tracking-social = "facebook" aria-label="facebook opens a new window" data-componentname="Filtered articles"  <% if(item.pagePath) { %> data-url=<% if(item.vanityUrl) { %><%=item.vanityUrl%><%} else {%> <%= item.pagePath %> <% } %>  <%}%> data-title="<%- item.articleTitle %>" data-description="<%= item.articleDescription %>" data-media="<%= item.articleImage %>" data-link-attr="facebook">
+				</a>
+			</li>
+			<li>
+				<a href="javascript:void(0);" class="twitter track-social-share" data-tracking-social = "twitter" aria-label="twitter opens a new window" data-componentname="Filtered articles"  <% if(item.pagePath) { %> data-url= <% if(item.vanityUrl) { %><%=item.vanityUrl%><%} else {%> <%= item.pagePath %> <% } %>  <%}%> data-title="<%- item.articleTitle %>" data-description="<%= item.articleDescription %>" data-media="<%= item.articleImage %>" data-link-attr="twitter">
+				</a>
+			</li>
+			<li>
+				<a href="javascript:void(0);" class="pinterest track-social-share" data-tracking-social = "pinterest" aria-label="pinterest opens a new window" data-componentname="Filtered articles" <% if(item.pagePath) { %> data-url= <% if(item.vanityUrl) { %><%=item.vanityUrl%><%} else {%> <%= item.pagePath %> <% } %>  <%}%> data-title="<%- item.articleTitle %>" data-description="<%= item.articleDescription %>" data-media="<%= item.articleImage %>" data-link-attr="pinterest">
+				</a>
+			</li>
+		</ul>
+	</div>
+</li><% } %><% }); %>
+</script>
+<!-- <input type="hidden" id="addthis-url" value="//s7.addthis.com/js/300/addthis_widget.js?domready=1#pubid=barbiecollector" /> -->
+<!--<script src="//s7.addthis.com/js/300/addthis_widget.js#async=1" type="text/javascript"></script><script type="text/javascript">
+            var addthis_config = addthis_config || {};
+            addthis_config.pubid = 'barbiecollector';
+            document.addEventListener('DOMContentLoaded', function () {
+                typeof addthis!="undefined" && addthis.init();
+            }, false);
+        </script> -->

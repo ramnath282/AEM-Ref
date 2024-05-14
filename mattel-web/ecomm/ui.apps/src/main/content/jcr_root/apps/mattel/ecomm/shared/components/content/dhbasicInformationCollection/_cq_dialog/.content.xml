@@ -1,0 +1,896 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Doll Hospital - Basic Information Collection"
+    sling:resourceType="cq/gui/components/authoring/dialog"
+    extraClientlibs="[acs-commons.widgets.showhidedialogfields]">
+    <content
+        jcr:primaryType="nt:unstructured"
+		granite:class="dh-basicinfo-collection-edit"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <basicInfoType
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title=" Basic Information Type Config"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <column
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <type
+                                        granite:class="cq-dialog-dropdown-showhide"
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                        fieldDescription="Please select Basic Information Collection type"
+                                        fieldLabel="Select Basic Information Collection type"
+                                        name="./type">
+                                        <granite:data
+                                            jcr:primaryType="nt:unstructured"
+                                            acs-cq-dialog-dropdown-checkbox-showhide=""
+                                            acs-cq-dialog-dropdown-checkbox-showhide-target=".doll-hospital-showhide-target"/>
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <welcomeSection
+                                                jcr:primaryType="nt:unstructured"
+                                                text="Welcome Screen"
+                                                value="welcomeScreen"/>
+                                            <dollNameSection
+                                                jcr:primaryType="nt:unstructured"
+                                                text="Doll Name Screen"
+                                                value="dollNameScreen"/>
+                                            <dollTypeSection
+                                                jcr:primaryType="nt:unstructured"
+                                                text="Doll Type Screen"
+                                                value="dollTypeScreen"/>
+                                            <eyeColorSection
+                                                jcr:primaryType="nt:unstructured"
+                                                text="Eye Color Screen"
+                                                value="eyeColorScreen"/>
+                                            <hairColorSection
+                                                jcr:primaryType="nt:unstructured"
+                                                text="Hair Color Screen"
+                                                value="hairColorScreen"/>
+                                        </items>
+                                    </type>
+                                </items>
+                            </column>
+                        </items>
+                    </basicInfoType>
+                    <welcomeScreen
+                        granite:class="hide doll-hospital-showhide-target"
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Welcome Screen Config"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                        margin="{Boolean}true">
+                        <granite:data
+                            jcr:primaryType="nt:unstructured"
+                            acs-dropdownshowhidetargetvalue="welcomeScreen"/>
+                        <items jcr:primaryType="nt:unstructured">
+                            <column
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <title
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please enter welcome screen title"
+                                        fieldLabel="Title"
+                                        name="./title"/>
+                                    <image
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                        allowUpload="{Boolean}false"
+                                        autoStart="{Boolean}false"
+                                        class="cq-droptarget"
+                                        fieldDescription="Please drag and drop image to display"
+                                        fieldLabel="Image"
+                                        fileReferenceParameter="./imageParameter"
+                                        mimeTypes="[image/gif,image/jpeg,image/png,image/webp,image/tiff]"
+                                        multiple="{Boolean}false"
+                                        name="./image"
+                                        uploadUrl="${suffix.path}"
+                                        useHTML5="{Boolean}true"/>
+                                </items>
+                            </column>
+                        </items>
+                    </welcomeScreen>
+                    <dollName
+                        granite:class="hide doll-hospital-showhide-target"
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Doll Name Screen Config"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                        margin="{Boolean}true">
+                        <granite:data
+                            jcr:primaryType="nt:unstructured"
+                            acs-dropdownshowhidetargetvalue="dollNameScreen"/>
+                        <items jcr:primaryType="nt:unstructured">
+                            <column
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <subBrandLogoConfigSection
+                                        jcr:primaryType="nt:unstructured"
+                                        jcr:title="Sub-brand Logo Image configuration"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/fieldset">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <subBrandLogoImage
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                                allowUpload="{Boolean}false"
+                                                autoStart="{Boolean}false"
+                                                class="cq-droptarget"
+                                                fieldDescription="Please drag and drop image to display"
+                                                fieldLabel="Sub-brand Desktop Logo Image"
+                                                fileReferenceParameter="./subBrandLogoImageParameterForDollName"
+                                                mimeTypes="[image/gif,image/jpeg,image/png,image/webp,image/tiff]"
+                                                multiple="{Boolean}false"
+                                                name="./subBrandLogoImageForDollName"
+                                                uploadUrl="${suffix.path}"
+                                                useHTML5="{Boolean}true"/>
+                                            <subBrandLogoImageMobile
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                                allowUpload="{Boolean}false"
+                                                autoStart="{Boolean}false"
+                                                class="cq-droptarget"
+                                                fieldDescription="Please drag and drop image to display"
+                                                fieldLabel="Sub-brand Mobile Logo Image"
+                                                fileReferenceParameter="./subBrandLogoImageParameterMobileForDollName"
+                                                mimeTypes="[image/gif,image/jpeg,image/png,image/webp,image/tiff]"
+                                                multiple="{Boolean}false"
+                                                name="./subBrandLogoImageMobileForDollName"
+                                                uploadUrl="${suffix.path}"
+                                                useHTML5="{Boolean}true"/>
+                                        </items>
+                                    </subBrandLogoConfigSection>
+                                    <question
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please enter question for getting doll name"
+                                        fieldLabel="Question"
+                                        name="./questionForDollName"/>
+                                    <helperPopoverText
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please enter helper popover text question"
+                                        fieldLabel="Helper Popover Text"
+                                        name="./helperPopoverTextForDollName"/>
+                                    <helperPopoverCopy
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please enter helpful popover copy text"
+                                        fieldLabel="Helper Popover Copy"
+                                        name="./helperPopoverCopyForDollName"/>
+                                    <helperPopoverLocation
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                        fieldDescription="Please select location for helper popover"
+                                        fieldLabel="Select the helper popover location for desktop view"
+                                        name="./locationforDollName">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <left
+                                                jcr:primaryType="nt:unstructured"
+                                                text="Left"
+                                                value="left"/>
+                                            <right
+                                                jcr:primaryType="nt:unstructured"
+                                                text="Right"
+                                                value="right"/>
+                                            <top
+                                                jcr:primaryType="nt:unstructured"
+                                                text="Top"
+                                                value="top"/>
+                                            <bottom
+                                                jcr:primaryType="nt:unstructured"
+                                                text="Bottom"
+                                                value="bottom"/>
+                                        </items>
+                                    </helperPopoverLocation>
+                                    <helperPopoverLocationMobile
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                        fieldDescription="Please select location for helper popover"
+                                        fieldLabel="Select the helper popover location for mobile view"
+                                        name="./locationforDollNameMobile">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <top
+                                                jcr:primaryType="nt:unstructured"
+                                                text="Top"
+                                                value="top"/>
+                                            <bottom
+                                                jcr:primaryType="nt:unstructured"
+                                                text="Bottom"
+                                                value="bottom"/>
+                                        </items>
+                                    </helperPopoverLocationMobile>
+                                    <placeholderText
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please enter placeholder text"
+                                        fieldLabel="Placeholder Text"
+                                        name="./placeholderName"/>
+                                    <validationConfigSection
+                                        jcr:primaryType="nt:unstructured"
+                                        jcr:title="Input Validation configurations"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/fieldset">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <maxCharCount
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+                                                fieldDescription="Please configure maximum number of Characters allowed in input field"
+                                                fieldLabel="Maximum number of Characters allowed in input field"
+                                                min="{Long}1"
+                                                name="./recipientMaxAllowedChars"/>
+                                        </items>
+                                    </validationConfigSection>
+                                    <errorConfigSection
+                                        jcr:primaryType="nt:unstructured"
+                                        jcr:title="Error Message Configurations"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/fieldset">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <charErrMsg
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Please configure error message for allowed Characters mismatch."
+                                                fieldLabel="Error Message for  Allowed Character Mismatch"
+                                                name="./dollNameAllowedCharTypeErr"/>
+                                            <maxCharCountErrMsg
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Please configure error message for exceeding maximum character count"
+                                                fieldLabel="Error Message for exceeding maximum character count"
+                                                name="./dollNameMaxAllowedCharsErr"/>
+                                            <profanityErrMsg
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Please configure error message for AG's profanity mismatch"
+                                                fieldLabel="Error Message for AG's profanity mismatch"
+                                                name="./dollNameProfanityErr"/>
+                                        </items>
+                                    </errorConfigSection>
+                                </items>
+                            </column>
+                        </items>
+                    </dollName>
+                    <dollType
+                        granite:class="hide doll-hospital-showhide-target"
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Doll Type Screen Config"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                        margin="{Boolean}true">
+                        <granite:data
+                            jcr:primaryType="nt:unstructured"
+                            acs-dropdownshowhidetargetvalue="dollTypeScreen"/>
+                        <items jcr:primaryType="nt:unstructured">
+                            <column
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <subBrandLogoConfigSection
+                                        jcr:primaryType="nt:unstructured"
+                                        jcr:title="Sub-brand Logo Image configuration"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/fieldset">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <subBrandLogoImage
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                                allowUpload="{Boolean}false"
+                                                autoStart="{Boolean}false"
+                                                class="cq-droptarget"
+                                                fieldDescription="Please drag and drop image to display"
+                                                fieldLabel="Sub-brand Desktop Logo Image"
+                                                fileReferenceParameter="./subBrandLogoImageParameterForDollType"
+                                                mimeTypes="[image/gif,image/jpeg,image/png,image/webp,image/tiff]"
+                                                multiple="{Boolean}false"
+                                                name="./subBrandLogoImageForDollType"
+                                                uploadUrl="${suffix.path}"
+                                                useHTML5="{Boolean}true"/>
+                                            <subBrandLogoImageMobile
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                                allowUpload="{Boolean}false"
+                                                autoStart="{Boolean}false"
+                                                class="cq-droptarget"
+                                                fieldDescription="Please drag and drop image to display"
+                                                fieldLabel="Sub-brand Mobile Logo Image"
+                                                fileReferenceParameter="./subBrandLogoImageParameterMobileForDollType"
+                                                mimeTypes="[image/gif,image/jpeg,image/png,image/webp,image/tiff]"
+                                                multiple="{Boolean}false"
+                                                name="./subBrandLogoImageMobileForDollType"
+                                                uploadUrl="${suffix.path}"
+                                                useHTML5="{Boolean}true"/>
+                                        </items>
+                                    </subBrandLogoConfigSection>
+                                    <question
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please enter question for getting doll type"
+                                        fieldLabel="Question"
+                                        name="./questionForDollType"/>
+                                    <helperPopoverText
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please enter helper popover text question"
+                                        fieldLabel="Helper Popover Text"
+                                        name="./helperPopoverTextForDollType"/>
+                                    <helperPopoverCopy
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please enter helpful popover copy text"
+                                        fieldLabel="Helper Popover Copy"
+                                        name="./helperPopoverCopyForDollType"/>
+                                    <helperPopoverLocation
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                        fieldDescription="Please select location for helper popover"
+                                        fieldLabel="Select the helper popover location for desktop view"
+                                        name="./locationforDollType">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <left
+                                                jcr:primaryType="nt:unstructured"
+                                                text="Left"
+                                                value="left"/>
+                                            <right
+                                                jcr:primaryType="nt:unstructured"
+                                                text="Right"
+                                                value="right"/>
+                                            <top
+                                                jcr:primaryType="nt:unstructured"
+                                                text="Top"
+                                                value="top"/>
+                                            <bottom
+                                                jcr:primaryType="nt:unstructured"
+                                                text="Bottom"
+                                                value="bottom"/>
+                                        </items>
+                                    </helperPopoverLocation>
+                                    <helperPopoverLocationMobile
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                        fieldDescription="Please select location for helper popover"
+                                        fieldLabel="Select the helper popover location for  mobile view"
+                                        name="./locationforDollTypeMobile">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <top
+                                                jcr:primaryType="nt:unstructured"
+                                                text="Top"
+                                                value="top"/>
+                                            <bottom
+                                                jcr:primaryType="nt:unstructured"
+                                                text="Bottom"
+                                                value="bottom"/>
+                                        </items>
+                                    </helperPopoverLocationMobile>
+                                    <dolls
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                        composite="{Boolean}true"
+                                        fieldLabel="Dolls Information">
+                                        <field
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/fieldset"
+                                            name="./dolls">
+                                            <items jcr:primaryType="nt:unstructured">
+                                                <column
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                    <items jcr:primaryType="nt:unstructured">
+                                                        <dollImage
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+                                                            fieldLabel="Doll Image"
+                                                            name="./dollImage"
+                                                            rootPath="/content/dam"/>
+                                                        <dollDescription
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                            fieldDescription="Please enter doll description here"
+                                                            fieldLabel="Doll Description"
+                                                            name="./dollDescription"/>
+                                                        <dollProductType
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="cq/gui/components/coral/common/form/tagfield"
+                                                            fieldDescription="Please configure category Id here"
+                                                            fieldLabel="Please select product type"
+                                                            multiple="{Boolean}true"
+                                                            name="./dollsCategories"
+                                                            rootPath="/content/cq:tags/ag/dollHospital"/>
+                                                        <heading
+                                                            granite:class="coral-Heading coral-Heading--4"
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/heading"
+                                                            level="{Long}4"
+                                                            text="Doll specific configurations for Treatment page"/>
+                                                        <well
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/well">
+                                                            <items jcr:primaryType="nt:unstructured">
+                                                                <helperTextTreatment
+                                                                    granite:class="hide doll-hospital-noOfButtons-showhide-target"
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                    fieldDescription="Please enter helper text specific for doll type which should appear on treatment page."
+                                                                    fieldLabel="Helper Text "
+                                                                    name="./helperTextTreatment">
+                                                                    <granite:data
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        acs-dropdownshowhidetargetvalue="twoButtons"/>
+                                                                </helperTextTreatment>
+                                                                <helperPopOverTextTreatment
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                    fieldDescription="Please enter helper popover text specific for doll type which should appear on treatment page."
+                                                                    fieldLabel="Helper Popover Text "
+                                                                    name="./helperPopOverTextTreatment"/>
+																<treatmentLinkType
+																	jcr:primaryType="nt:unstructured"
+                                                                    granite:class="treatmentLinkTypeSelection cq-dialog-dropdown-showhide-multifield"
+																	sling:resourceType="granite/ui/components/coral/foundation/form/select"
+																	fieldLabel="Link Type"
+																	name="./treatmentLinkType">
+																	<items jcr:primaryType="nt:unstructured">
+																		<pdf
+																			jcr:primaryType="nt:unstructured"
+																			text="PDF"
+																			value="pdf"/>
+																		<video
+																			jcr:primaryType="nt:unstructured"
+																			text="Video"
+																			value="video"/>
+                                                                    </items>
+                                                                    <granite:data
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        cq-dialog-dropdown-showhide-target-multifield=".list-option-listfrom-showhide-target-multifield"/>
+                                                                </treatmentLinkType>
+																<treatmentVideoType
+                                                                    granite:class="treatmentVideoTypeSelection list-option-listfrom-showhide-target-multifield"
+																	jcr:primaryType="nt:unstructured"
+																	sling:resourceType="granite/ui/components/coral/foundation/form/select"
+																	fieldLabel="Video Type"
+																	name="./treatmentVideoType">
+																	<items jcr:primaryType="nt:unstructured">
+																		<scene7
+																			jcr:primaryType="nt:unstructured"
+																			text="Scene7"
+																			value="scene7"/>
+																		<youtube
+																			jcr:primaryType="nt:unstructured"
+																			text="Youtube"
+																			value="youtube"/>
+																		<deluxe
+																			jcr:primaryType="nt:unstructured"
+																			text="Deluxe"
+																			value="deluxe"/>
+                                                                    </items>
+                                                                    <granite:data
+                                                                            jcr:primaryType="nt:unstructured"
+                                                                            showhidetargetvalue="video"/>
+                                                                </treatmentVideoType>
+                                                                <videoLinkTreatment
+                                                                    jcr:primaryType="nt:unstructured"
+																	granite:class="treatment-video-link"
+                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                    fieldDescription="Please enter video / pdf link specific for doll type which should appear on treatment page."
+                                                                    fieldLabel="Video / PDF Link"
+                                                                    name="./videoLinkTreatment"/>
+                                                            </items>
+                                                        </well>
+                                                    </items>
+                                                </column>
+                                            </items>
+                                        </field>
+                                        <granite:data jcr:primaryType="nt:unstructured"/>
+                                    </dolls>
+                                </items>
+                            </column>
+                        </items>
+                    </dollType>
+                    <eyeColor
+                        granite:class="hide doll-hospital-showhide-target"
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Eye Color Screen Config"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                        margin="{Boolean}true">
+                        <granite:data
+                            jcr:primaryType="nt:unstructured"
+                            acs-dropdownshowhidetargetvalue="eyeColorScreen"/>
+                        <items jcr:primaryType="nt:unstructured">
+                            <column
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <subBrandLogoConfigSection
+                                        jcr:primaryType="nt:unstructured"
+                                        jcr:title="Sub-brand Logo Image configuration"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/fieldset">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <subBrandLogoImage
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                                allowUpload="{Boolean}false"
+                                                autoStart="{Boolean}false"
+                                                class="cq-droptarget"
+                                                fieldDescription="Please drag and drop image to display"
+                                                fieldLabel="Sub-brand Desktop Logo Image"
+                                                fileReferenceParameter="./subBrandLogoImageParameterForEyeColor"
+                                                mimeTypes="[image/gif,image/jpeg,image/png,image/webp,image/tiff]"
+                                                multiple="{Boolean}false"
+                                                name="./subBrandLogoImageForEyeColor"
+                                                uploadUrl="${suffix.path}"
+                                                useHTML5="{Boolean}true"/>
+                                            <subBrandLogoImageMobile
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                                allowUpload="{Boolean}false"
+                                                autoStart="{Boolean}false"
+                                                class="cq-droptarget"
+                                                fieldDescription="Please drag and drop image to display"
+                                                fieldLabel="Sub-brand Mobile Logo Image"
+                                                fileReferenceParameter="./subBrandLogoImageParameterMobileForEyeColor"
+                                                mimeTypes="[image/gif,image/jpeg,image/png,image/webp,image/tiff]"
+                                                multiple="{Boolean}false"
+                                                name="./subBrandLogoImageMobileForEyeColor"
+                                                uploadUrl="${suffix.path}"
+                                                useHTML5="{Boolean}true"/>
+                                        </items>
+                                    </subBrandLogoConfigSection>
+                                    <question
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please enter question for getting eye color of the doll"
+                                        fieldLabel="Question"
+                                        name="./questionForEyeColor"/>
+                                    <helperPopoverText
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please enter helper popover text question"
+                                        fieldLabel="Helper Popover Text"
+                                        name="./helperPopoverTextForEyeColor"/>
+                                    <helperPopoverCopy
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please enter helpful popover copy text"
+                                        fieldLabel="Helper Popover Copy"
+                                        name="./helperPopoverCopyForEyeColor"/>
+                                    <helperPopoverLocation
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                        fieldDescription="Please select location for helper popover"
+                                        fieldLabel="Select the helper popover location for desktop view"
+                                        name="./locationforEyeColor">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <left
+                                                jcr:primaryType="nt:unstructured"
+                                                text="Left"
+                                                value="left"/>
+                                            <right
+                                                jcr:primaryType="nt:unstructured"
+                                                text="Right"
+                                                value="right"/>
+                                            <top
+                                                jcr:primaryType="nt:unstructured"
+                                                text="Top"
+                                                value="top"/>
+                                            <bottom
+                                                jcr:primaryType="nt:unstructured"
+                                                text="Bottom"
+                                                value="bottom"/>
+                                        </items>
+                                    </helperPopoverLocation>
+                                    <helperPopoverLocationMobile
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                        fieldDescription="Please select location for helper popover"
+                                        fieldLabel="Select the helper popover location for mobile view"
+                                        name="./locationforEyeColorMobile">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <top
+                                                jcr:primaryType="nt:unstructured"
+                                                text="Top"
+                                                value="top"/>
+                                            <bottom
+                                                jcr:primaryType="nt:unstructured"
+                                                text="Bottom"
+                                                value="bottom"/>
+                                        </items>
+                                    </helperPopoverLocationMobile>
+                                    <answers
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="cq/gui/components/coral/common/form/tagfield"
+                                        fieldDescription="Please configure answers to display"
+                                        fieldLabel="Answers to display eye color"
+                                        multiple="{Boolean}true"
+                                        name="./eyeColorCategories"
+                                        rootPath="/content/cq:tags/ag/dollHospital"/>
+                                </items>
+                            </column>
+                        </items>
+                    </eyeColor>
+                    <hairColor
+                        granite:class="hide doll-hospital-showhide-target"
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Hair Color Screen Config"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                        margin="{Boolean}true">
+                        <granite:data
+                            jcr:primaryType="nt:unstructured"
+                            acs-dropdownshowhidetargetvalue="hairColorScreen"/>
+                        <items jcr:primaryType="nt:unstructured">
+                            <column
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <subBrandLogoConfigSection
+                                        jcr:primaryType="nt:unstructured"
+                                        jcr:title="Sub-brand Logo Image configuration"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/fieldset">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <subBrandLogoImage
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                                allowUpload="{Boolean}false"
+                                                autoStart="{Boolean}false"
+                                                class="cq-droptarget"
+                                                fieldDescription="Please drag and drop image to display"
+                                                fieldLabel="Sub-brand Desktop Logo Image"
+                                                fileReferenceParameter="./subBrandLogoImageParameterForHairColor"
+                                                mimeTypes="[image/gif,image/jpeg,image/png,image/webp,image/tiff]"
+                                                multiple="{Boolean}false"
+                                                name="./subBrandLogoImageForHairColor"
+                                                uploadUrl="${suffix.path}"
+                                                useHTML5="{Boolean}true"/>
+                                            <subBrandLogoImageMobile
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                                allowUpload="{Boolean}false"
+                                                autoStart="{Boolean}false"
+                                                class="cq-droptarget"
+                                                fieldDescription="Please drag and drop image to display"
+                                                fieldLabel="Sub-brand Mobile Logo Image"
+                                                fileReferenceParameter="./subBrandLogoImageParameterMobileForHairColor"
+                                                mimeTypes="[image/gif,image/jpeg,image/png,image/webp,image/tiff]"
+                                                multiple="{Boolean}false"
+                                                name="./subBrandLogoImageMobileForHairColor"
+                                                uploadUrl="${suffix.path}"
+                                                useHTML5="{Boolean}true"/>
+                                        </items>
+                                    </subBrandLogoConfigSection>
+                                    <question
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please enter question for getting hair color of the doll"
+                                        fieldLabel="Question"
+                                        name="./questionForHairColor"/>
+                                    <helperPopoverText
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please enter helper popover text question"
+                                        fieldLabel="Helper Popover Text"
+                                        name="./helperPopoverTextForHairColor"/>
+                                    <helperPopoverCopy
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please enter helpful popover copy text"
+                                        fieldLabel="Helper Popover Copy"
+                                        name="./helperPopoverCopyForHairColor"/>
+                                    <helperPopoverLocation
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                        fieldDescription="Please select location for helper popover"
+                                        fieldLabel="Select the helper popover location for Desktop view"
+                                        name="./locationforHairColor">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <left
+                                                jcr:primaryType="nt:unstructured"
+                                                text="Left"
+                                                value="left"/>
+                                            <right
+                                                jcr:primaryType="nt:unstructured"
+                                                text="Right"
+                                                value="right"/>
+                                            <top
+                                                jcr:primaryType="nt:unstructured"
+                                                text="Top"
+                                                value="top"/>
+                                            <bottom
+                                                jcr:primaryType="nt:unstructured"
+                                                text="Bottom"
+                                                value="bottom"/>
+                                        </items>
+                                    </helperPopoverLocation>
+                                    <helperPopoverLocationMobile
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                        fieldDescription="Please select location for helper popover"
+                                        fieldLabel="Select the helper popover location for mobile view"
+                                        name="./locationforHairColorMobile">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <top
+                                                jcr:primaryType="nt:unstructured"
+                                                text="Top"
+                                                value="top"/>
+                                            <bottom
+                                                jcr:primaryType="nt:unstructured"
+                                                text="Bottom"
+                                                value="bottom"/>
+                                        </items>
+                                    </helperPopoverLocationMobile>
+                                    <answers
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="cq/gui/components/coral/common/form/tagfield"
+                                        fieldDescription="Please configure answers to display"
+                                        fieldLabel="Answers to display for hair color"
+                                        multiple="{Boolean}true"
+                                        name="./hairColorCategories"
+                                        rootPath="/content/cq:tags/ag/dollHospital"/>
+                                </items>
+                            </column>
+                        </items>
+                    </hairColor>
+                    <buttonConfiguration
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Buttons Config"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <column
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <heading
+                                        granite:class="coral-Heading coral-Heading--4"
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/heading"
+                                        level="{Long}4"
+                                        text="Set the Buttons title and Urls"/>
+                                    <well
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/well">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <buttonType
+                                                granite:class="cq-dialog-dropdown-showhide"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                fieldDescription="Please select whether one button/two buttons"
+                                                fieldLabel="Select number of buttons"
+                                                name="./noOfButtons">
+                                                <granite:data
+                                                    jcr:primaryType="nt:unstructured"
+                                                    acs-cq-dialog-dropdown-checkbox-showhide=""
+                                                    acs-cq-dialog-dropdown-checkbox-showhide-target=".doll-hospital-noOfButtons-showhide-target"/>
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <oneButton
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Single Button"
+                                                        value="singleButton"/>
+                                                    <twoButton
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Two Buttons"
+                                                        value="twoButtons"/>
+                                                </items>
+                                            </buttonType>
+                                            <backButtonText
+                                                granite:class="hide doll-hospital-noOfButtons-showhide-target"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Please enter Back Button Text"
+                                                fieldLabel="Back Button Text"
+                                                name="./backButtonText">
+                                                <granite:data
+                                                    jcr:primaryType="nt:unstructured"
+                                                    acs-dropdownshowhidetargetvalue="twoButtons"/>
+                                            </backButtonText>
+                                            <nextButtonText
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Button will act as Next or Start Button depending upon the Button type selection"
+                                                fieldLabel="Next/Start Button Text"
+                                                name="./nextButtonText"/>
+                                            <nextButtonLink
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                fieldDescription="Please enter the url where needs to redirect"
+                                                fieldLabel="Next/Start button link"
+                                                name="./nextButtonLink"
+                                                rootPath="/content/ag/en"/>
+                                            <wellnessUserNextButtonLink
+                                                granite:class="hide doll-hospital-showhide-target"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                fieldDescription="Please enter the url where needs to redirect"
+                                                fieldLabel="Next/Start button link for Wellness User"
+                                                name="./wellnessUserNextButtonLink"
+                                                rootPath="/content/ag/en">
+                                                <granite:data
+                                                    jcr:primaryType="nt:unstructured"
+                                                    acs-dropdownshowhidetargetvalue="hairColorScreen"/>
+                                            </wellnessUserNextButtonLink>
+                                            <backgroundcolor
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <colorpicker
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/colorfield"
+                                                        fieldDescription="Please select background color for sticky button container. This is applicable for mobile view only"
+                                                        fieldLabel="Select Background color for sticky Button Container (Mobile only)"
+                                                        freestylePaletteType="{Boolean}true"
+                                                        name="./backgroundColor"
+                                                        value="hex"/>
+                                                </items>
+                                            </backgroundcolor>
+                                        </items>
+                                    </well>
+                                </items>
+                            </column>
+                        </items>
+                    </buttonConfiguration>
+                    <dhAnimation
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="DH Animation Config"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <column
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <heading
+                                        granite:class="coral-Heading coral-Heading--4"
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/heading"
+                                        level="{Long}4"
+                                        text="Set Subcomponent Animations"/>
+                                    <well
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/well">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <animations
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                fieldLabel="Select a Animation"
+                                                name="./containerAnimation">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <noAnimation
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="No animation"
+                                                        value="noAnimate"/>
+                                                    <fadein
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Fade In"
+                                                        value="fadeIn"/>
+                                                    <fadeinleft
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Fade In Left"
+                                                        value="fadeInLeft"/>
+                                                    <fadeinright
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Fade In Right"
+                                                        value="fadeInRight"/>
+                                                    <fadeinup
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Fade In Up"
+                                                        value="fadeInUp"/>
+                                                    <fadeindown
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Fade In Down"
+                                                        value="fadeInDown"/>
+                                                </items>
+                                            </animations>
+                                        </items>
+                                    </well>
+                                </items>
+                            </column>
+                        </items>
+                    </dhAnimation>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>

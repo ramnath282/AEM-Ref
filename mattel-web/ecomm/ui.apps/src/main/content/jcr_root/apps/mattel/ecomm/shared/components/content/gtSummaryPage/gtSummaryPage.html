@@ -1,0 +1,222 @@
+<sly data-sly-test.author="${wcmmode.edit}">${'Gift Trunk - Summary' @i18n}</sly>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+<sly data-sly-use.summaryPageObj="com.mattel.ecomm.core.models.GiftSummaryModel">
+  <input type="hidden" value="${summaryPageObj.baseImageUrl}" id="gtCompositeImageBaseUrl"/>
+  <input type="hidden" value="${summaryPageObj.layer2Url}" id="gtlayer2Bundle1Url"/>
+  <input type="hidden" value="${summaryPageObj.layer3Url}" id="gtlayer2Bundle2Url"/>
+  <input type="hidden" value="${summaryPageObj.layer4Url}" id="gtlayer4DollUrl"/>
+  <input type="hidden" value="${summaryPageObj.layerCompParams}" id="gtCompositeImageCompUrl"/>
+  <input type="hidden" value=" ${properties.containerAnimation}" id="pricingAnimation"/>
+  <sly data-sly-list.trunkUrls="${summaryPageObj.layer1Url}">
+  		<input type="hidden" value="${trunkUrls.toString}" id="gtTrunkLayer${trunkUrlsList.index}"/>
+  </sly>
+  	<h1 class="sr-only">Gift tracking Bundle selection</h1>
+    <!-- bundle selection starts -->
+     <div class="gt-bundle-selection-outer-wrapper">
+       <div id="gt-bundle-selection-wrapper" data-adderPriceText="${properties.adderPriceText @ context='unsafe'}" data-deductPriceText="${properties.deductPriceText @ context='unsafe'}" data-resultSetCount="100" class="gt-common-holder gt-bundle-selection-wrapper">
+           <div class="col-xs-12 col-sm-12 col-md-5 doll-img ">
+                           <div class="gt-product-doll-image">
+                                  <img class="img-responsive center-block" src="" alt="Doll Image"/>
+                           </div>
+                     </div>
+                     <div class="col-xs-12 col-sm-12 col-md-7 ">
+                           <div class="trunk container-prevent">
+                             <sly data-sly-test="${properties.showDollConfig}">
+                                  <div class="option doll choiceSelected enabled">
+                                         <div class="selected">
+                                                <span class="name select-gt-product gt-product-doll-name" id="ChangeDollAcc"></span>
+                                                <span aria-describedby="ChangeDollAcc" class="change"><a href="${properties.dollCtaLink @ extension='html'}">${properties.dollChangeLabel}<i class="fas fa-chevron-right"></i></a></span>
+                                         </div>
+                                  </div>
+                             </sly>
+                                  <sly data-sly-test="${properties.showTrunkSize}">
+                                         <sly data-sly-test.smallTrunk="${summaryPageObj.getSmallTrunkDetails}"></sly>
+                                         <sly data-sly-test.largeTrunk="${summaryPageObj.getLargeTrunkDetails}"></sly>
+
+                                         <div data-unavailableText="${properties.unavailabilityErrorMessage || false @ context='attribute'}" data-selection-id="offerSize" class="option gtFlowIndex offerSize">
+                                                <div class="selected">
+                                                       <span class="name" id="ChangeTrunkAcc">${properties.trunkSizeAccordianTitle}</span>
+                                                       <span aria-describedby="ChangeTrunkAcc" class="change" aria-expanded="false" role="link" tabindex="0">
+                                                       		<span>${properties.smallTrunkChangeLabel}
+                                                       			<i class="fas fa-chevron-right"></i>
+                                                       		</span>
+                                                        </span>
+                                                </div>
+                                                <div class="option-details">
+                                                       <h2>${properties.trunkSizeAccordianTitle}</h2>
+                                                       <header>${properties.trunkSectionTitle}</header>
+                                                       <div id="largeTrunk" data-sku-id="${largeTrunk.partNumber}" data-variant-id="${largeTrunk.variantId}" data-product-type="${largeTrunk.productType}" data-playpack-count="${largeTrunk.attributes.PlaypackCount}"  class="choice" data-choice="${largeTrunk.auxDescription1}">
+                                                             <div class="img-responsive">
+                                                              	<img alt="Trunk Image" src="" />
+                                                             </div>
+                                                              <div class="trunk-desc">
+                                                              <p>
+																	<span class="trunk-heading">${largeTrunk.auxDescription1}</span>
+																	<span class="trunkPricing">
+                                                                                                                              <span class="trunkPricingText hide">${properties.trunkPricingText @ context='unsafe'}</span>
+                                                                                                                              <span class="stock-price trunk-large-pricerange"></span>
+                                                                                                                              <span class="trunkNAPricingText hide">${properties.trunkNAPricingText @ context='unsafe'}</span>
+
+                                                                     </span>
+																</p>
+																	 ${largeTrunk.attributes.TrunkDescription || largeTrunk.seoMetaDescription @ context='html'}
+                                                                     <span class="product-status hide"><span class="status-detail">Backordered</span> until <span class="backorder-date trunkBackorderedDate"></span></span>
+                                                              </div>
+                                                       </div>
+                                                       <div id="smallTrunk" data-sku-id="${smallTrunk.partNumber}" data-variant-id="${smallTrunk.variantId}" data-product-type="${smallTrunk.productType}" data-playpack-count="${smallTrunk.attributes.PlaypackCount}" class="choice" data-choice="${smallTrunk.auxDescription1}">
+                                                             <div class="img-responsive">
+                                                              	<img  alt="Trunk Image" src="" />
+                                                              </div>
+                                                              <div class="trunk-desc">
+                                                              <p>
+																	<span class="trunk-heading">${smallTrunk.auxDescription1}</span>
+																	<span class="trunkPricing">
+                                                                                                                              <span class="trunkPricingText hide">${properties.trunkPricingText @ context='unsafe'}</span>
+                                                                                                                              <span class="stock-price trunk-pricerange"></span>
+                                                                                                                              <span class="trunkNAPricingText hide">${properties.trunkNAPricingText @ context='unsafe'}</span>
+																	</span>
+																</p>
+                                                                     ${smallTrunk.attributes.TrunkDescription || smallTrunk.seoMetaDescription @ context='html'}
+                                                                <span class="product-status hide"><span class="status-detail">Backordered</span> until <span class="backorder-date trunkBackorderedDate"></span></span>
+                                                              </div>
+                                                       </div>
+                                                </div>
+                                         </div>
+
+                                  </sly>
+                                  <sly data-sly-test="${properties.showCategoryBundle1}">
+
+                                         <div id="categoryBundle1" data-selection-id="bundlelist0" class="option bundleList disabled">
+                                                              <div class="selected">
+                                                                     <span class="name" id="ChangePlaypack1Acc">${properties.category1Accordian}</span>
+                                                                     <span aria-describedby="ChangePlaypack1Acc" class="change"  aria-expanded="false" role="link" tabindex="0">
+                                                                     	<span>
+                                                                     		${properties.category1ChangeLabel}
+                                                                     	 	<i class="fas fa-chevron-right"></i>
+                                                                     	</span>
+                                                                     </span>
+                                                              </div>
+                                                              <div  class="option-details" >
+                                                                     <h2>${properties.category1Accordian}</h2>
+                                                                     <sly data-sly-use.ecommUtil="${'com.mattel.ecomm.core.utils.EcomUtil' @ template=properties.bundle1Title}">
+                                                                            <header>${ecommUtil.getDynamicTemplate @ context='html'}</header>
+                                                                     </sly>
+                                                                     <div data-snpParams="${properties.playbackQueryParams}" data-intial-productCount="${properties.numberofProductsCategory1}" id="categoryBundleList1" class="categoryBundleList"></div>
+                                                                     <div class="toggle-products">
+                                                        <div class="view-all-products hide">
+                                                          <a>${properties.viewAllProductsCategory1}</a><span class="arrow-toggle arrowLink"></span>
+                                                        </div>
+                                                        <div class="show-less-products hide">
+                                                          <a>${properties.showRecommendCategory1}</a><span class="arrow-toggle arrowLink"></span>
+                                                        </div>
+                                                      </div>
+                                                              </div>
+                                                </div>
+
+                                  </sly>
+                                  <sly data-sly-test="${properties.showCategoryBundle2}">
+                                         <div id="categoryBundle2" data-selection-id="bundlelist1" class="option bundleList disabled">
+                                                              <div class="selected">
+                                                                     <span class="name" id="changeplaypack2Acc">${properties.category2Accordian}</span>
+                                                                     <span aria-describedby="changeplaypack2Acc" class="change"  aria-expanded="false" role="link" tabindex="0">
+                                                                     	<span>
+                                                                     		${properties.category2ChangeLabel}
+                                                                     		 <i class="fas fa-chevron-right"></i>
+                                                                       </span>
+                                                                     </span>
+                                                              </div>
+                                                              <div class="option-details">
+                                                                     <h2>${properties.category2Accordian}</h2>
+                                                                     <sly data-sly-use.ecommUtil="${'com.mattel.ecomm.core.utils.EcomUtil' @ template=properties.bundle2Title}">
+                                                                            <header>${ecommUtil.getDynamicTemplate @ context='html'}</header>
+                                                                     </sly>
+                                                                     <div data-snpParams="${properties.playbackQueryParams @ context='unsafe'}" data-intial-productCount="${properties.numberofProductsCategory2}"  id="categoryBundleList2" class="categoryBundleList"></div>
+                                                                     <div class="toggle-products">
+                                                        <div class="view-all-products hide">
+                                                          <a>${properties.viewAllProductsCategory2}</a><span class="arrow-toggle arrowLink"></span>
+                                                        </div>
+                                                        <div class="show-less-products hide">
+                                                          <a>${properties.showRecommendCategory2}</a><span class="arrow-toggle arrowLink"></span>
+                                                        </div>
+                                                     </div>
+                                                              </div>
+                                                       </div>
+                                  </sly>
+                             </div>
+		                     <div class="include-extrasContainer">
+		                         <div  data-include-extra-bind="${largeTrunk.partNumber}">
+		                            <sly data-sly-use.data="${'experiencefragment.js' @ fragmentPath=properties.largefragmentPath}">
+						           		 <sly data-sly-test="${!data.fragmentPath}">
+							                <div data-sly-test="${(wcmmode.edit || wcmmode.preview)}"
+							                     class="cq-dd-experiencefragment cq-placeholder "
+							                     data-emptytext="${component.properties.jcr:title}${emptyTextAppend && ' - '}${emptyTextAppend}">
+							                </div>
+						          	      </sly>
+							            <sly data-sly-test.rootResource=${data.fragmentResource}>
+							            	<sly data-sly-list.childResource="${rootResource.listChildren}">
+							                 	<sly data-sly-resource="${@path=childResource.path, selectors='content', wcmmode='disabled',decoration=false}">
+							                 	</sly>
+							                 </sly>
+							             </sly>
+						   		  </sly>
+						   		</div>
+						   		<div  data-include-extra-bind="${smallTrunk.partNumber}">
+		                            <sly data-sly-use.data="${'experiencefragment.js' @ fragmentPath=properties.smallfragmentPath}">
+						           		 <sly data-sly-test="${!data.fragmentPath}">
+							                <div data-sly-test="${(wcmmode.edit || wcmmode.preview)}"
+							                     class="cq-dd-experiencefragment cq-placeholder "
+							                     data-emptytext="${component.properties.jcr:title}${emptyTextAppend && ' - '}${emptyTextAppend}">
+							                </div>
+						          	      </sly>
+							            <sly data-sly-test.rootResource=${data.fragmentResource}>
+							            	<sly data-sly-list.childResource="${rootResource.listChildren}">
+							                 	<sly data-sly-resource="${@path=childResource.path, selectors='content', wcmmode='disabled',decoration=false}">
+							                 	</sly>
+							                 </sly>
+							             </sly>
+						   		  </sly>
+						   		</div>
+						   	</div>
+						   	<div class="nonDisplayableItemsContainer">
+
+						   	</div>
+                    	 </div>
+       				</div>
+					<sly data-sly-use.pricingFooter="pricingFooter.html">
+   	               		<sly data-sly-call="${pricingFooter.template}"></sly>
+               		</sly>
+      		</div>
+
+			<sly data-sly-test.letterTemplate="${properties.showletter}">
+			         <sly data-sly-use.templates="letterTemplate.html"
+			   			  data-sly-call="${templates.lettertemplate  @ properties=properties,resolvedLetterPage=summaryPageObj.getLetterPage}"></sly>
+			</sly>
+
+			<sly data-sly-use.templates="bundleTemplate.html"
+			   	 data-sly-call="${templates.bundletemplate  @ properties=properties}"></sly>
+
+			<sly data-sly-test.showAddons="${properties.showAddons}">
+			         <sly data-sly-use.templates="productBeanTemplate.html"
+			   			  data-sly-call="${templates.productBeantemplate  @ properties=properties}"></sly>
+			   	     <sly data-sly-use.templates="itemBeanTemplate.html"
+			   			  data-sly-call="${templates.itemBeantemplate  @ properties=properties}"></sly>
+			</sly>
+		    <sly data-sly-test="${!showAddons}">
+			   <sly data-sly-use.templates="productBeanTemplate.html"
+			   	    data-sly-call="${templates.productBeanEmptytemplate  @ properties=properties}"></sly>
+			   <sly data-sly-use.templates="itemBeanTemplate.html"
+	   				data-sly-call="${templates. itemBeanEmptytemplate  @ properties=properties}"></sly>
+		   </sly>
+		   <script type="application/json" class="trunkData" id="smallTrunkData">
+       			${summaryPageObj.smallTrunkResponseString.toString @ context='unsafe'}
+		   </script>
+		   <script type="application/json" class="trunkData" id="largeTrunkData">
+       			${summaryPageObj.largeTrunkResponseString.toString @ context='unsafe'}
+	       </script>
+</sly>
+
+
+<sly data-sly-include="nonDisplayableItems.html"></sly>
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
+       <sly data-sly-call="${clientlib.js @ categories=['ecomm.summaryPage']}"/>
+</sly>

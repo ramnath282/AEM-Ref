@@ -1,0 +1,170 @@
+@media #{$xl-only} {
+    .listingComponent {
+        &.corp-container{
+            max-width: 1140px;
+            width: 100% !important;
+        }
+    }
+}
+.listingComponent-outer-wrapper{
+    .listingComponent-container{
+        #listingComponentInfo{
+            li{
+                @media #{$small-down} {
+                    padding: 0;
+                }
+            }
+        }
+    }
+}
+.grid-lists {
+    font-size: 14px;
+    .grid-item {
+        .listingComponent-info {
+            a {
+                &:hover{
+                    color: inherit;
+                    .listingComponent-headline{
+                        color: $primaryTextColor;
+                        text-decoration: underline;
+                    }
+                }
+            }
+            .img-wrapper {
+                margin: 3.125em 0 1.5em 0;
+                @media #{$small-down} {
+                    margin:2.875em 0 1.428em 0;
+                }
+                &:not(.image-loaded) {
+                    height: em(243);
+                }
+            }
+            .listingComponent-category {
+                font: 400 16px #{$MattelCorpPrimaryFontRoman};
+                letter-spacing: 0.15px;
+                margin-bottom: 8px;
+            }
+            .listingComponent-content {
+                margin:0.6em 0 0.6em;
+                .listingComponent-headline {
+                    letter-spacing: 0.15px;
+                    font: bold 18px/24px #{$MattelCorpPrimaryFontBold};
+                    @media #{$medium-up} {
+                        min-height: em(76);
+                    }
+                }
+            }
+            .listingComponent-date {
+                font: 400 16px/12px #{$MattelCorpPrimaryFontRoman};
+                letter-spacing: 0.15px;
+                margin: 12px 0;
+            }
+            .listingComponent-cta {
+                color: $black;
+                font: bold 16px #{$MattelCorpPrimaryFontBold};
+                letter-spacing: 0.15px;
+                margin: 0;
+                &:hover {
+                    color: $primaryTextColor;
+                }
+                & .learn-more {
+                    &:empty {
+                        display: none;
+                    }
+                    &:after {
+                        background-image: url(#{$spriteLightPath});
+                    }
+                }
+            }
+        }
+        &.row-0 {
+            .img-wrapper {
+                // margin-top: 0;
+            }
+        }
+    }
+}
+
+.listingComponent-container {
+    .cta-button {
+        margin: 3.125em 0 3.125em 0;
+        @media #{$small-down} {
+            margin: 1.875em 0;
+        }
+        &.cta-btn-column-1 {}
+        font-size: 14px;
+        .view-all-btn {
+            font: $fontBold 22px $MattelCorpPrimaryFontBold;
+        }
+    }
+}
+
+.loader-outer {
+    display: mapping($listingComponent, loader_outer, display);
+    position: mapping($listingComponent, loader_outer, position);
+    top: mapping($listingComponent, loader_outer, p_top);
+    bottom: mapping($listingComponent, loader_outer, p_bottom);
+    left: mapping($listingComponent, loader_outer, p_left);
+    right: mapping($listingComponent, loader_outer, p_right);
+    z-index: mapping($listingComponent, loader_outer, z_index);
+    .loader {
+        position: mapping($listingComponent, loader, position);
+        left: mapping($listingComponent, loader, p_left);
+        top: mapping($listingComponent, loader, p_top);
+        font-size: mapping($listingComponent, loader, font_size);
+        margin: mapping($listingComponent, loader, margin);
+        text-indent: mapping($listingComponent, loader, text_indent);
+        width: mapping($listingComponent, loader, width);
+        height: mapping($listingComponent, loader, height);
+        border-radius: mapping($listingComponent, loader, border_radius);
+        @include loaderBg(left, $corpColor, 10%, $coprLoaderBg, 42%, right);
+        -webkit-animation: mapping($listingComponent, loader, webkit_animation);
+        animation: mapping($listingComponent, loader, animation);
+        -webkit-transform: mapping($listingComponent, loader, webkit_transform);
+        -ms-transform: mapping($listingComponent, loader, ms_transform);
+        transform: mapping($listingComponent, loader, transform);
+        &:before {
+            width: mapping($listingComponent, loader_before, width);
+            height: mapping($listingComponent, loader_before, height);
+            background: mapping($listingComponent, loader_before, background);
+            border-radius: mapping($listingComponent, loader_before, border_radius);
+            position: mapping($listingComponent, loader_before, position);
+            top: mapping($listingComponent, loader_before, p_top);
+            left: mapping($listingComponent, loader_before, p_left);
+            content: ''
+        }
+        &:after {
+            background: mapping($listingComponent, loader_after, background);
+            width: mapping($listingComponent, loader_after, width);
+            height: mapping($listingComponent, loader_after, height);
+            border-radius: mapping($listingComponent, loader_after, border_radius);
+            content: '';
+            margin: mapping($listingComponent, loader_after, margin);
+            position: mapping($listingComponent, loader_after, position);
+            top: mapping($listingComponent, loader_after, p_top);
+            left: mapping($listingComponent, loader_after, p_left);
+            bottom: mapping($listingComponent, loader_after, p_bottom);
+            right: mapping($listingComponent, loader_after, p_right);
+        }
+    }
+    @-webkit-keyframes load3 {
+        1% {
+            -webkit-transform: mapping($listingComponent, loader_load3, webkit_transform_1);
+            transform: mapping($listingComponent, loader_load3, transform_1);
+        }
+        100% {
+            -webkit-transform: mapping($listingComponent, loader_load3, webkit_transform_100);
+            transform: mapping($listingComponent, loader_load3, transform_100);
+        }
+    }
+    @keyframes load3 {
+        1% {
+            -webkit-transform: mapping($listingComponent, loader_load3, webkit_transform_1);
+            transform: mapping($listingComponent, loader_load3, transform_1);
+        }
+        100% {
+            -webkit-transform: mapping($listingComponent, loader_load3, webkit_transform_100);
+            transform: mapping($listingComponent, loader_load3, transform_100);
+        }
+    }
+}

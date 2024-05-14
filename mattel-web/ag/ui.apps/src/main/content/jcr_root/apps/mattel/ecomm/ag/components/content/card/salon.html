@@ -1,0 +1,19 @@
+<div>
+    <img src="${properties.salonCardImagePath}" alt="" title="${properties.salonCardAlt @i18n}" />
+    <div class="tile-content">
+        <h3 class="tile-name">${properties.salonCardHeading @i18n}</h3>
+         <sly data-sly-test="${properties.salonCardButtonHeading != null }">
+        <button class="btn theme-btn reservation-btn" title="${properties.salonCardButtonHeading @i18n}" data-tracking-id="Click Event|click|${properties.salonCardHeading}" onclick="NEXTWIDGET.widget.show('${properties.salonCardButtonLink @context='html'}',false);" >${properties.salonCardButtonHeading @i18n}<span class="sr-only"> ${properties.salonCardHeading @i18n}</span></button>
+  		</sly>
+    </div>
+    <div class="tile-action">
+
+        <a class="action-text accordion" href="javascript:void(0);" aria-expanded="false" data-text-collapse="${properties.salonCardShowMoreHeading @i18n}" data-text-expand="${properties.salonCardShowLessHeading @i18n}" data-tracking-id="Click Event|click|${properties.salonCardHeading}">
+            ${properties.salonCardShowMoreHeading @i18n}
+        </a>
+        <div class="accordion-content">
+            ${properties.salonCardAdditionalInformation @context='html'}
+        </div>
+
+    </div>
+</div>

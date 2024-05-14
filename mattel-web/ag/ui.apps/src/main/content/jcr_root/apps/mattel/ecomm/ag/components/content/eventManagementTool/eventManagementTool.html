@@ -1,0 +1,369 @@
+<sly data-sly-test="${wcmmode.edit}">${'Event Management Tool' @i18n}</sly>
+<div class="event-management-container">
+    <h1>Event Management Tool</h1>
+    <ul class="nav nav-pills">
+        <li class="active">
+            <a data-toggle="tab" class="admin-event-tab theme-btn" href="#eventAdmin">Event Admin</a>
+        </li>
+        <li>
+            <a data-toggle="tab" class="create-event-tab theme-btn" href="#createEvent">Create Event</a>
+        </li>
+    </ul>
+    <div class="tab-content">
+		<div id="eventAdmin" class="tab-pane fade in active">
+			<div class="event-admin-container">
+				<form>                                    
+					<ul class="event-search-header">
+						<li>
+							<label for="eventID">Event Id</label>
+							<input class="form-input search-events-val" data-key="eventId" name="eventId" id="eventID" type="number" value=""  min="0"/>
+						</li>
+						<li>
+							<label for="eventTitle">Event Title</label>
+							<input class="form-input search-events-val" data-key="eventTitle" name="eventTitle" id="eventTitle" type="text" value="" />
+						</li>
+						<li>
+							<label for="eventKeyword">Keywords</label>
+							<input class="form-input search-events-val" data-key="keywords" data-key="keywords" id="eventKeyword" type="text" value="" />
+						</li>
+						<li class="cities-load">
+
+						</li>
+						<li>
+							<input class="theme-btn search-events" type="button" value="Search"/>
+						</li>
+					</ul>
+					<script id="cityDropdownScript" type="text/html">
+						<label for="eventCity">Event City</label>
+						<select id="eventCity" data-key="storeName" name="storeTag" class="form-input select-location search-events-val">                              
+							<option value="">Select City</option>
+							<% _.each(AGAEM.eventsManagement.citiesArr, function(key, list) { %>    
+								<option value="<%= key.storeId %>"><%= key.storeName %></option>
+							<% });%>                                              
+						</select>
+					</script>
+				
+					<div class="events-list-load">
+						
+					</div>
+				</form>
+				<!-- Event display code -->
+				<script id="displayEventsScript" type="text/html">                                        
+					<table class="event-details-list">
+						<thead>
+							<tr>
+								<th>Event Id</th>
+								<th>Event Title</th>
+								<th>Store Name</th>
+								<th>Event Info</th>
+								<th>Update Button</th>
+							</tr>                                                
+						</thead>
+						<tbody> 
+							<% if(items.length == 0) { %>
+								<tr> 
+									<td style="width: 100%;" colspan="4">
+										<p>No Events Found!</p>
+									</td >   
+								</tr>
+							<% }%>                                            
+							<% _.each(items, function(item, key, list) { %>
+									
+								<tr> 
+									<td><%= item.eventId %></td > 
+									<td><%= item.eventTitle %></td > 
+									<td><%= item.locationName %></td > 
+									<td><strong><%= item.eventDate %></strong> <br/><span><%= item.eventStartTime %> - <%= item.eventEndTime %></span></td > 
+									<td>
+										<input class="update-event theme-btn transparent-btn" data-event="<%= item.eventId %>" type="button" value="Update"/>
+										<input class="delete-event theme-btn transparent-btn" data-event="<%= item.eventDateDetailNodePath %>" type="button" value="Delete"/>
+									</td >   
+								</tr>
+							<% });%>
+						</tbody>
+					</table>
+				</script>
+				<!-- Modal confirm -->
+				<div class="modal" id="confirmModal" style="display: none; z-index: 1050;">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-body">
+								Do you want to delete the Event?
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-default" id="confirmOk">Ok</button>
+								<button type="button" class="btn btn-default" id="confirmCancel">Cancel</button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Search Valid Modal -->
+				<div class="modal" id="isSearchValidModal" style="display: none; z-index: 1050;">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-body">
+								Please enter value in atleast one search criteria!
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- The Modal -->
+				<div class="modal fade" id="deleteSuccess">
+					<div class="modal-dialog modal-dialog-centered">
+						<div class="modal-content">                                            
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal">&times;</button>
+								<h4 class="modal-title">
+									
+								</h4>
+							</div>
+							<!-- Modal body -->
+							<div class="modal-body" id="deleteResponseTxt">
+								
+							</div>
+							
+							<!-- Modal footer -->
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+							</div>
+						
+						</div>
+					</div>
+				</div>
+				<!-- Event display code ends-->
+			</div>                                
+		</div>
+
+		<div id="createEvent" class="tab-pane fade">
+			<div class="create-event-container">
+				<div class="create-event-load">
+					<form id="eventForm">
+						<div class="create-event-form-wrapper">
+							<ul class="primary-event-details">
+								<li>
+									<label for="createEventID">Event Id:</label>
+									<input type="text" disabled required class="form-input primary-input-val" data-key="eventId" id="createEventID" />
+								</li>
+								<li>
+									<label class="required" for="createEventTitle">Event Title:</label>
+									<input type="text" required class="form-input primary-input-val" data-key="eventTitle" id="createEventTitle" />
+								</li>
+								<li>
+									<label class="required" for="createEventDescription">Event Description:</label>
+									<textarea type="text" required class="form-input primary-input-val" data-key="eventDescription" id="createEventDescription" ></textarea>
+								</li>                                         
+							</ul>
+							<ul class="primary-event-details">
+								<li>
+									<input type="checkbox" class="primary-input-val" data-key="reservationRequired" id="reservationRequired" />
+									<label for="reservationRequired">Reservations Required</label>                                                
+								</li>
+								<li>
+									<label for="minAge" class="short-label-width">Age Min:</label>
+									<input id="minAge" type="number" data-key="minAge" class="small-form-input primary-input-val" min="0"  />
+								</li>     
+								<li>
+									<label for="keywordsInput">Keywords:</label>                                                    
+									<textarea data-key="keywords" id="keywordsInput" class="primary-input-val form-input" rows="4" cols="40" ></textarea>
+									<p>Note: Keywords should be comma separated.</p>
+								</li>                               
+							</ul>
+							<div class="location-wrapper">
+								<!-- #locationTemplate will be loaded here -->
+							</div>
+						</div>
+						<input id="addStore" class="theme-btn transparent-btn" type="button" value="Add Store" />
+						<input id="cancelEvent" class="theme-btn transparent-btn" type="submit" value="Cancel" />
+						<input id="saveEvent" class="theme-btn" type="submit" value="Save Event" />                                            
+					</form>
+					<script id="locationTemplate"  type="text/html">
+						<div class="location-details">
+							<label class="required add-float toggle-label active" for="locationCity<%= item.id %>">City</label>
+							<select required data-key="storeName" class="form-input select-location location-input-val" id="locationCity<%= item.id %>">                                                     
+								<option selected value="">Select City</option>
+								<% _.each(AGAEM.eventsManagement.citiesArr, function(v, key, list) { %>    
+									<% if(tmplData.storeName == v.storeName) { %>
+										<option selected value="<%= v.storeId %>"><%= v.storeName %></option>
+									<%} else { %>
+										<option value="<%= v.storeId %>"><%= v.storeName %></option>
+									<% } %>      
+								<% });%>                                              
+							</select>
+							<a href="#" class="delete-location">Delete Location</a>
+							<div class="zomato-url">
+								<label for="zomatoUrl<%= item.id %>" class="add-float">Zomato Link:</label>
+								<input type="text" data-key="zomatoURL" id="zomatoUrl<%= item.id %>" class="form-input location-input-val" value="<%= tmplData.zomatoURL %>" >
+							</div>                                                
+							<div class="collapsible">
+								<div>
+									<ul class="cost-entity">
+										<li>
+											<label class="add-float" for="costs<%= item.id %>">Cost:</label>
+											<input type="number" data-key="pricingAmount" class="small-form-input add-float location-input-val" id="costs<%= item.id %>" value="<%= tmplData.pricingAmount %>"  min="0" step="0.01"/>
+											<span>Per</span>
+										</li>
+										<li>
+											<% if(tmplData.pricingOption == 'person' || tmplData.pricingOption == '') { %>
+												<input type="radio" data-key="pricingOption" checked value="person" class="location-input-val" name="costPer<%= item.id %>" id="costsPerson<%= item.id %>" />
+											<%} else { %>
+												<input type="radio" data-key="pricingOption" value="person" class="location-input-val" name="costPer<%= item.id %>" id="costsPerson<%= item.id %>" />
+											<% } %>                                                               
+											<label for="costsPerson<%= item.id %>">Person</label>                                                          
+											<br/>
+											<% if(tmplData.pricingOption == 'couple') { %>                 
+												<input type="radio" data-key="pricingOption" value="couple" class="location-input-val" checked  name="costPer<%= item.id %>" id="costsCouple<%= item.id %>" />                                            
+											<%} else { %>
+												<input type="radio" data-key="pricingOption" value="couple" class="location-input-val"  name="costPer<%= item.id %>" id="costsCouple<%= item.id %>" />                                            
+											<% } %>  
+											<label for="costsCouple<%= item.id %>">Couple</label>                                                                                                                                
+											<br/>
+											<% if(tmplData.pricingOption !== 'couple' && tmplData.pricingOption != 'person' && tmplData.pricingOption != '') { %>                    
+												<input type="radio" class="location-input-val custom-pricing-option" data-key="pricingOption" checked name="costPer<%= item.id %>" style="float: left;" />
+												<input type="text" value="<%= tmplData.pricingOption %>" class="small-form-input add-float custom-pricing-option-val" style="width:100px;" /> 
+											<% } else { %>
+												<input type="radio" class="location-input-val custom-pricing-option" data-key="pricingOption" name="costPer<%= item.id %>" style="float: left;" /> 
+												<input type="text" class="small-form-input add-float custom-pricing-option-val" style="width:100px;" /> 
+											<% } %>                                                                                                                             
+											<li>
+												<label for="costInfo<%= item.id %>"  class="add-float required">Cost Info:</label>
+												<% if(tmplData.costInfo) { %> 
+													<textarea required id="costInfo<%= item.id %>" data-key="costInfo" class="location-input-val form-input" rows="4" cols="40" ><%= tmplData.costInfo %></textarea>                                                                        
+												<%} else { %>	
+													<textarea required id="costInfo<%= item.id %>" data-key="costInfo" class="location-input-val form-input" rows="4" cols="40" >Please note, prepaid event reservations are non-exchangeable and non-refundable.</textarea>   	
+												<% } %>
+											</li>                                                        
+											<li>
+											<% if(tmplData.gratuityRequired) { %> 
+												<% if(tmplData.gratuityRequired == 'false') { %>
+													<input type="checkbox" data-key="gratuityRequired" class="location-input-val" id="graduatyNot<%= item.id %>" />
+												<%} else { %>
+													<input type="checkbox" data-key="gratuityRequired" class="location-input-val" checked id="graduatyNot<%= item.id %>" />
+												<% } %> 
+											<%} else { %>
+												<input type="checkbox" data-key="gratuityRequired" class="location-input-val" id="graduatyNot<%= item.id %>" />
+											<% } %> 
+											<label for="graduatyNot<%= item.id %>">Gratuity is not included</label>                                                                                                                                
+										</li>
+									</ul>
+								</div>
+								<div class="time-fields-wrapper">
+									<!-- #dateTimeTemplate will be loaded here -->
+								</div>
+								<a href="#" class="add-date">Add Date </a>
+							</div>
+						</div>                                 
+					</script>
+					<script id="dateTimeTemplate"  type="text/html">                                            
+						<div class="date-details">
+							<div class="date-container">
+								<label  class="required add-float toggle-label active">Date</label>
+								<input required placeholder="mm-dd-yy" type="text" data-key="eventDate" class="form-input add-float datepicker datedetail-input-val" id="addDate<%= item.id %>" value="<%= dateData.eventDate %>" />
+								<span class="far fa-calendar-alt fa-lg calender-icon"></span>
+								<a href="#" class="delete-date">Delete Date</a>
+							</div>
+							<div class="collapsible">
+								<div class="start-time-wrapper">
+									<label class="short-label-width" for="startTime<%= item.id %>"> Start Time:</label>
+									<select class="small-form-input startdate-input-val" required id="startTime<%= item.id %>">
+										<option value=""></option>                                                            
+										<% _.each([1,2,3,4,5,6,7,8,9,10,11,12], function(v, key, list) { %>    
+											<% if(v == AGAEM.eventsManagement.getTime(dateData.eventStartTime,0)) {%>
+												<option selected value="<%= v %>"><%= v %></option>
+											<% } else {%>
+												<option value="<%= v %>"><%= v %></option>
+											<% }  %>
+										<% });%>                                                            
+									</select>
+									<select class="small-form-input startdate-input-val" required>
+										<option value=""></option>
+										<% _.each([0,5,10,15,20,25,30,35,40,45,50,55], function(v, key, list) { %>    
+											<% if(v == AGAEM.eventsManagement.getTime(dateData.eventStartTime,1)) {%>
+												<option selected value="<%= v %>"><%= v %></option>
+											<% } else {%>
+												<option value="<%= v %>"><%= v %></option>
+											<% }  %>
+										<% });%>                                                    
+									</select>
+									<select class="small-form-input startdate-input-val" required>
+										<option value=""></option>
+										<% _.each(["am","pm"], function(v, key, list) { %>    
+											<% if(v == AGAEM.eventsManagement.getTime(dateData.eventStartTime,2)) {%>
+												<option selected value="<%= v %>"><%= v %></option>
+											<% } else {%>
+												<option value="<%= v %>"><%= v %></option>
+											<% }  %>
+										<% });%>
+									</select>
+									<div style="display:inline-block; position:relative">
+										<label for="scheduledInfo<%= item.id %>"  class="add-float">Schedule description:</label>
+										<textarea id="scheduledInfo<%= item.id %>" data-key="scheduleDescription" class="datedetail-input-val form-input" rows="4" cols="40" ><%= dateData.scheduleDescription %></textarea>
+										<p style="position: absolute;left: 145px;margin:0">Note: For adding a modal to the event.</p>
+									</div>                                                        
+								</div>
+								<div class="end-time-wrapper">
+									<label class="short-label-width" for="endTime<%= item.id %>">End Time:</label>
+									<select class="small-form-input enddate-input-val" id="endTime<%= item.id %>" required>
+										<option value=""></option>
+										<% _.each([1,2,3,4,5,6,7,8,9,10,11,12], function(v, key, list) { %>    
+											<% if(v == AGAEM.eventsManagement.getTime(dateData.eventEndTime,0)) {%>
+												<option selected value="<%= v %>"><%= v %></option>
+											<% } else {%>
+												<option value="<%= v %>"><%= v %></option>
+											<% }  %>
+										<% });%>
+									</select>
+									<select class="small-form-input enddate-input-val" required>
+										<option value=""></option>
+										<% _.each([0,5,10,15,20,25,30,35,40,45,50,55], function(v, key, list) { %>    
+											<% if(v == AGAEM.eventsManagement.getTime(dateData.eventEndTime,1)) {%>
+												<option selected value="<%= v %>"><%= v %></option>
+											<% } else {%>
+												<option value="<%= v %>"><%= v %></option>
+											<% }  %>
+										<% });%>
+									</select>
+									<select class="small-form-input enddate-input-val" required>
+										<option value=""></option>
+										<% _.each(["am","pm"], function(v, key, list) { %>    
+											<% if(v == AGAEM.eventsManagement.getTime(dateData.eventEndTime,2)) {%>
+												<option selected value="<%= v %>"><%= v %></option>
+											<% } else {%>
+												<option value="<%= v %>"><%= v %></option>
+											<% }  %>
+										<% });%>
+									</select>
+									<div style="clear:both">
+										<label for="addInfo<%= item.id %>" class="add-float">Additional Info:</label>
+										<textarea id="addInfo<%= item.id %>" rows="4" cols="40"  data-key="additionalDateInfo" class="datedetail-input-val form-input"><%= dateData.additionalDateInfo %></textarea>
+										<p style="position: relative;left: 115px;">Note: For adding additional information to italicized text.</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</script>                                        
+				</div>
+			</div>
+				<!-- Modal confirm -->
+				<div class="modal" id="SuccessModal" style="display: none; z-index: 1050;">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title">Modal Header</h4>
+						</div>
+						<div class="modal-body">
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" id="successConfirmOk">Ok</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>

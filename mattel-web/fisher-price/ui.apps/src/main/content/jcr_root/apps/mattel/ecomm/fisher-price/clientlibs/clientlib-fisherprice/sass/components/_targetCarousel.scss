@@ -1,0 +1,387 @@
+.target-carousal-component-outer-wrapper {
+  .target-carousal-component-container {
+    @include content-spacing(map-get($trgetCarousalComponent, target_carousal_component_container));
+    .target-carousal-title {
+      text-align: mapping($trgetCarousalComponent, target_carousal, textalign);
+      font-size: mapping($trgetCarousalComponent, target_carousal, fontSize);
+      line-height: mapping($trgetCarousalComponent, target_carousal, line_height);
+      @media #{$small-up} {
+        font-size: mapping($trgetCarousalComponent, target_carousal, fontSizemd);
+        line-height: mapping($trgetCarousalComponent, target_carousal, line_heightmd);
+      }
+      @media #{$large-up} {
+        font-size: mapping($trgetCarousalComponent, target_carousal, fontSizelg);
+        line-height: mapping($trgetCarousalComponent, target_carousal, line_heightlg);
+      }
+      @include content-spacing(map-get($trgetCarousalComponent, target_carousal));
+    }
+    .target-carousal-componentInfo {
+      display: mapping($trgetCarousalComponent, target_carousal_component_info, display);
+      flex-wrap: mapping($trgetCarousalComponent, target_carousal_component_info, flex_wrap);
+      &:before {
+        content: mapping($trgetCarousalComponent, target_carousal_component_info, bfcontent);
+      }
+      &:after {
+        content: mapping($trgetCarousalComponent, target_carousal_component_info, bfcontent);
+      }
+    }
+    li {
+      @include content-spacing(map-get($trgetCarousalComponent, target_carousal_component_entity));
+      width: auto;
+      @media #{$small-up} {
+        width: mapping($trgetCarousalComponent, target_carousal_component_entity_column_two, width);
+      }
+      @media #{$large-up} {
+        width: auto;
+      }
+      .target-carousal-component-info {
+        @include content-spacing(map-get($trgetCarousalComponent, target_carousal_spacing));
+        display: mapping($trgetCarousalComponent, target_carousal_spacing, display);
+        flex-direction: mapping($trgetCarousalComponent, target_carousal_spacing, flex_direction);
+        height: mapping($trgetCarousalComponent, target_carousal_spacing, height);
+        justify-content: mapping($trgetCarousalComponent, target_carousal_spacing, justify_content);
+        .img-wrapper {
+          display: mapping($trgetCarousalComponent, img_wrapper, display);
+          justify-content: mapping($trgetCarousalComponent, img_wrapper, justify_content);
+
+          img {
+            width: auto;
+            height: 120px;
+            object-fit: contain;
+            @media #{$small-up} {
+              width: auto;
+              height: 220px;
+            }
+          }
+          .default-img {
+            height: mapping($trgetCarousalComponent, default_img, height);
+          }
+        }
+
+        .target-carousal-component-content {
+          @include content-spacing(map-get($trgetCarousalComponent, target_carousal_component_content));
+          color: $black;
+          .target-carousal-component-headline {
+            @include content-spacing(map-get($trgetCarousalComponent, target_carousal_component_headline));
+            font-size: mapping($trgetCarousalComponent, target_carousal_component_headline, font_size);
+            line-height: mapping($trgetCarousalComponent, target_carousal_component_headline, line_height);
+            height: mapping($trgetCarousalComponent, target_carousal_component_headline, height);
+            max-height: mapping($trgetCarousalComponent, target_carousal_component_headline, max_height);
+            display: mapping($trgetCarousalComponent, target_carousal_component_headline, display);
+            -webkit-line-clamp: mapping($trgetCarousalComponent, target_carousal_component_headline, webkit_line_clamp);
+            -webkit-box-orient: mapping($trgetCarousalComponent, target_carousal_component_headline, webkit_box_orient);
+            overflow: mapping($trgetCarousalComponent, target_carousal_component_headline, overflow);
+            font-weight: mapping($trgetCarousalComponent, target_carousal_component_headline, font_weight);
+            @media #{$small-up} {
+              font-size: mapping($trgetCarousalComponent, target_carousal_component_headline, font_size_tablet);
+              line-height: mapping($trgetCarousalComponent, target_carousal_component_headline, line_height_tablet);
+              max-height: mapping($trgetCarousalComponent, target_carousal_component_headline, max_height_tablet);
+              -webkit-line-clamp: mapping(
+                $trgetCarousalComponent,
+                target_carousal_component_headline,
+                webkit_line_clamp_tablet
+              );
+            }
+            @media #{$large-up} {
+              font-size: mapping($trgetCarousalComponent, target_carousal_component_headline, font_size_desktop);
+              line-height: mapping($trgetCarousalComponent, target_carousal_component_headline, line_height_desktop);
+              max-height: mapping($trgetCarousalComponent, target_carousal_component_headline, max_height_desktop);
+              -webkit-line-clamp: mapping(
+                $trgetCarousalComponent,
+                target_carousal_component_headline,
+                webkit_line_clamp_desktop
+              );
+            }
+          }
+          .target-carousal-component-category {
+            @include content-spacing(map-get($trgetCarousalComponent, target_carousal_component_category));
+            font-size: mapping($trgetCarousalComponent, target_carousal_component_category, font_size);
+            line-height: mapping($trgetCarousalComponent, target_carousal_component_category, line_height);
+            height: mapping($trgetCarousalComponent, target_carousal_component_category, height);
+            max-height: mapping($trgetCarousalComponent, target_carousal_component_category, max_height);
+            display: mapping($trgetCarousalComponent, target_carousal_component_category, display);
+            -webkit-line-clamp: mapping($trgetCarousalComponent, target_carousal_component_category, webkit_line_clamp);
+            -webkit-box-orient: mapping($trgetCarousalComponent, target_carousal_component_category, webkit_box_orient);
+            overflow: mapping($trgetCarousalComponent, target_carousal_component_category, overflow);
+            text-transform: mapping($trgetCarousalComponent, target_carousal_component_category, text_transform);
+            @media #{$small-up} {
+              font-size: mapping($trgetCarousalComponent, target_carousal_component_category, font_size_tablet);
+              line-height: mapping($trgetCarousalComponent, target_carousal_component_category, line_height_tablet);
+              max-height: mapping($trgetCarousalComponent, target_carousal_component_category, max_height_desktop);
+              -webkit-line-clamp: mapping(
+                $trgetCarousalComponent,
+                target_carousal_component_category,
+                webkit_line_clamp_desktop
+              );
+            }
+            @media #{$large-up} {
+              font-size: mapping($trgetCarousalComponent, target_carousal_component_category, font_size_desktop);
+              line-height: mapping($trgetCarousalComponent, target_carousal_component_category, line_height_desktop);
+              max-height: mapping($trgetCarousalComponent, target_carousal_component_category, max_height_desktop);
+              -webkit-line-clamp: mapping(
+                $trgetCarousalComponent,
+                target_carousal_component_category,
+                webkit_line_clamp_desktop
+              );
+            }
+            p {
+              @include content-spacing(map-get($trgetCarousalComponent, target_carousal_category_p));
+              width: mapping($trgetCarousalComponent, target_carousal_category_p, width);
+              position: mapping($trgetCarousalComponent, target_carousal_category_p, position);
+              &:hover {
+                color: mapping($trgetCarousalComponent, target_carousal_component_category, hover_color);
+                &:after {
+                  content: mapping($trgetCarousalComponent, target_carousal_category_hover, content);
+                  position: mapping($trgetCarousalComponent, target_carousal_category_hover, position);
+                  bottom: mapping($trgetCarousalComponent, target_carousal_category_hover, bottom);
+                  left: mapping($trgetCarousalComponent, target_carousal_category_hover, left);
+                  width: mapping($trgetCarousalComponent, target_carousal_category_hover, width);
+                  height: mapping($trgetCarousalComponent, target_carousal_category_hover, height);
+                  background: mapping($trgetCarousalComponent, target_carousal_category_hover, background);
+                }
+              }
+            }
+          }
+        }
+
+        .target-carousal-component-cta {
+          @include content-spacing(map-get($trgetCarousalComponent, target_carousal_component_category));
+          @include content-spacing(map-get($trgetCarousalComponent, target_carousal_component_category_cta));
+
+          display: mapping($trgetCarousalComponent, target_carousal_component_category, display);
+          .learn-more {
+            color: mapping($trgetCarousalComponent, learnMore_label, color);
+            font-size: mapping($trgetCarousalComponent, learnMore_label, font_size);
+            font-weight: mapping($trgetCarousalComponent, learnMore_label, font_weight);
+            position: mapping($trgetCarousalComponent, learnMore_label, position);
+            @media #{$small-up} {
+              font-size: mapping($trgetCarousalComponent, learnMore_label, font_size_tablet);
+            }
+            @media #{$large-up} {
+              font-size: mapping($trgetCarousalComponent, learnMore_label, font_size_desktop);
+            }
+
+            .link_text {
+              h3 {
+                position: mapping($trgetCarousalComponent, link_text_h3, position);
+                width: mapping($trgetCarousalComponent, link_text_h3, width);
+                font-weight: mapping($trgetCarousalComponent, link_text_h3, fontWeight);
+                &:before {
+                  content: mapping($trgetCarousalComponent, learnMore_before, content);
+                  float: mapping($trgetCarousalComponent, learnMore_before, float);
+                  cursor: mapping($trgetCarousalComponent, learnMore_before, cursor);
+                  position: mapping($trgetCarousalComponent, learnMore_before, position);
+                  top: mapping($trgetCarousalComponent, learnMore_before, top_pos);
+                  right: mapping($trgetCarousalComponent, learnMore_before, right_pos);
+                  @include content-spacing(map-get($trgetCarousalComponent, learnMore_before));
+                  background: mapping($trgetCarousalComponent, learnMore_before, background);
+                  background-position: mapping($trgetCarousalComponent, learnMore_before, backgroundPosition);
+                  height: mapping($trgetCarousalComponent, learnMore_before, height);
+                  width: mapping($trgetCarousalComponent, learnMore_before, width);
+                }
+                &:hover {
+                  color: mapping($trgetCarousalComponent, link_text_hover, color);
+                  &:before {
+                    background-position: mapping($trgetCarousalComponent, learnMore_before, background_Position_Hover);
+                  }
+                  &:after {
+                    content: mapping($trgetCarousalComponent, learnMore_after_hover_after, content);
+                    position: mapping($trgetCarousalComponent, learnMore_after_hover_after, position);
+                    width: mapping($trgetCarousalComponent, learnMore_after_hover_after, width);
+                    left: mapping($trgetCarousalComponent, learnMore_after_hover_after, left_pos);
+                    bottom: mapping($trgetCarousalComponent, learnMore_after_hover_after, bottom_pos);
+                    height: mapping($trgetCarousalComponent, learnMore_after_hover_after, height);
+                    background: mapping($trgetCarousalComponent, learnMore_after_hover_after, background);
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    .slick-dots {
+      bottom: mapping($trgetCarousalComponent, slick_dots, bottom);
+      li {
+        width: mapping($trgetCarousalComponent, slick_dots_li, width);
+        height: mapping($trgetCarousalComponent, slick_dots_li, height);
+        @include content-spacing(map-get($trgetCarousalComponent, slick_dots_li));
+        button {
+          width: mapping($trgetCarousalComponent, slick_dots_li_button, width);
+          opacity: mapping($trgetCarousalComponent, slick_dots_li_button, opacity);
+          height: mapping($trgetCarousalComponent, slick_dots_li_button, height);
+          background: mapping($trgetCarousalComponent, slick_dots_li_button, bgcolor);
+          @include content-spacing(map-get($trgetCarousalComponent, slick_dots_li_button));
+        }
+        &.slick-active {
+          button {
+            background: mapping($trgetCarousalComponent, slick_active_button, bgcolor);
+          }
+        }
+      }
+    }
+
+    .slick-next,
+    .slick-prev {
+      background: mapping($trgetCarousalComponent, slick_next_prev, bground);
+      width: mapping($trgetCarousalComponent, slick_next_prev, width);
+      height: mapping($trgetCarousalComponent, slick_next_prev, height);
+	  @media #{$small-only} {
+        display: mapping($trgetCarousalComponent, slick_next_prev, mobile_display) !important;
+      }
+      &:before {
+        font-size: mapping($trgetCarousalComponent, slick_next_prev_before, ftsize);
+        background: mapping($trgetCarousalComponent, slick_next_prev_before, bground);
+      }
+      &.slick-arrow{
+        &.slick-disabled{
+          display: none !important;
+        }
+      }
+    }
+    .slick-prev {
+      background-position: mapping($trgetCarousalComponent, slick_prev, bgposition);
+      left: mapping($trgetCarousalComponent, slick_prev, pos_left);
+    }
+    .slick-next {
+      background-position: mapping($trgetCarousalComponent, slick_next, bgposition);
+      right: mapping($trgetCarousalComponent, slick_next, pos_right);
+    }
+    .slick-list {
+      @include content-spacing(map-get($trgetCarousalComponent, slick_list));
+    }
+  }
+  &.target-recommended-product {
+    .target-carousal-component-container {
+      @include content-spacing(map-get($trgetCarousalComponent, target_recommended_carousal_component_container));
+      .product-badges {
+        @include content-spacing(map-get($trgetCarousalComponent, target_recommended_product_badges));
+        display: mapping($trgetCarousalComponent, target_recommended_product_badges, display);
+        @include font-properties($maaxMedium,$localFontVerdana);
+        font-weight: 500;
+        font-size: mapping($trgetCarousalComponent, target_recommended_product_badges, font_size);
+        letter-spacing: mapping($trgetCarousalComponent, target_recommended_product_badges, letter_spacing);
+        height: mapping($trgetCarousalComponent, target_recommended_product_badges, height);
+        justify-content: mapping($trgetCarousalComponent, target_recommended_product_badges, justify_content);
+        text-transform: mapping($trgetCarousalComponent, target_recommended_product_badges, text_transform);
+        color: mapping($trgetCarousalComponent, target_recommended_product_badges, color);
+        background-color: mapping($trgetCarousalComponent, target_recommended_product_badges, bg_color);
+        line-height: mapping($trgetCarousalComponent, target_recommended_product_badges, line_height);
+        border-radius: mapping($trgetCarousalComponent, target_recommended_product_badges, border_radius);
+        overflow: mapping($trgetCarousalComponent, target_recommended_product_badges, overflow);
+        img{
+          display: inline-block;
+          margin-right: 5px;
+        }
+      }
+	  .product-reviews{
+        @include content-spacing(map-get($trgetCarousalComponent, target_recommended_product_reviews));
+      }
+      .item-desc {
+        @include content-spacing(map-get($trgetCarousalComponent, target_recommended_item_desc));
+        font-family: mapping($trgetCarousalComponent, target_recommended_item_desc, font_family);
+        font-size: mapping($trgetCarousalComponent, target_recommended_item_desc, font_size);
+        line-height: mapping($trgetCarousalComponent, target_recommended_item_desc, line_height);
+        @media #{$small-down} {
+          font-size: 16px;
+        }
+        a {
+          font-family: mapping($trgetCarousalComponent, target_recommended_item_desc, font_family);
+          font-weight: mapping($trgetCarousalComponent, target_recommended_item_desc, font_weight);
+        }
+      }
+      // .item-message{
+      //     @include content-spacing(map-get($trgetCarousalComponent, target_recommended_item_message));
+      //     font-family: mapping($trgetCarousalComponent, target_recommended_item_message, font_family);
+      //     font-size: mapping($trgetCarousalComponent, target_recommended_item_message, font_size);
+      //     line-height: mapping($trgetCarousalComponent, target_recommended_item_message, line_height);
+      // a{
+      //     font-family: mapping($trgetCarousalComponent, target_recommended_item_desc, font_family);
+      //     font-weight: mapping($trgetCarousalComponent, target_recommended_item_desc, font_weight);
+      // }
+      // }
+      .item-price {
+        @include content-spacing(map-get($trgetCarousalComponent, target_recommended_item_price));
+        @include font-properties($maaxMedium,$localFontVerdana);
+        font-size: mapping($trgetCarousalComponent, target_recommended_item_price, font_size);
+        font-weight: mapping($trgetCarousalComponent, target_recommended_item_price, font_weight);
+        line-height: mapping($trgetCarousalComponent, target_recommended_item_price, line_height);
+        @media #{$small-down}{
+          font-size: 16px;
+        }
+      }
+      .slick-list {
+        @include content-spacing(map-get($trgetCarousalComponent, target_recommended_slick_list));
+      }
+    }
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  a {
+    padding: 0;
+    margin: 0;
+    line-height: inherit;
+    font-size: inherit;
+    color: inherit;
+  }
+}
+
+.grid-column-one {
+  .target-carousal-component-outer-wrapper {
+    li {
+      @media #{$large-up} {
+        width: mapping($trgetCarousalComponent, target_carousal_component_entity, width);
+      }
+    }
+  }
+}
+.grid-column-two {
+  .recent-articlecomponent-outer-wrapper {
+    li {
+      @media #{$large-up} {
+        width: mapping($trgetCarousalComponent, target_carousal_component_entity_column_two, width);
+      }
+    }
+  }
+}
+.grid-column-three {
+  .target-carousal-component-outer-wrapper {
+    li {
+      @media #{$large-up} {
+        width: mapping($trgetCarousalComponent, target_carousal_component_entity_column_three, width);
+      }
+    }
+  }
+}
+.grid-column-four {
+  .target-carousal-component-outer-wrapper {
+    li {
+      @media #{$large-up} {
+        width: mapping($trgetCarousalComponent, target_carousal_component_entity_column_four, width);
+      }
+    }
+  }
+}
+.grid-column-five {
+  .recent-articlecomponent-outer-wrapper {
+    li {
+      @media #{$large-up} {
+        width: mapping($trgetCarousalComponent, target_carousal_component_entity_column_five, width);
+      }
+    }
+  }
+}
+.grid-column-six {
+  .target-carousal-component-outer-wrapper {
+    li {
+      @media #{$large-up} {
+        width: mapping($trgetCarousalComponent, target_carousal_component_entity_column_six, width);
+      }
+    }
+  }
+}

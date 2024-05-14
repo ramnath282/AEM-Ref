@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Video Gallery"
+    sling:resourceType="cq/gui/components/authoring/dialog"
+    extraClientlibs="[acs-commons.widgets.showhidedialogfields]">
+    <content
+        granite:class="global-video-gallery-v1"
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <galleryConfig
+                        granite:class="galleryconfig"
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Config"
+                        sling:resourceType="granite/ui/components/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <videoSourcePath
+                                granite:class="video-gallery-showhide-target"
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+                                emptyText="Video Asset Path Here"
+                                fieldLabel="Video Source Path"
+                                name="./videoSourcePath"
+                                rootPath="/content/dam">
+                                <granite:data
+                                    jcr:primaryType="nt:unstructured"
+                                    acs-dropdownshowhidetargetvalue="date category"/>
+                            </videoSourcePath>
+                            <videoOrder
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                emptyText="By Date, Category, Manual"
+                                fieldLabel="Video Order"
+                                name="./videoOrder">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <date
+                                        jcr:primaryType="nt:unstructured"
+                                        text="By Most Recent Date"
+                                        value="date"/>
+                                    <category
+                                        jcr:primaryType="nt:unstructured"
+                                        text="Category"
+                                        value="category"/>
+                                    <manual
+                                        jcr:primaryType="nt:unstructured"
+                                        text="Manual"
+                                        value="manual"/>
+                                </items>
+                                <granite:data
+                                    jcr:primaryType="nt:unstructured"
+                                    acs-cq-dialog-dropdown-checkbox-showhide=""
+                                    acs-cq-dialog-dropdown-checkbox-showhide-target=".video-gallery-showhide-target"/>
+                            </videoOrder>
+                            <category
+                                granite:class="video-gallery-showhide-target"
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="/libs/cq/gui/components/coral/common/form/tagfield"
+                                emptyText="Choose the Category"
+                                fieldLabel="Select Category"
+                                name="./category">
+                                <granite:data
+                                    jcr:primaryType="nt:unstructured"
+                                    acs-dropdownshowhidetargetvalue="category"/>
+                            </category>
+                            <autoPlay
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/switch"
+                                checked="{Boolean}false"
+                                fieldDescription="Switch On if you want to enable AutoPlay"
+                                fieldLabel="Auto Play"
+                                name="./autoPlay"/>
+                            <nowPlayingText
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+                                fieldDescription="Please enter Now Playing text"
+                                fieldLabel="Now Playing text"
+                                name="./nowPlayingText"
+                                useFixedInlineToolbar="{Boolean}true">
+                                <rtePlugins
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceSuperType="mattel/global/components/content/rtePlugins/rtePlugins"/>
+                                <uiSettings
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceSuperType="mattel/global/components/content/rtePlugins/uiSettings"/>
+                            </nowPlayingText>
+                            <hidePlayer
+                                    granite:class="cq-dialog-checkbox-showhide-player"
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                    fieldDescription="Switch On if you want to hide Player"
+                                    name="./hidePlayer"
+                                    uncheckedValue="false"
+                                    value="true"
+                                    text="Hide Player ?">
+                                <granite:data
+                                        jcr:primaryType="nt:unstructured"
+                                        cq-dialog-checkbox-showhide-player-target=".togglefields"/>
+                            </hidePlayer>
+                            <toggleContainer
+                                    granite:class="togglefields"
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <videoDetailPageUrl
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+                                            emptyText="Video details page Path Here"
+                                            fieldLabel="Video Detail Page Url"
+                                            name="./videoDetailPageUrl"
+                                            rootPath="/content"/>
+                                </items>
+                            </toggleContainer>
+                        </items>
+                    </galleryConfig>
+                    <background
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/foundation/include"
+                        path="mattel/global/master/components/core/background/v1/background/cq:dialog/content/items/tabs/items/backgroundInfo"/>
+                    <text
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/foundation/include"
+                        path="mattel/global/master/components/core/text/v1/text/cq:dialog/content/items/tabs/items/text"/>
+                    <content
+                        granite:class="video-gallery-showhide-target"
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Content"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+                        <granite:data
+                            jcr:primaryType="nt:unstructured"
+                            acs-dropdownshowhidetargetvalue="manual"/>
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <multi
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/multifield">
+                                                <field
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                    name="./manualVideos"
+                                                    rootPath="/content/dam"/>
+                                            </multi>
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </content>
+                    <cta
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="CTA"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <viewer
+                                jcr:primaryType="nt:unstructured"
+                                jcr:title="CTA Configuration"
+                                sling:resourceType="granite/ui/components/foundation/section">
+                                <ctaColumn
+                                    jcr:primaryType="nt:unstructured"
+                                    jcr:title="CTA"
+                                    sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                    margin="{Boolean}true"/>
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                        granite:class="toggelCtaTab"
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <showMoreCTATab
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/foundation/include"
+                                                path="mattel/global/master/components/core/cta/v1/cta/cq:dialog/content/items/tabs/items/cta/items/viewer/items/column/items/showMoreOnCollection"/>
+                                        </items>
+                                    </column>
+                                </items>
+                            </viewer>
+                        </items>
+                    </cta>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>

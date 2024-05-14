@@ -1,0 +1,59 @@
+<sly data-sly-test="${wcmmode.edit}">${'Video Component' @i18n}</sly>
+<sly data-sly-use.videoModel="com.mattel.global.core.model.VideoModel"/>
+<sly data-sly-include="/apps/mattel/global/components/content/globalVideoConfig/globalVideoConfig.html"/>
+<!--/* video player /*-->
+<div id="video-player-component">
+	<sly data-sly-test="${properties.videoType == 'ooyala'}">
+	<div id="video-oo-player">
+		<div class="video-player-container">
+			<div class="video-player-in">
+				<div data-sly-test="${properties.textPosition == 'top'}"
+					class="video-player-label col-md-12">
+					<sly data-sly-test="${properties.title}">
+					<h2 id="video-player-title">${properties.title@context='html'}</h2>
+					</sly>
+					<sly data-sly-test="${properties.subTitle}">
+					${properties.subTitle@context='html'} </sly>
+					<sly data-sly-test="${properties.description}">
+					${properties.description@context='html'} </sly>
+					<sly data-sly-test="${properties.copyRight}">
+					${properties.copyRight@context='html'} </sly>
+				</div>
+				<sly data-sly-test="${properties.ooyalaVideoId}">
+				<div class="video-banner video-player-wrapper">
+					<div id="main-player-container"
+						data-video-id="${properties.ooyalaVideoId}"
+						data-single-player="true" class="featured-promo video-player"
+						data-autoplay="false"></div>
+				</div>
+				</sly>
+				<div data-sly-test="${properties.textPosition != 'top'}"
+					class="video-player-label col-md-12">
+					<sly data-sly-test="${properties.title}">
+					<h2 id="video-player-title">${properties.title@context='html'}</h2>
+					</sly>
+					<sly data-sly-test="${properties.subTitle}">
+					${properties.subTitle@context='html'} </sly>
+					<sly data-sly-test="${properties.description}">
+					${properties.description@context='html'} </sly>
+					<sly data-sly-test="${properties.copyRight}">
+					${properties.copyRight@context='html'} </sly>
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+	</sly>
+	<sly data-sly-test="${properties.videoType == 'youtube'}"> <sly
+		data-sly-test="${properties.embedurl}">
+	<div id="video-youtube-player">
+		<iframe id="youtube_player" src="${videoModel.videoUrl}"
+			data-autoplay="true" allowfullscreen></iframe>
+	</div>
+	</sly> </sly>
+</div>
+<!--/* End of video player /*-->
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
+       <sly data-sly-call="${clientlib.js @ categories='global.mattelVideoPlayer'}"/>
+</sly> 

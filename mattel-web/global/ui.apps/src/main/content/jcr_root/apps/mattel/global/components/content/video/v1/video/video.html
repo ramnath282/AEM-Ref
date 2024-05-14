@@ -1,0 +1,102 @@
+<sly data-sly-test="${wcmmode.edit}">${'Video Component' @i18n}</sly>
+<sly data-sly-use.videoModel="com.mattel.global.core.model.VideoModel" />
+<sly data-sly-include="/apps/mattel/global/components/content/globalVideoConfig/globalVideoConfig.html" />
+<!--/* video player */-->
+<div id="video-player-component" data-sly-attribute.data-auto-play="${properties.autoPlayVideo}"
+   data-sly-attribute.data-modal="${properties.playVidInModal}">
+   <sly data-sly-test="${properties.mobileAssetType == 'set-mobile-video'}"><sly data-sly-test.mobileVideoType="${(properties.mobileVideoType == 'mobile-ooyala')? properties.mobileOoyalaVideoId : properties.mobileEmbedUrl}"></sly></sly>
+   <sly data-sly-test="${properties.mobileAssetType == 'set-mobile-image'}"><sly data-sly-test.mobileVideoType="${''}"></sly></sly>
+   <sly data-sly-test.customMobile="${properties.customMobile ? 'visible-xs':'hidden-xs'}"></sly>
+   <sly data-sly-test="${properties.videoType == 'ooyala'}">
+      <div id="video-oo-player" class="${(properties.mobileAssetType == 'set-mobile-image') && properties.mthImage ? 'video-player-off hidden-xs':''}">
+         <div class="video-player-container">
+            <div class="video-player-in">
+               <div data-sly-test="${properties.textPosition == 'top'}" class="video-player-label col-md-12 ${customMobile}">
+                  <sly data-sly-test="${customMobile == 'hidden-xs'}">
+                        <sly data-sly-test="${properties.videoTitle}">
+                           <h2 id="video-player-title">${properties.videoTitle}</h2>
+                        </sly>
+                        <sly data-sly-test="${properties.videoDescription}">
+                           ${properties.videoDescription@context='html'}
+                        </sly>
+                  </sly>
+               </div>
+               <sly data-sly-test="${properties.ooyalaVideoId}">
+                  <div class="video-banner video-player-wrapper">
+                     <div data-sly-test="${!properties.playVidInModal || properties.playVidInModal =='false' }"
+                        id="main-player-container" data-video-id="${properties.ooyalaVideoId}" data-single-player="true"
+                        class="featured-promo video-player" data-autoplay="${properties.autoPlayVideo}" data-mute="${properties.disableSound}"
+                        data-controls="${properties.hidePlayerControls}"
+                        data-loop="${properties.autoRepeatVideo}" data-xs-video-id="${mobileVideoType}"></div>
+                     <div data-sly-test="${properties.thImage}" class="video-poster-image video-promo-overlap"
+                        data-video-type="deluxe" data-action="${properties.playVidInModal=='true' ? 'modal' : 'inline'}"
+                        data-autoplay="${properties.autoPlayVideo}" data-video-id="${properties.ooyalaVideoId}" data-mute="${properties.disableSound}"
+                        data-controls="${properties.hidePlayerControls}"
+                        data-loop="${properties.autoRepeatVideo}" data-xs-video-id="${mobileVideoType}">
+                        <img alt="" src="${properties.thImage}">
+                     </div>
+                  </div>
+               </sly>
+               <div data-sly-test="${properties.textPosition != 'top'}"
+                  class="video-player-label col-md-12 ${customMobile}">
+                  <sly data-sly-test="${customMobile == 'hidden-xs'}">
+                        <sly data-sly-test="${properties.videoTitle}">
+                           <h2 id="video-player-title">${properties.videoTitle}</h2>
+                        </sly>
+                        <sly data-sly-test="${properties.videoDescription}">
+                           ${properties.videoDescription@context='html'}
+                        </sly>
+                  </sly>
+               </div>
+            </div>
+         </div>
+      </div>
+   </sly>
+   <sly data-sly-test="${properties.videoType == 'youtube'}">
+      <sly data-sly-test="${properties.embedurl}">
+         <div id="video-youtube-player" class="${(properties.mobileAssetType == 'set-mobile-image') && properties.mthImage ? 'video-player-off hidden-xs':''}">
+            <iframe data-sly-test="${!properties.playVidInModal || properties.playVidInModal=='false'}"
+               id="youtube_player" data-src="${videoModel.videoUrl}"
+               data-autoplay="${properties.autoPlayVideo}" allowfullscreen data-mute="${properties.disableSound}"
+               data-controls="${properties.hidePlayerControls}"
+               data-loop="${properties.autoRepeatVideo}" data-xs-video-id="${mobileVideoType}"></iframe>
+
+            <div data-sly-test="${properties.thImage}" class="video-poster-image video-promo-overlap"
+               data-video-type="youtube" data-action="${properties.playVidInModal=='true' ? 'modal' : 'inline'}"
+               data-autoplay="${properties.autoPlayVideo}" data-video-id="${videoModel.videoUrl}" data-mute="${properties.disableSound}"
+               data-controls="${properties.hidePlayerControls}"
+               data-loop="${properties.autoRepeatVideo}" data-xs-video-id="${mobileVideoType}">
+               <img alt="" src="${properties.thImage}" />
+            </div>
+         </div>
+      </sly>
+   </sly>
+   <div data-sly-test="${(properties.mobileAssetType == 'set-mobile-image') && properties.mthImage}" class="col-md-12 visible-xs">
+      <div class="image">
+         <img src="${properties.mthImage}" alt="${properties.mobileImageAlt}"/>
+      </div>
+   </div>
+</div>
+
+<div data-sly-test="${properties.playVidInModal=='true'}" class="modal" id="VideoPlayInModal" tabindex="-1"
+   role="dialog" aria-labelledby="VideoPlayInModalLabel">
+   <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+         <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                  aria-hidden="true">&times;</span></button>
+         </div>
+         <div class="modal-body">
+            <div class="embed-responsive embed-responsive-16by9">
+               <div class="aem-video-player" id="aem-video-modal-1"></div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+
+
+<!--/* End of video player */-->
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
+   <sly data-sly-call="${clientlib.js @ categories='global.mattelVideoPlayer'}" />
+</sly>

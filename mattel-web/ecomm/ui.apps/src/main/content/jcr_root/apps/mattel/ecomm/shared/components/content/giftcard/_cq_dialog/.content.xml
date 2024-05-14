@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Gift Card"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <column
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/container">
+                <items jcr:primaryType="nt:unstructured">
+                    <recipientLabel
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        fieldDescription="Please enter Recipient Label for Gift Card form"
+                        fieldLabel="Recipient Label :"
+                        name="./gcRecipientLabel"
+                        required="{Boolean}true"/>
+                    <senderLabel
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        fieldDescription="Please enter Sender Label for Gift Card form"
+                        fieldLabel="Sender Label :"
+                        name="./gcSenderLabel"
+                        required="{Boolean}true"/>
+                    <messageLabel
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        fieldDescription="Please enter Message Label for Gift Card form"
+                        fieldLabel="Message Label :"
+                        name="./gcMessageLabel"
+                        required="{Boolean}true"/>
+                    <giftMessage
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                        composite="{Boolean}true"
+                        fieldLabel="Gift Message">
+                        <field
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/fieldset"
+                            name="./giftMessage">
+                            <items jcr:primaryType="nt:unstructured">
+                                <column
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/container">
+                                    <items jcr:primaryType="nt:unstructured">
+                                        <messageTitle
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                            fieldLabel="Message Title"
+                                            name="./messageTitle"
+                                            required="{Boolean}true"/>
+                                        <message1
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                            fieldLabel="Message 1"
+                                            maxlength="{Long}30"
+                                            name="./message1"
+                                            required="{Boolean}true"/>
+                                        <message2
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                            fieldLabel="Message 2"
+                                            maxlength="{Long}30"
+                                            name="./message2"
+                                            required="{Boolean}true"/>
+                                        <message3
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                            fieldLabel="Message 3"
+                                            maxlength="{Long}30"
+                                            name="./message3"
+                                            required="{Boolean}true"/>
+                                    </items>
+                                </column>
+                            </items>
+                        </field>
+                    </giftMessage>
+                    <writeYourOwnMessageLabel
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        fieldDescription="Please enter Write Your Own Message Label"
+                        fieldLabel="Write Your Own Message Label"
+                        name="./gcWriteYourOwnMessageLabel"
+                        required="{Boolean}true"/>
+					<selectAmountLabel
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        fieldDescription="Please enter Select gift card amount Label for Gift Card form"
+                        fieldLabel="Select gift card amount Label :"
+                        name="./selectAmountLabel"
+                        required="{Boolean}true"/>
+                    <amountLabel
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        fieldDescription="Please enter Amount Label for Gift Card form"
+                        fieldLabel="Amount Label :"
+                        name="./gcAmountLabel"
+                        required="{Boolean}true"/>
+                    <amountValidationMsg
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        fieldDescription="Please enter Amount Value Validation message for Gift Card form"
+                        fieldLabel="Amount Value Validation Message:"
+                        name="./gcAmountValidationMsg"
+                        required="{Boolean}true"/>
+                    <addToBagButtonLabel
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        fieldDescription="Please enter label for Add To Bag Button in Gift Card form"
+                        fieldLabel="Add To Bag Button Label :"
+                        name="./gcAddToBagButtonLabel"
+                        required="{Boolean}true"/>
+                    <readreviewlabel
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        fieldDescription="Please enter Read-Review Label for Gift Card Form"
+                        fieldLabel="Read Review Label"
+                        name="./readReviewLabel"/>
+                    <writereviewlabel
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        fieldDescription="Please enter Write-Review Label for Gift Card Form"
+                        fieldLabel="Write-Review Label"
+                        name="./writeReviewLabel"
+                        required="{Boolean}true"/>
+                </items>
+            </column>
+        </items>
+    </content>
+</jcr:root>

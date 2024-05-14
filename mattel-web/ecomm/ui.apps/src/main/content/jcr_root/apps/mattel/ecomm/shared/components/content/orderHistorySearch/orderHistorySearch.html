@@ -1,0 +1,68 @@
+
+<div class="my-order-summary">
+    <h1 class="add-float">${properties.orderHistoryTitle @context='text'}</h1>
+    <div class="user-info-wrapper search-section">
+        <form>
+            <div class="details-list row">
+                <div class="details-list-item findOrder">
+                    <fieldset>
+                        <div class="input-field">
+                            <label for="searchOrder" class="display-order-from">Display orders from</label>
+                            <select class="" id="searchOrder">
+                                <option value="">Last 6 months</option>
+                            </select>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="details-list-item searchOrderNum" data-max-lines=${properties.maxNoOfLines}>
+                    <fieldset>
+                        <div class="input-field serchUserOrder">
+                            <label class="sr-only" for="serchByOrderId">Search by Order Number</label>
+                            <input type="number" min="1" id="serchByOrderId" class="form-input long-input" placeholder="Search Order Number">
+                            <a href="javascript:{}" title="Search for products" class="search-icon" role="button">
+                                <em class="fa fa-search"> </em>
+                            </a>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="user-info-wrapper visible-xs searchLine-bottom"></div>
+    <script id="orderListTemp" type="text/x-handlebars-template">
+        {{#if this.length}}
+        <div id="pagination"></div>
+        <table>
+            <caption class="sr-only">${properties.orderHistoryTitle @context='scriptString'}</caption>
+            <thead class="hidden-xs">
+            <tr>
+                <th scope="col">${properties.orderNumberLabel @context='scriptString'}</th>
+                <th scope="col">${properties.orderDateLabel  @context='scriptString'}</th>
+                <th scope="col">${properties.orderStatusLabel  @context='scriptString'}</th>
+                <th scope="col">${properties.orderTypeLabel  @context='scriptString'}</th>
+                <th scope="col">${properties.totalPriceLabel  @context='scriptString'}</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#each this}}
+            <tr>
+                <td><span class="visible-xs-inline order-info"><strong>${properties.orderNumberLabel @context='scriptString'}: </strong>{{orderId}}</span><a href="${properties.orderDetailPageLink  @context='html'}.html?orderId={{orderId}}" data-track-order-history="view order number"><span class="hidden-xs">{{orderId}}</span></a></td>
+                <td><span class="visible-xs-inline"><strong>${properties.orderDateLabel  @context='scriptString'}: </strong></span>{{placedDate}}</td>
+                <td><span class="visible-xs-inline"><strong>${properties.orderStatusLabel  @context='scriptString'}: </strong></span>{{orderStatus}}</td>
+                <td><span class="visible-xs-inline"><strong>${properties.orderTypeLabel  @context='scriptString'}: </strong></span>{{orderType}}</td>
+                <td><span class="visible-xs-inline order-info"><strong>${properties.totalPriceLabel  @context='scriptString'}: </strong>&dollar;{{grandTotal}}</span><strong class="hidden-xs">&dollar;{{grandTotal}}</strong></td>
+                {{/each}}
+
+            </tbody>
+        </table>
+        {{else}}
+        <p style="text-align: center;">${properties.noOrderText @context='scriptString'}</p>
+        {{/if}}
+
+    </script>
+    <div id="orderSummary"></div>
+
+</div>
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
+    <sly data-sly-call="${clientlib.js @ categories='ecomm.orderHistory'}"/>
+</sly>

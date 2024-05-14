@@ -1,0 +1,74 @@
+.q-and-a{
+    background-color: $white;
+    .article-container{
+        background-color: inherit;
+        img.pull-left{
+            @media #{$small-up}{
+                margin-right: em(35);
+            }
+        }
+        .article-text{
+            h2{
+                @media #{$small-up}{
+                    margin-top: 0;
+                }
+            }
+
+        }
+    }   
+    .line-bar{
+        background-color: inherit;
+        h2,h3,h4{
+            background-color: inherit;
+            position: relative;
+            &::before{
+                content:"";
+                position: absolute;
+                border: 2px solid;
+                top: 50%;
+                transform: translateY(-50%);
+                -webkit-transform: translateY(-50%);
+                -moz-transform: translateY(-50%);
+                -ms-transform: translateY(-50%);
+                width: 100%;
+                left: 0;
+            }
+            span{
+                position: relative;
+                z-index: 1;
+                background-color: inherit;
+                padding: 0 15px;
+            }
+        }
+    }
+    .article-text{
+        ul{
+            padding-left: 15px;
+            li{
+                &.star-icon{
+                    list-style: none;
+                    &:before{
+                        content: "";
+                        background: url(#{$assetPath}/ag/star-light-red-icon.jpg) no-repeat;
+                        background-position: top left;
+                        padding-left: em(35);
+                        margin-left: - em(35);
+                        background-size: em(27) em(29);
+                        width: em(27);
+                        height: em(29);
+                        float: left;
+                        position: relative;
+                        display: inline-block;
+                    }
+                }
+            }
+        }
+    }
+    .heading-qa{
+        color: $light-purple;
+        font-size: em(24.1529);
+        font-weight: $fontExtraBold;
+        padding: 10px 0;
+        margin: 0;
+    }
+}

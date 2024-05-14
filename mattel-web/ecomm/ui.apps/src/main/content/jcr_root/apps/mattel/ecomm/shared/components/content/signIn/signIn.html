@@ -1,0 +1,26 @@
+<sly data-sly-test="${wcmmode.edit}">${'Edit Sign In Component' @i18n}</sly>
+<div class="signin">
+    <h1 data-sly-test="${properties.title @i18n}">${properties.title @i18n}</h1>
+    <p data-sly-test="${properties.description @i18n}">${properties.description @i18n}</p>
+    <form action="${properties.successPath @ extension = 'html'}" class="signin-form">
+        <div class="input-field required">
+            <input class="form-input long-input" type="email" name="emailId" value="" id="sign-email" aria-describedby="sign-email-error" maxlength="" autocomplete="on" aria-required="true" />
+            <label data-sly-test="${properties.emailAddressLabel}" class="placeholder-label" for="sign-email">${properties.emailAddressLabel @i18n}</label>
+            <div id="sign-email-error"class="help-block form-message"></div>
+        </div>
+        <div class="input-field required">
+            <input class="form-input long-input" type="password" name="password" value="" id="sign-password" aria-describedby="sign-password-error"maxlength="" autocomplete="on" aria-required="true" />
+            <label data-sly-test="${properties.passwordLabel}" class="placeholder-label" for="sign-password">${properties.passwordLabel @i18n}</label>
+            <div id="sign-password-error"class="help-block form-message"></div>
+        </div>
+        <div class="row">
+            <div data-sly-test="${properties.forgotPasswordLabel && properties.forgotPasswordPath}" class="col-md-6 forgot-password">
+                <a href="${properties.forgotPasswordPath @ extension = 'html'}" class="" id="sign-forgot-pwd">${properties.forgotPasswordLabel @i18n}</a>
+            </div>
+        </div>
+        <input data-sly-test="${properties.signInButtonLabel @i18n}" class="theme-btn" type="submit" value="${properties.signInButtonLabel @i18n}">
+    </form>
+</div>
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
+    <sly data-sly-call="${clientlib.js @ categories='ecomm.signin'}"/>
+</sly>

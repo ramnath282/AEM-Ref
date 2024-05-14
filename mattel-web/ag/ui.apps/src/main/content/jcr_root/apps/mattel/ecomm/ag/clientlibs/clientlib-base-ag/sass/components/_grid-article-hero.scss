@@ -1,0 +1,118 @@
+.grid-article-Hero{    
+    .container {
+        h1 {
+            font-size: 3.5em;
+            font-weight: 600;
+            margin-bottom: 0.417em;
+        }
+	.article-hero {
+           display: inline-block;
+           background-color: $white-smoke;
+           width: 100%;
+           .article-sub-section { 
+               display: inline-block;
+                @extend .col-md-4;
+                @media #{$medium-up} {
+                    float: right;
+                }
+                
+                &:nth-child(1)   {
+                    @media #{$medium-up} {
+                        width: 70%;
+                    }
+                    padding-left: 0;
+                    padding-right: 0;
+                    float: left;
+                    .tile-container {
+                        .tile-content { 
+                            padding: 0.8em 1.6em;
+                            .tile-name {
+                                font-size: 2.3em;
+                                @media #{$medium-up} {
+                                    padding: 0 3em;
+                                }
+                            }
+                        }
+                    }                        
+                }
+                .tile-container {
+                    background-color: transparent;
+                    box-shadow: none;
+                    max-width: 100%;
+                    margin: 0;
+                    .tile-content {
+                        .tile-category {
+                            font-style: italic;
+                            color: $very-dim-light-grey;
+                            display:block;
+                            margin:em(35) 0 0 0;
+                            font-size: em(16);
+                            @media #{$small-down} {
+                                margin:0;
+                            }
+                        }
+                        .tile-name {
+                            font-size: 2.2em;
+                            font-weight: 600;
+                            margin-top: em(14);
+			                color:$black;
+                        }
+                        .tile-description {
+                            font-size: em(16);
+                            color:$black;
+                            font-weight: 400;
+                            line-height: em(18);
+                        }
+                        .read-more {
+                            display: block;
+                            font-size: 1.3em;
+                            margin-bottom: 2em;
+                            span {
+				                font-weight: 600;
+                                &:after {
+				                     content: "\f054";
+                                    @include font-awesome();
+                                    margin-left: 5px;
+                                    font-size: 0.8em;
+                                } 
+                            }
+                        }
+                        .social-icons {
+                            display: inline-block;
+                            margin-bottom: 1em;
+                            li {
+                                margin-right: 0.7em;
+                                float: left;
+                                padding: 0;
+                                width: auto;
+                                a {
+                                    color: $white;
+                                    background: $dim-gray;
+                                    text-align: center;
+                                    width: 1.5em;
+                                    height: 1.45em;
+                                    border-radius: 1.5em;
+                                    font-size: 1.3em;
+                                    display: block;
+                                    &:after {
+                                        margin-top: 5px;
+                                    }
+                                    &.pinterest, &.twitter {
+                                        font-size: 1.1em;
+                                        width: 1.75em;
+                                        height: 1.75em;
+                                        border-radius: 1.75em;             
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                @media #{$medium-up} {
+                    width: 28%;
+                    padding:0 0.31em 0 0;
+                }                
+           }
+       }
+    }
+}
